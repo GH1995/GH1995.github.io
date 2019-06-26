@@ -1,0 +1,35 @@
+<h1 align="center">
+<a href="https://github.com/fancyapps/fancybox">fancyBox 3</a> for <a href="https://github.com/theme-next">NexT</a>
+</h1>
+<h2 align="center">
+If you want fancybox v2, please go to <a href="https://github.com/theme-next/theme-next-fancybox">theme-next-fancybox</a>
+</h2>
+<h1 align="center">
+Installation
+</h1>
+<h2 align="center">
+Step 0 → Delete fancybox 2 (if you want to upgrade from v2)
+</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1">$ <span class="fu">rm</span> -rf themes/next/source/lib/fancybox</a></code></pre></div>
+<h2 align="center">
+Step 1 → Go to NexT dir
+</h2>
+<p>Change dir to <strong>NexT</strong> directory. There must be <code>layout</code>, <code>source</code>, <code>languages</code> and other directories:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1">$ <span class="bu">cd</span> themes/next</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">$ <span class="fu">ls</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="ex">bower.json</span>  _config.yml  docs  gulpfile.coffee  languages  layout  LICENSE.md  package.json  README.md  scripts  source  test</a></code></pre></div>
+<h2 align="center">
+Step 2 → Get module
+</h2>
+<p>Install module to <code>source/lib</code> directory:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1">$ <span class="fu">git</span> clone https://github.com/theme-next/theme-next-fancybox3 source/lib/fancybox</a></code></pre></div>
+<h2 align="center">
+Step 3 → Set it up
+</h2>
+<p>Enable module in <strong>NexT</strong> <code>_config.yml</code> file:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yml"><code class="sourceCode yaml"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="fu">fancybox:</span><span class="at"> true</span></a></code></pre></div>
+<h1 align="center">
+Update
+</h1>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" data-line-number="1">$ <span class="bu">cd</span> themes/next/source/lib/fancybox</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">$ <span class="fu">git</span> pull</a></code></pre></div>
