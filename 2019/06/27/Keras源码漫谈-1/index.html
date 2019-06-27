@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="gh&#39;s blog">
 <meta property="og:description" content="setup.py 这篇文章主要参考这里1，写的非常好，推荐看一下原文。搞懂 Python 的 package 是如何构建的。 distutils 和 setuptools 差不多，功能较少，现在用的比较少了。下文主要介绍 setuptools 。 包格式 wheel 和 Egg 本质上都是 zip 包，推荐使用 wheel。 setup.py 文件内容 首先需要setup函数 12from set">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-27T08:19:14.048Z">
+<meta property="og:updated_time" content="2019-06-27T08:22:58.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Keras源码漫谈(1)">
 <meta name="twitter:description" content="setup.py 这篇文章主要参考这里1，写的非常好，推荐看一下原文。搞懂 Python 的 package 是如何构建的。 distutils 和 setuptools 差不多，功能较少，现在用的比较少了。下文主要介绍 setuptools 。 包格式 wheel 和 Egg 本质上都是 zip 包，推荐使用 wheel。 setup.py 文件内容 首先需要setup函数 12from set">
@@ -422,7 +422,7 @@
                 
               
 
-              <time title="Created: 2019-06-27 15:02:37 / Modified: 16:19:14" itemprop="dateCreated datePublished" datetime="2019-06-27T15:02:37+08:00">2019-06-27</time>
+              <time title="Created: 2019-06-27 15:02:37 / Modified: 16:22:58" itemprop="dateCreated datePublished" datetime="2019-06-27T15:02:37+08:00">2019-06-27</time>
             
 
             
@@ -503,7 +503,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from setuptools import setup, Command</span><br></pre></td></tr></table></figure>
 <h3 id="依赖关系重点">依赖关系【重点】</h3>
 <p>指定该参数后，在安装包时会自定从 pypi 仓库中下载指定的依赖包安装。</p>
-<p>看一 keras 依赖的包 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">install_requires=[&apos;numpy&gt;=1.9.1&apos;,  # 计算</span><br><span class="line">                &apos;scipy&gt;=0.14&apos;, # 计算</span><br><span class="line">                &apos;six&gt;=1.9.0&apos;, # 处理兼容性</span><br><span class="line">                &apos;pyyaml&apos;, # 处理格式</span><br><span class="line">                &apos;h5py&apos;, # 存储</span><br><span class="line">                &apos;keras_applications&gt;=1.0.6&apos;, # 自家的</span><br><span class="line">                &apos;keras_preprocessing&gt;=1.0.5&apos;], # 自家的</span><br></pre></td></tr></table></figure></p>
+<p>看一下 keras 依赖的包 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">install_requires=[&apos;numpy&gt;=1.9.1&apos;,  # 计算</span><br><span class="line">                &apos;scipy&gt;=0.14&apos;, # 计算</span><br><span class="line">                &apos;six&gt;=1.9.0&apos;, # 处理兼容性</span><br><span class="line">                &apos;pyyaml&apos;, # 处理格式</span><br><span class="line">                &apos;h5py&apos;, # 存储</span><br><span class="line">                &apos;keras_applications&gt;=1.0.6&apos;, # 自家的</span><br><span class="line">                &apos;keras_preprocessing&gt;=1.0.5&apos;], # 自家的</span><br></pre></td></tr></table></figure></p>
 <p>这里还有一个参数<code>extras_require</code>，表明当前包的高级/额外特性需要依赖的分发包</p>
 <h3 id="分类关系">分类关系</h3>
 <p><code>classifiers</code> 讲讲包的成熟度，目标用户，类型，许可证，目标 Python 版本</p>
