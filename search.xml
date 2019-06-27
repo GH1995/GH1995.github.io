@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Keras源码漫谈(1)]]></title>
+    <url>%2F2019%2F06%2F27%2FKeras%E6%BA%90%E7%A0%81%E6%BC%AB%E8%B0%88-1%2F</url>
+    <content type="text"><![CDATA[setup.py 这篇文章主要参考这里1，写的非常好，推荐看一下原文。搞懂 Python 的 package 是如何构建的。 setup find_packages name package http://blog.konghy.cn/2018/04/29/setup-dot-py/↩]]></content>
+      <tags>
+        <tag>keras</tag>
+        <tag>deep learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[给忙碌烦躁者的基本魔咒：absolute_import]]></title>
+    <url>%2F2019%2F06%2F27%2F%E7%BB%99%E5%BF%99%E7%A2%8C%E7%83%A6%E8%BA%81%E8%80%85%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%AD%94%E5%92%92%EF%BC%9Aabsolute-import%2F</url>
+    <content type="text"><![CDATA[1from __future__ import absolute_import 禁止import string查找当前目录下文件 Python行为变成用import string来引入系统的标准string.py，而用from pkg import string来引入当前目录下的string.py了]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>常识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[给忙碌烦躁者的基本魔咒：__init__.py 文件解析]]></title>
+    <url>%2F2019%2F06%2F27%2F%E7%BB%99%E5%BF%99%E7%A2%8C%E7%83%A6%E8%BA%81%E8%80%85%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%AD%94%E5%92%92%EF%BC%9A-init-py-%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%2F</url>
+    <content type="text"><![CDATA[剃头咒……可是龙没有头发……胡椒粉咒……那大概只会增强龙的火力……硬舌咒……那正是他需要的，给火龙再加一个武器…… 在 __init__.py 文件中批量导入我们所需要的模块 特殊文件__init__.py可以为空，也可以包含属于包的代码，当导入包或该包中的模块时，执行__init__.py。 12345# package folder# - __init__.pyimport reimport sysimport os 12# test.pyimport package 访问package文件中的引用文件需要加上包名。 __all__用来将模块全部导入 12# __init__.py__all__ = [&apos;os&apos;, &apos;sys&apos;] 12# test.pyfrom package import * 遇到.pyo文件不要慌，它就是.pyc优化后的字节码。 import 杂谈 __import__()内置函数，强大但用处不大 12_m = __import__(&apos;os&apos; +&apos;.&apos; + &apos;path&apos;)_m.curdir sys.path模块搜索路径，第一个就是当前目录，可以自己改 1sys.path.append(&apos;xxx/xxx&apos;) dir()查询模块中定义的成员，用处不大，不如自己看文档 特殊文件__init__.py可以为空，也可以包含属于包的代码，当导入包或该包中的模块时，执行`init.py``。 命令行 sys.argv参数 argparse命令行选项解析 都不推荐使用，太麻烦了，推荐fire。]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>常识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[笑林广记：如何集齐 12 星座的男友？]]></title>
+    <url>%2F2019%2F06%2F26%2F%E7%AC%91%E6%9E%97%E5%B9%BF%E8%AE%B0%EF%BC%9A%E5%A6%82%E4%BD%95%E9%9B%86%E9%BD%90-12-%E6%98%9F%E5%BA%A7%E7%9A%84%E7%94%B7%E5%8F%8B%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[题目 如果一个女生说，她集齐了十二个星座的前男友，我们应该如何估计她前男友的数量？ 解答 如果一个女生说，她集齐了十二个星座的前男友，我们应该如何估计她前男友的数量？ - 何明科的回答 - 知乎]]></content>
+      <tags>
+        <tag>智力题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[容斋随笔：最近一段时间的事情]]></title>
+    <url>%2F2019%2F06%2F26%2F%E5%AE%B9%E6%96%8B%E9%9A%8F%E7%AC%94%EF%BC%9A%E6%9C%80%E8%BF%91%E4%B8%80%E6%AE%B5%E6%97%B6%E9%97%B4%E7%9A%84%E4%BA%8B%E6%83%85%2F</url>
+    <content type="text"><![CDATA[实习 确定了暑期实习，腾讯 TEG 。MSRA 是凉的不能再凉了，HR 委婉的提醒转正率不高。 接下来做什么 有主有次吧 主要的就两点：第一干活，第二刷题，第三没了 两点里最主要的又是干活，不干活是不可能的，搞推荐系统要写代码看论文。 重点怎么可能有两个，所以最重要的还是干活！ 刷题，缓缓吧，有空和恒松聊聊刷题的事情，他去了达摩院。大佬大佬。 次要的：拔牙，女票要出国 流浪 脑袋有点大，有点乱。 乱才好，乱中有变。]]></content>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[学林漫录：美化数据输出——pprint]]></title>
+    <url>%2F2019%2F06%2F25%2F%E5%AD%A6%E6%9E%97%E6%BC%AB%E5%BD%95%EF%BC%9A%E7%BE%8E%E5%8C%96%E6%95%B0%E6%8D%AE%E8%BE%93%E5%87%BA%E2%80%94%E2%80%94pprint%2F</url>
+    <content type="text"><![CDATA[美化数据输出的一个包，对我来说最大的用处就是控制depth 12data = [(1,&#123;&apos;a&apos;:&apos;A&apos;,&apos;b&apos;:&apos;B&apos;,&apos;c&apos;:&apos;C&apos;,&apos;d&apos;:&apos;D&apos;&#125;), (2,&#123;&apos;e&apos;:&apos;E&apos;,&apos;f&apos;:&apos;F&apos;,&apos;g&apos;:&apos;G&apos;,&apos;h&apos;:&apos;H&apos;,&apos;i&apos;:&apos;I&apos;,&apos;j&apos;:&apos;J&apos;,&apos;k&apos;:&apos;K&apos;,&apos;l&apos;:&apos;L&apos;&#125;)] 1234import pprintpprint.pprint(data)pprint.pprint(data, depth = 2)]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[笑林广记：Python 单例模式]]></title>
+    <url>%2F2019%2F06%2F25%2F%E7%AC%91%E6%9E%97%E5%B9%BF%E8%AE%B0%EF%BC%9APython-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[Python 的单例模式如何实现？ 单例模式，应当是每个程序员都需要知道的一种设计模式，它简单、高效。而Python 的单例模式实现使用都尤为简单。 1234class Singleton(object): passsingleton = Singleton() 将上面的代码在 .py 文件中，在用的地方导入的 singleton 就是单例的。单例存在哪里呢？就在那个.pyc文件。第一次导入时，会生成 .pyc 文件，当第二次导入时，就会直接加载 .pyc 文件。 使用方法 1from a import singleton]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[笑林广记：烧绳子]]></title>
+    <url>%2F2019%2F06%2F25%2F%E7%AC%91%E6%9E%97%E5%B9%BF%E8%AE%B0%EF%BC%9A%E7%83%A7%E7%BB%B3%E5%AD%90%2F</url>
+    <content type="text"><![CDATA[题目 仓库有一批密度不均匀的绳子，密度不均匀也就意味着：如果把一根绳子按长度均分两份，这两份的长度一样但是质量可能不一样。假设烧完一根绳子要花1个小时，现在有一批完全一样的绳子，我们要如何才可以衡量出一小时十五分钟呢？可以用多根绳子完成？你最少几根绳子可以完成一小时十五分钟的度量呢？ 答案 这题关键是拆分： 1. 如何拆出 30 分钟？ 2. 如何拆出 15 分钟？ 拆出 30 分钟的办法： 绳子密度不均匀怎么？我们每次都烧一整根。拆出 30 分钟的办法是，两端同时开始烧。 拆出 15 分钟的办法是拿出两条绳子，第一根是两端同时点火，第二根绳子一端点火。第一根绳子烧完了需要花费 30 分钟时间，这时候再点第二根绳子的另一端。第二根绳子燃烧瞬间被加速，烧完的时间为 45 分钟。 这里有点绕，仔细想想为什么（这里不要想他烧的是长度，想象烧的是质量。过去的 30 分钟烧了一半重的绳子。现在两端都开始烧，燃烧速度加倍了！） 好了，这样我们就烧出了 45 分钟， \[ 45 - 30 = 15 \] 都有了 45 分钟还要什么自行车？再点支烟冷静一下，不过这支烟要两端一起点，我们又凑出了 30 分钟。总共花了三条绳子。 点支烟冷静一下]]></content>
+      <tags>
+        <tag>智力题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[学林漫录：Python 协程]]></title>
+    <url>%2F2019%2F06%2F24%2F%E5%AD%A6%E6%9E%97%E6%BC%AB%E5%BD%95%EF%BC%9APython-%E5%8D%8F%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[参考文章 协程的好处有哪些？ - 阿猫的回答 - 知乎 协程的好处有哪些？ - Jakit的回答 - 知乎 维基百科 协程的本质 程序变慢的原因 涉及到同步锁。 涉及到线程阻塞状态和可运行状态之间的切换。 涉及到线程上下文的切换。 协程与线程主要区别是它将不再被内核调度，而是交给了程序自己，而线程是将自己交给内核调度。线程本身获得了自己的主导权。 协程本质上就是用户空间下的线程。 协程的实现 当协程执行到yield关键字时，会暂停在那一行，等到主线程调用send方法发送了数据，协程才会接到数据继续执行。 但是，yield让协程暂停，和线程的阻塞是有本质区别的。协程的暂停完全由程序控制，线程的阻塞状态是由操作系统内核来进行切换。 因此，协程的开销远远小于线程的开销。 【手动滑稽】 yield 可以理解成为，做到这里，然后暂停一下，然后产出结果，等待上一个上下文对自己调度 协程并不是“线程”，理由是： 它并不会参与 CPU 时间调度，并没有均衡分配到时间。 线程的话，在多核心处理器里面，是并行的，你启动一个线程之后你要想控制它，你得做系统调用 thread_cancel 或者最好情况是发送信号告诉线程里面的条件变量让线程自己去退出。简单来说，对用户其实是不可控的，就像小孩子又不是他们父母本人，他们很多行为是不由父母控制的，父母只能告诉他做什么，要不就家庭暴力（目前被证明是违法的，每个人毕竟都是独立的生命个体）。 所以进程可以理解为地球上（操作系统中）每一个生命个体（有自行运行的空间的独立个体），在做着自己特定的事情（每一个程序肯定都是一个从 main 开始的逻辑），然后线程就是每一个生命个体当中自由独立的细胞，每一个细胞也关联了自己对应的生存行为（吞噬细胞以吞噬动作为生）。 对于个人来说，是垂直进行的，可能不明显，但是 CPU 从古至今，从单核心发展起来的，一台电脑需要跑好几个程序，不可能先跑完了一个程序再跑另一个，也就是多任务。 所以，多个协程协作好比就是你一个人其实同时只能做一件事，但是你把几个任务拆成几截来交叉执行。 说明一个问题，两个协程并不是线程，它们根本【既不并发也不并行】的，协程实际上是一个很普通的函数（对于 C 语言理解），或者一个代码块（ObjC），或者子过程（Pasacal Perl），反正就是只是中间加了 yield，让它跑了一半暂停执行，然后产出结果给调度它（这个协程）的父级上下文，如果父级不再需要执行下去了可以先调用别的函数，等别的 yield 了再 transfer 回去执行这个。 因此： 协程就是一串比函数粒度还要小的可手动控制的过程 线程（Thread）则不一样，Thread 就算其中一个要 STDIN.read 需要从外部 IO 读东西堵塞了，但是都不会影响别的线程运行的，要不然设计线程就没意义了。 如果其它文章说它并发，或许说的是因为协程能把小过程串起来，让人们看起来并发（同时进行）。不过，总上观察，或许你看到很多文章、回答说的协程是用户态的线程，或许他们的理解是这个意思。但不代表协程是线程，其实不是一个概念。协程都没参与多核 CPU 并行处理，协程是不并行的，而线程 在多核处理器上是并行在单核处理器是受操作系统调度的，所以本身就差太远了。如果协程真的是线程，真的那么好用，那么 Android iOS 开发早就用多协程而不是多线程来处理 HTTP 请求了。咱们来论证一下这个观点：说协程性能好的，其实真正的原因是因为瓶颈在IO上面，而这个时候真正发挥不了线程的作用。IO 瓶颈可以有，但是要注意 IO 是系统调用，这个 IO 不是用户态能处理的，协程是没办法绕开的，所以最终还是给堵了。如果协程真的能处理堵塞问题，那么很多经典的 Unix 网络编程书籍里面应该有多协程模式才对。正确的方案应该是多线程，所以有多进程或多线程服务器的模型，不至于一堵全堵。应该用 select / poll / epoll / kqueue ，让系统调用来应对系统调用，像 epoll 让 IO 堵塞的调用加以消息通信回调来解决。针对有朋友给出的疑问关于协程不能并发和并行这点不同意，可能在某些语言里确实不能并行。具体实现，跟你用的是 Qt 的 coroutine 还是 goroutine 的 implementation 有差异。但是，我再次敲黑板点题： 我这里只讨论纯粹的协程，协程是一组过程，至于你想给它加入上下文信息（userinfo、context）做成有栈协程，还是混入线程来进行并发时候切换与启停来实现多个协程并发，这个跟协程它本身没有任何关系。我的回答也是为了让大家剥离并发和并行与协程三个概念而阐述的。另外，协程的发明主要是为了解决 Concurrency（并发）问题，而线程的发明主要解决的 Parallelism（并行）问题。 现代协程已经逐渐衍生出新的概念—— Generator 和 Promise，不一定要用某些特定的语法或者库来实现。很多语言更倾向于做成一组执行队列，名词是把 result 传入next，不断 yield 迭代到下一层。ES 6 的 Promise 就解决了 callback hell，当然用协程来解决也是可以的，暂停执行并把上下文的 result 变量判断一下，然而 Promise 和 Generator 会显得更自然现代风格一些。大多数对 coroutine 用的是 ucontext 来实现。 Go 的话它针对不同 platform，include 了不同的 ucontext，调用 ucontext init 会获得一个 context 描述符，这个协程 new 出来之后就是一个变量，既然是变量那肯定就有 atomic 的问题。 所以才会有人说协程也要锁，其实你锁的不是 coroutine 而是锁 ucontext 的一系列操作。 单核并发这种 makecontext 然后并手动 switch 调度往往复杂，而且并不能提升性能，只是为了通过调度来实现和模拟并发，现实中更多人用来减少callback。然而并不比直接 callback 带来的上下文保存各种操作带来的损耗要少。所以上文说说多线程的方案会在现代更占有性能优化优势。因为：既然你能开一个过程然后让它切换，还不如让它自动的在多个核心参与时间分配调度。对于多核处理器的演进和上层业务逻辑的需求，协程 不再具有优势，于是逐渐演变为用来改进词法编程方式的一种用例，它的衍生品 Generator 和 Promise 更简明好用。 协程的好处 用同步的逻辑，写由协程调度的回调 协程和性能无关，只是美化代码流程，让异步看起来像同步那样。 对于计算密集的情况，多线程是最优解（把显卡计算视为多线程之一种），对于io密集任务，回调是最优解。 协程样例 123456789101112131415import asyncio@asyncio.coroutinedef hello(): print(&quot;hello, world&quot;) r = yield from asyncio.sleep(100) print(&quot;hello, again!&quot;)loop = asyncio.get_event_loop()loop.run_until_complete(hello())loop.close() 123456789101112131415import threadingimport asyncio@asyncio.coroutinedef hello(): print(&apos;Hello world! (%s)&apos; % threading.current_thread()) yield from asyncio.sleep(5) print(&apos;hello again! (%s)&apos; % threading.current_thread())loop = asyncio.get_event_loop()tasks = [hello(), hello()]loop.run_until_complete(asyncio.wait(tasks))loop.close() asyncio 提供了完善的异步IO支持； 异步操作需要在coroutine中通过yield from完成； 多个coroutine可以封装成一组Task然后并发执行。 改进版： 把@asyncio.coroutine替换为async； 把yield from替换为await。]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>操作系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[学林漫录：怎样理解阻塞非阻塞与同步异步？]]></title>
+    <url>%2F2019%2F06%2F24%2F%E5%AD%A6%E6%9E%97%E6%BC%AB%E5%BD%95%EF%BC%9A%E6%80%8E%E6%A0%B7%E7%90%86%E8%A7%A3%E9%98%BB%E5%A1%9E%E9%9D%9E%E9%98%BB%E5%A1%9E%E4%B8%8E%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[在处理 IO 的时候，阻塞和非阻塞都是同步 IO。只有使用了特殊的 API 才是异步 IO。 ——陈硕 同步异步的比较 同步异步关注的是消息通信机制，反映的是两个进程之间是否协调。所谓协调就是，你走一步我走一步，你不走，我就没办法走，这就是同步。你走你的，我走我的，你不走，我也可以走，这就是异步。 IO 都可以认为是同步的，因为 IO 不完成，其他工作就很难走。典型的异步编程模型比如 Node.js。 阻塞与非阻塞的比较 阻塞与非阻塞关注的是程序在等待（消息，返回值）时的状态。 阻塞 同步+阻塞：程序代码一行一行执行，上一行不执行完，下一行就不会被执行；如果上一行卡住了迟迟不结束（阻塞了），那么整块代码全部卡住。遇到这种代码的感觉就是程序突然卡住死机，小圈圈来回转，此时用户无法区分电脑是在冥想还是挂了，所以体验非常差。 同步+非阻塞：这就是最常见的程序，一行一行序贯执行，且没有哪一行会出现卡死的情况。这种程序最符合人们对计算机程序的心理预期，也就是程序能做到“有问立答”。 异步+阻塞：虽然代码中某些部分会卡住，但是由于采用了异步的处理方式（包括callback、future、promise、reactiveX、async-await/coroutine），所以卡住行的下一行不会傻等，整个代码块也就不会卡住。这时虽然做不到有问立答，但是会给你一张小卡片上面写着“已受理，请稍等”，这种体验也不会太差。 异步+非阻塞：非阻塞情况下一般不会采用异步编程，这个组合属于脱裤子放屁。但是在兼有阻塞非阻塞的代码块中，由于整块都可能采用异步编程，所以也会出现这种组合。体验上讲也是有问立答，只是会稍稍慢一点，但感觉不出来。]]></content>
+      <tags>
+        <tag>操作系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[学林漫录：textwrap]]></title>
+    <url>%2F2019%2F06%2F24%2F%E5%AD%A6%E6%9E%97%E6%BC%AB%E5%BD%95%EF%BC%9Atextwrap%2F</url>
+    <content type="text"><![CDATA[这是Python自带的标准库，参见这里 textwrap.wrap(text, width=70, **kwargs) 返回列表，每个元素的宽度为 width wrap textwrap.fill(text, width=70, **kwargs) 根据指定长度拆分字符串，然后逐行显示，结果为左对齐，第一行有缩进。行中的空格继续保留。 fill textwrap.indent(text, prefix, predicate=None) 行首添加前缀，可以用来缩进 indent textwrap.dedent(text) 每行取消缩进空格]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>nip</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[困学纪闻注：微积分]]></title>
+    <url>%2F2019%2F06%2F22%2F%E5%9B%B0%E5%AD%A6%E7%BA%AA%E9%97%BB%E6%B3%A8%EF%BC%9A%E5%BE%AE%E7%A7%AF%E5%88%86%2F</url>
+    <content type="text"><![CDATA[导数 乘法法则 \[ \frac{\partial \mathbf{y}^{\mathrm{T}} \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} \mathbf{z}+\frac{\partial \mathbf{z}}{\partial \mathbf{x}} \mathbf{y} \] \[ \frac{\partial \mathbf{y}^{\mathrm{T}} A \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} A \mathbf{z}+\frac{\partial \mathbf{z}}{\partial \mathbf{x}} A^{\mathrm{T}} \mathbf{y} \] \[ \frac{\partial y \mathbf{z}}{\partial \mathbf{x}}=y \frac{\partial \mathbf{z}}{\partial \mathbf{x}}+\frac{\partial y}{\partial \mathbf{x}} \mathbf{z}^{\mathrm{T}} \] 链式法则 1. \[ \frac{\partial \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} \frac{\partial \mathbf{z}}{\partial \mathbf{y}} \] 2. \[ \frac{\partial z}{\partial X_{i j}}=\operatorname{tr}\left(\left(\frac{\partial z}{\partial Y}\right)^{\mathrm{T}} \frac{\partial Y}{\partial X_{i j}}\right) \] 3. \[ \frac{\partial z}{\partial X_{i j}}=\left(\frac{\partial z}{\partial \mathbf{y}}\right)^{\mathrm{T}} \frac{\partial \mathbf{y}}{\partial X_{i j}} \] 4. \[ \frac{\partial \mathbf{g}}{\partial x}=\left(\frac{\partial \mathbf{g}}{\partial \mathbf{u}}\right)^{\mathrm{T}} \frac{\partial \mathbf{u}}{\partial x} \] 常见函数的导数 三个重要公式，太重要了！ \[ \frac{\partial \mathbf{x}}{\partial \mathbf{x}}=I \] \[ \frac{\partial A \mathbf{x}}{\partial \mathbf{x}}=A^{\mathrm{T}} \] \[ \frac{\partial \mathbf{x}^{\mathrm{T}} A}{\partial \mathbf{x}}=A \] 按位计算的向量函数及其导数 \[ z_{k}=f\left(x_{k}\right), \forall k=1, \cdots, K \] \[ \begin{aligned} \frac{\partial f(\mathbf{x})}{\partial \mathbf{x}} &amp;=\left[\frac{\partial f\left(x_{j}\right)}{\partial x_{i}}\right]_{K \times K} \\ &amp;=\left[\begin{array}{cccc}{f^{\prime}\left(x_{1}\right)} &amp; {0} &amp; {\cdots} &amp; {0} \\ {0} &amp; {f^{\prime}\left(x_{2}\right)} &amp; {\cdots} &amp; {0} \\ {\vdots} &amp; {\vdots} &amp; {\vdots} &amp; {\vdots} \\ {0} &amp; {0} &amp; {\cdots} &amp; {f^{\prime}\left(x_{K}\right)}\end{array}\right] \\ &amp;=\operatorname{diag}\left(f^{\prime}(\mathbf{x})\right) \end{aligned} \] Logistic 函数 \[ \sigma(x)=\frac{1}{1+\exp (-x)} \] \[ \sigma^{\prime}(x)=\sigma(x)(1-\sigma(x)) \] \[ \sigma^{\prime}(\mathbf{x})=\operatorname{diag}(\sigma(\mathbf{x}) \odot(1-\sigma(\mathbf{x}))) \]]]></content>
+      <tags>
+        <tag>deep learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[困学纪闻注：线性代数]]></title>
+    <url>%2F2019%2F06%2F22%2F%E5%9B%B0%E5%AD%A6%E7%BA%AA%E9%97%BB%E6%B3%A8%EF%BC%9A%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[向量 \(l_1\) 范数 为向量的各个元素的绝对值之和 \[ \|\mathbf{v}\|_{1}=\sum_{i=1}^{n}\left|v_{i}\right| \] \(l_2\) 范数/Frobenius 范数 为向量的各个元素的平方和再开平方 \[ \|\mathbf{v}\|_{2}=\sqrt{\sum_{i=1}^{n} v_{i}^{2}}=\sqrt{\mathbf{v}^{\mathrm{T}} \mathbf{v}} \] 矩阵 Hadamard 积 \[ [A \odot B]_{i j}=a_{i j} b_{i j} \] 矩阵范数 \[ \|A\|_{p}=\left(\sum_{i=1}^{m} \sum_{j=1}^{n}\left|a_{i j}\right|^{p}\right)^{1 / p} \] Gram 矩阵 向量空间中一组向量 \(\mathbf{v}_{1}, \mathbf{v}_{2} \cdots, \mathbf{v}_{n}\) Gram矩阵。\(G\) 式内积的对称矩阵，其元素 \(G_{ij}\) 为 \(\mathbf{V}_{i}^{\mathrm{T}} \mathbf{v}_{j}\) 。 一个重要的应用是计算线性无关：一族向量线性无关当且仅当格拉姆行列式（格拉姆矩阵的行列式）不等于零。 正定矩阵 方块[对称]矩阵 \[ \mathbf{x}^{\mathrm{T}} A \mathbf{x}&gt;0 \] 正交矩阵/酉矩阵 方块矩阵，其逆矩阵等于转置矩阵 \[ A^{\mathrm{T}}=A^{-1} \] 特征值与特征向量 \[ A \mathbf{v}=\lambda \mathbf{v} \] 奇异值分解 \(m \times n\)的矩阵 \[ A=U \Sigma V^{\mathrm{T}} \] \(U\) 和 \(V\) 分别为 \(m \times m\) 和 \(n \times n\) 的正交矩阵。\(\Sigma\) 为 \(m \times n\) 的对角矩阵，其对角线上的元素称为奇异值。 特征分解 \(n \times n\) 的方块矩阵 \[ A=Q \Lambda Q^{-1} \] \(Q\) 为 \(n \times n\) 方块矩阵，每一列都是特征向量，\(\Lambda\) 为对角阵，每个对角元素都是特征值。 如果 \(A\) 为对称矩阵，则 \(A\)可以被分解为正交矩阵正交矩阵连乘。]]></content>
+      <tags>
+        <tag>deep learning</tag>
+        <tag>math</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[建炎以来系年要录：拉格朗日对偶性]]></title>
+    <url>%2F2019%2F06%2F22%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9A%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AF%B9%E5%81%B6%E6%80%A7%2F</url>
+    <content type="text"><![CDATA[最大熵模型 支持向量机 原始问题 \[ \begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t. } c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad h_{j}(x)=0, \quad j=1,2, \cdots, l}\end{array} \] 此约束最优化问题称为最优化问题或原始问题。 广义拉格朗日函数 \[ L(x, \alpha, \beta)=f(x)+\sum_{i=1}^{k} \alpha_{i} c_{i}(x)+\sum_{j=1}^{l} \beta_{j} h_{j}(x) \] \(\alpha_i, \beta_j\) 是拉格朗日乘子，$_i 0 $ \[ \theta_{P}(x)=\max _{\alpha, \beta : \alpha_{i} \geqslant 0} L(x, \alpha, \beta) \] \[ \theta_{P}(x)=\max _{\alpha, \beta : \alpha_{i} \geqslant 0}\left[f(x)+\sum_{i=1}^{k} \alpha_{i} c_{i}(x)+\sum_{j=1}^{l} \beta_{j} h_{j}(x)\right]=+\infty \]]]></content>
+      <tags>
+        <tag>machine learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[灰度时刻：RSA 篇]]></title>
+    <url>%2F2019%2F06%2F22%2F%E7%81%B0%E5%BA%A6%E6%97%B6%E5%88%BB%EF%BC%9ARSA-%E7%AF%87%2F</url>
+    <content type="text"><![CDATA[对称加密算法 （1）甲方选择某一种加密规则，对信息进行加密； （2）乙方使用同一种规则，对信息进行解密。 由于加密和解密使用同样规则（简称&quot;密钥&quot;），这被称为&quot;对称加密算法&quot;（Symmetric-key algorithm）。 非对称加密 （1）乙方生成两把密钥（公钥和私钥）。公钥是公开的，任何人都可以获得，私钥则是保密的。 （2）甲方获取乙方的公钥，然后用它对信息加密。 （3）乙方得到加密后的信息，用私钥解密。 例子：故剑情深 汉宣帝（乙方）下诏寻找一把旧时用过的剑公钥：表面的意思。有细心的大臣（甲方）看到诏书（获取公玥），明白宣帝是想立许平君为皇后，于是连夜写了一封奏表，劝立许平君（用公钥进行加密大臣的奏表）。宣帝看到奏表后，（用私钥宣帝真实的想法解密）知道这个大臣已经明白了他的意思。宣帝把奏表批阅后发还大臣，大臣确认自己和皇帝的想法一致，知道这事有谱了。 宣帝：公玥，私钥-&gt;客户端 大臣：公玥-&gt;主机 互质关系 最大公约数为1 欧拉函数 任意给定正整数\(n\)，请问在小于等于\(n\)的正整数之中，有多少个与\(n\)构成互质关系？（比如，在1到8之中，有多少个数与8构成互质关系？） 计算这个值的方法就叫做欧拉函数，以\(\varphi(n)\)表示。 \(n = 1\), \(\varphi(1) = 1\) 如果\(n\)是质数，则 \(\varphi(n) = n - 1\) ，因为质数与小于它的每个数都是互质关系 如果\(n\)是质数的某个次方，即 \(n = p^k\)，则 \[ \varphi\left(p^{k}\right)=p^{k}-p^{k-1}=p^{k}\left(1-\frac{1}{p}\right) \] 如果\(n\)可以分解成两个互质的整数\(p_1, p_2\)之积 \[ \varphi(n) = \varphi(p_1 p_2) = \varphi(p_1) \varphi(p_2) \] 大于1的整数都可以写成一系列质数的积。 \[ n=p_{1}^{k 1} p_{2}^{k 2} \dots p_{r}^{k r} \] \[ \varphi(n)=\varphi\left(p_{1}^{k_{1}}\right) \varphi\left(p_{2}^{k_{2}}\right) \ldots \varphi\left(p_{r}^{k_{r}}\right) \] \[ \varphi(n)=p_{1}^{k_{1}} p_{2}^{k 2} \ldots p_{r}^{k r}\left(1-\frac{1}{p_{1}}\right)\left(1-\frac{1}{p_{2}}\right) \dots\left(1-\frac{1}{p_{r}}\right) \] \[ \varphi(n)=n\left(1-\frac{1}{p_{1}}\right)\left(1-\frac{1}{p_{2}}\right) \ldots\left(1-\frac{1}{p_{r}}\right) \] 欧拉定理 模反元素 密钥生成的步骤 如何下诏？ 随机选择两个不相等的质数\(p\)和\(q\) 计算\(p, q\)的乘积\(n\)，\(n\)转成二进制的长度就是密玥长度 计算\(n\)的欧拉函数\(\varphi(n)\) TODO: 坑啦，太难了，回头写 -]]></content>
+      <tags>
+        <tag>todo</tag>
+        <tag>rsa</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[建炎以来系年要录：总结篇]]></title>
+    <url>%2F2019%2F06%2F22%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9A%E6%80%BB%E7%BB%93%E7%AF%87%2F</url>
+    <content type="text"><![CDATA[生成模型和判别模型 生成模型 混合高斯模型和其他混合模型 隐马尔可夫模型 ( HMM ) 朴素贝叶斯 LDA 文档主题生成模型 生成式模型由数据学习联合概率分布 \(P(X, Y)\)，然后求出条件概率分布 \[ P(Y|X)=\frac{P(X,Y)}{P(X)} \] 作为预测的模型，即生成模型。 能还原出联合概率分布\(P(X, Y)\) 收敛速度更快 当存在隐变量时只能用生成方法学习 判别模型 KNN 感知机 决策树 最大熵模型 Logistic 回归 线性判别分析 ( LDA ) 支持向量机 ( SVM ) Boosting 条件随机场算法 ( CRF ) 线性回归 神经网络 判别式模型直接学习决策函数 \(f(X)\) 或条件概率分布 \(P(Y|X)\) 作为预测的模型。 往往准确率更高 可以简化学习问题 学习策略（损失函数） 学习算法 生成模型朴素贝叶斯和HMM的监督学习，最优解即极大似然估计值，可以由概率计算公式直接计算。 判别模型中，感知机，逻辑斯蒂回归，最大熵模型，条件随机场都可以用SGD，拟牛顿法学习。这些都是无约束最优化问题。 判别模型中SVM，可以解凸二次规划的对偶问题。有序列最小最优化算法等方法。 判别模型中决策树，是基于启发式算法，正则化的极大似然估计。 判别模型中，提升方法式加法模型，损失函数是指数损失函数，学习方法是启发式的从前往后逐步学习模型。 判别模型中，EM 算法是利用迭代求解隐变量概率模型。 上述模型中，SVM/LR/最大熵/CRF四个是凸优化问题，全局最优解保证存在，其他问题不是凸优化问题，不做保证。]]></content>
+      <tags>
+        <tag>machine learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[神奇动物在哪里？——softmax 函数的实现]]></title>
+    <url>%2F2019%2F06%2F22%2F%E7%A5%9E%E5%A5%87%E5%8A%A8%E7%89%A9%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F%E2%80%94%E2%80%94softmax%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0%2F</url>
+    <content type="text"><![CDATA[背景1 溢出问题：softmax 函数在实现中要进行指数运算，指数函数值容易变得非常大，从而导致溢出。 解决办法 在进行 softmax 的指数函数的运算时，加上（或者减去） 某个常数并不会改变运算的结果。这里的 \(C\) 可以使用任何值，但是为了防 止溢出，一般会使用输入信号中的最大值。 \[ \begin{aligned} y_{k}=\frac{\exp \left(a_{k}\right)}{\sum_{i=1}^{n} \exp \left(a_{i}\right)} &amp;=\frac{\operatorname{Cexp}\left(a_{k}\right)}{\mathrm{C} \sum_{i=1}^{n} \exp \left(a_{i}\right)} \\ &amp;=\frac{\exp \left(a_{k}+\log \mathrm{C}\right)}{\sum_{i=1}^{n} \exp \left(a_{i}+\log \mathrm{C}\right)} \\ &amp;=\frac{\exp \left(a_{k}+\mathrm{C}^{\prime}\right)}{\sum_{i=1}^{n} \exp \left(a_{i}+\mathrm{C}^{\prime}\right)} \end{aligned} \] 样例 1a = np.array([1010, 1000, 900]) 1np.exp(a)/np.sum(np.exp(a)) C:\Users\GuanHua\Anaconda3\lib\site-packages\ipykernel_launcher.py:1: RuntimeWarning: invalid value encountered in true_divide &quot;&quot;&quot;Entry point for launching an IPython kernel. array([nan, nan, nan]) 1c = np.max(a) 1a - c array([ 0, -10, -110]) 1np.exp(a-c)/np.sum(np.exp(a-c)) array([9.99954602e-01, 4.53978687e-05, 1.68883521e-48]) 实现 12345678def softmax(a): c = np.max(a) exp_a = np.exp(a - c) sum_exp_a = np.sum(exp_a) y = exp_a/sum_exp_a return y 参考这里第四章，第66页↩]]></content>
+      <tags>
+        <tag>deep learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[建炎以来系年要录：感知机]]></title>
+    <url>%2F2019%2F06%2F21%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9A%E6%84%9F%E7%9F%A5%E6%9C%BA%2F</url>
+    <content type="text"><![CDATA[模型 \[ f(x)=\operatorname{sign}(w \cdot x+b) \] 感知机的几何解释 \(wx+b\) 对应于特征空间中的一个分离超平面 \(S\)，其中 \(w\) 是 \(S\) 的法向量，\(b\) 是 \(S\) 的截距。\(S\) 将特征空间划分为两个部分，位于两个部分的点分别被分为正负两类。 策略（损失函数） 假设训练数据集是线性可分的，感知机的损失函数是误分类点到超平面 \(S\) 的总距离。 \[ L(w, b)=-\sum_{x_{i} \in M} y_{i}\left(w \cdot x_{i}+b\right) \] 其中 M 是误分类点的集合。感知机学习的策略就是选取使损失函数最小的模型参数。 算法 \[ \begin{aligned} \nabla_{w} L(w, b) &amp;=-\sum_{x_{i} \in M} y_{i} x_{i} \\ \nabla_{b} L(w, b) &amp;=-\sum_{x_{i} \in M} y_{i} \end{aligned} \] 随机选择一个误分类点 \((x_i, y_i)\)，对 \(w, b\) 进行更新，直到误差为0： \[ \begin{array}{l}{w \leftarrow w+\eta y_{i} x_{i}} \\ {b \leftarrow b+\eta y_{i}}\end{array} \] 该算法的直观解释是：当一个点被误分类，就调整 \(w\)，\(b\) 使分离超平面向该误分类点接近。感知机的解可以不同。 对偶形式 假设原始形式中的 \(w_0\) 和 \(b_0\) 均为\(0\)，设逐步修改 \(w\) 和 \(b\) 共 \(n\) 次，令 \(a=n \eta\)，最后学习到的 \(w,b\) 可以表示为 \[ \begin{aligned} w &amp;=\sum_{i=1}^{N} \alpha_{i} y_{i} x_{i} \\ b &amp;=\sum_{i=1}^{N} \alpha_{i} y_{i} \end{aligned} \] 那么对偶算法就变为设初始 \(a\) 和 \(b\) 均为\(0\)，每次选取数据更新 \(a\) 和 \(b\) 直至没有误分类点为止。对偶形式的意义在于可以将训练集中实例间的内积计算出来，存在 Gram 矩阵中，可以大大加快训练速度。]]></content>
+      <tags>
+        <tag>machine learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python cheatsheet]]></title>
+    <url>%2F2019%2F06%2F21%2FPython-cheatsheet%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>cheatsheet</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[建炎以来系年要录：EM 算法]]></title>
+    <url>%2F2019%2F06%2F21%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9AEM-%E7%AE%97%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[EM 算法是一种迭代算法，用于含有隐变量的概率模型参数的极大似然估计。每次迭代由两步组成： - \(E\) 步，求期望 (expectation) - \(M\) 步，求极大值 (maximization)，直至收敛为止。 算法 \(E\)步：\(\theta(i)\) 为 \(i\) 次迭代参数 \(\theta\) 的估计值，在第 \(i+1\) 次迭代的 \(E\) 步，计算 \[ \begin{aligned} Q\left(\theta, \theta^{(i)}\right) &amp;=E_{Z}\left[\log P(Y, Z | \theta) | Y, \theta^{(i)}\right] \\ &amp;=\sum_{Z} \log P(Y, Z | \theta) P\left(Z | Y, \theta^{(i)}\right) \end{aligned} \] \(P(Z|Y，\theta(i))\) 是在给定观测数据 \(Y\) 和当前参数估计 \(\theta(i)\) 下隐变量数据Z的条件概率分布。 \(M\) 步：求使 \(Q(\theta, \theta(i))\) 极大化的 \(\theta\)，确定第 \(i+1\) 次迭代的参数的估计值 \[ \theta^{(i+1)}=\arg \max _{\theta} Q\left(\theta, \theta^{(i)}\right) \] EM 算法是通过不断求解下界的极大化逼近求解对数似然函数极大化的算法。可以用于生成模型的非监督学习。生成模型由联合概率分布 \(P(X，Y)\) 表示。]]></content>
+      <tags>
+        <tag>machine learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[建炎以来系年要录：朴素贝叶斯]]></title>
+    <url>%2F2019%2F06%2F21%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9A%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%2F</url>
+    <content type="text"><![CDATA[模型 先学习先验概率分布 \[ P\left(Y=c_{k}\right), \quad k=1,2, \cdots, K \] 然后学习条件概率分布 \[ P\left(X=x | Y=c_{k}\right)=P\left(X^{(1)}=x^{(1)}, \cdots, X^{(n)}=x^{(n)} | Y=c_{k}\right) \] 对条件概率分布作条件独立性的假设，上式变成 \[ \prod_{j=1}^{n} P\left(X^{(j)}=x^{(j)} | Y=c_{k}\right) \] 在分类时，通过学习到的模型计算后验概率分布 \[ P\left(Y=c_{k} | X=x\right)=\frac{P\left(X=x | Y=c_{k}\right) P\left(Y=c_{k}\right)}{\sum_{k} P\left(X=x | Y=c_{k}\right) P\left(Y=c_{k}\right)} \] 将条件独立性假设得到的等式代入，并且注意到分母都是相同的，所以得到朴素贝叶斯分类器： \[ y=\arg \max _{\alpha} P\left(Y=c_{k}\right) \prod_{j} P\left(X^{(j)}=x^{(j)} | Y=c_{k}\right) \] 算法 用极大似然估计可能会出现所要估计的概率值为\(0\)的情况，在累乘后会影响后验概率的计算结果，使分类产生偏差。可以采用贝叶斯估计，在随机变量各个取值的频数上赋予一个正数。 \[ P_{\lambda}\left(X^{(j)}=a_{j l} | Y=c_{k}\right)=\frac{\sum_{i=1}^{N} I\left(x_{i}^{(j)}=a_{jl}, y_{i}=c_{k}\right)+\lambda}{\sum_{k=1}^{N} I\left(y_{i}=c_{k}\right)+S_{j} \lambda} \]]]></content>
+      <tags>
+        <tag>machine learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[高祖功臣侯者年表：陈涉世家——xDeepFM算法]]></title>
+    <url>%2F2019%2F06%2F21%2F%E9%AB%98%E7%A5%96%E5%8A%9F%E8%87%A3%E4%BE%AF%E8%80%85%E5%B9%B4%E8%A1%A8%EF%BC%9A%E9%99%88%E6%B6%89%E4%B8%96%E5%AE%B6%2F</url>
+    <content type="text"><![CDATA[Motivation DeepFM的思想比较直观，另外一个细节就是模型中FM与Deep共享Embedding。DCN的设计非常巧妙，引入Cross层取代 Wide &amp; Deep 的Wide层，Cross层的独特结构使其可以显示、自动地构造有限高阶的特征叉乘。 Model CIN：Compressed Interaction Network]]></content>
+      <tags>
+        <tag>todo</tag>
+        <tag>推荐系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[高祖功臣侯者年表：绛侯周勃世家]]></title>
+    <url>%2F2019%2F06%2F21%2F%E9%AB%98%E7%A5%96%E5%8A%9F%E8%87%A3%E4%BE%AF%E8%80%85%E5%B9%B4%E8%A1%A8%EF%BC%9A%E7%BB%9B%E4%BE%AF%E5%91%A8%E5%8B%83%E4%B8%96%E5%AE%B6%2F</url>
+    <content type="text"><![CDATA[嵌入和堆叠层 \[ x_{e m b e d, i}=W_{e m b e d, i} x_{i} \] 交叉网络 \[ x_{l+1}=x_{0} x_{l}^{T} w_{l}+b_{l}+x_{l}=f\left(x_{l}, w_{l}, b_{l}\right)+x_{l} \]]]></content>
+      <tags>
+        <tag>todo</tag>
+        <tag>推荐系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[高祖功臣侯者年表：陈丞相世家——DeepFM 算法]]></title>
+    <url>%2F2019%2F06%2F21%2F%E9%AB%98%E7%A5%96%E5%8A%9F%E8%87%A3%E4%BE%AF%E8%80%85%E5%B9%B4%E8%A1%A8%EF%BC%9A%E9%99%88%E4%B8%9E%E7%9B%B8%E4%B8%96%E5%AE%B6%2F</url>
+    <content type="text"><![CDATA[略]]></content>
+      <tags>
+        <tag>todo</tag>
+        <tag>推荐系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[高祖功臣侯者年表：留侯世家——wide & deep]]></title>
+    <url>%2F2019%2F06%2F20%2F%E9%AB%98%E7%A5%96%E5%8A%9F%E8%87%A3%E4%BE%AF%E8%80%85%E5%B9%B4%E8%A1%A8%EF%BC%9A%E7%95%99%E4%BE%AF%E4%B8%96%E5%AE%B6%2F</url>
+    <content type="text"><![CDATA[motivation 模型 wide 模型 \[ y=\mathbf{w}^{T} \mathbf{x}+b \] deep 模型 \[ a^{(l+1)}=f\left(W^{(l)} a^{(l)}+b^{(l)}\right) \] 联合训练 \[ P(Y=1 | \mathbf{x})=\sigma\left(\mathbf{w}_{w i d e}^{T}[\mathbf{x}, \phi(\mathbf{x})]+\mathbf{w}_{d e e p}^{T} a^{\left(l_{f}\right)}+b\right) \] 训练的方法： Wide模型：FTRL Deep模型：AdaGrad]]></content>
+      <tags>
+        <tag>todo</tag>
+        <tag>推荐系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[高祖功臣侯者年表：曹相国世家——FFM算法]]></title>
+    <url>%2F2019%2F06%2F20%2F%E9%AB%98%E7%A5%96%E5%8A%9F%E8%87%A3%E4%BE%AF%E8%80%85%E5%B9%B4%E8%A1%A8%EF%BC%9A%E6%9B%B9%E7%9B%B8%E5%9B%BD%E4%B8%96%E5%AE%B6%2F</url>
+    <content type="text"><![CDATA[\[ y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\left\langle\mathbf{v}_{i, f_{j}}, \mathbf{v}_{j, f_{i}}\right\rangle x_{i} x_{j} \] \[ \phi(\mathbf{w}, \mathbf{x})=\sum_{j_{1}, j_{2} \in \mathcal{C}_{2}}\left\langle\mathbf{w}_{j_{1}, f_{2}}, \mathbf{w}_{j_{2}, f_{1}}\right\rangle x_{j_{1}} x_{j_{2}} \] \[ \min _{\mathbf{w}} \sum_{i=1}^{L} \log \left(1+\exp \left\{-y_{i} \phi\left(\mathbf{w}, \mathbf{x}_{i}\right)\right\}\right)+\frac{\lambda}{2}\|\mathbf{w}\|^{2} \]]]></content>
+      <tags>
+        <tag>todo</tag>
+        <tag>推荐系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[高祖功臣侯者年表：萧丞相世家——FM算法]]></title>
+    <url>%2F2019%2F06%2F20%2F%E9%AB%98%E7%A5%96%E5%8A%9F%E8%87%A3%E4%BE%AF%E8%80%85%E5%B9%B4%E8%A1%A8%EF%BC%9A%E8%90%A7%E7%9B%B8%E5%9B%BD%E4%B8%96%E5%AE%B6%2F</url>
+    <content type="text"><![CDATA[线性模型 \[ y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i} \] 二阶多项式模型 \[ y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \omega_{i j} x_{i} x_{j} \] FM求解 \[ \mathbf{V}=\left(\begin{array}{cccc}{v_{11}} &amp; {v_{12}} &amp; {\cdots} &amp; {v_{1 k}} \\ {v_{21}} &amp; {v_{22}} &amp; {\cdots} &amp; {v_{2 k}} \\ {\vdots} &amp; {\vdots} &amp; {} &amp; {\vdots} \\ {v_{n 1}} &amp; {v_{n 2}} &amp; {\cdots} &amp; {v_{n k}}\end{array}\right)_{n \times k}=\left(\begin{array}{c}{\mathbf{v}_{1}} \\ {\mathbf{v}_{2}} \\ {\vdots} \\ {\mathbf{v}_{n}}\end{array}\right) \] \[ \mathbf{\hat { W }}=\mathbf{V V}^{T}=\left(\begin{array}{c}{\mathbf{v}_{1}} \\ {\mathbf{v}_{2}} \\ {\vdots} \\ {\mathbf{v}_{n}}\end{array}\right)\left(\begin{array}{cccc}{\mathbf{v}_{1}} &amp; {\mathbf{v}_{2}^{T}} &amp; {\cdots} &amp; {\mathbf{v}_{n}^{T}}\end{array}\right) \] 根据 \[ a b+a c+b c=\frac{1}{2}\left[(a+b+c)^{2}-\left(a^{2}+b^{2}+c^{2}\right)\right] \] 有 \[ \begin{aligned} &amp; \sum_{f=1}^{n-1} \sum_{j=i+1}^{n}\left\langle\mathbf{v}_{i}, \mathbf{v}_{j}\right\rangle x_{i} x_{j} \\=&amp; \frac{1}{2} \sum_{i=1}^{n} \sum_{j=1}^{n}\left\langle\mathbf{v}_{i}, \mathbf{v}_{j}\right\rangle x_{i} x_{j}-\frac{1}{2} \sum_{i=1}^{n}\left\langle\mathbf{v}_{i}, \mathbf{v}_{i}\right\rangle x_{i} x_{i} \\=&amp; \frac{1}{2}\left(\sum_{i=1}^{n} \sum_{j=1}^{n} \sum_{f=1}^{n} v_{i, f} x_{i}\right)\left(\sum_{j=1}^{n} v_{j, f} x_{j}\right)-\sum_{i=1}^{n} v_{i, f}^{2} x_{i}^{2} ) \\=&amp; \frac{1}{2} \sum_{f=1}^{k}\left(\left(\sum_{i=1}^{n} v_{i, f} x_{i}\right)^{2}-\sum_{i=1}^{n} v_{i, f}^{2} x_{i}^{2}\right) \end{aligned} \]]]></content>
+      <tags>
+        <tag>todo</tag>
+        <tag>推荐系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[建炎以来系年要录：决策树]]></title>
+    <url>%2F2019%2F06%2F20%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A0%91%2F</url>
+    <content type="text"><![CDATA[特征选择 信息熵： 信息熵 \[ H(X)=-\sum_{x \in X} P(x) \log P(x) ) \] 条件熵 \[ H(Y | X)=\sum_{i=1}^{n} p_{i} H\left(Y | X=x_{i}\right) \] 关于这里有空我要单独写篇文章！ 信息增益 \[ g(D, A)=H(D)-H(D | A) \] 其中，数据集 \(D\) 的经验熵 \[ H(D)=-\sum_{k=1}^{K} \frac{\left|C_{k}\right|}{|D|} \log _{2} \frac{\left|C_{k}\right|}{|D|} \] 特征 \(A\) 对数据集 \(D\) 的经验条件熵 \[ H(D | A)=\sum_{i=1}^{n} \frac{\left|D_{i}\right|}{|D|} H\left(D_{i}\right)=-\sum_{i=1}^{n} \frac{\left|D_{i}\right|}{D |} \sum_{k=1}^{K} \frac{\left|D_{i k}\right|}{\left|D_{i}\right|} \log _{2} \frac{\left|D_{i k}\right|}{\left|D_{i}\right|} \] 信息增益比 \[ g_{R}(D, A)=\frac{g(D, A)}{H(D)} \] 决策树剪枝 \[ H_{t}(T)=-\sum_{k} \frac{N_{t k}}{N_{t}} \log \frac{N_{t k}}{N_{t}} \] \[ C_{\alpha}(T)=\sum_{t=1}^{T I} N_{t} H_{t}(T)+\alpha|T| \] CART 如何生成回归树 两个区域\(R_{1}(j, s)=\left\{x | x^{(j)} \leqslant s\right\}\)和\(R_{2}(j, s)=\left\{x | x^{(j)}&gt;s\right\}\) \[ \min_{j,s} \left[ \min _{c_{1}} \sum_{x_{i} \in R_{1}(j, s)}\left(y_{i}-c_{1}\right)^{2} + \min _{c_{2}} \sum_{x \in R_{R_{2}}(j, s)}\left(y_{i}-c_{2}\right)^{2} \right ] \] \[ \hat{c}_{m}=\frac{1}{N_{m}} \sum_{x_{i} \in R_{m}(j, s)} y_{i} \] 基尼指数 \[ \operatorname{Gini}(p)=\sum_{k=1}^{K} p_{k}\left(1-p_{k}\right)=1-\sum_{k=1}^{K} p_{k}^{2} \] \[ \operatorname{Gini}(D, A)=\frac{\left|D_{1}\right|}{|D|} \operatorname{Gini}\left(D_{1}\right)+\frac{\left|D_{2}\right|}{|D|} \operatorname{Gini}\left(D_{2}\right) \] 分类树的生成 递归 CART 剪枝 \(\alpha=\frac{C(t)-C\left(T_{t}\right)}{\left|T_{t}\right|-1}\)时，计算\(g(t)=\frac{C(t)-C\left(T_{t}\right)}{\left|T_{t}\right|-1}\)]]></content>
+      <tags>
+        <tag>machine learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[建炎以来系年要录：KKT 条件]]></title>
+    <url>%2F2019%2F06%2F20%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9AKKT-%E6%9D%A1%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[有不等式约束的优化问题 把不等式约束，等式约束和优化问题合并为一个式子。假设有多个等式约束 \(h(x)\) 和不等式约束 \(g(x)\) \[ L(\boldsymbol{x}, \boldsymbol{\lambda}, \boldsymbol{\mu})=f(\boldsymbol{x})+\sum_{i=1}^{m} \lambda_{i} h_{i}(\boldsymbol{x})+\sum_{i=1}^{n} \mu_{j} g_{j}(\boldsymbol{x}) \] 则不等式约束引入的KKT条件如下 \[ \left\{\begin{array}{l}{g_{j}(\boldsymbol{x}) \leqslant 0} \\ {\mu_{j} \geqslant 0} \\ {\mu_{j} g_{j}(\boldsymbol{x})=0}\end{array}\right. \] 当 \(g(x)=0\) 时，那么只需要使 \(L\) 对 \(x\) 求导为零，使 \(h(x)\) 为零，使 \(\mu g(x)\) 为零三式即可求解候选最优值。]]></content>
+      <tags>
+        <tag>machine learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[建炎以来系年要录：最大熵模型]]></title>
+    <url>%2F2019%2F06%2F20%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9A%E6%9C%80%E5%A4%A7%E7%86%B5%E6%A8%A1%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[最大熵模型 \(P(X, Y)\)的经验分布 \[ \tilde{P}(X=x, Y=y)=\frac{\nu(X=x, Y=y)}{N} \] 边缘分布\(P(X)\) \[ \tilde{P}(X=x)=\frac{v(X=x)}{N} \] \(P(X，Y)\) 的经验分布的期望值和关于模型 \(P(Y|X)\) 与 \(P(X)\) 的经验分布的期望值 \[ \sum_{x, y} \tilde{P}(x) P(y | x) f(x, y)=\sum_{x, y} \tilde{P}(x, y) f(x, y) \] 定义在条件概率分布 \(P(Y|X)\) 上的条件熵为\(H(P)=-\sum_{x, y} \tilde{P}(x) P(y | x) \log P(y | x)\)，则条件熵最大的模型称为最大熵模型。 求解最大熵模型 \[ \begin{array}{cl}{\max _{P_{R C}}} &amp; {H(P)=-\sum_{x, y} \tilde{P}(x) P(y | x) \log P(y | x)} \\ {\text { s.t. }} &amp; {E_{P}\left(f_{i}\right)=E_{\tilde{p}}\left(f_{i}\right), \quad i=1,2, \cdots, n} \\ {} &amp; {\sum_{y} P(y | x)=1}\end{array} \] 将求最大值问题改为等价的求最小值问题 \[ \begin{array}{ll}{\min _{P \in \mathbf{C}}} &amp; {-H(P)=\sum_{x, y} \tilde{P}(x) P(y | x) \log P(y | x)} \\ {\text { s.t. }} &amp; {E_{P}\left(f_{i}\right)-E_{\tilde{F}}\left(f_{i}\right)=0, \quad i=1,2, \cdots, n} \\ {} &amp; {\sum_{y} P(y | x)=1}\end{array} \] 引入拉格朗日乘子 \[ \begin{aligned} L(P, w) \equiv &amp;-H(P)+w_{0}\left(1-\sum_{y} P(y | x)\right)+\sum_{i=1}^{n} w_{i}\left(E_{\tilde{p}}\left(f_{i}\right)-E_{P}\left(f_{i}\right)\right) \\=&amp; \sum_{x, y} \tilde{P}(x) P(y | x) \log P(y | x)+w_{0}\left(1-\sum_{y} P(y | x)\right) \\ &amp;+\sum_{i=1}^{n} w_{i}\left(\sum_{x, y} \tilde{P}(x, y) f_{i}(x, y)-\sum_{x, y} \tilde{P}(x) P(y | x) f_{i}(x, y)\right) \end{aligned} \] \[ P_{w}(y | x)=\frac{1}{Z_{w}(x)} \exp \left(\sum_{i=1}^{n} w_{i} f_{i}(x, y)\right) \] \[ Z_{w}(x)=\sum_{y} \exp \left(\sum_{i=1}^{n} w_{i} f_{i}(x, y)\right) \] 算法 改进的迭代尺度法 ( IIS ) 拟牛顿法]]></content>
+      <tags>
+        <tag>machine learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[困学纪闻注：GAN——志留纪叹息]]></title>
+    <url>%2F2019%2F06%2F20%2F%E5%9B%B0%E5%AD%A6%E7%BA%AA%E9%97%BB%E6%B3%A8%EF%BC%9AGAN%E2%80%94%E2%80%94%E5%BF%97%E7%95%99%E7%BA%AA%E5%8F%B9%E6%81%AF%2F</url>
+    <content type="text"><![CDATA[显式密度模型和隐式密度模型 网络分解 生成对抗网络的流程图 判别网络 \[ p(y=1 | \mathbf{x})=D(\mathbf{x}, \phi) \] 判别网络的 目标函数为最小化交叉熵，即最大化对数似然。 生成网络 \[ \max _{\theta}\left(\mathbb{E}_{\mathbf{z} \sim p(\mathbf{z})}[\log D(G(\mathbf{z}, \theta), \phi)]\right) \] 为什么不使用\((1-D(G(\mathbf{z}, \theta), \phi)) \rightarrow 1\)？ \(\log\)在\(x\)接近1时的梯度要比接近0时的梯度小很多，接近“饱和”区间。这样，当判别网络\(D\)以很高的概率认为生成网络\(G\)产生的样本是“假”样本。 训练 每次迭代时，判别网络更新\(K\) 次而生成网络更新一次，即首先要保证判别网络足够强才能开始训练生成网络。 训练 一个生成对抗网络的具体实现：DCGAN 模型分析 最小化最大化游戏 \[ \begin{array}{c}{\min _{\theta} \max _{\phi}\left(\mathbb{E}_{\mathbf{x} \sim p_{r}(\mathbf{x})}[\log D(\mathbf{x}, \phi)]+\mathbb{E}_{\mathbf{x} \sim p_{\theta}(\mathbf{x})}[\log (1-D(\mathbf{x}, \phi))]\right)} \\ {=\min _{\theta} \max _{\phi}\left(\mathbb{E}_{\mathbf{x} \sim p_{r}(\mathbf{x})}[\log D(\mathbf{x}, \phi)]+\mathbb{E}_{\mathbf{z} \sim p(\mathbf{z})}[\log (1-D(G(\mathbf{z}, \theta), \phi))]\right)}\end{array} \] 最优的判别器 \[ D^{\star}(\mathbf{x})=\frac{p_{r}(\mathbf{x})}{p_{r}(\mathbf{x})+p_{\theta}(\mathbf{x})} \] 将最优的判别器\(D^{\star}(\mathbf{x})\) 代入公式 \[ \mathcal{L}\left(G | D^{*}\right)=2 D_{\mathrm{JS}}\left(p_{r} \| p_{\theta}\right)-2 \log 2 \] 当判断网络为最优时，生成网络的优化目标是最小化真实分布\(p_{r}\)和模型分布\(p_{\theta}\) 之间的JS散度。当两个分布相同时，JS散度为0，最优生成网络\(G^{\star}\)对应的损失为\(L\left(G^{\star} | D^{\star}\right)=-2 \log 2\)。 然而，JS散度的一个问题是：当两个分布没有重叠时，它们之间的JS散度恒等于常数\(\log 2\)。对生成网络来说，目标函数关于参数的梯度为0。 模型坍塌 改进模型 W-GAN 略]]></content>
+      <tags>
+        <tag>deep learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[困学纪闻注：概率图模型——泥盆纪会议]]></title>
+    <url>%2F2019%2F06%2F20%2F%E5%9B%B0%E5%AD%A6%E7%BA%AA%E9%97%BB%E6%B3%A8%EF%BC%9A%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B%E2%80%94%E2%80%94%E6%B3%A5%E7%9B%86%E7%BA%AA%E4%BC%9A%E8%AE%AE%2F</url>
+    <content type="text"><![CDATA[图模型的基本问题 图模型有三个基本问题： 表示问题：对于一个概率模型，如何通过图结构来描述变量之间的依赖关系。 推断问题：在已知部分变量时，计算其它变量的后验概率分布。 学习问题：图模型的学习包括图结构的学习和参数的学习。在本章我们只关注在给定图结构时的参数学习，即参数估计问题。 模型表示 带阴影的节点表示可观测到的变量，不带阴影的节点表示隐变量，连边表示两变量间的条件依赖关系 有向图模型（贝叶斯网络） 联合概率可以分解为局部条件概率的连乘形式 \[ p(\mathbf{x})=\prod_{k=1}^{K} p\left(x_{k} | \mathbf{x}_{\pi_{k}}\right) \] 常见有向图模型 朴素贝叶斯分类器 \[ P(H | E)=\frac{P(E | H)}{P(E)} P(H) \] 朴素贝叶斯模型的图模型表示 Logistic回归 \[ P(H | E)=\frac{P(E | H)}{P(E)} P(H) \] \[ p(y | \mathbf{x}, \theta) \propto p\left(y | \theta_{c}\right) \prod_{i=1}^{d} p\left(x_{i} | y, \theta_{i, y}\right) = P(H) \prod P(E|H) \] 朴素贝叶斯模型的图模型表示 Logistic回归 隐马尔可夫模型 隐马尔可夫模型 \[ p(\mathbf{x}, \mathbf{y}, \theta)=\prod_{t=1}^{T} p\left(y_{t} | y_{t-1}, \theta_{s}\right) p\left(x_{t} | y_{t}, \theta_{t}\right) \] 本质上就是 \[ P(H|H_{t-1}) P(E|H) \] 无向图模型 \[ p(\mathbf{x})=\frac{1}{Z} \prod_{c \in \mathcal{C}} \phi_{c}\left(\mathbf{x}_{c}\right) \] 常见无向图模型 对数线性模型 \[ p(y | \mathbf{x}, \theta)=\frac{1}{Z(\mathbf{x}, \theta)} \exp \left(\theta^{\mathrm{T}} f(\mathbf{x}, y)\right) \] 最大熵模型 条件随机场 和最大熵模型不同，条件随机场建模的条件概率\(p(\mathbf{y}|\mathbf{x})\)中，\(\mathbf{y}\)一般为随机向量，因此需要对\(p(\mathbf{y}|\mathbf{x})\)进行因子分解。 \[ p(\mathbf{y} | \mathbf{x}, \theta)=\frac{1}{Z(\mathbf{x}, \theta)} \exp \left(\sum_{c \in \mathcal{C}} \theta_{c}^{\mathrm{T}} f_{c}\left(\mathbf{x}, \mathbf{y}_{c}\right)\right) \] 线性链的条件随机场 推断 近似推断 蒙特卡罗方法（采样法） 蒙特卡罗方法的基本思想可以归结为根据一个已知概率密度函数为\(p(x)\)的分布来计算函数\(f(x)\)的期望 \[ \mathbb{E}[f(x)]=\int_{x} f(x) p(x) d x \] 当\(p(x)\)比较复杂时，很难用解析的方法来计算这个期望。但是可以从\(p(x)\)中抽取\(N\)个样本，然后用均值来近似计算上述期望： \[ \hat{f}_{N}=\frac{1}{N}\left(f\left(x^{(1)}\right)+\cdots+f\left(x^{(N)}\right)\right) \] 蒙特卡罗方法的难点是如何进行随机采样，即如何让计算机生成满足概率密度函数\(p(x)\)的样本。 一般是先根据一个比较容易采样的分布进行采样，然后通过一些策略来间接得到符合\(p(x)\)分布的样本。 拒绝采样 我们可以引入一个容易采样的分布\(q(x)\)， 一般称为提议分布，然后以某个标准来拒绝一部分的样本使得最终采集的样本服从分布\(p(x)\)。 已知未归一化的分布\(\hat{p}(x)\)，我们需要构建一个提议分布\(q(x)\)和一个常数\(k\)，使得\(kq(x)\)可以覆盖函数 \(\hat{p}(x)\)。 我们用这个好算的\(q(x)\)先操作一波，然后计算\(\frac{\hat{p}(x)}{q(x)}\)，这就是里面的有效成分！ 对于每次抽取的样本\(\hat{x}\)，计算接受概率 \[ \alpha(\hat{x})=\frac{\hat{p}(\hat{x})}{k q(\hat{x})} \] 重要性采样 略 马尔可夫链蒙特卡罗方法 略 MH算法 略 Metropolis 算法 略 吉布斯采样 一种有效地对高维空间中的分布进行采样的MCMC方法 略 学习 不含隐变量的学习 极大似然估计 采样法 坐标上升法 含隐变量的参数估计 EM算法 一个样本\(\mathbf{x}\)的边际似然函数 \[ p(\mathbf{x} | \theta)=\sum_{\mathbf{z}} p(\mathbf{x}, \mathbf{z} | \theta) \] 带隐变量的贝叶斯网络:盘子表示法 训练集的对数边际似然为 \[ \begin{aligned} \mathcal{L}(\mathcal{D} | \theta) &amp;=\frac{1}{N} \sum_{i=1}^{N} \log p\left(\mathbf{x}^{(i)}, \theta\right) \\ &amp;=\frac{1}{N} \sum_{i=1}^{N} \log \sum_{\mathbf{z}} p\left(\mathbf{x}^{(i)}, \mathbf{z} | \theta\right) \end{aligned} \] 为了计算\(\log p(\mathbf{x}|\theta)\)，我们引入\(q(\mathbf{z})\)为定义在隐变量\(\mathbf{Z}\)上的分布。 样本\(\mathbf{x}\)的对数边际似然函数为 \[ \begin{aligned} \log p(\mathbf{x} | \theta) &amp;=\log \sum_{\mathbf{z}} q(\mathbf{z}) \frac{p(\mathbf{x}, \mathbf{z} | \theta)}{q(\mathbf{z})} \\ &amp; \geq \sum_{\mathbf{z}} q(\mathbf{z}) \log \frac{p(\mathbf{x}, \mathbf{z} | \theta)}{q(\mathbf{z})} \\ &amp; \triangleq E L B O(q, \mathbf{x} | \theta) \end{aligned} \] 证据下界 由Jensen不等式的性质可知，仅当\(q(\mathbf{z})=p(\mathbf{z} | \mathbf{x}, \theta)\) 时，取等式。 这样，最大化对数边际似然函数\(\log p(\mathbf{x} | \theta)\) 的过程可以分解为两步： 先找到近似分布\(q(\mathbf{z})\) 使得\(\log p(\mathbf{x} | \theta)=ELBO(q, \mathbf{x} | \theta)\) 再寻找参数 \(\theta\)最大化\(ELBO(q, \mathbf{x} | \theta)\) 高斯混合模型 高斯混合模型 略]]></content>
+      <tags>
+        <tag>deep learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[困学纪闻注：网络优化与泛化——石炭纪]]></title>
+    <url>%2F2019%2F06%2F20%2F%E5%9B%B0%E5%AD%A6%E7%BA%AA%E9%97%BB%E6%B3%A8%EF%BC%9A%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96%E4%B8%8E%E6%B3%9B%E5%8C%96%E2%80%94%E2%80%94%E7%9F%B3%E7%82%AD%E7%BA%AA%2F</url>
+    <content type="text"><![CDATA[网络优化 网络结构多样性 高维变量的非凸优化 平坦底部 优化算法 优化算法三种 mini-batch SGD 学习率衰减 梯度方向优化 优化算法面临的问题 初始化参数 预处理数据 选择学习率 学习率衰减优化算法三种 1. AdaGrad: \(g_t\)参数的偏导数积累 2. RMSprop: \(g_t\)平方的指数衰减移动平均 3. AdaDelta: \(\Delta \theta\)平方的指数衰减移动平均 AdaGrad \[ G_{t}=\sum_{\tau=1}^{t} \mathbf{g}_{\tau} \odot \mathbf{g}_{\tau} \] \(\mathbf{g}_{\tau} \in \mathbb{R}^{|\theta|}\) 是第\(\tau\)次迭代时的梯度 \[ \Delta \theta_{t}=-\frac{\alpha}{\sqrt{G_{t}+\epsilon}} \odot \mathrm{g}_{t} \] 如果某个参数的偏导数累积比较大，其学习率相对较小 Adagrad算法的缺点是在经过一定次数的迭代依然没有找到最优点时，由 于这时的学习率已经非常小，很难再继续找到最优点。 RMSprop 计算\(\mathbf{g}_t\)平方的指数衰减移动平均 \[ G_{t}=\beta G_{t-1}+(1-\beta) \mathbf{g}_{t} \odot \mathbf{g}_{t} \] \[ \Delta \theta_{t}=-\frac{\alpha}{\sqrt{G_{t}+\epsilon}} \odot \mathbf{g}_{t} \] 梯度方向优化 动量法 计算负梯度的“加权移动平均”作为参数的更新方向 \[ \Delta \theta_{t}=\rho \Delta \theta_{t-1}-\alpha \mathbf{g}_{t} \] Adam Adam算法一方面计算梯度平方\(\mathbf{g}_t^2\)的指数加权平均（和RMSprop类似），另一方面计算梯度\(\mathbf{g}_t\)的指数加权平均（和动量法类似） \[ \begin{array}{c}{M_{t}=\beta_{1} M_{t-1}+\left(1-\beta_{1}\right) \mathbf{g}_{t}} \\ {G_{t}=\beta_{2} G_{t-1}+\left(1-\beta_{2}\right) \mathbf{g}_{t} \odot \mathbf{g}_{t}}\end{array} \] 更新 \[ \Delta \theta_{t}=-\frac{\alpha}{\sqrt{\hat{G}_{t}+\epsilon}} \hat{M}_{t} \] 梯度截断 按值截断 按模截断 参数初始化 Gaussian分布初始化 均匀分布初始化 数据预处理 缩放归一化 \[ \hat{x}^{(i)}=\frac{x^{(i)}-\min _{i}\left(x^{(i)}\right)}{\max _{i}\left(x^{(i)}\right)-\min _{i}\left(x^{(i)}\right)} \] 标准归一化 \[ \hat{x}^{(i)}=\frac{x^{(i)}-\mu}{\sigma} \] 白化(PAC) 逐层归一化 略，这节我看不懂 超参数优化 网格搜索 随机搜索 贝叶斯优化 动态资源分配 神经网络架构 网络正则化 \(l_1\)和\(l_2\)正则化 \[ \begin{array}{c}{\theta^{*}=\underset{\theta}{\arg \min } \frac{1}{N} \sum_{n=1}^{N} \mathcal{L}\left(y^{(n)}, f\left(\mathbf{x}^{(n)}, \theta\right)\right)} \\ {\text { subject to } \ell_{p}(\theta) \leq 1}\end{array} \] \[ \ell_{1}(\theta)=\sum_{i} \sqrt{\theta_{i}^{2}+\epsilon} \] 弹性网络正则化：同时加入\(l_1\)和\(l_2\) 权重衰减 提前停止 丢弃法 数据增强 标签平滑 即在输出标签中添加噪声来 避免模型过拟合 上面的标签平滑方法是给其它\(K − 1\)个标签相同的概率 \(\frac{\epsilon}{K-1}\)]]></content>
+      <tags>
+        <tag>deep learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[困学纪闻注：循环神经网络——三叠纪沉睡]]></title>
+    <url>%2F2019%2F06%2F19%2F%E5%9B%B0%E5%AD%A6%E7%BA%AA%E9%97%BB%E6%B3%A8%EF%BC%9A%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E4%B8%89%E5%8F%A0%E7%BA%AA%E6%B2%89%E7%9D%A1%2F</url>
+    <content type="text"><![CDATA[简单循环神经网络 \[ \begin{aligned} \mathbf{z}_{t} &amp;=U \mathbf{h}_{t-1}+W \mathbf{x}_{t}+\mathbf{b} \\ \mathbf{h}_{t} &amp;=f\left(\mathbf{z}_{t}\right) \end{aligned} \] 按时间展开的循环神经网络 参数学习 定义时刻\(t\)的损失函数为 \[ \mathcal{L}_{t}=\mathcal{L}\left(y_{t}, g\left(\mathbf{h}_{t}\right)\right) \] $ g(_{t}) \(为第\)t$时刻的输出 那么整个序列上损失函数为 \[ \mathcal{L}=\sum_{t=1}^{T} \mathcal{L}_{t} \] 整个序列的损失函数\(\mathcal{L}\)关于参数\(U\)的梯度为 \[ \frac{\partial \mathcal{L}}{\partial U}=\sum_{t=1}^{T} \frac{\partial \mathcal{L}_{t}}{\partial U} \] 随时间反向传播（Backpropagation Through Time，BPTT） 在“展开”的前馈网络中， 所有层的参数是共享的，因此参数的真实梯度是将所有“展开层”的参数梯度 之和。 计算偏导数 \(\frac{\partial \mathcal{L}_{t}}{\partial U}\) \[ \mathbf{z}_{k}=U \mathbf{h}_{k-1}+W \mathbf{x}_{k}+\mathbf{b} \] \[ \begin{aligned} \frac{\partial \mathcal{L}_{t}}{\partial U_{i j}} &amp;=\sum_{k=1}^{t} \operatorname{tr}\left(\left(\frac{\partial \mathcal{L}_{t}}{\partial \mathbf{z}_{k}}\right)^{\mathrm{T}} \frac{\partial^{+} \mathbf{z}_{k}}{\partial U_{i j}}\right) \\ &amp;=\sum_{k=1}^{t}\left(\frac{\partial^{+} \mathbf{z}_{k}}{\partial U_{i j}}\right)^{\mathrm{T}} \frac{\partial \mathcal{L}_{t}}{\partial \mathbf{z}_{k}} \end{aligned} \] 定义\(\delta_{t, k}=\frac{\partial \mathcal{L}_{t}}{\partial \mathbf{z}_{k}}\) \[ \begin{aligned} \delta_{t, k} &amp;=\frac{\partial \mathcal{L}_{t}}{\partial \mathbf{z}_{k}} \\ &amp;=\frac{\partial \mathbf{h}_{k}}{\partial \mathbf{z}_{k}} \frac{\partial \mathbf{z}_{k+1}}{\partial \mathbf{h}_{k}} \frac{\partial \mathcal{L}_{t}}{\partial \mathbf{z}_{k+1}} \\ &amp;=\operatorname{diag}\left(f^{\prime}\left(\mathbf{z}_{k}\right)\right) U^{\mathrm{T}} \delta_{t, k+1} \end{aligned} \] \[ \frac{\partial \mathcal{L}_{t}}{\partial U_{i j}}=\sum_{k=1}^{t}\left[\delta_{t, k}\right]_{i}\left[\mathbf{h}_{k-1}\right]_{j} \] 将上式写成矩阵形式为 \[ \frac{\partial \mathcal{L}_{t}}{\partial U}=\sum_{k=1}^{t} \delta_{t, k} \mathbf{h}_{k-1}^{\mathrm{T}} \] 参数梯度 \[ \frac{\partial \mathcal{L}}{\partial U}=\sum_{t=1}^{T} \sum_{k=1}^{t} \delta_{t, k} \mathbf{h}_{k-1}^{\mathrm{T}} \] \(\mathcal{L}\)关于权重\(\mathbf{W}\)和偏置\(\mathbf{b}\)的梯度为 \[ \begin{aligned} \frac{\partial \mathcal{L}}{\partial W}=&amp; \sum_{t=1}^{T} \sum_{k=1}^{t} \delta_{t, k} \mathbf{x}_{k}^{\mathrm{T}} \\ \frac{\partial \mathcal{L}}{\partial \mathbf{b}}=&amp; \sum_{t=1}^{T} \sum_{k=1}^{t} \delta_{t, k} \end{aligned} \] 计算复杂度 参数的梯度需要在一个完整的“前向”计算和 “反向”计算后才能得到并进行参数更新 实时循环学习（Real-Time Recurrent Learning，RTRL） \[ \begin{aligned} \frac{\partial \mathbf{h}_{t+1}}{\partial U_{i j}} &amp;=\frac{\partial \mathbf{h}_{t+1}}{\partial \mathbf{z}_{t+1}}\left(\frac{\partial^{+} \mathbf{z}_{t+1}}{\partial U_{i j}}+U \frac{\partial \mathbf{h}_{t}}{\partial U_{i j}}\right) \\ &amp;=\operatorname{diag}\left(f^{\prime}\left(\mathbf{z}_{t+1}\right)\right)\left(\mathbb{I}_{i}\left(\left[\mathbf{h}_{t}\right]_{j}\right)+U \frac{\partial \mathbf{h}_{t}}{\partial U_{i j}}\right) \\ &amp;=f^{\prime}\left(\mathbf{z}_{t+1}\right) \odot\left(\mathbb{I}_{i}\left(\left[\mathbf{h}_{t}\right]_{i}\right)+U \frac{\partial \mathbf{h}_{t}}{\partial U_{i j}}\right) \end{aligned} \] \[ \frac{\partial \mathcal{L}_{t}}{\partial U_{i j}}=\left(\frac{\partial \mathbf{h}_{t}}{\partial U_{i j}}\right)^{\mathrm{T}} \frac{\partial \mathcal{L}_{t}}{\partial \mathbf{h}_{t}} \] 两种算法比较 BPTT算法的计算量会更小，但是BPTT算法需 要保存所有时刻的中间梯度，空间复杂度较高。RTRL算法不需要梯度回传，因 此非常适合用于需要在线学习或无限序列的任务中。 长期依赖问题 虽然简单循环网络理论上可以建立长时间间隔的状态之间的依赖关系，但 是由于梯度爆炸或消失问题，实际上只能学习到短期的依赖关系。这样，如果\(t\) 时刻的输出\(y_t\)依赖于\(t−k\)时刻的输入\(\mathbf{x}_t−k\)，当间隔\(k\)比较大时，简单神经网络很 难建模这种长距离的依赖关系，称为长期依赖问题（Long-Term Dependencies Problem）。 基于门控的循环神经网络 长短期记忆网络 LSTM网络主要改进在以下两个方面： 新的内部状态 \(\mathbf{c}_t\) 专门进行线性的循环信息传递，同时（非线性）输出信息给隐藏层的外部状态\(\mathbf{h}_t\)。 \[ \begin{aligned} \mathbf{c}_{t} &amp;=\mathbf{f}_{t} \odot \mathbf{c}_{t-1}+\mathbf{i}_{t} \odot \tilde{\mathbf{c}}_{t} \\ \mathbf{h}_{t} &amp;=\mathbf{o}_{t} \odot \tanh \left(\mathbf{c}_{t}\right) \end{aligned} \] \(\widetilde{\mathbf{c}}_{t}\)是通过非线性函数得到候选状态 \[ \tilde{\mathbf{c}}_{t}=\tanh \left(W_{c} \mathbf{x}_{t}+U_{c} \mathbf{h}_{t-1}+\mathbf{b}_{c}\right) \] 门机制 当\(\mathbf{f}_t = 0, \mathbf{i}_t = 1\)时，记忆单元将历史信息清空，并将候选状态向量\(\widetilde{\mathbf{c}}_{t}\)写入。 但此时记忆单元\(\mathbf{C}_{t}\) 依然和上一时刻的历史信息相关。当\(\mathbf{f}_{t}=1, \mathbf{i}_{t}=0\)时，记忆单元将复制上一时刻的内容，不写入新的信息。 LSTM循环单元结构 门控循环单元网络（GRU） GRU]]></content>
+      <tags>
+        <tag>deep learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[困学纪闻注：卷积神经网络——中生代噩梦]]></title>
+    <url>%2F2019%2F06%2F19%2F%E5%9B%B0%E5%AD%A6%E7%BA%AA%E9%97%BB%E6%B3%A8%EF%BC%9A%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E4%B8%AD%E7%94%9F%E4%BB%A3%E5%99%A9%E6%A2%A6%2F</url>
+    <content type="text"><![CDATA[卷积 卷积 \[ y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1} \] 一幅图像在经过卷积操作后得到结果称为特征映射（Feature Map）。 互相关和卷积的区别在于卷积核仅仅是否进行翻转。 卷积层的神经元数量 神经元数量 卷积神经网络 卷积层 第\(l\)层神经元数量 \[ n^{(l)}=n^{(l-1)}-m+1 \] 卷积层 卷积层的参数数量 典型的卷积网络结构 典型的卷积网络结构 几种典型的卷积神经网络 Inception网络 一个卷积层包含多个不同大小的卷积操作，称为Inception模块。 Inception模块同时使用\(1 × 1\)、\(3 × 3\)、\(5 × 5\)等不同大小的卷积核，并将得到的特征映射在深度上拼接（堆叠）起来作为输出特征映射。 Inception模块在进行\(3 × 3\)、\(5 × 5\)的卷积之前、\(3 × 3\)的最大汇聚之后，进行一次\(1×1\)的卷积来减少特征映射的深度。如果输入特征映射 之间存在冗余信息，\(1 × 1\)的卷积相当于先进行一次特征抽取。 ResNet \[ h(\mathbf{x})=\mathbf{x}+(h(\mathbf{x})-\mathbf{x}) \] 让非线性单元\(f(\mathbf{x}, \theta)\)去近似残差函数\(h(\mathbf{x})−\mathbf{x}\) 其他卷积方式 转置卷积：用小图片和大卷积核生成特征映射，将低维特征映射到高维特征 微步卷积：给图片插入0 空洞卷积：给卷积核插入0]]></content>
+      <tags>
+        <tag>deep learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[困学纪闻注：前馈神经网络一览——反向传播算法白垩纪]]></title>
+    <url>%2F2019%2F06%2F19%2F%E5%9B%B0%E5%AD%A6%E7%BA%AA%E9%97%BB%E6%B3%A8%EF%BC%9A%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%80%E8%A7%88%E2%80%94%E2%80%94%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[前馈神经网络是怎么传播的？ \[ \begin{array}{l}{\mathbf{z}^{(l)}=W^{(l)} \cdot \mathbf{a}^{(l-1)}+\mathbf{b}^{(l)},} \\ {\mathbf{a}^{(l)}=f_{l}\left(\mathbf{z}^{(l)}\right)}\end{array} \] \[ \mathbf{x}=\mathbf{a}^{(0)} \rightarrow \mathbf{z}^{(1)} \rightarrow \mathbf{a}^{(1)} \rightarrow \mathbf{z}^{(2)} \rightarrow \cdots \rightarrow \mathbf{a}^{(L-1)} \rightarrow \mathbf{z}^{(L)} \rightarrow \mathbf{a}^{(L)} \] 反向传播算法 链式求导 三个正菜 对第\(l\)层中的参数\(W^{(l)}\) 和\(\mathbf{b}^{(l)}\) 计算偏导数 \[ \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial W_{i j}^{(l)}}=\left(\frac{\partial \mathbf{z}^{(l)}}{\partial W_{i j}^{(l)}}\right)^{\mathrm{T}} \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l)}} \] \[ \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{b}^{(l)}}=\left(\frac{\partial \mathbf{z}^{(l)}}{\partial \mathbf{b}^{(l)}}\right)^{\mathrm{T}} \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l)}} \] 于是，我们计算这三个就行了： \[ \frac{\partial \mathbf{z}^{(l)}}{\partial W_{i j}^{(l)}} \] \[ \frac{\partial \mathbf{z}^{(l)}}{\partial \mathbf{b}^{(l)}}\] \[ \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l)}}\] 计算 \(\frac{\partial \mathbf{z}^{(l)}}{\partial W_{i j}^{(l)}} = a_{j}^{(l-1)}\) 计算 \(\frac{\partial \mathbf{z}^{(l)}}{\partial \mathbf{b}^{(l)}} = 1\) 计算第\(l\)层神经元的误差项 \(\delta^{(l)}=\frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l)}} \in \mathbb{R}^{m^{(l)}}\) \[ \begin{aligned} \delta^{(l)} &amp; \triangleq \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l)}} \\ &amp;=\frac{\partial \mathbf{a}^{(l)}}{\partial \mathbf{z}^{(l)}} \cdot \frac{\partial \mathbf{z}^{(l+1)}}{\partial \mathbf{a}^{(l)}} \cdot \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l+1)}} \\ &amp;=\operatorname{diag}\left(f_{l}^{\prime}\left(\mathbf{z}^{(l)}\right)\right) \cdot\left(W^{(l+1)}\right)^{\mathrm{T}} \cdot \delta^{(l+1)} \\ &amp;=f_{l}^{\prime}\left(\mathbf{z}^{(l)}\right) \odot\left(\left(W^{(l+1)}\right)^{\mathrm{T}} \delta^{(l+1)}\right) \end{aligned} \] 计算完上面三项可以得到： \[ \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial W^{(l)}}=\delta^{(l)}\left(\mathbf{a}^{(l-1)}\right)^{\mathrm{T}} \longrightarrow \frac{\partial \mathbf{z}^{(l)}}{\partial W_{i j}^{(l)}} \] \[ \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{b}^{(l)}}=\delta^{(l)} \longrightarrow \frac{\partial \mathbf{z}^{(l)}}{\partial \mathbf{b}^{(l)}} \] 在计算出每一层的误差项之后，我们就可以得到每一层参数的梯度。因此，基于误差反向传播算法（backpropagation，BP）的前馈神经网络训练过程可以分为以下三步： 1. 前馈计算每一层的净输入\(\mathbf{z}^{(l)}\) 和激活值\(\mathbf{a}^{(l)}\)，直到最后一层； 2. 反向传播计算每一层的误差项\(\delta^{(l)}\)； 3. 计算每一层参数的偏导数，并更新参数。 BP算法 总结 记住一个公式就行了，上面的推导慢慢看 \[ \delta^{(l)}=f_{l}^{\prime}\left(\mathbf{z}^{(l)}\right) \odot\left(W^{(l+1)}\right)^{\mathrm{T}} \delta^{(l+1)} \] 这个公式很要命，因为Sigmoid型函数导数的值域都小于\(1\)!!! \[ \sigma^{\prime}(x)=\sigma(x)(1-\sigma(x)) \in[0,0.25] \] \[ \tanh ^{\prime}(x)=1-(\tanh (x))^{2} \in[0,1] \] 这会导致梯度消失问题，解决办法是\(ReLU\)，就是这么简单。]]></content>
+      <tags>
+        <tag>deep learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[困学纪闻注：前馈神经网络一览——激活函数寒武纪]]></title>
+    <url>%2F2019%2F06%2F19%2F%E5%9B%B0%E5%AD%A6%E7%BA%AA%E9%97%BB%E6%B3%A8%EF%BC%9A%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%80%E8%A7%88%2F</url>
+    <content type="text"><![CDATA[常见激活函数 Sigmoid 型激活函数 Logistic 函数，值域\(0 \sim -1\) \[ \sigma(x)=\frac{1}{1+\exp (-x)} \] Tanh 函数，值域\(-1 \sim 1\) \[ \tanh (x)=2 \sigma(2 x)-1 \] 修正线性单元 ReLU \[ \begin{aligned} \operatorname{ReLU}(x) &amp;=\left\{\begin{array}{ll}{x} &amp; {x \geq 0} \\ {0} &amp; {x&lt;0}\end{array}\right.\\ &amp;=\max (0, x) \end{aligned} \] 优点 缺点 非零中心化/死亡ReLU问题 LeakyReLU 在输入 \(x &lt; 0\)时，保持一个很小的梯度\(\lambda\) \[ \text{LeakyReLU}(x)=\left\{\begin{array}{ll}{x} &amp; {\text { if } x&gt;0} \\ {\gamma x} &amp; {\text { if } x \leq 0}\end{array}\right. \] PReLU 引入一个可学习的参数，不同神经元可以有不同的参数 \[ \operatorname{PReLU}_{i}(x)=\left\{\begin{array}{ll}{x} &amp; {\text { if } x&gt;0} \\ {\gamma_{i} x} &amp; {\text { if } x \leq 0}\end{array}\right. \]]]></content>
+      <tags>
+        <tag>deep learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[困学纪闻注 ：线性回归]]></title>
+    <url>%2F2019%2F06%2F19%2F%E5%9B%B0%E5%AD%A6%E7%BA%AA%E9%97%BB%E6%B3%A8%EF%BC%9A%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%2F</url>
+    <content type="text"><![CDATA[模型 \[ f(\mathbf{x} ; \mathbf{w})=\mathbf{w}^{\mathrm{T}} \mathbf{x} \] 参数学习 经验风险最小化 \[ \begin{aligned} \mathcal{R}(\mathbf{w}) &amp;=\sum_{n=1}^{N} \mathcal{L}\left(y^{(n)}, f\left(\mathbf{x}^{(n)}, \mathbf{w}\right)\right) \\ &amp;=\frac{1}{2} \sum_{n=1}^{N}\left(y^{(n)}-\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}\right)^{2} \\ &amp;=\frac{1}{2}\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2} \end{aligned} \] \[ \begin{aligned} \frac{\partial \mathcal{R}(\mathbf{w})}{\partial \mathbf{w}} &amp;=\frac{1}{2} \frac{\partial\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}}{\partial \mathbf{w}} \\ &amp;=-X\left(\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right) \end{aligned} \] 令\(\frac{\partial}{\partial \mathbf{w}} \mathcal{R}(\mathbf{w})=0\)，得到 \[ \mathbf{w}^{*}=\left(X X^{\mathrm{T}}\right)^{-1} X \mathbf{y} \] \[ \mathbf{w} \leftarrow \mathbf{w}+\alpha X\left(\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right) \] 结构风险最小化 \[ \mathcal{R}(\mathbf{w})=\frac{1}{2}\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}+\frac{1}{2} \lambda\|\mathbf{w}\|^{2} \] 最大似然估计 假设标签\(y\)为一个随机变量，其服从以均值为\(f(\mathbf{x}, \mathbf{w})=\mathbf{w}^{\mathbf{T}} \mathbf{x}\)为中心，方差为\(\sigma^{2}\)的高斯分布。 \[ \begin{aligned} p(y | \mathbf{x}, \mathbf{w}, \sigma) &amp;=\mathcal{N}\left(y | \mathbf{w}^{\mathrm{T}} \mathbf{x}, \sigma^{2}\right) \\ &amp;=\frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{\left(y-\mathbf{w}^{\mathrm{T}} \mathbf{x}\right)^{2}}{2 \sigma^{2}}\right) \end{aligned} \] 参数\(\mathbf{w}\)在训练集上的似然函数（likelihood）为 \[ \begin{aligned} p(\mathbf{y} | X, \mathbf{w}, \sigma) &amp;=\prod_{n=1}^{N} p\left(y^{(n)} | \mathbf{x}^{(n)}, \mathbf{w}, \sigma\right) \\ &amp;=\prod_{n=1}^{N} \mathcal{N}\left(y^{(n)} | \mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}, \sigma^{2}\right) \end{aligned} \] \[ \log p(\mathbf{y} | X, \mathbf{w}, \sigma)=\sum_{n=1}^{N} \log \mathcal{N}\left(y^{(n)} | \mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}, \sigma^{2}\right) \] \[ \frac{\partial \log p(\mathbf{y} | X, \mathbf{w}, \sigma)}{\partial \mathbf{w}}=0 \] \[ \mathbf{w}^{M L}=\left(X X^{\mathrm{T}}\right)^{-1} X \mathbf{y} \] 最大后验估计 略，我也不会，贝叶斯好难啊]]></content>
+      <tags>
+        <tag>machine learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[困学纪闻注：Logistic 回归]]></title>
+    <url>%2F2019%2F06%2F19%2F%E5%9B%B0%E5%AD%A6%E7%BA%AA%E9%97%BB%E6%B3%A8%EF%BC%9ALogistic-%E5%9B%9E%E5%BD%92%2F</url>
+    <content type="text"><![CDATA[模型 \[ \begin{aligned} p(y=1 | \mathbf{x}) &amp;=\sigma\left(\mathbf{w}^{\mathrm{T}} \mathbf{x}\right) \\ &amp; \triangleq \frac{1}{1+\exp \left(-\mathbf{w}^{\mathrm{T}} \mathbf{x}\right)} \end{aligned} \] \[ \begin{aligned} p(y=0 | \mathbf{x}) &amp;=1-p(y=1 | \mathbf{x}) \\ &amp;=\frac{\exp \left(-\mathbf{w}^{\mathrm{T}} \mathbf{x}\right)}{1+\exp \left(-\mathbf{w}^{\mathrm{T}} \mathbf{x}\right)} \end{aligned} \] 参数学习 \[ \hat{y}^{(n)}=\sigma\left(\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}\right), \qquad 1 \leq n \leq N \] 风险函数 \[ \mathcal{R}(\mathbf{w})=-\frac{1}{N} \sum_{n=1}^{N}\left(y^{(n)} \log \hat{y}^{(n)}+\left(1-y^{(n)}\right) \log \left(1-\hat{y}^{(n)}\right)\right) \] \(\hat{y}\)为 Logistic 函数，故有 \[ \frac{\partial \hat{y}}{\partial \mathbf{w}}=\hat{y}^{(n)}\left(1-\hat{y}^{(n)}\right) \] \[ \begin{aligned} \frac{\partial \mathcal{R}(\mathbf{w})}{\partial \mathbf{w}} &amp;=-\frac{1}{N} \sum_{n=1}^{N}\left(y^{(n)} \frac{\hat{y}^{(n)}\left(1-\hat{y}^{(n)}\right)}{\hat{y}^{(n)}} \mathbf{x}^{(n)}-\left(1-y^{(n)}\right) \frac{\hat{y}^{(n)}\left(1-\hat{y}^{(n)}\right)}{1-\hat{y}^{(n)}} \mathbf{x}^{(n)}\right) \\ &amp;=-\frac{1}{N} \sum_{n=1}^{N}\left(y^{(n)}\left(1-\hat{y}^{(n)}\right) \mathbf{x}^{(n)}-\left(1-y^{(n)}\right) \hat{y}^{(n)} \mathbf{x}^{(n)}\right) \\ &amp;=-\frac{1}{N} \sum_{n=1}^{N} \mathbf{x}^{(n)}\left(y^{(n)}-\hat{y}^{(n)}\right) \end{aligned} \] \[ \mathbf{w}_{t+1} \leftarrow \mathbf{w}_{t}+\alpha \frac{1}{N} \sum_{n=1}^{N} \mathbf{x}^{(n)}\left(y^{(n)}-\hat{y}_{\mathbf{w}_{t}}^{(n)}\right) \]]]></content>
+      <tags>
+        <tag>machine learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[建炎以来系年要录：支持向量机]]></title>
+    <url>%2F2019%2F06%2F19%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9A%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%2F</url>
+    <content type="text"><![CDATA[模型 \[ w^{*} \cdot x+b^{*}=0 \] \[ f(x)=\operatorname{sign}\left(w^{*} \cdot x+b^{*}\right) \] 策略 核技巧 线性可分支持向量机 函数间隔 \[ \hat{\gamma}_{i}=y_{i}\left(w \cdot x_{i}+b\right) \] 几何间隔 \[ \gamma_{i}=y_{i}\left(\frac{w}{\|w\|} \cdot x_{i}+\frac{b}{\|w\|}\right) \] 硬间隔最大化 \[ \begin{array}{ll}{\max _{w, b}} &amp; {\gamma} \\ {\text { s.t. }} &amp; {y_{i}\left(\frac{w}{\|w\|} \cdot x_{i}+\frac{b}{\|w\|}\right) \geqslant \gamma, \quad i=1,2, \cdots, N}\end{array} \] \[ \begin{array}{ll}{\max _{w, b}} &amp; {\frac{\hat{\gamma}}{\|w\|}} \\ {\text { s.t. }} &amp; {y_{i}\left(w \cdot x_{i}+b\right) \geqslant \hat{\gamma}, \quad i=1,2, \cdots, N}\end{array} \] \[ \begin{array}{ll}{\min _{w, b}} &amp; {\frac{1}{2}\|w\|^{2}} \\ {\text { s.t. }} &amp; {y_{i}\left(w \cdot x_{i}+b\right)-1 \geqslant 0, \quad i=1,2, \cdots, N}\end{array} \] 支持向量和间隔边界 对偶算法 \[ L(w, b, \alpha)=\frac{1}{2}\|w\|^{2}-\sum_{i=1}^{N} \alpha_{i} y_{i}\left(w \cdot x_{i}+b\right)+\sum_{i=1}^{N} \alpha_{i} \] \[ \max _{\alpha} \min _{w, b} L(w, b, \alpha) \] \[ \begin{array}{l}{w=\sum_{i=1}^{N} \alpha_{i} y_{i} x_{i}} \\ {\sum_{i=1}^{N} \alpha_{i} y_{i}=0}\end{array} \] \[ \begin{aligned} L(w, b, \alpha) &amp;=\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)-\sum_{i=1}^{N} \alpha_{i} y_{i}\left(\left(\sum_{j=1}^{N} \alpha_{j} y_{j} x_{j}\right) \cdot x_{i}+b\right)+\sum_{i=1}^{N} \alpha_{i} \\ &amp;=-\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)+\sum_{i=1}^{N} \alpha_{i} \end{aligned} \] \[ \begin{array}{cl}{\max _{\alpha}} &amp; {-\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)+\sum_{i=1}^{N} \alpha_{i}} \\ {\text { s.t. }} &amp; {\sum_{i=1}^{N} \alpha_{i} y_{i}=0} \\ {} &amp; {\alpha_{i} \geqslant 0, \quad i=1,2, \cdots, N}\end{array} \] \[ \begin{array}{cl}{\min _{\alpha}} &amp; {\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)-\sum_{i=1}^{N} \alpha_{i}} \\ {\text { s.t. }} &amp; {\sum_{i=1}^{N} \alpha_{i} y_{i}=0} \\ {} &amp; {\alpha_{i} \geqslant 0, \quad i=1,2, \cdots, N}\end{array} \] \[ \begin{array}{c}{w^{*}=\sum_{i=1}^{N} \alpha_{i}^{*} y_{i} x_{i}} \\ {b^{*}=y_{j}-\sum_{i=1}^{N} \alpha_{i}^{*} y_{i}\left(x_{i} \cdot x_{j}\right)}\end{array} \] 线性支持向量机 软间隔最大化 约束条件/目标函数 \[ y_{i}\left(w \cdot x_{i}+b\right) \geqslant 1-\xi_{i} \] \[ \frac{1}{2}\|w\|^{2}+C \sum_{i=1}^{N} \xi_{i} \] 软间隔最大化 \[ \begin{array}{ll}{\min _{w, b, \xi}} &amp; {\frac{1}{2}\|w\|^{2}+C \sum_{i=1}^{N} \xi_{i}} \\ {\text { s.t. }} &amp; {y_{i}\left(w \cdot x_{i}+b\right) \geqslant 1-\xi_{i}, \quad i=1,2, \cdots, N} \\ {} &amp; {\xi_{i} \geqslant 0, \quad i=1,2, \cdots, N}\end{array} \] 对偶算法 \[ L(w, b, \xi, \alpha, \mu)=\frac{1}{2}\|w\|^{2}+C \sum_{i=1}^{N} \xi_{i}-\sum_{i=1}^{N} \alpha_{i}\left(y_{i}\left(w \cdot x_{i}+b\right)-1+\xi_{i}\right)-\sum_{i=1}^{N} \mu_{i} \xi_{i} \] 支持向量 合页损失函数 非线性支持向量机 \[ \begin{array}{ll}{\min _{\alpha}} &amp; {\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} K\left(x_{i}, x_{j}\right)-\sum_{i=1}^{N} \alpha_{i}} \\ {\text { s.t. }} &amp; {\sum_{i=1}^{N} \alpha_{i} y_{i}=0} \\ {} &amp; {0 \leqslant \alpha_{i} \leqslant C, \quad i=1,2, \cdots, N}\end{array} \] \[ f(x)=\operatorname{sign}\left(\sum_{i=1}^{N} \alpha_{i}^{*} y_{i} K\left(x \cdot x_{i}\right)+b^{*}\right) \] 常用核函数 多项式核函数 \[ K(x, z)=(x \cdot z+1)^{p} \] 高斯核函数 \[ K(x, z)=\exp \left(-\frac{\|x-z\|^{2}}{2 \sigma^{2}}\right) \] 字符串核函数 序列最小最优化 ( SMO ) 算法 略]]></content>
+      <tags>
+        <tag>machine learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[建炎以来系年要录：优化算法小结]]></title>
+    <url>%2F2019%2F06%2F19%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9A%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[梯度下降法 批量梯度下降(BGD) \[ \theta_{j}^{\prime}=\theta_{j}+\frac{1}{m} \sum_{i=1}^{m}\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i} \] 随机梯度下降(SGD) \[ \theta_{j}^{\prime}=\theta_{j}+\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i} \] 小批量梯度下降(MBGD) 牛顿法 牛顿法是二次收敛，因此收敛速度快。从几何上看是每次用一个二次曲面来拟合当前所处位置的局部曲面，而梯度下降法是用一个平面来拟合。 黑塞矩阵是由目标函数 \(f(x)\) 在点 \(X\) 处的二阶偏导数组成的 \(n \times n\) 阶对称矩阵。 牛顿法：将 \(f(x)\) 在 \(x(k)\) 附近进行二阶泰勒展开： \[ f(x)=f\left(x^{(k)}\right)+g_{k}^{\mathrm{T}}\left(x-x^{(k)}\right)+\frac{1}{2}\left(x-x^{(k)}\right)^{\mathrm{T}} H\left(x^{(k)}\right)\left(x-x^{(k)}\right) \] \(g_k\)是\(f(x)\) 的梯度向量在 \(x(k)\) 的值，\(H(x(k))\) 是 \(f(x)\) 的黑塞矩阵在点 \(x(k)\) 的值。 \[ \nabla f(x)=g_{k}+H_{k}\left(x-x^{(k)}\right) \] \[ g_{k}+H_{k}\left(x^{(k+1)}-x^{(k)}\right)=0 \] \[ x^{(k+1)}=x^{(k)}-H_{k}^{-1} g_{k} \] 拟牛顿法 \[ g_{k+1}-g_{k}=H_{k}\left(x^{(k+1)}-x^{(k)}\right) \] \[ y_{k}=g_{k+1}-g_{k} \] \[ \delta_{k}=x^{(k+1)}-x^{(k)} \] DFP算法 \[ G_{k+1}=G_{k}+P_{k}+Q_{k} \] \[ P_{k} y_{k}=\delta_{k} \] \[ Q_{k} y_{k}=-G_{k} y_{k} \] \[ P_{k}=\frac{\delta_{k} \delta_{k}^{T}}{\delta_{k}^{T} y_{k}} \] \[ Q_{k}=-\frac{G_{k} y_{k} y_{k}^{\mathrm{T}} G_{k}}{y_{k}^{\mathrm{T}} G_{k} y_{k}} \] \[ G_{k+1}=G_{k}+\frac{\delta_{k} \delta_{k}^{\tau}}{\delta_{k}^{T} y_{k}}-\frac{G_{k} y_{k} y_{k}^{T} G_{k}}{y_{k}^{T} G_{k} y_{k}} \] BFGS算法 \[ B_{k+1} \delta_{k}=y_{k} \] \[ B_{k+1}=B_{k}+P_{k}+Q_{k} \] \[ P_{k} \delta_{k}=y_{k} \] \[ Q_{k} \delta_{k}=-B_{k} \delta_{k} \] \[ B_{k+1}=B_{k}+\frac{y_{k} y_{k}^{\mathrm{T}}}{y_{k}^{\mathrm{T}} \delta_{k}}-\frac{B_{k} \delta_{k} \delta_{k}^{\mathrm{T}} B_{k}}{\delta_{k}^{\mathrm{T}} B_{k} \delta_{k}} \]]]></content>
+      <tags>
+        <tag>machine learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[神奇动物在哪里？——归一化总结]]></title>
+    <url>%2F2019%2F06%2F19%2F%E7%A5%9E%E5%A5%87%E5%8A%A8%E7%89%A9%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F%E2%80%94%E2%80%94%E5%BD%92%E4%B8%80%E5%8C%96%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[Batch Normalization (BN)、Layer Normalization (LN)、Instance Normalization (IN)、Group Normalization (GN) 套路都是：减去均值，除以标准差+线性映射1 区别在于：操作的 feature map 维度不同 \[ y=\gamma\left(\frac{x-\mu(x)}{\sigma(x)}\right)+\beta \] BN feature map $ x ^{N C H W} $ 包含 \(N\) 个样本，每个样本通道数为 \(C\)，高为 \(H\)，宽为 \(W\)。对其求均值和方差时，将在 \(N\)、\(H\)、\(W\)上操作，而保留通道 \(C\)的维度。具体来说，就是把第1个样本的第1个通道，加上第2个样本第1个通道 ...... 加上第 \(N\) 个样本第1个通道，求平均，得到通道 1 的均值（注意是除以 \(N \times H \times W\) 而不是单纯除以 \(N\)，最后得到的是一个代表这个 batch 第1个通道平均值的数字，而不是一个 \(H \times W\) 的矩阵） \[ \mu_{c}(x)=\frac{1}{N H W} \sum_{n=1}^{N} \sum_{h=1}^{H} \sum_{w=1}^{W} x_{n c h w} \] \[ \sigma_{c}(x)=\sqrt{\frac{1}{N H W} \sum_{n=1}^{N} \sum_{h=1}^{H} \sum_{w=1}^{W}\left(x_{n c h w}-\mu_{c}(x)\right)^{2}+\epsilon} \] 类比为一摞书，这摞书总共有 \(N\) 本，每本有 \(C\) 页，每页有 \(H\) 行，每行 \(W\) 个字符。BN 求均值时，相当于把这些书按页码一一对应地加起来（例如第1本书第36页，第2本书第36页......），再除以每个页码下的字符总数：\(N \times H \times W\)，因此可以把 BN 看成求“平均书”的操作（注意这个“平均书”每页只有一个字），求标准差时也是同理。 我的理解：假设一个场景，\(N\)只狗，每只狗有\(C\)条腿，腿的长度为\(H \times W\)。我们这里求出的就是，所有狗左前腿的平均长度每个页码下的字符总数* &gt; 这里求出来的的数据维度应该是\(C\) LN BN 的一个缺点是需要较大的 batchsize 才能合理估训练数据的均值和方差，这导致内存很可能不够用，同时它也很难应用在训练数据长度不同的 RNN 模型上。Layer Normalization (LN) 的一个优势是不需要批训练，在单条数据内部就能归一化。 LN 对每个样本的 \(C\)、\(H\)、\(W\) 维度上的数据求均值和标准差，保留 \(N\) 维度 \[ \mu_{n}(x)=\frac{1}{C H W} \sum_{c=1}^{C} \sum_{h=1}^{H} \sum_{w=1}^{W} x_{n c h w} \] \[ \sigma_{n}(x)=\sqrt{\frac{1}{C H W} \sum_{c=1}^{C} \sum_{h=1}^{H} \sum_{w=1}^{W}\left(x_{n c h w}-\mu_{n}(x)\right)^{2}+\epsilon} \] 把一个 batch 的 feature 类比为一摞书。LN 求均值时，相当于把每一本书的所有字加起来，再除以这本书的字符总数：\(C \times H \times W\)，即求整本书的“平均字”，求标准差时也是同理。 我的理解：这里有个\(N\)条狗，我们不关心其他狗，每条狗有\(C\)条腿，每条腿长度为\(H \times W\)。我们这里求出的是单独每条狗\(C\)条腿的平均长度！所以得到的数据维度为\(N\) Instance Normalization IN 用于图像的风格迁移。作者发现，在生成模型中， feature map 的各个 channel 的均值和方差会影响到最终生成图像的风格，因此可以先把图像在 channel 层面归一化图片里单个通道规划，比如说R通道，然后再用目标风格图片对应 channel 的均值和标准差“去归一化”，以期获得目标图片的风格。IN 操作也在单个样本内部进行，不依赖 batch。 IN 对每个样本的 H、W 维度的数据求均值和标准差，保留 N 、C 维度，也就是说，重点：它只在 channel 内部求均值和标准差！ \[ \mu_{n c}(x)=\frac{1}{H W} \sum_{h=1}^{H} \sum_{w=1}^{W} x_{n c h w} \] \[ \sigma_{n c}(x)=\sqrt{\frac{1}{H W} \sum_{h=1}^{H} \sum_{w=1}^{W}\left(x_{n c h w}-\mu_{n c}(x)\right)^{2}+\epsilon} \] IN 求均值时，相当于把一页书中所有字加起来，再除以该页的总字数：H×W，即求每页书的“平均字”，求标准差时也是同理。 我的理解：还是用狗，现在不关心\(N\)条狗，不关心狗腿有几条\(C\)，统一的，我们要求出针对一条狗左前腿的平均长度？ 这是什么无理的要求！一条狗的左前腿还有几个长度？事实上还真就有好几个长度。 如上文约定，该狗左前腿长为\(H \times W\)，假设有\(H\)类骨头，每类骨头有\(W\)块，每块骨头长度未知。好了，该假设的都假设出来了，上文求的长度都是骨头的块数，因为上一篇狗都是柯基，不必直接量每块骨头的长度。而IN这批狗里既有柯基也有柴犬，还有我们可爱的哈士奇【手动狗头】。我们这里求的就是骨头的平均长度。所以先把\(H \times W \times x\)，求出的就是单条腿的实际长度。\(\frac{H \times W \times x}{ H \times W }\)就是每块骨头的平均长度。 Group Normalization Group Normalization (GN) 适用于占用显存比较大的任务，例如图像分割。对这类任务，可能 batchsize 只能是个位数，再大显存就不够用了。而当 batchsize 是个位数时，BN 的表现很差，因为没办法通过几个样本的数据量，来近似总体的均值和标准差。GN 也是独立于 batch 的，它是 LN 和 IN 的折中。 VO3aAP.png GN 计算均值和标准差时，把每一个样本 feature map 的 channel 分成 \(G\) 组，每组将有 \(C/G\) 个 channel，然后将这些 channel 中的元素求均值和标准差。各组 channel 用其对应的归一化参数独立地归一化。 \[ \mu_{n g}(x)=\frac{1}{(C / G) H W} \sum_{c=g C / G}^{(g+1) C / G} \sum_{h=1}^{H} \sum_{w=1}^{W} x_{n c h w} \] \[ \sigma_{n g}(x)=\sqrt{\frac{1}{(C / G) H W} \sum_{c=g C / G}^{(q+1) C / G} \sum_{h=1}^{H} \sum_{w=1}^{W}\left(x_{n c h w}-\mu_{n g}(x)\right)^{2}+\epsilon} \] GN 相当于把一本 C 页的书平均分成 \(G\) 份，每份成为有 \(C/G\) 页的小册子，求每个小册子的“平均字”和字的“标准差”。 我的理解：这先分组，\(N\)条狗，\(C\)条腿分为两组\(G\)前腿和后腿。针对每组\(C/G\)条狗腿分别计算出均值标准差，这是类似于LN，算局部总体均值。然后将计算出的前后腿的值再算一遍均值，这是类似于IN了，针对于单个狗。 参考这里↩]]></content>
+      <categories>
+        <category>神奇动物在哪里</category>
+      </categories>
+      <tags>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python import 小结]]></title>
+    <url>%2F2019%2F06%2F19%2FPython-import-%E5%B0%8F%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[Python 的 import 很简单，记住关键一句话就行。 关键是能够在sys.path里面找到通向模块文件的路径 分三种情况： 主程序与模块在同一目录下： 这时候Python能自己找到自己的兄弟 1import mod1 主程序是在上一层 Python 不会把所有的子文件夹都加入路径的，别想了！ 这时候需要在子文件夹中加入__init__.py指明这是一个模块，然后 1import mod2.mod2 主程序导入上层目录中模块或其他目录(平级)下的模块 12345import syssys.path.append("..")import mod1 # 上一层import mod2.mod2 # 堂兄弟文件夹 总结 关键还是找路径]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Jupyter 远程访问配置]]></title>
+    <url>%2F2019%2F06%2F18%2FJupyter-%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[目标： 在VPS上跑pyspark，spark的配置略过，主要讲jupyter方面。 jupyter配置的关键点在于找准错误，所有错误，看最上面一个就行，然后直接Google。我遇到的错误是，不能运行，具体是： 1KeyError: &apos;allow_remote_access&apos; 于是修改配置~/.jupyter/jupyter_notebook_config.py中 1c.NotebookApp.allow_remote_access = True 搞定！]]></content>
+      <tags>
+        <tag>bugs</tag>
+        <tag>jupyter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Spark 2: 安装与使用]]></title>
+    <url>%2F2019%2F06%2F17%2FSpark-2-%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[安装和使用 安装 Hadoop 和 Spark 在 pyspark 中运行代码 Spark 独立应用程序编程 1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext('local', 'test')logFile = "file:///usr/local/spark/README.md"logData = sc.textFile(logFile, 2).cache()numAs = logData.filter(lambda line: 'a' in line).count()numBs = logData.filter(lambda line: 'b' in line).count()print('Lines with a: %s, Lines with b: %s' % (numAs, numBs)) 第一个Spark应用程序：WordCount 在 pyspark 中执行词频统计 加载本地文件 1textFile = sc.Te Spark集群环境搭建 在集群上运行Spark应用程序]]></content>
+      <categories>
+        <category>spark</category>
+      </categories>
+      <tags>
+        <tag>spark</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何计算 AUC 值]]></title>
+    <url>%2F2019%2F06%2F17%2F%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97-AUC-%E5%80%BC%2F</url>
+    <content type="text"><![CDATA[三种方法： 1. 积分法 12345678910auc = 0.0height = 0.0for each train exameple x_i y_i: if y_i == 1.0: height = height + 1/(tp+fn) else auc += height * 1/(tn + fp)return auc 2. 曼-惠特尼法 Wilcoxon-Mann-Witney Test就是测试任意给一个正类样本和一个负类样本，正类样本的score有多大的概率大于负类样本的score 具体来说就是统计一下所有的 \(M \times N\)(\(M\)为正类样本的数目，\(N\)为负类样本的数目)个正负样本对中，有多少个组中的正样本的score大于负样本的score。当二元组中正负样本的 score相等的时候，按照0.5计算。然后除以\(M \times N\)。实现这个方法的复杂度为\(O(n^2)\)。\(n\)为样本数（即\(n=M+N\)） \[ auc = \frac{\sum pos\_{score} &gt; neg\_{score} + 0.5 \times \sum (pos\_{score} = neg\_{score})}{ M \times N } \] 3. 曼-惠特尼法加强1 首先对 score 从大到小排序，然后令最大 score 对应的 sample 的rank为\(n\)，第二大score对应sample的rank为\(n-1\)，以此类推 然后把所有的正类样本的rank相加交错相加 再减去\(\frac{M(M+1)}{2}\) 得到的就是所有的样本中有多少对正类样本的score大于负类样本的score，然后再除以\(M\times N\)。 参考这里↩]]></content>
+      <tags>
+        <tag>deep learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Spark: 设计和原理]]></title>
+    <url>%2F2019%2F06%2F17%2FSpark-%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%8E%9F%E7%90%86%2F</url>
+    <content type="text"><![CDATA[简介 BDAS架构 Spark专注于数据的处理分析，而数据的存储还是要借助于Hadoop分布式文件系统HDFS、Amazon S3等来实现的 运行架构 基本概念 RDD：弹性分布式数据集（Resilient Distributed Dataset） DAG：有向无环图 Executor：运行在工作节点（Worker Node）上的一个进程，负责运行任务，并为应用程序存储数据 架构设计 Spark运行架构包括 - 集群资源管理器（Cluster Manager） - 运行作业任务的工作节点（Worker Node） - 每个应用的任务控制节点（Driver） - 每个工作节点上负责具体任务的执行进程（Executor） 运行架构 一个应用（Application） - 一个任务控制节点（Driver） - 若干个作业（Job） - 一个作业由多个阶段（Stage）构成 - 一个阶段由多个任务（Task）组成 Spark中各种概念之间的相互关系 Spark运行基本流程 Spark运行基本流程图 特点： 1. 每个应用都有自己专属的Executor进程 2. 只要能够获取Executor进程并保持通信 3. Executor上有一个BlockManager存储模块 4. 任务采用了数据本地性和推测执行等优化机制 RDD的设计和运行原理 设计背景 矛盾：目前的MapReduce框架都是把中间结果写入到HDFS中，带来了大量的数据复制、磁盘IO和序列化开销 方法：提供了一个抽象的数据架构，我们不必担心底层数据的分布式特性，只需将具体的应用逻辑表达为一系列转换处理，不同RDD之间的转换操作形成依赖关系，可以实现管道化，从而避免了中间结果的存储，大大降低了数据复制、磁盘IO和序列化开销。 RDD 概念 一个RDD就是一个分布式对象集合，本质上是一个只读的分区记录集合，每个RDD可以分成多个分区，每个分区就是一个数据集片段。 RDD提供了一组丰富的操作以支持常见的数据运算，分为“行动”（Action）和“转换”（Transformation）两种类型，前者用于执行计算并指定输出的形式，后者指定RDD之间的相互依赖关系。两类操作的主要区别是，转换操作（比如map、filter、groupBy、join等）接受RDD并返回RDD，而行动操作（比如count、collect等）接受RDD但是返回非RDD（即输出一个值或结果）。 RDD典型的执行过程如下： RDD读入外部数据源（或者内存中的集合）进行创建； RDD经过一系列的“转换”操作，每一次都会产生不同的RDD，供给下一个“转换”使用； 最后一个RDD经“行动”操作进行处理，并输出到外部数据源（或者变成Scala集合或标量）。 Spark的转换和行动操作 血缘关系（Lineage） RDD 特性 高效的容错性 中间结果持久化到内存 存放的数据可以是Java对象，避免了不必要的对象序列化和反序列化开销 RDD 之间的依赖关系 独生子女 如果父RDD的一个分区只被一个子RDD的一个分区所使用就是窄依赖，否则就是宽依赖。 窄依赖典型的操作包括map、filter、union等，宽依赖典型的操作包括groupByKey、sortByKey等。 窄依赖和宽依赖 阶段的划分 具体划分方法是：在DAG中进行反向解析，遇到宽依赖就断开，遇到窄依赖就把当前的RDD加入到当前的阶段中；将窄依赖尽量划分在同一个阶段中，可以实现流水线计算 根据RDD分区的依赖关系划分阶段 RDD 运行过程 RDD在Spark中的运行过程 创建RDD对象； SparkContext负责计算RDD之间的依赖关系，构建DAG； DAG Scheduler负责把DAG图分解成多个阶段，每个阶段中包含了多个任务，每个任务会被任务调度器分发给各个工作节点（Worker Node）上的Executor去执行。 部署模式 Spark三种部署方式 standalone模式 Spark与MapReduce1.0完全一致，都是由一个Master和若干个Slave构成，并且以槽（slot）作为资源分配单位 Spark on Mesos模式 Spark官方推荐采用这种模式，所以，许多公司在实际应用中也采用该模式。 Spark on YARN模式 Spark on YARN架构 从“Hadoop+Storm”架构转向Spark架构 “Hadoop+Storm”的架构（也称为Lambda架构） Hadoop负责对批量历史数据的实时查询和离线分析，而Storm则负责对流数据的实时处理。 采用“Hadoop+Storm”部署方式的一个案例 用Spark架构同时满足批处理和流处理需求 Hadoop和Spark的统一部署 Hadoop和Spark的统一部署]]></content>
+      <categories>
+        <category>spark</category>
+      </categories>
+      <tags>
+        <tag>spark</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[fire小结]]></title>
+    <url>%2F2019%2F06%2F17%2Ffire%E5%B0%8F%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[单个函数 12345def cal_days(): passif __name__ == '__main__': fire.Fire(cal_days) # 注意这里 1python test.py 多个函数 12345678def cal_days_1(): passdef cal_days_2(days): passif __name__ == '__main__': fire.Fire() # 注意这里是空的 1python test.py cal_days_2 20190617 对象 123456class DateCompare(object): def cal_days(self, date): passif __name__ == "__main__": fire.Fire(DateCompare) 1python test.py cal_days 20190617 以上就是python fire的用法。]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python 设置环境变量]]></title>
+    <url>%2F2019%2F06%2F15%2FPython-%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%2F</url>
+    <content type="text"><![CDATA[12345import osos.environ["DEBUSSY"] = "1"print(os.environ["DEBUSSY"])]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PyTorch cheatsheet]]></title>
+    <url>%2F2019%2F06%2F14%2FPyTorch-cheatsheet%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <tags>
+        <tag>PyTorch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python decorators]]></title>
+    <url>%2F2019%2F06%2F14%2FPython-decorators%2F</url>
+    <content type="text"><![CDATA[Python 装饰器强大并且高效，这里我们只需要懂得最基础的用法。 等需要更高阶的用法时，自然会主动学习。 12345678910111213141516171819202122232425# 装饰器(decorators)# 这个例子中，beg装饰say# beg会先调用say。如果返回的say_please为真，beg会改变返回的字符串。from functools import wrapsdef beg(target_function): @wraps(target_function) def wrapper(*args, **kwargs): msg, say_please = target_function(*args, **kwargs) if say_please: return "&#123;&#125; &#123;&#125;".format(msg, "Please! I am poor :(") return msg return wrapper@begdef say(say_please=False): msg = "Can you buy me a beer?" return msg, say_pleaseprint(say()) # Can you buy me a beer?print(say(say_please=True)) # Can you buy me a beer? Please! I am poor :( 参见这里]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[python style]]></title>
+    <url>%2F2019%2F06%2F13%2Fpython-style%2F</url>
+    <content type="text"><![CDATA[参考这里 Python之父Guido推荐的规范 Type Public Internal Modules lower_with_under _lower_with_under Packages lower_with_under Classes CapWords _CapWords Exceptions CapWords Functions lower_with_under() _lower_with_under() Global/Class Constants CAPS_WITH_UNDER _CAPS_WITH_UNDER Global/Class Variables lower_with_under _lower_with_under Instance Variables lower_with_under _lower_with_under (protected) or __lower_with_under (private) Method Names lower_with_under() _lower_with_under() (protected) or __lower_with_under() (private) Function/Method Parameters lower_with_under Local Variables lower_with_under]]></content>
+      <tags>
+        <tag>胡思乱想</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MySQL cheatsheet]]></title>
+    <url>%2F2019%2F06%2F12%2FMySQL-cheatsheet%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>cheatsheet</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[邱锡鹏老师讲义：第十发]]></title>
+    <url>%2F2019%2F06%2F09%2F%E9%82%B1%E9%94%A1%E9%B9%8F%E8%80%81%E5%B8%88%E8%AE%B2%E4%B9%89%EF%BC%9A%E7%AC%AC%E5%8D%81%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>nndl笔记</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[邱锡鹏老师讲义：第九发]]></title>
+    <url>%2F2019%2F06%2F09%2F%E9%82%B1%E9%94%A1%E9%B9%8F%E8%80%81%E5%B8%88%E8%AE%B2%E4%B9%89%EF%BC%9A%E7%AC%AC%E4%B9%9D%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>nndl笔记</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[邱锡鹏老师讲义：第八发]]></title>
+    <url>%2F2019%2F06%2F09%2F%E9%82%B1%E9%94%A1%E9%B9%8F%E8%80%81%E5%B8%88%E8%AE%B2%E4%B9%89%EF%BC%9A%E7%AC%AC%E5%85%AB%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>nndl笔记</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[邱锡鹏老师讲义：第七发]]></title>
+    <url>%2F2019%2F06%2F09%2F%E9%82%B1%E9%94%A1%E9%B9%8F%E8%80%81%E5%B8%88%E8%AE%B2%E4%B9%89%EF%BC%9A%E7%AC%AC%E4%B8%83%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>nndl笔记</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[邱锡鹏老师讲义：第六发]]></title>
+    <url>%2F2019%2F06%2F09%2F%E9%82%B1%E9%94%A1%E9%B9%8F%E8%80%81%E5%B8%88%E8%AE%B2%E4%B9%89%EF%BC%9A%E7%AC%AC%E5%85%AD%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>nndl笔记</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[邱锡鹏老师讲义：第五发]]></title>
+    <url>%2F2019%2F06%2F09%2F%E9%82%B1%E9%94%A1%E9%B9%8F%E8%80%81%E5%B8%88%E8%AE%B2%E4%B9%89%EF%BC%9A%E7%AC%AC%E4%BA%94%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>nndl笔记</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[邱锡鹏老师讲义：第四发]]></title>
+    <url>%2F2019%2F06%2F09%2F%E9%82%B1%E9%94%A1%E9%B9%8F%E8%80%81%E5%B8%88%E8%AE%B2%E4%B9%89%EF%BC%9A%E7%AC%AC%E5%9B%9B%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>nndl笔记</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[邱锡鹏老师讲义：第三发]]></title>
+    <url>%2F2019%2F06%2F09%2F%E9%82%B1%E9%94%A1%E9%B9%8F%E8%80%81%E5%B8%88%E8%AE%B2%E4%B9%89%EF%BC%9A%E7%AC%AC%E4%B8%89%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>nndl笔记</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[邱锡鹏老师讲义：第二发]]></title>
+    <url>%2F2019%2F06%2F09%2F%E9%82%B1%E9%94%A1%E9%B9%8F%E8%80%81%E5%B8%88%E8%AE%B2%E4%B9%89%EF%BC%9A%E7%AC%AC%E4%BA%8C%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>nndl笔记</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[邱锡鹏老师讲义：第一发]]></title>
+    <url>%2F2019%2F06%2F05%2F%E9%82%B1%E9%94%A1%E9%B9%8F%E8%80%81%E5%B8%88%E8%AE%B2%E4%B9%89%EF%BC%9A%E7%AC%AC%E4%B8%80%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>nndl笔记</category>
+      </categories>
+      <tags>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[胡思乱想集(1)]]></title>
+    <url>%2F2019%2F06%2F05%2F%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3%E9%9B%86-1%2F</url>
+    <content type="text"><![CDATA[MSRA 的面试 背景 上周收到了MSRA的面试通知。海投的简历，能被捞起来也是万幸。 过程 反思 pipe-line 其他]]></content>
+      <tags>
+        <tag>胡思乱想</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[xmake试用]]></title>
+    <url>%2F2019%2F03%2F24%2Fxmake%E8%AF%95%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[xmake还是挺好玩的 废话，试用了 xmake ，因为之前学 cmake 失败，就想找个简单的工具。 xmake应算是我目前遇到的最好的C++构建工具。 关于我学make的心路历程不再，关于make的书良莠不齐，只推荐陈硕的那本。其余比如这本只能望洋兴叹了。用make编译过两个小项目，现在想起来都是不好的回忆。make断断续续学了好几周，现在全部忘光了。 p xmake xmake 绝不完美，这家伙坑居多。 比如添加头文件不能用add_files，偏要用add_headers，后来又变成了add_headerfiles，一言难尽。找这种 Bug 能吐血。 另外一个缺点就是 文档 比较落后，很多东西 GitHub 上更新了但是文档没跟上。 关于使用 我用的最多的几条命令 123456789xmake # 构建# 中间改一改 xmake.lua# 跑起来xmake run# 看看为什么失败了xmake f -c 添加静态库 123target(&quot;library&quot;) set_kind(&quot;static&quot;) add_files(&quot;src/library/*.c&quot;) 添加动态库 照葫芦画瓢 123target(&quot;library&quot;) set_kind(&quot;shared&quot;) add_files(&quot;src/library/*.c&quot;) 可执行文件 1234target(&quot;test&quot;) set_kind(&quot;binary&quot;) add_files(&quot;src/*c&quot;) add_deps(&quot;library&quot;)]]></content>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[困学纪闻注：PAC]]></title>
+    <url>%2F2019%2F03%2F18%2FPAC%2F</url>
+    <content type="text"><![CDATA[PAC(Principal Component Analysis, PAC) 数据降维方法，转换后数据的方差最大。 选择数据方差最大的方向进行投影，才能最大化数据的差异性，保留更多的原始数据信息。 一组 \(d\) 维样本\(\mathbf{x} \in \mathbb{R}^d, 1 \leq n \leq N\)，将其投影到一维空间中，投影向量为 \(\mathbf{w} \in \mathbb{R}^d\)，不是一般性，限制 \(\mathbf{w}\) 的模为 \(1\) ，即 \(\mathbb{w}^T \mathbf{w} = 1\). 计算每个样本点的投影表示 \(z^(n)\) 每个样本点 \(\mathbf{x}^{(n)}\) 投影后 \(1 \times d \times d \times 1\) \[ z^{(n)}=\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)} \] ##计算所有样本投影后的方差 \[ \begin{aligned} \sigma(X ; \mathbf{w}) &amp;=\frac{1}{N} \sum_{n=1}^{N}\left(\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}-\mathbf{w}^{\mathrm{T}} \overline{\mathbf{x}}\right)^{2} \\ &amp;=\frac{1}{N}\left(\mathbf{w}^{\mathrm{T}} X-\mathbf{w}^{\mathrm{T}} \overline{X}\right)\left(\mathbf{w}^{\mathrm{T}} X-\mathbf{w}^{\mathrm{T}} \overline{X}\right)^{\mathrm{T}} \\ &amp;=\mathbf{w}^{\mathrm{T}} S \mathbf{w} \end{aligned} \] $ S=(X-)(X-)^{} $ 是原始样本的协方差矩阵。 拉格朗日法求最大投影方差 \[ \max _{\mathbf{w}} \mathbf{w}^{\mathrm{T}} S \mathbf{w}+\lambda\left(1-\mathbf{w}^{\mathrm{T}} \mathbf{w}\right) \] 对上式求导并令导数等于0，得到 \[ S \mathbf{w}=\lambda \mathbf{w} \] 只需要将\(S\)的特征值从大到小排列，保留前\(d^{\prime}\)个特征向量，其对应的特征向量即使最优的投影矩阵]]></content>
+      <tags>
+        <tag>deep learning</tag>
+        <tag>machine learning</tag>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[阿里云安装jupyter notebook]]></title>
+    <url>%2F2018%2F07%2F10%2F%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E8%A3%85jupyter-notebook%2F</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[如何恢复Windows 10默认图标]]></title>
+    <url>%2F2018%2F07%2F02%2F%E5%A6%82%E4%BD%95%E6%81%A2%E5%A4%8DWindows-10%E9%BB%98%E8%AE%A4%E5%9B%BE%E6%A0%87%2F</url>
+    <content type="text"><![CDATA[在使用Windows的时候经常会遇到这种问题： 设置了一个程序为错误的默认文件打开方式，现在想将默认打开方式删除掉有没有什么方法 对于这个问题微软官方的解释是： 没有这项功能 事实上我们是可通过修改注册表完成的，以删除cpp的默认打开程序为例 win+R调出运行窗口输入regedit 删除计算机\HKEY_CLASSES_ROOT\.cpp 删除计算机\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.cpp 重启资源管理器]]></content>
+      <tags>
+        <tag>Windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[conda cheatsheet]]></title>
+    <url>%2F2018%2F06%2F28%2Fconda-cheatsheet%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>cheatsheet</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[docer国内安装]]></title>
+    <url>%2F2018%2F06%2F22%2Fdocer%E5%9B%BD%E5%86%85%E5%AE%89%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[123456789101112131415161718sudo apt-get remove docker \ docker-engine \ docker.iosudo apt-get install \ apt-transport-https \ ca-certificates \ curl \ software-properties-commoncurl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -sudo add-apt-repository \ "deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu \ $(lsb_release -cs) \ stable"sudo apt-get update &amp;&amp; sudo apt-get install docker-cesudo groupadd dockersudo gpasswd -a $&#123;USER&#125; dockersudo service docker restartnewgrp - docker /etc/docker/daemon.json 12345&#123; "registry-mirrors": [ "https://registry.docker-cn.com" ]&#125;]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[install xmind on Ubuntu]]></title>
+    <url>%2F2018%2F06%2F21%2Finstall-xmind-on-Ubuntu%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux查看端口占用]]></title>
+    <url>%2F2018%2F06%2F20%2FLinux%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[lsof list open files 1lsof -i:your_port netstat 1netstat -anp | grep your_port -t: TCP -u: UDP -l: 仅显示LISTEN状态的套接字 -a: all -n: 不进行DNS解析 -p: 显示进程标识符和程序名]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[awk入门]]></title>
+    <url>%2F2018%2F06%2F19%2Fawk%E5%85%A5%E9%97%A8%2F</url>
+    <content type="text"><![CDATA[1awk '程序' 文件名 12345程序： 模式 &#123;操作&#125; 模式 &#123;操作&#125; 模式 &#123;操作&#125; 模式 &#123;操作&#125; awk 一次一行地读文件名中的输入，依次将每行与每个模式相比较，对每个与行相匹配的模式，执行其对应的操作。 1awk `/regex/ &#123; print &#125;` 文件名 省略动作，默认动作是打印相匹配的行 1awk '/regex/' 文件名 省略模式，被作用到任何输入行 1awk '&#123; print &#125;' 文件名 从一个文件提交程序 1awk -f 命令文件 文件名 字段 $1, $2, ..., $NF NF是一个变量，被设置为字段的个数。 123du -a | awk &apos;&#123; print $2 &#125;&apos;who | awk &apos;&#123; print $1, $5 &#125;&apos;who | awk &apos;&#123; print $5, $1 &#125;&apos; 分隔符可以不是空白，-F指定 1sed 3q /etc/passwd | awk -F: '&#123; print $1 &#125;' 打印 内置变量NR是当前输入记录或行的总数。 $0是整个输入行，未加更改。 1awk '&#123; print NR, $0&#125;' printf控制输出格式 1awk '&#123; printf "%4d %s\n", NR, $0 &#125;' 模式 1awk -F: '$2 == ""' /etc/passwd $2 == &quot;&quot; $2 ~ /^$/ $2 !~ /./ lenght($2) == 0 1234!($2 == "")NF % 2 != 0 # 若为奇数则打印lenght($0) &gt; 72 &#123; print "Line", NR, "too long:", substr($0, 1, 60) &#125;## substr(s,m,n) 起于m且具有n个字符长，若n被忽略，则使用从m到末尾的子串 1date | awk '&#123; print substr($4, 1, 5) &#125;' BEGIN 与 END 模式 BEGIN在第一个输入行之前就被执行：可以用BEGINi模式初始化变量，打印标题头或通过指定变量FS设置字段分隔符： 1awk 'BEGIN &#123; FS = ":" &#125; $2 == "" ' /etc/passwd END在处理完最后一行后执行： 1awk 'END &#123; print NR &#125;' 算术运算与变量 求第一列中所有数字之和/平均数 1234567891011&#123; s = s + $1 &#125; # 不必考虑初始化问题END &#123; print s, s/NR&#125; &#123; s += $1 &#125; # 类似c的速记END &#123; print s &#125;对输入行计数 &#123; nc += lenght($0)+ 1 # number of chars, 1 for \n nw += NF # number of words &#125;END &#123; print NR, nw, nc &#125; 计算文件页数，每页66行 123wc $* |awk '!/totoal$/ &#123; n += int(($1+55) / 56) &#125; END &#123; print n &#125;' 字符串变量被初始化为空字符串。 内置变量 说明 FILENAME 当前输入文件名 FS 域分隔符（默认为空格和Tab） NF 输入记录中域的个数 NR 输入记录数 OFMT 数字的输出格式（默认为%g） OFS 输出域分隔符串（默认为空格） ORS 输出记录分隔符串（默认为换行符） RS 输入记录分隔符字符（默认为换行符） 控制流 example: 查找相邻的、成对的、完全相同的单词 1234567891011121314awk &apos;FILENAME != prevfile &#123; # new file NR = 1 # reset line number prevfile = FILENAME&#125;NF &gt; 0 &#123; if ($1 == lastword) printf &quot;double %s, file %s, line %d\n&quot;, $1, FILENAME, NR for (i = 2; i &lt;= NF; i++) if ($i == $(i-1)) printf &quot;double %s, file %s, line %d\n&quot;, $i , FILENAME, NR if (NR &gt; 0) lastword = $NF&#125; &apos; $* 数组 example:将每个输入行收集到单个数组元素中，以行数为索引，然后以逆序将其打印输出 123456awk &apos; &#123; line[NR] = $0 &#125;END &#123; for (i = NR; i &gt; 0; i--) print line[i]&#125; &apos; $* n = split(s, arr, seq) 将字符串s分成若干字段，并把这些字段分别保存在数组arr从1至n的元素中。若提供了分隔符字符seq，则使用它；否则，使用FS的当前值。 12345678sed 1q /etc/passwd | awk &apos;&#123; split($0, a, &quot;:&quot;); print a[1]&#125;&apos;echo 9/29/83 | awk &apos;&#123; split($0, date, &quot;/&quot;); print date[3]&#125;&apos; awk的内置函数 内置函数 说明 cons(expr) expr的余弦 exp(expr) expr的指数 Getline() 读入下一个输入行，若是文件尾，则返回0;否则返回1 index(string, substr) string中字符串substr的位置，若不存在，则返回0 int(expr) expr的整数部分 lenght(s) 字符串s的长度 log(expr) expr的自然对数 sin(expr) expr的正弦 Split(s, a, c) 以c为分隔符将s分隔至a[1],...,a[n]返回n sprintf(fmt,...) 根据格式fmt格式化 substr(s, m, n) 起始于位置m的字串s的n个字符的子串 关联数组 12345678910111213 &#123; sum[$1] += $2 &#125;END &#123; for (name in sum) print name, sum[name]&#125;awk &apos; &#123; for (i = 1; i &lt;= NF; i++) num[$i]++ &#125; END &#123; for (word in num) print word, num[word] &#125; &apos; $* 字符串 example: 将较长的行调整为80列 1234567891011121314151617awk 'BEGIN &#123; N = 80 # fold at column 80 for(i &lt;= N; i++) # make a string of blanks blanks = blanks " "&#125;&#123; if ((n = lenght($0) &lt;= N)) print else &#123; for (i = 1; n &gt; N; n -=) &#123; printf "%s\\\n", substr($0, i, N) i += N &#125; printf "%s%s\n", substr(blanks, 1, N-n), substr($0, i) &#125;&#125; ' 与shell的交互作用 1234567awk &apos;&#123; print $&apos;$1&apos; &#125;&apos;awk &quot;&#123; print \$$1 &#125;&quot;example:addup nawk &apos; &#123; s += $&apos;$1&apos; &#125;END &#123; print s &#125; &apos; example:对n个列中的每个列分别单独求和，然后再将各列之和相加 12345678910111213awk 'BEGIN &#123;n = '$1'&#125;&#123; for (i = 1; i &lt;= n; i++) sum[i] += $i&#125;END &#123; for (i = 1; i &lt;= n; i++) &#123; printf "%6g", sum[i] totoal += sum[i] &#125; printf "; totoal = %6g\n", totoal&#125; ' 基于 awk 的日历服务 ## calendar: version 3 -- today and tomorrow 123456789101112131415161718awk &lt; $HOME/calendar 'BEGIN &#123; x = "Jan 31 Feb 28 Mar 31 Apr 30 May 31 Jun 30 " \ "Jul 31 Aug 31 Seq 30 Oct 31 Nov 30 Dec 31 Jan 31" split(x, data) for (i = 1; i &lt; 24; i += 2) &#123; days[data[i]] = data[i+1] nextmon[data[i]] = data[i+2] &#125; split("''"`date`"''", date) mon1 = date[2]; day1 = date[3] mon2 = mon1; day2 = day1 + 1 if (day1 &gt;= days[mon1]) &#123; day2 = 1 mon2 = nextmon[mon1] &#125;&#125;$1 == mon1 &amp;&amp; $2 == day1 || $1 == mon2 &amp;&amp; $2 == day2 ' | mail $NAME]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MySQL创建用户与授权]]></title>
+    <url>%2F2018%2F06%2F18%2FMySQL%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E4%B8%8E%E6%8E%88%E6%9D%83%2F</url>
+    <content type="text"><![CDATA[创建用户 123CREATE USER 'usernaem'@'host' IDENTIFIED BY 'passwd';% host：指定该用户在哪个主机上可以登陆，如果是本地用户可用localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符% 授权 123GRANT privileges ON databasename.tablename TO 'username'@'host';GRANT ALL ON *.* TO 'pig'@'%'; privileges：用户的操作权限，如SELECT，INSERT，UPDATE等，如果要授予所的权限则使用ALL tablename：表名，如果要授予该用户对所有数据库和表的相应操作权限则可用*表示，如*.* 用以上命令授权的用户不能给其它用户授权，如果想让该用户可以授权，用以下命令: 1GRANT privileges ON databasename.tablename TO 'username'@'host' WITH GRANT OPTION; 设置与更改用户密码 1SET PASSWORD FOR 'username'@'host' = PASSWORD('newpassword'); 如果是当前登陆用户用: 1SET PASSWORD = PASSWORD("newpassword"); 撤销用户权限 123REVOKE privilege ON databasename.tablename FROM 'username'@'host';REVOKE SELECT ON *.* FROM 'pig'@'%'; 删除用户 1DROP USER 'username'@'host'; 总结 1SHOW GRANTS FOR 'pig'@'%'; 参考： 1. https://www.jianshu.com/p/d7b9c468f20d]]></content>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GitHub 下载指定文件夹]]></title>
+    <url>%2F2018%2F06%2F13%2FGitHub-%E4%B8%8B%E8%BD%BD%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6%E5%A4%B9%2F</url>
+    <content type="text"><![CDATA[Github 下载指定文件夹是很头疼的事情，下载单个文件只用点Raw就行。 知乎上讨论帖子一大堆，最终选择的方案还是 DownGit。]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[cmake]]></title>
+    <url>%2F2018%2F01%2F03%2Fcmake%2F</url>
+    <content type="text"><![CDATA[what's cmake CMakeLists.txt cmake PATH or ccmake PATH generate Makefile make example for one file In the fold Demo1 makeup CMakeLists.txt 12345678# Versioncmake_minimum_required (VERSION 2.8)# Project informationproject (Demo1)# generate objectadd_executable(Demo main.cc) complie project cmake . example for multi-files 1234567./Demo2 | +--- main.cc | +--- MathFunctions.cc | +--- MathFunctions.h 1234567891011# VERSIONcmake_minimum_required (VERSION 2.8)# Project informationproject (Demo2)# find source file save to DIR_SRCSaux_source_directory(. DIR_SRCS)# generate objectadd_executable(Demo main.cc MathFunctions.cc) # add MathFunctions.cc 1aux_source_directory(&lt;dir&gt; &lt;variable&gt;) 123456789./Demo3 | +--- main.cc | +--- math/ | +--- MathFunctions.cc | +--- MathFunctions.h 12345678910111213cmake_minimum_required (VERSION 2.8)project (Demo3)aux_source_directory(. DIR_SRCS)# add subdirectoryadd_subdirectory(math)add_executable(Demo main.cc)# add link libtarget_link_libraries(Demo MathFunctions) complile options 123456789101112131415161718192021222324cmake_minimum_required (VERSION 2.8)project (Demo4)configure_file ( &quot;$&#123;PROJECT_SOURCE_DIR&#125;/config.h.in&quot; &quot;$&#123;PROJECT_BINARY_DIR&#125;/config.h&quot; )# MathFunctionsoption (USE_MYMATH &quot;Use provided math implementation&quot; ON)# MathFunctionsif (USE_MYMATH) include_directories (&quot;$&#123;PROJECT_SOURCE_DIR&#125;/math&quot;) add_subdirectory (math) set (EXTRA_LIBS $&#123;EXTRA_LIBS&#125; MathFunctions)endif (USE_MYMATH)aux_source_directory(. DIR_SRCS)add_executable(Demo $&#123;DIR_SRCS&#125;)target_link_libraries (Demo $&#123;EXTRA_LIBS&#125;) install and test add_test support gbd 123set(CMAKE_BUILD_TYPE &quot;Debug&quot;)set(CMAKE_CXX_FLAGS_DEBUG &quot;$ENV&#123;CXXFLAGS&#125; -O0 -Wall -g -ggdb&quot;)set(CMAKE_CXX_FLAGS_RELEASE &quot;$ENV&#123;CXXFLAGS&#125; -O3 -Wall&quot;) evironment check CheckFunctionExists version 12set (Demo_VERSION_MAJOR 1)set (Demo_VERSION_MINOR 0) install package 123456include (InstallRequiredSystemLibraries)set (CPACK_RESOURCE_FILE_LICENSE &quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/License.txt&quot;)set (CPACK_PACKAGE_VERSION_MAJOR &quot;$&#123;Demo_VERSION_MAJOR&#125;&quot;)set (CPACK_PACKAGE_VERSION_MINOR &quot;$&#123;Demo_VERSION_MINOR&#125;&quot;)include (CPack) move to cmake autotools am2cmake qmake qmake converter visual studio]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Config mendeley by shadowsocks in ubuntu]]></title>
+    <url>%2F2018%2F01%2F03%2FConfig-mendeley-by-shadowsocks-in-ubuntu%2F</url>
+    <content type="text"><![CDATA[add shadowsocks-qt5 ppa source 123sudo add-apt-repository ppa:hzwhuang/ss-qt5sudo apt-get updatesudo apt-get install shadowsocks-qt5 mendeley config use default port 1080, tools-&gt;options-&gt;Connection]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[How to delete default bookmark of nautilus in ubuntu ?]]></title>
+    <url>%2F2018%2F01%2F02%2FHow-to-delete-default-bookmark-of-nautilus-in-ubuntu%2F</url>
+    <content type="text"><![CDATA[The default bookmark is built from ~/.config/user-dirs.dirs and /etc/xdg/user-dirs.defaults. So we must comment the bookmark that you want to delete in these files. Then logout and relogin.]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[OpenCV 把鼠标当画笔]]></title>
+    <url>%2F2017%2F12%2F31%2FOpenCV-%E6%8A%8A%E9%BC%A0%E6%A0%87%E5%BD%93%E7%94%BB%E7%AC%94%2F</url>
+    <content type="text"><![CDATA[cv2.setMouseCallback()]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>OpenCV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mosh, faster than ssh]]></title>
+    <url>%2F2017%2F12%2F29%2Fmosh-faster-than-ssh%2F</url>
+    <content type="text"><![CDATA[port mosh use the port of 60001, then the secend increasely. 1iptables -I INPUT -p udp --dport 60001 -j ACCEPT how to support Chinese 1234567891011sudo apt install language-pack-zh-hant language-pack-zh-hanssudo vim /etc/environmentLANG=&quot;zh_CN.UTF8&quot;LANGUAGE=&quot;zh_CN:zh:en_US:en&quot;sudo vim /etc/default/localeLANG=&quot;zh_CN.UTF-8&quot;LANGUAGE=&quot;zh_CN:zh&quot;sudo reboot]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[OpenCV 中的绘图函数]]></title>
+    <url>%2F2017%2F12%2F29%2FOpenCV-%E4%B8%AD%E7%9A%84%E7%BB%98%E5%9B%BE%E5%87%BD%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[cv2.line() cv2.circle() cv2.rectangle() cv2.ellipse() cv2.putText() 线 123456789import numpy as npimport cv2img = np.zeros((512, 512, 3))img = cv2.line(img, (0, 0), (511, 511), (255, 0, 0), 5)cv2.imshow('img', img)cv2.waitKey(0)cv2.destroyAllWindows()cv2.imwrite('line.jpg', img) 矩形 1img = cv2.rectangle(img, (384, 0), (510, 128), (0, 255, 0), 3) 圆 1img = cv2.circle(img, (447, 63), 63, (0, 0, 255), -1) 椭圆 123img = cv2.ellipse(img, (256, 256), (100, 50), 0, 0, 180, (255, 0, 0), -1)ellipse(img, center, axes, angle, startAngle, endAngle, color[, thickness[, lineType[, shift]]]) -&gt; img or ellipse(img, box, color[, thickness[, lineType]]) -&gt; img 多边形 12345pts = np.array([[10, 5], [20, 30], [70, 20], [50, 10]])pts = pts.reshape((-1, 1, 2))img = cv2.polylines(img, [pts], True, (0, 255, 255))polylines(img, pts, isClosed, color[, thickness[, lineType[, shift]]]) -&gt; img 在图片上添加文字 12font = cv2.FONT_HERSHEY_SIMPLEXcv2.putText(img, 'OpenCV', (10, 500), font, 4 ,(255, 255, 255 ), 2, cv2.LINE_AA)]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>OpenCV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Extending PyTorch]]></title>
+    <url>%2F2017%2F12%2F29%2FExtending-PyTorch%2F</url>
+    <content type="text"><![CDATA[Extending torch.autograd Adding operation to autograd requires implementing a new Function subclass ofr each operation. Every new function requires you to implement 2 methods: forward() backward() - gradient formula. It will be given as many Variable arguments as there were outputs, with each of them representing gradient w.r.t. that output. 12345678910111213141516171819# Inherit from Functionclass LinearFunction(Function): # Note that both forward and backward are @staticmethods @staticmenthod # bias is an optional argument def forward(ctx, input ,weight, bias=None): ctx.save_for_backward(input, weight, bias) output = input.mm(weight.t()) if bias is not None: output += bias.unsqueeze(0).expand_as(output) return output # This function has only a single output, so it gets only one gradient @staticmenthod def backward(ctx, grad_output): # This is a pattern that is very convenient - at the top of backward # unpack saved_tensors and initialize all gradients w.r.t. inputs to # None. Thanks to the fact that additional trailing Nones are # ignored, the return 12 Adding a Module Writing custom C exensions]]></content>
+      <tags>
+        <tag>Pytorch</tag>
+        <tag>Python</tag>
+        <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CUDA semantics]]></title>
+    <url>%2F2017%2F12%2F29%2FCUDA-semantics%2F</url>
+    <content type="text"><![CDATA[The selected device can be changed with a torch.cuda.device context manager. Cross-CPU operation are note allowed by default, with the only exception of copy_(). 1234567891011121314151617181920x = torch.cuda.FloatTensor(1)y = torch.FloatTensor(1).cuda()with torch.cuda.device(1): # allocates a tensor on GPU 1 a = torch.cuda.FloatTensor(1) # transfers a tensor from CPU to GPU 1 b = torch.FloatTensor(1).cuda() # a.get_device() = b.get_device() == 1 c = a + b # c.get_device() == 1 z = x + y # z.get_device() == 0 # even within a context, ou can give a GPU id to the .cuda call d = torch.randn(2).cuda(2) # d.get_device() == 2 Memory management empty_cache() can release all unused cached memory from Pytorch so that those can be used by other GPU applications. Best practices Device-annostic code A common pattern is to use Python's argparse module to read in user arguments, and have a flag that can be used to disable CUDA, int combination with is_available(). In the following, args.cuda results in a flag that can be used to cast tensors and modules to CUDA if desired: 1234567import argparseimport torchparser = argparse.ArgumentParser(description = 'PyTorch Example')parser.add_argument('--disable-cuda', action='store_true', help='Disable CUDA')args = parser.parse_args()args.cuda = not args.disable_cuda and torch.cuda.is_available() If modules or tensors need to be sent to the GPU, args.cuda can be used as fllows: 12345x = torch.Tensor(8, 42)net = Network()if args.cuda: x = x.cuda() net.cuda() 123dtype = torch.cuda.FloatTensorfor i, x in enumerate(train_loader): x = Variable(x.type(dtype)) CUDA_VISIBLE_DEVICES and torch.cuda.device 12345print("Outside device is 0") # On device 0 (default in most scenarios)with torch.cuda.device(1): print("inside device is 1") # on device 1print("Outside device is still 0") # On device 0 1234567x_cpu = torch.FloatTensor(1)x_gpu = torch.cuda.FloatTensor(1)x_cpu_long = torch.LongTensor(1)y_cpu = x_cpu.new(8, 10, 10).fill_(0.3)y_gpu = x_gpu.new(x_gpu.size()).fill_(-5)y_cpu_long = x_cpu_long.new([[1, 2, 3]]) 12345x_cpu = torch.FloatTensor(1)x_gpu = torch.cuda.FloatTensor(1)y_cpu = torch.ones_lick(x_cpu)y_gpu = torch.zeros_like(x_gpu) Use pinned memory buffers pin_memory() cuda(async = True) pin_memory = True Use nn.DataParallel instead of multiprocessing]]></content>
+      <tags>
+        <tag>Pytorch</tag>
+        <tag>Python</tag>
+        <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Broadcasting semantics]]></title>
+    <url>%2F2017%2F12%2F28%2FBroadcasting-semantics%2F</url>
+    <content type="text"><![CDATA[General semantics Each tensor has at least one dimension. When iterating over the dimension sizes, starting at the trailing dimension, the dimension size must either be equal, one of them is 1, or one of them does exist. 12345678910111213141516x = torch.FloatTensor(5, 7, 3)y = torch.FloatTensor(5, 7, 3)# same shapes are always broadcastablex = torch.FloatTensor(5, 3, 4, 1)y = torch.FloatTensor( 3, 1, 1)# x and y are broadcastable# 1st trailing dimension: both have size 1# 2nd trailing dimension: y has size 1# 3rd trailing dimension: x size == y size# 4th trailing dimension: y dimension doesn't exist# butx = torch.FloatTensor(5, 2, 4, 1)y = torch.FloatTensor( 3, 1, 1)# x and y are not broadcastable, because in the 3rd trailing dimension 2 != 3 1234567891011121314x = torch.FloatTensor(5, 1, 4, 1)y = torch.FloatTensor( 3, 1, 1)(x+y).size()torch.Size([5, 3, 4, 1])# but not necesary:x = torch.FloatTensor(1)y = torch.FloatTensor(3, 1, 7)(x+y).size()torch.Size([3, 1, 7])x = torch.FloatTensor(5, 2, 4, 1)y = torch.FloatTensor(3, 1, 1)(x+y).size() In-place sementics 12345678x = torch.FloatTensor(5, 3, 4, 1)y = torch.FloatTensor(3, 1, 1)(x.add_(y)).size()# butx = torch.FloatTensor(1, 3, 1)y = torch.FloatTensor(3, 1, 7)(x.add_(y)).size() Backwards compatibility 1torch.add(torch.ones(4, 1), torch.randn(4)) 1torch.utils.backcompat.broadcast_warning.enabled=True]]></content>
+      <tags>
+        <tag>Pytorch</tag>
+        <tag>Python</tag>
+        <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Autograd mechanics]]></title>
+    <url>%2F2017%2F12%2F28%2FAutograd-mechanics%2F</url>
+    <content type="text"><![CDATA[Excluding subgraphs from backward Every Variable has two flags: requires_grad and volatile. requires_grad If there's a single input to an operation that requires gradient, its output will also require gradient. 1234567x = Variable(torch.randn(5, 5))y = Variable(torch.randn(5, 5))y = Variable(torch.randn(5, 5), requires_grad = True)a = x + ya.requires_grad # Falseb = a + zb.requires_grad # True 123456model = torchvision.models.resnet18(pretrain=True)for param in model.parameters(): param.requires_grad = Falsemodel.fc = nn.Linear(512, 100)optim.SGD(model.fc.parameters(), lr=1e-2, momentum=0.9) volatile Volatile is recommended for purely inference mode, when you're sure you won't be even calling .backward(). volatile also determines that requires_grad is False. If there's even a single volatile input to an operation, its output is also going to be volatile. 123456789regular_input = Variable(torch.randn(1, 3, 277, 277))volatile_input = Variable(torch.randn(1, 3, 277, 277))model = torchvision.models.resnet18(pretrain=True)model(regular_input).requires_grad # Truemodel(volatile).requires_grad # Falsemodel(volatile_input).volatile # Truemodel(volatile_input)grad_fn is None # True How autograd encodes the history In-place operations on Variables In-place correctness checks]]></content>
+      <tags>
+        <tag>Pytorch</tag>
+        <tag>Python</tag>
+        <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Pytorch Content]]></title>
+    <url>%2F2017%2F12%2F28%2FPytorch-Content%2F</url>
+    <content type="text"><![CDATA[Notes Autograd mechanics Broadcasting semantics CUDA semantics Extending PyTorch Multiprocessing best practices Serialization semantics Package Reference torch torch.Tensor torch.sparse torch.Storage torch.nn torch.nn.functional torch.nn.init torch.optim torch.autograd torch.distributions torch.multiprocessing torch.distributed torch.legacy torch.cuda torch.utils.ffi torch.utils.data torch.utils.model_zoo torch.onnx torchvision Reference torchvision torchvision.datasets torchvision.models torchvision.transforms torchvision.utils Indices and tables Index Module Index]]></content>
+      <tags>
+        <tag>Pytorch</tag>
+        <tag>Python</tag>
+        <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Oracle 中数值型及处理方法]]></title>
+    <url>%2F2017%2F12%2F27%2FOracle-%E4%B8%AD%E6%95%B0%E5%80%BC%E5%9E%8B%E5%8F%8A%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[数值型 1number[(precision [, scale])] precision, 数值精度 scale,小数点后位数 数值处理 abs() round() ceil() floor() mod() sign() sqrt() power() trunc() chr() to_char()]]></content>
+      <tags>
+        <tag>Oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Oracle 中的字符型及处理方法]]></title>
+    <url>%2F2017%2F12%2F27%2FOracle-%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E5%9E%8B%E5%8F%8A%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[字符型简介 固定长度字符串char(n) 利用空格在右端补齐，限长2000 varchar(n) 限长4000 varchar2(n) 推荐 字符型分析 char(n)不适用与声明变量。 字符型处理 向左补全字符串——lpad函数 123lpad(string, padded_length, [pad_string])lpad(&apos;1&apos;, 4, &apos;0&apos;) 向右补全字符串——lpad函数 返回字符串的小写形式——lower()函数 1where lower(username) = &apos;system&apos;; 返回字符串的大写形式——upper()函数 单词首字符大写——initcap()函数 返回字符串长度——length()函数 截取字符串——substr()函数 1substr(string, start_index, length) instr ltrim rtrim trim concat translate reverse]]></content>
+      <tags>
+        <tag>Oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Oracle SQL 更新数据]]></title>
+    <url>%2F2017%2F12%2F27%2FOracle-SQL-%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE%2F</url>
+    <content type="text"><![CDATA[insert 12insert into 表名(列名)values(值); 12insert into 表名(列名)select update 123update 表名set 列 = 新值where ; delete 1delete from 表名; -- DML 1truncate table students; -- DDL，无法回滚]]></content>
+      <tags>
+        <tag>Oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Oracle SQL 查询]]></title>
+    <url>%2F2017%2F12%2F27%2FOracle-SQL-%E6%9F%A5%E8%AF%A2%2F</url>
+    <content type="text"><![CDATA[基本查询 123456selectwheredistinctgroup byhavingorder by order by和distinct一起使用时，order by 子句所指定的排列，必须出现在select表达式中。 子查询 123456select *from employeeswhere employee_id in ( select employee_id from salary ); 12345create table tmp_user_objectsasselect *from tmp_user_objectswhere 1 &lt;&gt; 1; 1234insert into tmp_user_objectsselect *from user_objectswhere object_type = &apos;TABLE&apos;; 联合语句 union union all: 并不剔除重复数据 intersect minus 连接 自然连接 123select *from employeesnatural join salary; -- 两表都含有 employee_id 列 自然连接必须使用同名列 所有同名列都将作为搜寻条件 内连接 1234select e.employee_id, e.employee_name, s.month, s.salaryfrom employees as ejoin salary son e.employee_id = s.employee_id; 外连接 12345678select e.employee_id, e.employee_name, s.month, s.salaryfrom employees eleft join salary son e.employee_id = s.employee_id;select e.employee_id, e.employee_name, s.month, s.salaryfrom employees e, salary swhere e.employee_id = s.employee_id(+); -- salary 为附属表 完全连接 1234select e.employee_id, e.employee_name, s.month, s.salaryfrom employees efull join salary son e.employee_id = s.employee_id; 层次化查询 1234select col1, col2from tablestart with conditionconnect by condition; 1234select marker_id, marker_namefrom markerstart with marker_name = &apos;亚洲&apos;connect by prior marker_id = parent_market_id; -- prior 指前一条记录 sys_connect_by_path(列名, 分隔符)]]></content>
+      <tags>
+        <tag>Oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Oracle 数据库与数据表]]></title>
+    <url>%2F2017%2F12%2F27%2FOracle-%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[配置/管理 Oracle 数据库 sqlplus 利用 sqlplus 登录数据库 1sqlplus username/password@ netservicename 查看数据库参数 1show parameter instance_name; 关闭/启动数据库 123sqlplus /@tst as sysdba;shutdown immediate;startup; 修改系统参数 12show parameter recovery;alter system set db_recovery_file_dest_size=5 scope=both; 表空间 创建表空间 12345create tablespace testdatefile 'E:\database\data.dbf'size 20Mautoextend on next 5M -- optionalmaxsize 500M; -- optional test :表空间名称 123select tablespace, file_namefrom dab_data_fileorder by file_name; 表空间的使用 SYSTEM USERS sys和system 普通用户 利用alter database修改数据库的默认表空间 12alter databasedefault tablespace test; 表空间的重命名及删除 12alter tablespace testrename to test_data; 12drop tablespace test_dataincluding contents and datafiles; Oracle 数据表 创建 Oracle 数据表 1234create table 表名 ( 列 数据类型,...) tablespace 表空间; 1describe student; 数据表的相关操作 1234567891011121314-- 增加列alter table studentadd (class_id number);-- 修改数据类型alter table studentmodify (class_id varchar2(20));-- 删除列alter table studentdrop column class_id;alter table studentrename column student_id to id; 将表student转移到表空间users中 12alter table studentmove tablespace users; 删除数据表 1drop table student; 特殊的数据表dual 123456select sysdatafrom dual;select 5*4+7 resultfrom dual;]]></content>
+      <tags>
+        <tag>Oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[OpenCV: 4 图片]]></title>
+    <url>%2F2017%2F12%2F26%2FOpenCV-4-%E5%9B%BE%E7%89%87%2F</url>
+    <content type="text"><![CDATA[cv2.imread() cv2.imshow() cv2.imwrite() 读入图片 cv2.imread() cv2.IMREAD_COLOR cv2.IMREAD_GRAYSCALE 显示图片 cv2.waitKey() cv2.destroyAllWindows() 保存图片 cv2.imwrite('example.png', img) 123456789101112#!/usr/bin/env python3# coding: utf-8import numpy as npimport cv2img = cv2.imread('example.jpg', 0)cv2.imshow('image',img)cv2.waitKey(0)# 64 bit os# cv2.waitKey(0)&amp;0xFFcv2.destroyAllWindows()]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>OpenCV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[OpenCV Content]]></title>
+    <url>%2F2017%2F12%2F26%2FOpenCV-Content%2F</url>
+    <content type="text"><![CDATA[一、安装 走进 OpenCV Ubuntu 二、OpenCV 中的 GUI 特性 图片 视频 OpenCV中的绘图函数 把鼠标当画笔 用滑动条作调色板 三、核心操作 图像的基础操作 图像上的算术运算 程序性能检测及优化 四、OpenCV 的图像处理 颜色空间转换 几何变换 图像阈值 图像平滑 形态学转换 图像梯度 Canny 边缘检测 图像金字塔 OpenCV 中的轮廓 直方图 图像变换 模板匹配 Hough 直线变换 Hough 圆环变换 分水岭算法图像分割 使用 GrabCut算法进行交互式前景提取 五、图像特征提取与描述 理解图像特征 Harris 角点检测 Shi-Tomasi 角点检测 &amp; 适合于跟踪的图像特征 介绍SIFT(Scale-Invariant Feature Transform) 介绍SURF(Speeded-UP Robust Features) 角点检测的 FAST 算法 BRIEF(Binary Robust Independent Elementary Features) ORB(Oriented FAST and Rotated BRIEF) 特征匹配 使用特征匹配和单应性查找对象]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>OpenCV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[RUC Linux Mirror]]></title>
+    <url>%2F2017%2F12%2F24%2FRUC-Linux-Mirror%2F</url>
+    <content type="text"><![CDATA[The Project will start at January 6th.]]></content>
+      <tags>
+        <tag>RUC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Graph]]></title>
+    <url>%2F2017%2F12%2F21%2FGraph%2F</url>
+    <content type="text"><![CDATA[123456struct MGraph &#123; int vexs[MAX]; int edges[MAX][MAX]; int vexnum, arcnum;&#125;; 1234567891011121314struct ArchNode &#123; int adjvex; struct ArchNode *nextarc;&#125;;typdef struct VNode &#123; int data; ArchNode *firstarc;&#125;VNode, AdjList[MAX];struct ALGraph &#123; AdjList adjlist; int vexnum, arcnum;&#125;;]]></content>
+      <tags>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Tree]]></title>
+    <url>%2F2017%2F12%2F21%2FTree%2F</url>
+    <content type="text"><![CDATA[Binary Tree core 1234typedef struct BiTNode &#123; int data; struct BiTNode *lchild, *rchild;&#125; BiTNode, *BiTree; methods 1234void PreOrder(BiTree b);void InOrder(BiTree b);void PostOrder(BiTree b);void LevelOrder(BiTree b); Thread Binary Tree core 123456enum PointerTag &#123;Link, Thread&#125;;typedef struct BiThrNode &#123; int data; struct BiThrNode *lchild, *rchild; PointerTag LTag, RTag;&#125;;]]></content>
+      <tags>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Stack, Queue and Array]]></title>
+    <url>%2F2017%2F12%2F21%2FStack-Queue-and-Array%2F</url>
+    <content type="text"><![CDATA[1234567struct SqStack &#123; int elem[MAX]; int top;&#125;;Push: elem[++top] = e;Pop : e = elem[top--]; 12345678struct SqStack &#123; int *base; int *top; int stacksize;&#125;;Push: *top++ = e;Pop : e = *--top; 1234567struct SeQueue &#123; int data[MAX]; int rear, front;&#125;;EnQueue: sq-data[++sq-&gt;rear] = x;DeQueue: x = sq-&gt;data[++sq-&gt;front];]]></content>
+      <tags>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LNode]]></title>
+    <url>%2F2017%2F12%2F21%2FLNode%2F</url>
+    <content type="text"><![CDATA[core 1234typedef struct LNode &#123; int data; struct LNode *next;&#125;LNode, *LinkList; methods 123456LinkList CreateListFirst(LinkList &amp;L, int a[], int n);LinkList CreateListLast(LinkList &amp;L, int a[], int n);int LengthList(LinkList L);LNode *GetLinkList(LinkList L, int i);LNode *LocateLinkList(LinkList L, int x); 123456789101112LinkList CreateListFirst(LinkList &amp;L, int a[], int n)&#123; L = (LinkList)malloc(sizeof(LNode)); L-&gt;next = NULL; for (int i = 0; i &lt; n; i++) &#123; LNode *s = (LNode *s)malloc(sizeof(LNode)); s-&gt;data = a[i]; s-&gt;next = L-&gt;next; L-&gt;next = s; &#125;&#125; 1234567891011121314LinkList CreateListLast(LinkList &amp;L, int a[], int n)&#123; L = (LinkList)malloc(sizeof(LNode)); L-&gt;next = NULL; LNode *r = L; for (int i = 0; i &lt; n; i++) &#123; s = (LNode *)malloc(sizeof(LNode)); s-&gt;data = a[i]; r-&gt;next = s; r = s; &#125; r-&gt;next = NULL;&#125; 1234567891011int LengthList(LinkList L)&#123; LNode *p = L; int j = 0; while (p-&gt;next) &#123; p = p-&gt;next; j++; &#125; return j;&#125; 123456LNode *GetLinkList(LinkList L, int i); while (p-&gt;next != NULL &amp;&amp; j &lt; i)LNode *LocateLinkList(LinkList L, int x) p = L-&gt;next; while (p != NULL &amp;&amp; p-&gt;data != x) 1234567891011121314Insert *s after *p s-&gt;next = p-&gt;next; p-&gt;next = s;Insert *s before *p q = L; while (q-&gt;next != p) q = q-&gt;next; s-&gt;next = q-&gt;next; q-&gt;next = s;delete *p q-&gt;next = p-&gt;next; free(p);]]></content>
+      <tags>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[RUC thesis template]]></title>
+    <url>%2F2017%2F12%2F20%2FRUC-thesis-template%2F</url>
+    <content type="text"><![CDATA[RUC thesis template for \(\LaTeX\) is published in here. Don't panic! It's easy to use, just following the flow in README.]]></content>
+      <tags>
+        <tag>RUC</tag>
+        <tag>LaTeX</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Sequence]]></title>
+    <url>%2F2017%2F12%2F03%2FSequence%2F</url>
+    <content type="text"><![CDATA[Sequence Sequence iterable objects visited through index __len__() len() Sequence's basic operation Sequence objects have a method named __getitem__(self, key), so it can be visited by s[i]. 12b = b&apos;ABCDEFG&apos;b[0] ==&gt; 65 slice The basic form of slice is s[i:j] and s[i:j:k]. slice object is used to save index information of slice, such as slice(start, stop, step). slice object has attributes such as '.start', '.stop' and '.step', method such as 'indice(len)' which return a tuple. 123456789s[::-1] ==&gt; &apos;fedcba&apos;b[0:1] ==&gt; b&apos;A&apos;b[0:len(b)] ==&gt; b&apos;ABCDEF&apos;slice_obj = slice(1, len(s), 2)s[slice_obj]==&gt; &apos;bdf&apos;slice_obj.indices(4) 123s1 + s2s1 += s2s2 *= 2 Judge a object wehther or not exist in sequence s. 1234x in sx not in ss.count(x)s.index(value[, start [, stop]]) 12sorted(iterable, key = None, reverse = False)key = str.lower 1234len()max()min()sum() 12all(iterable)any(iterable) sequence unpacking 12a, b = (1, 2)sid, name, (chinese, math, english) = data tuple variable * assign a number of variable to a tuple variable 1first, *middles, last = range(10) temporary variable_ obtain partial data 1_, b, _ = (1, 2, 3) tuple define a tuple x1, [x2, ..., xn] (x1, [x2, ..., xn]) tuple() tuple(iterable) (1,) list define a list [x1, [x2, ..., xn]] list() list(iterable) basic operations del s[index] s[i:j] = x dd s[i:j], equal as s[i:j] = [] s[i:j] = [] list's methods s.append(x) s.clear() s.copy() s.extend(t) s.insert(i, x) s.pop() s.remove(x) s.reverse() s.sort() list comprehension 123[i**2 for i in range(10)][i for i in range(10) if i%2 == 0][(x, y, x*y) for x in range(1, 4) for y in range(1, 4) if x&gt;= y] string 12ord(&apos;A&apos;) ==&gt; unicodechr(65) ==&gt; char 12345678str.strip()str.lstrip()str.rstrip()str.zfill(width)str.center()str.ljust()str.rjust()str.expandtabs() 12345678910test, find and replacestr.startwith()str.endwith()str.count()str.index()str.rindex()str.find()str.rfind()str.replace() 123456str.split() ==&gt; liststr.rsplit()str.partition(seq) ==&gt; (left, seq, right)str.rpartition(seq)str.splitlines() ==&gt; liststr.join() ==&gt; string 12str.maketrans()str.translate() 12b.decode(encoding, errors)s.encode(encoding = &apos;utf-8&apos;, errors = &apos;strict&apos;) NOT SUGGESTING 1string % (values) 1&apos;%(lang)s has %(num)03d quote types.&apos; % &#123;&apos;lang&apos;:Python, &apos;num&apos;:2&#125; bytes and bytearray bytes bytearray memoryview 1b = s.encode()]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Numpy Note 2]]></title>
+    <url>%2F2017%2F12%2F02%2FNumpy-Note-2%2F</url>
+    <content type="text"><![CDATA[Ndarray object's internal principle a pointer to array dtype shape (tuple) stride np.ones((3, 4, 5), dtype = np.float64).stride Advanced array operation Broadcasting Ufunc advanced application Struction and record array More array Matrix class Input and output of advanced array Performance]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>Numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Network Segment]]></title>
+    <url>%2F2017%2F12%2F02%2FNetwork-Segment%2F</url>
+    <content type="text"><![CDATA[A example of network 12345678class Network(object): def __init__(self, *arg, **kwargs): # .. yada yada, initialize weight and biases def feedforward(self, a): for b, w in zip(self.biases, self.weights): a = sigmoid(np.dot(w, a) + b) return a]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Numpy Note 1]]></title>
+    <url>%2F2017%2F12%2F01%2FNumpy-Note-1%2F</url>
+    <content type="text"><![CDATA[Numpy is the fundamental package for scientific computing with Python. It contains among other things: a powerful N-dimensional array object sophisticated (broadcasting) functions tools for interating C/C++ and Fortran code useful linear algebra, Fourier transform, and random number capabilities 12345678910array(ndarray) - ndim - shape - dtype - reshape() - ones - zeros - empty - eye 1234567arrage arr.astype(np.float64) arr[5:8].copt() axis 0 -- row axis 1 -- col 12345bool indexing names = np.array([&apos;Bob&apos;, &apos;Joe&apos;, &apos;Will&apos;, &apos;Bob&apos;, &apos;Will&apos;, &apos;Joe&apos;, &apos;Joe&apos;]) names == &apos;Bob&apos; data[names==&apos;Bob&apos;] 12345678fancy indexing arr[[4, 3, 0, 6]] CAUTIOUS: select(arr[][], arr[][], arr[][]) arr[np.ix_([1, 5, 7, 2], [0, 3, 1, 2])] arr[[1, 5, 7, 2]][:, [0, 3, 1, 2]] 12345transpose - arr.T - arr.transpose((1, 0, 2)) - arr.swapaxes(1, 2) 123456789ufunc - np.sqrt(arr) - sqrt - exp - abs - np.maximum(x, y) - np.modf(arr) 1234567array deal data np.meshgrid() points = np.arrange(-5, 5, 1) xs, ys = np.meshgrid(points, points) z = np.sqrt(xs**2, + ys**2) plt.imshow(z, cmap=plt.cm.gray);plt.colorbar() 12345678910111213conditional logic as array operation xarr = np.array([1.1, 1.2, 1.3, 1.4, 1.5]) yarr = np.array([2.1, 2.2, 2.3, 2.4, 2.5]) cond = np.array([True, False, True, True, False]) result = [(x if c else y) for x, y, z in zip(xarr, yarr, cond)] result = np.where([cond, arr, yarr]) arr = randn(4, 4) np.where(arr &gt; 0, 2, -2) np.where(arr &gt; 0, 2, arr) 123456789statistical methods arr.mean() np.mean(arr) arr.mean(axis = 1) arr.sum(0) arr.cumsum(0) arr.cumprod(0) 123456boolean array&apos;s methods (arr &gt; 0).sum bools.any() bools.all() 1234sort arr.sort() arr.sort(1) 1234unique np.unique(names) np.in1d(values, [2, 3, 6]) 1234567save the array in binary format np.save(&apos;some_array&apos;, arr) np.savez(&apos;array_archive.npz&apos;, a = arr, b = arr) np.load(&apos;some_array.npy&apos;) np.loadtxt(&apos;array_ex.txt&apos;, delimiter = &apos;,&apos;) 12345678linear algebra x.dot(y) np.dot(x, y) mat = x.T.dot(y) inv(mat) q, r = qt(mat) 12345random number np.random samples = np.random.normal(size = (4, 4))]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>Numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Elo Rating System]]></title>
+    <url>%2F2017%2F11%2F14%2FElo-Rating-System%2F</url>
+    <content type="text"><![CDATA[If Player \(A\) has a rating of \(R_{A}\) and Player \(B\) a rating of \(R_{B}\), the exact formula (using the logistic curve) for the expected score of Player \(A\) is \[ E_A = \frac{1}{1+10^{\frac{R_B-R_A}{400}}} \] Similarly the expected score for Player \(B\) is \[ E_B = \frac{1}{1+10^{\frac{R_A-R_B}{400}}} \] This could also be expressed by \[ E_A = \frac{Q_A}{Q_A + Q_B} \] \[ E_B = \frac{Q_B}{Q_A + Q_B} \] where \(Q_A = 10^{\tfrac{R_A}{400}}\) and \(Q_B = 10^{\tfrac{R_B}{400}}\) Supposing Player \(A\) was expected to score \(E_{A}\) points but actually scored \(S_{A}\) points. The formula for updating their rating is \[ R_{A}^{\prime }=R_{A}+K(S_{A}-E_{A}) \]]]></content>
+      <tags>
+        <tag>Math</tag>
+      </tags>
+  </entry>
+</search>
