@@ -207,7 +207,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[高祖功臣侯者年表：绛侯周勃世家]]></title>
+    <title><![CDATA[高祖功臣侯者年表：绛侯周勃世家——DCN]]></title>
     <url>%2F2019%2F06%2F21%2F%E9%AB%98%E7%A5%96%E5%8A%9F%E8%87%A3%E4%BE%AF%E8%80%85%E5%B9%B4%E8%A1%A8%EF%BC%9A%E7%BB%9B%E4%BE%AF%E5%91%A8%E5%8B%83%E4%B8%96%E5%AE%B6%2F</url>
     <content type="text"><![CDATA[嵌入和堆叠层 \[ x_{e m b e d, i}=W_{e m b e d, i} x_{i} \] 交叉网络 \[ x_{l+1}=x_{0} x_{l}^{T} w_{l}+b_{l}+x_{l}=f\left(x_{l}, w_{l}, b_{l}\right)+x_{l} \]]]></content>
       <tags>
