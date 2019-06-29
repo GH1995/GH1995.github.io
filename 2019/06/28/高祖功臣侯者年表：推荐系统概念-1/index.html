@@ -127,13 +127,11 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQMzx1.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQQ9r6.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQQCqK.jpg">
-<meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQQTWd.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQQHSA.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQQqyt.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQQLOP.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQQjw8.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQliyq.jpg">
-<meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQlAmV.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQlVTU.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQlekF.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQlnfJ.jpg">
@@ -142,8 +140,10 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQdtSK.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQdoYq.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQdLXF.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/30/Zl0RAJ.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/30/Zl0491.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQdXm4.jpg">
-<meta property="og:updated_time" content="2019-06-29T08:44:17.950Z">
+<meta property="og:updated_time" content="2019-06-29T16:40:25.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高祖功臣侯者年表：推荐系统概念(1)">
 <meta name="twitter:description" content="这篇文章是个总结，基于我在微博的工作和张俊林老师的演讲。个人以为微博的推荐在国内算是一个典型的应用。 我对于推荐系统也是刚刚入门的状态，文章有讲的不对的地方，敬请指正。 推荐系统架构 常见推荐场景  关系流 Feed 排序 热门流个性化排序 正文页推荐   推荐系统架构：简化版  分为两个部分，上面的是在线推荐部分，下面的是离线部分。离线部分又分为两层，一层是模型层，另一层是存储层。模型层负责离线">
@@ -474,7 +474,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-29 16:44:17" itemprop="dateModified" datetime="2019-06-29T16:44:17+08:00">2019-06-29</time>
+                <time title="Modified: 2019-06-30 00:40:25" itemprop="dateModified" datetime="2019-06-30T00:40:25+08:00">2019-06-30</time>
               
             
           </span>
@@ -601,39 +601,96 @@
 <img src="https://s2.ax1x.com/2019/06/29/ZQM0Cd.jpg" alt="模型演化路线"><figcaption>模型演化路线</figcaption>
 </figure>
 <h3 id="传统模型线性排序模型">传统模型：线性排序模型</h3>
-<p><img src="https://s2.ax1x.com/2019/06/29/ZQMyKP.jpg" alt="LR"> #### FM <img src="https://s2.ax1x.com/2019/06/29/ZQM2VS.jpg" alt="SVM"> <img src="https://s2.ax1x.com/2019/06/29/ZQMW5Q.jpg" alt="FM"> <img src="https://s2.ax1x.com/2019/06/29/ZQMx2R.jpg" alt="FM"></p>
-<h4 id="ffm">FFM</h4>
-<p><img src="https://s2.ax1x.com/2019/06/29/ZQMzx1.jpg" alt="FFM"> <img src="https://s2.ax1x.com/2019/06/29/ZQQ9r6.jpg" alt="FFM"> <img src="https://s2.ax1x.com/2019/06/29/ZQQCqK.jpg" alt="FFM"></p>
-<p><img src="https://s2.ax1x.com/2019/06/29/ZQQTWd.jpg" alt="bi-FFM"> <img src="https://s2.ax1x.com/2019/06/29/ZQQHSA.jpg" alt="bi-FFM"> <img src="https://s2.ax1x.com/2019/06/29/ZQQqyt.jpg" alt="bi-FFM"> <img src="https://s2.ax1x.com/2019/06/29/ZQQLOP.jpg" alt="bi-FFM"></p>
 <figure>
-<img src="https://s2.ax1x.com/2019/06/29/ZQQjw8.jpg" alt="新增参数量"><figcaption>新增参数量</figcaption>
+<img src="https://s2.ax1x.com/2019/06/29/ZQMyKP.jpg" alt="线性模型：思路及问题"><figcaption>线性模型：思路及问题</figcaption>
+</figure>
+<p>特征组合要怎么组合？任意两个特征的组合，可以把一个特征组合当作一个新特征，但既然它是新特征，它也要学个权重，下图公式中标红的 <span class="math inline">\(w_{i,j}\)</span> 就是这个特征组合的权重。</p>
+<h4 id="fm">FM</h4>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQM2VS.jpg" alt="线性模型改进：加入特征组合"><figcaption>线性模型改进：加入特征组合</figcaption>
+</figure>
+<p>上面模型的问题是特征组合的泛化能力弱，于是我们可以进一步对它进行如下修改。</p>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQMW5Q.jpg" alt="FM 模型"><figcaption>FM 模型</figcaption>
+</figure>
+<p>我们把 <span class="math inline">\(w_{i,j}\)</span> 换成 <span class="math inline">\(v_i\)</span> 和 <span class="math inline">\(v_j\)</span> 的点积</p>
+<p><span class="math inline">\(v_i\)</span> 和 <span class="math inline">\(v_j\)</span> 又是什么含义呢？ <span class="math inline">\(v_i\)</span> 的意思是：对于 <span class="math inline">\(x_i\)</span> 这个特征来说它会学到一个 <span class="math inline">\(k\)</span> 维的 embedding 向量，特征组合权重是通过两个单特征各自的 embedding 的内积呈现的，因为它内积完就是个数值，可以代表它的权重，这其实就是 FM 模型。</p>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQMx2R.jpg" alt="FM 模型"><figcaption>FM 模型</figcaption>
+</figure>
+<p>SVM泛化能力弱，FM的泛化能力强。</p>
+<h4 id="ffm">FFM</h4>
+<p>FFM 效果比FM好，但是问题在于，参数量太大。</p>
+<p><img src="https://s2.ax1x.com/2019/06/29/ZQMzx1.jpg" alt="FFM 模型：基本思想"> <img src="https://s2.ax1x.com/2019/06/29/ZQQ9r6.jpg" alt="FFM 模型"></p>
+<p>FFM 是 FM 的一个特例，它更细致地刻画了这个特征。首先它做了任意两个特征组合，但是区别在于，怎么刻划这个特征？ FM 只有一个向量，但 FFM 现在有两个向量，也就意味着同一个特征，要和不同的 fields 进行组合的时候，会用不同的 embedding 去组合，它的参数量更多。对于一个特征来说，原先是一个 vector，现在会拓成 F 个 vector，F 是特征 fields 的个数，只要有跟其它特征的任意组合，就有一个 vector 来代表，这就是FFM的基本思想。</p>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQQCqK.jpg" alt="FFM"><figcaption>FFM</figcaption>
+</figure>
+<p>对于 FFM 的某个特征来说，会构造 F 个 vector ，来和任意其他的 fields 组合的时候，各自用各自的。它有什么特点呢？首先， FFM 相对 FM 来说，参数量扩大了 F 倍，效果比 FM 好，但是要真的想把它用到现实场景中是有问题的，而问题同样在于参数量太大。参数量太大导致做起来特别耗内存，特别慢，所以我们的改进目标是把 FFM 模型的参数量降下来，并且效果又能达到 FFM 的效果。于是我们改了一个新模型，我把它叫<strong>双线性FFM模型</strong>。</p>
+<blockquote>
+<p>注意这里是针对某个特征，构造 F 个 vector，<span class="math inline">\(v_{i,j}\)</span> 和任意其他的 fields 组合的时候有不同的妙用 不是直接分为 F 个域分别 embedding 这里可以参考美团的<a href="https://tech.meituan.com/2016/03/03/deep-understanding-of-ffm-principles-and-practices.html" target="_blank" rel="noopener">这篇文章</a></p>
+</blockquote>
+<h4 id="双线性-ffm-模型">双线性 FFM 模型</h4>
+<blockquote>
+<p>因为每个特征现在有 F 个 vector 来表示它的参数空间，每个特征都需要跟上 F 个 vector ，一般 CTR 任务中的特征数量是非常大的，所以 FFM 的参数量就异常地大。能不能把跟每个特征走的参数矩阵，抽出它们的共性，所有特征大家一起共享地来用这个参数？如果你一起用的话，就能够共享这个参数矩阵，你就能把参数量降下来，这就是我们讲的双线性 FFM 的核心思想。<strong><span class="math inline">\(v_i, v_j\)</span>还是跟 FM 一样，还是用一个 vector 来表达，但是把两个特征交互的信息放在共享参数里面去学，这就是双线性 FFM 的核心思想。</strong></p>
+</blockquote>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQQHSA.jpg" alt="双线性 FFM 模型：基本思路"><figcaption>双线性 FFM 模型：基本思路</figcaption>
+</figure>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQQqyt.jpg" alt="双线性 FFM 模型：3 个 W"><figcaption>双线性 FFM 模型：3 个 W</figcaption>
+</figure>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQQLOP.jpg" alt="双线性 FFM 模型：效果对比"><figcaption>双线性 FFM 模型：效果对比</figcaption>
+</figure>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQQjw8.jpg" alt="双线性模型：新增参数量对比"><figcaption>双线性模型：新增参数量对比</figcaption>
 </figure>
 <figure>
 <img src="https://s2.ax1x.com/2019/06/29/ZQliyq.jpg" alt="总结"><figcaption>总结</figcaption>
 </figure>
+<p>我们来估算一下，改进的双线性 FFM 模型，它的参数量跟 FFM 比是什么情况？如果说我们用Criteo这个4500万的数据集，它有230万个特征，39个Fields，假设embedding size是10，如果用FFM就会有8.97亿的参数量，而用双线性FFM，FM部分是大概2300万的参数，刚才三个改进模型中，类型一100个参数，类型二3900个参数，类型三15万参数，与FFM相比，参数差了38倍，但性能两者是相当的，这就是这个模型的价值所在。</p>
 <h3 id="深度模型">深度模型</h3>
 <figure>
-<img src="https://s2.ax1x.com/2019/06/29/ZQlAmV.jpg" alt="深度模型"><figcaption>深度模型</figcaption>
+<img src="https://s2.ax1x.com/2019/06/29/ZQlVTU.jpg" alt="DNN"><figcaption>DNN</figcaption>
 </figure>
+<p>所有的深度学习，做 CTR 的模型时都会有 DNN 的部分，没有例外。什么含义呢？特征输进去，然后把它转换成 embedding ，上面套两个隐层进行预测，这是所有模型公有的一部分。</p>
 <figure>
-<img src="https://s2.ax1x.com/2019/06/29/ZQlVTU.jpg" alt="ZQlVTU.jpg"><figcaption>ZQlVTU.jpg</figcaption>
+<img src="https://s2.ax1x.com/2019/06/29/ZQlekF.jpg" alt="并行结构"><figcaption>并行结构</figcaption>
 </figure>
-<p><img src="https://s2.ax1x.com/2019/06/29/ZQlekF.jpg" alt="ZQlekF.jpg"> <img src="https://s2.ax1x.com/2019/06/29/ZQlnfJ.jpg" alt="ZQlnfJ.jpg"></p>
-<p>第一条路线，提出新型的FM Function，就是怎么能够设计一个新的FM Function结构，来更有效地捕获二阶特征组合，比如说典型的模型包括Wide&amp;Deep，DeepFM，NeuralFFM等，就是用来做这个的。</p>
-<p><img src="https://s2.ax1x.com/2019/06/29/ZQllOx.jpg" alt="ZQllOx.jpg"> 第二条演进路线，就是显式地对二阶、三阶、四阶···K阶组合进行建模。目前的研究结论是这样的：对CTR捕获二、三、四阶都有正向收益，再捕获五阶以上就没什么用了。典型的代表模型是DeepCross、xDeepFM。</p>
+<p>我把现在这个深度 CTR 模型会分成了两大类。从结构来说，第一类我把它叫并行结构，它有 DNN 结构外的另外一个组件，我管它叫 FM Function，它捕捉特征的两两组合，两者关系看上去是个并行的，所以我把它叫并行结构。</p>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQlnfJ.jpg" alt="串行结构"><figcaption>串行结构</figcaption>
+</figure>
+<p>除了并行还能怎么修改这个结构？可以把它搞成串行的，前面一样是 onehot 到 embedding 特征编码，然后用 FM Function 做二阶特征组合，上面套两个隐层做多阶特征捕获，这是串行结构。典型的模型包括：PNN、NFM、AFM都属于这种结构。</p>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQllOx.jpg" alt="深度排序模型的两条演进路线"><figcaption>深度排序模型的两条演进路线</figcaption>
+</figure>
+<p>第一条路线，提出新型的<strong>FM Function</strong>，就是怎么能够设计一个新的FM Function结构，来更有效地<strong>捕获二阶特征组合</strong>，比如说典型的模型包括Wide&amp;Deep，DeepFM，NeuralFFM等，就是用来做这个的。</p>
+<p>第二条演进路线，就是<strong>显式地对二阶、三阶、四阶···<span class="math inline">\(K\)</span>阶组合进行建模</strong>。目前的研究结论是这样的：对CTR捕获二、三、四阶都有正向收益，再捕获五阶以上就没什么用了。典型的代表模型是DeepCross、xDeepFM。</p>
 <h4 id="并行系列">并行系列</h4>
 <figure>
 <img src="https://s2.ax1x.com/2019/06/29/ZQduyF.jpg" alt="wide &amp; deep"><figcaption>wide &amp; deep</figcaption>
 </figure>
+<p>Wide &amp; Deep 的结构是什么呢？实际上就是我画的并行结构，右边就是 DNN 部分，左边的 FM Function 用的是线性回归。我个人认为， Wide &amp; Deep 是相对原始的模型， LR 有的问题它也有，特征组合需要人去设计，Wide &amp; Deep 也有这样的问题。</p>
 <figure>
 <img src="https://s2.ax1x.com/2019/06/29/ZQdtSK.jpg" alt="DeepFM"><figcaption>DeepFM</figcaption>
 </figure>
+<p>我们可以改进一下。 DeepFM 模型，它相对 Wide &amp; Deep 做出了什么改进呢？很简单，其实就是把 FM Function 的 LR 换成了 FM ，就能自动做特征组合了，这就是 DeepFM 。如果想部署深度模型，我建议可以考虑这个模型，这是目前效果最好的基准模型之一。而且我认为 DeepFM 是个目前技术发展阶段，完备的深度 CTR 模型。所谓完备，是指的里面的任意一个构件都有用，都不能少，但是如果再加新东西，感觉意义又没那么大，或者太复杂了工程化有难度。完备是从这个角度说的。</p>
 <h4 id="串行系列">串行系列</h4>
 <figure>
 <img src="https://s2.ax1x.com/2019/06/29/ZQdoYq.jpg" alt="Deep &amp; Cross"><figcaption>Deep &amp; Cross</figcaption>
 </figure>
+<p>Deep &amp; Cross 用来做什么？显式地做高阶特征组合。就是说设计几层神经网络结构，每一层代表其不同阶的组合，最下面是二阶组合，再套一层，三阶组合，四阶组合，一层一层往上套，这就叫显式地捕获高阶特征组合，Deep &amp; Cross 是最开始做这个的。</p>
 <figure>
 <img src="https://s2.ax1x.com/2019/06/29/ZQdLXF.jpg" alt="xDeepFM"><figcaption>xDeepFM</figcaption>
+</figure>
+<p>xDeepFM 是微软2018年发的一篇新论文，它是用来把二阶、三阶、四阶组合一层一层做出来，但无非它用的是类CNN的方式来做这个事的。这是第二个路线的两个代表。尽管这个符合模型发展趋势，我个人认为这种模型太复杂，真正部署上线成本比较高，不是优选方案。</p>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/30/Zl0RAJ.jpg" alt="FFM 模型：如何改造成神经网络版本？"><figcaption>FFM 模型：如何改造成神经网络版本？</figcaption>
+</figure>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/30/Zl0491.jpg" alt="DeepFFM"><figcaption>DeepFFM</figcaption>
 </figure>
 <h2 id="总结">总结</h2>
 <figure>
@@ -1000,7 +1057,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐系统架构"><span class="nav-number">1.</span> <span class="nav-text">推荐系统架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#架构技术栈"><span class="nav-number">1.1.</span> <span class="nav-text">架构技术栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型"><span class="nav-number">1.2.</span> <span class="nav-text">模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多路召回"><span class="nav-number">1.3.</span> <span class="nav-text">多路召回</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-number">1.4.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征分类"><span class="nav-number">1.5.</span> <span class="nav-text">特征分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#产品策略"><span class="nav-number">1.6.</span> <span class="nav-text">产品策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型历史"><span class="nav-number">2.</span> <span class="nav-text">模型历史</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传统模型线性排序模型"><span class="nav-number">2.1.</span> <span class="nav-text">传统模型：线性排序模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ffm"><span class="nav-number">2.1.1.</span> <span class="nav-text">FFM</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度模型"><span class="nav-number">2.2.</span> <span class="nav-text">深度模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并行系列"><span class="nav-number">2.2.1.</span> <span class="nav-text">并行系列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#串行系列"><span class="nav-number">2.2.2.</span> <span class="nav-text">串行系列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐系统架构"><span class="nav-number">1.</span> <span class="nav-text">推荐系统架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#架构技术栈"><span class="nav-number">1.1.</span> <span class="nav-text">架构技术栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型"><span class="nav-number">1.2.</span> <span class="nav-text">模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多路召回"><span class="nav-number">1.3.</span> <span class="nav-text">多路召回</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-number">1.4.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征分类"><span class="nav-number">1.5.</span> <span class="nav-text">特征分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#产品策略"><span class="nav-number">1.6.</span> <span class="nav-text">产品策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型历史"><span class="nav-number">2.</span> <span class="nav-text">模型历史</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传统模型线性排序模型"><span class="nav-number">2.1.</span> <span class="nav-text">传统模型：线性排序模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#fm"><span class="nav-number">2.1.1.</span> <span class="nav-text">FM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ffm"><span class="nav-number">2.1.2.</span> <span class="nav-text">FFM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双线性-ffm-模型"><span class="nav-number">2.1.3.</span> <span class="nav-text">双线性 FFM 模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度模型"><span class="nav-number">2.2.</span> <span class="nav-text">深度模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并行系列"><span class="nav-number">2.2.1.</span> <span class="nav-text">并行系列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#串行系列"><span class="nav-number">2.2.2.</span> <span class="nav-text">串行系列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
