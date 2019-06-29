@@ -114,6 +114,10 @@
 <meta property="og:description" content="这篇文章是个总结，基于我在微博的工作和张俊林老师的演讲。个人以为微博的推荐在国内算是一个典型的应用。 我对于推荐系统也是刚刚入门的状态，文章有讲的不对的地方，敬请指正。 推荐系统架构 常见推荐场景  关系流 Feed 排序 热门流个性化排序 正文页推荐   推荐系统架构：简化版  分为两个部分，上面的是在线推荐部分，下面的是离线部分  物料库：item 召回：把个性化推荐的 item 数目降下来">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQMuEF.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQwP1K.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQwrB4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQwR9x.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQwIDe.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQMYDK.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQM0Cd.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQMDgI.jpg">
@@ -135,7 +139,12 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQlekF.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQlnfJ.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQllOx.jpg">
-<meta property="og:updated_time" content="2019-06-29T00:50:26.661Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQduyF.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQdtSK.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQdoYq.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQdLXF.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/29/ZQdXm4.jpg">
+<meta property="og:updated_time" content="2019-06-29T02:54:35.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高祖功臣侯者年表：推荐系统概念(1)">
 <meta name="twitter:description" content="这篇文章是个总结，基于我在微博的工作和张俊林老师的演讲。个人以为微博的推荐在国内算是一个典型的应用。 我对于推荐系统也是刚刚入门的状态，文章有讲的不对的地方，敬请指正。 推荐系统架构 常见推荐场景  关系流 Feed 排序 热门流个性化排序 正文页推荐   推荐系统架构：简化版  分为两个部分，上面的是在线推荐部分，下面的是离线部分  物料库：item 召回：把个性化推荐的 item 数目降下来">
@@ -466,7 +475,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-29 08:50:26" itemprop="dateModified" datetime="2019-06-29T08:50:26+08:00">2019-06-29</time>
+                <time title="Modified: 2019-06-29 10:54:35" itemprop="dateModified" datetime="2019-06-29T10:54:35+08:00">2019-06-29</time>
               
             
           </span>
@@ -536,9 +545,21 @@
 </ul>
 <h3 id="架构技术栈">架构技术栈</h3>
 <h3 id="模型">模型</h3>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQwP1K.png" alt="推荐系统架构"><figcaption>推荐系统架构</figcaption>
+</figure>
 <h3 id="多路召回">多路召回</h3>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQwrB4.png" alt="多路召回"><figcaption>多路召回</figcaption>
+</figure>
 <h3 id="特征分类">特征分类</h3>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQwR9x.png" alt="ZQwR9x.png"><figcaption>ZQwR9x.png</figcaption>
+</figure>
 <h3 id="产品策略">产品策略</h3>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQwIDe.png" alt="ZQwIDe.png"><figcaption>ZQwIDe.png</figcaption>
+</figure>
 <h2 id="模型历史">模型历史</h2>
 <figure>
 <img src="https://s2.ax1x.com/2019/06/29/ZQMYDK.jpg" alt="排序模式：工业界算法的演进路线"><figcaption>排序模式：工业界算法的演进路线</figcaption>
@@ -570,7 +591,23 @@
 <p>第一条路线，提出新型的FM Function，就是怎么能够设计一个新的FM Function结构，来更有效地捕获二阶特征组合，比如说典型的模型包括Wide&amp;Deep，DeepFM，NeuralFFM等，就是用来做这个的。</p>
 <p><img src="https://s2.ax1x.com/2019/06/29/ZQllOx.jpg" alt="ZQllOx.jpg"> 第二条演进路线，就是显式地对二阶、三阶、四阶···K阶组合进行建模。目前的研究结论是这样的：对CTR捕获二、三、四阶都有正向收益，再捕获五阶以上就没什么用了。典型的代表模型是DeepCross、xDeepFM。</p>
 <h4 id="并行系列">并行系列</h4>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQduyF.jpg" alt="wide &amp; deep"><figcaption>wide &amp; deep</figcaption>
+</figure>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQdtSK.jpg" alt="DeepFM"><figcaption>DeepFM</figcaption>
+</figure>
 <h4 id="串行系列">串行系列</h4>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQdoYq.jpg" alt="Deep &amp; Cross"><figcaption>Deep &amp; Cross</figcaption>
+</figure>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQdLXF.jpg" alt="xDeepFM"><figcaption>xDeepFM</figcaption>
+</figure>
+<h2 id="总结">总结</h2>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/29/ZQdXm4.jpg" alt="看法"><figcaption>看法</figcaption>
+</figure>
 
       
     </div>
@@ -926,7 +963,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐系统架构"><span class="nav-number">1.</span> <span class="nav-text">推荐系统架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#架构技术栈"><span class="nav-number">1.1.</span> <span class="nav-text">架构技术栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型"><span class="nav-number">1.2.</span> <span class="nav-text">模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多路召回"><span class="nav-number">1.3.</span> <span class="nav-text">多路召回</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征分类"><span class="nav-number">1.4.</span> <span class="nav-text">特征分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#产品策略"><span class="nav-number">1.5.</span> <span class="nav-text">产品策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型历史"><span class="nav-number">2.</span> <span class="nav-text">模型历史</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传统模型线性排序模型"><span class="nav-number">2.1.</span> <span class="nav-text">传统模型：线性排序模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度模型"><span class="nav-number">2.2.</span> <span class="nav-text">深度模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并行系列"><span class="nav-number">2.2.1.</span> <span class="nav-text">并行系列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#串行系列"><span class="nav-number">2.2.2.</span> <span class="nav-text">串行系列</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐系统架构"><span class="nav-number">1.</span> <span class="nav-text">推荐系统架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#架构技术栈"><span class="nav-number">1.1.</span> <span class="nav-text">架构技术栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型"><span class="nav-number">1.2.</span> <span class="nav-text">模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多路召回"><span class="nav-number">1.3.</span> <span class="nav-text">多路召回</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征分类"><span class="nav-number">1.4.</span> <span class="nav-text">特征分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#产品策略"><span class="nav-number">1.5.</span> <span class="nav-text">产品策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型历史"><span class="nav-number">2.</span> <span class="nav-text">模型历史</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传统模型线性排序模型"><span class="nav-number">2.1.</span> <span class="nav-text">传统模型：线性排序模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度模型"><span class="nav-number">2.2.</span> <span class="nav-text">深度模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并行系列"><span class="nav-number">2.2.1.</span> <span class="nav-text">并行系列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#串行系列"><span class="nav-number">2.2.2.</span> <span class="nav-text">串行系列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
