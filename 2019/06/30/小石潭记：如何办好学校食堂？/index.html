@@ -105,18 +105,14 @@
 
 
 
-  <meta name="description" content="insert 12insert into 表名(列名)values(值); 12insert into 表名(列名)select update 123update 表名set 列 = 新值where ; delete 1delete from 表名; -- DML 1truncate table students; -- DDL，无法回滚">
-<meta name="keywords" content="Oracle">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Oracle SQL 更新数据">
-<meta property="og:url" content="http://guanhua.ml/2017/12/27/Oracle-SQL-更新数据/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="小石潭记：如何办好学校食堂？">
+<meta property="og:url" content="http://guanhua.ml/2019/06/30/小石潭记：如何办好学校食堂？/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="insert 12insert into 表名(列名)values(值); 12insert into 表名(列名)select update 123update 表名set 列 = 新值where ; delete 1delete from 表名; -- DML 1truncate table students; -- DDL，无法回滚">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-26T13:01:58.865Z">
+<meta property="og:updated_time" content="2019-06-30T04:08:25.413Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Oracle SQL 更新数据">
-<meta name="twitter:description" content="insert 12insert into 表名(列名)values(值); 12insert into 表名(列名)select update 123update 表名set 列 = 新值where ; delete 1delete from 表名; -- DML 1truncate table students; -- DDL，无法回滚">
+<meta name="twitter:title" content="小石潭记：如何办好学校食堂？">
 
 
 
@@ -124,7 +120,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/2017/12/27/Oracle-SQL-更新数据/">
+  <link rel="canonical" href="http://guanhua.ml/2019/06/30/小石潭记：如何办好学校食堂？/">
 
 
 
@@ -134,7 +130,7 @@
   };
 </script>
 
-  <title>Oracle SQL 更新数据 | gh's notes</title>
+  <title>小石潭记：如何办好学校食堂？ | gh's notes</title>
   
 
 
@@ -383,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2017/12/27/Oracle-SQL-更新数据/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/06/30/小石潭记：如何办好学校食堂？/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -400,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Oracle SQL 更新数据
+          <h1 class="post-title" itemprop="name headline">小石潭记：如何办好学校食堂？
 
               
             
@@ -426,24 +422,12 @@
                 
               
 
-              <time title="Created: 2017-12-27 21:38:05" itemprop="dateCreated datePublished" datetime="2017-12-27T21:38:05+08:00">2017-12-27</time>
+              <time title="Created: 2019-06-30 11:35:55 / Modified: 12:08:25" itemprop="dateCreated datePublished" datetime="2019-06-30T11:35:55+08:00">2019-06-30</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-26 21:01:58" itemprop="dateModified" datetime="2019-06-26T21:01:58+08:00">2019-06-26</time>
               
             
           </span>
@@ -461,8 +445,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2017/12/27/Oracle-SQL-更新数据/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/27/Oracle-SQL-更新数据/" itemprop="commentCount"></span>
+                <a href="/2019/06/30/小石潭记：如何办好学校食堂？/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/30/小石潭记：如何办好学校食堂？/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -490,53 +474,13 @@
       
 
       
-        <h1 id="insert">insert</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名(列名)</span><br><span class="line">values(值);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名(列名)</span><br><span class="line">select</span><br></pre></td></tr></table></figure>
-<h1 id="update">update</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update 表名</span><br><span class="line">set 列 = 新值</span><br><span class="line">where ;</span><br></pre></td></tr></table></figure>
-<h1 id="delete">delete</h1>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名; -- DML</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">truncate table students; -- DDL，无法回滚</span><br></pre></td></tr></table></figure>
+        
 
       
     </div>
 
     
       
-
-  <div class="popular-posts-header">Related Posts</div>
-  <ul class="popular-posts">
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2017/12/27/Oracle-SQL-查询/" rel="bookmark">Oracle SQL 查询</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2017/12/27/Oracle-中数值型及处理方法/" rel="bookmark">Oracle 中数值型及处理方法</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2017/12/27/Oracle-中的字符型及处理方法/" rel="bookmark">Oracle 中的字符型及处理方法</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2017/12/27/Oracle-数据库与数据表/" rel="bookmark">Oracle 数据库与数据表</a></div>
-      
-    </li>
-  
-  </ul>
 
 
     
@@ -556,15 +500,6 @@
 
     <footer class="post-footer">
       
-        
-          
-        
-        <div class="post-tags">
-          
-            <a href="/tags/Oracle/" rel="tag"># Oracle</a>
-          
-        </div>
-      
 
       
       
@@ -574,8 +509,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/27/Oracle-SQL-查询/" rel="next" title="Oracle SQL 查询">
-                <i class="fa fa-chevron-left"></i> Oracle SQL 查询
+              <a href="/2019/06/28/高祖功臣侯者年表：推荐系统概念-1/" rel="next" title="高祖功臣侯者年表：推荐系统概念(1)">
+                <i class="fa fa-chevron-left"></i> 高祖功臣侯者年表：推荐系统概念(1)
               </a>
             
           </div>
@@ -583,10 +518,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/27/Oracle-中的字符型及处理方法/" rel="prev" title="Oracle 中的字符型及处理方法">
-                Oracle 中的字符型及处理方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -634,17 +565,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -839,23 +761,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#insert"><span class="nav-number">1.</span> <span class="nav-text">insert</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#update"><span class="nav-number">2.</span> <span class="nav-text">update</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#delete"><span class="nav-number">3.</span> <span class="nav-text">delete</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
