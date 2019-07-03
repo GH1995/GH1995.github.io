@@ -105,20 +105,19 @@
 
 
 
-  <meta name="description" content="布隆过滤器原理  应用场景 大数据，快速查找，不介意小概率误判  分布式磁盘 IO 爬虫 黑名单过滤   布隆过滤器加速键值存取  优缺点 优点  空间小，相比list, RB-tree, hash 不用存数据 查询快，\(O(k)\)级别的查询效率，还能并行  缺点  有时候同学不在寝室，他却告诉我们在；但是他们告诉我们不在，就一定不在 删除难  原理  布隆过滤器的原理是，当一个元素被加入集">
+  <meta name="description" content="布隆过滤器原理  应用场景 大数据，快速查找，不介意小概率误判  分布式磁盘 IO 爬虫 黑名单过滤  优缺点 优点  空间小，相比list, RB-tree, hash 不用存数据 查询快，\(O(k)\)级别的查询效率，还能并行  缺点  有时候同学不在寝室，他却告诉我们在；但是他们告诉我们不在，就一定不在 删除难  原理  布隆过滤器的原理是，当一个元素被加入集合时，通过\(K\)个散列函">
 <meta name="keywords" content="math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="布隆过滤器">
 <meta property="og:url" content="http://guanhua.ml/2019/07/03/布隆过滤器/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="布隆过滤器原理  应用场景 大数据，快速查找，不介意小概率误判  分布式磁盘 IO 爬虫 黑名单过滤   布隆过滤器加速键值存取  优缺点 优点  空间小，相比list, RB-tree, hash 不用存数据 查询快，\(O(k)\)级别的查询效率，还能并行  缺点  有时候同学不在寝室，他却告诉我们在；但是他们告诉我们不在，就一定不在 删除难  原理  布隆过滤器的原理是，当一个元素被加入集">
+<meta property="og:description" content="布隆过滤器原理  应用场景 大数据，快速查找，不介意小概率误判  分布式磁盘 IO 爬虫 黑名单过滤  优缺点 优点  空间小，相比list, RB-tree, hash 不用存数据 查询快，\(O(k)\)级别的查询效率，还能并行  缺点  有时候同学不在寝室，他却告诉我们在；但是他们告诉我们不在，就一定不在 删除难  原理  布隆过滤器的原理是，当一个元素被加入集合时，通过\(K\)个散列函">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2019/07/03/Zte9JS.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/03/ZtZnvd.png">
-<meta property="og:updated_time" content="2019-07-03T07:24:53.972Z">
+<meta property="og:updated_time" content="2019-07-03T07:32:28.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="布隆过滤器">
-<meta name="twitter:description" content="布隆过滤器原理  应用场景 大数据，快速查找，不介意小概率误判  分布式磁盘 IO 爬虫 黑名单过滤   布隆过滤器加速键值存取  优缺点 优点  空间小，相比list, RB-tree, hash 不用存数据 查询快，\(O(k)\)级别的查询效率，还能并行  缺点  有时候同学不在寝室，他却告诉我们在；但是他们告诉我们不在，就一定不在 删除难  原理  布隆过滤器的原理是，当一个元素被加入集">
+<meta name="twitter:description" content="布隆过滤器原理  应用场景 大数据，快速查找，不介意小概率误判  分布式磁盘 IO 爬虫 黑名单过滤  优缺点 优点  空间小，相比list, RB-tree, hash 不用存数据 查询快，\(O(k)\)级别的查询效率，还能并行  缺点  有时候同学不在寝室，他却告诉我们在；但是他们告诉我们不在，就一定不在 删除难  原理  布隆过滤器的原理是，当一个元素被加入集合时，通过\(K\)个散列函">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/07/03/Zte9JS.png">
 
 
@@ -429,7 +428,7 @@
                 
               
 
-              <time title="Created: 2019-07-03 14:23:50 / Modified: 15:24:53" itemprop="dateCreated datePublished" datetime="2019-07-03T14:23:50+08:00">2019-07-03</time>
+              <time title="Created: 2019-07-03 14:23:50 / Modified: 15:32:28" itemprop="dateCreated datePublished" datetime="2019-07-03T14:23:50+08:00">2019-07-03</time>
             
 
             
@@ -491,9 +490,6 @@
 <li>爬虫</li>
 <li>黑名单过滤</li>
 </ul>
-<figure>
-<img src="https://s2.ax1x.com/2019/07/03/ZtZnvd.png" alt="布隆过滤器加速键值存取"><figcaption>布隆过滤器加速键值存取</figcaption>
-</figure>
 <h2 id="优缺点">优缺点</h2>
 <h3 id="优点">优点</h3>
 <ul>
