@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[expect 踩坑记]]></title>
+    <url>%2F2019%2F07%2F10%2Fexpect-%E8%B8%A9%E5%9D%91%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[expect 是一个攻来处理交互的命令。简单来说，我们可以用 ssh 连上另一台 Linux，连上去这个动作好做。 连上了之后，我们如何在这台机器上执行命令呢？ Expect is a program that &quot;talks&quot; to other interactive programs according to a script. expect 是 tcl 的一个套装，tcl 因为模式-动作而强大。 send 向进程发送字符串 expect 从进程接收字符串 spawn 启动新的进程 interact 允许用户交互 send 没什么好说的，看例子即可 send &quot;hello world&quot; expect 接收正则表达式参数，这里用到了 tcl 相关的知识了 123expect &quot;hi\n&quot;send &quot;you typed &lt;$expect_out(buffer)&gt;&quot;send &quot;but I only expected &lt;$expect_out(0,string)&gt;&quot; &lt;$expect_out(buffer)&gt; 存储了所有输入 &lt;$expect_out(0,string)&gt; 存储了输入中的匹配行 接下来是模式动作部分 重点 12345expect &#123; &quot;hi&quot; &#123; send &quot;You said hi\n&quot; &#125; &quot;hello&quot; &#123; send &quot;Hello yourself\n&quot; &#125; &quot;bye&quot; &#123; send &quot;That was unexpected\n&quot; &#125;&#125; spawn，启动新的进程，把这个进程看成黑盒，然后用 send 和 expect 同这个进程交互 123456789#!/usr/bin/expect# filename: test.shspawn ssh root@192.168.22.194expect &quot;*password:&quot;send &quot;123\r&quot;expect &quot;*#&quot;interact 注意这里有个坑！ 不要用 bash 去运行这个脚本，要用 expect ！！ interact，干完活之后依然停在 spawn 启动的 shell 上 以便执行后续命令 如何从跳板机登录到开发机呢？ 1234567891011set timeout -1set ip $1set password $2spawn ssh -p xxx username@ipexpect &#123; &quot;*yes/no&quot; &#123; send &quot;yes\r&quot;; exp_continue &#125; &quot;*password:&quot; &#123; send &quot;$password\r&quot; &#125;&#125;interact 参考文章：https://www.cnblogs.com/lzrabbit/p/4298794.html]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[布隆过滤器]]></title>
     <url>%2F2019%2F07%2F03%2F%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8%2F</url>
     <content type="text"><![CDATA[布隆过滤器原理 应用场景 大数据，快速查找，不介意小概率误判 分布式磁盘 IO 爬虫 黑名单过滤 优缺点 优点 空间小，相比list, RB-tree, hash 不用存数据 查询快，\(O(k)\)级别的查询效率，还能并行 缺点 有时候同学不在寝室，他却告诉我们在；但是他们告诉我们不在，就一定不在 删除难 原理 布隆过滤器的原理是，当一个元素被加入集合时，通过\(K\)个散列函数将这个元素映射成一个位数组中的\(K\)个点，把它们置为1。检索时，我们只要看看这些点是不是都是1就（大约）知道集合中有没有它了：如果这些点有任何一个0，则被检元素一定不在；如果都是1，则被检元素很可能在。这就是布隆过滤器的基本思想。 一般了解到这里就可以。如果你还想看，下面就是无聊的公式推导了。 参考wiki吧 搞事情 搞哈希算法 哈希算法 = 数组 + 哈希函数 碰撞了怎么办？ 两种办法：开链法和闭散列法。开链法就是将映射到同一下标的所有元素形成一个链表，挂到该位置下面；闭散列法就是将冲突的元素按照某种方式向后排放。 缺点 开链法：极端条件下又变成\(O(n)\)了 闭散列法：多吃多占，影响了下个本来映射到该位置的元素 负载因子 就是当前哈希表中存放的元素数和数组长度的比值。一般来说，负载因子超过 0.8，就需要对哈希表扩容。即重新构造一个更大的数组，将所有元素转移过去，再释放原有空间。 误判概率 \[ P \approx\left(1-e^{-\frac{n k}{m}}\right)^{k} \] 看看影响因素 集合中元素数量 \(n\) 数组大小 \(m\) 选取的 \(k\) 个哈希函数 从这个公式也可以看出，\(m\)和\(n\) 成比例才可以保证误报率不变。\(k\)不用管他。 参考： https://www.wikiwand.com/en/Bloom_filter https://smartbrave.github.io/posts/3e0efa6d]]></content>
