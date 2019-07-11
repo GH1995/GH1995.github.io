@@ -105,18 +105,19 @@
 
 
 
-  <meta name="description" content="生成模型和判别模型 生成模型  混合高斯模型和其他混合模型 隐马尔可夫模型 ( HMM ) 朴素贝叶斯 LDA 文档主题生成模型  生成式模型由数据学习联合概率分布 \(P(X, Y)\)，然后求出条件概率分布 \[ P(Y|X)=\frac{P(X,Y)}{P(X)} \] 作为预测的模型，即生成模型。  能还原出联合概率分布\(P(X, Y)\) 收敛速度更快 当存在隐变量时只能用生成方法学习">
-<meta name="keywords" content="machine learning,todo">
+  <meta name="description" content="示例文件  准备：sys.argv 和命令行参数 12345678910# 输出命令行参数import sysdef main(argv):    for i in range(len(sys.argv)):        print(&apos;sys.argv[&amp;#123;0&amp;#125;] = &amp;#123;1&amp;#125;&apos;.format(i, sys.argv[i]))if __name__ == &quot;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="建炎以来系年要录：总结篇">
-<meta property="og:url" content="http://guanhua.ml/2019/06/22/建炎以来系年要录：总结篇/index.html">
+<meta property="og:title" content="argparse:命令行选项解析">
+<meta property="og:url" content="http://guanhua.ml/2019/07/11/argparse-命令行选项解析/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="生成模型和判别模型 生成模型  混合高斯模型和其他混合模型 隐马尔可夫模型 ( HMM ) 朴素贝叶斯 LDA 文档主题生成模型  生成式模型由数据学习联合概率分布 \(P(X, Y)\)，然后求出条件概率分布 \[ P(Y|X)=\frac{P(X,Y)}{P(X)} \] 作为预测的模型，即生成模型。  能还原出联合概率分布\(P(X, Y)\) 收敛速度更快 当存在隐变量时只能用生成方法学习">
+<meta property="og:description" content="示例文件  准备：sys.argv 和命令行参数 12345678910# 输出命令行参数import sysdef main(argv):    for i in range(len(sys.argv)):        print(&apos;sys.argv[&amp;#123;0&amp;#125;] = &amp;#123;1&amp;#125;&apos;.format(i, sys.argv[i]))if __name__ == &quot;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-26T13:01:58.865Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/11/Z27pAP.png">
+<meta property="og:updated_time" content="2019-07-11T08:03:14.497Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="建炎以来系年要录：总结篇">
-<meta name="twitter:description" content="生成模型和判别模型 生成模型  混合高斯模型和其他混合模型 隐马尔可夫模型 ( HMM ) 朴素贝叶斯 LDA 文档主题生成模型  生成式模型由数据学习联合概率分布 \(P(X, Y)\)，然后求出条件概率分布 \[ P(Y|X)=\frac{P(X,Y)}{P(X)} \] 作为预测的模型，即生成模型。  能还原出联合概率分布\(P(X, Y)\) 收敛速度更快 当存在隐变量时只能用生成方法学习">
+<meta name="twitter:title" content="argparse:命令行选项解析">
+<meta name="twitter:description" content="示例文件  准备：sys.argv 和命令行参数 12345678910# 输出命令行参数import sysdef main(argv):    for i in range(len(sys.argv)):        print(&apos;sys.argv[&amp;#123;0&amp;#125;] = &amp;#123;1&amp;#125;&apos;.format(i, sys.argv[i]))if __name__ == &quot;">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/11/Z27pAP.png">
 
 
 
@@ -124,7 +125,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/2019/06/22/建炎以来系年要录：总结篇/">
+  <link rel="canonical" href="http://guanhua.ml/2019/07/11/argparse-命令行选项解析/">
 
 
 
@@ -134,7 +135,7 @@
   };
 </script>
 
-  <title>建炎以来系年要录：总结篇 | gh's notes</title>
+  <title>argparse:命令行选项解析 | gh's notes</title>
   
 
 
@@ -383,7 +384,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/06/22/建炎以来系年要录：总结篇/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/11/argparse-命令行选项解析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -400,7 +401,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">建炎以来系年要录：总结篇
+          <h1 class="post-title" itemprop="name headline">argparse:命令行选项解析
 
               
             
@@ -426,24 +427,12 @@
                 
               
 
-              <time title="Created: 2019-06-22 09:57:42" itemprop="dateCreated datePublished" datetime="2019-06-22T09:57:42+08:00">2019-06-22</time>
+              <time title="Created: 2019-07-11 15:54:27 / Modified: 16:03:14" itemprop="dateCreated datePublished" datetime="2019-07-11T15:54:27+08:00">2019-07-11</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-26 21:01:58" itemprop="dateModified" datetime="2019-06-26T21:01:58+08:00">2019-06-26</time>
               
             
           </span>
@@ -461,8 +450,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/06/22/建炎以来系年要录：总结篇/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/22/建炎以来系年要录：总结篇/" itemprop="commentCount"></span>
+                <a href="/2019/07/11/argparse-命令行选项解析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/11/argparse-命令行选项解析/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -490,98 +479,26 @@
       
 
       
-        <h2 id="生成模型和判别模型">生成模型和判别模型</h2>
-<h3 id="生成模型">生成模型</h3>
-<ul>
-<li>混合高斯模型和其他混合模型</li>
-<li>隐马尔可夫模型 ( HMM )</li>
-<li>朴素贝叶斯</li>
-<li>LDA 文档主题生成模型</li>
-</ul>
-<p><strong>生成式模型</strong>由数据学习联合概率分布 <span class="math inline">\(P(X, Y)\)</span>，然后求出条件概率分布 <span class="math display">\[
-P(Y|X)=\frac{P(X,Y)}{P(X)}
-\]</span> 作为预测的模型，即生成模型。</p>
-<ul>
-<li>能还原出联合概率分布<span class="math inline">\(P(X, Y)\)</span></li>
-<li>收敛速度更快</li>
-<li>当存在隐变量时只能用生成方法学习</li>
-</ul>
-<h3 id="判别模型">判别模型</h3>
-<ul>
-<li>KNN</li>
-<li>感知机</li>
-<li>决策树</li>
-<li>最大熵模型</li>
-<li>Logistic 回归</li>
-<li>线性判别分析 ( LDA )</li>
-<li>支持向量机 ( SVM )</li>
-<li>Boosting</li>
-<li>条件随机场算法 ( CRF )</li>
-<li>线性回归</li>
-<li>神经网络</li>
-</ul>
-<p><strong>判别式模型</strong>直接学习决策函数 <span class="math inline">\(f(X)\)</span> 或条件概率分布 <span class="math inline">\(P(Y|X)\)</span> 作为预测的模型。</p>
-<ul>
-<li>往往准确率更高</li>
-<li>可以简化学习问题</li>
-</ul>
-<h2 id="学习策略损失函数">学习策略（损失函数）</h2>
-<h2 id="学习算法">学习算法</h2>
-<p>生成模型朴素贝叶斯和HMM的监督学习，最优解即极大似然估计值，可以由概率计算公式直接计算。</p>
+        <figure>
+<img src="https://s2.ax1x.com/2019/07/11/Z27pAP.png" alt="示例文件"><figcaption>示例文件</figcaption>
+</figure>
+<h2 id="准备sys.argv-和命令行参数">准备：<code>sys.argv</code> 和命令行参数</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输出命令行参数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(argv)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(sys.argv)):</span><br><span class="line">        print(<span class="string">'sys.argv[&#123;0&#125;] = &#123;1&#125;'</span>.format(i, sys.argv[i]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main(sys.argv)</span><br></pre></td></tr></table></figure>
+<h2 id="命令行参数解析">命令行参数解析</h2>
+<p>Python 使用 <code>argparse</code> 模块实现命令行选项和参数的解析。</p>
 <ol type="1">
-<li>判别模型中，感知机，逻辑斯蒂回归，最大熵模型，条件随机场都可以用SGD，拟牛顿法学习。这些都是无约束最优化问题。</li>
-<li>判别模型中SVM，可以解凸二次规划的对偶问题。有序列最小最优化算法等方法。</li>
-<li>判别模型中决策树，是基于启发式算法，正则化的极大似然估计。</li>
-<li>判别模型中，提升方法式加法模型，损失函数是<strong>指数损失函数</strong>，学习方法是启发式的从前往后逐步学习模型。</li>
-<li>判别模型中，EM 算法是利用迭代求解隐变量概率模型。</li>
+<li>创建 <code>ArgumentParser</code> 对象</li>
+<li>添加参数<code>add_argument()</code></li>
+<li>解析参数<code>parse_args()</code></li>
 </ol>
-<p>上述模型中，SVM/LR/最大熵/CRF四个是凸优化问题，全局最优解保证存在，其他问题不是凸优化问题，不做保证。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 创建参数解析器 ArgumentParser 对象</span></span><br><span class="line">    parser = argparse.ArgumentParser()</span><br><span class="line"></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    添加参数</span></span><br><span class="line"><span class="string">    - name 或 flag，指定该参数为名称参数还是选项参数</span></span><br><span class="line"><span class="string">        - `foo`</span></span><br><span class="line"><span class="string">        - `-f` 或 `--foo`</span></span><br><span class="line"><span class="string">    - dest </span></span><br><span class="line"><span class="string">    - metavar 在使用方法 usage 中，该参数的名称</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    parser.add_argument(<span class="string">'-o'</span>, dest=<span class="string">'outfile'</span>, help=<span class="string">'output file'</span>)</span><br><span class="line">    parser.add_argument(dest=<span class="string">'filenames'</span>, metavar=<span class="string">'filename'</span>, nargs=<span class="string">'*'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解析参数</span></span><br><span class="line">    args = parser.parse_args()</span><br><span class="line"></span><br><span class="line">    print(args.filenames)</span><br><span class="line">    print(args.outfile)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>最终效果如上所示。<code>argparse</code>模块太复杂了，我并不建议使用。与之相比，Google 的<code>fire</code> 更加简单灵活，我写了一个<a href="https://guanhua.ml/2019/06/17/fire%E5%B0%8F%E7%BB%93/">简单的教程</a>。</p>
 
       
     </div>
 
     
       
-
-  <div class="popular-posts-header">Related Posts</div>
-  <ul class="popular-posts">
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/03/18/PAC/" rel="bookmark">困学纪闻注：PAC</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/06/19/困学纪闻注：Logistic-回归/" rel="bookmark">困学纪闻注：Logistic 回归</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/06/19/困学纪闻注：线性回归/" rel="bookmark">困学纪闻注 ：线性回归</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/06/21/建炎以来系年要录：EM-算法/" rel="bookmark">建炎以来系年要录：EM 算法</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/06/19/建炎以来系年要录：优化算法小结/" rel="bookmark">建炎以来系年要录：优化算法小结</a></div>
-      
-    </li>
-  
-  </ul>
 
 
     
@@ -601,17 +518,6 @@ P(Y|X)=\frac{P(X,Y)}{P(X)}
 
     <footer class="post-footer">
       
-        
-          
-        
-        <div class="post-tags">
-          
-            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
-          
-            <a href="/tags/todo/" rel="tag"># todo</a>
-          
-        </div>
-      
 
       
       
@@ -621,8 +527,8 @@ P(Y|X)=\frac{P(X,Y)}{P(X)}
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/22/神奇动物在哪里？——softmax函数的实现/" rel="next" title="神奇动物在哪里？——softmax 函数的实现">
-                <i class="fa fa-chevron-left"></i> 神奇动物在哪里？——softmax 函数的实现
+              <a href="/2019/07/11/困学纪闻注：无监督特征学习——三叶虫/" rel="next" title="无监督特征学习——三叶虫">
+                <i class="fa fa-chevron-left"></i> 无监督特征学习——三叶虫
               </a>
             
           </div>
@@ -630,10 +536,6 @@ P(Y|X)=\frac{P(X,Y)}{P(X)}
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/22/灰度时刻：RSA-篇/" rel="prev" title="灰度时刻：RSA 篇">
-                灰度时刻：RSA 篇 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -901,7 +803,7 @@ P(Y|X)=\frac{P(X,Y)}{P(X)}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#生成模型和判别模型"><span class="nav-number">1.</span> <span class="nav-text">生成模型和判别模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#生成模型"><span class="nav-number">1.1.</span> <span class="nav-text">生成模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判别模型"><span class="nav-number">1.2.</span> <span class="nav-text">判别模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习策略损失函数"><span class="nav-number">2.</span> <span class="nav-text">学习策略（损失函数）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习算法"><span class="nav-number">3.</span> <span class="nav-text">学习算法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备sys.argv-和命令行参数"><span class="nav-number">1.</span> <span class="nav-text">准备：sys.argv 和命令行参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行参数解析"><span class="nav-number">2.</span> <span class="nav-text">命令行参数解析</span></a></li></ol></div>
             
 
           </div>
