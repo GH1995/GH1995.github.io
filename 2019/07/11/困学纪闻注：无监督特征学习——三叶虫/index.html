@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="gh&#39;s notes">
 <meta property="og:description" content="稀疏编码(Sparse Coding) 基本概念 稀疏性 外界信息经过编码后仅有一小部分神经元激活 基向量 \(A=\left[\mathbf{a}_{1}, \cdots, \mathbf{a}_{p}\right]\) 输入样本 \(\mathbf{x} \in \mathbb{R}^{d}\)  将输入样本表示为基向量的线性组合  \[ \begin{aligned} \mathbf{x}">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-11T03:24:14.288Z">
+<meta property="og:updated_time" content="2019-07-11T03:34:22.734Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无监督特征学习——三叶虫">
 <meta name="twitter:description" content="稀疏编码(Sparse Coding) 基本概念 稀疏性 外界信息经过编码后仅有一小部分神经元激活 基向量 \(A=\left[\mathbf{a}_{1}, \cdots, \mathbf{a}_{p}\right]\) 输入样本 \(\mathbf{x} \in \mathbb{R}^{d}\)  将输入样本表示为基向量的线性组合  \[ \begin{aligned} \mathbf{x}">
@@ -426,7 +426,7 @@
                 
               
 
-              <time title="Created: 2019-07-11 10:54:04 / Modified: 11:24:14" itemprop="dateCreated datePublished" datetime="2019-07-11T10:54:04+08:00">2019-07-11</time>
+              <time title="Created: 2019-07-11 10:54:04 / Modified: 11:34:22" itemprop="dateCreated datePublished" datetime="2019-07-11T10:54:04+08:00">2019-07-11</time>
             
 
             
@@ -480,9 +480,12 @@
       
         <h2 id="稀疏编码sparse-coding">稀疏编码(Sparse Coding)</h2>
 <h3 id="基本概念">基本概念</h3>
-<p><strong>稀疏性</strong> 外界信息经过编码后仅有一小部分神经元激活</p>
-<p><strong>基向量</strong> <span class="math inline">\(A=\left[\mathbf{a}_{1}, \cdots, \mathbf{a}_{p}\right]\)</span></p>
-<p><strong>输入样本</strong> <span class="math inline">\(\mathbf{x} \in \mathbb{R}^{d}\)</span></p>
+<p><strong>稀疏性</strong></p>
+<p>外界信息经过编码后仅有一小部分神经元激活</p>
+<p><strong>基向量</strong></p>
+<p><span class="math inline">\(A=\left[\mathbf{a}_{1}, \cdots, \mathbf{a}_{p}\right]\)</span></p>
+<p><strong>输入样本</strong></p>
+<p><span class="math inline">\(\mathbf{x} \in \mathbb{R}^{d}\)</span></p>
 <blockquote>
 <p>将输入样本表示为基向量的线性组合</p>
 </blockquote>
@@ -492,7 +495,7 @@
 <p><strong>编码</strong></p>
 <p>基向量的系数 <span class="math inline">\(\mathbf{z}=\left[z_{1}, \cdots, z_{p}\right]\)</span> 称为 输入样本 <span class="math inline">\(\mathbf{X}\)</span> 的编码，基向量也称为<strong>字典</strong>。</p>
 <p>编码是对 <span class="math inline">\(d\)</span> 维空间中的样本 <span class="math inline">\(\mathbf{x}\)</span> 找到其在 <span class="math inline">\(p\)</span> 维空间中的表示（或投影），其目标通常是编码的各个维度都是统计独立的，并且可以重构出输入样本。</p>
-<p><span class="math display">\[
+<p>给定 <span class="math inline">\(N\)</span> 个输入向量 <span class="math inline">\(\mathbf{x}^{(1)}, \cdots, \mathbf{x}^{(N)}\)</span>，其<strong>稀疏编码的目标函数</strong>定义为： <span class="math display">\[
 L(A, Z)=\sum_{n=1}^{N}\left(\left\|\mathbf{x}^{(n)}-A \mathbf{z}^{(n)}\right\|^{2}+\eta \rho\left(\mathbf{z}^{(n)}\right)\right)
 \]</span></p>
 <ul>
@@ -501,9 +504,9 @@ L(A, Z)=\sum_{n=1}^{N}\left(\left\|\mathbf{x}^{(n)}-A \mathbf{z}^{(n)}\right\|^{
 <li><span class="math inline">\(\rho(\cdot)\)</span> 稀疏性衡量函数</li>
 <li><span class="math inline">\(\eta\)</span> 控制稀疏性的强度</li>
 </ul>
-<p>对于向量 <span class="math inline">\(\mathbf{z}\)</span>，稀疏性定义为非零元素的比例，向量里越多的元素是 0 ，这个向量就越稀疏。** <span class="math inline">\(\mathbf{z}\)</span> ** 越稀疏，<span class="math inline">\(\rho(\mathbf{z})\)</span> 打分越小，效果越好。</p>
+<p>对于向量 <span class="math inline">\(\mathbf{z}\)</span>，稀疏性定义为非零元素的比例，向量里越多的元素是 0 ，这个向量就越稀疏。<span class="math inline">\(\mathbf{z}\)</span> 越稀疏，<span class="math inline">\(\rho(\mathbf{z})\)</span> 打分越小，效果越好。</p>
 <p><strong>稀疏性衡量函数</strong></p>
-<p><span class="math inline">\(l_0\)</span> 范式</p>
+<p><span class="math inline">\(l_0\)</span> 范式，不用</p>
 <p><span class="math display">\[
 \rho(\mathbf{z})=\sum_{i=1}^{p} \mathbf{I}\left(\left|z_{i}\right|&gt;0\right)
 \]</span></p>
@@ -525,11 +528,11 @@ L(A, Z)=\sum_{n=1}^{N}\left(\left\|\mathbf{x}^{(n)}-A \mathbf{z}^{(n)}\right\|^{
 <p>要学出</p>
 <ol type="1">
 <li>基向量 <span class="math inline">\(A\)</span><strong>字典</strong></li>
-<li>每个输入样本对应的稀疏编码 <span class="math inline">\(\mathbf{Z}^{(1)}, \cdots, \mathbf{Z}^{(N)}\)</span></li>
+<li>每个输入样本对应的稀疏编码 <span class="math inline">\(\mathbf{z}^{(1)}, \cdots, \mathbf{z}^{(N)}\)</span></li>
 </ol>
 <p>训练过程：<strong>交替优化</strong></p>
 <ol type="1">
-<li>固定基向量 <span class="math inline">\(A\)</span> ，对于每个输入 <span class="math inline">\(\mathbf{X}^{(n)}\)</span>，计算其最优编码 <span class="math display">\[
+<li>固定基向量 <span class="math inline">\(A\)</span> ，对于每个输入 <span class="math inline">\(\mathbf{x}^{(n)}\)</span>，计算其最优编码 <span class="math display">\[
 \min _{\mathbf{z}^{(n)}}\left\|\mathbf{x}^{(n)}-A \mathbf{z}^{(n)}\right\|^{2}+\eta \rho\left(\mathbf{z}^{(n)}\right)
 \]</span></li>
 <li>固定 <span class="math inline">\(n\)</span> 个编码，计算最优基向量<strong>字典</strong> <span class="math display">\[
