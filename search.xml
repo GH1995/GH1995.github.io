@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[无监督特征学习——三叶虫]]></title>
+    <url>%2F2019%2F07%2F11%2F%E5%9B%B0%E5%AD%A6%E7%BA%AA%E9%97%BB%E6%B3%A8%EF%BC%9A%E6%97%A0%E7%9B%91%E7%9D%A3%E7%89%B9%E5%BE%81%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E4%B8%89%E5%8F%B6%E8%99%AB%2F</url>
+    <content type="text"><![CDATA[稀疏编码(Sparse Coding) 基本概念 稀疏性 外界信息经过编码后仅有一小部分神经元激活 基向量 \(A=\left[\mathbf{a}_{1}, \cdots, \mathbf{a}_{p}\right]\) 输入样本 \(\mathbf{x} \in \mathbb{R}^{d}\) 将输入样本表示为基向量的线性组合 \[ \begin{aligned} \mathbf{x} &amp;=\sum_{i=1}^{p} z_{i} \mathbf{a}_{i} \\ &amp;=A \mathbf{z} \end{aligned} \] 编码 基向量的系数 \(\mathbf{z}=\left[z_{1}, \cdots, z_{p}\right]\) 称为 输入样本 \(\mathbf{X}\) 的编码，基向量也称为字典。 编码是对 \(d\) 维空间中的样本 \(\mathbf{x}\) 找到其在 \(p\) 维空间中的表示（或投影），其目标通常是编码的各个维度都是统计独立的，并且可以重构出输入样本。 \[ L(A, Z)=\sum_{n=1}^{N}\left(\left\|\mathbf{x}^{(n)}-A \mathbf{z}^{(n)}\right\|^{2}+\eta \rho\left(\mathbf{z}^{(n)}\right)\right) \] \(A\) 字典 \(\mathbf{z}\) 编码 \(\rho(\cdot)\) 稀疏性衡量函数 \(\eta\) 控制稀疏性的强度 对于向量 \(\mathbf{z}\)，稀疏性定义为非零元素的比例，向量里越多的元素是 0 ，这个向量就越稀疏。** \(\mathbf{z}\) ** 越稀疏，\(\rho(\mathbf{z})\) 打分越小，效果越好。 稀疏性衡量函数 \(l_0\) 范式 \[ \rho(\mathbf{z})=\sum_{i=1}^{p} \mathbf{I}\left(\left|z_{i}\right|&gt;0\right) \] 可导性不强，难以优化 \(l_1\) 范式 \[ \rho(\mathbf{z})=\sum_{i=1}^{p}\left|z_{i}\right| \] 对数函数 \[ \rho(\mathbf{z})=\sum_{i=1}^{p} \log \left(1+z_{i}^{2}\right) \] 指数函数 \[ \rho(\mathbf{z})=\sum_{i=1}^{p}-\exp \left(-z_{i}^{2}\right) \] 训练方法 给了 \(N\) 个输入向量 \(\mathbf{x}^{(1)}, \cdots, \mathbf{x}^{(N)}\) 要学出 基向量 \(A\)字典 每个输入样本对应的稀疏编码 \(\mathbf{Z}^{(1)}, \cdots, \mathbf{Z}^{(N)}\) 训练过程：交替优化 固定基向量 \(A\) ，对于每个输入 \(\mathbf{X}^{(n)}\)，计算其最优编码 \[ \min _{\mathbf{z}^{(n)}}\left\|\mathbf{x}^{(n)}-A \mathbf{z}^{(n)}\right\|^{2}+\eta \rho\left(\mathbf{z}^{(n)}\right) \] 固定 \(n\) 个编码，计算最优基向量字典 \[ \min _{A} \sum_{n=1}^{N}\left(\left\|\mathbf{x}^{(n)}-A \mathbf{z}^{(n)}\right\|^{2}\right)+\lambda \frac{1}{2}\|A\|^{2} \] 优点 计算量小 可解释性强 自动特征选择]]></content>
+      <tags>
+        <tag>deep learning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[shell 特殊变量记忆]]></title>
     <url>%2F2019%2F07%2F10%2Fshell-%E7%89%B9%E6%AE%8A%E5%8F%98%E9%87%8F%E8%AE%B0%E5%BF%86%2F</url>
     <content type="text"><![CDATA[一直头疼 shell 脚本的特殊变量记忆，总是背了又忘，忘了又背。太多的东西实在记不住 $*, $?, $!，不如就背两个，$#和 $@。 $# 是传给脚本的参数个数 $@ 是传给脚本的所有参数的列表 $0 是脚本本身的名字 $1 是传递给该 shell 脚本的第一个参数 $2 是传递给该 shell 脚本的第二个参数]]></content>
