@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="PAC(Principal Component Analysis, PAC) 数据降维方法，转换后数据的方差最大。 选择数据方差最大的方向进行投影，才能最大化数据的差异性，保留更多的原始数据信息。 一组 \(d\) 维样本\(\mathbf{x} \in \mathbb{R}^d, 1 \leq n \leq N\)，将其投影到一维空间中，投影向量为 \(\mathbf{w} \in \mathb">
-<meta name="keywords" content="deep learning,machine learning,todo">
+  <meta name="description" content="安装和使用 安装 Hadoop 和 Spark 在 pyspark 中运行代码 Spark 独立应用程序编程 1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext(&apos;local&apos;, &apos;test&apos;)logFile = &quot;file:///usr/">
+<meta name="keywords" content="spark">
 <meta property="og:type" content="article">
-<meta property="og:title" content="困学纪闻注：PAC">
-<meta property="og:url" content="http://guanhua.ml/2019/03/18/PAC/index.html">
+<meta property="og:title" content="狸花猫记(2)：Spark 安装与使用">
+<meta property="og:url" content="http://guanhua.ml/2019/06/17/狸花猫记(2)：Spark 安装与使用/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="PAC(Principal Component Analysis, PAC) 数据降维方法，转换后数据的方差最大。 选择数据方差最大的方向进行投影，才能最大化数据的差异性，保留更多的原始数据信息。 一组 \(d\) 维样本\(\mathbf{x} \in \mathbb{R}^d, 1 \leq n \leq N\)，将其投影到一维空间中，投影向量为 \(\mathbf{w} \in \mathb">
+<meta property="og:description" content="安装和使用 安装 Hadoop 和 Spark 在 pyspark 中运行代码 Spark 独立应用程序编程 1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext(&apos;local&apos;, &apos;test&apos;)logFile = &quot;file:///usr/">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
+<meta property="og:updated_time" content="2019-07-12T05:25:13.758Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="困学纪闻注：PAC">
-<meta name="twitter:description" content="PAC(Principal Component Analysis, PAC) 数据降维方法，转换后数据的方差最大。 选择数据方差最大的方向进行投影，才能最大化数据的差异性，保留更多的原始数据信息。 一组 \(d\) 维样本\(\mathbf{x} \in \mathbb{R}^d, 1 \leq n \leq N\)，将其投影到一维空间中，投影向量为 \(\mathbf{w} \in \mathb">
+<meta name="twitter:title" content="狸花猫记(2)：Spark 安装与使用">
+<meta name="twitter:description" content="安装和使用 安装 Hadoop 和 Spark 在 pyspark 中运行代码 Spark 独立应用程序编程 1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext(&apos;local&apos;, &apos;test&apos;)logFile = &quot;file:///usr/">
 
 
 
@@ -124,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/2019/03/18/PAC/">
+  <link rel="canonical" href="http://guanhua.ml/2019/06/17/狸花猫记(2)：Spark 安装与使用/">
 
 
 
@@ -134,7 +134,7 @@
   };
 </script>
 
-  <title>困学纪闻注：PAC | gh's notes</title>
+  <title>狸花猫记(2)：Spark 安装与使用 | gh's notes</title>
   
 
 
@@ -383,7 +383,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/03/18/PAC/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/06/17/狸花猫记(2)：Spark 安装与使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -400,7 +400,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">困学纪闻注：PAC
+          <h1 class="post-title" itemprop="name headline">狸花猫记(2)：Spark 安装与使用
 
               
             
@@ -426,7 +426,7 @@
                 
               
 
-              <time title="Created: 2019-03-18 13:02:52" itemprop="dateCreated datePublished" datetime="2019-03-18T13:02:52+08:00">2019-03-18</time>
+              <time title="Created: 2019-06-17 19:39:39" itemprop="dateCreated datePublished" datetime="2019-06-17T19:39:39+08:00">2019-06-17</time>
             
 
             
@@ -443,11 +443,29 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-26 21:01:58" itemprop="dateModified" datetime="2019-06-26T21:01:58+08:00">2019-06-26</time>
+                <time title="Modified: 2019-07-12 13:25:13" itemprop="dateModified" datetime="2019-07-12T13:25:13+08:00">2019-07-12</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/spark/" itemprop="url" rel="index"><span itemprop="name">spark</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -461,8 +479,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/03/18/PAC/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/18/PAC/" itemprop="commentCount"></span>
+                <a href="/2019/06/17/狸花猫记(2)：Spark 安装与使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/17/狸花猫记(2)：Spark 安装与使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -490,27 +508,17 @@
       
 
       
-        <p>PAC(Principal Component Analysis, PAC) 数据降维方法，转换后数据的<strong>方差最大</strong>。</p>
-<p>选择数据方差最大的方向进行投影，才能最大化数据的差异性，保留更多的原始数据信息。</p>
-<p>一组 <span class="math inline">\(d\)</span> 维样本<span class="math inline">\(\mathbf{x} \in \mathbb{R}^d, 1 \leq n \leq N\)</span>，将其投影到一维空间中，投影向量为 <span class="math inline">\(\mathbf{w} \in \mathbb{R}^d\)</span>，不是一般性，限制 <span class="math inline">\(\mathbf{w}\)</span> 的模为 <span class="math inline">\(1\)</span> ，即 <span class="math inline">\(\mathbb{w}^T \mathbf{w} = 1\)</span>.</p>
-<h2 id="计算每个样本点的投影表示-zn">计算每个样本点的投影表示 <span class="math inline">\(z^(n)\)</span></h2>
-<p>每个样本点 <span class="math inline">\(\mathbf{x}^{(n)}\)</span> 投影后 <span class="math inline">\(1 \times d \times d \times 1\)</span> <span class="math display">\[
-z^{(n)}=\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}
-\]</span></p>
-<p>##计算所有样本投影后的方差</p>
-<p><span class="math display">\[
-\begin{aligned} \sigma(X ; \mathbf{w}) &amp;=\frac{1}{N} \sum_{n=1}^{N}\left(\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}-\mathbf{w}^{\mathrm{T}} \overline{\mathbf{x}}\right)^{2} \\ &amp;=\frac{1}{N}\left(\mathbf{w}^{\mathrm{T}} X-\mathbf{w}^{\mathrm{T}} \overline{X}\right)\left(\mathbf{w}^{\mathrm{T}} X-\mathbf{w}^{\mathrm{T}} \overline{X}\right)^{\mathrm{T}} \\ &amp;=\mathbf{w}^{\mathrm{T}} S \mathbf{w} \end{aligned}
-\]</span></p>
-<p>$ S=(X-)(X-)^{} $ 是原始样本的协方差矩阵。</p>
-<h2 id="拉格朗日法求最大投影方差">拉格朗日法求最大投影方差</h2>
-<p><span class="math display">\[
-\max _{\mathbf{w}} \mathbf{w}^{\mathrm{T}} S \mathbf{w}+\lambda\left(1-\mathbf{w}^{\mathrm{T}} \mathbf{w}\right)
-\]</span></p>
-<p>对上式求导并令导数等于0，得到</p>
-<p><span class="math display">\[
-S \mathbf{w}=\lambda \mathbf{w}
-\]</span></p>
-<p>只需要将<span class="math inline">\(S\)</span>的特征值从大到小排列，保留前<span class="math inline">\(d^{\prime}\)</span>个特征向量，其对应的特征向量即使最优的投影矩阵</p>
+        <h1 id="安装和使用">安装和使用</h1>
+<h2 id="安装-hadoop-和-spark">安装 Hadoop 和 Spark</h2>
+<h2 id="在-pyspark-中运行代码">在 pyspark 中运行代码</h2>
+<h2 id="spark-独立应用程序编程">Spark 独立应用程序编程</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line"></span><br><span class="line">sc = SparkContext(<span class="string">'local'</span>, <span class="string">'test'</span>)</span><br><span class="line"></span><br><span class="line">logFile = <span class="string">"file:///usr/local/spark/README.md"</span></span><br><span class="line">logData = sc.textFile(logFile, <span class="number">2</span>).cache()</span><br><span class="line"></span><br><span class="line">numAs = logData.filter(<span class="keyword">lambda</span> line: <span class="string">'a'</span> <span class="keyword">in</span> line).count()</span><br><span class="line">numBs = logData.filter(<span class="keyword">lambda</span> line: <span class="string">'b'</span> <span class="keyword">in</span> line).count()</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Lines with a: %s, Lines with b: %s'</span> % (numAs, numBs))</span><br></pre></td></tr></table></figure>
+<h1 id="第一个spark应用程序wordcount">第一个Spark应用程序：WordCount</h1>
+<h2 id="在-pyspark-中执行词频统计">在 pyspark 中执行词频统计</h2>
+<h3 id="加载本地文件">加载本地文件</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile = sc.Te</span><br></pre></td></tr></table></figure>
+<h1 id="spark集群环境搭建">Spark集群环境搭建</h1>
+<h1 id="在集群上运行spark应用程序">在集群上运行Spark应用程序</h1>
 
       
     </div>
@@ -524,35 +532,7 @@ S \mathbf{w}=\lambda \mathbf{w}
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/20/困学纪闻注：GAN——志留纪叹息/" rel="bookmark">困学纪闻注：GAN——志留纪叹息</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/06/19/困学纪闻注：前馈神经网络一览/" rel="bookmark">困学纪闻注：前馈神经网络一览——激活函数寒武纪</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/06/19/困学纪闻注：前馈神经网络一览——反向传播算法/" rel="bookmark">困学纪闻注：前馈神经网络一览——反向传播算法白垩纪</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/06/19/困学纪闻注：卷积神经网络——中生代噩梦/" rel="bookmark">困学纪闻注：卷积神经网络——中生代噩梦</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/06/19/困学纪闻注：循环神经网络——三叠纪沉睡/" rel="bookmark">困学纪闻注：循环神经网络——三叠纪沉睡</a></div>
+      <div class="popular-posts-title"><a href="/2019/06/17/狸花猫记(1)：Spark 设计和原理/" rel="bookmark">Spark: 设计和原理</a></div>
       
     </li>
   
@@ -581,11 +561,7 @@ S \mathbf{w}=\lambda \mathbf{w}
         
         <div class="post-tags">
           
-            <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
-          
-            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
-          
-            <a href="/tags/todo/" rel="tag"># todo</a>
+            <a href="/tags/spark/" rel="tag"># spark</a>
           
         </div>
       
@@ -598,8 +574,8 @@ S \mathbf{w}=\lambda \mathbf{w}
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/10/阿里云安装jupyter-notebook/" rel="next" title="阿里云安装jupyter notebook">
-                <i class="fa fa-chevron-left"></i> 阿里云安装jupyter notebook
+              <a href="/2019/06/17/如何计算-AUC-值/" rel="next" title="如何计算 AUC 值">
+                <i class="fa fa-chevron-left"></i> 如何计算 AUC 值
               </a>
             
           </div>
@@ -608,8 +584,8 @@ S \mathbf{w}=\lambda \mathbf{w}
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/24/xmake试用/" rel="prev" title="xmake试用">
-                xmake试用 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/18/Jupyter-远程访问配置/" rel="prev" title="Jupyter 远程访问配置">
+                Jupyter 远程访问配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -799,6 +775,8 @@ S \mathbf{w}=\lambda \mathbf{w}
                     
                       
                     
+                      
+                    
                     <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
@@ -880,7 +858,7 @@ S \mathbf{w}=\lambda \mathbf{w}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算每个样本点的投影表示-zn"><span class="nav-number">1.</span> <span class="nav-text">计算每个样本点的投影表示 \(z^(n)\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拉格朗日法求最大投影方差"><span class="nav-number">2.</span> <span class="nav-text">拉格朗日法求最大投影方差</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装和使用"><span class="nav-number">1.</span> <span class="nav-text">安装和使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-hadoop-和-spark"><span class="nav-number">1.1.</span> <span class="nav-text">安装 Hadoop 和 Spark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-pyspark-中运行代码"><span class="nav-number">1.2.</span> <span class="nav-text">在 pyspark 中运行代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark-独立应用程序编程"><span class="nav-number">1.3.</span> <span class="nav-text">Spark 独立应用程序编程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个spark应用程序wordcount"><span class="nav-number">2.</span> <span class="nav-text">第一个Spark应用程序：WordCount</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在-pyspark-中执行词频统计"><span class="nav-number">2.1.</span> <span class="nav-text">在 pyspark 中执行词频统计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载本地文件"><span class="nav-number">2.1.1.</span> <span class="nav-text">加载本地文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spark集群环境搭建"><span class="nav-number">3.</span> <span class="nav-text">Spark集群环境搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在集群上运行spark应用程序"><span class="nav-number">4.</span> <span class="nav-text">在集群上运行Spark应用程序</span></a></li></ol></div>
             
 
           </div>
