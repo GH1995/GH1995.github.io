@@ -108,7 +108,7 @@
   <meta name="description" content="简介  BDAS架构  Spark专注于数据的处理分析，而数据的存储还是要借助于Hadoop分布式文件系统HDFS、Amazon S3等来实现的 运行架构 基本概念  RDD：弹性分布式数据集（Resilient Distributed Dataset） DAG：有向无环图 Executor：运行在工作节点（Worker Node）上的一个进程，负责运行任务，并为应用程序存储数据  架构设计 Sp">
 <meta name="keywords" content="spark">
 <meta property="og:type" content="article">
-<meta property="og:title" content="狸花猫记(2)：Spark 设计和原理">
+<meta property="og:title" content="狸花猫记(1)：Spark 设计和原理">
 <meta property="og:url" content="http://guanhua.ml/2019/06/17/狸花猫记(1)：Spark 设计和原理/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
 <meta property="og:description" content="简介  BDAS架构  Spark专注于数据的处理分析，而数据的存储还是要借助于Hadoop分布式文件系统HDFS、Amazon S3等来实现的 运行架构 基本概念  RDD：弹性分布式数据集（Resilient Distributed Dataset） DAG：有向无环图 Executor：运行在工作节点（Worker Node）上的一个进程，负责运行任务，并为应用程序存储数据  架构设计 Sp">
@@ -125,9 +125,9 @@
 <meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-14-%E9%87%87%E7%94%A8HadoopStorm%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E4%B8%AA%E6%A1%88%E4%BE%8B.jpg">
 <meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-15-%E7%94%A8Spark%E6%9E%B6%E6%9E%84%E6%BB%A1%E8%B6%B3%E6%89%B9%E5%A4%84%E7%90%86%E5%92%8C%E6%B5%81%E5%A4%84%E7%90%86%E9%9C%80%E6%B1%82.jpg">
 <meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-16-Hadoop%E5%92%8CSpark%E7%9A%84%E7%BB%9F%E4%B8%80%E9%83%A8%E7%BD%B2.jpg">
-<meta property="og:updated_time" content="2019-07-12T05:28:28.015Z">
+<meta property="og:updated_time" content="2019-07-12T05:29:49.865Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="狸花猫记(2)：Spark 设计和原理">
+<meta name="twitter:title" content="狸花猫记(1)：Spark 设计和原理">
 <meta name="twitter:description" content="简介  BDAS架构  Spark专注于数据的处理分析，而数据的存储还是要借助于Hadoop分布式文件系统HDFS、Amazon S3等来实现的 运行架构 基本概念  RDD：弹性分布式数据集（Resilient Distributed Dataset） DAG：有向无环图 Executor：运行在工作节点（Worker Node）上的一个进程，负责运行任务，并为应用程序存储数据  架构设计 Sp">
 <meta name="twitter:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/10/%E5%9B%BE-BDAS%E6%9E%B6%E6%9E%84.jpg">
 
@@ -147,7 +147,7 @@
   };
 </script>
 
-  <title>狸花猫记(2)：Spark 设计和原理 | gh's notes</title>
+  <title>狸花猫记(1)：Spark 设计和原理 | gh's notes</title>
   
 
 
@@ -413,7 +413,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">狸花猫记(2)：Spark 设计和原理
+          <h1 class="post-title" itemprop="name headline">狸花猫记(1)：Spark 设计和原理
 
               
             
@@ -456,7 +456,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 13:28:28" itemprop="dateModified" datetime="2019-07-12T13:28:28+08:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 13:29:49" itemprop="dateModified" datetime="2019-07-12T13:29:49+08:00">2019-07-12</time>
               
             
           </span>
