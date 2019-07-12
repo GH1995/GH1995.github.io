@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="gh&#39;s notes">
 <meta property="og:description" content="RDD 编程 RDD 创建 创建办法  读取外部数据  本地文件 HDFS HBase Cassandra 等  调用 SparkContext 的 parallelize 方法，在 Driver 中一个已经存在的集合（数组）上创建  创建 RDD 之前的准备工作 启动 HDFS 组件 1/usr/local/hadoop/sbin/start-dfs.sh 创建 rdd 子目录存放代码和相关文件">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-12T10:36:58.914Z">
+<meta property="og:updated_time" content="2019-07-12T10:40:17.735Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="明夷待访录（三）：Spark 编程基础">
 <meta name="twitter:description" content="RDD 编程 RDD 创建 创建办法  读取外部数据  本地文件 HDFS HBase Cassandra 等  调用 SparkContext 的 parallelize 方法，在 Driver 中一个已经存在的集合（数组）上创建  创建 RDD 之前的准备工作 启动 HDFS 组件 1/usr/local/hadoop/sbin/start-dfs.sh 创建 rdd 子目录存放代码和相关文件">
@@ -426,7 +426,7 @@
                 
               
 
-              <time title="Created: 2019-07-12 18:36:58" itemprop="dateCreated datePublished" datetime="2019-07-12T18:36:58+08:00">2019-07-12</time>
+              <time title="Created: 2019-07-12 18:40:17" itemprop="dateCreated datePublished" datetime="2019-07-12T18:40:17+08:00">2019-07-12</time>
             
 
             
@@ -615,7 +615,7 @@
 <p>多机 <code>rdd.collect().foreach(print)</code> 或<code>rdd.take(100).foreach(print)</code></p>
 <p><strong>存在问题</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdd.foreach(<span class="keyword">print</span>) <span class="comment"># 无法使用</span></span><br></pre></td></tr></table></figure>
-<h2 id="键值对 rdd">键值对 RDD</h2>
+<p><strong>键值对 RDD</strong></p>
 <p><strong>键值对 RDD 的创建 pairrdd</strong></p>
 <p>第一种创建方式：从文件中加载</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lines = sc.textFile(path)</span></span><br></pre></td></tr></table></figure>
@@ -1090,7 +1090,7 @@ drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:48 /user</code></pre>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rdd 编程"><span class="nav-number">1.</span> <span class="nav-text">RDD 编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#键值对 rdd"><span class="nav-number">2.</span> <span class="nav-text">键值对 RDD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#共享变量"><span class="nav-number">3.</span> <span class="nav-text">共享变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据读写"><span class="nav-number">4.</span> <span class="nav-text">数据读写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件系统的数据读写"><span class="nav-number">4.1.</span> <span class="nav-text">文件系统的数据读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件数据读写"><span class="nav-number">4.2.</span> <span class="nav-text">文件数据读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读写 hbase 数据"><span class="nav-number">4.3.</span> <span class="nav-text">读写 HBase 数据</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rdd 编程"><span class="nav-number">1.</span> <span class="nav-text">RDD 编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#共享变量"><span class="nav-number">2.</span> <span class="nav-text">共享变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据读写"><span class="nav-number">3.</span> <span class="nav-text">数据读写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件系统的数据读写"><span class="nav-number">3.1.</span> <span class="nav-text">文件系统的数据读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件数据读写"><span class="nav-number">3.2.</span> <span class="nav-text">文件数据读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读写 hbase 数据"><span class="nav-number">3.3.</span> <span class="nav-text">读写 HBase 数据</span></a></li></ol></li></ol></div>
             
 
           </div>
