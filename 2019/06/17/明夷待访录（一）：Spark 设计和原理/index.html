@@ -125,7 +125,7 @@
 <meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-14-%E9%87%87%E7%94%A8HadoopStorm%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E4%B8%AA%E6%A1%88%E4%BE%8B.jpg">
 <meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-15-%E7%94%A8Spark%E6%9E%B6%E6%9E%84%E6%BB%A1%E8%B6%B3%E6%89%B9%E5%A4%84%E7%90%86%E5%92%8C%E6%B5%81%E5%A4%84%E7%90%86%E9%9C%80%E6%B1%82.jpg">
 <meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-16-Hadoop%E5%92%8CSpark%E7%9A%84%E7%BB%9F%E4%B8%80%E9%83%A8%E7%BD%B2.jpg">
-<meta property="og:updated_time" content="2019-07-12T06:44:22.447Z">
+<meta property="og:updated_time" content="2019-07-12T09:30:32.756Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="明夷待访录（一）：Spark 设计和原理">
 <meta name="twitter:description" content="简介  BDAS架构  Spark专注于数据的处理分析，而数据的存储还是要借助于Hadoop分布式文件系统HDFS、Amazon S3等来实现的 运行架构 基本概念  RDD：弹性分布式数据集（Resilient Distributed Dataset） DAG：有向无环图 Executor：运行在工作节点（Worker Node）上的一个进程，负责运行任务，并为应用程序存储数据  架构设计 Sp">
@@ -456,7 +456,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 14:44:22" itemprop="dateModified" datetime="2019-07-12T14:44:22+08:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 17:30:32" itemprop="dateModified" datetime="2019-07-12T17:30:32+08:00">2019-07-12</time>
               
             
           </span>
@@ -534,7 +534,13 @@
 <li>Executor：运行在工作节点（Worker Node）上的一个进程，负责运行任务，并为应用程序存储数据</li>
 </ul>
 <h3 id="架构设计">架构设计</h3>
-<p>Spark运行架构包括 - 集群资源管理器（Cluster Manager） - 运行作业任务的工作节点（Worker Node） - 每个应用的任务控制节点（Driver） - 每个工作节点上负责具体任务的执行进程（Executor）</p>
+<p>Spark运行架构包括</p>
+<ul>
+<li>集群资源管理器（Cluster Manager）</li>
+<li>运行作业任务的工作节点（Worker Node）</li>
+<li>每个应用的任务控制节点（Driver）</li>
+<li>每个工作节点上负责具体任务的执行进程（Executor）</li>
+</ul>
 <figure>
 <img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-5-Spark%E8%BF%90%E8%A1%8C%E6%9E%B6%E6%9E%84.jpg" alt="运行架构"><figcaption>运行架构</figcaption>
 </figure>
@@ -546,14 +552,20 @@
 <figure>
 <img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-7-Spark%E8%BF%90%E8%A1%8C%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%E5%9B%BE.jpg" alt="Spark运行基本流程图"><figcaption>Spark运行基本流程图</figcaption>
 </figure>
-<p>特点： 1. 每个应用都有自己专属的Executor进程 2. 只要能够获取Executor进程并保持通信 3. Executor上有一个BlockManager存储模块 4. 任务采用了数据本地性和推测执行等优化机制</p>
+<p>特点：</p>
+<ol type="1">
+<li>每个应用都有自己专属的Executor进程</li>
+<li>只要能够获取Executor进程并保持通信</li>
+<li>Executor上有一个BlockManager存储模块</li>
+<li>任务采用了数据本地性和推测执行等优化机制</li>
+</ol>
 <h2 id="rdd的设计和运行原理">RDD的设计和运行原理</h2>
 <h3 id="设计背景">设计背景</h3>
 <p>矛盾：目前的MapReduce框架都是把中间结果写入到HDFS中，带来了大量的数据复制、磁盘IO和序列化开销</p>
 <p>方法：提供了一个抽象的数据架构，我们不必担心底层数据的分布式特性，只需将具体的应用逻辑表达为一系列转换处理，不同RDD之间的转换操作形成依赖关系，可以实现管道化，从而避免了中间结果的存储，大大降低了数据复制、磁盘IO和序列化开销。</p>
 <h3 id="rdd-概念">RDD 概念</h3>
 <p>一个RDD就是一个分布式对象集合，本质上是<strong>一个只读的分区记录集合</strong>，每个RDD可以分成多个<strong>分区</strong>，每个分区就是一个<strong>数据集片段</strong>。</p>
-<p>RDD提供了一组丰富的操作以支持常见的数据运算，分为<strong>“行动”（Action）</strong>和<strong>“转换”（Transformation）</strong>两种类型，前者用于<strong>执行计算并指定输出的形式</strong>，后者<strong>指定RDD之间的相互依赖关系</strong>。两类操作的主要区别是，<strong>转换操作（比如map、filter、groupBy、join等）接受RDD并返回RDD</strong>，而<strong>行动操作（比如count、collect等）接受RDD但是返回非RDD</strong>（即输出一个值或结果）。</p>
+<p>RDD提供了一组丰富的操作以支持常见的数据运算，分为<strong>行动（Action）</strong>和<strong>转换（Transformation）</strong>两种类型，前者用于<strong>执行计算并指定输出的形式</strong>，后者<strong>指定RDD之间的相互依赖关系</strong>。两类操作的主要区别是，<strong>转换操作（比如map、filter、groupBy、join等）接受RDD并返回RDD</strong>，而<strong>行动操作（比如count、collect等）接受RDD但是返回非RDD</strong>（即输出一个值或结果）。</p>
 <p>RDD典型的执行过程如下：</p>
 <ol type="1">
 <li>RDD读入外部数据源（或者内存中的集合）进行创建；</li>
@@ -602,7 +614,7 @@
 <img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-13-Spark-on-Yarn%E6%9E%B6%E6%9E%84.jpg" alt="Spark on YARN架构"><figcaption>Spark on YARN架构</figcaption>
 </figure>
 <h3 id="从hadoopstorm架构转向spark架构">从“Hadoop+Storm”架构转向Spark架构</h3>
-<p>“Hadoop+Storm”的架构（也称为Lambda架构）</p>
+<p>Hadoop+Storm的架构（也称为Lambda架构）</p>
 <p>Hadoop负责对批量历史数据的实时查询和离线分析，而Storm则负责对流数据的实时处理。</p>
 <figure>
 <img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-14-%E9%87%87%E7%94%A8HadoopStorm%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E4%B8%AA%E6%A1%88%E4%BE%8B.jpg" alt="采用“Hadoop+Storm”部署方式的一个案例"><figcaption>采用“Hadoop+Storm”部署方式的一个案例</figcaption>
