@@ -193,8 +193,8 @@
     <url>%2F2019%2F06%2F22%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9A%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AF%B9%E5%81%B6%E6%80%A7%2F</url>
     <content type="text"><![CDATA[最大熵模型 支持向量机 原始问题 \[\begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t.} c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad h_{j}(x)=0, \quad j=1,2, \cdots, l}\end{array} \] 此约束最优化问题称为 最优化问题 或原始问题。 广义拉格朗日函数 \[L(x, \alpha, \beta)=f(x)+\sum_{i=1}^{k} \alpha_{i} c_{i}(x)+\sum_{j=1}^{l} \beta_{j} h_{j}(x) \] \(\alpha_i, \beta_j\) 是拉格朗日乘子，$_i 0 $ \[\theta_{P}(x)=\max _{\alpha, \beta : \alpha_{i} \geqslant 0} L(x, \alpha, \beta) \] \[\theta_{P}(x)=\max _{\alpha, \beta : \alpha_{i} \geqslant 0}\left[f(x)+\sum_{i=1}^{k} \alpha_{i} c_{i}(x)+\sum_{j=1}^{l} \beta_{j} h_{j}(x)\right]=+\infty \]]]></content>
       <tags>
-        <tag>machine learning</tag>
         <tag>todo</tag>
+        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
@@ -211,8 +211,8 @@
     <url>%2F2019%2F06%2F22%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9A%E6%80%BB%E7%BB%93%E7%AF%87%2F</url>
     <content type="text"><![CDATA[生成模型和判别模型 生成模型 混合高斯模型和其他混合模型 隐马尔可夫模型 (HMM) 朴素贝叶斯 LDA 文档主题生成模型 生成式模型 由数据学习联合概率分布 \(P(X, Y)\)，然后求出条件概率分布 \[P(Y|X)=\frac{P(X,Y)}{P(X)} \] 作为预测的模型，即生成模型。 能还原出联合概率分布\(P(X, Y)\) 收敛速度更快 当存在隐变量时只能用生成方法学习 判别模型 KNN 感知机 决策树 最大熵模型 Logistic 回归 线性判别分析 (LDA) 支持向量机 (SVM) Boosting 条件随机场算法 (CRF) 线性回归 神经网络 判别式模型 直接学习决策函数 \(f(X)\) 或条件概率分布 \(P(Y|X)\) 作为预测的模型。 往往准确率更高 可以简化学习问题 学习策略（损失函数） 学习算法 生成模型朴素贝叶斯和 HMM 的监督学习，最优解即极大似然估计值，可以由概率计算公式直接计算。 判别模型中，感知机，逻辑斯蒂回归，最大熵模型，条件随机场都可以用 SGD，拟牛顿法学习。这些都是无约束最优化问题。 判别模型中 SVM，可以解凸二次规划的对偶问题。有序列最小最优化算法等方法。 判别模型中决策树，是基于启发式算法，正则化的极大似然估计。 判别模型中，提升方法式加法模型，损失函数是 指数损失函数，学习方法是启发式的从前往后逐步学习模型。 判别模型中，EM 算法是利用迭代求解隐变量概率模型。 上述模型中，SVM/LR/ 最大熵 /CRF 四个是凸优化问题，全局最优解保证存在，其他问题不是凸优化问题，不做保证。]]></content>
       <tags>
-        <tag>machine learning</tag>
         <tag>todo</tag>
+        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
@@ -247,8 +247,8 @@
     <url>%2F2019%2F06%2F21%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9AEM-%E7%AE%97%E6%B3%95%2F</url>
     <content type="text"><![CDATA[EM 算法是一种迭代算法，用于含有隐变量的概率模型参数的极大似然估计。每次迭代由两步组成： - \(E\) 步，求期望 (expectation) - \(M\) 步，求极大值 (maximization)，直至收敛为止。 算法 \(E\) 步：\(\theta(i)\) 为 \(i\) 次迭代参数 \(\theta\) 的估计值，在第 \(i+1\) 次迭代的 \(E\) 步，计算 \[\begin{aligned} Q\left(\theta, \theta^{(i)}\right) &amp;=E_{Z}\left[\log P(Y, Z | \theta) | Y, \theta^{(i)}\right] \\ &amp;=\sum_{Z} \log P(Y, Z | \theta) P\left(Z | Y, \theta^{(i)}\right) \end{aligned} \] \(P(Z|Y，\theta(i))\) 是在给定观测数据 \(Y\) 和当前参数估计 \(\theta(i)\) 下隐变量数据 Z 的条件概率分布。 \(M\) 步：求使 \(Q(\theta, \theta(i))\) 极大化的 \(\theta\)，确定第 \(i+1\) 次迭代的参数的估计值 \[\theta^{(i+1)}=\arg \max _{\theta} Q\left(\theta, \theta^{(i)}\right) \] EM 算法是通过不断求解下界的极大化逼近求解对数似然函数极大化的算法。可以用于生成模型的非监督学习。生成模型由联合概率分布 \(P(X，Y)\) 表示。]]></content>
       <tags>
-        <tag>machine learning</tag>
         <tag>todo</tag>
+        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
@@ -318,8 +318,8 @@
     <url>%2F2019%2F06%2F20%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A0%91%2F</url>
     <content type="text"><![CDATA[特征选择 信息熵： 信息熵 \[H(X)=-\sum_{x \in X} P(x) \log P(x) ) \] 条件熵 \[H(Y | X)=\sum_{i=1}^{n} p_{i} H\left(Y | X=x_{i}\right) \] 关于这里有空我要单独写篇文章！ 信息增益 \[g(D, A)=H(D)-H(D | A) \] 其中，数据集 \(D\) 的经验熵 \[H(D)=-\sum_{k=1}^{K} \frac{\left|C_{k}\right|}{|D|} \log _{2} \frac{\left|C_{k}\right|}{|D|} \] 特征 \(A\) 对数据集 \(D\) 的经验条件熵 \[H(D | A)=\sum_{i=1}^{n} \frac{\left|D_{i}\right|}{|D|} H\left(D_{i}\right)=-\sum_{i=1}^{n} \frac{\left|D_{i}\right|}{D |} \sum_{k=1}^{K} \frac{\left|D_{i k}\right|}{\left|D_{i}\right|} \log _{2} \frac{\left|D_{i k}\right|}{\left|D_{i}\right|} \] 信息增益比 \[g_{R}(D, A)=\frac{g(D, A)}{H(D)} \] 决策树剪枝 \[H_{t}(T)=-\sum_{k} \frac{N_{t k}}{N_{t}} \log \frac{N_{t k}}{N_{t}} \] \[C_{\alpha}(T)=\sum_{t=1}^{T I} N_{t} H_{t}(T)+\alpha|T| \] CART 如何生成回归树 两个区域 \(R_{1}(j, s)=\left\{x | x^{(j)} \leqslant s\right\}\) 和\(R_{2}(j, s)=\left\{x | x^{(j)}&gt;s\right\}\) \[\min_{j,s} \left[\min _{c_{1}} \sum_{x_{i} \in R_{1}(j, s)}\left(y_{i}-c_{1}\right)^{2} + \min _{c_{2}} \sum_{x \in R_{R_{2}}(j, s)}\left(y_{i}-c_{2}\right)^{2} \right ] \] \[\hat{c}_{m}=\frac{1}{N_{m}} \sum_{x_{i} \in R_{m}(j, s)} y_{i} \] 基尼指数 \[\operatorname{Gini}(p)=\sum_{k=1}^{K} p_{k}\left(1-p_{k}\right)=1-\sum_{k=1}^{K} p_{k}^{2} \] \[\operatorname{Gini}(D, A)=\frac{\left|D_{1}\right|}{|D|} \operatorname{Gini}\left(D_{1}\right)+\frac{\left|D_{2}\right|}{|D|} \operatorname{Gini}\left(D_{2}\right) \] 分类树的生成 递归 CART 剪枝 \(\alpha=\frac{C(t)-C\left(T_{t}\right)}{\left|T_{t}\right|-1}\)时，计算\(g(t)=\frac{C(t)-C\left(T_{t}\right)}{\left|T_{t}\right|-1}\)]]></content>
       <tags>
-        <tag>machine learning</tag>
         <tag>todo</tag>
+        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
@@ -335,8 +335,8 @@
     <url>%2F2019%2F06%2F20%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9A%E6%9C%80%E5%A4%A7%E7%86%B5%E6%A8%A1%E5%9E%8B%2F</url>
     <content type="text"><![CDATA[最大熵模型 \(P(X, Y)\) 的经验分布 \[\tilde{P}(X=x, Y=y)=\frac{\nu(X=x, Y=y)}{N} \] 边缘分布 \(P(X)\) \[\tilde{P}(X=x)=\frac{v(X=x)}{N} \] \(P(X，Y)\) 的经验分布的期望值和关于模型 \(P(Y|X)\) 与 \(P(X)\) 的经验分布的期望值 \[\sum_{x, y} \tilde{P}(x) P(y | x) f(x, y)=\sum_{x, y} \tilde{P}(x, y) f(x, y) \] 定义在条件概率分布 \(P(Y|X)\) 上的条件熵为 \(H(P)=-\sum_{x, y} \tilde{P}(x) P(y | x) \log P(y | x)\)，则条件熵最大的模型称为最大熵模型。 求解最大熵模型 \[\begin{array}{cl}{\max _{P_{R C}}} &amp; {H(P)=-\sum_{x, y} \tilde{P}(x) P(y | x) \log P(y | x)} \\ {\text { s.t.}} &amp; {E_{P}\left(f_{i}\right)=E_{\tilde{p}}\left(f_{i}\right), \quad i=1,2, \cdots, n} \\ {} &amp; {\sum_{y} P(y | x)=1}\end{array} \] 将求最大值问题改为等价的求最小值问题 \[\begin{array}{ll}{\min _{P \in \mathbf{C}}} &amp; {-H(P)=\sum_{x, y} \tilde{P}(x) P(y | x) \log P(y | x)} \\ {\text { s.t.}} &amp; {E_{P}\left(f_{i}\right)-E_{\tilde{F}}\left(f_{i}\right)=0, \quad i=1,2, \cdots, n} \\ {} &amp; {\sum_{y} P(y | x)=1}\end{array} \] 引入拉格朗日乘子 \[\begin{aligned} L(P, w) \equiv &amp;-H(P)+w_{0}\left(1-\sum_{y} P(y | x)\right)+\sum_{i=1}^{n} w_{i}\left(E_{\tilde{p}}\left(f_{i}\right)-E_{P}\left(f_{i}\right)\right) \\=&amp; \sum_{x, y} \tilde{P}(x) P(y | x) \log P(y | x)+w_{0}\left(1-\sum_{y} P(y | x)\right) \\ &amp;+\sum_{i=1}^{n} w_{i}\left(\sum_{x, y} \tilde{P}(x, y) f_{i}(x, y)-\sum_{x, y} \tilde{P}(x) P(y | x) f_{i}(x, y)\right) \end{aligned} \] \[P_{w}(y | x)=\frac{1}{Z_{w}(x)} \exp \left(\sum_{i=1}^{n} w_{i} f_{i}(x, y)\right) \] \[Z_{w}(x)=\sum_{y} \exp \left(\sum_{i=1}^{n} w_{i} f_{i}(x, y)\right) \] 算法 改进的迭代尺度法 (IIS) 拟牛顿法]]></content>
       <tags>
-        <tag>machine learning</tag>
         <tag>todo</tag>
+        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
@@ -407,8 +407,8 @@
     <url>%2F2019%2F06%2F19%2F%E5%9B%B0%E5%AD%A6%E7%BA%AA%E9%97%BB%E6%B3%A8%EF%BC%9A%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%2F</url>
     <content type="text"><![CDATA[模型 \[f(\mathbf{x} ; \mathbf{w})=\mathbf{w}^{\mathrm{T}} \mathbf{x} \] 参数学习 经验风险最小化 \[\begin{aligned} \mathcal{R}(\mathbf{w}) &amp;=\sum_{n=1}^{N} \mathcal{L}\left(y^{(n)}, f\left(\mathbf{x}^{(n)}, \mathbf{w}\right)\right) \\ &amp;=\frac{1}{2} \sum_{n=1}^{N}\left(y^{(n)}-\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}\right)^{2} \\ &amp;=\frac{1}{2}\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2} \end{aligned} \] \[\begin{aligned} \frac{\partial \mathcal{R}(\mathbf{w})}{\partial \mathbf{w}} &amp;=\frac{1}{2} \frac{\partial\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}}{\partial \mathbf{w}} \\ &amp;=-X\left(\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right) \end{aligned} \] 令\(\frac{\partial}{\partial \mathbf{w}} \mathcal{R}(\mathbf{w})=0\)，得到 \[\mathbf{w}^{*}=\left(X X^{\mathrm{T}}\right)^{-1} X \mathbf{y} \] \[\mathbf{w} \leftarrow \mathbf{w}+\alpha X\left(\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right) \] 结构风险最小化 \[\mathcal{R}(\mathbf{w})=\frac{1}{2}\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}+\frac{1}{2} \lambda\|\mathbf{w}\|^{2} \] 最大似然估计 假设标签 \(y\) 为一个随机变量，其服从以均值为 \(f(\mathbf{x}, \mathbf{w})=\mathbf{w}^{\mathbf{T}} \mathbf{x}\) 为中心，方差为 \(\sigma^{2}\) 的高斯分布。 \[\begin{aligned} p(y | \mathbf{x}, \mathbf{w}, \sigma) &amp;=\mathcal{N}\left(y | \mathbf{w}^{\mathrm{T}} \mathbf{x}, \sigma^{2}\right) \\ &amp;=\frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{\left(y-\mathbf{w}^{\mathrm{T}} \mathbf{x}\right)^{2}}{2 \sigma^{2}}\right) \end{aligned} \] 参数 \(\mathbf{w}\) 在训练集上的 似然函数（likelihood）为 \[\begin{aligned} p(\mathbf{y} | X, \mathbf{w}, \sigma) &amp;=\prod_{n=1}^{N} p\left(y^{(n)} | \mathbf{x}^{(n)}, \mathbf{w}, \sigma\right) \\ &amp;=\prod_{n=1}^{N} \mathcal{N}\left(y^{(n)} | \mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}, \sigma^{2}\right) \end{aligned} \] \[\log p(\mathbf{y} | X, \mathbf{w}, \sigma)=\sum_{n=1}^{N} \log \mathcal{N}\left(y^{(n)} | \mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}, \sigma^{2}\right) \] \[\frac{\partial \log p(\mathbf{y} | X, \mathbf{w}, \sigma)}{\partial \mathbf{w}}=0 \] \[\mathbf{w}^{M L}=\left(X X^{\mathrm{T}}\right)^{-1} X \mathbf{y} \] 最大后验估计 略，我也不会，贝叶斯好难啊]]></content>
       <tags>
-        <tag>machine learning</tag>
         <tag>todo</tag>
+        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
@@ -416,8 +416,8 @@
     <url>%2F2019%2F06%2F19%2F%E5%9B%B0%E5%AD%A6%E7%BA%AA%E9%97%BB%E6%B3%A8%EF%BC%9ALogistic-%E5%9B%9E%E5%BD%92%2F</url>
     <content type="text"><![CDATA[模型 \[\begin{aligned} p(y=1 | \mathbf{x}) &amp;=\sigma\left(\mathbf{w}^{\mathrm{T}} \mathbf{x}\right) \\ &amp; \triangleq \frac{1}{1+\exp \left(-\mathbf{w}^{\mathrm{T}} \mathbf{x}\right)} \end{aligned} \] \[\begin{aligned} p(y=0 | \mathbf{x}) &amp;=1-p(y=1 | \mathbf{x}) \\ &amp;=\frac{\exp \left(-\mathbf{w}^{\mathrm{T}} \mathbf{x}\right)}{1+\exp \left(-\mathbf{w}^{\mathrm{T}} \mathbf{x}\right)} \end{aligned} \] 参数学习 \[\hat{y}^{(n)}=\sigma\left(\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}\right), \qquad 1 \leq n \leq N \] 风险函数 \[\mathcal{R}(\mathbf{w})=-\frac{1}{N} \sum_{n=1}^{N}\left(y^{(n)} \log \hat{y}^{(n)}+\left(1-y^{(n)}\right) \log \left(1-\hat{y}^{(n)}\right)\right) \] \(\hat{y}\) 为 Logistic 函数，故有 \[\frac{\partial \hat{y}}{\partial \mathbf{w}}=\hat{y}^{(n)}\left(1-\hat{y}^{(n)}\right) \] \[\begin{aligned} \frac{\partial \mathcal{R}(\mathbf{w})}{\partial \mathbf{w}} &amp;=-\frac{1}{N} \sum_{n=1}^{N}\left(y^{(n)} \frac{\hat{y}^{(n)}\left(1-\hat{y}^{(n)}\right)}{\hat{y}^{(n)}} \mathbf{x}^{(n)}-\left(1-y^{(n)}\right) \frac{\hat{y}^{(n)}\left(1-\hat{y}^{(n)}\right)}{1-\hat{y}^{(n)}} \mathbf{x}^{(n)}\right) \\ &amp;=-\frac{1}{N} \sum_{n=1}^{N}\left(y^{(n)}\left(1-\hat{y}^{(n)}\right) \mathbf{x}^{(n)}-\left(1-y^{(n)}\right) \hat{y}^{(n)} \mathbf{x}^{(n)}\right) \\ &amp;=-\frac{1}{N} \sum_{n=1}^{N} \mathbf{x}^{(n)}\left(y^{(n)}-\hat{y}^{(n)}\right) \end{aligned} \] \[\mathbf{w}_{t+1} \leftarrow \mathbf{w}_{t}+\alpha \frac{1}{N} \sum_{n=1}^{N} \mathbf{x}^{(n)}\left(y^{(n)}-\hat{y}_{\mathbf{w}_{t}}^{(n)}\right) \]]]></content>
       <tags>
-        <tag>machine learning</tag>
         <tag>todo</tag>
+        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
@@ -425,8 +425,8 @@
     <url>%2F2019%2F06%2F19%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9A%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%2F</url>
     <content type="text"><![CDATA[模型 \[w^{*} \cdot x+b^{*}=0 \] \[f(x)=\operatorname{sign}\left(w^{*} \cdot x+b^{*}\right) \] 策略 核技巧 线性可分支持向量机 函数间隔 \[\hat{\gamma}_{i}=y_{i}\left(w \cdot x_{i}+b\right) \] 几何间隔 \[\gamma_{i}=y_{i}\left(\frac{w}{\|w\|} \cdot x_{i}+\frac{b}{\|w\|}\right) \] 硬间隔最大化 \[\begin{array}{ll}{\max _{w, b}} &amp; {\gamma} \\ {\text { s.t.}} &amp; {y_{i}\left(\frac{w}{\|w\|} \cdot x_{i}+\frac{b}{\|w\|}\right) \geqslant \gamma, \quad i=1,2, \cdots, N}\end{array} \] \[\begin{array}{ll}{\max _{w, b}} &amp; {\frac{\hat{\gamma}}{\|w\|}} \\ {\text { s.t.}} &amp; {y_{i}\left(w \cdot x_{i}+b\right) \geqslant \hat{\gamma}, \quad i=1,2, \cdots, N}\end{array} \] \[\begin{array}{ll}{\min _{w, b}} &amp; {\frac{1}{2}\|w\|^{2}} \\ {\text { s.t.}} &amp; {y_{i}\left(w \cdot x_{i}+b\right)-1 \geqslant 0, \quad i=1,2, \cdots, N}\end{array} \] 支持向量和间隔边界 对偶算法 \[L(w, b, \alpha)=\frac{1}{2}\|w\|^{2}-\sum_{i=1}^{N} \alpha_{i} y_{i}\left(w \cdot x_{i}+b\right)+\sum_{i=1}^{N} \alpha_{i} \] \[\max _{\alpha} \min _{w, b} L(w, b, \alpha) \] \[\begin{array}{l}{w=\sum_{i=1}^{N} \alpha_{i} y_{i} x_{i}} \\ {\sum_{i=1}^{N} \alpha_{i} y_{i}=0}\end{array} \] \[\begin{aligned} L(w, b, \alpha) &amp;=\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)-\sum_{i=1}^{N} \alpha_{i} y_{i}\left(\left(\sum_{j=1}^{N} \alpha_{j} y_{j} x_{j}\right) \cdot x_{i}+b\right)+\sum_{i=1}^{N} \alpha_{i} \\ &amp;=-\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)+\sum_{i=1}^{N} \alpha_{i} \end{aligned} \] \[\begin{array}{cl}{\max _{\alpha}} &amp; {-\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)+\sum_{i=1}^{N} \alpha_{i}} \\ {\text { s.t.}} &amp; {\sum_{i=1}^{N} \alpha_{i} y_{i}=0} \\ {} &amp; {\alpha_{i} \geqslant 0, \quad i=1,2, \cdots, N}\end{array} \] \[\begin{array}{cl}{\min _{\alpha}} &amp; {\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)-\sum_{i=1}^{N} \alpha_{i}} \\ {\text { s.t.}} &amp; {\sum_{i=1}^{N} \alpha_{i} y_{i}=0} \\ {} &amp; {\alpha_{i} \geqslant 0, \quad i=1,2, \cdots, N}\end{array} \] \[\begin{array}{c}{w^{*}=\sum_{i=1}^{N} \alpha_{i}^{*} y_{i} x_{i}} \\ {b^{*}=y_{j}-\sum_{i=1}^{N} \alpha_{i}^{*} y_{i}\left(x_{i} \cdot x_{j}\right)}\end{array} \] 线性支持向量机 软间隔最大化 约束条件 / 目标函数 \[y_{i}\left(w \cdot x_{i}+b\right) \geqslant 1-\xi_{i} \] \[\frac{1}{2}\|w\|^{2}+C \sum_{i=1}^{N} \xi_{i} \] 软间隔最大化 \[\begin{array}{ll}{\min _{w, b, \xi}} &amp; {\frac{1}{2}\|w\|^{2}+C \sum_{i=1}^{N} \xi_{i}} \\ {\text { s.t.}} &amp; {y_{i}\left(w \cdot x_{i}+b\right) \geqslant 1-\xi_{i}, \quad i=1,2, \cdots, N} \\ {} &amp; {\xi_{i} \geqslant 0, \quad i=1,2, \cdots, N}\end{array} \] 对偶算法 \[L(w, b, \xi, \alpha, \mu)=\frac{1}{2}\|w\|^{2}+C \sum_{i=1}^{N} \xi_{i}-\sum_{i=1}^{N} \alpha_{i}\left(y_{i}\left(w \cdot x_{i}+b\right)-1+\xi_{i}\right)-\sum_{i=1}^{N} \mu_{i} \xi_{i} \] 支持向量 合页损失函数 非线性支持向量机 \[\begin{array}{ll}{\min _{\alpha}} &amp; {\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} K\left(x_{i}, x_{j}\right)-\sum_{i=1}^{N} \alpha_{i}} \\ {\text { s.t.}} &amp; {\sum_{i=1}^{N} \alpha_{i} y_{i}=0} \\ {} &amp; {0 \leqslant \alpha_{i} \leqslant C, \quad i=1,2, \cdots, N}\end{array} \] \[f(x)=\operatorname{sign}\left(\sum_{i=1}^{N} \alpha_{i}^{*} y_{i} K\left(x \cdot x_{i}\right)+b^{*}\right) \] 常用核函数 多项式核函数 \[K(x, z)=(x \cdot z+1)^{p} \] 高斯核函数 \[K(x, z)=\exp \left(-\frac{\|x-z\|^{2}}{2 \sigma^{2}}\right) \] 字符串核函数 序列最小最优化 (SMO) 算法 略]]></content>
       <tags>
-        <tag>machine learning</tag>
         <tag>todo</tag>
+        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
@@ -434,8 +434,8 @@
     <url>%2F2019%2F06%2F19%2F%E5%BB%BA%E7%82%8E%E4%BB%A5%E6%9D%A5%E7%B3%BB%E5%B9%B4%E8%A6%81%E5%BD%95%EF%BC%9A%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95%E5%B0%8F%E7%BB%93%2F</url>
     <content type="text"><![CDATA[梯度下降法 批量梯度下降 (BGD) \[\theta_{j}^{\prime}=\theta_{j}+\frac{1}{m} \sum_{i=1}^{m}\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i} \] 随机梯度下降 (SGD) \[\theta_{j}^{\prime}=\theta_{j}+\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i} \] 小批量梯度下降 (MBGD) 牛顿法 牛顿法是二次收敛，因此收敛速度快。从几何上看是每次用一个二次曲面来拟合当前所处位置的局部曲面，而梯度下降法是用一个平面来拟合。 黑塞矩阵是由目标函数 \(f(x)\) 在点 \(X\) 处的二阶偏导数组成的 \(n \times n\) 阶对称矩阵。 牛顿法：将 \(f(x)\) 在 \(x(k)\) 附近进行二阶泰勒展开： \[f(x)=f\left(x^{(k)}\right)+g_{k}^{\mathrm{T}}\left(x-x^{(k)}\right)+\frac{1}{2}\left(x-x^{(k)}\right)^{\mathrm{T}} H\left(x^{(k)}\right)\left(x-x^{(k)}\right) \] \(g_k\) 是 \(f(x)\) 的梯度向量在 \(x(k)\) 的值，\(H(x(k))\) 是 \(f(x)\) 的黑塞矩阵在点 \(x(k)\) 的值。 \[\nabla f(x)=g_{k}+H_{k}\left(x-x^{(k)}\right) \] \[g_{k}+H_{k}\left(x^{(k+1)}-x^{(k)}\right)=0 \] \[x^{(k+1)}=x^{(k)}-H_{k}^{-1} g_{k} \] 拟牛顿法 \[g_{k+1}-g_{k}=H_{k}\left(x^{(k+1)}-x^{(k)}\right) \] \[y_{k}=g_{k+1}-g_{k} \] \[\delta_{k}=x^{(k+1)}-x^{(k)} \] DFP 算法 \[G_{k+1}=G_{k}+P_{k}+Q_{k} \] \[P_{k} y_{k}=\delta_{k} \] \[Q_{k} y_{k}=-G_{k} y_{k} \] \[P_{k}=\frac{\delta_{k} \delta_{k}^{T}}{\delta_{k}^{T} y_{k}} \] \[Q_{k}=-\frac{G_{k} y_{k} y_{k}^{\mathrm{T}} G_{k}}{y_{k}^{\mathrm{T}} G_{k} y_{k}} \] \[G_{k+1}=G_{k}+\frac{\delta_{k} \delta_{k}^{\tau}}{\delta_{k}^{T} y_{k}}-\frac{G_{k} y_{k} y_{k}^{T} G_{k}}{y_{k}^{T} G_{k} y_{k}} \] BFGS 算法 \[B_{k+1} \delta_{k}=y_{k} \] \[B_{k+1}=B_{k}+P_{k}+Q_{k} \] \[P_{k} \delta_{k}=y_{k} \] \[Q_{k} \delta_{k}=-B_{k} \delta_{k} \] \[B_{k+1}=B_{k}+\frac{y_{k} y_{k}^{\mathrm{T}}}{y_{k}^{\mathrm{T}} \delta_{k}}-\frac{B_{k} \delta_{k} \delta_{k}^{\mathrm{T}} B_{k}}{\delta_{k}^{\mathrm{T}} B_{k} \delta_{k}} \]]]></content>
       <tags>
-        <tag>machine learning</tag>
         <tag>todo</tag>
+        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
@@ -676,8 +676,8 @@
     <content type="text"><![CDATA[PCA(Principal Component Analysis, PCA) 数据降维方法，转换后数据的 方差最大。 选择数据方差最大的方向进行投影，才能最大化数据的差异性，保留更多的原始数据信息。 一组 \(d\) 维样本\(\mathbf{x} \in \mathbb{R}^d, 1 \leq n \leq N\)，将其投影到一维空间中，投影向量为 \(\mathbf{w} \in \mathbb{R}^d\)，不是一般性，限制 \(\mathbf{w}\) 的模为 \(1\) ，即 \(\mathbb{w}^T \mathbf{w} = 1\). 计算每个样本点的投影表示 \(z^(n)\) 每个样本点 \(\mathbf{x}^{(n)}\) 投影后 \(1 \times d \times d \times 1\) \[z^{(n)}=\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)} \] ## 计算所有样本投影后的方差 \[\begin{aligned} \sigma(X ; \mathbf{w}) &amp;=\frac{1}{N} \sum_{n=1}^{N}\left(\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}-\mathbf{w}^{\mathrm{T}} \overline{\mathbf{x}}\right)^{2} \\ &amp;=\frac{1}{N}\left(\mathbf{w}^{\mathrm{T}} X-\mathbf{w}^{\mathrm{T}} \overline{X}\right)\left(\mathbf{w}^{\mathrm{T}} X-\mathbf{w}^{\mathrm{T}} \overline{X}\right)^{\mathrm{T}} \\ &amp;=\mathbf{w}^{\mathrm{T}} S \mathbf{w} \end{aligned} \] \(S=\frac{1}{N}(X-\overline{X})(X-\overline{X})^{\mathrm{T}}\) 是原始样本的协方差矩阵。 拉格朗日法求最大投影方差 \[\max _{\mathbf{w}} \mathbf{w}^{\mathrm{T}} S \mathbf{w}+\lambda\left(1-\mathbf{w}^{\mathrm{T}} \mathbf{w}\right) \] 对上式求导并令导数等于 0，得到 \[S \mathbf{w}=\lambda \mathbf{w} \] 只需要将 \(S\) 的特征值从大到小排列，保留前 \(d^{\prime}\) 个特征向量，其对应的特征向量即使最优的投影矩阵]]></content>
       <tags>
         <tag>deep learning</tag>
-        <tag>machine learning</tag>
         <tag>todo</tag>
+        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
