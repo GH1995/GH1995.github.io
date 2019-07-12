@@ -467,7 +467,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[狸花猫记(2)：Spark 安装与使用]]></title>
+    <title><![CDATA[明夷待访录（二）：Spark 安装与使用]]></title>
     <url>%2F2019%2F06%2F17%2F%E6%98%8E%E5%A4%B7%E5%BE%85%E8%AE%BF%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9ASpark%20%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8%2F</url>
     <content type="text"><![CDATA[安装和使用 安装 Hadoop 和 Spark 在 pyspark 中运行代码 Spark 独立应用程序编程 1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext('local', 'test')logFile = "file:///usr/local/spark/README.md"logData = sc.textFile(logFile, 2).cache()numAs = logData.filter(lambda line: 'a' in line).count()numBs = logData.filter(lambda line: 'b' in line).count()print('Lines with a: %s, Lines with b: %s' % (numAs, numBs)) 第一个Spark应用程序：WordCount 在 pyspark 中执行词频统计 加载本地文件 1textFile = sc.Te Spark集群环境搭建 在集群上运行Spark应用程序]]></content>
       <categories>
