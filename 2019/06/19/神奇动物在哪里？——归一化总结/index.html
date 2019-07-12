@@ -105,19 +105,19 @@
 
 
 
-  <meta name="description" content="Batch Normalization (BN)、Layer Normalization (LN)、Instance Normalization (IN)、Group Normalization (GN) 套路都是：减去均值，除以标准差+线性映射1 区别在于：操作的 feature map 维度不同 \[ y=\gamma\left(\frac{x-\mu(x)}{\sigma(x)}\right">
+  <meta name="description" content="Batch Normalization (BN)、Layer Normalization (LN)、Instance Normalization (IN)、Group Normalization (GN) 套路都是：减去均值，除以标准差 + 线性映射1 区别在于：操作的 feature map 维度不同 \[y=\gamma\left(\frac{x-\mu(x)}{\sigma(x)}\righ">
 <meta name="keywords" content="todo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="神奇动物在哪里？——归一化总结">
 <meta property="og:url" content="http://guanhua.ml/2019/06/19/神奇动物在哪里？——归一化总结/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="Batch Normalization (BN)、Layer Normalization (LN)、Instance Normalization (IN)、Group Normalization (GN) 套路都是：减去均值，除以标准差+线性映射1 区别在于：操作的 feature map 维度不同 \[ y=\gamma\left(\frac{x-\mu(x)}{\sigma(x)}\right">
+<meta property="og:description" content="Batch Normalization (BN)、Layer Normalization (LN)、Instance Normalization (IN)、Group Normalization (GN) 套路都是：减去均值，除以标准差 + 线性映射1 区别在于：操作的 feature map 维度不同 \[y=\gamma\left(\frac{x-\mu(x)}{\sigma(x)}\righ">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/19/VO3aAP.png">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="神奇动物在哪里？——归一化总结">
-<meta name="twitter:description" content="Batch Normalization (BN)、Layer Normalization (LN)、Instance Normalization (IN)、Group Normalization (GN) 套路都是：减去均值，除以标准差+线性映射1 区别在于：操作的 feature map 维度不同 \[ y=\gamma\left(\frac{x-\mu(x)}{\sigma(x)}\right">
+<meta name="twitter:description" content="Batch Normalization (BN)、Layer Normalization (LN)、Instance Normalization (IN)、Group Normalization (GN) 套路都是：减去均值，除以标准差 + 线性映射1 区别在于：操作的 feature map 维度不同 \[y=\gamma\left(\frac{x-\mu(x)}{\sigma(x)}\righ">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/06/19/VO3aAP.png">
 
 
@@ -511,57 +511,50 @@
 
       
         <p><strong>Batch Normalization (BN)、Layer Normalization (LN)、Instance Normalization (IN)、Group Normalization (GN)</strong></p>
-<p>套路都是：减去均值，除以标准差+线性映射<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>套路都是：减去均值，除以标准差 + 线性映射<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>区别在于：操作的 feature map 维度不同</p>
-<p><span class="math display">\[
-y=\gamma\left(\frac{x-\mu(x)}{\sigma(x)}\right)+\beta
+<p><span class="math display">\[y=\gamma\left(\frac{x-\mu(x)}{\sigma(x)}\right)+\beta
 \]</span></p>
 <h2 id="bn">BN</h2>
 <p>feature map $ x ^{N C H W} $</p>
-<p>包含 <span class="math inline">\(N\)</span> 个样本，每个样本通道数为 <span class="math inline">\(C\)</span>，高为 <span class="math inline">\(H\)</span>，宽为 <span class="math inline">\(W\)</span>。对其求均值和方差时，将在 <span class="math inline">\(N\)</span>、<span class="math inline">\(H\)</span>、<span class="math inline">\(W\)</span>上操作，而保留通道 <span class="math inline">\(C\)</span>的维度。具体来说，就是把第1个样本的第1个通道，加上第2个样本第1个通道 ...... 加上第 <span class="math inline">\(N\)</span> 个样本第1个通道，求平均，得到通道 1 的均值（注意是除以 <span class="math inline">\(N \times H \times W\)</span> 而不是单纯除以 <span class="math inline">\(N\)</span>，最后得到的是一个代表这个 batch 第1个通道平均值的数字，而不是一个 <span class="math inline">\(H \times W\)</span> 的矩阵）</p>
-<p><span class="math display">\[
-\mu_{c}(x)=\frac{1}{N H W} \sum_{n=1}^{N} \sum_{h=1}^{H} \sum_{w=1}^{W} x_{n c h w}
+<p>包含 <span class="math inline">\(N\)</span> 个样本，每个样本通道数为 <span class="math inline">\(C\)</span>，高为 <span class="math inline">\(H\)</span>，宽为 <span class="math inline">\(W\)</span>。对其求均值和方差时，将在 <span class="math inline">\(N\)</span>、<span class="math inline">\(H\)</span>、<span class="math inline">\(W\)</span>上操作，而保留通道 <span class="math inline">\(C\)</span>的维度。具体来说，就是把第 1 个样本的第 1 个通道，加上第 2 个样本第 1 个通道 ...... 加上第 <span class="math inline">\(N\)</span> 个样本第 1 个通道，求平均，得到通道 1 的均值（注意是除以 <span class="math inline">\(N \times H \times W\)</span> 而不是单纯除以 <span class="math inline">\(N\)</span>，最后得到的是一个代表这个 batch 第 1 个通道平均值的数字，而不是一个 <span class="math inline">\(H \times W\)</span> 的矩阵）</p>
+<p><span class="math display">\[\mu_{c}(x)=\frac{1}{N H W} \sum_{n=1}^{N} \sum_{h=1}^{H} \sum_{w=1}^{W} x_{n c h w}
 \]</span></p>
-<p><span class="math display">\[
-\sigma_{c}(x)=\sqrt{\frac{1}{N H W} \sum_{n=1}^{N} \sum_{h=1}^{H} \sum_{w=1}^{W}\left(x_{n c h w}-\mu_{c}(x)\right)^{2}+\epsilon}
+<p><span class="math display">\[\sigma_{c}(x)=\sqrt{\frac{1}{N H W} \sum_{n=1}^{N} \sum_{h=1}^{H} \sum_{w=1}^{W}\left(x_{n c h w}-\mu_{c}(x)\right)^{2}+\epsilon}
 \]</span></p>
 <blockquote>
-<p>类比为一摞书，这摞书总共有 <span class="math inline">\(N\)</span> 本，每本有 <span class="math inline">\(C\)</span> 页，每页有 <span class="math inline">\(H\)</span> 行，每行 <span class="math inline">\(W\)</span> 个字符。BN 求均值时，相当于把这些书<strong>按页码一一对应地加起来</strong>（例如第1本书第36页，第2本书第36页......），再除以<strong>每个页码下的字符总数</strong>：<span class="math inline">\(N \times H \times W\)</span>，因此可以把 BN 看成求“平均书”的操作（注意这个<strong>“平均书”每页只有一个字</strong>），求标准差时也是同理。</p>
+<p>类比为一摞书，这摞书总共有 <span class="math inline">\(N\)</span> 本，每本有 <span class="math inline">\(C\)</span> 页，每页有 <span class="math inline">\(H\)</span> 行，每行 <span class="math inline">\(W\)</span> 个字符。BN 求均值时，相当于把这些书 <strong> 按页码一一对应地加起来 </strong>（例如第 1 本书第 36 页，第 2 本书第 36 页......），再除以<strong> 每个页码下的字符总数</strong>：<span class="math inline">\(N \times H \times W\)</span>，因此可以把 BN 看成求“平均书”的操作（注意这个<strong>“平均书”每页只有一个字</strong>），求标准差时也是同理。</p>
 </blockquote>
-<p>我的理解：假设一个场景，<span class="math inline">\(N\)</span>只狗，每只狗有<span class="math inline">\(C\)</span>条腿，腿的长度为<span class="math inline">\(H \times W\)</span>。我们这里求出的就是，所有狗左前腿的平均长度<strong>每个页码下的字符总数</strong>* &gt; 这里求出来的的数据维度应该是<span class="math inline">\(C\)</span></p>
+<p>我的理解：假设一个场景，<span class="math inline">\(N\)</span>只狗，每只狗有 <span class="math inline">\(C\)</span> 条腿，腿的长度为 <span class="math inline">\(H \times W\)</span>。我们这里求出的就是，所有狗左前腿的平均长度<strong> 每个页码下的字符总数</strong>* &gt; 这里求出来的的数据维度应该是<span class="math inline">\(C\)</span></p>
 <h2 id="ln">LN</h2>
 <blockquote>
 <p>BN 的一个缺点是需要较大的 batchsize 才能合理估训练数据的均值和方差，这导致内存很可能不够用，同时它也很难应用在训练数据长度不同的 RNN 模型上。Layer Normalization (LN) 的一个优势是不需要批训练，在单条数据内部就能归一化。</p>
 </blockquote>
 <p>LN 对每个样本的 <span class="math inline">\(C\)</span>、<span class="math inline">\(H\)</span>、<span class="math inline">\(W\)</span> 维度上的数据求均值和标准差，保留 <span class="math inline">\(N\)</span> 维度</p>
-<p><span class="math display">\[
-\mu_{n}(x)=\frac{1}{C H W} \sum_{c=1}^{C} \sum_{h=1}^{H} \sum_{w=1}^{W} x_{n c h w}
+<p><span class="math display">\[\mu_{n}(x)=\frac{1}{C H W} \sum_{c=1}^{C} \sum_{h=1}^{H} \sum_{w=1}^{W} x_{n c h w}
 \]</span></p>
-<p><span class="math display">\[
-\sigma_{n}(x)=\sqrt{\frac{1}{C H W} \sum_{c=1}^{C} \sum_{h=1}^{H} \sum_{w=1}^{W}\left(x_{n c h w}-\mu_{n}(x)\right)^{2}+\epsilon}
+<p><span class="math display">\[\sigma_{n}(x)=\sqrt{\frac{1}{C H W} \sum_{c=1}^{C} \sum_{h=1}^{H} \sum_{w=1}^{W}\left(x_{n c h w}-\mu_{n}(x)\right)^{2}+\epsilon}
 \]</span></p>
 <blockquote>
 <p>把一个 batch 的 feature 类比为一摞书。LN 求均值时，相当于把每一本书的所有字加起来，再除以这本书的字符总数：<span class="math inline">\(C \times H \times W\)</span>，即求整本书的“平均字”，求标准差时也是同理。</p>
 </blockquote>
-<p>我的理解：这里有个<span class="math inline">\(N\)</span>条狗，我们不关心其他狗，每条狗有<span class="math inline">\(C\)</span>条腿，每条腿长度为<span class="math inline">\(H \times W\)</span>。我们这里求出的是单独每条狗<span class="math inline">\(C\)</span>条腿的平均长度！所以得到的数据维度为<span class="math inline">\(N\)</span></p>
+<p>我的理解：这里有个 <span class="math inline">\(N\)</span> 条狗，我们不关心其他狗，每条狗有 <span class="math inline">\(C\)</span> 条腿，每条腿长度为 <span class="math inline">\(H \times W\)</span>。我们这里求出的是单独每条狗<span class="math inline">\(C\)</span> 条腿的平均长度！所以得到的数据维度为<span class="math inline">\(N\)</span></p>
 <h2 id="instance-normalization">Instance Normalization</h2>
 <blockquote>
-<p>IN 用于图像的风格迁移。作者发现，在生成模型中， feature map 的各个 channel 的均值和方差会影响到最终生成图像的风格，因此可以先把图像在 channel 层面归一化<strong>图片里单个通道规划，比如说R通道</strong>，然后再用目标风格图片对应 channel 的均值和标准差“去归一化”，以期获得目标图片的风格。IN 操作也在单个样本内部进行，不依赖 batch。</p>
+<p>IN 用于图像的风格迁移。作者发现，在生成模型中， feature map 的各个 channel 的均值和方差会影响到最终生成图像的风格，因此可以先把图像在 channel 层面归一化 <strong> 图片里单个通道规划，比如说 R 通道</strong>，然后再用目标风格图片对应 channel 的均值和标准差“去归一化”，以期获得目标图片的风格。IN 操作也在单个样本内部进行，不依赖 batch。</p>
 </blockquote>
 <blockquote>
 <p>IN 对每个样本的 H、W 维度的数据求均值和标准差，保留 N 、C 维度，也就是说，<strong>重点：它只在 channel 内部求均值和标准差！</strong></p>
 </blockquote>
-<p><span class="math display">\[
-\mu_{n c}(x)=\frac{1}{H W} \sum_{h=1}^{H} \sum_{w=1}^{W} x_{n c h w}
+<p><span class="math display">\[\mu_{n c}(x)=\frac{1}{H W} \sum_{h=1}^{H} \sum_{w=1}^{W} x_{n c h w}
 \]</span></p>
-<p><span class="math display">\[
-\sigma_{n c}(x)=\sqrt{\frac{1}{H W} \sum_{h=1}^{H} \sum_{w=1}^{W}\left(x_{n c h w}-\mu_{n c}(x)\right)^{2}+\epsilon}
+<p><span class="math display">\[\sigma_{n c}(x)=\sqrt{\frac{1}{H W} \sum_{h=1}^{H} \sum_{w=1}^{W}\left(x_{n c h w}-\mu_{n c}(x)\right)^{2}+\epsilon}
 \]</span></p>
 <blockquote>
 <p>IN 求均值时，相当于把一页书中所有字加起来，再除以该页的总字数：H×W，即求每页书的“平均字”，求标准差时也是同理。</p>
 </blockquote>
-<p>我的理解：还是用狗，现在不关心<span class="math inline">\(N\)</span>条狗，不关心狗腿有几条<span class="math inline">\(C\)</span>，统一的，我们要求出针对一条狗左前腿的<strong>平均长度</strong>？</p>
-<p>这是什么无理的要求！一条狗的左前腿还有几个长度？事实上还真就有好几个长度。 如上文约定，该狗左前腿长为<span class="math inline">\(H \times W\)</span>，假设有<span class="math inline">\(H\)</span>类骨头，每类骨头有<span class="math inline">\(W\)</span>块，每块骨头长度未知。好了，该假设的都假设出来了，上文求的长度都是骨头的块数，因为上一篇狗都是柯基，不必直接量每块骨头的长度。而IN这批狗里既有柯基也有柴犬，还有我们可爱的哈士奇【手动狗头】。我们这里求的就是骨头的平均长度。所以先把<span class="math inline">\(H \times W \times x\)</span>，求出的就是单条腿的实际长度。<span class="math inline">\(\frac{H \times W \times x}{ H \times W }\)</span>就是每块骨头的平均长度。</p>
+<p>我的理解：还是用狗，现在不关心 <span class="math inline">\(N\)</span> 条狗，不关心狗腿有几条 <span class="math inline">\(C\)</span>，统一的，我们要求出针对一条狗左前腿的<strong> 平均长度</strong>？</p>
+<p>这是什么无理的要求！一条狗的左前腿还有几个长度？事实上还真就有好几个长度。 如上文约定，该狗左前腿长为 <span class="math inline">\(H \times W\)</span>，假设有<span class="math inline">\(H\)</span> 类骨头，每类骨头有 <span class="math inline">\(W\)</span> 块，每块骨头长度未知。好了，该假设的都假设出来了，上文求的长度都是骨头的块数，因为上一篇狗都是柯基，不必直接量每块骨头的长度。而 IN 这批狗里既有柯基也有柴犬，还有我们可爱的哈士奇【手动狗头】。我们这里求的就是骨头的平均长度。所以先把 <span class="math inline">\(H \times W \times x\)</span>，求出的就是单条腿的实际长度。<span class="math inline">\(\frac{H \times W \times x}{H \times W}\)</span> 就是每块骨头的平均长度。</p>
 <h2 id="group-normalization">Group Normalization</h2>
 <blockquote>
 <p>Group Normalization (GN) 适用于占用显存比较大的任务，例如图像分割。对这类任务，可能 batchsize 只能是个位数，再大显存就不够用了。而当 batchsize 是个位数时，BN 的表现很差，因为没办法通过几个样本的数据量，来近似总体的均值和标准差。GN 也是独立于 batch 的，它是 LN 和 IN 的折中。</p>
@@ -572,20 +565,18 @@ y=\gamma\left(\frac{x-\mu(x)}{\sigma(x)}\right)+\beta
 <blockquote>
 <p>GN 计算均值和标准差时，把每一个样本 feature map 的 channel 分成 <span class="math inline">\(G\)</span> 组，每组将有 <span class="math inline">\(C/G\)</span> 个 channel，然后将这些 channel 中的元素求均值和标准差。各组 channel 用其对应的归一化参数独立地归一化。</p>
 </blockquote>
-<p><span class="math display">\[
-\mu_{n g}(x)=\frac{1}{(C / G) H W} \sum_{c=g C / G}^{(g+1) C / G} \sum_{h=1}^{H} \sum_{w=1}^{W} x_{n c h w}
+<p><span class="math display">\[\mu_{n g}(x)=\frac{1}{(C / G) H W} \sum_{c=g C / G}^{(g+1) C / G} \sum_{h=1}^{H} \sum_{w=1}^{W} x_{n c h w}
 \]</span></p>
-<p><span class="math display">\[
-\sigma_{n g}(x)=\sqrt{\frac{1}{(C / G) H W} \sum_{c=g C / G}^{(q+1) C / G} \sum_{h=1}^{H} \sum_{w=1}^{W}\left(x_{n c h w}-\mu_{n g}(x)\right)^{2}+\epsilon}
+<p><span class="math display">\[\sigma_{n g}(x)=\sqrt{\frac{1}{(C / G) H W} \sum_{c=g C / G}^{(q+1) C / G} \sum_{h=1}^{H} \sum_{w=1}^{W}\left(x_{n c h w}-\mu_{n g}(x)\right)^{2}+\epsilon}
 \]</span></p>
 <blockquote>
 <p>GN 相当于把一本 C 页的书平均分成 <span class="math inline">\(G\)</span> 份，每份成为有 <span class="math inline">\(C/G\)</span> 页的小册子，求每个小册子的“平均字”和字的“标准差”。</p>
 </blockquote>
-<p>我的理解：这先分组，<span class="math inline">\(N\)</span>条狗，<span class="math inline">\(C\)</span>条腿分为两组<span class="math inline">\(G\)</span>前腿和后腿。针对每组<span class="math inline">\(C/G\)</span>条狗腿分别计算出均值标准差，这是类似于LN，算局部总体均值。然后将计算出的前后腿的值再算一遍均值，这是类似于IN了，针对于单个狗。</p>
+<p>我的理解：这先分组，<span class="math inline">\(N\)</span>条狗，<span class="math inline">\(C\)</span>条腿分为两组 <span class="math inline">\(G\)</span> 前腿和后腿。针对每组 <span class="math inline">\(C/G\)</span> 条狗腿分别计算出均值标准差，这是类似于 LN，算局部总体均值。然后将计算出的前后腿的值再算一遍均值，这是类似于 IN 了，针对于单个狗。</p>
 <section class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>参考<a href="https://zhuanlan.zhihu.com/p/69659844" target="_blank" rel="noopener">这里</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>参考 <a href="https://zhuanlan.zhihu.com/p/69659844" target="_blank" rel="noopener"> 这里</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
 

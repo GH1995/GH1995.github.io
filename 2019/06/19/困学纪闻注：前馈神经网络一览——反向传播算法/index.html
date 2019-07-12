@@ -105,20 +105,20 @@
 
 
 
-  <meta name="description" content="前馈神经网络是怎么传播的？ \[ \begin{array}{l}{\mathbf{z}^{(l)}=W^{(l)} \cdot \mathbf{a}^{(l-1)}+\mathbf{b}^{(l)},} \\ {\mathbf{a}^{(l)}=f_{l}\left(\mathbf{z}^{(l)}\right)}\end{array} \] \[ \mathbf{x}=\mathbf{a}^{">
+  <meta name="description" content="前馈神经网络是怎么传播的？ \[\begin{array}{l}{\mathbf{z}^{(l)}=W^{(l)} \cdot \mathbf{a}^{(l-1)}+\mathbf{b}^{(l)},} \\ {\mathbf{a}^{(l)}=f_{l}\left(\mathbf{z}^{(l)}\right)}\end{array} \] \[\mathbf{x}=\mathbf{a}^{(0">
 <meta name="keywords" content="deep learning,todo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="困学纪闻注：前馈神经网络一览——反向传播算法白垩纪">
 <meta property="og:url" content="http://guanhua.ml/2019/06/19/困学纪闻注：前馈神经网络一览——反向传播算法/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="前馈神经网络是怎么传播的？ \[ \begin{array}{l}{\mathbf{z}^{(l)}=W^{(l)} \cdot \mathbf{a}^{(l-1)}+\mathbf{b}^{(l)},} \\ {\mathbf{a}^{(l)}=f_{l}\left(\mathbf{z}^{(l)}\right)}\end{array} \] \[ \mathbf{x}=\mathbf{a}^{">
+<meta property="og:description" content="前馈神经网络是怎么传播的？ \[\begin{array}{l}{\mathbf{z}^{(l)}=W^{(l)} \cdot \mathbf{a}^{(l-1)}+\mathbf{b}^{(l)},} \\ {\mathbf{a}^{(l)}=f_{l}\left(\mathbf{z}^{(l)}\right)}\end{array} \] \[\mathbf{x}=\mathbf{a}^{(0">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://user-images.githubusercontent.com/11362493/56138952-7c014000-5fca-11e9-8672-884dc4625d6e.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/19/VX0TaD.png">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="困学纪闻注：前馈神经网络一览——反向传播算法白垩纪">
-<meta name="twitter:description" content="前馈神经网络是怎么传播的？ \[ \begin{array}{l}{\mathbf{z}^{(l)}=W^{(l)} \cdot \mathbf{a}^{(l-1)}+\mathbf{b}^{(l)},} \\ {\mathbf{a}^{(l)}=f_{l}\left(\mathbf{z}^{(l)}\right)}\end{array} \] \[ \mathbf{x}=\mathbf{a}^{">
+<meta name="twitter:description" content="前馈神经网络是怎么传播的？ \[\begin{array}{l}{\mathbf{z}^{(l)}=W^{(l)} \cdot \mathbf{a}^{(l-1)}+\mathbf{b}^{(l)},} \\ {\mathbf{a}^{(l)}=f_{l}\left(\mathbf{z}^{(l)}\right)}\end{array} \] \[\mathbf{x}=\mathbf{a}^{(0">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/11362493/56138952-7c014000-5fca-11e9-8672-884dc4625d6e.png">
 
 
@@ -494,56 +494,46 @@
 
       
         <h2 id="前馈神经网络是怎么传播的">前馈神经网络是怎么传播的？</h2>
-<p><span class="math display">\[
-\begin{array}{l}{\mathbf{z}^{(l)}=W^{(l)} \cdot \mathbf{a}^{(l-1)}+\mathbf{b}^{(l)},} \\ {\mathbf{a}^{(l)}=f_{l}\left(\mathbf{z}^{(l)}\right)}\end{array}
+<p><span class="math display">\[\begin{array}{l}{\mathbf{z}^{(l)}=W^{(l)} \cdot \mathbf{a}^{(l-1)}+\mathbf{b}^{(l)},} \\ {\mathbf{a}^{(l)}=f_{l}\left(\mathbf{z}^{(l)}\right)}\end{array}
 \]</span></p>
-<p><span class="math display">\[
-\mathbf{x}=\mathbf{a}^{(0)} \rightarrow \mathbf{z}^{(1)} \rightarrow \mathbf{a}^{(1)} \rightarrow \mathbf{z}^{(2)} \rightarrow \cdots \rightarrow \mathbf{a}^{(L-1)} \rightarrow \mathbf{z}^{(L)} \rightarrow \mathbf{a}^{(L)}
+<p><span class="math display">\[\mathbf{x}=\mathbf{a}^{(0)} \rightarrow \mathbf{z}^{(1)} \rightarrow \mathbf{a}^{(1)} \rightarrow \mathbf{z}^{(2)} \rightarrow \cdots \rightarrow \mathbf{a}^{(L-1)} \rightarrow \mathbf{z}^{(L)} \rightarrow \mathbf{a}^{(L)}
 \]</span></p>
 <h2 id="反向传播算法">反向传播算法</h2>
 <figure>
 <img src="https://user-images.githubusercontent.com/11362493/56138952-7c014000-5fca-11e9-8672-884dc4625d6e.png" alt="链式求导"><figcaption>链式求导</figcaption>
 </figure>
 <h3 id="三个正菜">三个正菜</h3>
-<p>对第<span class="math inline">\(l\)</span>层中的参数<span class="math inline">\(W^{(l)}\)</span> 和<span class="math inline">\(\mathbf{b}^{(l)}\)</span> 计算偏导数</p>
-<p><span class="math display">\[
-\frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial W_{i j}^{(l)}}=\left(\frac{\partial \mathbf{z}^{(l)}}{\partial W_{i j}^{(l)}}\right)^{\mathrm{T}} \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l)}}
+<p>对第 <span class="math inline">\(l\)</span> 层中的参数<span class="math inline">\(W^{(l)}\)</span> 和<span class="math inline">\(\mathbf{b}^{(l)}\)</span> 计算偏导数</p>
+<p><span class="math display">\[\frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial W_{i j}^{(l)}}=\left(\frac{\partial \mathbf{z}^{(l)}}{\partial W_{i j}^{(l)}}\right)^{\mathrm{T}} \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l)}}
 \]</span></p>
-<p><span class="math display">\[
-\frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{b}^{(l)}}=\left(\frac{\partial \mathbf{z}^{(l)}}{\partial \mathbf{b}^{(l)}}\right)^{\mathrm{T}} \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l)}}
+<p><span class="math display">\[\frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{b}^{(l)}}=\left(\frac{\partial \mathbf{z}^{(l)}}{\partial \mathbf{b}^{(l)}}\right)^{\mathrm{T}} \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l)}}
 \]</span></p>
 <p>于是，我们计算这三个就行了：</p>
-<p><span class="math display">\[ \frac{\partial \mathbf{z}^{(l)}}{\partial W_{i j}^{(l)}} \]</span> <span class="math display">\[ \frac{\partial \mathbf{z}^{(l)}}{\partial \mathbf{b}^{(l)}}\]</span> <span class="math display">\[ \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l)}}\]</span></p>
+<p><span class="math display">\[\frac{\partial \mathbf{z}^{(l)}}{\partial W_{i j}^{(l)}} \]</span> <span class="math display">\[\frac{\partial \mathbf{z}^{(l)}}{\partial \mathbf{b}^{(l)}}\]</span> <span class="math display">\[\frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l)}}\]</span></p>
 <ol type="1">
 <li>计算 <span class="math inline">\(\frac{\partial \mathbf{z}^{(l)}}{\partial W_{i j}^{(l)}} = a_{j}^{(l-1)}\)</span></li>
 <li>计算 <span class="math inline">\(\frac{\partial \mathbf{z}^{(l)}}{\partial \mathbf{b}^{(l)}} = 1\)</span></li>
-<li>计算第<span class="math inline">\(l\)</span>层神经元的误差项 <span class="math inline">\(\delta^{(l)}=\frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l)}} \in \mathbb{R}^{m^{(l)}}\)</span> <span class="math display">\[
-\begin{aligned} \delta^{(l)} &amp; \triangleq \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l)}} \\ &amp;=\frac{\partial \mathbf{a}^{(l)}}{\partial \mathbf{z}^{(l)}} \cdot \frac{\partial \mathbf{z}^{(l+1)}}{\partial \mathbf{a}^{(l)}} \cdot \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l+1)}} \\ &amp;=\operatorname{diag}\left(f_{l}^{\prime}\left(\mathbf{z}^{(l)}\right)\right) \cdot\left(W^{(l+1)}\right)^{\mathrm{T}} \cdot \delta^{(l+1)}
+<li>计算第 <span class="math inline">\(l\)</span> 层神经元的误差项 <span class="math inline">\(\delta^{(l)}=\frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l)}} \in \mathbb{R}^{m^{(l)}}\)</span> <span class="math display">\[\begin{aligned} \delta^{(l)} &amp; \triangleq \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l)}} \\ &amp;=\frac{\partial \mathbf{a}^{(l)}}{\partial \mathbf{z}^{(l)}} \cdot \frac{\partial \mathbf{z}^{(l+1)}}{\partial \mathbf{a}^{(l)}} \cdot \frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{z}^{(l+1)}} \\ &amp;=\operatorname{diag}\left(f_{l}^{\prime}\left(\mathbf{z}^{(l)}\right)\right) \cdot\left(W^{(l+1)}\right)^{\mathrm{T}} \cdot \delta^{(l+1)}
 \\ &amp;=f_{l}^{\prime}\left(\mathbf{z}^{(l)}\right) \odot\left(\left(W^{(l+1)}\right)^{\mathrm{T}} \delta^{(l+1)}\right) \end{aligned}
 \]</span></li>
 </ol>
 <p>计算完上面三项可以得到：</p>
-<p><span class="math display">\[
-\frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial W^{(l)}}=\delta^{(l)}\left(\mathbf{a}^{(l-1)}\right)^{\mathrm{T}} \longrightarrow \frac{\partial \mathbf{z}^{(l)}}{\partial W_{i j}^{(l)}}
+<p><span class="math display">\[\frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial W^{(l)}}=\delta^{(l)}\left(\mathbf{a}^{(l-1)}\right)^{\mathrm{T}} \longrightarrow \frac{\partial \mathbf{z}^{(l)}}{\partial W_{i j}^{(l)}}
 \]</span></p>
-<p><span class="math display">\[
-\frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{b}^{(l)}}=\delta^{(l)} \longrightarrow \frac{\partial \mathbf{z}^{(l)}}{\partial \mathbf{b}^{(l)}}
+<p><span class="math display">\[\frac{\partial \mathcal{L}(\mathbf{y}, \hat{\mathbf{y}})}{\partial \mathbf{b}^{(l)}}=\delta^{(l)} \longrightarrow \frac{\partial \mathbf{z}^{(l)}}{\partial \mathbf{b}^{(l)}}
 \]</span></p>
 <p>在计算出每一层的误差项之后，我们就可以得到每一层参数的梯度。因此，基于误差反向传播算法（backpropagation，BP）的前馈神经网络训练过程可以分为以下三步： 1. 前馈计算每一层的净输入<span class="math inline">\(\mathbf{z}^{(l)}\)</span> 和激活值<span class="math inline">\(\mathbf{a}^{(l)}\)</span>，直到最后一层； 2. 反向传播计算每一层的误差项<span class="math inline">\(\delta^{(l)}\)</span>； 3. 计算每一层参数的偏导数，并更新参数。</p>
 <figure>
-<img src="https://s2.ax1x.com/2019/06/19/VX0TaD.png" alt="BP算法"><figcaption>BP算法</figcaption>
+<img src="https://s2.ax1x.com/2019/06/19/VX0TaD.png" alt="BP 算法"><figcaption>BP 算法</figcaption>
 </figure>
 <h2 id="总结">总结</h2>
 <p>记住一个公式就行了，上面的推导慢慢看</p>
-<p><span class="math display">\[
-\delta^{(l)}=f_{l}^{\prime}\left(\mathbf{z}^{(l)}\right) \odot\left(W^{(l+1)}\right)^{\mathrm{T}} \delta^{(l+1)}
+<p><span class="math display">\[\delta^{(l)}=f_{l}^{\prime}\left(\mathbf{z}^{(l)}\right) \odot\left(W^{(l+1)}\right)^{\mathrm{T}} \delta^{(l+1)}
 \]</span></p>
-<p>这个公式很要命，因为Sigmoid型函数导数的值域都小于<span class="math inline">\(1\)</span>!!!</p>
-<p><span class="math display">\[
-\sigma^{\prime}(x)=\sigma(x)(1-\sigma(x)) \in[0,0.25]
+<p>这个公式很要命，因为 Sigmoid 型函数导数的值域都小于<span class="math inline">\(1\)</span>!!!</p>
+<p><span class="math display">\[\sigma^{\prime}(x)=\sigma(x)(1-\sigma(x)) \in[0,0.25]
 \]</span></p>
-<p><span class="math display">\[
-\tanh ^{\prime}(x)=1-(\tanh (x))^{2} \in[0,1]
+<p><span class="math display">\[\tanh ^{\prime}(x)=1-(\tanh (x))^{2} \in[0,1]
 \]</span></p>
 <p>这会导致梯度消失问题，解决办法是<span class="math inline">\(ReLU\)</span>，就是这么简单。</p>
 

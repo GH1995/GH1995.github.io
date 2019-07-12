@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="线性模型 \[ y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i} \] 二阶多项式模型 \[ y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \omega_{i j} x_{i} x_{j} \] FM求解 \[ \mathbf{V}=\left(\">
+  <meta name="description" content="线性模型  \[y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i} \]  二阶多项式模型  \[y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \omega_{i j} x_{i} x_{j} \] FM 求解  \[\mathbf{V}=\lef">
 <meta name="keywords" content="todo,推荐系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高祖功臣侯者年表：萧丞相世家——FM算法">
+<meta property="og:title" content="高祖功臣侯者年表：萧丞相世家——FM 算法">
 <meta property="og:url" content="http://guanhua.ml/2019/06/20/高祖功臣侯者年表：萧相国世家/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="线性模型 \[ y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i} \] 二阶多项式模型 \[ y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \omega_{i j} x_{i} x_{j} \] FM求解 \[ \mathbf{V}=\left(\">
+<meta property="og:description" content="线性模型  \[y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i} \]  二阶多项式模型  \[y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \omega_{i j} x_{i} x_{j} \] FM 求解  \[\mathbf{V}=\lef">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高祖功臣侯者年表：萧丞相世家——FM算法">
-<meta name="twitter:description" content="线性模型 \[ y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i} \] 二阶多项式模型 \[ y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \omega_{i j} x_{i} x_{j} \] FM求解 \[ \mathbf{V}=\left(\">
+<meta name="twitter:title" content="高祖功臣侯者年表：萧丞相世家——FM 算法">
+<meta name="twitter:description" content="线性模型  \[y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i} \]  二阶多项式模型  \[y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \omega_{i j} x_{i} x_{j} \] FM 求解  \[\mathbf{V}=\lef">
 
 
 
@@ -134,7 +134,7 @@
   };
 </script>
 
-  <title>高祖功臣侯者年表：萧丞相世家——FM算法 | gh's notes</title>
+  <title>高祖功臣侯者年表：萧丞相世家——FM 算法 | gh's notes</title>
   
 
 
@@ -400,7 +400,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">高祖功臣侯者年表：萧丞相世家——FM算法
+          <h1 class="post-title" itemprop="name headline">高祖功臣侯者年表：萧丞相世家——FM 算法
 
               
             
@@ -490,24 +490,19 @@
       
 
       
-        <h2 id="线性模型">线性模型</h2>
-<p><span class="math display">\[
-y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}
+        <h2 id="线性模型"> 线性模型 </h2>
+<p><span class="math display">\[y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}
 \]</span></p>
-<h2 id="二阶多项式模型">二阶多项式模型</h2>
-<p><span class="math display">\[
-y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \omega_{i j} x_{i} x_{j}
+<h2 id="二阶多项式模型"> 二阶多项式模型 </h2>
+<p><span class="math display">\[y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \omega_{i j} x_{i} x_{j}
 \]</span></p>
-<h2 id="fm求解">FM求解</h2>
-<p><span class="math display">\[
-\mathbf{V}=\left(\begin{array}{cccc}{v_{11}} &amp; {v_{12}} &amp; {\cdots} &amp; {v_{1 k}} \\ {v_{21}} &amp; {v_{22}} &amp; {\cdots} &amp; {v_{2 k}} \\ {\vdots} &amp; {\vdots} &amp; {} &amp; {\vdots} \\ {v_{n 1}} &amp; {v_{n 2}} &amp; {\cdots} &amp; {v_{n k}}\end{array}\right)_{n \times k}=\left(\begin{array}{c}{\mathbf{v}_{1}} \\ {\mathbf{v}_{2}} \\ {\vdots} \\ {\mathbf{v}_{n}}\end{array}\right)
+<h2 id="fm 求解">FM 求解 </h2>
+<p><span class="math display">\[\mathbf{V}=\left(\begin{array}{cccc}{v_{11}} &amp; {v_{12}} &amp; {\cdots} &amp; {v_{1 k}} \\ {v_{21}} &amp; {v_{22}} &amp; {\cdots} &amp; {v_{2 k}} \\ {\vdots} &amp; {\vdots} &amp; {} &amp; {\vdots} \\ {v_{n 1}} &amp; {v_{n 2}} &amp; {\cdots} &amp; {v_{n k}}\end{array}\right)_{n \times k}=\left(\begin{array}{c}{\mathbf{v}_{1}} \\ {\mathbf{v}_{2}} \\ {\vdots} \\ {\mathbf{v}_{n}}\end{array}\right)
 \]</span></p>
-<p><span class="math display">\[
-\mathbf{\hat { W  }}=\mathbf{V V}^{T}=\left(\begin{array}{c}{\mathbf{v}_{1}} \\ {\mathbf{v}_{2}} \\ {\vdots} \\ {\mathbf{v}_{n}}\end{array}\right)\left(\begin{array}{cccc}{\mathbf{v}_{1}} &amp; {\mathbf{v}_{2}^{T}} &amp; {\cdots} &amp; {\mathbf{v}_{n}^{T}}\end{array}\right)
+<p><span class="math display">\[\mathbf{\hat { W}}=\mathbf{V V}^{T}=\left(\begin{array}{c}{\mathbf{v}_{1}} \\ {\mathbf{v}_{2}} \\ {\vdots} \\ {\mathbf{v}_{n}}\end{array}\right)\left(\begin{array}{cccc}{\mathbf{v}_{1}} &amp; {\mathbf{v}_{2}^{T}} &amp; {\cdots} &amp; {\mathbf{v}_{n}^{T}}\end{array}\right)
 \]</span></p>
-<p>根据 <span class="math display">\[ a b+a c+b c=\frac{1}{2}\left[(a+b+c)^{2}-\left(a^{2}+b^{2}+c^{2}\right)\right] \]</span> 有</p>
-<p><span class="math display">\[
-\begin{aligned} &amp; \sum_{f=1}^{n-1} \sum_{j=i+1}^{n}\left\langle\mathbf{v}_{i}, \mathbf{v}_{j}\right\rangle x_{i} x_{j} \\=&amp; \frac{1}{2} \sum_{i=1}^{n} \sum_{j=1}^{n}\left\langle\mathbf{v}_{i}, \mathbf{v}_{j}\right\rangle x_{i} x_{j}-\frac{1}{2} \sum_{i=1}^{n}\left\langle\mathbf{v}_{i}, \mathbf{v}_{i}\right\rangle x_{i} x_{i} \\=&amp; \frac{1}{2}\left(\sum_{i=1}^{n} \sum_{j=1}^{n} \sum_{f=1}^{n} v_{i, f} x_{i}\right)\left(\sum_{j=1}^{n} v_{j, f} x_{j}\right)-\sum_{i=1}^{n} v_{i, f}^{2} x_{i}^{2} ) \\=&amp; \frac{1}{2} \sum_{f=1}^{k}\left(\left(\sum_{i=1}^{n} v_{i, f} x_{i}\right)^{2}-\sum_{i=1}^{n} v_{i, f}^{2} x_{i}^{2}\right) \end{aligned}
+<p> 根据 <span class="math display">\[a b+a c+b c=\frac{1}{2}\left[(a+b+c)^{2}-\left(a^{2}+b^{2}+c^{2}\right)\right] \]</span> 有 </p>
+<p><span class="math display">\[\begin{aligned} &amp; \sum_{f=1}^{n-1} \sum_{j=i+1}^{n}\left\langle\mathbf{v}_{i}, \mathbf{v}_{j}\right\rangle x_{i} x_{j} \\=&amp; \frac{1}{2} \sum_{i=1}^{n} \sum_{j=1}^{n}\left\langle\mathbf{v}_{i}, \mathbf{v}_{j}\right\rangle x_{i} x_{j}-\frac{1}{2} \sum_{i=1}^{n}\left\langle\mathbf{v}_{i}, \mathbf{v}_{i}\right\rangle x_{i} x_{i} \\=&amp; \frac{1}{2}\left(\sum_{i=1}^{n} \sum_{j=1}^{n} \sum_{f=1}^{n} v_{i, f} x_{i}\right)\left(\sum_{j=1}^{n} v_{j, f} x_{j}\right)-\sum_{i=1}^{n} v_{i, f}^{2} x_{i}^{2} ) \\=&amp; \frac{1}{2} \sum_{f=1}^{k}\left(\left(\sum_{i=1}^{n} v_{i, f} x_{i}\right)^{2}-\sum_{i=1}^{n} v_{i, f}^{2} x_{i}^{2}\right) \end{aligned}
 \]</span></p>
 
       
@@ -522,7 +517,7 @@ y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/20/高祖功臣侯者年表：曹相国世家/" rel="bookmark">高祖功臣侯者年表：曹相国世家——FFM算法</a></div>
+      <div class="popular-posts-title"><a href="/2019/06/20/高祖功臣侯者年表：曹相国世家/" rel="bookmark">高祖功臣侯者年表：曹相国世家——FFM 算法</a></div>
       
     </li>
   
@@ -550,7 +545,7 @@ y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/21/高祖功臣侯者年表：陈涉世家/" rel="bookmark">高祖功臣侯者年表：陈涉世家——xDeepFM算法</a></div>
+      <div class="popular-posts-title"><a href="/2019/06/21/高祖功臣侯者年表：陈涉世家/" rel="bookmark">高祖功臣侯者年表：陈涉世家——xDeepFM 算法</a></div>
       
     </li>
   
@@ -604,8 +599,8 @@ y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/20/高祖功臣侯者年表：曹相国世家/" rel="prev" title="高祖功臣侯者年表：曹相国世家——FFM算法">
-                高祖功臣侯者年表：曹相国世家——FFM算法 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/20/高祖功臣侯者年表：曹相国世家/" rel="prev" title="高祖功臣侯者年表：曹相国世家——FFM 算法">
+                高祖功臣侯者年表：曹相国世家——FFM 算法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -878,7 +873,7 @@ y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性模型"><span class="nav-number">1.</span> <span class="nav-text">线性模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二阶多项式模型"><span class="nav-number">2.</span> <span class="nav-text">二阶多项式模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fm求解"><span class="nav-number">3.</span> <span class="nav-text">FM求解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性模型"><span class="nav-number">1.</span> <span class="nav-text"> 线性模型 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二阶多项式模型"><span class="nav-number">2.</span> <span class="nav-text"> 二阶多项式模型 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fm 求解"><span class="nav-number">3.</span> <span class="nav-text">FM 求解 </span></a></li></ol></div>
             
 
           </div>

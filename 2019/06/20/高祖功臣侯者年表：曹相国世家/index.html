@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="\[ y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\left\langle\mathbf{v}_{i, f_{j}}, \mathbf{v}_{j, f_{i}}\right\rangle x_{i} x_{j} \] \[ \phi(\mathbf{w}, \mathbf{x})=\s">
+  <meta name="description" content="\[y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\left\langle\mathbf{v}_{i, f_{j}}, \mathbf{v}_{j, f_{i}}\right\rangle x_{i} x_{j} \] \[\phi(\mathbf{w}, \mathbf{x})=\sum">
 <meta name="keywords" content="todo,推荐系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高祖功臣侯者年表：曹相国世家——FFM算法">
+<meta property="og:title" content="高祖功臣侯者年表：曹相国世家——FFM 算法">
 <meta property="og:url" content="http://guanhua.ml/2019/06/20/高祖功臣侯者年表：曹相国世家/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="\[ y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\left\langle\mathbf{v}_{i, f_{j}}, \mathbf{v}_{j, f_{i}}\right\rangle x_{i} x_{j} \] \[ \phi(\mathbf{w}, \mathbf{x})=\s">
+<meta property="og:description" content="\[y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\left\langle\mathbf{v}_{i, f_{j}}, \mathbf{v}_{j, f_{i}}\right\rangle x_{i} x_{j} \] \[\phi(\mathbf{w}, \mathbf{x})=\sum">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高祖功臣侯者年表：曹相国世家——FFM算法">
-<meta name="twitter:description" content="\[ y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\left\langle\mathbf{v}_{i, f_{j}}, \mathbf{v}_{j, f_{i}}\right\rangle x_{i} x_{j} \] \[ \phi(\mathbf{w}, \mathbf{x})=\s">
+<meta name="twitter:title" content="高祖功臣侯者年表：曹相国世家——FFM 算法">
+<meta name="twitter:description" content="\[y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\left\langle\mathbf{v}_{i, f_{j}}, \mathbf{v}_{j, f_{i}}\right\rangle x_{i} x_{j} \] \[\phi(\mathbf{w}, \mathbf{x})=\sum">
 
 
 
@@ -134,7 +134,7 @@
   };
 </script>
 
-  <title>高祖功臣侯者年表：曹相国世家——FFM算法 | gh's notes</title>
+  <title>高祖功臣侯者年表：曹相国世家——FFM 算法 | gh's notes</title>
   
 
 
@@ -400,7 +400,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">高祖功臣侯者年表：曹相国世家——FFM算法
+          <h1 class="post-title" itemprop="name headline">高祖功臣侯者年表：曹相国世家——FFM 算法
 
               
             
@@ -490,14 +490,11 @@
       
 
       
-        <p><span class="math display">\[
-y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\left\langle\mathbf{v}_{i, f_{j}}, \mathbf{v}_{j, f_{i}}\right\rangle x_{i} x_{j}
+        <p><span class="math display">\[y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\left\langle\mathbf{v}_{i, f_{j}}, \mathbf{v}_{j, f_{i}}\right\rangle x_{i} x_{j}
 \]</span></p>
-<p><span class="math display">\[
-\phi(\mathbf{w}, \mathbf{x})=\sum_{j_{1}, j_{2} \in \mathcal{C}_{2}}\left\langle\mathbf{w}_{j_{1}, f_{2}}, \mathbf{w}_{j_{2}, f_{1}}\right\rangle x_{j_{1}} x_{j_{2}}
+<p><span class="math display">\[\phi(\mathbf{w}, \mathbf{x})=\sum_{j_{1}, j_{2} \in \mathcal{C}_{2}}\left\langle\mathbf{w}_{j_{1}, f_{2}}, \mathbf{w}_{j_{2}, f_{1}}\right\rangle x_{j_{1}} x_{j_{2}}
 \]</span></p>
-<p><span class="math display">\[
-\min _{\mathbf{w}} \sum_{i=1}^{L} \log \left(1+\exp \left\{-y_{i} \phi\left(\mathbf{w}, \mathbf{x}_{i}\right)\right\}\right)+\frac{\lambda}{2}\|\mathbf{w}\|^{2}
+<p><span class="math display">\[\min _{\mathbf{w}} \sum_{i=1}^{L} \log \left(1+\exp \left\{-y_{i} \phi\left(\mathbf{w}, \mathbf{x}_{i}\right)\right\}\right)+\frac{\lambda}{2}\|\mathbf{w}\|^{2}
 \]</span></p>
 
       
@@ -526,7 +523,7 @@ y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\l
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/20/高祖功臣侯者年表：萧相国世家/" rel="bookmark">高祖功臣侯者年表：萧丞相世家——FM算法</a></div>
+      <div class="popular-posts-title"><a href="/2019/06/20/高祖功臣侯者年表：萧相国世家/" rel="bookmark">高祖功臣侯者年表：萧丞相世家——FM 算法</a></div>
       
     </li>
   
@@ -540,7 +537,7 @@ y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\l
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/21/高祖功臣侯者年表：陈涉世家/" rel="bookmark">高祖功臣侯者年表：陈涉世家——xDeepFM算法</a></div>
+      <div class="popular-posts-title"><a href="/2019/06/21/高祖功臣侯者年表：陈涉世家/" rel="bookmark">高祖功臣侯者年表：陈涉世家——xDeepFM 算法</a></div>
       
     </li>
   
@@ -584,8 +581,8 @@ y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\l
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/20/高祖功臣侯者年表：萧相国世家/" rel="next" title="高祖功臣侯者年表：萧丞相世家——FM算法">
-                <i class="fa fa-chevron-left"></i> 高祖功臣侯者年表：萧丞相世家——FM算法
+              <a href="/2019/06/20/高祖功臣侯者年表：萧相国世家/" rel="next" title="高祖功臣侯者年表：萧丞相世家——FM 算法">
+                <i class="fa fa-chevron-left"></i> 高祖功臣侯者年表：萧丞相世家——FM 算法
               </a>
             
           </div>

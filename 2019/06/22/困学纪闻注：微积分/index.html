@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="导数 乘法法则  \[ \frac{\partial \mathbf{y}^{\mathrm{T}} \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} \mathbf{z}+\frac{\partial \mathbf{z}}{\partial \mathbf{x}} \mathbf{y">
+  <meta name="description" content="导数   乘法法则   \[\frac{\partial \mathbf{y}^{\mathrm{T}} \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} \mathbf{z}+\frac{\partial \mathbf{z}}{\partial \mathbf{x}} \mathb">
 <meta name="keywords" content="deep learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="困学纪闻注：微积分">
 <meta property="og:url" content="http://guanhua.ml/2019/06/22/困学纪闻注：微积分/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="导数 乘法法则  \[ \frac{\partial \mathbf{y}^{\mathrm{T}} \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} \mathbf{z}+\frac{\partial \mathbf{z}}{\partial \mathbf{x}} \mathbf{y">
+<meta property="og:description" content="导数   乘法法则   \[\frac{\partial \mathbf{y}^{\mathrm{T}} \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} \mathbf{z}+\frac{\partial \mathbf{z}}{\partial \mathbf{x}} \mathb">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="困学纪闻注：微积分">
-<meta name="twitter:description" content="导数 乘法法则  \[ \frac{\partial \mathbf{y}^{\mathrm{T}} \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} \mathbf{z}+\frac{\partial \mathbf{z}}{\partial \mathbf{x}} \mathbf{y">
+<meta name="twitter:description" content="导数   乘法法则   \[\frac{\partial \mathbf{y}^{\mathrm{T}} \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} \mathbf{z}+\frac{\partial \mathbf{z}}{\partial \mathbf{x}} \mathb">
 
 
 
@@ -490,56 +490,41 @@
       
 
       
-        <h2 id="导数">导数</h2>
-<p><strong>乘法法则</strong></p>
+        <h2 id="导数"> 导数 </h2>
+<p><strong> 乘法法则 </strong></p>
 <ol type="1">
-<li><span class="math display">\[
-\frac{\partial \mathbf{y}^{\mathrm{T}} \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} \mathbf{z}+\frac{\partial \mathbf{z}}{\partial \mathbf{x}} \mathbf{y}
+<li><span class="math display">\[\frac{\partial \mathbf{y}^{\mathrm{T}} \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} \mathbf{z}+\frac{\partial \mathbf{z}}{\partial \mathbf{x}} \mathbf{y}
 \]</span></li>
-<li><span class="math display">\[
-\frac{\partial \mathbf{y}^{\mathrm{T}} A \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} A \mathbf{z}+\frac{\partial \mathbf{z}}{\partial \mathbf{x}} A^{\mathrm{T}} \mathbf{y}
+<li><span class="math display">\[\frac{\partial \mathbf{y}^{\mathrm{T}} A \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} A \mathbf{z}+\frac{\partial \mathbf{z}}{\partial \mathbf{x}} A^{\mathrm{T}} \mathbf{y}
 \]</span></li>
-<li><span class="math display">\[
-\frac{\partial y \mathbf{z}}{\partial \mathbf{x}}=y \frac{\partial \mathbf{z}}{\partial \mathbf{x}}+\frac{\partial y}{\partial \mathbf{x}} \mathbf{z}^{\mathrm{T}}
+<li><span class="math display">\[\frac{\partial y \mathbf{z}}{\partial \mathbf{x}}=y \frac{\partial \mathbf{z}}{\partial \mathbf{x}}+\frac{\partial y}{\partial \mathbf{x}} \mathbf{z}^{\mathrm{T}}
 \]</span></li>
 </ol>
-<p>链式法则 1. <span class="math display">\[
-\frac{\partial \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} \frac{\partial \mathbf{z}}{\partial \mathbf{y}}
-\]</span> 2. <span class="math display">\[
-\frac{\partial z}{\partial X_{i j}}=\operatorname{tr}\left(\left(\frac{\partial z}{\partial Y}\right)^{\mathrm{T}} \frac{\partial Y}{\partial X_{i j}}\right)
-\]</span> 3. <span class="math display">\[
-\frac{\partial z}{\partial X_{i j}}=\left(\frac{\partial z}{\partial \mathbf{y}}\right)^{\mathrm{T}} \frac{\partial \mathbf{y}}{\partial X_{i j}}
-\]</span> 4. <span class="math display">\[
-\frac{\partial \mathbf{g}}{\partial x}=\left(\frac{\partial \mathbf{g}}{\partial \mathbf{u}}\right)^{\mathrm{T}} \frac{\partial \mathbf{u}}{\partial x}
+<p> 链式法则 1. <span class="math display">\[\frac{\partial \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} \frac{\partial \mathbf{z}}{\partial \mathbf{y}}
+\]</span> 2. <span class="math display">\[\frac{\partial z}{\partial X_{i j}}=\operatorname{tr}\left(\left(\frac{\partial z}{\partial Y}\right)^{\mathrm{T}} \frac{\partial Y}{\partial X_{i j}}\right)
+\]</span> 3. <span class="math display">\[\frac{\partial z}{\partial X_{i j}}=\left(\frac{\partial z}{\partial \mathbf{y}}\right)^{\mathrm{T}} \frac{\partial \mathbf{y}}{\partial X_{i j}}
+\]</span> 4. <span class="math display">\[\frac{\partial \mathbf{g}}{\partial x}=\left(\frac{\partial \mathbf{g}}{\partial \mathbf{u}}\right)^{\mathrm{T}} \frac{\partial \mathbf{u}}{\partial x}
 \]</span></p>
-<h2 id="常见函数的导数">常见函数的导数</h2>
-<h3 id="三个重要公式太重要了">三个重要公式，太重要了！</h3>
-<p><span class="math display">\[
-\frac{\partial \mathbf{x}}{\partial \mathbf{x}}=I
+<h2 id="常见函数的导数"> 常见函数的导数 </h2>
+<h3 id="三个重要公式太重要了"> 三个重要公式，太重要了！</h3>
+<p><span class="math display">\[\frac{\partial \mathbf{x}}{\partial \mathbf{x}}=I
 \]</span></p>
-<p><span class="math display">\[
-\frac{\partial A \mathbf{x}}{\partial \mathbf{x}}=A^{\mathrm{T}}
+<p><span class="math display">\[\frac{\partial A \mathbf{x}}{\partial \mathbf{x}}=A^{\mathrm{T}}
 \]</span></p>
-<p><span class="math display">\[
-\frac{\partial \mathbf{x}^{\mathrm{T}} A}{\partial \mathbf{x}}=A
+<p><span class="math display">\[\frac{\partial \mathbf{x}^{\mathrm{T}} A}{\partial \mathbf{x}}=A
 \]</span></p>
-<h3 id="按位计算的向量函数及其导数">按位计算的向量函数及其导数</h3>
-<p><span class="math display">\[
-z_{k}=f\left(x_{k}\right), \forall k=1, \cdots, K
+<h3 id="按位计算的向量函数及其导数"> 按位计算的向量函数及其导数 </h3>
+<p><span class="math display">\[z_{k}=f\left(x_{k}\right), \forall k=1, \cdots, K
 \]</span></p>
-<p><span class="math display">\[
-\begin{aligned} \frac{\partial f(\mathbf{x})}{\partial \mathbf{x}} &amp;=\left[\frac{\partial f\left(x_{j}\right)}{\partial x_{i}}\right]_{K \times K} \\ &amp;=\left[\begin{array}{cccc}{f^{\prime}\left(x_{1}\right)} &amp; {0} &amp; {\cdots} &amp; {0} \\ {0} &amp; {f^{\prime}\left(x_{2}\right)} &amp; {\cdots} &amp; {0} \\ {\vdots} &amp; {\vdots} &amp; {\vdots} &amp; {\vdots} \\ {0} &amp; {0} &amp; {\cdots} &amp; {f^{\prime}\left(x_{K}\right)}\end{array}\right] \\
+<p><span class="math display">\[\begin{aligned} \frac{\partial f(\mathbf{x})}{\partial \mathbf{x}} &amp;=\left[\frac{\partial f\left(x_{j}\right)}{\partial x_{i}}\right]_{K \times K} \\ &amp;=\left[\begin{array}{cccc}{f^{\prime}\left(x_{1}\right)} &amp; {0} &amp; {\cdots} &amp; {0} \\ {0} &amp; {f^{\prime}\left(x_{2}\right)} &amp; {\cdots} &amp; {0} \\ {\vdots} &amp; {\vdots} &amp; {\vdots} &amp; {\vdots} \\ {0} &amp; {0} &amp; {\cdots} &amp; {f^{\prime}\left(x_{K}\right)}\end{array}\right] \\
 &amp;=\operatorname{diag}\left(f^{\prime}(\mathbf{x})\right) \end{aligned}
 \]</span></p>
-<h3 id="logistic-函数">Logistic 函数</h3>
-<p><span class="math display">\[
-\sigma(x)=\frac{1}{1+\exp (-x)}
+<h3 id="logistic- 函数">Logistic 函数 </h3>
+<p><span class="math display">\[\sigma(x)=\frac{1}{1+\exp (-x)}
 \]</span></p>
-<p><span class="math display">\[
-\sigma^{\prime}(x)=\sigma(x)(1-\sigma(x))
+<p><span class="math display">\[\sigma^{\prime}(x)=\sigma(x)(1-\sigma(x))
 \]</span></p>
-<p><span class="math display">\[
-\sigma^{\prime}(\mathbf{x})=\operatorname{diag}(\sigma(\mathbf{x}) \odot(1-\sigma(\mathbf{x})))
+<p><span class="math display">\[\sigma^{\prime}(\mathbf{x})=\operatorname{diag}(\sigma(\mathbf{x}) \odot(1-\sigma(\mathbf{x})))
 \]</span></p>
 
       
@@ -554,7 +539,7 @@ z_{k}=f\left(x_{k}\right), \forall k=1, \cdots, K
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/27/Keras源码漫谈-1/" rel="bookmark">Keras源码漫谈(1)</a></div>
+      <div class="popular-posts-title"><a href="/2019/06/27/Keras源码漫谈-1/" rel="bookmark">Keras 源码漫谈 (1)</a></div>
       
     </li>
   
@@ -908,7 +893,7 @@ z_{k}=f\left(x_{k}\right), \forall k=1, \cdots, K
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#导数"><span class="nav-number">1.</span> <span class="nav-text">导数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见函数的导数"><span class="nav-number">2.</span> <span class="nav-text">常见函数的导数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三个重要公式太重要了"><span class="nav-number">2.1.</span> <span class="nav-text">三个重要公式，太重要了！</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按位计算的向量函数及其导数"><span class="nav-number">2.2.</span> <span class="nav-text">按位计算的向量函数及其导数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logistic-函数"><span class="nav-number">2.3.</span> <span class="nav-text">Logistic 函数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#导数"><span class="nav-number">1.</span> <span class="nav-text"> 导数 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见函数的导数"><span class="nav-number">2.</span> <span class="nav-text"> 常见函数的导数 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三个重要公式太重要了"><span class="nav-number">2.1.</span> <span class="nav-text"> 三个重要公式，太重要了！</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按位计算的向量函数及其导数"><span class="nav-number">2.2.</span> <span class="nav-text"> 按位计算的向量函数及其导数 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logistic- 函数"><span class="nav-number">2.3.</span> <span class="nav-text">Logistic 函数 </span></a></li></ol></li></ol></div>
             
 
           </div>

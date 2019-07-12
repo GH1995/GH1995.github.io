@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="梯度下降法  批量梯度下降(BGD) \[ \theta_{j}^{\prime}=\theta_{j}+\frac{1}{m} \sum_{i=1}^{m}\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i} \] 随机梯度下降(SGD) \[ \theta_{j}^{\prime}=\theta_{j}+\left(y^{i}-h_">
+  <meta name="description" content="梯度下降法    批量梯度下降 (BGD) \[\theta_{j}^{\prime}=\theta_{j}+\frac{1}{m} \sum_{i=1}^{m}\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i} \]  随机梯度下降 (SGD) \[\theta_{j}^{\prime}=\theta_{j}+\left(y^{i">
 <meta name="keywords" content="machine learning,todo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="建炎以来系年要录：优化算法小结">
 <meta property="og:url" content="http://guanhua.ml/2019/06/19/建炎以来系年要录：优化算法小结/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="梯度下降法  批量梯度下降(BGD) \[ \theta_{j}^{\prime}=\theta_{j}+\frac{1}{m} \sum_{i=1}^{m}\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i} \] 随机梯度下降(SGD) \[ \theta_{j}^{\prime}=\theta_{j}+\left(y^{i}-h_">
+<meta property="og:description" content="梯度下降法    批量梯度下降 (BGD) \[\theta_{j}^{\prime}=\theta_{j}+\frac{1}{m} \sum_{i=1}^{m}\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i} \]  随机梯度下降 (SGD) \[\theta_{j}^{\prime}=\theta_{j}+\left(y^{i">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="建炎以来系年要录：优化算法小结">
-<meta name="twitter:description" content="梯度下降法  批量梯度下降(BGD) \[ \theta_{j}^{\prime}=\theta_{j}+\frac{1}{m} \sum_{i=1}^{m}\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i} \] 随机梯度下降(SGD) \[ \theta_{j}^{\prime}=\theta_{j}+\left(y^{i}-h_">
+<meta name="twitter:description" content="梯度下降法    批量梯度下降 (BGD) \[\theta_{j}^{\prime}=\theta_{j}+\frac{1}{m} \sum_{i=1}^{m}\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i} \]  随机梯度下降 (SGD) \[\theta_{j}^{\prime}=\theta_{j}+\left(y^{i">
 
 
 
@@ -490,78 +490,58 @@
       
 
       
-        <h2 id="梯度下降法">梯度下降法</h2>
+        <h2 id="梯度下降法"> 梯度下降法 </h2>
 <ol type="1">
-<li>批量梯度下降(BGD) <span class="math display">\[
-\theta_{j}^{\prime}=\theta_{j}+\frac{1}{m} \sum_{i=1}^{m}\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i}
+<li> 批量梯度下降 (BGD) <span class="math display">\[\theta_{j}^{\prime}=\theta_{j}+\frac{1}{m} \sum_{i=1}^{m}\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i}
 \]</span></li>
-<li>随机梯度下降(SGD) <span class="math display">\[
-\theta_{j}^{\prime}=\theta_{j}+\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i}
+<li> 随机梯度下降 (SGD) <span class="math display">\[\theta_{j}^{\prime}=\theta_{j}+\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i}
 \]</span></li>
-<li>小批量梯度下降(MBGD)</li>
+<li> 小批量梯度下降 (MBGD)</li>
 </ol>
-<h2 id="牛顿法">牛顿法</h2>
-<p>牛顿法是二次收敛，因此收敛速度快。从几何上看是每次用一个二次曲面来拟合当前所处位置的局部曲面，而梯度下降法是用一个平面来拟合。</p>
+<h2 id="牛顿法"> 牛顿法 </h2>
+<p> 牛顿法是二次收敛，因此收敛速度快。从几何上看是每次用一个二次曲面来拟合当前所处位置的局部曲面，而梯度下降法是用一个平面来拟合。</p>
 <ol type="1">
-<li>黑塞矩阵是由目标函数 <span class="math inline">\(f(x)\)</span> 在点 <span class="math inline">\(X\)</span> 处的二阶偏导数组成的 <span class="math inline">\(n \times n\)</span> 阶对称矩阵。</li>
-<li>牛顿法：将 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\(x(k)\)</span> 附近进行二阶泰勒展开： <span class="math display">\[
-f(x)=f\left(x^{(k)}\right)+g_{k}^{\mathrm{T}}\left(x-x^{(k)}\right)+\frac{1}{2}\left(x-x^{(k)}\right)^{\mathrm{T}} H\left(x^{(k)}\right)\left(x-x^{(k)}\right)
+<li> 黑塞矩阵是由目标函数 <span class="math inline">\(f(x)\)</span> 在点 <span class="math inline">\(X\)</span> 处的二阶偏导数组成的 <span class="math inline">\(n \times n\)</span> 阶对称矩阵。</li>
+<li> 牛顿法：将 <span class="math inline">\(f(x)\)</span> 在 <span class="math inline">\(x(k)\)</span> 附近进行二阶泰勒展开： <span class="math display">\[f(x)=f\left(x^{(k)}\right)+g_{k}^{\mathrm{T}}\left(x-x^{(k)}\right)+\frac{1}{2}\left(x-x^{(k)}\right)^{\mathrm{T}} H\left(x^{(k)}\right)\left(x-x^{(k)}\right)
 \]</span></li>
-<li><span class="math inline">\(g_k\)</span>是<span class="math inline">\(f(x)\)</span> 的梯度向量在 <span class="math inline">\(x(k)\)</span> 的值，<span class="math inline">\(H(x(k))\)</span> 是 <span class="math inline">\(f(x)\)</span> 的黑塞矩阵在点 <span class="math inline">\(x(k)\)</span> 的值。</li>
+<li><span class="math inline">\(g_k\)</span> 是 <span class="math inline">\(f(x)\)</span> 的梯度向量在 <span class="math inline">\(x(k)\)</span> 的值，<span class="math inline">\(H(x(k))\)</span> 是 <span class="math inline">\(f(x)\)</span> 的黑塞矩阵在点 <span class="math inline">\(x(k)\)</span> 的值。</li>
 </ol>
-<p><span class="math display">\[
-\nabla f(x)=g_{k}+H_{k}\left(x-x^{(k)}\right)
+<p><span class="math display">\[\nabla f(x)=g_{k}+H_{k}\left(x-x^{(k)}\right)
 \]</span></p>
-<p><span class="math display">\[
-g_{k}+H_{k}\left(x^{(k+1)}-x^{(k)}\right)=0
+<p><span class="math display">\[g_{k}+H_{k}\left(x^{(k+1)}-x^{(k)}\right)=0
 \]</span></p>
-<p><span class="math display">\[
-x^{(k+1)}=x^{(k)}-H_{k}^{-1} g_{k}
+<p><span class="math display">\[x^{(k+1)}=x^{(k)}-H_{k}^{-1} g_{k}
 \]</span></p>
-<h2 id="拟牛顿法">拟牛顿法</h2>
-<p><span class="math display">\[
-g_{k+1}-g_{k}=H_{k}\left(x^{(k+1)}-x^{(k)}\right)
+<h2 id="拟牛顿法"> 拟牛顿法 </h2>
+<p><span class="math display">\[g_{k+1}-g_{k}=H_{k}\left(x^{(k+1)}-x^{(k)}\right)
 \]</span></p>
-<p><span class="math display">\[
-y_{k}=g_{k+1}-g_{k}
+<p><span class="math display">\[y_{k}=g_{k+1}-g_{k}
 \]</span></p>
-<p><span class="math display">\[
-\delta_{k}=x^{(k+1)}-x^{(k)}
+<p><span class="math display">\[\delta_{k}=x^{(k+1)}-x^{(k)}
 \]</span></p>
-<h3 id="dfp算法">DFP算法</h3>
-<p><span class="math display">\[
-G_{k+1}=G_{k}+P_{k}+Q_{k}
+<h3 id="dfp 算法">DFP 算法 </h3>
+<p><span class="math display">\[G_{k+1}=G_{k}+P_{k}+Q_{k}
 \]</span></p>
-<p><span class="math display">\[
-P_{k} y_{k}=\delta_{k}
+<p><span class="math display">\[P_{k} y_{k}=\delta_{k}
 \]</span></p>
-<p><span class="math display">\[
-Q_{k} y_{k}=-G_{k} y_{k}
+<p><span class="math display">\[Q_{k} y_{k}=-G_{k} y_{k}
 \]</span></p>
-<p><span class="math display">\[
-P_{k}=\frac{\delta_{k} \delta_{k}^{T}}{\delta_{k}^{T} y_{k}}
+<p><span class="math display">\[P_{k}=\frac{\delta_{k} \delta_{k}^{T}}{\delta_{k}^{T} y_{k}}
 \]</span></p>
-<p><span class="math display">\[
-Q_{k}=-\frac{G_{k} y_{k} y_{k}^{\mathrm{T}} G_{k}}{y_{k}^{\mathrm{T}} G_{k} y_{k}}
+<p><span class="math display">\[Q_{k}=-\frac{G_{k} y_{k} y_{k}^{\mathrm{T}} G_{k}}{y_{k}^{\mathrm{T}} G_{k} y_{k}}
 \]</span></p>
-<p><span class="math display">\[
-G_{k+1}=G_{k}+\frac{\delta_{k} \delta_{k}^{\tau}}{\delta_{k}^{T} y_{k}}-\frac{G_{k} y_{k} y_{k}^{T} G_{k}}{y_{k}^{T} G_{k} y_{k}}
+<p><span class="math display">\[G_{k+1}=G_{k}+\frac{\delta_{k} \delta_{k}^{\tau}}{\delta_{k}^{T} y_{k}}-\frac{G_{k} y_{k} y_{k}^{T} G_{k}}{y_{k}^{T} G_{k} y_{k}}
 \]</span></p>
-<h3 id="bfgs算法">BFGS算法</h3>
-<p><span class="math display">\[
-B_{k+1} \delta_{k}=y_{k}
+<h3 id="bfgs 算法">BFGS 算法 </h3>
+<p><span class="math display">\[B_{k+1} \delta_{k}=y_{k}
 \]</span></p>
-<p><span class="math display">\[
-B_{k+1}=B_{k}+P_{k}+Q_{k}
+<p><span class="math display">\[B_{k+1}=B_{k}+P_{k}+Q_{k}
 \]</span></p>
-<p><span class="math display">\[
-P_{k} \delta_{k}=y_{k}
+<p><span class="math display">\[P_{k} \delta_{k}=y_{k}
 \]</span></p>
-<p><span class="math display">\[
-Q_{k} \delta_{k}=-B_{k} \delta_{k}
+<p><span class="math display">\[Q_{k} \delta_{k}=-B_{k} \delta_{k}
 \]</span></p>
-<p><span class="math display">\[
-B_{k+1}=B_{k}+\frac{y_{k} y_{k}^{\mathrm{T}}}{y_{k}^{\mathrm{T}} \delta_{k}}-\frac{B_{k} \delta_{k} \delta_{k}^{\mathrm{T}} B_{k}}{\delta_{k}^{\mathrm{T}} B_{k} \delta_{k}}
+<p><span class="math display">\[B_{k+1}=B_{k}+\frac{y_{k} y_{k}^{\mathrm{T}}}{y_{k}^{\mathrm{T}} \delta_{k}}-\frac{B_{k} \delta_{k} \delta_{k}^{\mathrm{T}} B_{k}}{\delta_{k}^{\mathrm{T}} B_{k} \delta_{k}}
 \]</span></p>
 
       
@@ -932,7 +912,7 @@ B_{k+1}=B_{k}+\frac{y_{k} y_{k}^{\mathrm{T}}}{y_{k}^{\mathrm{T}} \delta_{k}}-\fr
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度下降法"><span class="nav-number">1.</span> <span class="nav-text">梯度下降法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#牛顿法"><span class="nav-number">2.</span> <span class="nav-text">牛顿法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拟牛顿法"><span class="nav-number">3.</span> <span class="nav-text">拟牛顿法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dfp算法"><span class="nav-number">3.1.</span> <span class="nav-text">DFP算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bfgs算法"><span class="nav-number">3.2.</span> <span class="nav-text">BFGS算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度下降法"><span class="nav-number">1.</span> <span class="nav-text"> 梯度下降法 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#牛顿法"><span class="nav-number">2.</span> <span class="nav-text"> 牛顿法 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拟牛顿法"><span class="nav-number">3.</span> <span class="nav-text"> 拟牛顿法 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dfp 算法"><span class="nav-number">3.1.</span> <span class="nav-text">DFP 算法 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bfgs 算法"><span class="nav-number">3.2.</span> <span class="nav-text">BFGS 算法 </span></a></li></ol></li></ol></div>
             
 
           </div>

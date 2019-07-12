@@ -105,13 +105,13 @@
 
 
 
-  <meta name="description" content="卷积  卷积  \[ y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1} \] 一幅图像在经过卷积操作后得到结果称为特征映射（Feature Map）。 互相关和卷积的区别在于卷积核仅仅是否进行翻转。 卷积层的神经元数量  神经元数量  卷积神经网络 卷积层  第\(l\)层神经元数量  \[ n^{(l)}=n^{(l-1)}-m+1 \]  卷积层   卷积层">
+  <meta name="description" content="卷积  卷积  \[y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1} \] 一幅图像在经过卷积操作后得到结果称为特征映射（Feature Map）。 互相关和卷积的区别在于卷积核仅仅是否进行翻转。 卷积层的神经元数量  神经元数量  卷积神经网络 卷积层  第 \(l\) 层神经元数量  \[n^{(l)}=n^{(l-1)}-m+1 \]  卷积层   卷积层">
 <meta name="keywords" content="deep learning,todo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="困学纪闻注：卷积神经网络——中生代噩梦">
 <meta property="og:url" content="http://guanhua.ml/2019/06/19/困学纪闻注：卷积神经网络——中生代噩梦/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="卷积  卷积  \[ y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1} \] 一幅图像在经过卷积操作后得到结果称为特征映射（Feature Map）。 互相关和卷积的区别在于卷积核仅仅是否进行翻转。 卷积层的神经元数量  神经元数量  卷积神经网络 卷积层  第\(l\)层神经元数量  \[ n^{(l)}=n^{(l-1)}-m+1 \]  卷积层   卷积层">
+<meta property="og:description" content="卷积  卷积  \[y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1} \] 一幅图像在经过卷积操作后得到结果称为特征映射（Feature Map）。 互相关和卷积的区别在于卷积核仅仅是否进行翻转。 卷积层的神经元数量  神经元数量  卷积神经网络 卷积层  第 \(l\) 层神经元数量  \[n^{(l)}=n^{(l-1)}-m+1 \]  卷积层   卷积层">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/19/VXcsyj.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/19/VXcz1e.png">
@@ -122,7 +122,7 @@
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="困学纪闻注：卷积神经网络——中生代噩梦">
-<meta name="twitter:description" content="卷积  卷积  \[ y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1} \] 一幅图像在经过卷积操作后得到结果称为特征映射（Feature Map）。 互相关和卷积的区别在于卷积核仅仅是否进行翻转。 卷积层的神经元数量  神经元数量  卷积神经网络 卷积层  第\(l\)层神经元数量  \[ n^{(l)}=n^{(l-1)}-m+1 \]  卷积层   卷积层">
+<meta name="twitter:description" content="卷积  卷积  \[y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1} \] 一幅图像在经过卷积操作后得到结果称为特征映射（Feature Map）。 互相关和卷积的区别在于卷积核仅仅是否进行翻转。 卷积层的神经元数量  神经元数量  卷积神经网络 卷积层  第 \(l\) 层神经元数量  \[n^{(l)}=n^{(l-1)}-m+1 \]  卷积层   卷积层">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/06/19/VXcsyj.png">
 
 
@@ -501,8 +501,7 @@
 <figure>
 <img src="https://s2.ax1x.com/2019/06/19/VXcsyj.png" alt="卷积"><figcaption>卷积</figcaption>
 </figure>
-<p><span class="math display">\[
-y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1}
+<p><span class="math display">\[y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1}
 \]</span></p>
 <p>一幅图像在经过卷积操作后得到结果称为特征映射（Feature Map）。</p>
 <p>互相关和卷积的区别在于卷积核仅仅是否进行翻转。</p>
@@ -513,10 +512,9 @@ y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1}
 <h2 id="卷积神经网络">卷积神经网络</h2>
 <h3 id="卷积层">卷积层</h3>
 <figure>
-<img src="https://s2.ax1x.com/2019/06/19/VXgY3F.png" alt="第l层神经元数量"><figcaption>第<span class="math inline">\(l\)</span>层神经元数量</figcaption>
+<img src="https://s2.ax1x.com/2019/06/19/VXgY3F.png" alt="第 l 层神经元数量"><figcaption>第 <span class="math inline">\(l\)</span> 层神经元数量</figcaption>
 </figure>
-<p><span class="math display">\[
-n^{(l)}=n^{(l-1)}-m+1
+<p><span class="math display">\[n^{(l)}=n^{(l-1)}-m+1
 \]</span></p>
 <figure>
 <img src="https://s2.ax1x.com/2019/06/19/VXgWDA.png" alt="卷积层"><figcaption>卷积层</figcaption>
@@ -529,19 +527,18 @@ n^{(l)}=n^{(l-1)}-m+1
 <img src="https://s2.ax1x.com/2019/06/19/VX21rd.png" alt="典型的卷积网络结构"><figcaption>典型的卷积网络结构</figcaption>
 </figure>
 <h2 id="几种典型的卷积神经网络">几种典型的卷积神经网络</h2>
-<h3 id="inception网络">Inception网络</h3>
-<p>一个卷积层包含多个不同大小的卷积操作，称为Inception模块。</p>
-<p>Inception模块同时使用<span class="math inline">\(1 × 1\)</span>、<span class="math inline">\(3 × 3\)</span>、<span class="math inline">\(5 × 5\)</span>等不同大小的卷积核，并将得到的特征映射在深度上拼接（堆叠）起来作为输出特征映射。</p>
-<p>Inception模块在进行<span class="math inline">\(3 × 3\)</span>、<span class="math inline">\(5 × 5\)</span>的卷积之前、<span class="math inline">\(3 × 3\)</span>的最大汇聚之后，进行一次<span class="math inline">\(1×1\)</span>的卷积来减少特征映射的深度。如果输入特征映射 之间存在冗余信息，<span class="math inline">\(1 × 1\)</span>的卷积相当于先进行一次特征抽取。</p>
+<h3 id="inception 网络">Inception 网络</h3>
+<p>一个卷积层包含多个不同大小的卷积操作，称为 Inception 模块。</p>
+<p>Inception 模块同时使用 <span class="math inline">\(1 × 1\)</span>、<span class="math inline">\(3 × 3\)</span>、<span class="math inline">\(5 × 5\)</span> 等不同大小的卷积核，并将得到的特征映射在深度上拼接（堆叠）起来作为输出特征映射。</p>
+<p>Inception 模块在进行 <span class="math inline">\(3 × 3\)</span>、<span class="math inline">\(5 × 5\)</span> 的卷积之前、<span class="math inline">\(3 × 3\)</span>的最大汇聚之后，进行一次 <span class="math inline">\(1×1\)</span> 的卷积来减少特征映射的深度。如果输入特征映射 之间存在冗余信息，<span class="math inline">\(1 × 1\)</span>的卷积相当于先进行一次特征抽取。</p>
 <h3 id="resnet">ResNet</h3>
-<p><span class="math display">\[
-h(\mathbf{x})=\mathbf{x}+(h(\mathbf{x})-\mathbf{x})
+<p><span class="math display">\[h(\mathbf{x})=\mathbf{x}+(h(\mathbf{x})-\mathbf{x})
 \]</span></p>
-<p>让非线性单元<span class="math inline">\(f(\mathbf{x}, \theta)\)</span>去近似残差函数<span class="math inline">\(h(\mathbf{x})−\mathbf{x}\)</span></p>
+<p>让非线性单元 <span class="math inline">\(f(\mathbf{x}, \theta)\)</span> 去近似残差函数<span class="math inline">\(h(\mathbf{x})−\mathbf{x}\)</span></p>
 <h2 id="其他卷积方式">其他卷积方式</h2>
 <p><strong>转置卷积</strong>：用小图片和大卷积核生成特征映射，将低维特征映射到高维特征</p>
-<p><strong>微步卷积</strong>：给图片插入0</p>
-<p><strong>空洞卷积</strong>：给卷积核插入0</p>
+<p><strong>微步卷积</strong>：给图片插入 0</p>
+<p><strong>空洞卷积</strong>：给卷积核插入 0</p>
 
       
     </div>
@@ -911,7 +908,7 @@ h(\mathbf{x})=\mathbf{x}+(h(\mathbf{x})-\mathbf{x})
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积"><span class="nav-number">1.</span> <span class="nav-text">卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卷积层的神经元数量"><span class="nav-number">1.1.</span> <span class="nav-text">卷积层的神经元数量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积神经网络"><span class="nav-number">2.</span> <span class="nav-text">卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卷积层"><span class="nav-number">2.1.</span> <span class="nav-text">卷积层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#典型的卷积网络结构"><span class="nav-number">2.2.</span> <span class="nav-text">典型的卷积网络结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种典型的卷积神经网络"><span class="nav-number">3.</span> <span class="nav-text">几种典型的卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#inception网络"><span class="nav-number">3.1.</span> <span class="nav-text">Inception网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resnet"><span class="nav-number">3.2.</span> <span class="nav-text">ResNet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他卷积方式"><span class="nav-number">4.</span> <span class="nav-text">其他卷积方式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积"><span class="nav-number">1.</span> <span class="nav-text">卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卷积层的神经元数量"><span class="nav-number">1.1.</span> <span class="nav-text">卷积层的神经元数量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积神经网络"><span class="nav-number">2.</span> <span class="nav-text">卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卷积层"><span class="nav-number">2.1.</span> <span class="nav-text">卷积层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#典型的卷积网络结构"><span class="nav-number">2.2.</span> <span class="nav-text">典型的卷积网络结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种典型的卷积神经网络"><span class="nav-number">3.</span> <span class="nav-text">几种典型的卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#inception 网络"><span class="nav-number">3.1.</span> <span class="nav-text">Inception 网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resnet"><span class="nav-number">3.2.</span> <span class="nav-text">ResNet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他卷积方式"><span class="nav-number">4.</span> <span class="nav-text">其他卷积方式</span></a></li></ol></div>
             
 
           </div>

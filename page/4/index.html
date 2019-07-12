@@ -495,10 +495,8 @@
           
             <p>
               模型
-先学习先验概率分布 \[
-P\left(Y=c_{k}\right), \quad k=1,2, \cdots, K
-\] 然后学习条件概率分布 \[
-P\left(X=x | Y=c_{k}\right)=P\left(X^{(1)}=x^{(1)}, \cdots, X^{(n)}=x^{
+先学习先验概率分布 \[P\left(Y=c_{k}\right), \quad k=1,2, \cdots, K
+\] 然后学习条件概率分布 \[P\left(X=x | Y=c_{k}\right)=P\left(X^{(1)}=x^{(1)}, \cdots, X^{(n)}=x^{(n
               ...
             </p>
           <!--noindex-->
@@ -584,7 +582,7 @@ P\left(X=x | Y=c_{k}\right)=P\left(X^{(1)}=x^{(1)}, \cdots, X^{(n)}=x^{
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/21/高祖功臣侯者年表：陈涉世家/" class="post-title-link" itemprop="url">高祖功臣侯者年表：陈涉世家——xDeepFM算法</a>
+                <a href="/2019/06/21/高祖功臣侯者年表：陈涉世家/" class="post-title-link" itemprop="url">高祖功臣侯者年表：陈涉世家——xDeepFM 算法</a>
               
             
           </h1>
@@ -677,9 +675,8 @@ P\left(X=x | Y=c_{k}\right)=P\left(X^{(1)}=x^{(1)}, \cdots, X^{(n)}=x^{
           
             <p>
               Motivation
-DeepFM的思想比较直观，另外一个细节就是模型中FM与Deep共享Embedding。DCN的设计非常巧妙，引入Cross层取代 Wide &amp; Deep 的Wide层，Cross层的独特结构使其可以显示、自动地构造有限高阶的特征叉乘。
-Model
-CIN：Compre
+DeepFM 的思想比较直观，另外一个细节就是模型中 FM 与 Deep 共享 Embedding。DCN 的设计非常巧妙，引入 Cross 层取代 Wide &amp; Deep 的 Wide 层，Cross 层的独特结构使其可以显示、自动地构造有限高阶的特征叉乘。
+Mode
               ...
             </p>
           <!--noindex-->
@@ -857,13 +854,11 @@ CIN：Compre
         
           
             <p>
-              嵌入和堆叠层
-\[
-x_{e m b e d, i}=W_{e m b e d, i} x_{i}
+               嵌入和堆叠层 
+\[x_{e m b e d, i}=W_{e m b e d, i} x_{i}
 \]
-交叉网络
-\[
-x_{l+1}=x_{0} x_{l}^{T} w_{l}+b_{l}+x_{l}=f\left(x_{l}, w_{l}, b_{l}\right)+x_{l}
+ 交叉网络 
+\[x_{l+1}=x_{0} x_{l}^{T} w_{l}+b_{l}+x_{l}=f\left(x_{l}, w_{l}, b_{l}\right)+x_{l}
 \]
 
               
@@ -1043,7 +1038,7 @@ x_{l+1}=x_{0} x_{l}^{T} w_{l}+b_{l}+x_{l}=f\left(x_{l}, w_{l}, b_{l}\right)+x_{l
         
           
             <p>
-              略
+               略 
 
               
             </p>
@@ -1223,18 +1218,15 @@ x_{l+1}=x_{0} x_{l}^{T} w_{l}+b_{l}+x_{l}=f\left(x_{l}, w_{l}, b_{l}\right)+x_{l
           
             <p>
               motivation
-模型
-wide 模型
-\[
-y=\mathbf{w}^{T} \mathbf{x}+b
+ 模型 
+wide 模型 
+\[y=\mathbf{w}^{T} \mathbf{x}+b
 \]
-deep 模型
-\[
-a^{(l+1)}=f\left(W^{(l)} a^{(l)}+b^{(l)}\right)
+deep 模型 
+\[a^{(l+1)}=f\left(W^{(l)} a^{(l)}+b^{(l)}\right)
 \]
-联合训练
-\[
-P(Y=1 | \mathbf{x})=\s
+ 联合训练 
+\[P(Y=1 | \mathbf{x})
               ...
             </p>
           <!--noindex-->
@@ -1320,7 +1312,7 @@ P(Y=1 | \mathbf{x})=\s
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/20/高祖功臣侯者年表：曹相国世家/" class="post-title-link" itemprop="url">高祖功臣侯者年表：曹相国世家——FFM算法</a>
+                <a href="/2019/06/20/高祖功臣侯者年表：曹相国世家/" class="post-title-link" itemprop="url">高祖功臣侯者年表：曹相国世家——FFM 算法</a>
               
             
           </h1>
@@ -1412,8 +1404,7 @@ P(Y=1 | \mathbf{x})=\s
         
           
             <p>
-              \[
-y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\left\langle\mathbf{v}_{i, f_{j}}, \mathbf{v}_{j, f_{i}}\right\rangle
+              \[y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\left\langle\mathbf{v}_{i, f_{j}}, \mathbf{v}_{j, f_{i}}\right\rangle 
               ...
             </p>
           <!--noindex-->
@@ -1499,7 +1490,7 @@ y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\l
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/20/高祖功臣侯者年表：萧相国世家/" class="post-title-link" itemprop="url">高祖功臣侯者年表：萧丞相世家——FM算法</a>
+                <a href="/2019/06/20/高祖功臣侯者年表：萧相国世家/" class="post-title-link" itemprop="url">高祖功臣侯者年表：萧丞相世家——FM 算法</a>
               
             
           </h1>
@@ -1591,13 +1582,11 @@ y(\mathbf{x})=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n}\l
         
           
             <p>
-              线性模型
-\[
-y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}
+               线性模型 
+\[y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}
 \]
-二阶多项式模型
-\[
-y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \ome
+ 二阶多项式模型 
+\[y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \o
               ...
             </p>
           <!--noindex-->
@@ -1777,13 +1766,10 @@ y=\omega_{0}+\sum_{i=1}^{n} \omega_{i} x_{i}+\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \
             <p>
               特征选择
 
-信息熵： 信息熵 \[
-H(X)=-\sum_{x \in X} P(x) \log P(x) )
-\] 条件熵 \[
-H(Y | X)=\sum_{i=1}^{n} p_{i} H\left(Y | X=x_{i}\right)
+信息熵： 信息熵 \[H(X)=-\sum_{x \in X} P(x) \log P(x) )
+\] 条件熵 \[H(Y | X)=\sum_{i=1}^{n} p_{i} H\left(Y | X=x_{i}\right)
 \] 关于这里有空我要单独写篇文章！
-信息增益 \[
-g
+信息增益 \[g(D,
               ...
             </p>
           <!--noindex-->
@@ -1961,10 +1947,9 @@ g
         
           
             <p>
-              有不等式约束的优化问题
-把不等式约束，等式约束和优化问题合并为一个式子。假设有多个等式约束 \(h(x)\) 和不等式约束 \(g(x)\)
-\[
-L(\boldsymbol{x}, \boldsymbol{\lambda}, \boldsymbol{\mu})=f(\boldsymbol{x})+
+               有不等式约束的优化问题 
+ 把不等式约束，等式约束和优化问题合并为一个式子。假设有多个等式约束 \(h(x)\) 和不等式约束 \(g(x)\)
+\[L(\boldsymbol{x}, \boldsymbol{\lambda}, \boldsymbol{\mu})=f(\boldsymbol{x}
               ...
             </p>
           <!--noindex-->
@@ -2142,16 +2127,14 @@ L(\boldsymbol{x}, \boldsymbol{\lambda}, \boldsymbol{\mu})=f(\boldsymbol{x})+
         
           
             <p>
-              最大熵模型
-\(P(X, Y)\)的经验分布
-\[
-\tilde{P}(X=x, Y=y)=\frac{\nu(X=x, Y=y)}{N}
+               最大熵模型 
+\(P(X, Y)\) 的经验分布 
+\[\tilde{P}(X=x, Y=y)=\frac{\nu(X=x, Y=y)}{N}
 \]
-边缘分布\(P(X)\)
-\[
-\tilde{P}(X=x)=\frac{v(X=x)}{N}
+ 边缘分布 \(P(X)\)
+\[\tilde{P}(X=x)=\frac{v(X=x)}{N}
 \]
-\(P(X，Y)\) 的经验分布的期望值和关于模型 
+\(P(X，Y)\) 的经验分布的期望值和关
               ...
             </p>
           <!--noindex-->

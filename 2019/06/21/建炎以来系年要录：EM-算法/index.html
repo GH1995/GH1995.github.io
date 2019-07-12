@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="EM 算法是一种迭代算法，用于含有隐变量的概率模型参数的极大似然估计。每次迭代由两步组成： - \(E\) 步，求期望 (expectation) - \(M\) 步，求极大值 (maximization)，直至收敛为止。 算法  \(E\)步：\(\theta(i)\) 为 \(i\) 次迭代参数 \(\theta\) 的估计值，在第 \(i+1\) 次迭代的 \(E\) 步，计算 \[ \be">
+  <meta name="description" content="EM 算法是一种迭代算法，用于含有隐变量的概率模型参数的极大似然估计。每次迭代由两步组成： - \(E\) 步，求期望 (expectation) - \(M\) 步，求极大值 (maximization)，直至收敛为止。  算法   \(E\) 步：\(\theta(i)\) 为 \(i\) 次迭代参数 \(\theta\) 的估计值，在第 \(i+1\) 次迭代的 \(E\) 步，计算 \[\">
 <meta name="keywords" content="machine learning,todo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="建炎以来系年要录：EM 算法">
 <meta property="og:url" content="http://guanhua.ml/2019/06/21/建炎以来系年要录：EM-算法/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="EM 算法是一种迭代算法，用于含有隐变量的概率模型参数的极大似然估计。每次迭代由两步组成： - \(E\) 步，求期望 (expectation) - \(M\) 步，求极大值 (maximization)，直至收敛为止。 算法  \(E\)步：\(\theta(i)\) 为 \(i\) 次迭代参数 \(\theta\) 的估计值，在第 \(i+1\) 次迭代的 \(E\) 步，计算 \[ \be">
+<meta property="og:description" content="EM 算法是一种迭代算法，用于含有隐变量的概率模型参数的极大似然估计。每次迭代由两步组成： - \(E\) 步，求期望 (expectation) - \(M\) 步，求极大值 (maximization)，直至收敛为止。  算法   \(E\) 步：\(\theta(i)\) 为 \(i\) 次迭代参数 \(\theta\) 的估计值，在第 \(i+1\) 次迭代的 \(E\) 步，计算 \[\">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="建炎以来系年要录：EM 算法">
-<meta name="twitter:description" content="EM 算法是一种迭代算法，用于含有隐变量的概率模型参数的极大似然估计。每次迭代由两步组成： - \(E\) 步，求期望 (expectation) - \(M\) 步，求极大值 (maximization)，直至收敛为止。 算法  \(E\)步：\(\theta(i)\) 为 \(i\) 次迭代参数 \(\theta\) 的估计值，在第 \(i+1\) 次迭代的 \(E\) 步，计算 \[ \be">
+<meta name="twitter:description" content="EM 算法是一种迭代算法，用于含有隐变量的概率模型参数的极大似然估计。每次迭代由两步组成： - \(E\) 步，求期望 (expectation) - \(M\) 步，求极大值 (maximization)，直至收敛为止。  算法   \(E\) 步：\(\theta(i)\) 为 \(i\) 次迭代参数 \(\theta\) 的估计值，在第 \(i+1\) 次迭代的 \(E\) 步，计算 \[\">
 
 
 
@@ -491,13 +491,11 @@
 
       
         <p>EM 算法是一种迭代算法，用于含有隐变量的概率模型参数的极大似然估计。每次迭代由两步组成： - <span class="math inline">\(E\)</span> 步，求期望 (expectation) - <span class="math inline">\(M\)</span> 步，求极大值 (maximization)，直至收敛为止。</p>
-<h2 id="算法">算法</h2>
+<h2 id="算法"> 算法 </h2>
 <ol type="1">
-<li><span class="math inline">\(E\)</span>步：<span class="math inline">\(\theta(i)\)</span> 为 <span class="math inline">\(i\)</span> 次迭代参数 <span class="math inline">\(\theta\)</span> 的估计值，在第 <span class="math inline">\(i+1\)</span> 次迭代的 <span class="math inline">\(E\)</span> 步，计算 <span class="math display">\[
-\begin{aligned} Q\left(\theta, \theta^{(i)}\right) &amp;=E_{Z}\left[\log P(Y, Z | \theta) | Y, \theta^{(i)}\right] \\ &amp;=\sum_{Z} \log P(Y, Z | \theta) P\left(Z | Y, \theta^{(i)}\right) \end{aligned}
-\]</span> <span class="math inline">\(P(Z|Y，\theta(i))\)</span> 是在给定观测数据 <span class="math inline">\(Y\)</span> 和当前参数估计 <span class="math inline">\(\theta(i)\)</span> 下隐变量数据Z的条件概率分布。</li>
-<li><span class="math inline">\(M\)</span> 步：求使 <span class="math inline">\(Q(\theta, \theta(i))\)</span> 极大化的 <span class="math inline">\(\theta\)</span>，确定第 <span class="math inline">\(i+1\)</span> 次迭代的参数的估计值 <span class="math display">\[
-\theta^{(i+1)}=\arg \max _{\theta} Q\left(\theta, \theta^{(i)}\right)
+<li><span class="math inline">\(E\)</span> 步：<span class="math inline">\(\theta(i)\)</span> 为 <span class="math inline">\(i\)</span> 次迭代参数 <span class="math inline">\(\theta\)</span> 的估计值，在第 <span class="math inline">\(i+1\)</span> 次迭代的 <span class="math inline">\(E\)</span> 步，计算 <span class="math display">\[\begin{aligned} Q\left(\theta, \theta^{(i)}\right) &amp;=E_{Z}\left[\log P(Y, Z | \theta) | Y, \theta^{(i)}\right] \\ &amp;=\sum_{Z} \log P(Y, Z | \theta) P\left(Z | Y, \theta^{(i)}\right) \end{aligned}
+\]</span> <span class="math inline">\(P(Z|Y，\theta(i))\)</span> 是在给定观测数据 <span class="math inline">\(Y\)</span> 和当前参数估计 <span class="math inline">\(\theta(i)\)</span> 下隐变量数据 Z 的条件概率分布。</li>
+<li><span class="math inline">\(M\)</span> 步：求使 <span class="math inline">\(Q(\theta, \theta(i))\)</span> 极大化的 <span class="math inline">\(\theta\)</span>，确定第 <span class="math inline">\(i+1\)</span> 次迭代的参数的估计值 <span class="math display">\[\theta^{(i+1)}=\arg \max _{\theta} Q\left(\theta, \theta^{(i)}\right)
 \]</span></li>
 </ol>
 <p>EM 算法是通过不断求解下界的极大化逼近求解对数似然函数极大化的算法。可以用于生成模型的非监督学习。生成模型由联合概率分布 <span class="math inline">\(P(X，Y)\)</span> 表示。</p>
@@ -870,7 +868,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">1.</span> <span class="nav-text">算法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">1.</span> <span class="nav-text"> 算法 </span></a></li></ol></div>
             
 
           </div>

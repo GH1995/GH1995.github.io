@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="护树罗锅 (Bowtruckle)是一种很难被发现、手掌大小的以昆虫为食的动物。护树罗锅的两只手上都有长而锋利的手指，眼睛为褐色，从外表看像是由树皮和小树枝构成的，很容易伪装起来。  基本配置 你是不是也在头疼每次提交的 commit 记录怎么写？这里推荐在.gitconfig里添加一条自定义命令。 1yolo = !git commit -m \&amp;quot;$(curl -s whattheco">
+  <meta name="description" content="护树罗锅 (Bowtruckle)是一种很难被发现、手掌大小的以昆虫为食的动物。护树罗锅的两只手上都有长而锋利的手指，眼睛为褐色，从外表看像是由树皮和小树枝构成的，很容易伪装起来。  基本配置 你是不是也在头疼每次提交的 commit 记录怎么写？这里推荐在 .gitconfig 里添加一条自定义命令。 1yolo = !git commit -m \&amp;quot;$(curl -s whatthe">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="神奇动物在哪里？：护树罗锅——git">
 <meta property="og:url" content="http://guanhua.ml/2019/06/27/神奇动物在哪里？——护树罗锅/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="护树罗锅 (Bowtruckle)是一种很难被发现、手掌大小的以昆虫为食的动物。护树罗锅的两只手上都有长而锋利的手指，眼睛为褐色，从外表看像是由树皮和小树枝构成的，很容易伪装起来。  基本配置 你是不是也在头疼每次提交的 commit 记录怎么写？这里推荐在.gitconfig里添加一条自定义命令。 1yolo = !git commit -m \&amp;quot;$(curl -s whattheco">
+<meta property="og:description" content="护树罗锅 (Bowtruckle)是一种很难被发现、手掌大小的以昆虫为食的动物。护树罗锅的两只手上都有长而锋利的手指，眼睛为褐色，从外表看像是由树皮和小树枝构成的，很容易伪装起来。  基本配置 你是不是也在头疼每次提交的 commit 记录怎么写？这里推荐在 .gitconfig 里添加一条自定义命令。 1yolo = !git commit -m \&amp;quot;$(curl -s whatthe">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-27T13:31:56.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="神奇动物在哪里？：护树罗锅——git">
-<meta name="twitter:description" content="护树罗锅 (Bowtruckle)是一种很难被发现、手掌大小的以昆虫为食的动物。护树罗锅的两只手上都有长而锋利的手指，眼睛为褐色，从外表看像是由树皮和小树枝构成的，很容易伪装起来。  基本配置 你是不是也在头疼每次提交的 commit 记录怎么写？这里推荐在.gitconfig里添加一条自定义命令。 1yolo = !git commit -m \&amp;quot;$(curl -s whattheco">
+<meta name="twitter:description" content="护树罗锅 (Bowtruckle)是一种很难被发现、手掌大小的以昆虫为食的动物。护树罗锅的两只手上都有长而锋利的手指，眼睛为褐色，从外表看像是由树皮和小树枝构成的，很容易伪装起来。  基本配置 你是不是也在头疼每次提交的 commit 记录怎么写？这里推荐在 .gitconfig 里添加一条自定义命令。 1yolo = !git commit -m \&amp;quot;$(curl -s whatthe">
 
 
 
@@ -481,11 +481,11 @@
         <blockquote class="blockquote-center"><p>护树罗锅 (Bowtruckle)是一种很难被发现、手掌大小的以昆虫为食的动物。护树罗锅的两只手上都有长而锋利的手指，眼睛为褐色，从外表看像是由树皮和小树枝构成的，很容易伪装起来。</p>
 </blockquote>
 <h2 id="基本配置">基本配置</h2>
-<p>你是不是也在头疼每次提交的 commit 记录怎么写？这里推荐在<code>.gitconfig</code>里添加一条自定义命令。</p>
+<p>你是不是也在头疼每次提交的 commit 记录怎么写？这里推荐在 <code>.gitconfig</code> 里添加一条自定义命令。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yolo = !git commit -m \&quot;$(curl -s whatthecommit.com/index.txt)\&quot;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential.helper store # 记录手动输入的账号和密码</span><br></pre></td></tr></table></figure>
 <h2 id="提交修改">提交修改</h2>
-<p>有了<code>git yolo</code>还要什么自行车</p>
+<p>有了 <code>git yolo</code> 还要什么自行车</p>
 <h2 id="单个文件的历史">单个文件的历史</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 显示某个文件的历史版本的所有改动</span><br><span class="line">git log --follow -p [file]</span><br><span class="line">git whatchanged -p [file]</span><br><span class="line"></span><br><span class="line"># 显示指定文件的每一行内容的作者和修改时间</span><br><span class="line">git blame [file]</span><br></pre></td></tr></table></figure>
 <h2 id="统计每个作者的提交情况">统计每个作者的提交情况</h2>
@@ -510,7 +510,7 @@
 <p>如果执行 <code>git add</code> 操作后发现修改的内容有误，需要重新修改时，可以使用 <code>reset</code> 撤销提交到暂存区的修改到工作区中。</p>
 <h2 id="代码回滚">代码回滚</h2>
 <p><code>checkout</code> <code>reset</code> <code>revert</code></p>
-<h2 id="拯救出错的-rebase-操作">拯救出错的 rebase 操作</h2>
+<h2 id="拯救出错的 -rebase- 操作">拯救出错的 rebase 操作</h2>
 <ol type="1">
 <li>如果分支上有新的提交还没 push，可以用 reflog 查看操作历史，然后用 reset 回退</li>
 <li>如果分支上没有提交，或者不关心这个分支上新的提交，只是想做 rebase 操作，那么可以先切换到别的分支，把 rebase 出问题的分支删掉再重新 rebase</li>
@@ -571,8 +571,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/27/Keras源码漫谈-1/" rel="next" title="Keras源码漫谈(1)">
-                <i class="fa fa-chevron-left"></i> Keras源码漫谈(1)
+              <a href="/2019/06/27/Keras源码漫谈-1/" rel="next" title="Keras 源码漫谈 (1)">
+                <i class="fa fa-chevron-left"></i> Keras 源码漫谈 (1)
               </a>
             
           </div>
@@ -581,8 +581,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/28/高祖功臣侯者年表：推荐系统概念-1/" rel="prev" title="高祖功臣侯者年表：推荐系统概念(1)">
-                高祖功臣侯者年表：推荐系统概念(1) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/28/高祖功臣侯者年表：推荐系统概念-1/" rel="prev" title="高祖功臣侯者年表：推荐系统概念 (1)">
+                高祖功臣侯者年表：推荐系统概念 (1) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -855,7 +855,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本配置"><span class="nav-number">1.</span> <span class="nav-text">基本配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交修改"><span class="nav-number">2.</span> <span class="nav-text">提交修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单个文件的历史"><span class="nav-number">3.</span> <span class="nav-text">单个文件的历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计每个作者的提交情况"><span class="nav-number">4.</span> <span class="nav-text">统计每个作者的提交情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#diff"><span class="nav-number">5.</span> <span class="nav-text">diff</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#找回丢失的提交"><span class="nav-number">6.</span> <span class="nav-text">找回丢失的提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cherry-pick"><span class="nav-number">7.</span> <span class="nav-text">cherry-pick</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#revert"><span class="nav-number">8.</span> <span class="nav-text">revert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整理提交历史"><span class="nav-number">9.</span> <span class="nav-text">整理提交历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#撤销暂存区"><span class="nav-number">10.</span> <span class="nav-text">撤销暂存区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码回滚"><span class="nav-number">11.</span> <span class="nav-text">代码回滚</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拯救出错的-rebase-操作"><span class="nav-number">12.</span> <span class="nav-text">拯救出错的 rebase 操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支管理"><span class="nav-number">13.</span> <span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#何时保留分支历史"><span class="nav-number">14.</span> <span class="nav-text">何时保留分支历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tags"><span class="nav-number">15.</span> <span class="nav-text">Tags</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程仓库"><span class="nav-number">16.</span> <span class="nav-text">远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清理工作区"><span class="nav-number">17.</span> <span class="nav-text">清理工作区</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本配置"><span class="nav-number">1.</span> <span class="nav-text">基本配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交修改"><span class="nav-number">2.</span> <span class="nav-text">提交修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单个文件的历史"><span class="nav-number">3.</span> <span class="nav-text">单个文件的历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计每个作者的提交情况"><span class="nav-number">4.</span> <span class="nav-text">统计每个作者的提交情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#diff"><span class="nav-number">5.</span> <span class="nav-text">diff</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#找回丢失的提交"><span class="nav-number">6.</span> <span class="nav-text">找回丢失的提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cherry-pick"><span class="nav-number">7.</span> <span class="nav-text">cherry-pick</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#revert"><span class="nav-number">8.</span> <span class="nav-text">revert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整理提交历史"><span class="nav-number">9.</span> <span class="nav-text">整理提交历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#撤销暂存区"><span class="nav-number">10.</span> <span class="nav-text">撤销暂存区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码回滚"><span class="nav-number">11.</span> <span class="nav-text">代码回滚</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拯救出错的 -rebase- 操作"><span class="nav-number">12.</span> <span class="nav-text">拯救出错的 rebase 操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支管理"><span class="nav-number">13.</span> <span class="nav-text">分支管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#何时保留分支历史"><span class="nav-number">14.</span> <span class="nav-text">何时保留分支历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tags"><span class="nav-number">15.</span> <span class="nav-text">Tags</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程仓库"><span class="nav-number">16.</span> <span class="nav-text">远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清理工作区"><span class="nav-number">17.</span> <span class="nav-text">清理工作区</span></a></li></ol></div>
             
 
           </div>

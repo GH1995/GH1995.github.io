@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="Python 的 import 很简单，记住关键一句话就行。  关键是能够在sys.path里面找到通向模块文件的路径  分三种情况：  主程序与模块在同一目录下： 这时候Python能自己找到自己的兄弟 1import mod1 主程序是在上一层 Python 不会把所有的子文件夹都加入路径的，别想了！ 这时候需要在子文件夹中加入__init__.py指明这是一个模块，然后 1import mo">
+  <meta name="description" content="Python 的 import 很简单，记住关键一句话就行。  关键是能够在 sys.path 里面找到通向模块文件的路径  分三种情况：  主程序与模块在同一目录下： 这时候 Python 能自己找到自己的兄弟 1import mod1 主程序是在上一层 Python 不会把所有的子文件夹都加入路径的，别想了！ 这时候需要在子文件夹中加入 __init__.py 指明这是一个模块，然后 1imp">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python import 小结">
 <meta property="og:url" content="http://guanhua.ml/2019/06/19/Python-import-小结/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="Python 的 import 很简单，记住关键一句话就行。  关键是能够在sys.path里面找到通向模块文件的路径  分三种情况：  主程序与模块在同一目录下： 这时候Python能自己找到自己的兄弟 1import mod1 主程序是在上一层 Python 不会把所有的子文件夹都加入路径的，别想了！ 这时候需要在子文件夹中加入__init__.py指明这是一个模块，然后 1import mo">
+<meta property="og:description" content="Python 的 import 很简单，记住关键一句话就行。  关键是能够在 sys.path 里面找到通向模块文件的路径  分三种情况：  主程序与模块在同一目录下： 这时候 Python 能自己找到自己的兄弟 1import mod1 主程序是在上一层 Python 不会把所有的子文件夹都加入路径的，别想了！ 这时候需要在子文件夹中加入 __init__.py 指明这是一个模块，然后 1imp">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python import 小结">
-<meta name="twitter:description" content="Python 的 import 很简单，记住关键一句话就行。  关键是能够在sys.path里面找到通向模块文件的路径  分三种情况：  主程序与模块在同一目录下： 这时候Python能自己找到自己的兄弟 1import mod1 主程序是在上一层 Python 不会把所有的子文件夹都加入路径的，别想了！ 这时候需要在子文件夹中加入__init__.py指明这是一个模块，然后 1import mo">
+<meta name="twitter:description" content="Python 的 import 很简单，记住关键一句话就行。  关键是能够在 sys.path 里面找到通向模块文件的路径  分三种情况：  主程序与模块在同一目录下： 这时候 Python 能自己找到自己的兄弟 1import mod1 主程序是在上一层 Python 不会把所有的子文件夹都加入路径的，别想了！ 这时候需要在子文件夹中加入 __init__.py 指明这是一个模块，然后 1imp">
 
 
 
@@ -492,13 +492,13 @@
       
         <p>Python 的 <code>import</code> 很简单，记住关键一句话就行。</p>
 <blockquote>
-<p><strong>关键是能够在<code>sys.path</code>里面找到通向模块文件的路径</strong></p>
+<p><strong>关键是能够在 <code>sys.path</code> 里面找到通向模块文件的路径</strong></p>
 </blockquote>
 <p>分三种情况：</p>
 <ol type="1">
-<li><p>主程序与模块在同一目录下： 这时候Python能自己找到自己的兄弟 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mod1</span><br></pre></td></tr></table></figure></p></li>
-<li><p>主程序是在上一层 Python 不会把所有的子文件夹都加入路径的，别想了！ 这时候需要在子文件夹中加入<code>__init__.py</code>指明这是一个模块，然后 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mod2.mod2</span><br></pre></td></tr></table></figure></p></li>
-<li><p>主程序导入上层目录中模块或其他目录(平级)下的模块 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">".."</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> mod1 <span class="comment"># 上一层</span></span><br><span class="line"><span class="keyword">import</span> mod2.mod2    <span class="comment"># 堂兄弟文件夹</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>主程序与模块在同一目录下： 这时候 Python 能自己找到自己的兄弟 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mod1</span><br></pre></td></tr></table></figure></p></li>
+<li><p>主程序是在上一层 Python 不会把所有的子文件夹都加入路径的，别想了！ 这时候需要在子文件夹中加入 <code>__init__.py</code> 指明这是一个模块，然后 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mod2.mod2</span><br></pre></td></tr></table></figure></p></li>
+<li><p>主程序导入上层目录中模块或其他目录 (平级) 下的模块 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">".."</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> mod1 <span class="comment"># 上一层</span></span><br><span class="line"><span class="keyword">import</span> mod2.mod2    <span class="comment"># 堂兄弟文件夹</span></span><br></pre></td></tr></table></figure></p></li>
 </ol>
 <h1 id="总结">总结</h1>
 <p>关键还是找路径</p>

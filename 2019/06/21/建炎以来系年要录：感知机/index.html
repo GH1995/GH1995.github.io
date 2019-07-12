@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="模型 \[ f(x)=\operatorname{sign}(w \cdot x+b) \] 感知机的几何解释 \(wx+b\) 对应于特征空间中的一个分离超平面 \(S\)，其中 \(w\) 是 \(S\) 的法向量，\(b\) 是 \(S\) 的截距。\(S\) 将特征空间划分为两个部分，位于两个部分的点分别被分为正负两类。 策略（损失函数） 假设训练数据集是线性可分的，感知机的损失函数是误分">
+  <meta name="description" content="模型 \[f(x)=\operatorname{sign}(w \cdot x+b) \] 感知机的几何解释 \(wx+b\) 对应于特征空间中的一个分离超平面 \(S\)，其中 \(w\) 是 \(S\) 的法向量，\(b\) 是 \(S\) 的截距。\(S\) 将特征空间划分为两个部分，位于两个部分的点分别被分为正负两类。 策略（损失函数） 假设训练数据集是线性可分的，感知机的损失函数是误分类">
 <meta name="keywords" content="machine learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="建炎以来系年要录：感知机">
 <meta property="og:url" content="http://guanhua.ml/2019/06/21/建炎以来系年要录：感知机/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="模型 \[ f(x)=\operatorname{sign}(w \cdot x+b) \] 感知机的几何解释 \(wx+b\) 对应于特征空间中的一个分离超平面 \(S\)，其中 \(w\) 是 \(S\) 的法向量，\(b\) 是 \(S\) 的截距。\(S\) 将特征空间划分为两个部分，位于两个部分的点分别被分为正负两类。 策略（损失函数） 假设训练数据集是线性可分的，感知机的损失函数是误分">
+<meta property="og:description" content="模型 \[f(x)=\operatorname{sign}(w \cdot x+b) \] 感知机的几何解释 \(wx+b\) 对应于特征空间中的一个分离超平面 \(S\)，其中 \(w\) 是 \(S\) 的法向量，\(b\) 是 \(S\) 的截距。\(S\) 将特征空间划分为两个部分，位于两个部分的点分别被分为正负两类。 策略（损失函数） 假设训练数据集是线性可分的，感知机的损失函数是误分类">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="建炎以来系年要录：感知机">
-<meta name="twitter:description" content="模型 \[ f(x)=\operatorname{sign}(w \cdot x+b) \] 感知机的几何解释 \(wx+b\) 对应于特征空间中的一个分离超平面 \(S\)，其中 \(w\) 是 \(S\) 的法向量，\(b\) 是 \(S\) 的截距。\(S\) 将特征空间划分为两个部分，位于两个部分的点分别被分为正负两类。 策略（损失函数） 假设训练数据集是线性可分的，感知机的损失函数是误分">
+<meta name="twitter:description" content="模型 \[f(x)=\operatorname{sign}(w \cdot x+b) \] 感知机的几何解释 \(wx+b\) 对应于特征空间中的一个分离超平面 \(S\)，其中 \(w\) 是 \(S\) 的法向量，\(b\) 是 \(S\) 的截距。\(S\) 将特征空间划分为两个部分，位于两个部分的点分别被分为正负两类。 策略（损失函数） 假设训练数据集是线性可分的，感知机的损失函数是误分类">
 
 
 
@@ -491,32 +491,27 @@
 
       
         <h2 id="模型">模型</h2>
-<p><span class="math display">\[
-f(x)=\operatorname{sign}(w \cdot x+b)
+<p><span class="math display">\[f(x)=\operatorname{sign}(w \cdot x+b)
 \]</span></p>
 <h2 id="感知机的几何解释">感知机的几何解释</h2>
 <p><span class="math inline">\(wx+b\)</span> 对应于特征空间中的一个分离超平面 <span class="math inline">\(S\)</span>，其中 <span class="math inline">\(w\)</span> 是 <span class="math inline">\(S\)</span> 的法向量，<span class="math inline">\(b\)</span> 是 <span class="math inline">\(S\)</span> 的截距。<span class="math inline">\(S\)</span> 将特征空间划分为两个部分，位于两个部分的点分别被分为正负两类。</p>
 <h2 id="策略损失函数">策略（损失函数）</h2>
 <p>假设训练数据集是线性可分的，感知机的损失函数是误分类点到超平面 <span class="math inline">\(S\)</span> 的总距离。</p>
-<p><span class="math display">\[
-L(w, b)=-\sum_{x_{i} \in M} y_{i}\left(w \cdot x_{i}+b\right)
+<p><span class="math display">\[L(w, b)=-\sum_{x_{i} \in M} y_{i}\left(w \cdot x_{i}+b\right)
 \]</span></p>
 <p>其中 M 是误分类点的集合。感知机学习的策略就是选取使损失函数最小的模型参数。</p>
 <h2 id="算法">算法</h2>
-<p><span class="math display">\[
-\begin{aligned} \nabla_{w} L(w, b) &amp;=-\sum_{x_{i} \in M} y_{i} x_{i} \\ \nabla_{b} L(w, b) &amp;=-\sum_{x_{i} \in M} y_{i} \end{aligned}
+<p><span class="math display">\[\begin{aligned} \nabla_{w} L(w, b) &amp;=-\sum_{x_{i} \in M} y_{i} x_{i} \\ \nabla_{b} L(w, b) &amp;=-\sum_{x_{i} \in M} y_{i} \end{aligned}
 \]</span></p>
-<p>随机选择一个误分类点 <span class="math inline">\((x_i, y_i)\)</span>，对 <span class="math inline">\(w, b\)</span> 进行更新，直到误差为0：</p>
-<p><span class="math display">\[
-\begin{array}{l}{w \leftarrow w+\eta y_{i} x_{i}} \\ {b \leftarrow b+\eta y_{i}}\end{array}
+<p>随机选择一个误分类点 <span class="math inline">\((x_i, y_i)\)</span>，对 <span class="math inline">\(w, b\)</span> 进行更新，直到误差为 0：</p>
+<p><span class="math display">\[\begin{array}{l}{w \leftarrow w+\eta y_{i} x_{i}} \\ {b \leftarrow b+\eta y_{i}}\end{array}
 \]</span></p>
 <p>该算法的直观解释是：当一个点被误分类，就调整 <span class="math inline">\(w\)</span>，<span class="math inline">\(b\)</span> 使分离超平面向该误分类点接近。感知机的解可以不同。</p>
 <h2 id="对偶形式">对偶形式</h2>
 <p>假设原始形式中的 <span class="math inline">\(w_0\)</span> 和 <span class="math inline">\(b_0\)</span> 均为<span class="math inline">\(0\)</span>，设逐步修改 <span class="math inline">\(w\)</span> 和 <span class="math inline">\(b\)</span> 共 <span class="math inline">\(n\)</span> 次，令 <span class="math inline">\(a=n \eta\)</span>，最后学习到的 <span class="math inline">\(w,b\)</span> 可以表示为</p>
-<p><span class="math display">\[
-\begin{aligned} w &amp;=\sum_{i=1}^{N} \alpha_{i} y_{i} x_{i} \\ b &amp;=\sum_{i=1}^{N} \alpha_{i} y_{i} \end{aligned}
+<p><span class="math display">\[\begin{aligned} w &amp;=\sum_{i=1}^{N} \alpha_{i} y_{i} x_{i} \\ b &amp;=\sum_{i=1}^{N} \alpha_{i} y_{i} \end{aligned}
 \]</span></p>
-<p>那么对偶算法就变为设初始 <span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span> 均为<span class="math inline">\(0\)</span>，每次选取数据更新 <span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span> 直至没有误分类点为止。对偶形式的意义在于可以将训练集中实例间的内积计算出来，存在 <a href="https://www.wikiwand.com/zh-hans/%E6%A0%BC%E6%8B%89%E5%A7%86%E7%9F%A9%E9%98%B5" target="_blank" rel="noopener">Gram 矩阵</a>中，可以大大加快训练速度。</p>
+<p>那么对偶算法就变为设初始 <span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span> 均为 <span class="math inline">\(0\)</span>，每次选取数据更新 <span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span> 直至没有误分类点为止。对偶形式的意义在于可以将训练集中实例间的内积计算出来，存在 <a href="https://www.wikiwand.com/zh-hans/%E6%A0%BC%E6%8B%89%E5%A7%86%E7%9F%A9%E9%98%B5" target="_blank" rel="noopener">Gram 矩阵</a> 中，可以大大加快训练速度。</p>
 
       
     </div>

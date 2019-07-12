@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="模型 \[ w^{*} \cdot x+b^{*}=0 \] \[ f(x)=\operatorname{sign}\left(w^{*} \cdot x+b^{*}\right) \] 策略 核技巧 线性可分支持向量机  函数间隔 \[ \hat{\gamma}_{i}=y_{i}\left(w \cdot x_{i}+b\right) \] 几何间隔 \[ \gamma_{i}=y_{i}\l">
+  <meta name="description" content="模型  \[w^{*} \cdot x+b^{*}=0 \] \[f(x)=\operatorname{sign}\left(w^{*} \cdot x+b^{*}\right) \]  策略   核技巧   线性可分支持向量机    函数间隔  \[\hat{\gamma}_{i}=y_{i}\left(w \cdot x_{i}+b\right) \]  几何间隔  \[\gamma_{i}">
 <meta name="keywords" content="machine learning,todo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="建炎以来系年要录：支持向量机">
 <meta property="og:url" content="http://guanhua.ml/2019/06/19/建炎以来系年要录：支持向量机/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="模型 \[ w^{*} \cdot x+b^{*}=0 \] \[ f(x)=\operatorname{sign}\left(w^{*} \cdot x+b^{*}\right) \] 策略 核技巧 线性可分支持向量机  函数间隔 \[ \hat{\gamma}_{i}=y_{i}\left(w \cdot x_{i}+b\right) \] 几何间隔 \[ \gamma_{i}=y_{i}\l">
+<meta property="og:description" content="模型  \[w^{*} \cdot x+b^{*}=0 \] \[f(x)=\operatorname{sign}\left(w^{*} \cdot x+b^{*}\right) \]  策略   核技巧   线性可分支持向量机    函数间隔  \[\hat{\gamma}_{i}=y_{i}\left(w \cdot x_{i}+b\right) \]  几何间隔  \[\gamma_{i}">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="建炎以来系年要录：支持向量机">
-<meta name="twitter:description" content="模型 \[ w^{*} \cdot x+b^{*}=0 \] \[ f(x)=\operatorname{sign}\left(w^{*} \cdot x+b^{*}\right) \] 策略 核技巧 线性可分支持向量机  函数间隔 \[ \hat{\gamma}_{i}=y_{i}\left(w \cdot x_{i}+b\right) \] 几何间隔 \[ \gamma_{i}=y_{i}\l">
+<meta name="twitter:description" content="模型  \[w^{*} \cdot x+b^{*}=0 \] \[f(x)=\operatorname{sign}\left(w^{*} \cdot x+b^{*}\right) \]  策略   核技巧   线性可分支持向量机    函数间隔  \[\hat{\gamma}_{i}=y_{i}\left(w \cdot x_{i}+b\right) \]  几何间隔  \[\gamma_{i}">
 
 
 
@@ -490,83 +490,61 @@
       
 
       
-        <h2 id="模型">模型</h2>
-<p><span class="math display">\[
-w^{*} \cdot x+b^{*}=0
+        <h2 id="模型"> 模型 </h2>
+<p><span class="math display">\[w^{*} \cdot x+b^{*}=0
 \]</span></p>
-<p><span class="math display">\[
-f(x)=\operatorname{sign}\left(w^{*} \cdot x+b^{*}\right)
+<p><span class="math display">\[f(x)=\operatorname{sign}\left(w^{*} \cdot x+b^{*}\right)
 \]</span></p>
-<h2 id="策略">策略</h2>
-<h2 id="核技巧">核技巧</h2>
-<h2 id="线性可分支持向量机">线性可分支持向量机</h2>
+<h2 id="策略"> 策略 </h2>
+<h2 id="核技巧"> 核技巧 </h2>
+<h2 id="线性可分支持向量机"> 线性可分支持向量机 </h2>
 <ol type="1">
-<li><strong>函数间隔</strong> <span class="math display">\[
-\hat{\gamma}_{i}=y_{i}\left(w \cdot x_{i}+b\right)
+<li><strong> 函数间隔 </strong> <span class="math display">\[\hat{\gamma}_{i}=y_{i}\left(w \cdot x_{i}+b\right)
 \]</span></li>
-<li><strong>几何间隔</strong> <span class="math display">\[
-\gamma_{i}=y_{i}\left(\frac{w}{\|w\|} \cdot x_{i}+\frac{b}{\|w\|}\right)
+<li><strong> 几何间隔 </strong> <span class="math display">\[\gamma_{i}=y_{i}\left(\frac{w}{\|w\|} \cdot x_{i}+\frac{b}{\|w\|}\right)
 \]</span></li>
-<li><strong>硬间隔最大化</strong> <span class="math display">\[
-\begin{array}{ll}{\max _{w, b}} &amp; {\gamma} \\ {\text { s.t.  }} &amp; {y_{i}\left(\frac{w}{\|w\|} \cdot x_{i}+\frac{b}{\|w\|}\right) \geqslant \gamma, \quad i=1,2, \cdots, N}\end{array}
-\]</span> <span class="math display">\[
-\begin{array}{ll}{\max _{w, b}} &amp; {\frac{\hat{\gamma}}{\|w\|}} \\ {\text { s.t.  }} &amp; {y_{i}\left(w \cdot x_{i}+b\right) \geqslant \hat{\gamma}, \quad i=1,2, \cdots, N}\end{array}
-\]</span> <span class="math display">\[
-\begin{array}{ll}{\min _{w, b}} &amp; {\frac{1}{2}\|w\|^{2}} \\ {\text { s.t.  }} &amp; {y_{i}\left(w \cdot x_{i}+b\right)-1 \geqslant 0, \quad i=1,2, \cdots, N}\end{array}
+<li><strong> 硬间隔最大化 </strong> <span class="math display">\[\begin{array}{ll}{\max _{w, b}} &amp; {\gamma} \\ {\text { s.t.}} &amp; {y_{i}\left(\frac{w}{\|w\|} \cdot x_{i}+\frac{b}{\|w\|}\right) \geqslant \gamma, \quad i=1,2, \cdots, N}\end{array}
+\]</span> <span class="math display">\[\begin{array}{ll}{\max _{w, b}} &amp; {\frac{\hat{\gamma}}{\|w\|}} \\ {\text { s.t.}} &amp; {y_{i}\left(w \cdot x_{i}+b\right) \geqslant \hat{\gamma}, \quad i=1,2, \cdots, N}\end{array}
+\]</span> <span class="math display">\[\begin{array}{ll}{\min _{w, b}} &amp; {\frac{1}{2}\|w\|^{2}} \\ {\text { s.t.}} &amp; {y_{i}\left(w \cdot x_{i}+b\right)-1 \geqslant 0, \quad i=1,2, \cdots, N}\end{array}
 \]</span></li>
-<li>支持向量和间隔边界</li>
-<li>对偶算法 <span class="math display">\[
-L(w, b, \alpha)=\frac{1}{2}\|w\|^{2}-\sum_{i=1}^{N} \alpha_{i} y_{i}\left(w \cdot x_{i}+b\right)+\sum_{i=1}^{N} \alpha_{i}
-\]</span> <span class="math display">\[
-\max _{\alpha} \min _{w, b} L(w, b, \alpha)
-\]</span> <span class="math display">\[
-\begin{array}{l}{w=\sum_{i=1}^{N} \alpha_{i} y_{i} x_{i}} \\ {\sum_{i=1}^{N} \alpha_{i} y_{i}=0}\end{array}
-\]</span> <span class="math display">\[
-\begin{aligned} L(w, b, \alpha) &amp;=\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)-\sum_{i=1}^{N} \alpha_{i} y_{i}\left(\left(\sum_{j=1}^{N} \alpha_{j} y_{j} x_{j}\right) \cdot x_{i}+b\right)+\sum_{i=1}^{N} \alpha_{i} \\ &amp;=-\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)+\sum_{i=1}^{N} \alpha_{i} \end{aligned}
-\]</span> <span class="math display">\[
-\begin{array}{cl}{\max _{\alpha}} &amp; {-\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)+\sum_{i=1}^{N} \alpha_{i}} \\ {\text { s.t.  }} &amp; {\sum_{i=1}^{N} \alpha_{i} y_{i}=0} \\ {} &amp; {\alpha_{i} \geqslant 0, \quad i=1,2, \cdots, N}\end{array}
-\]</span> <span class="math display">\[
-\begin{array}{cl}{\min _{\alpha}} &amp; {\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)-\sum_{i=1}^{N} \alpha_{i}} \\ {\text { s.t.  }} &amp; {\sum_{i=1}^{N} \alpha_{i} y_{i}=0} \\ {} &amp; {\alpha_{i} \geqslant 0, \quad i=1,2, \cdots, N}\end{array}
-\]</span> <span class="math display">\[
-\begin{array}{c}{w^{*}=\sum_{i=1}^{N} \alpha_{i}^{*} y_{i} x_{i}} \\ {b^{*}=y_{j}-\sum_{i=1}^{N} \alpha_{i}^{*} y_{i}\left(x_{i} \cdot x_{j}\right)}\end{array}
+<li> 支持向量和间隔边界 </li>
+<li> 对偶算法 <span class="math display">\[L(w, b, \alpha)=\frac{1}{2}\|w\|^{2}-\sum_{i=1}^{N} \alpha_{i} y_{i}\left(w \cdot x_{i}+b\right)+\sum_{i=1}^{N} \alpha_{i}
+\]</span> <span class="math display">\[\max _{\alpha} \min _{w, b} L(w, b, \alpha)
+\]</span> <span class="math display">\[\begin{array}{l}{w=\sum_{i=1}^{N} \alpha_{i} y_{i} x_{i}} \\ {\sum_{i=1}^{N} \alpha_{i} y_{i}=0}\end{array}
+\]</span> <span class="math display">\[\begin{aligned} L(w, b, \alpha) &amp;=\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)-\sum_{i=1}^{N} \alpha_{i} y_{i}\left(\left(\sum_{j=1}^{N} \alpha_{j} y_{j} x_{j}\right) \cdot x_{i}+b\right)+\sum_{i=1}^{N} \alpha_{i} \\ &amp;=-\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)+\sum_{i=1}^{N} \alpha_{i} \end{aligned}
+\]</span> <span class="math display">\[\begin{array}{cl}{\max _{\alpha}} &amp; {-\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)+\sum_{i=1}^{N} \alpha_{i}} \\ {\text { s.t.}} &amp; {\sum_{i=1}^{N} \alpha_{i} y_{i}=0} \\ {} &amp; {\alpha_{i} \geqslant 0, \quad i=1,2, \cdots, N}\end{array}
+\]</span> <span class="math display">\[\begin{array}{cl}{\min _{\alpha}} &amp; {\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j}\left(x_{i} \cdot x_{j}\right)-\sum_{i=1}^{N} \alpha_{i}} \\ {\text { s.t.}} &amp; {\sum_{i=1}^{N} \alpha_{i} y_{i}=0} \\ {} &amp; {\alpha_{i} \geqslant 0, \quad i=1,2, \cdots, N}\end{array}
+\]</span> <span class="math display">\[\begin{array}{c}{w^{*}=\sum_{i=1}^{N} \alpha_{i}^{*} y_{i} x_{i}} \\ {b^{*}=y_{j}-\sum_{i=1}^{N} \alpha_{i}^{*} y_{i}\left(x_{i} \cdot x_{j}\right)}\end{array}
 \]</span></li>
 </ol>
-<h2 id="线性支持向量机">线性支持向量机</h2>
+<h2 id="线性支持向量机"> 线性支持向量机 </h2>
 <ol type="1">
-<li>软间隔最大化</li>
-<li>约束条件/目标函数 <span class="math display">\[
-y_{i}\left(w \cdot x_{i}+b\right) \geqslant 1-\xi_{i}
-\]</span> <span class="math display">\[
-\frac{1}{2}\|w\|^{2}+C \sum_{i=1}^{N} \xi_{i}
+<li> 软间隔最大化 </li>
+<li> 约束条件 / 目标函数 <span class="math display">\[y_{i}\left(w \cdot x_{i}+b\right) \geqslant 1-\xi_{i}
+\]</span> <span class="math display">\[\frac{1}{2}\|w\|^{2}+C \sum_{i=1}^{N} \xi_{i}
 \]</span></li>
-<li>软间隔最大化 <span class="math display">\[
-\begin{array}{ll}{\min _{w, b, \xi}} &amp; {\frac{1}{2}\|w\|^{2}+C \sum_{i=1}^{N} \xi_{i}} \\ {\text { s.t.  }} &amp; {y_{i}\left(w \cdot x_{i}+b\right) \geqslant 1-\xi_{i}, \quad i=1,2, \cdots, N} \\ {} &amp; {\xi_{i} \geqslant 0, \quad i=1,2, \cdots, N}\end{array}
+<li> 软间隔最大化 <span class="math display">\[\begin{array}{ll}{\min _{w, b, \xi}} &amp; {\frac{1}{2}\|w\|^{2}+C \sum_{i=1}^{N} \xi_{i}} \\ {\text { s.t.}} &amp; {y_{i}\left(w \cdot x_{i}+b\right) \geqslant 1-\xi_{i}, \quad i=1,2, \cdots, N} \\ {} &amp; {\xi_{i} \geqslant 0, \quad i=1,2, \cdots, N}\end{array}
 \]</span></li>
-<li>对偶算法 <span class="math display">\[
-L(w, b, \xi, \alpha, \mu)=\frac{1}{2}\|w\|^{2}+C \sum_{i=1}^{N} \xi_{i}-\sum_{i=1}^{N} \alpha_{i}\left(y_{i}\left(w \cdot x_{i}+b\right)-1+\xi_{i}\right)-\sum_{i=1}^{N} \mu_{i} \xi_{i}
+<li> 对偶算法 <span class="math display">\[L(w, b, \xi, \alpha, \mu)=\frac{1}{2}\|w\|^{2}+C \sum_{i=1}^{N} \xi_{i}-\sum_{i=1}^{N} \alpha_{i}\left(y_{i}\left(w \cdot x_{i}+b\right)-1+\xi_{i}\right)-\sum_{i=1}^{N} \mu_{i} \xi_{i}
 \]</span></li>
-<li>支持向量</li>
-<li>合页损失函数</li>
+<li> 支持向量 </li>
+<li> 合页损失函数 </li>
 </ol>
-<h2 id="非线性支持向量机">非线性支持向量机</h2>
-<p><span class="math display">\[
-\begin{array}{ll}{\min _{\alpha}} &amp; {\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} K\left(x_{i}, x_{j}\right)-\sum_{i=1}^{N} \alpha_{i}} \\ {\text { s.t.  }} &amp; {\sum_{i=1}^{N} \alpha_{i} y_{i}=0} \\ {} &amp; {0 \leqslant \alpha_{i} \leqslant C, \quad i=1,2, \cdots, N}\end{array}
+<h2 id="非线性支持向量机"> 非线性支持向量机 </h2>
+<p><span class="math display">\[\begin{array}{ll}{\min _{\alpha}} &amp; {\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_{i} \alpha_{j} y_{i} y_{j} K\left(x_{i}, x_{j}\right)-\sum_{i=1}^{N} \alpha_{i}} \\ {\text { s.t.}} &amp; {\sum_{i=1}^{N} \alpha_{i} y_{i}=0} \\ {} &amp; {0 \leqslant \alpha_{i} \leqslant C, \quad i=1,2, \cdots, N}\end{array}
 \]</span></p>
-<p><span class="math display">\[
-f(x)=\operatorname{sign}\left(\sum_{i=1}^{N} \alpha_{i}^{*} y_{i} K\left(x \cdot x_{i}\right)+b^{*}\right)
+<p><span class="math display">\[f(x)=\operatorname{sign}\left(\sum_{i=1}^{N} \alpha_{i}^{*} y_{i} K\left(x \cdot x_{i}\right)+b^{*}\right)
 \]</span></p>
-<h2 id="常用核函数">常用核函数</h2>
+<h2 id="常用核函数"> 常用核函数 </h2>
 <ol type="1">
-<li>多项式核函数 <span class="math display">\[
-K(x, z)=(x \cdot z+1)^{p}
+<li> 多项式核函数 <span class="math display">\[K(x, z)=(x \cdot z+1)^{p}
 \]</span></li>
-<li>高斯核函数 <span class="math display">\[
-K(x, z)=\exp \left(-\frac{\|x-z\|^{2}}{2 \sigma^{2}}\right)
+<li> 高斯核函数 <span class="math display">\[K(x, z)=\exp \left(-\frac{\|x-z\|^{2}}{2 \sigma^{2}}\right)
 \]</span></li>
-<li>字符串核函数</li>
+<li> 字符串核函数 </li>
 </ol>
-<h2 id="序列最小最优化-smo-算法">序列最小最优化 ( SMO ) 算法</h2>
-<p>略</p>
+<h2 id="序列最小最优化 -smo- 算法"> 序列最小最优化 (SMO) 算法 </h2>
+<p> 略 </p>
 
       
     </div>
@@ -936,7 +914,7 @@ K(x, z)=\exp \left(-\frac{\|x-z\|^{2}}{2 \sigma^{2}}\right)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型"><span class="nav-number">1.</span> <span class="nav-text">模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#策略"><span class="nav-number">2.</span> <span class="nav-text">策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核技巧"><span class="nav-number">3.</span> <span class="nav-text">核技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性可分支持向量机"><span class="nav-number">4.</span> <span class="nav-text">线性可分支持向量机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性支持向量机"><span class="nav-number">5.</span> <span class="nav-text">线性支持向量机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非线性支持向量机"><span class="nav-number">6.</span> <span class="nav-text">非线性支持向量机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用核函数"><span class="nav-number">7.</span> <span class="nav-text">常用核函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列最小最优化-smo-算法"><span class="nav-number">8.</span> <span class="nav-text">序列最小最优化 ( SMO ) 算法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型"><span class="nav-number">1.</span> <span class="nav-text"> 模型 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#策略"><span class="nav-number">2.</span> <span class="nav-text"> 策略 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核技巧"><span class="nav-number">3.</span> <span class="nav-text"> 核技巧 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性可分支持向量机"><span class="nav-number">4.</span> <span class="nav-text"> 线性可分支持向量机 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性支持向量机"><span class="nav-number">5.</span> <span class="nav-text"> 线性支持向量机 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非线性支持向量机"><span class="nav-number">6.</span> <span class="nav-text"> 非线性支持向量机 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用核函数"><span class="nav-number">7.</span> <span class="nav-text"> 常用核函数 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列最小最优化 -smo- 算法"><span class="nav-number">8.</span> <span class="nav-text"> 序列最小最优化 (SMO) 算法 </span></a></li></ol></div>
             
 
           </div>

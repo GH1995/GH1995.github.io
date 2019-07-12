@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="生成模型和判别模型 生成模型  混合高斯模型和其他混合模型 隐马尔可夫模型 ( HMM ) 朴素贝叶斯 LDA 文档主题生成模型  生成式模型由数据学习联合概率分布 \(P(X, Y)\)，然后求出条件概率分布 \[ P(Y|X)=\frac{P(X,Y)}{P(X)} \] 作为预测的模型，即生成模型。  能还原出联合概率分布\(P(X, Y)\) 收敛速度更快 当存在隐变量时只能用生成方法学习">
+  <meta name="description" content="生成模型和判别模型 生成模型  混合高斯模型和其他混合模型 隐马尔可夫模型 (HMM) 朴素贝叶斯 LDA 文档主题生成模型  生成式模型  由数据学习联合概率分布 \(P(X, Y)\)，然后求出条件概率分布 \[P(Y|X)=\frac{P(X,Y)}{P(X)} \] 作为预测的模型，即生成模型。  能还原出联合概率分布\(P(X, Y)\) 收敛速度更快 当存在隐变量时只能用生成方法学习">
 <meta name="keywords" content="machine learning,todo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="建炎以来系年要录：总结篇">
 <meta property="og:url" content="http://guanhua.ml/2019/06/22/建炎以来系年要录：总结篇/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="生成模型和判别模型 生成模型  混合高斯模型和其他混合模型 隐马尔可夫模型 ( HMM ) 朴素贝叶斯 LDA 文档主题生成模型  生成式模型由数据学习联合概率分布 \(P(X, Y)\)，然后求出条件概率分布 \[ P(Y|X)=\frac{P(X,Y)}{P(X)} \] 作为预测的模型，即生成模型。  能还原出联合概率分布\(P(X, Y)\) 收敛速度更快 当存在隐变量时只能用生成方法学习">
+<meta property="og:description" content="生成模型和判别模型 生成模型  混合高斯模型和其他混合模型 隐马尔可夫模型 (HMM) 朴素贝叶斯 LDA 文档主题生成模型  生成式模型  由数据学习联合概率分布 \(P(X, Y)\)，然后求出条件概率分布 \[P(Y|X)=\frac{P(X,Y)}{P(X)} \] 作为预测的模型，即生成模型。  能还原出联合概率分布\(P(X, Y)\) 收敛速度更快 当存在隐变量时只能用生成方法学习">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="建炎以来系年要录：总结篇">
-<meta name="twitter:description" content="生成模型和判别模型 生成模型  混合高斯模型和其他混合模型 隐马尔可夫模型 ( HMM ) 朴素贝叶斯 LDA 文档主题生成模型  生成式模型由数据学习联合概率分布 \(P(X, Y)\)，然后求出条件概率分布 \[ P(Y|X)=\frac{P(X,Y)}{P(X)} \] 作为预测的模型，即生成模型。  能还原出联合概率分布\(P(X, Y)\) 收敛速度更快 当存在隐变量时只能用生成方法学习">
+<meta name="twitter:description" content="生成模型和判别模型 生成模型  混合高斯模型和其他混合模型 隐马尔可夫模型 (HMM) 朴素贝叶斯 LDA 文档主题生成模型  生成式模型  由数据学习联合概率分布 \(P(X, Y)\)，然后求出条件概率分布 \[P(Y|X)=\frac{P(X,Y)}{P(X)} \] 作为预测的模型，即生成模型。  能还原出联合概率分布\(P(X, Y)\) 收敛速度更快 当存在隐变量时只能用生成方法学习">
 
 
 
@@ -494,12 +494,11 @@
 <h3 id="生成模型">生成模型</h3>
 <ul>
 <li>混合高斯模型和其他混合模型</li>
-<li>隐马尔可夫模型 ( HMM )</li>
+<li>隐马尔可夫模型 (HMM)</li>
 <li>朴素贝叶斯</li>
 <li>LDA 文档主题生成模型</li>
 </ul>
-<p><strong>生成式模型</strong>由数据学习联合概率分布 <span class="math inline">\(P(X, Y)\)</span>，然后求出条件概率分布 <span class="math display">\[
-P(Y|X)=\frac{P(X,Y)}{P(X)}
+<p><strong>生成式模型 </strong> 由数据学习联合概率分布 <span class="math inline">\(P(X, Y)\)</span>，然后求出条件概率分布 <span class="math display">\[P(Y|X)=\frac{P(X,Y)}{P(X)}
 \]</span> 作为预测的模型，即生成模型。</p>
 <ul>
 <li>能还原出联合概率分布<span class="math inline">\(P(X, Y)\)</span></li>
@@ -513,29 +512,29 @@ P(Y|X)=\frac{P(X,Y)}{P(X)}
 <li>决策树</li>
 <li>最大熵模型</li>
 <li>Logistic 回归</li>
-<li>线性判别分析 ( LDA )</li>
-<li>支持向量机 ( SVM )</li>
+<li>线性判别分析 (LDA)</li>
+<li>支持向量机 (SVM)</li>
 <li>Boosting</li>
-<li>条件随机场算法 ( CRF )</li>
+<li>条件随机场算法 (CRF)</li>
 <li>线性回归</li>
 <li>神经网络</li>
 </ul>
-<p><strong>判别式模型</strong>直接学习决策函数 <span class="math inline">\(f(X)\)</span> 或条件概率分布 <span class="math inline">\(P(Y|X)\)</span> 作为预测的模型。</p>
+<p><strong>判别式模型 </strong> 直接学习决策函数 <span class="math inline">\(f(X)\)</span> 或条件概率分布 <span class="math inline">\(P(Y|X)\)</span> 作为预测的模型。</p>
 <ul>
 <li>往往准确率更高</li>
 <li>可以简化学习问题</li>
 </ul>
 <h2 id="学习策略损失函数">学习策略（损失函数）</h2>
 <h2 id="学习算法">学习算法</h2>
-<p>生成模型朴素贝叶斯和HMM的监督学习，最优解即极大似然估计值，可以由概率计算公式直接计算。</p>
+<p>生成模型朴素贝叶斯和 HMM 的监督学习，最优解即极大似然估计值，可以由概率计算公式直接计算。</p>
 <ol type="1">
-<li>判别模型中，感知机，逻辑斯蒂回归，最大熵模型，条件随机场都可以用SGD，拟牛顿法学习。这些都是无约束最优化问题。</li>
-<li>判别模型中SVM，可以解凸二次规划的对偶问题。有序列最小最优化算法等方法。</li>
+<li>判别模型中，感知机，逻辑斯蒂回归，最大熵模型，条件随机场都可以用 SGD，拟牛顿法学习。这些都是无约束最优化问题。</li>
+<li>判别模型中 SVM，可以解凸二次规划的对偶问题。有序列最小最优化算法等方法。</li>
 <li>判别模型中决策树，是基于启发式算法，正则化的极大似然估计。</li>
-<li>判别模型中，提升方法式加法模型，损失函数是<strong>指数损失函数</strong>，学习方法是启发式的从前往后逐步学习模型。</li>
+<li>判别模型中，提升方法式加法模型，损失函数是 <strong> 指数损失函数</strong>，学习方法是启发式的从前往后逐步学习模型。</li>
 <li>判别模型中，EM 算法是利用迭代求解隐变量概率模型。</li>
 </ol>
-<p>上述模型中，SVM/LR/最大熵/CRF四个是凸优化问题，全局最优解保证存在，其他问题不是凸优化问题，不做保证。</p>
+<p>上述模型中，SVM/LR/ 最大熵 /CRF 四个是凸优化问题，全局最优解保证存在，其他问题不是凸优化问题，不做保证。</p>
 
       
     </div>

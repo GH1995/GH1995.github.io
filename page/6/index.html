@@ -494,12 +494,11 @@
         
           
             <p>
-              梯度下降法
+               梯度下降法 
 
-批量梯度下降(BGD) \[
-\theta_{j}^{\prime}=\theta_{j}+\frac{1}{m} \sum_{i=1}^{m}\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i}
+ 批量梯度下降 (BGD) \[\theta_{j}^{\prime}=\theta_{j}+\frac{1}{m} \sum_{i=1}^{m}\left(y^{i}-h_{\theta}\left(x^{i}\right)\right) x_{j}^{i}
 \]
-随机梯度下降(SGD
+ 随机梯度下降
               ...
             </p>
           <!--noindex-->
@@ -696,8 +695,8 @@
           
             <p>
               Batch Normalization (BN)、Layer Normalization (LN)、Instance Normalization (IN)、Group Normalization (GN)
-套路都是：减去均值，除以标准差+线性映射1
-区别在于：操作的 feature map 维度不同
+套路都是：减去均值，除以标准差 + 线性映射1
+区别在于：操作的 feature map 维度
               ...
             </p>
           <!--noindex-->
@@ -877,12 +876,12 @@
             <p>
               Python 的 import 很简单，记住关键一句话就行。
 
-关键是能够在sys.path里面找到通向模块文件的路径
+关键是能够在 sys.path 里面找到通向模块文件的路径
 
 分三种情况：
 
-主程序与模块在同一目录下： 这时候Python能自己找到自己的兄弟 import mod1
-主程序是在上一层 Python 不会把所有的子文件夹都加入路径的，别想
+主程序与模块在同一目录下： 这时候 Python 能自己找到自己的兄弟 import mod1
+主程序是在上一层 Python 不会把所有的子文件夹都加入路径
               ...
             </p>
           <!--noindex-->
@@ -1060,10 +1059,9 @@
         
           
             <p>
-              目标： 在VPS上跑pyspark，spark的配置略过，主要讲jupyter方面。
-jupyter配置的关键点在于找准错误，所有错误，看最上面一个就行，然后直接Google。我遇到的错误是，不能运行，具体是：
-KeyError: &apos;allow_remote_access&apos;
-于是
+              目标： 在 VPS 上跑 pyspark，spark 的配置略过，主要讲 jupyter 方面。
+jupyter 配置的关键点在于找准错误，所有错误，看最上面一个就行，然后直接 Google。我遇到的错误是，不能运行，具体是：
+KeyError: &apos;allow_remote_access&
               ...
             </p>
           <!--noindex-->
@@ -1259,11 +1257,11 @@ KeyError: &apos;allow_remote_access&apos;
         
           
             <p>
-              安装和使用
-安装 Hadoop 和 Spark
-在 pyspark 中运行代码
-Spark 独立应用程序编程
-#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext('local',
+               安装和使用 
+ 安装 Hadoop 和 Spark
+ 在 pyspark 中运行代码 
+Spark 独立应用程序编程 
+#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext('l
               ...
             </p>
           <!--noindex-->
@@ -1571,7 +1569,7 @@ auc = 0.0height = 0.0for each train exameple x_i y_i:    if y_i == 1.0:        h
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 17:30:32" itemprop="dateModified" datetime="2019-07-12T17:30:32+08:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 17:42:00" itemprop="dateModified" datetime="2019-07-12T17:42:00+08:00">2019-07-12</time>
               
             
           </span>
@@ -1641,15 +1639,15 @@ auc = 0.0height = 0.0for each train exameple x_i y_i:    if y_i == 1.0:        h
             <p>
               简介
 
-BDAS架构
+BDAS 架构
 
-Spark专注于数据的处理分析，而数据的存储还是要借助于Hadoop分布式文件系统HDFS、Amazon S3等来实现的
+Spark 专注于数据的处理分析，而数据的存储还是要借助于 Hadoop 分布式文件系统 HDFS、Amazon S3 等来实现的
 运行架构
 基本概念
 
 RDD：弹性分布式数据集（Resilient Distributed Dataset）
 DAG：有向无环图
-Executor：运行在
+Execut
               ...
             </p>
           <!--noindex-->
@@ -1735,7 +1733,7 @@ Executor：运行在
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/17/fire小结/" class="post-title-link" itemprop="url">fire小结</a>
+                <a href="/2019/06/17/fire小结/" class="post-title-link" itemprop="url">fire 小结</a>
               
             
           </h1>
@@ -1827,11 +1825,11 @@ Executor：运行在
         
           
             <p>
-              单个函数
-def cal_days():    passif __name__ == '__main__':    fire.Fire(cal_days) # 注意这里
+               单个函数 
+def cal_days():    passif __name__ == '__main__':    fire.Fire(cal_days) # 注意这里 
 python test.py
-多个函数
-def cal_days_1():    passdef cal_days_2(days)
+ 多个函数 
+def cal_days_1():    passdef cal_days_2(
               ...
             </p>
           <!--noindex-->

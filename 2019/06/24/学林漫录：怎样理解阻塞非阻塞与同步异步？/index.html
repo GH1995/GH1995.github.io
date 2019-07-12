@@ -105,19 +105,19 @@
 
 
 
-  <meta name="description" content="在处理 IO 的时候，阻塞和非阻塞都是同步 IO。只有使用了特殊的 API 才是异步 IO。 ——陈硕   同步异步的比较 同步异步关注的是消息通信机制，反映的是两个进程之间是否协调。所谓协调就是，你走一步我走一步，你不走，我就没办法走，这就是同步。你走你的，我走我的，你不走，我也可以走，这就是异步。 IO 都可以认为是同步的，因为 IO 不完成，其他工作就很难走。典型的异步编程模型比如 Nod">
+  <meta name="description" content="在处理 IO 的时候，阻塞和非阻塞都是同步 IO。只有使用了特殊的 API 才是异步 IO。 ——陈硕    同步异步的比较   同步异步关注的是消息通信机制，反映的是两个进程之间是否协调。所谓协调就是，你走一步我走一步，你不走，我就没办法走，这就是同步。你走你的，我走我的，你不走，我也可以走，这就是异步。 IO 都可以认为是同步的，因为 IO 不完成，其他工作就很难走。典型的异步编程模型比如">
 <meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学林漫录：怎样理解阻塞非阻塞与同步异步？">
 <meta property="og:url" content="http://guanhua.ml/2019/06/24/学林漫录：怎样理解阻塞非阻塞与同步异步？/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="在处理 IO 的时候，阻塞和非阻塞都是同步 IO。只有使用了特殊的 API 才是异步 IO。 ——陈硕   同步异步的比较 同步异步关注的是消息通信机制，反映的是两个进程之间是否协调。所谓协调就是，你走一步我走一步，你不走，我就没办法走，这就是同步。你走你的，我走我的，你不走，我也可以走，这就是异步。 IO 都可以认为是同步的，因为 IO 不完成，其他工作就很难走。典型的异步编程模型比如 Nod">
+<meta property="og:description" content="在处理 IO 的时候，阻塞和非阻塞都是同步 IO。只有使用了特殊的 API 才是异步 IO。 ——陈硕    同步异步的比较   同步异步关注的是消息通信机制，反映的是两个进程之间是否协调。所谓协调就是，你走一步我走一步，你不走，我就没办法走，这就是同步。你走你的，我走我的，你不走，我也可以走，这就是异步。 IO 都可以认为是同步的，因为 IO 不完成，其他工作就很难走。典型的异步编程模型比如">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/24/ZkNFYt.jpg">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学林漫录：怎样理解阻塞非阻塞与同步异步？">
-<meta name="twitter:description" content="在处理 IO 的时候，阻塞和非阻塞都是同步 IO。只有使用了特殊的 API 才是异步 IO。 ——陈硕   同步异步的比较 同步异步关注的是消息通信机制，反映的是两个进程之间是否协调。所谓协调就是，你走一步我走一步，你不走，我就没办法走，这就是同步。你走你的，我走我的，你不走，我也可以走，这就是异步。 IO 都可以认为是同步的，因为 IO 不完成，其他工作就很难走。典型的异步编程模型比如 Nod">
+<meta name="twitter:description" content="在处理 IO 的时候，阻塞和非阻塞都是同步 IO。只有使用了特殊的 API 才是异步 IO。 ——陈硕    同步异步的比较   同步异步关注的是消息通信机制，反映的是两个进程之间是否协调。所谓协调就是，你走一步我走一步，你不走，我就没办法走，这就是同步。你走你的，我走我的，你不走，我也可以走，这就是异步。 IO 都可以认为是同步的，因为 IO 不完成，其他工作就很难走。典型的异步编程模型比如">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/06/24/ZkNFYt.jpg">
 
 
@@ -493,24 +493,24 @@
 
       
         <blockquote>
-<p>在处理 IO 的时候，阻塞和非阻塞都是同步 IO。只有使用了特殊的 API 才是异步 IO。 ——陈硕 <img src="https://s2.ax1x.com/2019/06/24/ZkNFYt.jpg" alt="比较表格"></p>
+<p> 在处理 IO 的时候，阻塞和非阻塞都是同步 IO。只有使用了特殊的 API 才是异步 IO。 ——陈硕 <img src="https://s2.ax1x.com/2019/06/24/ZkNFYt.jpg" alt="比较表格"></p>
 </blockquote>
-<h2 id="同步异步的比较">同步异步的比较</h2>
-<p>同步异步关注的是消息通信机制，反映的是两个进程之间是否协调。所谓协调就是，你走一步我走一步，你不走，我就没办法走，这就是同步。你走你的，我走我的，你不走，我也可以走，这就是异步。 IO 都可以认为是同步的，因为 IO 不完成，其他工作就很难走。典型的异步编程模型比如 Node.js。</p>
-<h2 id="阻塞与非阻塞的比较">阻塞与非阻塞的比较</h2>
-<p>阻塞与非阻塞关注的是程序在等待（消息，返回值）时的状态。</p>
-<p>阻塞</p>
+<h2 id="同步异步的比较"> 同步异步的比较 </h2>
+<p> 同步异步关注的是消息通信机制，反映的是两个进程之间是否协调。所谓协调就是，你走一步我走一步，你不走，我就没办法走，这就是同步。你走你的，我走我的，你不走，我也可以走，这就是异步。 IO 都可以认为是同步的，因为 IO 不完成，其他工作就很难走。典型的异步编程模型比如 Node.js。</p>
+<h2 id="阻塞与非阻塞的比较"> 阻塞与非阻塞的比较 </h2>
+<p> 阻塞与非阻塞关注的是程序在等待（消息，返回值）时的状态。</p>
+<p> 阻塞 </p>
 <blockquote>
-<p>同步+阻塞：程序代码一行一行执行，上一行不执行完，下一行就不会被执行；如果上一行卡住了迟迟不结束（阻塞了），那么整块代码全部卡住。遇到这种代码的感觉就是程序突然卡住死机，小圈圈来回转，此时用户无法区分电脑是在冥想还是挂了，所以体验非常差。</p>
-</blockquote>
-<blockquote>
-<p>同步+非阻塞：这就是最常见的程序，一行一行序贯执行，且没有哪一行会出现卡死的情况。这种程序最符合人们对计算机程序的心理预期，也就是程序能做到“有问立答”。</p>
+<p> 同步 + 阻塞：程序代码一行一行执行，上一行不执行完，下一行就不会被执行；如果上一行卡住了迟迟不结束（阻塞了），那么整块代码全部卡住。遇到这种代码的感觉就是程序突然卡住死机，小圈圈来回转，此时用户无法区分电脑是在冥想还是挂了，所以体验非常差。</p>
 </blockquote>
 <blockquote>
-<p>异步+阻塞：虽然代码中某些部分会卡住，但是由于采用了异步的处理方式（包括callback、future、promise、reactiveX、async-await/coroutine），所以卡住行的下一行不会傻等，整个代码块也就不会卡住。这时虽然做不到有问立答，但是会给你一张小卡片上面写着“已受理，请稍等”，这种体验也不会太差。</p>
+<p> 同步 + 非阻塞：这就是最常见的程序，一行一行序贯执行，且没有哪一行会出现卡死的情况。这种程序最符合人们对计算机程序的心理预期，也就是程序能做到“有问立答”。</p>
 </blockquote>
 <blockquote>
-<p>异步+非阻塞：非阻塞情况下一般不会采用异步编程，这个组合属于脱裤子放屁。但是在兼有阻塞非阻塞的代码块中，由于整块都可能采用异步编程，所以也会出现这种组合。体验上讲也是有问立答，只是会稍稍慢一点，但感觉不出来。</p>
+<p> 异步 + 阻塞：虽然代码中某些部分会卡住，但是由于采用了异步的处理方式（包括 callback、future、promise、reactiveX、async-await/coroutine），所以卡住行的下一行不会傻等，整个代码块也就不会卡住。这时虽然做不到有问立答，但是会给你一张小卡片上面写着“已受理，请稍等”，这种体验也不会太差。</p>
+</blockquote>
+<blockquote>
+<p> 异步 + 非阻塞：非阻塞情况下一般不会采用异步编程，这个组合属于脱裤子放屁。但是在兼有阻塞非阻塞的代码块中，由于整块都可能采用异步编程，所以也会出现这种组合。体验上讲也是有问立答，只是会稍稍慢一点，但感觉不出来。</p>
 </blockquote>
 
       
@@ -851,7 +851,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#同步异步的比较"><span class="nav-number">1.</span> <span class="nav-text">同步异步的比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阻塞与非阻塞的比较"><span class="nav-number">2.</span> <span class="nav-text">阻塞与非阻塞的比较</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#同步异步的比较"><span class="nav-number">1.</span> <span class="nav-text"> 同步异步的比较 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阻塞与非阻塞的比较"><span class="nav-number">2.</span> <span class="nav-text"> 阻塞与非阻塞的比较 </span></a></li></ol></div>
             
 
           </div>

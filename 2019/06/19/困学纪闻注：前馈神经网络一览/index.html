@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="常见激活函数 Sigmoid 型激活函数  Logistic 函数，值域\(0 \sim -1\) \[ \sigma(x)=\frac{1}{1+\exp (-x)} \] Tanh 函数，值域\(-1 \sim 1\) \[ \tanh (x)=2 \sigma(2 x)-1 \]  修正线性单元  ReLU \[ \begin{aligned} \operatorname{ReLU}(x)">
+  <meta name="description" content="常见激活函数 Sigmoid 型激活函数  Logistic 函数，值域\(0 \sim -1\) \[\sigma(x)=\frac{1}{1+\exp (-x)} \] Tanh 函数，值域\(-1 \sim 1\) \[\tanh (x)=2 \sigma(2 x)-1 \]  修正线性单元  ReLU \[\begin{aligned} \operatorname{ReLU}(x) &amp;am">
 <meta name="keywords" content="deep learning,todo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="困学纪闻注：前馈神经网络一览——激活函数寒武纪">
 <meta property="og:url" content="http://guanhua.ml/2019/06/19/困学纪闻注：前馈神经网络一览/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="常见激活函数 Sigmoid 型激活函数  Logistic 函数，值域\(0 \sim -1\) \[ \sigma(x)=\frac{1}{1+\exp (-x)} \] Tanh 函数，值域\(-1 \sim 1\) \[ \tanh (x)=2 \sigma(2 x)-1 \]  修正线性单元  ReLU \[ \begin{aligned} \operatorname{ReLU}(x)">
+<meta property="og:description" content="常见激活函数 Sigmoid 型激活函数  Logistic 函数，值域\(0 \sim -1\) \[\sigma(x)=\frac{1}{1+\exp (-x)} \] Tanh 函数，值域\(-1 \sim 1\) \[\tanh (x)=2 \sigma(2 x)-1 \]  修正线性单元  ReLU \[\begin{aligned} \operatorname{ReLU}(x) &amp;am">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="困学纪闻注：前馈神经网络一览——激活函数寒武纪">
-<meta name="twitter:description" content="常见激活函数 Sigmoid 型激活函数  Logistic 函数，值域\(0 \sim -1\) \[ \sigma(x)=\frac{1}{1+\exp (-x)} \] Tanh 函数，值域\(-1 \sim 1\) \[ \tanh (x)=2 \sigma(2 x)-1 \]  修正线性单元  ReLU \[ \begin{aligned} \operatorname{ReLU}(x)">
+<meta name="twitter:description" content="常见激活函数 Sigmoid 型激活函数  Logistic 函数，值域\(0 \sim -1\) \[\sigma(x)=\frac{1}{1+\exp (-x)} \] Tanh 函数，值域\(-1 \sim 1\) \[\tanh (x)=2 \sigma(2 x)-1 \]  修正线性单元  ReLU \[\begin{aligned} \operatorname{ReLU}(x) &amp;am">
 
 
 
@@ -491,25 +491,20 @@
 
       
         <h2 id="常见激活函数">常见激活函数</h2>
-<h3 id="sigmoid-型激活函数">Sigmoid 型激活函数</h3>
+<h3 id="sigmoid- 型激活函数">Sigmoid 型激活函数</h3>
 <ol type="1">
-<li>Logistic 函数，值域<span class="math inline">\(0 \sim -1\)</span> <span class="math display">\[
-\sigma(x)=\frac{1}{1+\exp (-x)}
+<li>Logistic 函数，值域<span class="math inline">\(0 \sim -1\)</span> <span class="math display">\[\sigma(x)=\frac{1}{1+\exp (-x)}
 \]</span></li>
-<li>Tanh 函数，值域<span class="math inline">\(-1 \sim 1\)</span> <span class="math display">\[
-\tanh (x)=2 \sigma(2 x)-1
+<li>Tanh 函数，值域<span class="math inline">\(-1 \sim 1\)</span> <span class="math display">\[\tanh (x)=2 \sigma(2 x)-1
 \]</span></li>
 </ol>
 <h3 id="修正线性单元">修正线性单元</h3>
 <ol type="1">
-<li>ReLU <span class="math display">\[
-\begin{aligned} \operatorname{ReLU}(x) &amp;=\left\{\begin{array}{ll}{x} &amp; {x \geq 0} \\ {0} &amp; {x&lt;0}\end{array}\right.\\ &amp;=\max (0, x) \end{aligned}
-\]</span> <strong>优点</strong> <strong>缺点</strong> 非零中心化/死亡ReLU问题</li>
-<li>LeakyReLU 在输入 <span class="math inline">\(x &lt; 0\)</span>时，保持一个很小的梯度<span class="math inline">\(\lambda\)</span> <span class="math display">\[
-\text{LeakyReLU}(x)=\left\{\begin{array}{ll}{x} &amp; {\text { if  } x&gt;0} \\ {\gamma x} &amp; {\text { if  } x \leq 0}\end{array}\right.
+<li>ReLU <span class="math display">\[\begin{aligned} \operatorname{ReLU}(x) &amp;=\left\{\begin{array}{ll}{x} &amp; {x \geq 0} \\ {0} &amp; {x&lt;0}\end{array}\right.\\ &amp;=\max (0, x) \end{aligned}
+\]</span> <strong>优点 </strong> <strong> 缺点</strong> 非零中心化 / 死亡 ReLU 问题</li>
+<li>LeakyReLU 在输入 <span class="math inline">\(x &lt; 0\)</span>时，保持一个很小的梯度<span class="math inline">\(\lambda\)</span> <span class="math display">\[\text{LeakyReLU}(x)=\left\{\begin{array}{ll}{x} &amp; {\text { if} x&gt;0} \\ {\gamma x} &amp; {\text { if} x \leq 0}\end{array}\right.
 \]</span></li>
-<li>PReLU 引入一个可学习的参数，不同神经元可以有不同的参数 <span class="math display">\[
-\operatorname{PReLU}_{i}(x)=\left\{\begin{array}{ll}{x} &amp; {\text { if  } x&gt;0} \\ {\gamma_{i} x} &amp; {\text { if  } x \leq 0}\end{array}\right.
+<li>PReLU 引入一个可学习的参数，不同神经元可以有不同的参数 <span class="math display">\[\operatorname{PReLU}_{i}(x)=\left\{\begin{array}{ll}{x} &amp; {\text { if} x&gt;0} \\ {\gamma_{i} x} &amp; {\text { if} x \leq 0}\end{array}\right.
 \]</span></li>
 </ol>
 
@@ -881,7 +876,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见激活函数"><span class="nav-number">1.</span> <span class="nav-text">常见激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid-型激活函数"><span class="nav-number">1.1.</span> <span class="nav-text">Sigmoid 型激活函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修正线性单元"><span class="nav-number">1.2.</span> <span class="nav-text">修正线性单元</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见激活函数"><span class="nav-number">1.</span> <span class="nav-text">常见激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid- 型激活函数"><span class="nav-number">1.1.</span> <span class="nav-text">Sigmoid 型激活函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修正线性单元"><span class="nav-number">1.2.</span> <span class="nav-text">修正线性单元</span></a></li></ol></li></ol></div>
             
 
           </div>

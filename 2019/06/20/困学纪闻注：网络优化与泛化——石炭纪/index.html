@@ -513,36 +513,29 @@
 </ol>
 <p>学习率衰减优化算法三种 1. AdaGrad: <span class="math inline">\(g_t\)</span>参数的偏导数积累 2. RMSprop: <span class="math inline">\(g_t\)</span>平方的指数衰减移动平均 3. AdaDelta: <span class="math inline">\(\Delta \theta\)</span>平方的指数衰减移动平均</p>
 <h3 id="adagrad">AdaGrad</h3>
-<p><span class="math display">\[
-G_{t}=\sum_{\tau=1}^{t} \mathbf{g}_{\tau} \odot \mathbf{g}_{\tau}
+<p><span class="math display">\[G_{t}=\sum_{\tau=1}^{t} \mathbf{g}_{\tau} \odot \mathbf{g}_{\tau}
 \]</span></p>
-<p><span class="math inline">\(\mathbf{g}_{\tau} \in \mathbb{R}^{|\theta|}\)</span> 是第<span class="math inline">\(\tau\)</span>次迭代时的梯度</p>
-<p><span class="math display">\[
-\Delta \theta_{t}=-\frac{\alpha}{\sqrt{G_{t}+\epsilon}} \odot \mathrm{g}_{t}
+<p><span class="math inline">\(\mathbf{g}_{\tau} \in \mathbb{R}^{|\theta|}\)</span> 是第 <span class="math inline">\(\tau\)</span> 次迭代时的梯度</p>
+<p><span class="math display">\[\Delta \theta_{t}=-\frac{\alpha}{\sqrt{G_{t}+\epsilon}} \odot \mathrm{g}_{t}
 \]</span></p>
 <p>如果某个参数的偏导数累积比较大，其学习率相对较小</p>
-<p>Adagrad算法的缺点是在经过一定次数的迭代依然没有找到最优点时，由 于这时的学习率已经非常小，很难再继续找到最优点。</p>
+<p>Adagrad 算法的缺点是在经过一定次数的迭代依然没有找到最优点时，由 于这时的学习率已经非常小，很难再继续找到最优点。</p>
 <h3 id="rmsprop">RMSprop</h3>
-<p>计算<span class="math inline">\(\mathbf{g}_t\)</span>平方的指数衰减移动平均 <span class="math display">\[
-G_{t}=\beta G_{t-1}+(1-\beta) \mathbf{g}_{t} \odot \mathbf{g}_{t}
+<p>计算 <span class="math inline">\(\mathbf{g}_t\)</span> 平方的指数衰减移动平均 <span class="math display">\[G_{t}=\beta G_{t-1}+(1-\beta) \mathbf{g}_{t} \odot \mathbf{g}_{t}
 \]</span></p>
-<p><span class="math display">\[
-\Delta \theta_{t}=-\frac{\alpha}{\sqrt{G_{t}+\epsilon}} \odot \mathbf{g}_{t}
+<p><span class="math display">\[\Delta \theta_{t}=-\frac{\alpha}{\sqrt{G_{t}+\epsilon}} \odot \mathbf{g}_{t}
 \]</span></p>
 <h2 id="梯度方向优化">梯度方向优化</h2>
 <h3 id="动量法">动量法</h3>
 <p>计算负梯度的“加权移动平均”作为参数的更新方向</p>
-<p><span class="math display">\[
-\Delta \theta_{t}=\rho \Delta \theta_{t-1}-\alpha \mathbf{g}_{t}
+<p><span class="math display">\[\Delta \theta_{t}=\rho \Delta \theta_{t-1}-\alpha \mathbf{g}_{t}
 \]</span></p>
 <h3 id="adam">Adam</h3>
-<p>Adam算法一方面计算梯度平方<span class="math inline">\(\mathbf{g}_t^2\)</span>的指数加权平均（和RMSprop类似），另一方面计算梯度<span class="math inline">\(\mathbf{g}_t\)</span>的指数加权平均（和动量法类似）</p>
-<p><span class="math display">\[
-\begin{array}{c}{M_{t}=\beta_{1} M_{t-1}+\left(1-\beta_{1}\right) \mathbf{g}_{t}} \\ {G_{t}=\beta_{2} G_{t-1}+\left(1-\beta_{2}\right) \mathbf{g}_{t} \odot \mathbf{g}_{t}}\end{array}
+<p>Adam 算法一方面计算梯度平方 <span class="math inline">\(\mathbf{g}_t^2\)</span> 的指数加权平均（和 RMSprop 类似），另一方面计算梯度 <span class="math inline">\(\mathbf{g}_t\)</span> 的指数加权平均（和动量法类似）</p>
+<p><span class="math display">\[\begin{array}{c}{M_{t}=\beta_{1} M_{t-1}+\left(1-\beta_{1}\right) \mathbf{g}_{t}} \\ {G_{t}=\beta_{2} G_{t-1}+\left(1-\beta_{2}\right) \mathbf{g}_{t} \odot \mathbf{g}_{t}}\end{array}
 \]</span></p>
 <p>更新</p>
-<p><span class="math display">\[
-\Delta \theta_{t}=-\frac{\alpha}{\sqrt{\hat{G}_{t}+\epsilon}} \hat{M}_{t}
+<p><span class="math display">\[\Delta \theta_{t}=-\frac{\alpha}{\sqrt{\hat{G}_{t}+\epsilon}} \hat{M}_{t}
 \]</span></p>
 <h3 id="梯度截断">梯度截断</h3>
 <ul>
@@ -551,17 +544,15 @@ G_{t}=\beta G_{t-1}+(1-\beta) \mathbf{g}_{t} \odot \mathbf{g}_{t}
 </ul>
 <h2 id="参数初始化">参数初始化</h2>
 <ul>
-<li>Gaussian分布初始化</li>
+<li>Gaussian 分布初始化</li>
 <li>均匀分布初始化</li>
 </ul>
 <h2 id="数据预处理">数据预处理</h2>
 <p>缩放归一化</p>
-<p><span class="math display">\[
-\hat{x}^{(i)}=\frac{x^{(i)}-\min _{i}\left(x^{(i)}\right)}{\max _{i}\left(x^{(i)}\right)-\min _{i}\left(x^{(i)}\right)}
+<p><span class="math display">\[\hat{x}^{(i)}=\frac{x^{(i)}-\min _{i}\left(x^{(i)}\right)}{\max _{i}\left(x^{(i)}\right)-\min _{i}\left(x^{(i)}\right)}
 \]</span></p>
 <p>标准归一化</p>
-<p><span class="math display">\[
-\hat{x}^{(i)}=\frac{x^{(i)}-\mu}{\sigma}
+<p><span class="math display">\[\hat{x}^{(i)}=\frac{x^{(i)}-\mu}{\sigma}
 \]</span></p>
 <p>白化(PAC)</p>
 <h2 id="逐层归一化">逐层归一化</h2>
@@ -575,21 +566,19 @@ G_{t}=\beta G_{t-1}+(1-\beta) \mathbf{g}_{t} \odot \mathbf{g}_{t}
 <li>神经网络架构</li>
 </ol>
 <h2 id="网络正则化">网络正则化</h2>
-<h3 id="l_1和l_2正则化"><span class="math inline">\(l_1\)</span>和<span class="math inline">\(l_2\)</span>正则化</h3>
-<p><span class="math display">\[
-\begin{array}{c}{\theta^{*}=\underset{\theta}{\arg \min } \frac{1}{N} \sum_{n=1}^{N} \mathcal{L}\left(y^{(n)}, f\left(\mathbf{x}^{(n)}, \theta\right)\right)} \\ {\text { subject to  } \ell_{p}(\theta) \leq 1}\end{array}
+<h3 id="l_1 和 l_2 正则化"><span class="math inline">\(l_1\)</span>和 <span class="math inline">\(l_2\)</span> 正则化</h3>
+<p><span class="math display">\[\begin{array}{c}{\theta^{*}=\underset{\theta}{\arg \min} \frac{1}{N} \sum_{n=1}^{N} \mathcal{L}\left(y^{(n)}, f\left(\mathbf{x}^{(n)}, \theta\right)\right)} \\ {\text { subject to} \ell_{p}(\theta) \leq 1}\end{array}
 \]</span></p>
-<p><span class="math display">\[
-\ell_{1}(\theta)=\sum_{i} \sqrt{\theta_{i}^{2}+\epsilon}
+<p><span class="math display">\[\ell_{1}(\theta)=\sum_{i} \sqrt{\theta_{i}^{2}+\epsilon}
 \]</span></p>
-<p>弹性网络正则化：同时加入<span class="math inline">\(l_1\)</span>和<span class="math inline">\(l_2\)</span></p>
+<p>弹性网络正则化：同时加入 <span class="math inline">\(l_1\)</span> 和<span class="math inline">\(l_2\)</span></p>
 <h3 id="权重衰减">权重衰减</h3>
 <h3 id="提前停止">提前停止</h3>
 <h3 id="丢弃法">丢弃法</h3>
 <h3 id="数据增强">数据增强</h3>
 <h3 id="标签平滑">标签平滑</h3>
 <p>即在输出标签中添加噪声来 避免模型过拟合</p>
-<p>上面的标签平滑方法是给其它<span class="math inline">\(K − 1\)</span>个标签相同的概率 <span class="math inline">\(\frac{\epsilon}{K-1}\)</span></p>
+<p>上面的标签平滑方法是给其它 <span class="math inline">\(K − 1\)</span> 个标签相同的概率 <span class="math inline">\(\frac{\epsilon}{K-1}\)</span></p>
 
       
     </div>
@@ -959,7 +948,7 @@ G_{t}=\beta G_{t-1}+(1-\beta) \mathbf{g}_{t} \odot \mathbf{g}_{t}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络优化"><span class="nav-number">1.</span> <span class="nav-text">网络优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化算法"><span class="nav-number">2.</span> <span class="nav-text">优化算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#adagrad"><span class="nav-number">2.1.</span> <span class="nav-text">AdaGrad</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rmsprop"><span class="nav-number">2.2.</span> <span class="nav-text">RMSprop</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度方向优化"><span class="nav-number">3.</span> <span class="nav-text">梯度方向优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动量法"><span class="nav-number">3.1.</span> <span class="nav-text">动量法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adam"><span class="nav-number">3.2.</span> <span class="nav-text">Adam</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度截断"><span class="nav-number">3.3.</span> <span class="nav-text">梯度截断</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数初始化"><span class="nav-number">4.</span> <span class="nav-text">参数初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据预处理"><span class="nav-number">5.</span> <span class="nav-text">数据预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逐层归一化"><span class="nav-number">6.</span> <span class="nav-text">逐层归一化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#超参数优化"><span class="nav-number">7.</span> <span class="nav-text">超参数优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络正则化"><span class="nav-number">8.</span> <span class="nav-text">网络正则化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#l_1和l_2正则化"><span class="nav-number">8.1.</span> <span class="nav-text">\(l_1\)和\(l_2\)正则化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权重衰减"><span class="nav-number">8.2.</span> <span class="nav-text">权重衰减</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提前停止"><span class="nav-number">8.3.</span> <span class="nav-text">提前停止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#丢弃法"><span class="nav-number">8.4.</span> <span class="nav-text">丢弃法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据增强"><span class="nav-number">8.5.</span> <span class="nav-text">数据增强</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签平滑"><span class="nav-number">8.6.</span> <span class="nav-text">标签平滑</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络优化"><span class="nav-number">1.</span> <span class="nav-text">网络优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化算法"><span class="nav-number">2.</span> <span class="nav-text">优化算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#adagrad"><span class="nav-number">2.1.</span> <span class="nav-text">AdaGrad</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rmsprop"><span class="nav-number">2.2.</span> <span class="nav-text">RMSprop</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度方向优化"><span class="nav-number">3.</span> <span class="nav-text">梯度方向优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动量法"><span class="nav-number">3.1.</span> <span class="nav-text">动量法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adam"><span class="nav-number">3.2.</span> <span class="nav-text">Adam</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度截断"><span class="nav-number">3.3.</span> <span class="nav-text">梯度截断</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数初始化"><span class="nav-number">4.</span> <span class="nav-text">参数初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据预处理"><span class="nav-number">5.</span> <span class="nav-text">数据预处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逐层归一化"><span class="nav-number">6.</span> <span class="nav-text">逐层归一化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#超参数优化"><span class="nav-number">7.</span> <span class="nav-text">超参数优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络正则化"><span class="nav-number">8.</span> <span class="nav-text">网络正则化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#l_1 和 l_2 正则化"><span class="nav-number">8.1.</span> <span class="nav-text">\(l_1\)和 \(l_2\) 正则化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权重衰减"><span class="nav-number">8.2.</span> <span class="nav-text">权重衰减</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提前停止"><span class="nav-number">8.3.</span> <span class="nav-text">提前停止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#丢弃法"><span class="nav-number">8.4.</span> <span class="nav-text">丢弃法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据增强"><span class="nav-number">8.5.</span> <span class="nav-text">数据增强</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签平滑"><span class="nav-number">8.6.</span> <span class="nav-text">标签平滑</span></a></li></ol></li></ol></div>
             
 
           </div>

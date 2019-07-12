@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="对称加密算法 （1）甲方选择某一种加密规则，对信息进行加密； （2）乙方使用同一种规则，对信息进行解密。  由于加密和解密使用同样规则（简称&amp;quot;密钥&amp;quot;），这被称为&amp;quot;对称加密算法&amp;quot;（Symmetric-key algorithm）。  非对称加密 （1）乙方生成两把密钥（公钥和私钥）。公钥是公开的，任何人都可以获得，私钥则是保密的。 （2）甲方获取乙方的公钥，然">
+  <meta name="description" content="对称加密算法 （1）甲方选择某一种加密规则，对信息进行加密； （2）乙方使用同一种规则，对信息进行解密。  由于加密和解密使用同样规则（简称 &amp;quot; 密钥 &amp;quot;），这被称为 &amp;quot; 对称加密算法 &amp;quot;（Symmetric-key algorithm）。  非对称加密 （1）乙方生成两把密钥（公钥和私钥）。公钥是公开的，任何人都可以获得，私钥则是保密的。 （2）甲方获取乙">
 <meta name="keywords" content="todo,rsa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="灰度时刻：RSA 篇">
 <meta property="og:url" content="http://guanhua.ml/2019/06/22/灰度时刻：RSA-篇/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="对称加密算法 （1）甲方选择某一种加密规则，对信息进行加密； （2）乙方使用同一种规则，对信息进行解密。  由于加密和解密使用同样规则（简称&amp;quot;密钥&amp;quot;），这被称为&amp;quot;对称加密算法&amp;quot;（Symmetric-key algorithm）。  非对称加密 （1）乙方生成两把密钥（公钥和私钥）。公钥是公开的，任何人都可以获得，私钥则是保密的。 （2）甲方获取乙方的公钥，然">
+<meta property="og:description" content="对称加密算法 （1）甲方选择某一种加密规则，对信息进行加密； （2）乙方使用同一种规则，对信息进行解密。  由于加密和解密使用同样规则（简称 &amp;quot; 密钥 &amp;quot;），这被称为 &amp;quot; 对称加密算法 &amp;quot;（Symmetric-key algorithm）。  非对称加密 （1）乙方生成两把密钥（公钥和私钥）。公钥是公开的，任何人都可以获得，私钥则是保密的。 （2）甲方获取乙">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="灰度时刻：RSA 篇">
-<meta name="twitter:description" content="对称加密算法 （1）甲方选择某一种加密规则，对信息进行加密； （2）乙方使用同一种规则，对信息进行解密。  由于加密和解密使用同样规则（简称&amp;quot;密钥&amp;quot;），这被称为&amp;quot;对称加密算法&amp;quot;（Symmetric-key algorithm）。  非对称加密 （1）乙方生成两把密钥（公钥和私钥）。公钥是公开的，任何人都可以获得，私钥则是保密的。 （2）甲方获取乙方的公钥，然">
+<meta name="twitter:description" content="对称加密算法 （1）甲方选择某一种加密规则，对信息进行加密； （2）乙方使用同一种规则，对信息进行解密。  由于加密和解密使用同样规则（简称 &amp;quot; 密钥 &amp;quot;），这被称为 &amp;quot; 对称加密算法 &amp;quot;（Symmetric-key algorithm）。  非对称加密 （1）乙方生成两把密钥（公钥和私钥）。公钥是公开的，任何人都可以获得，私钥则是保密的。 （2）甲方获取乙">
 
 
 
@@ -493,37 +493,31 @@
         <h2 id="对称加密算法">对称加密算法</h2>
 <p>（1）甲方选择某一种加密规则，对信息进行加密； （2）乙方使用同一种规则，对信息进行解密。</p>
 <blockquote>
-<p>由于加密和解密使用同样规则（简称&quot;密钥&quot;），这被称为&quot;对称加密算法&quot;（Symmetric-key algorithm）。</p>
+<p>由于加密和解密使用同样规则（简称 &quot; 密钥 &quot;），这被称为 &quot; 对称加密算法 &quot;（Symmetric-key algorithm）。</p>
 </blockquote>
 <h2 id="非对称加密">非对称加密</h2>
 <p>（1）乙方生成两把密钥（公钥和私钥）。公钥是公开的，任何人都可以获得，私钥则是保密的。 （2）甲方获取乙方的公钥，然后用它对信息加密。 （3）乙方得到加密后的信息，用私钥解密。</p>
 <blockquote>
-<p>例子：故剑情深 汉宣帝（乙方）下诏寻找一把旧时用过的剑<strong>公钥：表面的意思</strong>。有细心的大臣（甲方）看到诏书（获取公玥），明白宣帝是想立许平君为皇后，于是连夜写了一封奏表，劝立许平君（用公钥进行加密大臣的奏表）。宣帝看到奏表后，（用私钥<strong>宣帝真实的想法</strong>解密）知道这个大臣已经明白了他的意思。宣帝把奏表批阅后发还大臣，大臣确认自己和皇帝的想法一致，知道这事有谱了。 宣帝：公玥，私钥-&gt;客户端 大臣：公玥-&gt;主机</p>
+<p>例子：故剑情深 汉宣帝（乙方）下诏寻找一把旧时用过的剑 <strong> 公钥：表面的意思 </strong>。有细心的大臣（甲方）看到诏书（获取公玥），明白宣帝是想立许平君为皇后，于是连夜写了一封奏表，劝立许平君（用公钥进行加密大臣的奏表）。宣帝看到奏表后，（用私钥<strong> 宣帝真实的想法 </strong> 解密）知道这个大臣已经明白了他的意思。宣帝把奏表批阅后发还大臣，大臣确认自己和皇帝的想法一致，知道这事有谱了。 宣帝：公玥，私钥 -&gt; 客户端 大臣：公玥 -&gt; 主机</p>
 </blockquote>
 <h2 id="互质关系">互质关系</h2>
-<p>最大公约数为1</p>
+<p>最大公约数为 1</p>
 <h2 id="欧拉函数">欧拉函数</h2>
 <blockquote>
-<p>任意给定正整数<span class="math inline">\(n\)</span>，请问在小于等于<span class="math inline">\(n\)</span>的正整数之中，有多少个与<span class="math inline">\(n\)</span>构成互质关系？（比如，在1到8之中，有多少个数与8构成互质关系？）</p>
+<p>任意给定正整数 <span class="math inline">\(n\)</span>，请问在小于等于<span class="math inline">\(n\)</span> 的正整数之中，有多少个与 <span class="math inline">\(n\)</span> 构成互质关系？（比如，在 1 到 8 之中，有多少个数与 8 构成互质关系？）</p>
 </blockquote>
-<p>计算这个值的方法就叫做欧拉函数，以<span class="math inline">\(\varphi(n)\)</span>表示。</p>
+<p>计算这个值的方法就叫做欧拉函数，以 <span class="math inline">\(\varphi(n)\)</span> 表示。</p>
 <ol type="1">
 <li><span class="math inline">\(n = 1\)</span>, <span class="math inline">\(\varphi(1) = 1\)</span></li>
-<li>如果<span class="math inline">\(n\)</span>是质数，则 <span class="math inline">\(\varphi(n) = n - 1\)</span> ，因为质数与小于它的每个数都是互质关系</li>
-<li>如果<span class="math inline">\(n\)</span>是质数的某个次方，即 <span class="math inline">\(n = p^k\)</span>，则 <span class="math display">\[
-\varphi\left(p^{k}\right)=p^{k}-p^{k-1}=p^{k}\left(1-\frac{1}{p}\right)
+<li>如果 <span class="math inline">\(n\)</span> 是质数，则 <span class="math inline">\(\varphi(n) = n - 1\)</span> ，因为质数与小于它的每个数都是互质关系</li>
+<li>如果 <span class="math inline">\(n\)</span> 是质数的某个次方，即 <span class="math inline">\(n = p^k\)</span>，则 <span class="math display">\[\varphi\left(p^{k}\right)=p^{k}-p^{k-1}=p^{k}\left(1-\frac{1}{p}\right)
 \]</span></li>
-<li>如果<span class="math inline">\(n\)</span>可以分解成两个互质的整数<span class="math inline">\(p_1, p_2\)</span>之积 <span class="math display">\[
-\varphi(n) = \varphi(p_1 p_2) = \varphi(p_1) \varphi(p_2)
+<li>如果 <span class="math inline">\(n\)</span> 可以分解成两个互质的整数 <span class="math inline">\(p_1, p_2\)</span> 之积 <span class="math display">\[\varphi(n) = \varphi(p_1 p_2) = \varphi(p_1) \varphi(p_2)
 \]</span></li>
-<li>大于1的整数都可以写成一系列质数的积。 <span class="math display">\[
-n=p_{1}^{k 1} p_{2}^{k 2} \dots p_{r}^{k r}
-\]</span> <span class="math display">\[
-\varphi(n)=\varphi\left(p_{1}^{k_{1}}\right) \varphi\left(p_{2}^{k_{2}}\right) \ldots \varphi\left(p_{r}^{k_{r}}\right)
-\]</span> <span class="math display">\[
-\varphi(n)=p_{1}^{k_{1}} p_{2}^{k 2} \ldots p_{r}^{k r}\left(1-\frac{1}{p_{1}}\right)\left(1-\frac{1}{p_{2}}\right) \dots\left(1-\frac{1}{p_{r}}\right)
-\]</span> <span class="math display">\[
-\varphi(n)=n\left(1-\frac{1}{p_{1}}\right)\left(1-\frac{1}{p_{2}}\right) \ldots\left(1-\frac{1}{p_{r}}\right)
+<li>大于 1 的整数都可以写成一系列质数的积。 <span class="math display">\[n=p_{1}^{k 1} p_{2}^{k 2} \dots p_{r}^{k r}
+\]</span> <span class="math display">\[\varphi(n)=\varphi\left(p_{1}^{k_{1}}\right) \varphi\left(p_{2}^{k_{2}}\right) \ldots \varphi\left(p_{r}^{k_{r}}\right)
+\]</span> <span class="math display">\[\varphi(n)=p_{1}^{k_{1}} p_{2}^{k 2} \ldots p_{r}^{k r}\left(1-\frac{1}{p_{1}}\right)\left(1-\frac{1}{p_{2}}\right) \dots\left(1-\frac{1}{p_{r}}\right)
+\]</span> <span class="math display">\[\varphi(n)=n\left(1-\frac{1}{p_{1}}\right)\left(1-\frac{1}{p_{2}}\right) \ldots\left(1-\frac{1}{p_{r}}\right)
 \]</span></li>
 </ol>
 <h2 id="欧拉定理">欧拉定理</h2>
@@ -533,9 +527,9 @@ n=p_{1}^{k 1} p_{2}^{k 2} \dots p_{r}^{k r}
 <p>如何下诏？</p>
 </blockquote>
 <ol type="1">
-<li>随机选择两个不相等的质数<span class="math inline">\(p\)</span>和<span class="math inline">\(q\)</span></li>
-<li>计算<span class="math inline">\(p, q\)</span>的乘积<span class="math inline">\(n\)</span>，<span class="math inline">\(n\)</span>转成二进制的长度就是密玥长度</li>
-<li>计算<span class="math inline">\(n\)</span>的欧拉函数<span class="math inline">\(\varphi(n)\)</span></li>
+<li>随机选择两个不相等的质数 <span class="math inline">\(p\)</span> 和<span class="math inline">\(q\)</span></li>
+<li>计算 <span class="math inline">\(p, q\)</span> 的乘积 <span class="math inline">\(n\)</span>，<span class="math inline">\(n\)</span> 转成二进制的长度就是密玥长度</li>
+<li>计算 <span class="math inline">\(n\)</span> 的欧拉函数<span class="math inline">\(\varphi(n)\)</span></li>
 </ol>
 <ul>
 <li>TODO: 坑啦，太难了，回头写 -</li>

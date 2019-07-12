@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="PCA(Principal Component Analysis, PCA) 数据降维方法，转换后数据的方差最大。 选择数据方差最大的方向进行投影，才能最大化数据的差异性，保留更多的原始数据信息。 一组 \(d\) 维样本\(\mathbf{x} \in \mathbb{R}^d, 1 \leq n \leq N\)，将其投影到一维空间中，投影向量为 \(\mathbf{w} \in \mathb">
+  <meta name="description" content="PCA(Principal Component Analysis, PCA) 数据降维方法，转换后数据的  方差最大。 选择数据方差最大的方向进行投影，才能最大化数据的差异性，保留更多的原始数据信息。 一组 \(d\) 维样本\(\mathbf{x} \in \mathbb{R}^d, 1 \leq n \leq N\)，将其投影到一维空间中，投影向量为 \(\mathbf{w} \in \mat">
 <meta name="keywords" content="deep learning,machine learning,todo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="困学纪闻注：PCA">
 <meta property="og:url" content="http://guanhua.ml/2019/03/18/PCA/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="PCA(Principal Component Analysis, PCA) 数据降维方法，转换后数据的方差最大。 选择数据方差最大的方向进行投影，才能最大化数据的差异性，保留更多的原始数据信息。 一组 \(d\) 维样本\(\mathbf{x} \in \mathbb{R}^d, 1 \leq n \leq N\)，将其投影到一维空间中，投影向量为 \(\mathbf{w} \in \mathb">
+<meta property="og:description" content="PCA(Principal Component Analysis, PCA) 数据降维方法，转换后数据的  方差最大。 选择数据方差最大的方向进行投影，才能最大化数据的差异性，保留更多的原始数据信息。 一组 \(d\) 维样本\(\mathbf{x} \in \mathbb{R}^d, 1 \leq n \leq N\)，将其投影到一维空间中，投影向量为 \(\mathbf{w} \in \mat">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-11T17:06:42.520Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="困学纪闻注：PCA">
-<meta name="twitter:description" content="PCA(Principal Component Analysis, PCA) 数据降维方法，转换后数据的方差最大。 选择数据方差最大的方向进行投影，才能最大化数据的差异性，保留更多的原始数据信息。 一组 \(d\) 维样本\(\mathbf{x} \in \mathbb{R}^d, 1 \leq n \leq N\)，将其投影到一维空间中，投影向量为 \(\mathbf{w} \in \mathb">
+<meta name="twitter:description" content="PCA(Principal Component Analysis, PCA) 数据降维方法，转换后数据的  方差最大。 选择数据方差最大的方向进行投影，才能最大化数据的差异性，保留更多的原始数据信息。 一组 \(d\) 维样本\(\mathbf{x} \in \mathbb{R}^d, 1 \leq n \leq N\)，将其投影到一维空间中，投影向量为 \(\mathbf{w} \in \mat">
 
 
 
@@ -490,27 +490,23 @@
       
 
       
-        <p>PCA(Principal Component Analysis, PCA) 数据降维方法，转换后数据的<strong>方差最大</strong>。</p>
+        <p>PCA(Principal Component Analysis, PCA) 数据降维方法，转换后数据的 <strong> 方差最大</strong>。</p>
 <p>选择数据方差最大的方向进行投影，才能最大化数据的差异性，保留更多的原始数据信息。</p>
 <p>一组 <span class="math inline">\(d\)</span> 维样本<span class="math inline">\(\mathbf{x} \in \mathbb{R}^d, 1 \leq n \leq N\)</span>，将其投影到一维空间中，投影向量为 <span class="math inline">\(\mathbf{w} \in \mathbb{R}^d\)</span>，不是一般性，限制 <span class="math inline">\(\mathbf{w}\)</span> 的模为 <span class="math inline">\(1\)</span> ，即 <span class="math inline">\(\mathbb{w}^T \mathbf{w} = 1\)</span>.</p>
-<h2 id="计算每个样本点的投影表示-zn">计算每个样本点的投影表示 <span class="math inline">\(z^(n)\)</span></h2>
-<p>每个样本点 <span class="math inline">\(\mathbf{x}^{(n)}\)</span> 投影后 <span class="math inline">\(1 \times d \times d \times 1\)</span> <span class="math display">\[
-z^{(n)}=\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}
+<h2 id="计算每个样本点的投影表示 -zn">计算每个样本点的投影表示 <span class="math inline">\(z^(n)\)</span></h2>
+<p>每个样本点 <span class="math inline">\(\mathbf{x}^{(n)}\)</span> 投影后 <span class="math inline">\(1 \times d \times d \times 1\)</span> <span class="math display">\[z^{(n)}=\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}
 \]</span></p>
-<p>##计算所有样本投影后的方差</p>
-<p><span class="math display">\[
-\begin{aligned} \sigma(X ; \mathbf{w}) &amp;=\frac{1}{N} \sum_{n=1}^{N}\left(\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}-\mathbf{w}^{\mathrm{T}} \overline{\mathbf{x}}\right)^{2} \\ &amp;=\frac{1}{N}\left(\mathbf{w}^{\mathrm{T}} X-\mathbf{w}^{\mathrm{T}} \overline{X}\right)\left(\mathbf{w}^{\mathrm{T}} X-\mathbf{w}^{\mathrm{T}} \overline{X}\right)^{\mathrm{T}} \\ &amp;=\mathbf{w}^{\mathrm{T}} S \mathbf{w} \end{aligned}
+<p>## 计算所有样本投影后的方差</p>
+<p><span class="math display">\[\begin{aligned} \sigma(X ; \mathbf{w}) &amp;=\frac{1}{N} \sum_{n=1}^{N}\left(\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}-\mathbf{w}^{\mathrm{T}} \overline{\mathbf{x}}\right)^{2} \\ &amp;=\frac{1}{N}\left(\mathbf{w}^{\mathrm{T}} X-\mathbf{w}^{\mathrm{T}} \overline{X}\right)\left(\mathbf{w}^{\mathrm{T}} X-\mathbf{w}^{\mathrm{T}} \overline{X}\right)^{\mathrm{T}} \\ &amp;=\mathbf{w}^{\mathrm{T}} S \mathbf{w} \end{aligned}
 \]</span></p>
 <p><span class="math inline">\(S=\frac{1}{N}(X-\overline{X})(X-\overline{X})^{\mathrm{T}}\)</span> 是原始样本的协方差矩阵。</p>
 <h2 id="拉格朗日法求最大投影方差">拉格朗日法求最大投影方差</h2>
-<p><span class="math display">\[
-\max _{\mathbf{w}} \mathbf{w}^{\mathrm{T}} S \mathbf{w}+\lambda\left(1-\mathbf{w}^{\mathrm{T}} \mathbf{w}\right)
+<p><span class="math display">\[\max _{\mathbf{w}} \mathbf{w}^{\mathrm{T}} S \mathbf{w}+\lambda\left(1-\mathbf{w}^{\mathrm{T}} \mathbf{w}\right)
 \]</span></p>
-<p>对上式求导并令导数等于0，得到</p>
-<p><span class="math display">\[
-S \mathbf{w}=\lambda \mathbf{w}
+<p>对上式求导并令导数等于 0，得到</p>
+<p><span class="math display">\[S \mathbf{w}=\lambda \mathbf{w}
 \]</span></p>
-<p>只需要将<span class="math inline">\(S\)</span>的特征值从大到小排列，保留前<span class="math inline">\(d^{\prime}\)</span>个特征向量，其对应的特征向量即使最优的投影矩阵</p>
+<p>只需要将 <span class="math inline">\(S\)</span> 的特征值从大到小排列，保留前 <span class="math inline">\(d^{\prime}\)</span> 个特征向量，其对应的特征向量即使最优的投影矩阵</p>
 
       
     </div>
@@ -598,8 +594,8 @@ S \mathbf{w}=\lambda \mathbf{w}
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/10/阿里云安装jupyter-notebook/" rel="next" title="阿里云安装jupyter notebook">
-                <i class="fa fa-chevron-left"></i> 阿里云安装jupyter notebook
+              <a href="/2018/07/10/阿里云安装jupyter-notebook/" rel="next" title="阿里云安装 jupyter notebook">
+                <i class="fa fa-chevron-left"></i> 阿里云安装 jupyter notebook
               </a>
             
           </div>
@@ -608,8 +604,8 @@ S \mathbf{w}=\lambda \mathbf{w}
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/24/xmake试用/" rel="prev" title="xmake试用">
-                xmake试用 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/24/xmake试用/" rel="prev" title="xmake 试用">
+                xmake 试用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -882,7 +878,7 @@ S \mathbf{w}=\lambda \mathbf{w}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算每个样本点的投影表示-zn"><span class="nav-number">1.</span> <span class="nav-text">计算每个样本点的投影表示 \(z^(n)\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拉格朗日法求最大投影方差"><span class="nav-number">2.</span> <span class="nav-text">拉格朗日法求最大投影方差</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算每个样本点的投影表示 -zn"><span class="nav-number">1.</span> <span class="nav-text">计算每个样本点的投影表示 \(z^(n)\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拉格朗日法求最大投影方差"><span class="nav-number">2.</span> <span class="nav-text">拉格朗日法求最大投影方差</span></a></li></ol></div>
             
 
           </div>

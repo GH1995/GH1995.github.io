@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="模型 \[ f(\mathbf{x} ; \mathbf{w})=\mathbf{w}^{\mathrm{T}} \mathbf{x} \] 参数学习 经验风险最小化 \[ \begin{aligned} \mathcal{R}(\mathbf{w}) &amp;amp;=\sum_{n=1}^{N} \mathcal{L}\left(y^{(n)}, f\left(\mathbf{x}^{(n)}, \">
+  <meta name="description" content="模型 \[f(\mathbf{x} ; \mathbf{w})=\mathbf{w}^{\mathrm{T}} \mathbf{x} \] 参数学习 经验风险最小化 \[\begin{aligned} \mathcal{R}(\mathbf{w}) &amp;amp;=\sum_{n=1}^{N} \mathcal{L}\left(y^{(n)}, f\left(\mathbf{x}^{(n)}, \ma">
 <meta name="keywords" content="machine learning,todo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="困学纪闻注 ：线性回归">
 <meta property="og:url" content="http://guanhua.ml/2019/06/19/困学纪闻注：线性回归/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="模型 \[ f(\mathbf{x} ; \mathbf{w})=\mathbf{w}^{\mathrm{T}} \mathbf{x} \] 参数学习 经验风险最小化 \[ \begin{aligned} \mathcal{R}(\mathbf{w}) &amp;amp;=\sum_{n=1}^{N} \mathcal{L}\left(y^{(n)}, f\left(\mathbf{x}^{(n)}, \">
+<meta property="og:description" content="模型 \[f(\mathbf{x} ; \mathbf{w})=\mathbf{w}^{\mathrm{T}} \mathbf{x} \] 参数学习 经验风险最小化 \[\begin{aligned} \mathcal{R}(\mathbf{w}) &amp;amp;=\sum_{n=1}^{N} \mathcal{L}\left(y^{(n)}, f\left(\mathbf{x}^{(n)}, \ma">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="困学纪闻注 ：线性回归">
-<meta name="twitter:description" content="模型 \[ f(\mathbf{x} ; \mathbf{w})=\mathbf{w}^{\mathrm{T}} \mathbf{x} \] 参数学习 经验风险最小化 \[ \begin{aligned} \mathcal{R}(\mathbf{w}) &amp;amp;=\sum_{n=1}^{N} \mathcal{L}\left(y^{(n)}, f\left(\mathbf{x}^{(n)}, \">
+<meta name="twitter:description" content="模型 \[f(\mathbf{x} ; \mathbf{w})=\mathbf{w}^{\mathrm{T}} \mathbf{x} \] 参数学习 经验风险最小化 \[\begin{aligned} \mathcal{R}(\mathbf{w}) &amp;amp;=\sum_{n=1}^{N} \mathcal{L}\left(y^{(n)}, f\left(\mathbf{x}^{(n)}, \ma">
 
 
 
@@ -491,43 +491,32 @@
 
       
         <h2 id="模型">模型</h2>
-<p><span class="math display">\[
-f(\mathbf{x} ; \mathbf{w})=\mathbf{w}^{\mathrm{T}} \mathbf{x}
+<p><span class="math display">\[f(\mathbf{x} ; \mathbf{w})=\mathbf{w}^{\mathrm{T}} \mathbf{x}
 \]</span></p>
 <h2 id="参数学习">参数学习</h2>
 <h3 id="经验风险最小化">经验风险最小化</h3>
-<p><span class="math display">\[
-\begin{aligned} \mathcal{R}(\mathbf{w}) &amp;=\sum_{n=1}^{N} \mathcal{L}\left(y^{(n)}, f\left(\mathbf{x}^{(n)}, \mathbf{w}\right)\right) \\ &amp;=\frac{1}{2} \sum_{n=1}^{N}\left(y^{(n)}-\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}\right)^{2} \\ &amp;=\frac{1}{2}\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2} \end{aligned}
+<p><span class="math display">\[\begin{aligned} \mathcal{R}(\mathbf{w}) &amp;=\sum_{n=1}^{N} \mathcal{L}\left(y^{(n)}, f\left(\mathbf{x}^{(n)}, \mathbf{w}\right)\right) \\ &amp;=\frac{1}{2} \sum_{n=1}^{N}\left(y^{(n)}-\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}\right)^{2} \\ &amp;=\frac{1}{2}\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2} \end{aligned}
 \]</span></p>
-<p><span class="math display">\[
-\begin{aligned} \frac{\partial \mathcal{R}(\mathbf{w})}{\partial \mathbf{w}} &amp;=\frac{1}{2} \frac{\partial\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}}{\partial \mathbf{w}} \\ &amp;=-X\left(\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right) \end{aligned}
+<p><span class="math display">\[\begin{aligned} \frac{\partial \mathcal{R}(\mathbf{w})}{\partial \mathbf{w}} &amp;=\frac{1}{2} \frac{\partial\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}}{\partial \mathbf{w}} \\ &amp;=-X\left(\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right) \end{aligned}
 \]</span></p>
-<p>令<span class="math inline">\(\frac{\partial}{\partial \mathbf{w}} \mathcal{R}(\mathbf{w})=0\)</span>，得到 <span class="math display">\[
-\mathbf{w}^{*}=\left(X X^{\mathrm{T}}\right)^{-1} X \mathbf{y}
+<p>令<span class="math inline">\(\frac{\partial}{\partial \mathbf{w}} \mathcal{R}(\mathbf{w})=0\)</span>，得到 <span class="math display">\[\mathbf{w}^{*}=\left(X X^{\mathrm{T}}\right)^{-1} X \mathbf{y}
 \]</span></p>
-<p><span class="math display">\[
-\mathbf{w} \leftarrow \mathbf{w}+\alpha X\left(\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right)
+<p><span class="math display">\[\mathbf{w} \leftarrow \mathbf{w}+\alpha X\left(\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right)
 \]</span></p>
 <h3 id="结构风险最小化">结构风险最小化</h3>
-<p><span class="math display">\[
-\mathcal{R}(\mathbf{w})=\frac{1}{2}\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}+\frac{1}{2} \lambda\|\mathbf{w}\|^{2}
+<p><span class="math display">\[\mathcal{R}(\mathbf{w})=\frac{1}{2}\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}+\frac{1}{2} \lambda\|\mathbf{w}\|^{2}
 \]</span></p>
 <h3 id="最大似然估计">最大似然估计</h3>
-<p>假设标签<span class="math inline">\(y\)</span>为一个随机变量，其服从以均值为<span class="math inline">\(f(\mathbf{x}, \mathbf{w})=\mathbf{w}^{\mathbf{T}} \mathbf{x}\)</span>为中心，方差为<span class="math inline">\(\sigma^{2}\)</span>的高斯分布。</p>
-<p><span class="math display">\[
-\begin{aligned} p(y | \mathbf{x}, \mathbf{w}, \sigma) &amp;=\mathcal{N}\left(y | \mathbf{w}^{\mathrm{T}} \mathbf{x}, \sigma^{2}\right) \\ &amp;=\frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{\left(y-\mathbf{w}^{\mathrm{T}} \mathbf{x}\right)^{2}}{2 \sigma^{2}}\right) \end{aligned}
+<p>假设标签 <span class="math inline">\(y\)</span> 为一个随机变量，其服从以均值为 <span class="math inline">\(f(\mathbf{x}, \mathbf{w})=\mathbf{w}^{\mathbf{T}} \mathbf{x}\)</span> 为中心，方差为 <span class="math inline">\(\sigma^{2}\)</span> 的高斯分布。</p>
+<p><span class="math display">\[\begin{aligned} p(y | \mathbf{x}, \mathbf{w}, \sigma) &amp;=\mathcal{N}\left(y | \mathbf{w}^{\mathrm{T}} \mathbf{x}, \sigma^{2}\right) \\ &amp;=\frac{1}{\sqrt{2 \pi} \sigma} \exp \left(-\frac{\left(y-\mathbf{w}^{\mathrm{T}} \mathbf{x}\right)^{2}}{2 \sigma^{2}}\right) \end{aligned}
 \]</span></p>
-<p>参数<span class="math inline">\(\mathbf{w}\)</span>在训练集上的<strong>似然函数</strong>（likelihood）为 <span class="math display">\[
-\begin{aligned} p(\mathbf{y} | X, \mathbf{w}, \sigma) &amp;=\prod_{n=1}^{N} p\left(y^{(n)} | \mathbf{x}^{(n)}, \mathbf{w}, \sigma\right) \\ &amp;=\prod_{n=1}^{N} \mathcal{N}\left(y^{(n)} | \mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}, \sigma^{2}\right) \end{aligned}
+<p>参数 <span class="math inline">\(\mathbf{w}\)</span> 在训练集上的 <strong> 似然函数</strong>（likelihood）为 <span class="math display">\[\begin{aligned} p(\mathbf{y} | X, \mathbf{w}, \sigma) &amp;=\prod_{n=1}^{N} p\left(y^{(n)} | \mathbf{x}^{(n)}, \mathbf{w}, \sigma\right) \\ &amp;=\prod_{n=1}^{N} \mathcal{N}\left(y^{(n)} | \mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}, \sigma^{2}\right) \end{aligned}
 \]</span></p>
-<p><span class="math display">\[
-\log p(\mathbf{y} | X, \mathbf{w}, \sigma)=\sum_{n=1}^{N} \log \mathcal{N}\left(y^{(n)} | \mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}, \sigma^{2}\right)
+<p><span class="math display">\[\log p(\mathbf{y} | X, \mathbf{w}, \sigma)=\sum_{n=1}^{N} \log \mathcal{N}\left(y^{(n)} | \mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}, \sigma^{2}\right)
 \]</span></p>
-<p><span class="math display">\[
-\frac{\partial \log p(\mathbf{y} | X, \mathbf{w}, \sigma)}{\partial \mathbf{w}}=0
+<p><span class="math display">\[\frac{\partial \log p(\mathbf{y} | X, \mathbf{w}, \sigma)}{\partial \mathbf{w}}=0
 \]</span></p>
-<p><span class="math display">\[
-\mathbf{w}^{M L}=\left(X X^{\mathrm{T}}\right)^{-1} X \mathbf{y}
+<p><span class="math display">\[\mathbf{w}^{M L}=\left(X X^{\mathrm{T}}\right)^{-1} X \mathbf{y}
 \]</span></p>
 <h3 id="最大后验估计">最大后验估计</h3>
 <p>略，我也不会，贝叶斯好难啊</p>

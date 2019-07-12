@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="背景1 溢出问题：softmax 函数在实现中要进行指数运算，指数函数值容易变得非常大，从而导致溢出。 解决办法 在进行 softmax 的指数函数的运算时，加上（或者减去） 某个常数并不会改变运算的结果。这里的 \(C\) 可以使用任何值，但是为了防 止溢出，一般会使用输入信号中的最大值。 \[ \begin{aligned} y_{k}=\frac{\exp \left(a_{k}\right">
+  <meta name="description" content="背景1 溢出问题：softmax 函数在实现中要进行指数运算，指数函数值容易变得非常大，从而导致溢出。 解决办法 在进行 softmax 的指数函数的运算时，加上（或者减去） 某个常数并不会改变运算的结果。这里的 \(C\) 可以使用任何值，但是为了防 止溢出，一般会使用输入信号中的最大值。 \[\begin{aligned} y_{k}=\frac{\exp \left(a_{k}\right)">
 <meta name="keywords" content="deep learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="神奇动物在哪里？——softmax 函数的实现">
 <meta property="og:url" content="http://guanhua.ml/2019/06/22/神奇动物在哪里？——softmax函数的实现/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="背景1 溢出问题：softmax 函数在实现中要进行指数运算，指数函数值容易变得非常大，从而导致溢出。 解决办法 在进行 softmax 的指数函数的运算时，加上（或者减去） 某个常数并不会改变运算的结果。这里的 \(C\) 可以使用任何值，但是为了防 止溢出，一般会使用输入信号中的最大值。 \[ \begin{aligned} y_{k}=\frac{\exp \left(a_{k}\right">
+<meta property="og:description" content="背景1 溢出问题：softmax 函数在实现中要进行指数运算，指数函数值容易变得非常大，从而导致溢出。 解决办法 在进行 softmax 的指数函数的运算时，加上（或者减去） 某个常数并不会改变运算的结果。这里的 \(C\) 可以使用任何值，但是为了防 止溢出，一般会使用输入信号中的最大值。 \[\begin{aligned} y_{k}=\frac{\exp \left(a_{k}\right)">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="神奇动物在哪里？——softmax 函数的实现">
-<meta name="twitter:description" content="背景1 溢出问题：softmax 函数在实现中要进行指数运算，指数函数值容易变得非常大，从而导致溢出。 解决办法 在进行 softmax 的指数函数的运算时，加上（或者减去） 某个常数并不会改变运算的结果。这里的 \(C\) 可以使用任何值，但是为了防 止溢出，一般会使用输入信号中的最大值。 \[ \begin{aligned} y_{k}=\frac{\exp \left(a_{k}\right">
+<meta name="twitter:description" content="背景1 溢出问题：softmax 函数在实现中要进行指数运算，指数函数值容易变得非常大，从而导致溢出。 解决办法 在进行 softmax 的指数函数的运算时，加上（或者减去） 某个常数并不会改变运算的结果。这里的 \(C\) 可以使用任何值，但是为了防 止溢出，一般会使用输入信号中的最大值。 \[\begin{aligned} y_{k}=\frac{\exp \left(a_{k}\right)">
 
 
 
@@ -490,12 +490,11 @@
       
 
       
-        <h2 id="背景1">背景<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></h2>
+        <h2 id="背景 1">背景<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></h2>
 <p><strong>溢出问题</strong>：softmax 函数在实现中要进行指数运算，指数函数值容易变得非常大，从而导致溢出。</p>
 <h2 id="解决办法">解决办法</h2>
 <p>在进行 softmax 的指数函数的运算时，加上（或者减去） 某个常数并不会改变运算的结果。这里的 <span class="math inline">\(C\)</span> 可以使用任何值，但是为了防 止溢出，一般会使用输入信号中的最大值。</p>
-<p><span class="math display">\[
-\begin{aligned} y_{k}=\frac{\exp \left(a_{k}\right)}{\sum_{i=1}^{n} \exp \left(a_{i}\right)} &amp;=\frac{\operatorname{Cexp}\left(a_{k}\right)}{\mathrm{C} \sum_{i=1}^{n} \exp \left(a_{i}\right)} \\ &amp;=\frac{\exp \left(a_{k}+\log \mathrm{C}\right)}{\sum_{i=1}^{n} \exp \left(a_{i}+\log \mathrm{C}\right)} \\ &amp;=\frac{\exp \left(a_{k}+\mathrm{C}^{\prime}\right)}{\sum_{i=1}^{n} \exp \left(a_{i}+\mathrm{C}^{\prime}\right)} \end{aligned}
+<p><span class="math display">\[\begin{aligned} y_{k}=\frac{\exp \left(a_{k}\right)}{\sum_{i=1}^{n} \exp \left(a_{i}\right)} &amp;=\frac{\operatorname{Cexp}\left(a_{k}\right)}{\mathrm{C} \sum_{i=1}^{n} \exp \left(a_{i}\right)} \\ &amp;=\frac{\exp \left(a_{k}+\log \mathrm{C}\right)}{\sum_{i=1}^{n} \exp \left(a_{i}+\log \mathrm{C}\right)} \\ &amp;=\frac{\exp \left(a_{k}+\mathrm{C}^{\prime}\right)}{\sum_{i=1}^{n} \exp \left(a_{i}+\mathrm{C}^{\prime}\right)} \end{aligned}
 \]</span></p>
 <h2 id="样例">样例</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([<span class="number">1010</span>, <span class="number">1000</span>, <span class="number">900</span>])</span><br></pre></td></tr></table></figure>
@@ -506,7 +505,7 @@
 array([nan, nan, nan])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c = np.max(a)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a - c</span><br></pre></td></tr></table></figure>
-<pre><code>array([   0,  -10, -110])</code></pre>
+<pre><code>array([0,  -10, -110])</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.exp(a-c)/np.sum(np.exp(a-c))</span><br></pre></td></tr></table></figure>
 <pre><code>array([9.99954602e-01, 4.53978687e-05, 1.68883521e-48])</code></pre>
 <h2 id="实现">实现</h2>
@@ -514,7 +513,7 @@ array([nan, nan, nan])</code></pre>
 <section class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>参考<a href="https://book.douban.com/subject/30270959/" target="_blank" rel="noopener">这里</a>第四章，第66页<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>参考 <a href="https://book.douban.com/subject/30270959/" target="_blank" rel="noopener"> 这里 </a> 第四章，第 66 页<a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
 
@@ -530,7 +529,7 @@ array([nan, nan, nan])</code></pre>
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/27/Keras源码漫谈-1/" rel="bookmark">Keras源码漫谈(1)</a></div>
+      <div class="popular-posts-title"><a href="/2019/06/27/Keras源码漫谈-1/" rel="bookmark">Keras 源码漫谈 (1)</a></div>
       
     </li>
   
@@ -884,7 +883,7 @@ array([nan, nan, nan])</code></pre>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景1"><span class="nav-number">1.</span> <span class="nav-text">背景1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决办法"><span class="nav-number">2.</span> <span class="nav-text">解决办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例"><span class="nav-number">3.</span> <span class="nav-text">样例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">4.</span> <span class="nav-text">实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景 1"><span class="nav-number">1.</span> <span class="nav-text">背景1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决办法"><span class="nav-number">2.</span> <span class="nav-text">解决办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例"><span class="nav-number">3.</span> <span class="nav-text">样例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">4.</span> <span class="nav-text">实现</span></a></li></ol></div>
             
 
           </div>

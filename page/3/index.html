@@ -494,14 +494,14 @@
         
           
             <p>
-              这是Python自带的标准库，参见这里
+              这是 Python 自带的标准库，参见  这里
 textwrap.wrap(text, width=70, **kwargs)
 返回列表，每个元素的宽度为 width
 
 wrap
 
 textwrap.fill(text, width=70, **kwargs)
-根据指定长度拆分字符串，然后逐行显示，结果为左
+根据指定长度拆分字符串，然后逐行显示，
               ...
             </p>
           <!--noindex-->
@@ -679,11 +679,10 @@ textwrap.fill(text, width=70, **kwargs)
         
           
             <p>
-              导数
-乘法法则
+               导数 
+ 乘法法则 
 
-\[
-\frac{\partial \mathbf{y}^{\mathrm{T}} \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} \mathbf{z}+\frac{\
+\[\frac{\partial \mathbf{y}^{\mathrm{T}} \mathbf{z}}{\partial \mathbf{x}}=\frac{\partial \mathbf{y}}{\partial \mathbf{x}} \mathbf{z}+\fra
               ...
             </p>
           <!--noindex-->
@@ -863,12 +862,10 @@ textwrap.fill(text, width=70, **kwargs)
             <p>
               向量
 \(l_1\) 范数 为向量的各个元素的绝对值之和
-\[
-\|\mathbf{v}\|_{1}=\sum_{i=1}^{n}\left|v_{i}\right|
+\[\|\mathbf{v}\|_{1}=\sum_{i=1}^{n}\left|v_{i}\right|
 \]
-\(l_2\) 范数/Frobenius 范数 为向量的各个元素的平方和再开平方
-\[
-\|\mathbf{v}\|_{2}=
+\(l_2\) 范数 /Frobenius 范数 为向量的各个元素的平方和再开平方
+\[\|\mathbf{v}\|_{2}=\
               ...
             </p>
           <!--noindex-->
@@ -1051,8 +1048,7 @@ textwrap.fill(text, width=70, **kwargs)
 支持向量机
 
 原始问题
-\[
-\begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t.  } c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad
+\[\begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t.} c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad h_
               ...
             </p>
           <!--noindex-->
@@ -1233,10 +1229,10 @@ textwrap.fill(text, width=70, **kwargs)
               对称加密算法
 （1）甲方选择某一种加密规则，对信息进行加密； （2）乙方使用同一种规则，对信息进行解密。
 
-由于加密和解密使用同样规则（简称&quot;密钥&quot;），这被称为&quot;对称加密算法&quot;（Symmetric-key algorithm）。
+由于加密和解密使用同样规则（简称 &quot; 密钥 &quot;），这被称为 &quot; 对称加密算法 &quot;（Symmetric-key algorithm）。
 
 非对称加密
-（1）乙方生成两
+（1
               ...
             </p>
           <!--noindex-->
@@ -1418,13 +1414,12 @@ textwrap.fill(text, width=70, **kwargs)
 生成模型
 
 混合高斯模型和其他混合模型
-隐马尔可夫模型 ( HMM )
+隐马尔可夫模型 (HMM)
 朴素贝叶斯
 LDA 文档主题生成模型
 
-生成式模型由数据学习联合概率分布 \(P(X, Y)\)，然后求出条件概率分布 \[
-P(Y|X)=\frac{P(X,Y)}{P(X)}
-\] 作为预测的模型，即生成
+生成式模型  由数据学习联合概率分布 \(P(X, Y)\)，然后求出条件概率分布 \[P(Y|X)=\frac{P(X,Y)}{P(X)}
+\] 作为预测的模型，即生成模
               ...
             </p>
           <!--noindex-->
@@ -1606,8 +1601,7 @@ P(Y|X)=\frac{P(X,Y)}{P(X)}
 溢出问题：softmax 函数在实现中要进行指数运算，指数函数值容易变得非常大，从而导致溢出。
 解决办法
 在进行 softmax 的指数函数的运算时，加上（或者减去） 某个常数并不会改变运算的结果。这里的 \(C\) 可以使用任何值，但是为了防 止溢出，一般会使用输入信号中的最大值。
-\[
-
+\[\
               ...
             </p>
           <!--noindex-->
@@ -1786,11 +1780,10 @@ P(Y|X)=\frac{P(X,Y)}{P(X)}
           
             <p>
               模型
-\[
-f(x)=\operatorname{sign}(w \cdot x+b)
+\[f(x)=\operatorname{sign}(w \cdot x+b)
 \]
 感知机的几何解释
-\(wx+b\) 对应于特征空间中的一个分离超平面 \(S\)，其中 \(w\) 是 \(S\) 的法向量，\(b\) 是 \(S\) 的截距。\(S\) 将特征空间划分为两个部分，位于两
+\(wx+b\) 对应于特征空间中的一个分离超平面 \(S\)，其中 \(w\) 是 \(S\) 的法向量，\(b\) 是 \(S\) 的截距。\(S\) 将特征空间划分为两个部分，位于两个
               ...
             </p>
           <!--noindex-->
@@ -2166,9 +2159,9 @@ f(x)=\operatorname{sign}(w \cdot x+b)
           
             <p>
               EM 算法是一种迭代算法，用于含有隐变量的概率模型参数的极大似然估计。每次迭代由两步组成： - \(E\) 步，求期望 (expectation) - \(M\) 步，求极大值 (maximization)，直至收敛为止。
-算法
+ 算法 
 
-\(E\)步：\(\theta(i)\) 为 \(i\) 次迭代参数
+\(E\) 步：\(\theta(i)\) 为 \(i\) 次迭
               ...
             </p>
           <!--noindex-->

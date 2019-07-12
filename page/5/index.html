@@ -500,13 +500,11 @@
 生成对抗网络的流程图
 
 判别网络
-\[
-p(y=1 | \mathbf{x})=D(\mathbf{x}, \phi)
+\[p(y=1 | \mathbf{x})=D(\mathbf{x}, \phi)
 \]
 判别网络的 目标函数为最小化交叉熵，即最大化对数似然。
 生成网络
-\[
-\max _{\theta}\left(\mathbb{E}_
+\[\max _{\theta}\left(\mathbb{E}_{\
               ...
             </p>
           <!--noindex-->
@@ -1069,8 +1067,7 @@ mini-batch SGD
           
             <p>
               简单循环神经网络
-\[
-\begin{aligned} \mathbf{z}_{t} &amp;=U \mathbf{h}_{t-1}+W \mathbf{x}_{t}+\mathbf{b} \\ \mathbf{h}_{t} &amp;=f\left(\mathbf{z}_{t}\right) \
+\[\begin{aligned} \mathbf{z}_{t} &amp;=U \mathbf{h}_{t-1}+W \mathbf{x}_{t}+\mathbf{b} \\ \mathbf{h}_{t} &amp;=f\left(\mathbf{z}_{t}\right) \e
               ...
             </p>
           <!--noindex-->
@@ -1252,8 +1249,7 @@ mini-batch SGD
 
 卷积
 
-\[
-y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1}
+\[y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1}
 \]
 一幅图像在经过卷积操作后得到结果称为特征映射（Feature Map）。
 互相关和卷积的区别在于卷积核仅仅是否进行翻转。
@@ -1264,7 +1260,7 @@ y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1}
 卷积神经网络
 卷积层
 
-第\
+第 \
               ...
             </p>
           <!--noindex-->
@@ -1443,8 +1439,7 @@ y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1}
           
             <p>
               前馈神经网络是怎么传播的？
-\[
-\begin{array}{l}{\mathbf{z}^{(l)}=W^{(l)} \cdot \mathbf{a}^{(l-1)}+\mathbf{b}^{(l)},} \\ {\mathbf{a}^{(l)}=f_{l}\left(\mathbf{z}^{(l)
+\[\begin{array}{l}{\mathbf{z}^{(l)}=W^{(l)} \cdot \mathbf{a}^{(l-1)}+\mathbf{b}^{(l)},} \\ {\mathbf{a}^{(l)}=f_{l}\left(\mathbf{z}^{(l)}
               ...
             </p>
           <!--noindex-->
@@ -1625,14 +1620,13 @@ y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1}
               常见激活函数
 Sigmoid 型激活函数
 
-Logistic 函数，值域\(0 \sim -1\) \[
-\sigma(x)=\frac{1}{1+\exp (-x)}
+Logistic 函数，值域\(0 \sim -1\) \[\sigma(x)=\frac{1}{1+\exp (-x)}
 \]
-Tanh 函数，值域\(-1 \sim 1\) \[
-\tanh (x)=2 \sigma(2 x)-1
+Tanh 函数，值域\(-1 \sim 1\) \[\tanh (x)=2 \sigma(2 x)-1
 \]
 
-修正线性单
+修正线性单元
+
               ...
             </p>
           <!--noindex-->
@@ -1811,13 +1805,11 @@ Tanh 函数，值域\(-1 \sim 1\) \[
           
             <p>
               模型
-\[
-f(\mathbf{x} ; \mathbf{w})=\mathbf{w}^{\mathrm{T}} \mathbf{x}
+\[f(\mathbf{x} ; \mathbf{w})=\mathbf{w}^{\mathrm{T}} \mathbf{x}
 \]
 参数学习
 经验风险最小化
-\[
-\begin{aligned} \mathcal{R}(\mathbf{w}) &amp;=\sum_{n=1}^{N} \m
+\[\begin{aligned} \mathcal{R}(\mathbf{w}) &amp;=\sum_{n=1}^{N} \mat
               ...
             </p>
           <!--noindex-->
@@ -1995,9 +1987,8 @@ f(\mathbf{x} ; \mathbf{w})=\mathbf{w}^{\mathrm{T}} \mathbf{x}
         
           
             <p>
-              模型
-\[
-\begin{aligned} p(y=1 | \mathbf{x}) &amp;=\sigma\left(\mathbf{w}^{\mathrm{T}} \mathbf{x}\right) \\ &amp; \triangleq \frac{1}{1+\exp \left(-\math
+               模型 
+\[\begin{aligned} p(y=1 | \mathbf{x}) &amp;=\sigma\left(\mathbf{w}^{\mathrm{T}} \mathbf{x}\right) \\ &amp; \triangleq \frac{1}{1+\exp \left(-\mat
               ...
             </p>
           <!--noindex-->
@@ -2175,19 +2166,16 @@ f(\mathbf{x} ; \mathbf{w})=\mathbf{w}^{\mathrm{T}} \mathbf{x}
         
           
             <p>
-              模型
-\[
-w^{*} \cdot x+b^{*}=0
+               模型 
+\[w^{*} \cdot x+b^{*}=0
 \]
-\[
-f(x)=\operatorname{sign}\left(w^{*} \cdot x+b^{*}\right)
+\[f(x)=\operatorname{sign}\left(w^{*} \cdot x+b^{*}\right)
 \]
-策略
-核技巧
-线性可分支持向量机
+ 策略 
+ 核技巧 
+ 线性可分支持向量机 
 
-函数间隔 \[
-\hat{\gamma}_{i}=y_{i}\left(w 
+ 函数间隔  \[\hat{\gamma}_{i}=y_{i}\
               ...
             </p>
           <!--noindex-->

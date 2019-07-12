@@ -105,19 +105,19 @@
 
 
 
-  <meta name="description" content="布隆过滤器原理  应用场景 大数据，快速查找，不介意小概率误判  分布式磁盘 IO 爬虫 黑名单过滤  优缺点 优点  空间小，相比list, RB-tree, hash 不用存数据 查询快，\(O(k)\)级别的查询效率，还能并行  缺点  有时候同学不在寝室，他却告诉我们在；但是他们告诉我们不在，就一定不在 删除难  原理  布隆过滤器的原理是，当一个元素被加入集合时，通过\(K\)个散列函">
+  <meta name="description" content="布隆过滤器原理  应用场景 大数据 ， 快速查找 ， 不介意小概率误判  分布式磁盘 IO 爬虫 黑名单过滤  优缺点 优点  空间小，相比list, RB-tree, hash 不用存数据 查询快，\(O(k)\)级别的查询效率，还能并行  缺点  有时候同学不在寝室，他却告诉我们在；但是他们告诉我们不在，就一定不在 删除难  原理  布隆过滤器的原理是，当一个元素被加入集合时，通过 \(K\">
 <meta name="keywords" content="math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="布隆过滤器">
 <meta property="og:url" content="http://guanhua.ml/2019/07/03/布隆过滤器/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="布隆过滤器原理  应用场景 大数据，快速查找，不介意小概率误判  分布式磁盘 IO 爬虫 黑名单过滤  优缺点 优点  空间小，相比list, RB-tree, hash 不用存数据 查询快，\(O(k)\)级别的查询效率，还能并行  缺点  有时候同学不在寝室，他却告诉我们在；但是他们告诉我们不在，就一定不在 删除难  原理  布隆过滤器的原理是，当一个元素被加入集合时，通过\(K\)个散列函">
+<meta property="og:description" content="布隆过滤器原理  应用场景 大数据 ， 快速查找 ， 不介意小概率误判  分布式磁盘 IO 爬虫 黑名单过滤  优缺点 优点  空间小，相比list, RB-tree, hash 不用存数据 查询快，\(O(k)\)级别的查询效率，还能并行  缺点  有时候同学不在寝室，他却告诉我们在；但是他们告诉我们不在，就一定不在 删除难  原理  布隆过滤器的原理是，当一个元素被加入集合时，通过 \(K\">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2019/07/03/Zte9JS.png">
 <meta property="og:updated_time" content="2019-07-03T07:32:28.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="布隆过滤器">
-<meta name="twitter:description" content="布隆过滤器原理  应用场景 大数据，快速查找，不介意小概率误判  分布式磁盘 IO 爬虫 黑名单过滤  优缺点 优点  空间小，相比list, RB-tree, hash 不用存数据 查询快，\(O(k)\)级别的查询效率，还能并行  缺点  有时候同学不在寝室，他却告诉我们在；但是他们告诉我们不在，就一定不在 删除难  原理  布隆过滤器的原理是，当一个元素被加入集合时，通过\(K\)个散列函">
+<meta name="twitter:description" content="布隆过滤器原理  应用场景 大数据 ， 快速查找 ， 不介意小概率误判  分布式磁盘 IO 爬虫 黑名单过滤  优缺点 优点  空间小，相比list, RB-tree, hash 不用存数据 查询快，\(O(k)\)级别的查询效率，还能并行  缺点  有时候同学不在寝室，他却告诉我们在；但是他们告诉我们不在，就一定不在 删除难  原理  布隆过滤器的原理是，当一个元素被加入集合时，通过 \(K\">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/07/03/Zte9JS.png">
 
 
@@ -484,7 +484,7 @@
 <img src="https://s2.ax1x.com/2019/07/03/Zte9JS.png" alt="布隆过滤器原理"><figcaption>布隆过滤器原理</figcaption>
 </figure>
 <h2 id="应用场景">应用场景</h2>
-<p><strong>大数据</strong>，<strong>快速查找</strong>，<strong>不介意小概率误判</strong></p>
+<p><strong>大数据 </strong>，<strong> 快速查找 </strong>，<strong> 不介意小概率误判</strong></p>
 <ul>
 <li>分布式磁盘 IO</li>
 <li>爬虫</li>
@@ -503,9 +503,9 @@
 </ul>
 <h2 id="原理">原理</h2>
 <blockquote>
-<p>布隆过滤器的原理是，当一个元素被加入集合时，通过<span class="math inline">\(K\)</span>个散列函数将这个元素映射成一个位数组中的<span class="math inline">\(K\)</span>个点，把它们置为1。检索时，我们只要看看这些点是不是都是1就（大约）知道集合中有没有它了：如果这些点有任何一个0，则被检元素一定不在；如果都是1，则被检元素很可能在。这就是布隆过滤器的基本思想。</p>
+<p>布隆过滤器的原理是，当一个元素被加入集合时，通过 <span class="math inline">\(K\)</span> 个散列函数将这个元素映射成一个位数组中的 <span class="math inline">\(K\)</span> 个点，把它们置为 1。检索时，我们只要看看这些点是不是都是 1 就（大约）知道集合中有没有它了：如果这些点有任何一个 0，则被检元素一定不在；如果都是 1，则被检元素很可能在。这就是布隆过滤器的基本思想。</p>
 </blockquote>
-<p>一般了解到这里就可以。如果你还想看，下面就是无聊的公式推导了。 参考<a href="https://www.wikiwand.com/en/Bloom_filter" target="_blank" rel="noopener">wiki</a>吧</p>
+<p>一般了解到这里就可以。如果你还想看，下面就是无聊的公式推导了。 参考 <a href="https://www.wikiwand.com/en/Bloom_filter" target="_blank" rel="noopener">wiki</a> 吧</p>
 <h2 id="搞事情">搞事情</h2>
 <h3 id="搞哈希算法">搞哈希算法</h3>
 <p>哈希算法 = 数组 + 哈希函数</p>
@@ -513,14 +513,13 @@
 <p>两种办法：开链法和闭散列法。开链法就是将映射到同一下标的所有元素形成一个链表，挂到该位置下面；闭散列法就是将冲突的元素按照某种方式向后排放。</p>
 <p><strong>缺点</strong></p>
 <ul>
-<li>开链法：极端条件下又变成<span class="math inline">\(O(n)\)</span>了</li>
+<li>开链法：极端条件下又变成 <span class="math inline">\(O(n)\)</span> 了</li>
 <li>闭散列法：多吃多占，影响了下个本来映射到该位置的元素</li>
 </ul>
 <p><strong>负载因子</strong></p>
 <p>就是当前哈希表中存放的元素数和数组长度的比值。一般来说，负载因子超过 0.8，就需要对哈希表扩容。即重新构造一个更大的数组，将所有元素转移过去，再释放原有空间。</p>
 <h3 id="误判概率">误判概率</h3>
-<p><span class="math display">\[
-P \approx\left(1-e^{-\frac{n k}{m}}\right)^{k}
+<p><span class="math display">\[P \approx\left(1-e^{-\frac{n k}{m}}\right)^{k}
 \]</span></p>
 <p>看看影响因素</p>
 <ul>
@@ -528,7 +527,7 @@ P \approx\left(1-e^{-\frac{n k}{m}}\right)^{k}
 <li>数组大小 <span class="math inline">\(m\)</span></li>
 <li>选取的 <span class="math inline">\(k\)</span> 个哈希函数</li>
 </ul>
-<p>从这个公式也可以看出，<span class="math inline">\(m\)</span>和<span class="math inline">\(n\)</span> 成比例才可以保证误报率不变。<span class="math inline">\(k\)</span>不用管他。</p>
+<p>从这个公式也可以看出，<span class="math inline">\(m\)</span>和 <span class="math inline">\(n\)</span> 成比例才可以保证误报率不变。<span class="math inline">\(k\)</span> 不用管他。</p>
 <hr>
 <p>参考：</p>
 <ol type="1">

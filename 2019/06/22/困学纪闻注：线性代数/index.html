@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="向量 \(l_1\) 范数 为向量的各个元素的绝对值之和 \[ \|\mathbf{v}\|_{1}=\sum_{i=1}^{n}\left|v_{i}\right| \] \(l_2\) 范数/Frobenius 范数 为向量的各个元素的平方和再开平方 \[ \|\mathbf{v}\|_{2}=\sqrt{\sum_{i=1}^{n} v_{i}^{2}}=\sqrt{\mathbf{v}^{">
+  <meta name="description" content="向量 \(l_1\) 范数 为向量的各个元素的绝对值之和 \[\|\mathbf{v}\|_{1}=\sum_{i=1}^{n}\left|v_{i}\right| \] \(l_2\) 范数 /Frobenius 范数 为向量的各个元素的平方和再开平方 \[\|\mathbf{v}\|_{2}=\sqrt{\sum_{i=1}^{n} v_{i}^{2}}=\sqrt{\mathbf{v}^{\">
 <meta name="keywords" content="deep learning,math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="困学纪闻注：线性代数">
 <meta property="og:url" content="http://guanhua.ml/2019/06/22/困学纪闻注：线性代数/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="向量 \(l_1\) 范数 为向量的各个元素的绝对值之和 \[ \|\mathbf{v}\|_{1}=\sum_{i=1}^{n}\left|v_{i}\right| \] \(l_2\) 范数/Frobenius 范数 为向量的各个元素的平方和再开平方 \[ \|\mathbf{v}\|_{2}=\sqrt{\sum_{i=1}^{n} v_{i}^{2}}=\sqrt{\mathbf{v}^{">
+<meta property="og:description" content="向量 \(l_1\) 范数 为向量的各个元素的绝对值之和 \[\|\mathbf{v}\|_{1}=\sum_{i=1}^{n}\left|v_{i}\right| \] \(l_2\) 范数 /Frobenius 范数 为向量的各个元素的平方和再开平方 \[\|\mathbf{v}\|_{2}=\sqrt{\sum_{i=1}^{n} v_{i}^{2}}=\sqrt{\mathbf{v}^{\">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="困学纪闻注：线性代数">
-<meta name="twitter:description" content="向量 \(l_1\) 范数 为向量的各个元素的绝对值之和 \[ \|\mathbf{v}\|_{1}=\sum_{i=1}^{n}\left|v_{i}\right| \] \(l_2\) 范数/Frobenius 范数 为向量的各个元素的平方和再开平方 \[ \|\mathbf{v}\|_{2}=\sqrt{\sum_{i=1}^{n} v_{i}^{2}}=\sqrt{\mathbf{v}^{">
+<meta name="twitter:description" content="向量 \(l_1\) 范数 为向量的各个元素的绝对值之和 \[\|\mathbf{v}\|_{1}=\sum_{i=1}^{n}\left|v_{i}\right| \] \(l_2\) 范数 /Frobenius 范数 为向量的各个元素的平方和再开平方 \[\|\mathbf{v}\|_{2}=\sqrt{\sum_{i=1}^{n} v_{i}^{2}}=\sqrt{\mathbf{v}^{\">
 
 
 
@@ -492,47 +492,38 @@
       
         <h2 id="向量">向量</h2>
 <p><strong><span class="math inline">\(l_1\)</span> 范数</strong> 为向量的各个元素的绝对值之和</p>
-<p><span class="math display">\[
-\|\mathbf{v}\|_{1}=\sum_{i=1}^{n}\left|v_{i}\right|
+<p><span class="math display">\[\|\mathbf{v}\|_{1}=\sum_{i=1}^{n}\left|v_{i}\right|
 \]</span></p>
-<p><strong><span class="math inline">\(l_2\)</span> 范数/Frobenius 范数</strong> 为向量的各个元素的平方和再开平方</p>
-<p><span class="math display">\[
-\|\mathbf{v}\|_{2}=\sqrt{\sum_{i=1}^{n} v_{i}^{2}}=\sqrt{\mathbf{v}^{\mathrm{T}} \mathbf{v}}
+<p><strong><span class="math inline">\(l_2\)</span> 范数 /Frobenius 范数</strong> 为向量的各个元素的平方和再开平方</p>
+<p><span class="math display">\[\|\mathbf{v}\|_{2}=\sqrt{\sum_{i=1}^{n} v_{i}^{2}}=\sqrt{\mathbf{v}^{\mathrm{T}} \mathbf{v}}
 \]</span></p>
 <h2 id="矩阵">矩阵</h2>
 <p><strong>Hadamard 积</strong></p>
-<p><span class="math display">\[
-[A \odot B]_{i j}=a_{i j} b_{i j}
+<p><span class="math display">\[[A \odot B]_{i j}=a_{i j} b_{i j}
 \]</span></p>
 <p><strong>矩阵范数</strong></p>
-<p><span class="math display">\[
-\|A\|_{p}=\left(\sum_{i=1}^{m} \sum_{j=1}^{n}\left|a_{i j}\right|^{p}\right)^{1 / p}
+<p><span class="math display">\[\|A\|_{p}=\left(\sum_{i=1}^{m} \sum_{j=1}^{n}\left|a_{i j}\right|^{p}\right)^{1 / p}
 \]</span></p>
-<p><strong>Gram 矩阵</strong> 向量空间中一组向量 <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2} \cdots, \mathbf{v}_{n}\)</span> Gram矩阵。<span class="math inline">\(G\)</span> 式内积的对称矩阵，其元素 <span class="math inline">\(G_{ij}\)</span> 为 <span class="math inline">\(\mathbf{V}_{i}^{\mathrm{T}} \mathbf{v}_{j}\)</span> 。</p>
+<p><strong>Gram 矩阵</strong> 向量空间中一组向量 <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2} \cdots, \mathbf{v}_{n}\)</span> Gram 矩阵。<span class="math inline">\(G\)</span> 式内积的对称矩阵，其元素 <span class="math inline">\(G_{ij}\)</span> 为 <span class="math inline">\(\mathbf{V}_{i}^{\mathrm{T}} \mathbf{v}_{j}\)</span> 。</p>
 <blockquote>
 <p>一个重要的应用是计算线性无关：一族向量线性无关当且仅当格拉姆行列式（格拉姆矩阵的行列式）不等于零。</p>
 </blockquote>
-<p><strong>正定矩阵</strong> 方块[对称]矩阵 <span class="math display">\[
-\mathbf{x}^{\mathrm{T}} A \mathbf{x}&gt;0
+<p><strong>正定矩阵 </strong> 方块[对称] 矩阵 <span class="math display">\[\mathbf{x}^{\mathrm{T}} A \mathbf{x}&gt;0
 \]</span></p>
-<p><strong>正交矩阵/酉矩阵</strong> 方块矩阵，其逆矩阵等于转置矩阵</p>
-<p><span class="math display">\[
-A^{\mathrm{T}}=A^{-1}
+<p><strong>正交矩阵 / 酉矩阵</strong> 方块矩阵，其逆矩阵等于转置矩阵</p>
+<p><span class="math display">\[A^{\mathrm{T}}=A^{-1}
 \]</span></p>
 <p><strong>特征值与特征向量</strong></p>
-<p><span class="math display">\[
-A \mathbf{v}=\lambda \mathbf{v}
+<p><span class="math display">\[A \mathbf{v}=\lambda \mathbf{v}
 \]</span></p>
-<p><strong>奇异值分解</strong> <span class="math inline">\(m \times n\)</span>的矩阵</p>
-<p><span class="math display">\[
-A=U \Sigma V^{\mathrm{T}}
+<p><strong>奇异值分解 </strong> <span class="math inline">\(m \times n\)</span> 的矩阵</p>
+<p><span class="math display">\[A=U \Sigma V^{\mathrm{T}}
 \]</span></p>
-<p><span class="math inline">\(U\)</span> 和 <span class="math inline">\(V\)</span> 分别为 <span class="math inline">\(m \times m\)</span> 和 <span class="math inline">\(n \times n\)</span> 的正交矩阵。<span class="math inline">\(\Sigma\)</span> 为 <span class="math inline">\(m \times n\)</span> 的对角矩阵，其对角线上的元素称为<strong>奇异值</strong>。</p>
+<p><span class="math inline">\(U\)</span> 和 <span class="math inline">\(V\)</span> 分别为 <span class="math inline">\(m \times m\)</span> 和 <span class="math inline">\(n \times n\)</span> 的正交矩阵。<span class="math inline">\(\Sigma\)</span> 为 <span class="math inline">\(m \times n\)</span> 的对角矩阵，其对角线上的元素称为 <strong> 奇异值</strong>。</p>
 <p><strong>特征分解</strong> <span class="math inline">\(n \times n\)</span> 的方块矩阵</p>
-<p><span class="math display">\[
-A=Q \Lambda Q^{-1}
+<p><span class="math display">\[A=Q \Lambda Q^{-1}
 \]</span></p>
-<p><span class="math inline">\(Q\)</span> 为 <span class="math inline">\(n \times n\)</span> 方块矩阵，每一列都是<strong>特征向量</strong>，<span class="math inline">\(\Lambda\)</span> 为对角阵，每个对角元素都是特征值。</p>
+<p><span class="math inline">\(Q\)</span> 为 <span class="math inline">\(n \times n\)</span> 方块矩阵，每一列都是 <strong> 特征向量</strong>，<span class="math inline">\(\Lambda\)</span> 为对角阵，每个对角元素都是特征值。</p>
 <blockquote>
 <p>如果 <span class="math inline">\(A\)</span> 为对称矩阵，则 <span class="math inline">\(A\)</span>可以被分解为正交矩阵正交矩阵连乘。</p>
 </blockquote>
@@ -549,7 +540,7 @@ A=Q \Lambda Q^{-1}
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/27/Keras源码漫谈-1/" rel="bookmark">Keras源码漫谈(1)</a></div>
+      <div class="popular-posts-title"><a href="/2019/06/27/Keras源码漫谈-1/" rel="bookmark">Keras 源码漫谈 (1)</a></div>
       
     </li>
   

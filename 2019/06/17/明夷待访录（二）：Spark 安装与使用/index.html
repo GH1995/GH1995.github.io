@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="安装和使用 安装 Hadoop 和 Spark 在 pyspark 中运行代码 Spark 独立应用程序编程 1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext(&apos;local&apos;, &apos;test&apos;)logFile = &quot;file:///usr/">
+  <meta name="description" content="安装和使用   安装 Hadoop 和 Spark  在 pyspark 中运行代码  Spark 独立应用程序编程  1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext(&apos;local&apos;, &apos;test&apos;)logFile = &quot;file:/">
 <meta name="keywords" content="spark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="明夷待访录（二）：Spark 安装与使用">
 <meta property="og:url" content="http://guanhua.ml/2019/06/17/明夷待访录（二）：Spark 安装与使用/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="安装和使用 安装 Hadoop 和 Spark 在 pyspark 中运行代码 Spark 独立应用程序编程 1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext(&apos;local&apos;, &apos;test&apos;)logFile = &quot;file:///usr/">
+<meta property="og:description" content="安装和使用   安装 Hadoop 和 Spark  在 pyspark 中运行代码  Spark 独立应用程序编程  1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext(&apos;local&apos;, &apos;test&apos;)logFile = &quot;file:/">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-12T06:50:06.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="明夷待访录（二）：Spark 安装与使用">
-<meta name="twitter:description" content="安装和使用 安装 Hadoop 和 Spark 在 pyspark 中运行代码 Spark 独立应用程序编程 1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext(&apos;local&apos;, &apos;test&apos;)logFile = &quot;file:///usr/">
+<meta name="twitter:description" content="安装和使用   安装 Hadoop 和 Spark  在 pyspark 中运行代码  Spark 独立应用程序编程  1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext(&apos;local&apos;, &apos;test&apos;)logFile = &quot;file:/">
 
 
 
@@ -508,17 +508,17 @@
       
 
       
-        <h1 id="安装和使用">安装和使用</h1>
-<h2 id="安装-hadoop-和-spark">安装 Hadoop 和 Spark</h2>
-<h2 id="在-pyspark-中运行代码">在 pyspark 中运行代码</h2>
-<h2 id="spark-独立应用程序编程">Spark 独立应用程序编程</h2>
+        <h1 id="安装和使用"> 安装和使用 </h1>
+<h2 id="安装 -hadoop- 和 -spark"> 安装 Hadoop 和 Spark</h2>
+<h2 id="在 -pyspark- 中运行代码"> 在 pyspark 中运行代码 </h2>
+<h2 id="spark- 独立应用程序编程">Spark 独立应用程序编程 </h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line"></span><br><span class="line">sc = SparkContext(<span class="string">'local'</span>, <span class="string">'test'</span>)</span><br><span class="line"></span><br><span class="line">logFile = <span class="string">"file:///usr/local/spark/README.md"</span></span><br><span class="line">logData = sc.textFile(logFile, <span class="number">2</span>).cache()</span><br><span class="line"></span><br><span class="line">numAs = logData.filter(<span class="keyword">lambda</span> line: <span class="string">'a'</span> <span class="keyword">in</span> line).count()</span><br><span class="line">numBs = logData.filter(<span class="keyword">lambda</span> line: <span class="string">'b'</span> <span class="keyword">in</span> line).count()</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Lines with a: %s, Lines with b: %s'</span> % (numAs, numBs))</span><br></pre></td></tr></table></figure>
-<h1 id="第一个spark应用程序wordcount">第一个Spark应用程序：WordCount</h1>
-<h2 id="在-pyspark-中执行词频统计">在 pyspark 中执行词频统计</h2>
-<h3 id="加载本地文件">加载本地文件</h3>
+<h1 id="第一个 spark 应用程序 wordcount"> 第一个 Spark 应用程序：WordCount</h1>
+<h2 id="在 -pyspark- 中执行词频统计"> 在 pyspark 中执行词频统计 </h2>
+<h3 id="加载本地文件"> 加载本地文件 </h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile = sc.Te</span><br></pre></td></tr></table></figure>
-<h1 id="spark集群环境搭建">Spark集群环境搭建</h1>
-<h1 id="在集群上运行spark应用程序">在集群上运行Spark应用程序</h1>
+<h1 id="spark 集群环境搭建">Spark 集群环境搭建 </h1>
+<h1 id="在集群上运行 spark 应用程序"> 在集群上运行 Spark 应用程序 </h1>
 
       
     </div>
@@ -858,7 +858,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装和使用"><span class="nav-number">1.</span> <span class="nav-text">安装和使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-hadoop-和-spark"><span class="nav-number">1.1.</span> <span class="nav-text">安装 Hadoop 和 Spark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-pyspark-中运行代码"><span class="nav-number">1.2.</span> <span class="nav-text">在 pyspark 中运行代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark-独立应用程序编程"><span class="nav-number">1.3.</span> <span class="nav-text">Spark 独立应用程序编程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个spark应用程序wordcount"><span class="nav-number">2.</span> <span class="nav-text">第一个Spark应用程序：WordCount</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在-pyspark-中执行词频统计"><span class="nav-number">2.1.</span> <span class="nav-text">在 pyspark 中执行词频统计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载本地文件"><span class="nav-number">2.1.1.</span> <span class="nav-text">加载本地文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spark集群环境搭建"><span class="nav-number">3.</span> <span class="nav-text">Spark集群环境搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在集群上运行spark应用程序"><span class="nav-number">4.</span> <span class="nav-text">在集群上运行Spark应用程序</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装和使用"><span class="nav-number">1.</span> <span class="nav-text"> 安装和使用 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装 -hadoop- 和 -spark"><span class="nav-number">1.1.</span> <span class="nav-text"> 安装 Hadoop 和 Spark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在 -pyspark- 中运行代码"><span class="nav-number">1.2.</span> <span class="nav-text"> 在 pyspark 中运行代码 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark- 独立应用程序编程"><span class="nav-number">1.3.</span> <span class="nav-text">Spark 独立应用程序编程 </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个 spark 应用程序 wordcount"><span class="nav-number">2.</span> <span class="nav-text"> 第一个 Spark 应用程序：WordCount</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在 -pyspark- 中执行词频统计"><span class="nav-number">2.1.</span> <span class="nav-text"> 在 pyspark 中执行词频统计 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载本地文件"><span class="nav-number">2.1.1.</span> <span class="nav-text"> 加载本地文件 </span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spark 集群环境搭建"><span class="nav-number">3.</span> <span class="nav-text">Spark 集群环境搭建 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在集群上运行 spark 应用程序"><span class="nav-number">4.</span> <span class="nav-text"> 在集群上运行 Spark 应用程序 </span></a></li></ol></div>
             
 
           </div>

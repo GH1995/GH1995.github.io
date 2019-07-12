@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="最大熵模型 支持向量机  原始问题 \[ \begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t.  } c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad h_{j}(x)=0, \quad j=1,2, \cdots, l}\end{array} \]">
+  <meta name="description" content="最大熵模型 支持向量机  原始问题 \[\begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t.} c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad h_{j}(x)=0, \quad j=1,2, \cdots, l}\end{array} \] 此约">
 <meta name="keywords" content="machine learning,todo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="建炎以来系年要录：拉格朗日对偶性">
 <meta property="og:url" content="http://guanhua.ml/2019/06/22/建炎以来系年要录：拉格朗日对偶性/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="最大熵模型 支持向量机  原始问题 \[ \begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t.  } c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad h_{j}(x)=0, \quad j=1,2, \cdots, l}\end{array} \]">
+<meta property="og:description" content="最大熵模型 支持向量机  原始问题 \[\begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t.} c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad h_{j}(x)=0, \quad j=1,2, \cdots, l}\end{array} \] 此约">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="建炎以来系年要录：拉格朗日对偶性">
-<meta name="twitter:description" content="最大熵模型 支持向量机  原始问题 \[ \begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t.  } c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad h_{j}(x)=0, \quad j=1,2, \cdots, l}\end{array} \]">
+<meta name="twitter:description" content="最大熵模型 支持向量机  原始问题 \[\begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t.} c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad h_{j}(x)=0, \quad j=1,2, \cdots, l}\end{array} \] 此约">
 
 
 
@@ -495,19 +495,15 @@
 <li>支持向量机</li>
 </ul>
 <h2 id="原始问题">原始问题</h2>
-<p><span class="math display">\[
-\begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t.  } c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad h_{j}(x)=0, \quad j=1,2, \cdots, l}\end{array}
-\]</span> 此约束最优化问题称为<strong>最优化问题</strong>或原始问题。</p>
+<p><span class="math display">\[\begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t.} c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad h_{j}(x)=0, \quad j=1,2, \cdots, l}\end{array}
+\]</span> 此约束最优化问题称为 <strong> 最优化问题 </strong> 或原始问题。</p>
 <p><strong>广义拉格朗日函数</strong></p>
-<p><span class="math display">\[
-L(x, \alpha, \beta)=f(x)+\sum_{i=1}^{k} \alpha_{i} c_{i}(x)+\sum_{j=1}^{l} \beta_{j} h_{j}(x)
+<p><span class="math display">\[L(x, \alpha, \beta)=f(x)+\sum_{i=1}^{k} \alpha_{i} c_{i}(x)+\sum_{j=1}^{l} \beta_{j} h_{j}(x)
 \]</span></p>
 <p><span class="math inline">\(\alpha_i, \beta_j\)</span> 是拉格朗日乘子，$_i 0 $</p>
-<p><span class="math display">\[
-\theta_{P}(x)=\max _{\alpha, \beta : \alpha_{i} \geqslant 0} L(x, \alpha, \beta)
+<p><span class="math display">\[\theta_{P}(x)=\max _{\alpha, \beta : \alpha_{i} \geqslant 0} L(x, \alpha, \beta)
 \]</span></p>
-<p><span class="math display">\[
-\theta_{P}(x)=\max _{\alpha, \beta : \alpha_{i} \geqslant 0}\left[f(x)+\sum_{i=1}^{k} \alpha_{i} c_{i}(x)+\sum_{j=1}^{l} \beta_{j} h_{j}(x)\right]=+\infty
+<p><span class="math display">\[\theta_{P}(x)=\max _{\alpha, \beta : \alpha_{i} \geqslant 0}\left[f(x)+\sum_{i=1}^{k} \alpha_{i} c_{i}(x)+\sum_{j=1}^{l} \beta_{j} h_{j}(x)\right]=+\infty
 \]</span></p>
 
       

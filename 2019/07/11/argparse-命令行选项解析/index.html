@@ -107,7 +107,7 @@
 
   <meta name="description" content="示例文件  准备：sys.argv 和命令行参数 12345678910# 输出命令行参数import sysdef main(argv):    for i in range(len(sys.argv)):        print(&apos;sys.argv[&amp;#123;0&amp;#125;] = &amp;#123;1&amp;#125;&apos;.format(i, sys.argv[i]))if __name__ == &quot;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="argparse:命令行选项解析">
+<meta property="og:title" content="argparse: 命令行选项解析">
 <meta property="og:url" content="http://guanhua.ml/2019/07/11/argparse-命令行选项解析/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
 <meta property="og:description" content="示例文件  准备：sys.argv 和命令行参数 12345678910# 输出命令行参数import sysdef main(argv):    for i in range(len(sys.argv)):        print(&apos;sys.argv[&amp;#123;0&amp;#125;] = &amp;#123;1&amp;#125;&apos;.format(i, sys.argv[i]))if __name__ == &quot;">
@@ -115,7 +115,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/07/11/Z27pAP.png">
 <meta property="og:updated_time" content="2019-07-11T08:03:14.497Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="argparse:命令行选项解析">
+<meta name="twitter:title" content="argparse: 命令行选项解析">
 <meta name="twitter:description" content="示例文件  准备：sys.argv 和命令行参数 12345678910# 输出命令行参数import sysdef main(argv):    for i in range(len(sys.argv)):        print(&apos;sys.argv[&amp;#123;0&amp;#125;] = &amp;#123;1&amp;#125;&apos;.format(i, sys.argv[i]))if __name__ == &quot;">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/07/11/Z27pAP.png">
 
@@ -135,7 +135,7 @@
   };
 </script>
 
-  <title>argparse:命令行选项解析 | gh's notes</title>
+  <title>argparse: 命令行选项解析 | gh's notes</title>
   
 
 
@@ -401,7 +401,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">argparse:命令行选项解析
+          <h1 class="post-title" itemprop="name headline">argparse: 命令行选项解析
 
               
             
@@ -482,7 +482,7 @@
         <figure>
 <img src="https://s2.ax1x.com/2019/07/11/Z27pAP.png" alt="示例文件"><figcaption>示例文件</figcaption>
 </figure>
-<h2 id="准备sys.argv-和命令行参数">准备：<code>sys.argv</code> 和命令行参数</h2>
+<h2 id="准备 sys.argv- 和命令行参数">准备：<code>sys.argv</code> 和命令行参数</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输出命令行参数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(argv)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(sys.argv)):</span><br><span class="line">        print(<span class="string">'sys.argv[&#123;0&#125;] = &#123;1&#125;'</span>.format(i, sys.argv[i]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main(sys.argv)</span><br></pre></td></tr></table></figure>
 <h2 id="命令行参数解析">命令行参数解析</h2>
 <p>Python 使用 <code>argparse</code> 模块实现命令行选项和参数的解析。</p>
@@ -491,8 +491,8 @@
 <li>添加参数<code>add_argument()</code></li>
 <li>解析参数<code>parse_args()</code></li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 创建参数解析器 ArgumentParser 对象</span></span><br><span class="line">    parser = argparse.ArgumentParser()</span><br><span class="line"></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    添加参数</span></span><br><span class="line"><span class="string">    - name 或 flag，指定该参数为名称参数还是选项参数</span></span><br><span class="line"><span class="string">        - `foo`</span></span><br><span class="line"><span class="string">        - `-f` 或 `--foo`</span></span><br><span class="line"><span class="string">    - dest </span></span><br><span class="line"><span class="string">    - metavar 在使用方法 usage 中，该参数的名称</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    parser.add_argument(<span class="string">'-o'</span>, dest=<span class="string">'outfile'</span>, help=<span class="string">'output file'</span>)</span><br><span class="line">    parser.add_argument(dest=<span class="string">'filenames'</span>, metavar=<span class="string">'filename'</span>, nargs=<span class="string">'*'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解析参数</span></span><br><span class="line">    args = parser.parse_args()</span><br><span class="line"></span><br><span class="line">    print(args.filenames)</span><br><span class="line">    print(args.outfile)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<p>最终效果如上所示。<code>argparse</code>模块太复杂了，我并不建议使用。与之相比，Google 的<code>fire</code> 更加简单灵活，我写了一个<a href="https://guanhua.ml/2019/06/17/fire%E5%B0%8F%E7%BB%93/">简单的教程</a>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 创建参数解析器 ArgumentParser 对象</span></span><br><span class="line">    parser = argparse.ArgumentParser()</span><br><span class="line"></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    添加参数</span></span><br><span class="line"><span class="string">    - name 或 flag，指定该参数为名称参数还是选项参数</span></span><br><span class="line"><span class="string">        - `foo`</span></span><br><span class="line"><span class="string">        - `-f` 或 `--foo`</span></span><br><span class="line"><span class="string">    - dest </span></span><br><span class="line"><span class="string">    - metavar 在使用方法 usage 中，该参数的名称</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">    parser.add_argument(<span class="string">'-o'</span>, dest=<span class="string">'outfile'</span>, help=<span class="string">'output file'</span>)</span><br><span class="line">    parser.add_argument(dest=<span class="string">'filenames'</span>, metavar=<span class="string">'filename'</span>, nargs=<span class="string">'*'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解析参数</span></span><br><span class="line">    args = parser.parse_args()</span><br><span class="line"></span><br><span class="line">    print(args.filenames)</span><br><span class="line">    print(args.outfile)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>最终效果如上所示。<code>argparse</code>模块太复杂了，我并不建议使用。与之相比，Google 的 <code>fire</code> 更加简单灵活，我写了一个<a href="https://guanhua.ml/2019/06/17/fire%E5%B0%8F%E7%BB%93/"> 简单的教程</a>。</p>
 
       
     </div>
@@ -811,7 +811,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备sys.argv-和命令行参数"><span class="nav-number">1.</span> <span class="nav-text">准备：sys.argv 和命令行参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行参数解析"><span class="nav-number">2.</span> <span class="nav-text">命令行参数解析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备 sys.argv- 和命令行参数"><span class="nav-number">1.</span> <span class="nav-text">准备：sys.argv 和命令行参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行参数解析"><span class="nav-number">2.</span> <span class="nav-text">命令行参数解析</span></a></li></ol></div>
             
 
           </div>

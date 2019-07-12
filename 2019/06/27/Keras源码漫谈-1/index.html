@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="setup.py 这篇文章主要参考这里1，写的非常好，推荐看一下原文。搞懂 Python 的 package 是如何构建的。 distutils 和 setuptools 差不多，功能较少，现在用的比较少了。下文主要介绍 setuptools 。 包格式 wheel 和 Egg 本质上都是 zip 包，推荐使用 wheel。 setup.py 文件内容 首先需要setup函数 12from set">
+  <meta name="description" content="setup.py 这篇文章主要参考这里1，写的非常好，推荐看一下原文。搞懂 Python 的 package 是如何构建的。 distutils 和 setuptools 差不多，功能较少，现在用的比较少了。下文主要介绍 setuptools 。 包格式 wheel 和 Egg 本质上都是 zip 包，推荐使用 wheel。 setup.py 文件内容 首先需要 setup 函数 12from s">
 <meta name="keywords" content="keras,deep learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Keras源码漫谈(1)">
+<meta property="og:title" content="Keras 源码漫谈 (1)">
 <meta property="og:url" content="http://guanhua.ml/2019/06/27/Keras源码漫谈-1/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="setup.py 这篇文章主要参考这里1，写的非常好，推荐看一下原文。搞懂 Python 的 package 是如何构建的。 distutils 和 setuptools 差不多，功能较少，现在用的比较少了。下文主要介绍 setuptools 。 包格式 wheel 和 Egg 本质上都是 zip 包，推荐使用 wheel。 setup.py 文件内容 首先需要setup函数 12from set">
+<meta property="og:description" content="setup.py 这篇文章主要参考这里1，写的非常好，推荐看一下原文。搞懂 Python 的 package 是如何构建的。 distutils 和 setuptools 差不多，功能较少，现在用的比较少了。下文主要介绍 setuptools 。 包格式 wheel 和 Egg 本质上都是 zip 包，推荐使用 wheel。 setup.py 文件内容 首先需要 setup 函数 12from s">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-27T08:22:58.291Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Keras源码漫谈(1)">
-<meta name="twitter:description" content="setup.py 这篇文章主要参考这里1，写的非常好，推荐看一下原文。搞懂 Python 的 package 是如何构建的。 distutils 和 setuptools 差不多，功能较少，现在用的比较少了。下文主要介绍 setuptools 。 包格式 wheel 和 Egg 本质上都是 zip 包，推荐使用 wheel。 setup.py 文件内容 首先需要setup函数 12from set">
+<meta name="twitter:title" content="Keras 源码漫谈 (1)">
+<meta name="twitter:description" content="setup.py 这篇文章主要参考这里1，写的非常好，推荐看一下原文。搞懂 Python 的 package 是如何构建的。 distutils 和 setuptools 差不多，功能较少，现在用的比较少了。下文主要介绍 setuptools 。 包格式 wheel 和 Egg 本质上都是 zip 包，推荐使用 wheel。 setup.py 文件内容 首先需要 setup 函数 12from s">
 
 
 
@@ -134,7 +134,7 @@
   };
 </script>
 
-  <title>Keras源码漫谈(1) | gh's notes</title>
+  <title>Keras 源码漫谈 (1) | gh's notes</title>
   
 
 
@@ -400,7 +400,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Keras源码漫谈(1)
+          <h1 class="post-title" itemprop="name headline">Keras 源码漫谈 (1)
 
               
             
@@ -483,16 +483,16 @@
 <p><code>distutils</code> 和 <code>setuptools</code> 差不多，功能较少，现在用的比较少了。下文主要介绍 setuptools 。</p>
 <h2 id="包格式">包格式</h2>
 <p>wheel 和 Egg 本质上都是 zip 包，推荐使用 wheel。</p>
-<h2 id="setup.py-文件内容"><code>setup.py</code> 文件内容</h2>
-<p>首先需要<code>setup</code>函数</p>
+<h2 id="setup.py- 文件内容"><code>setup.py</code> 文件内容</h2>
+<p>首先需要 <code>setup</code> 函数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from setuptools import setup</span><br><span class="line">from setuptools import find_packages</span><br></pre></td></tr></table></figure>
 <p>这里导入了两个东西，<code>find_packages</code>稍后再讲。</p>
 <p><code>setup</code>函数里面的内容很好懂。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">setup(name=&apos;Keras&apos;, # 包名</span><br><span class="line">      version=&apos;2.2.4&apos;, # 版本</span><br><span class="line">      ...</span><br><span class="line">      install_requires=[&apos;numpy&gt;=1.9.1&apos;,</span><br><span class="line">      ...</span><br><span class="line">      extras_require=&#123;</span><br><span class="line">      ...</span><br><span class="line">      classifiers=[</span><br><span class="line">      ...</span><br><span class="line">      packages=find_packages())</span><br></pre></td></tr></table></figure>
 <h2 id="参数概述">参数概述</h2>
-<p>常见的没什么好说的，见<a href="https://setuptools.readthedocs.io/en/latest/setuptools.html#metadata" target="_blank" rel="noopener">这里</a></p>
+<p>常见的没什么好说的，见 <a href="https://setuptools.readthedocs.io/en/latest/setuptools.html#metadata" target="_blank" rel="noopener"> 这里</a></p>
 <p>里面有几个要注意</p>
-<h3 id="find_packages重点"><code>find_packages()</code>【重点】</h3>
+<h3 id="find_packages 重点"><code>find_packages()</code>【重点】</h3>
 <p>默认在与 <code>setup.py</code> 文件同一目录下搜索各个含有 <code>__init__.py</code> 的目录做为要添加的包。</p>
 <h3 id="数据文件">数据文件</h3>
 <p>略</p>
@@ -501,17 +501,17 @@
 <h3 id="ext_modules"><code>ext_modules</code></h3>
 <p>用于构建 C 和 C++ 扩展扩展包。略。</p>
 <h3 id="zip_safe"><code>zip_safe</code></h3>
-<p>无脑<code>False</code>即可</p>
+<p>无脑 <code>False</code> 即可</p>
 <h3 id="自定义命令">自定义命令</h3>
-<p>提供<code>-h</code>选项</p>
+<p>提供 <code>-h</code> 选项</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from setuptools import setup, Command</span><br></pre></td></tr></table></figure>
 <h3 id="依赖关系重点">依赖关系【重点】</h3>
 <p>指定该参数后，在安装包时会自定从 pypi 仓库中下载指定的依赖包安装。</p>
 <p>看一下 keras 依赖的包 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">install_requires=[&apos;numpy&gt;=1.9.1&apos;,  # 计算</span><br><span class="line">                &apos;scipy&gt;=0.14&apos;, # 计算</span><br><span class="line">                &apos;six&gt;=1.9.0&apos;, # 处理兼容性</span><br><span class="line">                &apos;pyyaml&apos;, # 处理格式</span><br><span class="line">                &apos;h5py&apos;, # 存储</span><br><span class="line">                &apos;keras_applications&gt;=1.0.6&apos;, # 自家的</span><br><span class="line">                &apos;keras_preprocessing&gt;=1.0.5&apos;], # 自家的</span><br></pre></td></tr></table></figure></p>
-<p>这里还有一个参数<code>extras_require</code>，表明当前包的高级/额外特性需要依赖的分发包</p>
+<p>这里还有一个参数<code>extras_require</code>，表明当前包的高级 / 额外特性需要依赖的分发包</p>
 <h3 id="分类关系">分类关系</h3>
 <p><code>classifiers</code> 讲讲包的成熟度，目标用户，类型，许可证，目标 Python 版本</p>
-<h2 id="setup.py-命令">setup.py 命令</h2>
+<h2 id="setup.py- 命令">setup.py 命令</h2>
 <ul>
 <li>bulid</li>
 <li>sdist</li>
@@ -520,7 +520,7 @@
 <li>develop</li>
 <li>register/upload</li>
 </ul>
-<h2 id="setup.cfg-文件"><code>setup.cfg</code> 文件</h2>
+<h2 id="setup.cfg- 文件"><code>setup.cfg</code> 文件</h2>
 <p>提供 <code>setup.py</code> 的默认参数</p>
 <p>keras 没什么默认参数</p>
 <section class="footnotes">
@@ -898,7 +898,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#setup.py"><span class="nav-number">1.</span> <span class="nav-text">setup.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包格式"><span class="nav-number">2.</span> <span class="nav-text">包格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setup.py-文件内容"><span class="nav-number">3.</span> <span class="nav-text">setup.py 文件内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数概述"><span class="nav-number">4.</span> <span class="nav-text">参数概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#find_packages重点"><span class="nav-number">4.1.</span> <span class="nav-text">find_packages()【重点】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据文件"><span class="nav-number">4.2.</span> <span class="nav-text">数据文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成脚本"><span class="nav-number">4.3.</span> <span class="nav-text">生成脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ext_modules"><span class="nav-number">4.4.</span> <span class="nav-text">ext_modules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zip_safe"><span class="nav-number">4.5.</span> <span class="nav-text">zip_safe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义命令"><span class="nav-number">4.6.</span> <span class="nav-text">自定义命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖关系重点"><span class="nav-number">4.7.</span> <span class="nav-text">依赖关系【重点】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类关系"><span class="nav-number">4.8.</span> <span class="nav-text">分类关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setup.py-命令"><span class="nav-number">5.</span> <span class="nav-text">setup.py 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setup.cfg-文件"><span class="nav-number">6.</span> <span class="nav-text">setup.cfg 文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#setup.py"><span class="nav-number">1.</span> <span class="nav-text">setup.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包格式"><span class="nav-number">2.</span> <span class="nav-text">包格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setup.py- 文件内容"><span class="nav-number">3.</span> <span class="nav-text">setup.py 文件内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数概述"><span class="nav-number">4.</span> <span class="nav-text">参数概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#find_packages 重点"><span class="nav-number">4.1.</span> <span class="nav-text">find_packages()【重点】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据文件"><span class="nav-number">4.2.</span> <span class="nav-text">数据文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成脚本"><span class="nav-number">4.3.</span> <span class="nav-text">生成脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ext_modules"><span class="nav-number">4.4.</span> <span class="nav-text">ext_modules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zip_safe"><span class="nav-number">4.5.</span> <span class="nav-text">zip_safe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义命令"><span class="nav-number">4.6.</span> <span class="nav-text">自定义命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖关系重点"><span class="nav-number">4.7.</span> <span class="nav-text">依赖关系【重点】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类关系"><span class="nav-number">4.8.</span> <span class="nav-text">分类关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setup.py- 命令"><span class="nav-number">5.</span> <span class="nav-text">setup.py 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setup.cfg- 文件"><span class="nav-number">6.</span> <span class="nav-text">setup.cfg 文件</span></a></li></ol></div>
             
 
           </div>

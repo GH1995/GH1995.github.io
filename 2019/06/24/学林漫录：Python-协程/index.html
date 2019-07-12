@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="参考文章  协程的好处有哪些？ - 阿猫的回答 - 知乎 协程的好处有哪些？ - Jakit的回答 - 知乎 维基百科  协程的本质 程序变慢的原因  涉及到同步锁。 涉及到线程阻塞状态和可运行状态之间的切换。 涉及到线程上下文的切换。  协程与线程主要区别是它将不再被内核调度，而是交给了程序自己，而线程是将自己交给内核调度。线程本身获得了自己的主导权。 协程本质上就是用户空间下的线程。 协程的实">
+  <meta name="description" content="参考文章  协程的好处有哪些？ - 阿猫的回答 - 知乎 协程的好处有哪些？ - Jakit 的回答 - 知乎 维基百科  协程的本质 程序变慢的原因  涉及到同步锁。 涉及到线程阻塞状态和可运行状态之间的切换。 涉及到线程上下文的切换。  协程与线程主要区别是它将不再被内核调度，而是交给了程序自己，而线程是将自己交给内核调度。线程本身获得了自己的主导权。 协程本质上就是用户空间下的线程。 协程的">
 <meta name="keywords" content="Python,操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学林漫录：Python 协程">
 <meta property="og:url" content="http://guanhua.ml/2019/06/24/学林漫录：Python-协程/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="参考文章  协程的好处有哪些？ - 阿猫的回答 - 知乎 协程的好处有哪些？ - Jakit的回答 - 知乎 维基百科  协程的本质 程序变慢的原因  涉及到同步锁。 涉及到线程阻塞状态和可运行状态之间的切换。 涉及到线程上下文的切换。  协程与线程主要区别是它将不再被内核调度，而是交给了程序自己，而线程是将自己交给内核调度。线程本身获得了自己的主导权。 协程本质上就是用户空间下的线程。 协程的实">
+<meta property="og:description" content="参考文章  协程的好处有哪些？ - 阿猫的回答 - 知乎 协程的好处有哪些？ - Jakit 的回答 - 知乎 维基百科  协程的本质 程序变慢的原因  涉及到同步锁。 涉及到线程阻塞状态和可运行状态之间的切换。 涉及到线程上下文的切换。  协程与线程主要区别是它将不再被内核调度，而是交给了程序自己，而线程是将自己交给内核调度。线程本身获得了自己的主导权。 协程本质上就是用户空间下的线程。 协程的">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学林漫录：Python 协程">
-<meta name="twitter:description" content="参考文章  协程的好处有哪些？ - 阿猫的回答 - 知乎 协程的好处有哪些？ - Jakit的回答 - 知乎 维基百科  协程的本质 程序变慢的原因  涉及到同步锁。 涉及到线程阻塞状态和可运行状态之间的切换。 涉及到线程上下文的切换。  协程与线程主要区别是它将不再被内核调度，而是交给了程序自己，而线程是将自己交给内核调度。线程本身获得了自己的主导权。 协程本质上就是用户空间下的线程。 协程的实">
+<meta name="twitter:description" content="参考文章  协程的好处有哪些？ - 阿猫的回答 - 知乎 协程的好处有哪些？ - Jakit 的回答 - 知乎 维基百科  协程的本质 程序变慢的原因  涉及到同步锁。 涉及到线程阻塞状态和可运行状态之间的切换。 涉及到线程上下文的切换。  协程与线程主要区别是它将不再被内核调度，而是交给了程序自己，而线程是将自己交给内核调度。线程本身获得了自己的主导权。 协程本质上就是用户空间下的线程。 协程的">
 
 
 
@@ -493,7 +493,7 @@
         <p>参考文章</p>
 <ul>
 <li><a href="https://www.zhihu.com/question/20511233/answer/24260355" target="_blank" rel="noopener">协程的好处有哪些？ - 阿猫的回答 - 知乎</a></li>
-<li><a href="https://www.zhihu.com/question/20511233/answer/347651080" target="_blank" rel="noopener">协程的好处有哪些？ - Jakit的回答 - 知乎</a></li>
+<li><a href="https://www.zhihu.com/question/20511233/answer/347651080" target="_blank" rel="noopener">协程的好处有哪些？ - Jakit 的回答 - 知乎</a></li>
 <li><a href="https://www.wikiwand.com/en/Coroutine" target="_blank" rel="noopener">维基百科</a></li>
 </ul>
 <h2 id="协程的本质">协程的本质</h2>
@@ -506,7 +506,7 @@
 <p>协程与线程主要区别是它将不再被内核调度，而是交给了程序自己，而线程是将自己交给内核调度。线程本身获得了自己的主导权。</p>
 <p><strong>协程本质上就是用户空间下的线程。</strong></p>
 <h2 id="协程的实现">协程的实现</h2>
-<p>当协程执行到<code>yield</code>关键字时，会暂停在那一行，等到主线程调用<code>send</code>方法发送了数据，协程才会接到数据继续执行。 但是，<code>yield</code>让协程暂停，和线程的阻塞是有本质区别的。协程的暂停完全由程序控制，线程的阻塞状态是由操作系统内核来进行切换。 因此，协程的开销远远小于线程的开销。 【手动滑稽】</p>
+<p>当协程执行到 <code>yield</code> 关键字时，会暂停在那一行，等到主线程调用 <code>send</code> 方法发送了数据，协程才会接到数据继续执行。 但是，<code>yield</code>让协程暂停，和线程的阻塞是有本质区别的。协程的暂停完全由程序控制，线程的阻塞状态是由操作系统内核来进行切换。 因此，协程的开销远远小于线程的开销。 【手动滑稽】</p>
 <p><code>yield</code> 可以理解成为，做到这里，然后暂停一下，然后产出结果，等待上一个上下文对自己调度</p>
 <p>协程并不是“线程”，理由是： 它并不会参与 CPU 时间调度，并没有均衡分配到时间。</p>
 <p>线程的话，在多核心处理器里面，是并行的，你启动一个线程之后你要想控制它，你得做系统调用 <code>thread_cancel</code> 或者最好情况是发送信号告诉线程里面的条件变量让线程自己去退出。简单来说，对用户其实是不可控的，就像小孩子又不是他们父母本人，他们很多行为是不由父母控制的，父母只能告诉他做什么，要不就家庭暴力（目前被证明是违法的，每个人毕竟都是独立的生命个体）。</p>
@@ -516,28 +516,28 @@
 <p>说明一个问题，两个协程并不是线程，它们根本【既不并发也不并行】的，协程实际上是一个很普通的函数（对于 C 语言理解），或者一个代码块（ObjC），或者子过程（Pasacal Perl），反正就是只是中间加了 yield，让它跑了一半暂停执行，然后产出结果给调度它（这个协程）的父级上下文，如果父级不再需要执行下去了可以先调用别的函数，等别的 yield 了再 transfer 回去执行这个。</p>
 <p>因此： 协程就是一串比函数粒度还要小的可手动控制的过程</p>
 <p>线程（Thread）则不一样，<code>Thread</code> 就算其中一个要 <code>STDIN.read</code> 需要从外部 IO 读东西堵塞了，但是都不会影响别的线程运行的，要不然设计线程就没意义了。</p>
-<p>如果其它文章说它并发，或许说的是因为协程能把小过程串起来，让人们看起来并发（同时进行）。不过，总上观察，或许你看到很多文章、回答说的协程是用户态的线程，或许他们的理解是这个意思。但不代表协程是线程，其实不是一个概念。协程都没参与多核 CPU 并行处理，协程是不并行的，而线程 在多核处理器上是并行在单核处理器是受操作系统调度的，所以本身就差太远了。如果协程真的是线程，真的那么好用，那么 Android iOS 开发早就用多协程而不是多线程来处理 HTTP 请求了。咱们来论证一下这个观点：说协程性能好的，其实真正的原因是因为瓶颈在IO上面，而这个时候真正发挥不了线程的作用。IO 瓶颈可以有，但是要注意 IO 是系统调用，这个 IO 不是用户态能处理的，协程是没办法绕开的，所以最终还是给堵了。如果协程真的能处理堵塞问题，那么很多经典的 Unix 网络编程书籍里面应该有多协程模式才对。正确的方案应该是多线程，所以有多进程或多线程服务器的模型，不至于一堵全堵。应该用 <code>select / poll / epoll / kqueue</code> ，让系统调用来应对系统调用，像 <code>epoll</code> 让 IO 堵塞的调用加以消息通信回调来解决。针对有朋友给出的疑问关于协程不能并发和并行这点不同意，可能在某些语言里确实不能并行。具体实现，跟你用的是 Qt 的 coroutine 还是 goroutine 的 implementation 有差异。但是，我再次敲黑板点题： 我这里只讨论纯粹的协程，协程是一组过程，至于你想给它加入<strong>上下文信息（userinfo、context）</strong>做成有栈协程，还是混入线程来进行并发时候切换与启停来实现多个协程并发，这个跟协程它本身没有任何关系。我的回答也是为了让大家剥离<strong>并发</strong>和<strong>并行</strong>与<strong>协程</strong>三个概念而阐述的。另外，协程的发明主要是为了解决 Concurrency（并发）问题，而线程的发明主要解决的 Parallelism（并行）问题。</p>
+<p>如果其它文章说它并发，或许说的是因为协程能把小过程串起来，让人们看起来并发（同时进行）。不过，总上观察，或许你看到很多文章、回答说的协程是用户态的线程，或许他们的理解是这个意思。但不代表协程是线程，其实不是一个概念。协程都没参与多核 CPU 并行处理，协程是不并行的，而线程 在多核处理器上是并行在单核处理器是受操作系统调度的，所以本身就差太远了。如果协程真的是线程，真的那么好用，那么 Android iOS 开发早就用多协程而不是多线程来处理 HTTP 请求了。咱们来论证一下这个观点：说协程性能好的，其实真正的原因是因为瓶颈在 IO 上面，而这个时候真正发挥不了线程的作用。IO 瓶颈可以有，但是要注意 IO 是系统调用，这个 IO 不是用户态能处理的，协程是没办法绕开的，所以最终还是给堵了。如果协程真的能处理堵塞问题，那么很多经典的 Unix 网络编程书籍里面应该有多协程模式才对。正确的方案应该是多线程，所以有多进程或多线程服务器的模型，不至于一堵全堵。应该用 <code>select / poll / epoll / kqueue</code> ，让系统调用来应对系统调用，像 <code>epoll</code> 让 IO 堵塞的调用加以消息通信回调来解决。针对有朋友给出的疑问关于协程不能并发和并行这点不同意，可能在某些语言里确实不能并行。具体实现，跟你用的是 Qt 的 coroutine 还是 goroutine 的 implementation 有差异。但是，我再次敲黑板点题： 我这里只讨论纯粹的协程，协程是一组过程，至于你想给它加入 <strong> 上下文信息（userinfo、context）</strong>做成有栈协程，还是混入线程来进行并发时候切换与启停来实现多个协程并发，这个跟协程它本身没有任何关系。我的回答也是为了让大家剥离 <strong> 并发 </strong> 和<strong>并行 </strong> 与<strong>协程 </strong> 三个概念而阐述的。另外，协程的发明主要是为了解决 Concurrency（并发）问题，而线程的发明主要解决的 Parallelism（并行）问题。</p>
 <p>现代协程已经逐渐衍生出新的概念—— <code>Generator</code> 和 <code>Promise</code>，不一定要用某些特定的语法或者库来实现。很多语言更倾向于做成一组执行队列，名词是把 <code>result</code> 传入<code>next</code>，不断 <code>yield</code> 迭代到下一层。ES 6 的 <code>Promise</code> 就解决了 <code>callback hell</code>，当然用协程来解决也是可以的，暂停执行并把上下文的 <code>result</code> 变量判断一下，然而 <code>Promise</code> 和 <code>Generator</code> 会显得更自然现代风格一些。大多数对 <code>coroutine</code> 用的是 <code>ucontext</code> 来实现。 Go 的话它针对不同 platform，include 了不同的 <code>ucontext</code>，调用 <code>ucontext init</code> 会获得一个 <code>context</code> 描述符，这个协程 <code>new</code> 出来之后就是一个变量，既然是变量那肯定就有 <code>atomic</code> 的问题。</p>
 <p>所以才会有人说协程也要锁，其实你锁的不是 <code>coroutine</code> 而是锁 <code>ucontext</code> 的一系列操作。</p>
-<p>单核并发这种 <code>makecontext</code> 然后并手动 <code>switch</code> 调度往往复杂，而且并不能提升性能，只是为了通过调度来实现和模拟并发，现实中更多人用来减少<code>callback</code>。然而并不比直接 <code>callback</code> 带来的上下文保存各种操作带来的损耗要少。所以上文说说多线程的方案会在现代更占有性能优化优势。因为：<strong>既然你能开一个过程然后让它切换，还不如让它自动的在多个核心参与时间分配调度。</strong>对于多核处理器的演进和上层业务逻辑的需求，协程 不再具有优势，于是逐渐演变为用来改进词法编程方式的一种用例，它的衍生品 <code>Generator</code> 和 <code>Promise</code> 更简明好用。</p>
+<p>单核并发这种 <code>makecontext</code> 然后并手动 <code>switch</code> 调度往往复杂，而且并不能提升性能，只是为了通过调度来实现和模拟并发，现实中更多人用来减少 <code>callback</code>。然而并不比直接 <code>callback</code> 带来的上下文保存各种操作带来的损耗要少。所以上文说说多线程的方案会在现代更占有性能优化优势。因为：<strong> 既然你能开一个过程然后让它切换，还不如让它自动的在多个核心参与时间分配调度。</strong>对于多核处理器的演进和上层业务逻辑的需求，协程 不再具有优势，于是逐渐演变为用来改进词法编程方式的一种用例，它的衍生品 <code>Generator</code> 和 <code>Promise</code> 更简明好用。</p>
 <h2 id="协程的好处">协程的好处</h2>
 <ul>
 <li>用同步的逻辑，写由协程调度的回调</li>
 <li>协程和性能无关，只是美化代码流程，让异步看起来像同步那样。</li>
-<li>对于计算密集的情况，多线程是最优解（把显卡计算视为多线程之一种），对于io密集任务，回调是最优解。</li>
+<li>对于计算密集的情况，多线程是最优解（把显卡计算视为多线程之一种），对于 io 密集任务，回调是最优解。</li>
 </ul>
 <h2 id="协程样例">协程样例</h2>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@asyncio.coroutine</span><br><span class="line">def hello():</span><br><span class="line">    print(&quot;hello, world&quot;)</span><br><span class="line"></span><br><span class="line">    r = yield from asyncio.sleep(100)</span><br><span class="line"></span><br><span class="line">    print(&quot;hello, again!&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">loop = asyncio.get_event_loop()</span><br><span class="line">loop.run_until_complete(hello())</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import threading</span><br><span class="line">import asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@asyncio.coroutine</span><br><span class="line">def hello():</span><br><span class="line">    print(&apos;Hello world! (%s)&apos; % threading.current_thread())</span><br><span class="line">    yield from asyncio.sleep(5)</span><br><span class="line">    print(&apos;hello again! (%s)&apos; % threading.current_thread())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">loop = asyncio.get_event_loop()</span><br><span class="line">tasks = [hello(), hello()]</span><br><span class="line">loop.run_until_complete(asyncio.wait(tasks))</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure>
 <ol type="1">
-<li><code>asyncio</code> 提供了完善的异步IO支持；</li>
-<li>异步操作需要在<code>coroutine</code>中通过<code>yield from</code>完成；</li>
-<li>多个<code>coroutine</code>可以封装成一组Task然后并发执行。</li>
+<li><code>asyncio</code> 提供了完善的异步 IO 支持；</li>
+<li>异步操作需要在 <code>coroutine</code> 中通过 <code>yield from</code> 完成；</li>
+<li>多个 <code>coroutine</code> 可以封装成一组 Task 然后并发执行。</li>
 </ol>
 <p>改进版：</p>
 <ol type="1">
-<li>把<code>@asyncio.coroutine</code>替换为<code>async</code>；</li>
-<li>把<code>yield from</code>替换为<code>await</code>。</li>
+<li>把 <code>@asyncio.coroutine</code> 替换为<code>async</code>；</li>
+<li>把 <code>yield from</code> 替换为<code>await</code>。</li>
 </ol>
 
       

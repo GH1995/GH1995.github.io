@@ -105,13 +105,13 @@
 
 
 
-  <meta name="description" content="简单循环神经网络 \[ \begin{aligned} \mathbf{z}_{t} &amp;amp;=U \mathbf{h}_{t-1}+W \mathbf{x}_{t}+\mathbf{b} \\ \mathbf{h}_{t} &amp;amp;=f\left(\mathbf{z}_{t}\right) \end{aligned} \]  按时间展开的循环神经网络  参数学习 定义时刻\(t\)的损失函数">
+  <meta name="description" content="简单循环神经网络 \[\begin{aligned} \mathbf{z}_{t} &amp;amp;=U \mathbf{h}_{t-1}+W \mathbf{x}_{t}+\mathbf{b} \\ \mathbf{h}_{t} &amp;amp;=f\left(\mathbf{z}_{t}\right) \end{aligned} \]  按时间展开的循环神经网络  参数学习 定义时刻 \(t\) 的损失函">
 <meta name="keywords" content="deep learning,todo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="困学纪闻注：循环神经网络——三叠纪沉睡">
 <meta property="og:url" content="http://guanhua.ml/2019/06/19/困学纪闻注：循环神经网络——三叠纪沉睡/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="简单循环神经网络 \[ \begin{aligned} \mathbf{z}_{t} &amp;amp;=U \mathbf{h}_{t-1}+W \mathbf{x}_{t}+\mathbf{b} \\ \mathbf{h}_{t} &amp;amp;=f\left(\mathbf{z}_{t}\right) \end{aligned} \]  按时间展开的循环神经网络  参数学习 定义时刻\(t\)的损失函数">
+<meta property="og:description" content="简单循环神经网络 \[\begin{aligned} \mathbf{z}_{t} &amp;amp;=U \mathbf{h}_{t-1}+W \mathbf{x}_{t}+\mathbf{b} \\ \mathbf{h}_{t} &amp;amp;=f\left(\mathbf{z}_{t}\right) \end{aligned} \]  按时间展开的循环神经网络  参数学习 定义时刻 \(t\) 的损失函">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/19/VXfbiq.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/19/VXjiHx.png">
@@ -119,7 +119,7 @@
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="困学纪闻注：循环神经网络——三叠纪沉睡">
-<meta name="twitter:description" content="简单循环神经网络 \[ \begin{aligned} \mathbf{z}_{t} &amp;amp;=U \mathbf{h}_{t-1}+W \mathbf{x}_{t}+\mathbf{b} \\ \mathbf{h}_{t} &amp;amp;=f\left(\mathbf{z}_{t}\right) \end{aligned} \]  按时间展开的循环神经网络  参数学习 定义时刻\(t\)的损失函数">
+<meta name="twitter:description" content="简单循环神经网络 \[\begin{aligned} \mathbf{z}_{t} &amp;amp;=U \mathbf{h}_{t-1}+W \mathbf{x}_{t}+\mathbf{b} \\ \mathbf{h}_{t} &amp;amp;=f\left(\mathbf{z}_{t}\right) \end{aligned} \]  按时间展开的循环神经网络  参数学习 定义时刻 \(t\) 的损失函">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/06/19/VXfbiq.png">
 
 
@@ -495,81 +495,66 @@
 
       
         <h2 id="简单循环神经网络">简单循环神经网络</h2>
-<p><span class="math display">\[
-\begin{aligned} \mathbf{z}_{t} &amp;=U \mathbf{h}_{t-1}+W \mathbf{x}_{t}+\mathbf{b} \\ \mathbf{h}_{t} &amp;=f\left(\mathbf{z}_{t}\right) \end{aligned}
+<p><span class="math display">\[\begin{aligned} \mathbf{z}_{t} &amp;=U \mathbf{h}_{t-1}+W \mathbf{x}_{t}+\mathbf{b} \\ \mathbf{h}_{t} &amp;=f\left(\mathbf{z}_{t}\right) \end{aligned}
 \]</span></p>
 <figure>
 <img src="https://s2.ax1x.com/2019/06/19/VXfbiq.png" alt="按时间展开的循环神经网络"><figcaption>按时间展开的循环神经网络</figcaption>
 </figure>
 <h2 id="参数学习">参数学习</h2>
-<p>定义时刻<span class="math inline">\(t\)</span>的损失函数为</p>
-<p><span class="math display">\[
-\mathcal{L}_{t}=\mathcal{L}\left(y_{t}, g\left(\mathbf{h}_{t}\right)\right)
+<p>定义时刻 <span class="math inline">\(t\)</span> 的损失函数为</p>
+<p><span class="math display">\[\mathcal{L}_{t}=\mathcal{L}\left(y_{t}, g\left(\mathbf{h}_{t}\right)\right)
 \]</span></p>
-<p>$ g(_{t}) <span class="math inline">\(为第\)</span>t$时刻的输出</p>
+<p>$ g(_{t}) <span class="math inline">\(为第 \)</span>t$ 时刻的输出</p>
 <p>那么整个序列上损失函数为</p>
-<p><span class="math display">\[
-\mathcal{L}=\sum_{t=1}^{T} \mathcal{L}_{t}
+<p><span class="math display">\[\mathcal{L}=\sum_{t=1}^{T} \mathcal{L}_{t}
 \]</span></p>
-<p>整个序列的损失函数<span class="math inline">\(\mathcal{L}\)</span>关于参数<span class="math inline">\(U\)</span>的梯度为</p>
-<p><span class="math display">\[
-\frac{\partial \mathcal{L}}{\partial U}=\sum_{t=1}^{T} \frac{\partial \mathcal{L}_{t}}{\partial U}
+<p>整个序列的损失函数 <span class="math inline">\(\mathcal{L}\)</span> 关于参数 <span class="math inline">\(U\)</span> 的梯度为</p>
+<p><span class="math display">\[\frac{\partial \mathcal{L}}{\partial U}=\sum_{t=1}^{T} \frac{\partial \mathcal{L}_{t}}{\partial U}
 \]</span></p>
-<h3 id="随时间反向传播backpropagation-through-timebptt">随时间反向传播（Backpropagation Through Time，BPTT）</h3>
+<h3 id="随时间反向传播 backpropagation-through-timebptt">随时间反向传播（Backpropagation Through Time，BPTT）</h3>
 <p>在“展开”的前馈网络中， 所有层的参数是共享的，因此参数的真实梯度是将所有“展开层”的参数梯度 之和。</p>
 <p><strong>计算偏导数</strong> <span class="math inline">\(\frac{\partial \mathcal{L}_{t}}{\partial U}\)</span></p>
-<p><span class="math display">\[
-\mathbf{z}_{k}=U \mathbf{h}_{k-1}+W \mathbf{x}_{k}+\mathbf{b}
+<p><span class="math display">\[\mathbf{z}_{k}=U \mathbf{h}_{k-1}+W \mathbf{x}_{k}+\mathbf{b}
 \]</span></p>
-<p><span class="math display">\[
-\begin{aligned} \frac{\partial \mathcal{L}_{t}}{\partial U_{i j}} &amp;=\sum_{k=1}^{t} \operatorname{tr}\left(\left(\frac{\partial \mathcal{L}_{t}}{\partial \mathbf{z}_{k}}\right)^{\mathrm{T}} \frac{\partial^{+} \mathbf{z}_{k}}{\partial U_{i j}}\right) \\ &amp;=\sum_{k=1}^{t}\left(\frac{\partial^{+} \mathbf{z}_{k}}{\partial U_{i j}}\right)^{\mathrm{T}} \frac{\partial \mathcal{L}_{t}}{\partial \mathbf{z}_{k}} \end{aligned}
+<p><span class="math display">\[\begin{aligned} \frac{\partial \mathcal{L}_{t}}{\partial U_{i j}} &amp;=\sum_{k=1}^{t} \operatorname{tr}\left(\left(\frac{\partial \mathcal{L}_{t}}{\partial \mathbf{z}_{k}}\right)^{\mathrm{T}} \frac{\partial^{+} \mathbf{z}_{k}}{\partial U_{i j}}\right) \\ &amp;=\sum_{k=1}^{t}\left(\frac{\partial^{+} \mathbf{z}_{k}}{\partial U_{i j}}\right)^{\mathrm{T}} \frac{\partial \mathcal{L}_{t}}{\partial \mathbf{z}_{k}} \end{aligned}
 \]</span></p>
 <p>定义<span class="math inline">\(\delta_{t, k}=\frac{\partial \mathcal{L}_{t}}{\partial \mathbf{z}_{k}}\)</span></p>
-<p><span class="math display">\[
-\begin{aligned} \delta_{t, k} &amp;=\frac{\partial \mathcal{L}_{t}}{\partial \mathbf{z}_{k}} \\ &amp;=\frac{\partial \mathbf{h}_{k}}{\partial \mathbf{z}_{k}} \frac{\partial \mathbf{z}_{k+1}}{\partial \mathbf{h}_{k}} \frac{\partial \mathcal{L}_{t}}{\partial \mathbf{z}_{k+1}} \\ &amp;=\operatorname{diag}\left(f^{\prime}\left(\mathbf{z}_{k}\right)\right) U^{\mathrm{T}} \delta_{t, k+1} \end{aligned}
+<p><span class="math display">\[\begin{aligned} \delta_{t, k} &amp;=\frac{\partial \mathcal{L}_{t}}{\partial \mathbf{z}_{k}} \\ &amp;=\frac{\partial \mathbf{h}_{k}}{\partial \mathbf{z}_{k}} \frac{\partial \mathbf{z}_{k+1}}{\partial \mathbf{h}_{k}} \frac{\partial \mathcal{L}_{t}}{\partial \mathbf{z}_{k+1}} \\ &amp;=\operatorname{diag}\left(f^{\prime}\left(\mathbf{z}_{k}\right)\right) U^{\mathrm{T}} \delta_{t, k+1} \end{aligned}
 \]</span></p>
-<p><span class="math display">\[
-\frac{\partial \mathcal{L}_{t}}{\partial U_{i j}}=\sum_{k=1}^{t}\left[\delta_{t, k}\right]_{i}\left[\mathbf{h}_{k-1}\right]_{j}
+<p><span class="math display">\[\frac{\partial \mathcal{L}_{t}}{\partial U_{i j}}=\sum_{k=1}^{t}\left[\delta_{t, k}\right]_{i}\left[\mathbf{h}_{k-1}\right]_{j}
 \]</span></p>
 <p>将上式写成矩阵形式为</p>
-<p><span class="math display">\[
-\frac{\partial \mathcal{L}_{t}}{\partial U}=\sum_{k=1}^{t} \delta_{t, k} \mathbf{h}_{k-1}^{\mathrm{T}}
+<p><span class="math display">\[\frac{\partial \mathcal{L}_{t}}{\partial U}=\sum_{k=1}^{t} \delta_{t, k} \mathbf{h}_{k-1}^{\mathrm{T}}
 \]</span></p>
 <p><strong>参数梯度</strong></p>
-<p><span class="math display">\[
-\frac{\partial \mathcal{L}}{\partial U}=\sum_{t=1}^{T} \sum_{k=1}^{t} \delta_{t, k} \mathbf{h}_{k-1}^{\mathrm{T}}
+<p><span class="math display">\[\frac{\partial \mathcal{L}}{\partial U}=\sum_{t=1}^{T} \sum_{k=1}^{t} \delta_{t, k} \mathbf{h}_{k-1}^{\mathrm{T}}
 \]</span></p>
-<p><span class="math inline">\(\mathcal{L}\)</span>关于权重<span class="math inline">\(\mathbf{W}\)</span>和偏置<span class="math inline">\(\mathbf{b}\)</span>的梯度为</p>
-<p><span class="math display">\[
-\begin{aligned} \frac{\partial \mathcal{L}}{\partial W}=&amp; \sum_{t=1}^{T} \sum_{k=1}^{t} \delta_{t, k} \mathbf{x}_{k}^{\mathrm{T}} \\ \frac{\partial \mathcal{L}}{\partial \mathbf{b}}=&amp; \sum_{t=1}^{T} \sum_{k=1}^{t} \delta_{t, k} \end{aligned}
+<p><span class="math inline">\(\mathcal{L}\)</span>关于权重 <span class="math inline">\(\mathbf{W}\)</span> 和偏置 <span class="math inline">\(\mathbf{b}\)</span> 的梯度为</p>
+<p><span class="math display">\[\begin{aligned} \frac{\partial \mathcal{L}}{\partial W}=&amp; \sum_{t=1}^{T} \sum_{k=1}^{t} \delta_{t, k} \mathbf{x}_{k}^{\mathrm{T}} \\ \frac{\partial \mathcal{L}}{\partial \mathbf{b}}=&amp; \sum_{t=1}^{T} \sum_{k=1}^{t} \delta_{t, k} \end{aligned}
 \]</span></p>
 <p><strong>计算复杂度</strong> 参数的梯度需要在一个完整的“前向”计算和 “反向”计算后才能得到并进行参数更新</p>
-<h3 id="实时循环学习real-time-recurrent-learningrtrl">实时循环学习（Real-Time Recurrent Learning，RTRL）</h3>
-<p><span class="math display">\[
-\begin{aligned} \frac{\partial \mathbf{h}_{t+1}}{\partial U_{i j}} &amp;=\frac{\partial \mathbf{h}_{t+1}}{\partial \mathbf{z}_{t+1}}\left(\frac{\partial^{+} \mathbf{z}_{t+1}}{\partial U_{i j}}+U \frac{\partial \mathbf{h}_{t}}{\partial U_{i j}}\right) \\ &amp;=\operatorname{diag}\left(f^{\prime}\left(\mathbf{z}_{t+1}\right)\right)\left(\mathbb{I}_{i}\left(\left[\mathbf{h}_{t}\right]_{j}\right)+U \frac{\partial \mathbf{h}_{t}}{\partial U_{i j}}\right) \\
+<h3 id="实时循环学习 real-time-recurrent-learningrtrl">实时循环学习（Real-Time Recurrent Learning，RTRL）</h3>
+<p><span class="math display">\[\begin{aligned} \frac{\partial \mathbf{h}_{t+1}}{\partial U_{i j}} &amp;=\frac{\partial \mathbf{h}_{t+1}}{\partial \mathbf{z}_{t+1}}\left(\frac{\partial^{+} \mathbf{z}_{t+1}}{\partial U_{i j}}+U \frac{\partial \mathbf{h}_{t}}{\partial U_{i j}}\right) \\ &amp;=\operatorname{diag}\left(f^{\prime}\left(\mathbf{z}_{t+1}\right)\right)\left(\mathbb{I}_{i}\left(\left[\mathbf{h}_{t}\right]_{j}\right)+U \frac{\partial \mathbf{h}_{t}}{\partial U_{i j}}\right) \\
 &amp;=f^{\prime}\left(\mathbf{z}_{t+1}\right) \odot\left(\mathbb{I}_{i}\left(\left[\mathbf{h}_{t}\right]_{i}\right)+U \frac{\partial \mathbf{h}_{t}}{\partial U_{i j}}\right) \end{aligned}
 \]</span></p>
-<p><span class="math display">\[
-\frac{\partial \mathcal{L}_{t}}{\partial U_{i j}}=\left(\frac{\partial \mathbf{h}_{t}}{\partial U_{i j}}\right)^{\mathrm{T}} \frac{\partial \mathcal{L}_{t}}{\partial \mathbf{h}_{t}}
+<p><span class="math display">\[\frac{\partial \mathcal{L}_{t}}{\partial U_{i j}}=\left(\frac{\partial \mathbf{h}_{t}}{\partial U_{i j}}\right)^{\mathrm{T}} \frac{\partial \mathcal{L}_{t}}{\partial \mathbf{h}_{t}}
 \]</span></p>
-<p><strong>两种算法比较</strong> BPTT算法的计算量会更小，但是BPTT算法需 要保存所有时刻的中间梯度，空间复杂度较高。RTRL算法不需要梯度回传，因 此非常适合用于需要在线学习或无限序列的任务中。</p>
+<p><strong>两种算法比较</strong> BPTT 算法的计算量会更小，但是 BPTT 算法需 要保存所有时刻的中间梯度，空间复杂度较高。RTRL 算法不需要梯度回传，因 此非常适合用于需要在线学习或无限序列的任务中。</p>
 <h2 id="长期依赖问题">长期依赖问题</h2>
-<p>虽然简单循环网络理论上可以建立长时间间隔的状态之间的依赖关系，但 是由于梯度爆炸或消失问题，实际上只能学习到短期的依赖关系。这样，如果<span class="math inline">\(t\)</span> 时刻的输出<span class="math inline">\(y_t\)</span>依赖于<span class="math inline">\(t−k\)</span>时刻的输入<span class="math inline">\(\mathbf{x}_t−k\)</span>，当间隔<span class="math inline">\(k\)</span>比较大时，简单神经网络很 难建模这种长距离的依赖关系，称为<strong>长期依赖问题</strong>（Long-Term Dependencies Problem）。</p>
+<p>虽然简单循环网络理论上可以建立长时间间隔的状态之间的依赖关系，但 是由于梯度爆炸或消失问题，实际上只能学习到短期的依赖关系。这样，如果 <span class="math inline">\(t\)</span> 时刻的输出<span class="math inline">\(y_t\)</span> 依赖于 <span class="math inline">\(t−k\)</span> 时刻的输入 <span class="math inline">\(\mathbf{x}_t−k\)</span>，当间隔<span class="math inline">\(k\)</span> 比较大时，简单神经网络很 难建模这种长距离的依赖关系，称为 <strong> 长期依赖问题</strong>（Long-Term Dependencies Problem）。</p>
 <h2 id="基于门控的循环神经网络">基于门控的循环神经网络</h2>
 <h3 id="长短期记忆网络">长短期记忆网络</h3>
-<p>LSTM网络主要改进在以下两个方面：</p>
+<p>LSTM 网络主要改进在以下两个方面：</p>
 <ol type="1">
-<li><strong>新的内部状态</strong> <span class="math inline">\(\mathbf{c}_t\)</span> 专门进行线性的循环信息传递，同时（非线性）输出信息给隐藏层的外部状态<span class="math inline">\(\mathbf{h}_t\)</span>。 <span class="math display">\[
-\begin{aligned} \mathbf{c}_{t} &amp;=\mathbf{f}_{t} \odot \mathbf{c}_{t-1}+\mathbf{i}_{t} \odot \tilde{\mathbf{c}}_{t} \\ \mathbf{h}_{t} &amp;=\mathbf{o}_{t} \odot \tanh \left(\mathbf{c}_{t}\right) \end{aligned}
-\]</span> <span class="math inline">\(\widetilde{\mathbf{c}}_{t}\)</span>是通过非线性函数得到候选状态 <span class="math display">\[
-\tilde{\mathbf{c}}_{t}=\tanh \left(W_{c} \mathbf{x}_{t}+U_{c} \mathbf{h}_{t-1}+\mathbf{b}_{c}\right)
+<li><strong>新的内部状态</strong> <span class="math inline">\(\mathbf{c}_t\)</span> 专门进行线性的循环信息传递，同时（非线性）输出信息给隐藏层的外部状态<span class="math inline">\(\mathbf{h}_t\)</span>。 <span class="math display">\[\begin{aligned} \mathbf{c}_{t} &amp;=\mathbf{f}_{t} \odot \mathbf{c}_{t-1}+\mathbf{i}_{t} \odot \tilde{\mathbf{c}}_{t} \\ \mathbf{h}_{t} &amp;=\mathbf{o}_{t} \odot \tanh \left(\mathbf{c}_{t}\right) \end{aligned}
+\]</span> <span class="math inline">\(\widetilde{\mathbf{c}}_{t}\)</span>是通过非线性函数得到候选状态 <span class="math display">\[\tilde{\mathbf{c}}_{t}=\tanh \left(W_{c} \mathbf{x}_{t}+U_{c} \mathbf{h}_{t-1}+\mathbf{b}_{c}\right)
 \]</span></li>
-<li><strong>门机制</strong> 当<span class="math inline">\(\mathbf{f}_t = 0, \mathbf{i}_t = 1\)</span>时，记忆单元将历史信息清空，并将候选状态向量<span class="math inline">\(\widetilde{\mathbf{c}}_{t}\)</span>写入。 但此时记忆单元<span class="math inline">\(\mathbf{C}_{t}\)</span> 依然和上一时刻的历史信息相关。当<span class="math inline">\(\mathbf{f}_{t}=1, \mathbf{i}_{t}=0\)</span>时，记忆单元将复制上一时刻的内容，不写入新的信息。</li>
+<li><strong>门机制 </strong> 当<span class="math inline">\(\mathbf{f}_t = 0, \mathbf{i}_t = 1\)</span> 时，记忆单元将历史信息清空，并将候选状态向量 <span class="math inline">\(\widetilde{\mathbf{c}}_{t}\)</span> 写入。 但此时记忆单元 <span class="math inline">\(\mathbf{C}_{t}\)</span> 依然和上一时刻的历史信息相关。当<span class="math inline">\(\mathbf{f}_{t}=1, \mathbf{i}_{t}=0\)</span> 时，记忆单元将复制上一时刻的内容，不写入新的信息。</li>
 </ol>
 <figure>
-<img src="https://s2.ax1x.com/2019/06/19/VXjiHx.png" alt="LSTM循环单元结构"><figcaption>LSTM循环单元结构</figcaption>
+<img src="https://s2.ax1x.com/2019/06/19/VXjiHx.png" alt="LSTM 循环单元结构"><figcaption>LSTM 循环单元结构</figcaption>
 </figure>
-<h3 id="门控循环单元网络gru">门控循环单元网络（GRU）</h3>
+<h3 id="门控循环单元网络 gru">门控循环单元网络（GRU）</h3>
 <figure>
 <img src="https://s2.ax1x.com/2019/06/19/VXje8e.png" alt="GRU"><figcaption>GRU</figcaption>
 </figure>
@@ -942,7 +927,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单循环神经网络"><span class="nav-number">1.</span> <span class="nav-text">简单循环神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数学习"><span class="nav-number">2.</span> <span class="nav-text">参数学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#随时间反向传播backpropagation-through-timebptt"><span class="nav-number">2.1.</span> <span class="nav-text">随时间反向传播（Backpropagation Through Time，BPTT）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实时循环学习real-time-recurrent-learningrtrl"><span class="nav-number">2.2.</span> <span class="nav-text">实时循环学习（Real-Time Recurrent Learning，RTRL）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长期依赖问题"><span class="nav-number">3.</span> <span class="nav-text">长期依赖问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于门控的循环神经网络"><span class="nav-number">4.</span> <span class="nav-text">基于门控的循环神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#长短期记忆网络"><span class="nav-number">4.1.</span> <span class="nav-text">长短期记忆网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#门控循环单元网络gru"><span class="nav-number">4.2.</span> <span class="nav-text">门控循环单元网络（GRU）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单循环神经网络"><span class="nav-number">1.</span> <span class="nav-text">简单循环神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数学习"><span class="nav-number">2.</span> <span class="nav-text">参数学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#随时间反向传播 backpropagation-through-timebptt"><span class="nav-number">2.1.</span> <span class="nav-text">随时间反向传播（Backpropagation Through Time，BPTT）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实时循环学习 real-time-recurrent-learningrtrl"><span class="nav-number">2.2.</span> <span class="nav-text">实时循环学习（Real-Time Recurrent Learning，RTRL）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#长期依赖问题"><span class="nav-number">3.</span> <span class="nav-text">长期依赖问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于门控的循环神经网络"><span class="nav-number">4.</span> <span class="nav-text">基于门控的循环神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#长短期记忆网络"><span class="nav-number">4.1.</span> <span class="nav-text">长短期记忆网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#门控循环单元网络 gru"><span class="nav-number">4.2.</span> <span class="nav-text">门控循环单元网络（GRU）</span></a></li></ol></li></ol></div>
             
 
           </div>

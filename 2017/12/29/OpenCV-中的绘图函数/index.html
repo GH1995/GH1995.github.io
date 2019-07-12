@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="cv2.line() cv2.circle() cv2.rectangle() cv2.ellipse() cv2.putText()   线 123456789import numpy as npimport cv2img = np.zeros((512, 512, 3))img = cv2.line(img, (0, 0), (511, 511), (255, 0, 0), 5)cv2.im">
+  <meta name="description" content="cv2.line() cv2.circle() cv2.rectangle() cv2.ellipse() cv2.putText()    线  123456789import numpy as npimport cv2img = np.zeros((512, 512, 3))img = cv2.line(img, (0, 0), (511, 511), (255, 0, 0), 5)cv2.">
 <meta name="keywords" content="Python,OpenCV">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenCV 中的绘图函数">
 <meta property="og:url" content="http://guanhua.ml/2017/12/29/OpenCV-中的绘图函数/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="cv2.line() cv2.circle() cv2.rectangle() cv2.ellipse() cv2.putText()   线 123456789import numpy as npimport cv2img = np.zeros((512, 512, 3))img = cv2.line(img, (0, 0), (511, 511), (255, 0, 0), 5)cv2.im">
+<meta property="og:description" content="cv2.line() cv2.circle() cv2.rectangle() cv2.ellipse() cv2.putText()    线  123456789import numpy as npimport cv2img = np.zeros((512, 512, 3))img = cv2.line(img, (0, 0), (511, 511), (255, 0, 0), 5)cv2.">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenCV 中的绘图函数">
-<meta name="twitter:description" content="cv2.line() cv2.circle() cv2.rectangle() cv2.ellipse() cv2.putText()   线 123456789import numpy as npimport cv2img = np.zeros((512, 512, 3))img = cv2.line(img, (0, 0), (511, 511), (255, 0, 0), 5)cv2.im">
+<meta name="twitter:description" content="cv2.line() cv2.circle() cv2.rectangle() cv2.ellipse() cv2.putText()    线  123456789import numpy as npimport cv2img = np.zeros((512, 512, 3))img = cv2.line(img, (0, 0), (511, 511), (255, 0, 0), 5)cv2.">
 
 
 
@@ -498,22 +498,22 @@
 <li><code>cv2.putText()</code></li>
 </ul>
 <hr>
-<h1 id="线">线</h1>
+<h1 id="线"> 线 </h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = np.zeros((<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>))</span><br><span class="line">img = cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">511</span>, <span class="number">511</span>), (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">5</span>)</span><br><span class="line">cv2.imshow(<span class="string">'img'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br><span class="line">cv2.imwrite(<span class="string">'line.jpg'</span>, img)</span><br></pre></td></tr></table></figure>
 
-<h1 id="矩形">矩形</h1>
+<h1 id="矩形"> 矩形 </h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.rectangle(img, (<span class="number">384</span>, <span class="number">0</span>), (<span class="number">510</span>, <span class="number">128</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
 
-<h1 id="圆">圆</h1>
+<h1 id="圆"> 圆 </h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.circle(img, (<span class="number">447</span>, <span class="number">63</span>), <span class="number">63</span>, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
 
-<h1 id="椭圆">椭圆</h1>
+<h1 id="椭圆"> 椭圆 </h1>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">img = cv2.ellipse(img, (<span class="number">256</span>, <span class="number">256</span>), (<span class="number">100</span>, <span class="number">50</span>), <span class="number">0</span>, <span class="number">0</span>, <span class="number">180</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">ellipse(img, center, axes, angle, startAngle, endAngle, color[, thickness[, lineType[, shift]]]) -&gt; img  or  ellipse(img, box, color[, thickness[, lineType]]) -&gt; img</span><br></pre></td></tr></table></figure>
 
-<h1 id="多边形">多边形</h1>
+<h1 id="多边形"> 多边形 </h1>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pts = np.array([[<span class="number">10</span>, <span class="number">5</span>], [<span class="number">20</span>, <span class="number">30</span>], [<span class="number">70</span>, <span class="number">20</span>], [<span class="number">50</span>, <span class="number">10</span>]])</span><br><span class="line">pts = pts.reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line">img = cv2.polylines(img, [pts], <span class="literal">True</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br><span class="line"></span><br><span class="line">polylines(img, pts, isClosed, color[, thickness[, lineType[, shift]]]) -&gt; img</span><br></pre></td></tr></table></figure>
 
-<h1 id="在图片上添加文字">在图片上添加文字</h1>
+<h1 id="在图片上添加文字"> 在图片上添加文字 </h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">font = cv2.FONT_HERSHEY_SIMPLEX</span><br><span class="line">cv2.putText(img, <span class="string">'OpenCV'</span>, (<span class="number">10</span>, <span class="number">500</span>), font, <span class="number">4</span> ,(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span> ), <span class="number">2</span>, cv2.LINE_AA)</span><br></pre></td></tr></table></figure>
 
 
@@ -885,7 +885,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线"><span class="nav-number">1.</span> <span class="nav-text">线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矩形"><span class="nav-number">2.</span> <span class="nav-text">矩形</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#圆"><span class="nav-number">3.</span> <span class="nav-text">圆</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#椭圆"><span class="nav-number">4.</span> <span class="nav-text">椭圆</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多边形"><span class="nav-number">5.</span> <span class="nav-text">多边形</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在图片上添加文字"><span class="nav-number">6.</span> <span class="nav-text">在图片上添加文字</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线"><span class="nav-number">1.</span> <span class="nav-text"> 线 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#矩形"><span class="nav-number">2.</span> <span class="nav-text"> 矩形 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#圆"><span class="nav-number">3.</span> <span class="nav-text"> 圆 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#椭圆"><span class="nav-number">4.</span> <span class="nav-text"> 椭圆 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多边形"><span class="nav-number">5.</span> <span class="nav-text"> 多边形 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在图片上添加文字"><span class="nav-number">6.</span> <span class="nav-text"> 在图片上添加文字 </span></a></li></ol></div>
             
 
           </div>

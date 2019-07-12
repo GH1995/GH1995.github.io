@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="模型 先学习先验概率分布 \[ P\left(Y=c_{k}\right), \quad k=1,2, \cdots, K \] 然后学习条件概率分布 \[ P\left(X=x | Y=c_{k}\right)=P\left(X^{(1)}=x^{(1)}, \cdots, X^{(n)}=x^{(n)} | Y=c_{k}\right) \] 对条件概率分布作条件独立性的假设，上式变成 \[">
+  <meta name="description" content="模型 先学习先验概率分布 \[P\left(Y=c_{k}\right), \quad k=1,2, \cdots, K \] 然后学习条件概率分布 \[P\left(X=x | Y=c_{k}\right)=P\left(X^{(1)}=x^{(1)}, \cdots, X^{(n)}=x^{(n)} | Y=c_{k}\right) \] 对条件概率分布作条件独立性的假设，上式变成 \[\pr">
 <meta name="keywords" content="machine learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="建炎以来系年要录：朴素贝叶斯">
 <meta property="og:url" content="http://guanhua.ml/2019/06/21/建炎以来系年要录：朴素贝叶斯/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="模型 先学习先验概率分布 \[ P\left(Y=c_{k}\right), \quad k=1,2, \cdots, K \] 然后学习条件概率分布 \[ P\left(X=x | Y=c_{k}\right)=P\left(X^{(1)}=x^{(1)}, \cdots, X^{(n)}=x^{(n)} | Y=c_{k}\right) \] 对条件概率分布作条件独立性的假设，上式变成 \[">
+<meta property="og:description" content="模型 先学习先验概率分布 \[P\left(Y=c_{k}\right), \quad k=1,2, \cdots, K \] 然后学习条件概率分布 \[P\left(X=x | Y=c_{k}\right)=P\left(X^{(1)}=x^{(1)}, \cdots, X^{(n)}=x^{(n)} | Y=c_{k}\right) \] 对条件概率分布作条件独立性的假设，上式变成 \[\pr">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="建炎以来系年要录：朴素贝叶斯">
-<meta name="twitter:description" content="模型 先学习先验概率分布 \[ P\left(Y=c_{k}\right), \quad k=1,2, \cdots, K \] 然后学习条件概率分布 \[ P\left(X=x | Y=c_{k}\right)=P\left(X^{(1)}=x^{(1)}, \cdots, X^{(n)}=x^{(n)} | Y=c_{k}\right) \] 对条件概率分布作条件独立性的假设，上式变成 \[">
+<meta name="twitter:description" content="模型 先学习先验概率分布 \[P\left(Y=c_{k}\right), \quad k=1,2, \cdots, K \] 然后学习条件概率分布 \[P\left(X=x | Y=c_{k}\right)=P\left(X^{(1)}=x^{(1)}, \cdots, X^{(n)}=x^{(n)} | Y=c_{k}\right) \] 对条件概率分布作条件独立性的假设，上式变成 \[\pr">
 
 
 
@@ -491,27 +491,21 @@
 
       
         <h2 id="模型">模型</h2>
-<p>先学习先验概率分布 <span class="math display">\[
-P\left(Y=c_{k}\right), \quad k=1,2, \cdots, K
-\]</span> 然后学习条件概率分布 <span class="math display">\[
-P\left(X=x | Y=c_{k}\right)=P\left(X^{(1)}=x^{(1)}, \cdots, X^{(n)}=x^{(n)} | Y=c_{k}\right)
+<p>先学习先验概率分布 <span class="math display">\[P\left(Y=c_{k}\right), \quad k=1,2, \cdots, K
+\]</span> 然后学习条件概率分布 <span class="math display">\[P\left(X=x | Y=c_{k}\right)=P\left(X^{(1)}=x^{(1)}, \cdots, X^{(n)}=x^{(n)} | Y=c_{k}\right)
 \]</span></p>
 <p>对条件概率分布作条件独立性的假设，上式变成</p>
-<p><span class="math display">\[
-\prod_{j=1}^{n} P\left(X^{(j)}=x^{(j)} | Y=c_{k}\right)
+<p><span class="math display">\[\prod_{j=1}^{n} P\left(X^{(j)}=x^{(j)} | Y=c_{k}\right)
 \]</span></p>
 <p>在分类时，通过学习到的模型计算后验概率分布</p>
-<p><span class="math display">\[
-P\left(Y=c_{k} | X=x\right)=\frac{P\left(X=x | Y=c_{k}\right) P\left(Y=c_{k}\right)}{\sum_{k} P\left(X=x | Y=c_{k}\right) P\left(Y=c_{k}\right)}
+<p><span class="math display">\[P\left(Y=c_{k} | X=x\right)=\frac{P\left(X=x | Y=c_{k}\right) P\left(Y=c_{k}\right)}{\sum_{k} P\left(X=x | Y=c_{k}\right) P\left(Y=c_{k}\right)}
 \]</span></p>
 <p>将条件独立性假设得到的等式代入，并且注意到分母都是相同的，所以得到朴素贝叶斯分类器：</p>
-<p><span class="math display">\[
-y=\arg \max _{\alpha} P\left(Y=c_{k}\right) \prod_{j} P\left(X^{(j)}=x^{(j)} | Y=c_{k}\right)
+<p><span class="math display">\[y=\arg \max _{\alpha} P\left(Y=c_{k}\right) \prod_{j} P\left(X^{(j)}=x^{(j)} | Y=c_{k}\right)
 \]</span></p>
 <h2 id="算法">算法</h2>
-<p>用极大似然估计可能会出现所要估计的概率值为<span class="math inline">\(0\)</span>的情况，在累乘后会影响后验概率的计算结果，使分类产生偏差。可以采用贝叶斯估计，在随机变量各个取值的频数上赋予一个正数。</p>
-<p><span class="math display">\[
-P_{\lambda}\left(X^{(j)}=a_{j l} | Y=c_{k}\right)=\frac{\sum_{i=1}^{N} I\left(x_{i}^{(j)}=a_{jl}, y_{i}=c_{k}\right)+\lambda}{\sum_{k=1}^{N} I\left(y_{i}=c_{k}\right)+S_{j} \lambda}
+<p>用极大似然估计可能会出现所要估计的概率值为 <span class="math inline">\(0\)</span> 的情况，在累乘后会影响后验概率的计算结果，使分类产生偏差。可以采用贝叶斯估计，在随机变量各个取值的频数上赋予一个正数。</p>
+<p><span class="math display">\[P_{\lambda}\left(X^{(j)}=a_{j l} | Y=c_{k}\right)=\frac{\sum_{i=1}^{N} I\left(x_{i}^{(j)}=a_{jl}, y_{i}=c_{k}\right)+\lambda}{\sum_{k=1}^{N} I\left(y_{i}=c_{k}\right)+S_{j} \lambda}
 \]</span></p>
 
       
@@ -596,8 +590,8 @@ P_{\lambda}\left(X^{(j)}=a_{j l} | Y=c_{k}\right)=\frac{\sum_{i=1}^{N} I\left(x_
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/21/高祖功臣侯者年表：陈涉世家/" rel="next" title="高祖功臣侯者年表：陈涉世家——xDeepFM算法">
-                <i class="fa fa-chevron-left"></i> 高祖功臣侯者年表：陈涉世家——xDeepFM算法
+              <a href="/2019/06/21/高祖功臣侯者年表：陈涉世家/" rel="next" title="高祖功臣侯者年表：陈涉世家——xDeepFM 算法">
+                <i class="fa fa-chevron-left"></i> 高祖功臣侯者年表：陈涉世家——xDeepFM 算法
               </a>
             
           </div>

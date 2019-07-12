@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="If Player \(A\) has a rating of \(R_{A}\) and Player \(B\) a rating of \(R_{B}\), the exact formula (using the logistic curve) for the expected score of Player \(A\) is \[ E_A = \frac{1}{1+10^{\frac{R">
+  <meta name="description" content="If Player \(A\) has a rating of \(R_{A}\) and Player \(B\) a rating of \(R_{B}\), the exact formula (using the logistic curve) for the expected score of Player \(A\) is \[E_A = \frac{1}{1+10^{\frac{R_">
 <meta name="keywords" content="Math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Elo Rating System">
 <meta property="og:url" content="http://guanhua.ml/2017/11/14/Elo-Rating-System/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="If Player \(A\) has a rating of \(R_{A}\) and Player \(B\) a rating of \(R_{B}\), the exact formula (using the logistic curve) for the expected score of Player \(A\) is \[ E_A = \frac{1}{1+10^{\frac{R">
+<meta property="og:description" content="If Player \(A\) has a rating of \(R_{A}\) and Player \(B\) a rating of \(R_{B}\), the exact formula (using the logistic curve) for the expected score of Player \(A\) is \[E_A = \frac{1}{1+10^{\frac{R_">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-06-26T13:01:58.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elo Rating System">
-<meta name="twitter:description" content="If Player \(A\) has a rating of \(R_{A}\) and Player \(B\) a rating of \(R_{B}\), the exact formula (using the logistic curve) for the expected score of Player \(A\) is \[ E_A = \frac{1}{1+10^{\frac{R">
+<meta name="twitter:description" content="If Player \(A\) has a rating of \(R_{A}\) and Player \(B\) a rating of \(R_{B}\), the exact formula (using the logistic curve) for the expected score of Player \(A\) is \[E_A = \frac{1}{1+10^{\frac{R_">
 
 
 
@@ -490,23 +490,18 @@
       
 
       
-        <p>If Player <span class="math inline">\(A\)</span> has a rating of <span class="math inline">\(R_{A}\)</span> and Player <span class="math inline">\(B\)</span> a rating of <span class="math inline">\(R_{B}\)</span>, the exact formula (using the logistic curve) for the expected score of Player <span class="math inline">\(A\)</span> is <span class="math display">\[
-E_A = \frac{1}{1+10^{\frac{R_B-R_A}{400}}}
+        <p>If Player <span class="math inline">\(A\)</span> has a rating of <span class="math inline">\(R_{A}\)</span> and Player <span class="math inline">\(B\)</span> a rating of <span class="math inline">\(R_{B}\)</span>, the exact formula (using the logistic curve) for the expected score of Player <span class="math inline">\(A\)</span> is <span class="math display">\[E_A = \frac{1}{1+10^{\frac{R_B-R_A}{400}}}
 \]</span></p>
 <p>Similarly the expected score for Player <span class="math inline">\(B\)</span> is</p>
-<p><span class="math display">\[
-E_B = \frac{1}{1+10^{\frac{R_A-R_B}{400}}}
+<p><span class="math display">\[E_B = \frac{1}{1+10^{\frac{R_A-R_B}{400}}}
 \]</span></p>
 <p>This could also be expressed by</p>
-<p><span class="math display">\[
-E_A = \frac{Q_A}{Q_A + Q_B}
+<p><span class="math display">\[E_A = \frac{Q_A}{Q_A + Q_B}
 \]</span></p>
-<p><span class="math display">\[
-E_B = \frac{Q_B}{Q_A + Q_B}
+<p><span class="math display">\[E_B = \frac{Q_B}{Q_A + Q_B}
 \]</span></p>
 <p>where <span class="math inline">\(Q_A = 10^{\tfrac{R_A}{400}}\)</span> and <span class="math inline">\(Q_B = 10^{\tfrac{R_B}{400}}\)</span></p>
-<p>Supposing Player <span class="math inline">\(A\)</span> was expected to score <span class="math inline">\(E_{A}\)</span> points but actually scored <span class="math inline">\(S_{A}\)</span> points. The formula for updating their rating is <span class="math display">\[
-R_{A}^{\prime }=R_{A}+K(S_{A}-E_{A})
+<p>Supposing Player <span class="math inline">\(A\)</span> was expected to score <span class="math inline">\(E_{A}\)</span> points but actually scored <span class="math inline">\(S_{A}\)</span> points. The formula for updating their rating is <span class="math display">\[R_{A}^{\prime}=R_{A}+K(S_{A}-E_{A})
 \]</span></p>
 
       
