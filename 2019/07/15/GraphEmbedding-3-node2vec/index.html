@@ -105,16 +105,18 @@
 
 
 
-  <meta name="description" content="喵喵喵">
-<meta property="og:type" content="website">
-<meta property="og:title" content="gh&#39;s notes">
-<meta property="og:url" content="http://guanhua.ml/tags/git/index.html">
+  <meta name="description" content="node2vec 和 deepwalk 非常类似，主要区别在于顶点序列的采样策略不同  node2vec 算法原理   优化目标   \(f(u)\) 是将顶点 \(u\) 映射为 embedding 向量的映射函数  \(N_S(u)\) 是通过采样策略 \(S\) 采样出的顶点 \(u\) 的近邻顶点集合    优化目标是给定每个顶点条件下，令其近邻顶点（如何定义近邻顶点很重要）出现的概率最大">
+<meta name="keywords" content="graph embedding,todo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GraphEmbedding(3): node2vec">
+<meta property="og:url" content="http://guanhua.ml/2019/07/15/GraphEmbedding-3-node2vec/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="喵喵喵">
+<meta property="og:description" content="node2vec 和 deepwalk 非常类似，主要区别在于顶点序列的采样策略不同  node2vec 算法原理   优化目标   \(f(u)\) 是将顶点 \(u\) 映射为 embedding 向量的映射函数  \(N_S(u)\) 是通过采样策略 \(S\) 采样出的顶点 \(u\) 的近邻顶点集合    优化目标是给定每个顶点条件下，令其近邻顶点（如何定义近邻顶点很重要）出现的概率最大">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-15T13:10:15.156Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gh&#39;s notes">
-<meta name="twitter:description" content="喵喵喵">
+<meta name="twitter:title" content="GraphEmbedding(3): node2vec">
+<meta name="twitter:description" content="node2vec 和 deepwalk 非常类似，主要区别在于顶点序列的采样策略不同  node2vec 算法原理   优化目标   \(f(u)\) 是将顶点 \(u\) 映射为 embedding 向量的映射函数  \(N_S(u)\) 是通过采样策略 \(S\) 采样出的顶点 \(u\) 的近邻顶点集合    优化目标是给定每个顶点条件下，令其近邻顶点（如何定义近邻顶点很重要）出现的概率最大">
 
 
 
@@ -122,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/tags/git/">
+  <link rel="canonical" href="http://guanhua.ml/2019/07/15/GraphEmbedding-3-node2vec/">
 
 
 
@@ -132,7 +134,7 @@
   };
 </script>
 
-  <title>Tag: git | gh's notes</title>
+  <title>GraphEmbedding(3): node2vec | gh's notes</title>
   
 
 
@@ -180,7 +182,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,7 +275,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -320,28 +322,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -387,57 +367,257 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>git<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/15/GraphEmbedding-3-node2vec/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Hua">
+      <meta itemprop="description" content="喵喵喵">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gh's notes">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/06/27/神奇动物在哪里？——护树罗锅/" itemprop="url">
-            
-              <span itemprop="name">神奇动物在哪里？：护树罗锅——git</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">GraphEmbedding(3): node2vec
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-27T16:46:48+08:00" content="2019-06-27">
-          06-27
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-15 20:51:53 / Modified: 21:10:15" itemprop="dateCreated datePublished" datetime="2019-07-15T20:51:53+08:00">2019-07-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/07/15/GraphEmbedding-3-node2vec/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/GraphEmbedding-3-node2vec/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>node2vec 和 deepwalk 非常类似，主要区别在于顶点序列的采样策略不同 </p>
+<h2 id="node2vec- 算法原理">node2vec 算法原理 </h2>
+<h3 id="优化目标"> 优化目标 </h3>
+<ul>
+<li><span class="math inline">\(f(u)\)</span> 是将顶点 <span class="math inline">\(u\)</span> 映射为 embedding 向量的映射函数 </li>
+<li><span class="math inline">\(N_S(u)\)</span> 是通过采样策略 <span class="math inline">\(S\)</span> 采样出的顶点 <span class="math inline">\(u\)</span> 的近邻顶点集合 </li>
+</ul>
+<p> 优化目标是给定每个顶点条件下，令其近邻顶点（如何定义近邻顶点很重要）出现的概率最大。</p>
+<p><span class="math display">\[\max _{f} \sum_{u \in V} \log \operatorname{Pr}\left(N_{S}(U) | f(u)\right)
+\]</span></p>
+<p> 提出了两个假设 </p>
+<ol type="1">
+<li> 条件独立性假设 假设给定源顶点下，其近邻顶点出现的概率与近邻集合中其余顶点无关。</li>
+<li> 特征空间对策假设 这里是说一个顶点作为源顶点和作为近邻顶点的时候共享同一套 embedding 向量。</li>
+</ol>
+<h2 id="顶点序列采样策略"> 顶点序列采样策略 </h2>
+<h2 id="学习算法"> 学习算法 </h2>
+<p>Alias</p>
 
       
     </div>
 
+    
+      
+
+  <div class="popular-posts-header">Related Posts</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2019/07/15/GraphEmbedding-1-DeepWalk/" rel="bookmark">GraphEmbedding(1): DeepWalk</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2019/07/15/GraphEmbedding-2-LINE/" rel="bookmark">GraphEmbedding(2): LINE</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2019/03/18/PCA/" rel="bookmark">困学纪闻注：PCA</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2019/06/19/困学纪闻注：Logistic-回归/" rel="bookmark">困学纪闻注：Logistic 回归</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2019/06/20/困学纪闻注：GAN——志留纪叹息/" rel="bookmark">困学纪闻注：GAN——志留纪叹息</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/graph-embedding/" rel="tag"># graph embedding</a>
+          
+            <a href="/tags/todo/" rel="tag"># todo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/15/GraphEmbedding-1-DeepWalk/" rel="next" title="GraphEmbedding(1): DeepWalk">
+                <i class="fa fa-chevron-left"></i> GraphEmbedding(1): DeepWalk
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -457,8 +637,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -664,6 +853,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#node2vec- 算法原理"><span class="nav-number">1.</span> <span class="nav-text">node2vec 算法原理 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优化目标"><span class="nav-number">1.1.</span> <span class="nav-text"> 优化目标 </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#顶点序列采样策略"><span class="nav-number">2.</span> <span class="nav-text"> 顶点序列采样策略 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习算法"><span class="nav-number">3.</span> <span class="nav-text"> 学习算法 </span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -796,6 +1002,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
 
   
 
@@ -837,6 +1047,8 @@
 
 
 
+
+  
 
 
   
