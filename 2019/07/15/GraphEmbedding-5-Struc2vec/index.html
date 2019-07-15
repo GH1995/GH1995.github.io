@@ -105,15 +105,18 @@
 
 
 
-  <meta name="keywords" content="深度学习">
+  <meta name="description" content="在一些场景中，两个不是近邻的顶点也可能拥有很高的相似性，对于这类相似性，上述方法是无法捕捉到的。Struc2Vec 就是针对这类场景提出的。Struc2Vec 的论文发表在 2017 年的 KDD 会议中。">
+<meta name="keywords" content="graph embedding">
 <meta property="og:type" content="article">
-<meta property="og:title" content="邱锡鹏老师讲义：第六发">
-<meta property="og:url" content="http://guanhua.ml/2019/06/09/邱锡鹏老师讲义：第六发/index.html">
+<meta property="og:title" content="GraphEmbedding(5): Struc2vec">
+<meta property="og:url" content="http://guanhua.ml/2019/07/15/GraphEmbedding-5-Struc2vec/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
+<meta property="og:description" content="在一些场景中，两个不是近邻的顶点也可能拥有很高的相似性，对于这类相似性，上述方法是无法捕捉到的。Struc2Vec 就是针对这类场景提出的。Struc2Vec 的论文发表在 2017 年的 KDD 会议中。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
+<meta property="og:updated_time" content="2019-07-15T13:37:29.403Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="邱锡鹏老师讲义：第六发">
+<meta name="twitter:title" content="GraphEmbedding(5): Struc2vec">
+<meta name="twitter:description" content="在一些场景中，两个不是近邻的顶点也可能拥有很高的相似性，对于这类相似性，上述方法是无法捕捉到的。Struc2Vec 就是针对这类场景提出的。Struc2Vec 的论文发表在 2017 年的 KDD 会议中。">
 
 
 
@@ -121,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/2019/06/09/邱锡鹏老师讲义：第六发/">
+  <link rel="canonical" href="http://guanhua.ml/2019/07/15/GraphEmbedding-5-Struc2vec/">
 
 
 
@@ -131,7 +134,7 @@
   };
 </script>
 
-  <title>邱锡鹏老师讲义：第六发 | gh's notes</title>
+  <title>GraphEmbedding(5): Struc2vec | gh's notes</title>
   
 
 
@@ -380,7 +383,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/06/09/邱锡鹏老师讲义：第六发/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/15/GraphEmbedding-5-Struc2vec/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -397,7 +400,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">邱锡鹏老师讲义：第六发
+          <h1 class="post-title" itemprop="name headline">GraphEmbedding(5): Struc2vec
 
               
             
@@ -423,46 +426,16 @@
                 
               
 
-              <time title="Created: 2019-06-09 17:53:28" itemprop="dateCreated datePublished" datetime="2019-06-09T17:53:28+08:00">2019-06-09</time>
+              <time title="Created: 2019-07-15 21:32:00 / Modified: 21:37:29" itemprop="dateCreated datePublished" datetime="2019-07-15T21:32:00+08:00">2019-07-15</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-26 21:01:58" itemprop="dateModified" datetime="2019-06-26T21:01:58+08:00">2019-06-26</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/nndl笔记/" itemprop="url" rel="index"><span itemprop="name">nndl笔记</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -476,8 +449,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/06/09/邱锡鹏老师讲义：第六发/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/09/邱锡鹏老师讲义：第六发/" itemprop="commentCount"></span>
+                <a href="/2019/07/15/GraphEmbedding-5-Struc2vec/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/GraphEmbedding-5-Struc2vec/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -505,8 +478,7 @@
       
 
       
-        <a id="more"></a>
-<div class="pdf" target="/pdf/qxpnote/ 网络优化与正则化.pdf" height></div>
+        <p> 在一些场景中，两个不是近邻的顶点也可能拥有很高的相似性，对于这类相似性，上述方法是无法捕捉到的。Struc2Vec 就是针对这类场景提出的。Struc2Vec 的论文发表在 2017 年的 KDD 会议中。</p>
 
       
     </div>
@@ -520,35 +492,28 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/05/邱锡鹏老师讲义：第一发/" rel="bookmark">邱锡鹏老师讲义：第一发</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/15/GraphEmbedding-1-DeepWalk/" rel="bookmark">GraphEmbedding(1): DeepWalk</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/09/邱锡鹏老师讲义：第七发/" rel="bookmark">邱锡鹏老师讲义：第七发</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/15/GraphEmbedding-2-LINE/" rel="bookmark">GraphEmbedding(2): LINE</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/09/邱锡鹏老师讲义：第三发/" rel="bookmark">邱锡鹏老师讲义：第三发</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/15/GraphEmbedding-3-node2vec/" rel="bookmark">GraphEmbedding(3): node2vec</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/09/邱锡鹏老师讲义：第二发/" rel="bookmark">邱锡鹏老师讲义：第二发</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/06/09/邱锡鹏老师讲义：第九发/" rel="bookmark">邱锡鹏老师讲义：第九发</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/15/GraphEmbedding-4-SDNE/" rel="bookmark">GraphEmbedding(4): SDNE</a></div>
       
     </li>
   
@@ -577,7 +542,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+            <a href="/tags/graph-embedding/" rel="tag"># graph embedding</a>
           
         </div>
       
@@ -590,8 +555,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/09/邱锡鹏老师讲义：第五发/" rel="next" title="邱锡鹏老师讲义：第五发">
-                <i class="fa fa-chevron-left"></i> 邱锡鹏老师讲义：第五发
+              <a href="/2019/07/15/GraphEmbedding-4-SDNE/" rel="next" title="GraphEmbedding(4): SDNE">
+                <i class="fa fa-chevron-left"></i> GraphEmbedding(4): SDNE
               </a>
             
           </div>
@@ -599,10 +564,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/09/邱锡鹏老师讲义：第七发/" rel="prev" title="邱锡鹏老师讲义：第七发">
-                邱锡鹏老师讲义：第七发 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
