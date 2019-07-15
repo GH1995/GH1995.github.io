@@ -105,25 +105,18 @@
 
 
 
-  <meta name="description" content="卷积  卷积  \[y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1} \] 一幅图像在经过卷积操作后得到结果称为特征映射（Feature Map）。 互相关和卷积的区别在于卷积核仅仅是否进行翻转。 卷积层的神经元数量  神经元数量  卷积神经网络 卷积层  第 \(l\) 层神经元数量  \[n^{(l)}=n^{(l-1)}-m+1 \]  卷积层   卷积层">
-<meta name="keywords" content="todo,deep learning">
+  <meta name="description" content="SNDE 算法原理 SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考 SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。 这个想法不错 相似度定义 SDNE 中的相似度定义和 LINE 是一样的。  一阶">
+<meta name="keywords" content="graph embedding">
 <meta property="og:type" content="article">
-<meta property="og:title" content="困学纪闻注：卷积神经网络——中生代噩梦">
-<meta property="og:url" content="http://guanhua.ml/2019/06/19/困学纪闻注：卷积神经网络——中生代噩梦/index.html">
+<meta property="og:title" content="GraphEmbedding(4): SDNE">
+<meta property="og:url" content="http://guanhua.ml/2019/07/15/GraphEmbedding-4-SDNE/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="卷积  卷积  \[y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1} \] 一幅图像在经过卷积操作后得到结果称为特征映射（Feature Map）。 互相关和卷积的区别在于卷积核仅仅是否进行翻转。 卷积层的神经元数量  神经元数量  卷积神经网络 卷积层  第 \(l\) 层神经元数量  \[n^{(l)}=n^{(l-1)}-m+1 \]  卷积层   卷积层">
+<meta property="og:description" content="SNDE 算法原理 SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考 SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。 这个想法不错 相似度定义 SDNE 中的相似度定义和 LINE 是一样的。  一阶">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://s2.ax1x.com/2019/06/19/VXcsyj.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/06/19/VXcz1e.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/06/19/VXgY3F.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/06/19/VXgWDA.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/06/19/VX2C2F.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/06/19/VX21rd.png">
-<meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
+<meta property="og:updated_time" content="2019-07-15T13:29:40.871Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="困学纪闻注：卷积神经网络——中生代噩梦">
-<meta name="twitter:description" content="卷积  卷积  \[y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1} \] 一幅图像在经过卷积操作后得到结果称为特征映射（Feature Map）。 互相关和卷积的区别在于卷积核仅仅是否进行翻转。 卷积层的神经元数量  神经元数量  卷积神经网络 卷积层  第 \(l\) 层神经元数量  \[n^{(l)}=n^{(l-1)}-m+1 \]  卷积层   卷积层">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/06/19/VXcsyj.png">
+<meta name="twitter:title" content="GraphEmbedding(4): SDNE">
+<meta name="twitter:description" content="SNDE 算法原理 SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考 SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。 这个想法不错 相似度定义 SDNE 中的相似度定义和 LINE 是一样的。  一阶">
 
 
 
@@ -131,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/2019/06/19/困学纪闻注：卷积神经网络——中生代噩梦/">
+  <link rel="canonical" href="http://guanhua.ml/2019/07/15/GraphEmbedding-4-SDNE/">
 
 
 
@@ -141,7 +134,7 @@
   };
 </script>
 
-  <title>困学纪闻注：卷积神经网络——中生代噩梦 | gh's notes</title>
+  <title>GraphEmbedding(4): SDNE | gh's notes</title>
   
 
 
@@ -390,7 +383,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/06/19/困学纪闻注：卷积神经网络——中生代噩梦/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/15/GraphEmbedding-4-SDNE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -407,7 +400,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">困学纪闻注：卷积神经网络——中生代噩梦
+          <h1 class="post-title" itemprop="name headline">GraphEmbedding(4): SDNE
 
               
             
@@ -433,24 +426,12 @@
                 
               
 
-              <time title="Created: 2019-06-19 21:49:06" itemprop="dateCreated datePublished" datetime="2019-06-19T21:49:06+08:00">2019-06-19</time>
+              <time title="Created: 2019-07-15 21:15:50 / Modified: 21:29:40" itemprop="dateCreated datePublished" datetime="2019-07-15T21:15:50+08:00">2019-07-15</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-26 21:01:58" itemprop="dateModified" datetime="2019-06-26T21:01:58+08:00">2019-06-26</time>
               
             
           </span>
@@ -468,8 +449,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/06/19/困学纪闻注：卷积神经网络——中生代噩梦/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/19/困学纪闻注：卷积神经网络——中生代噩梦/" itemprop="commentCount"></span>
+                <a href="/2019/07/15/GraphEmbedding-4-SDNE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/GraphEmbedding-4-SDNE/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -497,48 +478,31 @@
       
 
       
-        <h2 id="卷积">卷积</h2>
-<figure>
-<img src="https://s2.ax1x.com/2019/06/19/VXcsyj.png" alt="卷积"><figcaption>卷积</figcaption>
-</figure>
-<p><span class="math display">\[y_{t}=\sum_{k=1}^{m} w_{k} \cdot x_{t-k+1}
+        <h2 id="snde- 算法原理">SNDE 算法原理</h2>
+<p>SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考</p>
+<p>SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。<strong> 这个想法不错</strong></p>
+<h3 id="相似度定义">相似度定义</h3>
+<p>SDNE 中的相似度定义和 LINE 是一样的。</p>
+<ul>
+<li>一阶相似度衡量的是相邻的两个顶点对之间相似性</li>
+<li>二阶相似度衡量的是，两个顶点他们的邻居集合的相似程度。</li>
+</ul>
+<h3 id="二阶相似度优化目标">二阶相似度优化目标</h3>
+<p><span class="math display">\[L_{2 n d}=\sum_{i=1}^{n}\left\|\hat{x}_{i}-x_{i}\right\|_{2}^{2}
 \]</span></p>
-<p>一幅图像在经过卷积操作后得到结果称为特征映射（Feature Map）。</p>
-<p>互相关和卷积的区别在于卷积核仅仅是否进行翻转。</p>
-<h3 id="卷积层的神经元数量">卷积层的神经元数量</h3>
-<figure>
-<img src="https://s2.ax1x.com/2019/06/19/VXcz1e.png" alt="神经元数量"><figcaption>神经元数量</figcaption>
-</figure>
-<h2 id="卷积神经网络">卷积神经网络</h2>
-<h3 id="卷积层">卷积层</h3>
-<figure>
-<img src="https://s2.ax1x.com/2019/06/19/VXgY3F.png" alt="第 l 层神经元数量"><figcaption>第 <span class="math inline">\(l\)</span> 层神经元数量</figcaption>
-</figure>
-<p><span class="math display">\[n^{(l)}=n^{(l-1)}-m+1
+<p>输入：邻接矩阵</p>
+<p>对于第 <span class="math inline">\(i\)</span> 个顶点，有 <span class="math inline">\(x_i = s_i\)</span>，每个 <span class="math inline">\(s_i\)</span> 都包含了顶点 <span class="math inline">\(i\)</span> 的邻居结构信息。</p>
+<p><span class="math display">\[L_{2 n d}=\sum_{i=1}^{n}\left\|\left(\hat{x}_{i}-x_{i}\right) \odot \mathbf{b}_{\mathbf{i}}\right\|_{2}^{2}=\|(\hat{X}-X) \odot B\|_{F}^{2}
 \]</span></p>
-<figure>
-<img src="https://s2.ax1x.com/2019/06/19/VXgWDA.png" alt="卷积层"><figcaption>卷积层</figcaption>
-</figure>
-<figure>
-<img src="https://s2.ax1x.com/2019/06/19/VX2C2F.png" alt="卷积层的参数数量"><figcaption>卷积层的参数数量</figcaption>
-</figure>
-<h3 id="典型的卷积网络结构">典型的卷积网络结构</h3>
-<figure>
-<img src="https://s2.ax1x.com/2019/06/19/VX21rd.png" alt="典型的卷积网络结构"><figcaption>典型的卷积网络结构</figcaption>
-</figure>
-<h2 id="几种典型的卷积神经网络">几种典型的卷积神经网络</h2>
-<h3 id="inception 网络">Inception 网络</h3>
-<p>一个卷积层包含多个不同大小的卷积操作，称为 Inception 模块。</p>
-<p>Inception 模块同时使用 <span class="math inline">\(1 × 1\)</span>、<span class="math inline">\(3 × 3\)</span>、<span class="math inline">\(5 × 5\)</span> 等不同大小的卷积核，并将得到的特征映射在深度上拼接（堆叠）起来作为输出特征映射。</p>
-<p>Inception 模块在进行 <span class="math inline">\(3 × 3\)</span>、<span class="math inline">\(5 × 5\)</span> 的卷积之前、<span class="math inline">\(3 × 3\)</span>的最大汇聚之后，进行一次 <span class="math inline">\(1×1\)</span> 的卷积来减少特征映射的深度。如果输入特征映射 之间存在冗余信息，<span class="math inline">\(1 × 1\)</span>的卷积相当于先进行一次特征抽取。</p>
-<h3 id="resnet">ResNet</h3>
-<p><span class="math display">\[h(\mathbf{x})=\mathbf{x}+(h(\mathbf{x})-\mathbf{x})
+<p><span class="math inline">\(\mathbf{b}_{\mathbf{i}}=\left\{b_{i, j}\right\}_{j=1}^{n}\)</span>，若 <span class="math inline">\(s_{i,j} = 0\)</span>，则 <span class="math inline">\(b_{i,j} = 1\)</span> ，否则 <span class="math inline">\(b_{i, j}=\beta&gt;1\)</span></p>
+<h2 id="一阶相似度优化目标">一阶相似度优化目标</h2>
+<p><span class="math display">\[L_{1 s t}=\sum_{i, j=1}^{n} s_{i, j}\left\|\mathbf{y}_{\mathbf{i}}^{(K)}-\mathbf{y}_{\mathbf{j}}^{(K)}\right\|_{2}^{2}=\sum_{i, j=1}^{n} s_{i, j}\left\|\mathbf{y}_{\mathbf{i}}-\mathbf{y}_{\mathbf{j}}\right\|_{2}^{2}
 \]</span></p>
-<p>让非线性单元 <span class="math inline">\(f(\mathbf{x}, \theta)\)</span> 去近似残差函数<span class="math inline">\(h(\mathbf{x})−\mathbf{x}\)</span></p>
-<h2 id="其他卷积方式">其他卷积方式</h2>
-<p><strong>转置卷积</strong>：用小图片和大卷积核生成特征映射，将低维特征映射到高维特征</p>
-<p><strong>微步卷积</strong>：给图片插入 0</p>
-<p><strong>空洞卷积</strong>：给卷积核插入 0</p>
+<p><span class="math display">\[L_{1 s t}=\sum_{i, j=1}^{n}\left\|\mathbf{y}_{i}-\mathbf{y}_{j}\right\|_{2}^{2}=2 \operatorname{tr}\left(Y^{T} L Y\right)
+\]</span></p>
+<h2 id="整体优化目标">整体优化目标</h2>
+<p><span class="math display">\[L_{m i x}=L_{2 n d}+\alpha L_{1 s t}+\nu L_{r e g}
+\]</span></p>
 
       
     </div>
@@ -552,35 +516,21 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/03/18/PCA/" rel="bookmark">困学纪闻注：PCA</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/15/GraphEmbedding-1-DeepWalk/" rel="bookmark">GraphEmbedding(1): DeepWalk</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/20/困学纪闻注：GAN——志留纪叹息/" rel="bookmark">困学纪闻注：GAN——志留纪叹息</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/15/GraphEmbedding-2-LINE/" rel="bookmark">GraphEmbedding(2): LINE</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/19/困学纪闻注：前馈神经网络一览/" rel="bookmark">困学纪闻注：前馈神经网络一览——激活函数寒武纪</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/06/19/困学纪闻注：前馈神经网络一览——反向传播算法/" rel="bookmark">困学纪闻注：前馈神经网络一览——反向传播算法白垩纪</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/06/19/困学纪闻注：循环神经网络——三叠纪沉睡/" rel="bookmark">困学纪闻注：循环神经网络——三叠纪沉睡</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/15/GraphEmbedding-3-node2vec/" rel="bookmark">GraphEmbedding(3): node2vec</a></div>
       
     </li>
   
@@ -609,9 +559,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/todo/" rel="tag"># todo</a>
-          
-            <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
+            <a href="/tags/graph-embedding/" rel="tag"># graph embedding</a>
           
         </div>
       
@@ -624,8 +572,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/19/困学纪闻注：前馈神经网络一览——反向传播算法/" rel="next" title="困学纪闻注：前馈神经网络一览——反向传播算法白垩纪">
-                <i class="fa fa-chevron-left"></i> 困学纪闻注：前馈神经网络一览——反向传播算法白垩纪
+              <a href="/2019/07/15/GraphEmbedding-3-node2vec/" rel="next" title="GraphEmbedding(3): node2vec">
+                <i class="fa fa-chevron-left"></i> GraphEmbedding(3): node2vec
               </a>
             
           </div>
@@ -633,10 +581,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/19/困学纪闻注：循环神经网络——三叠纪沉睡/" rel="prev" title="困学纪闻注：循环神经网络——三叠纪沉睡">
-                困学纪闻注：循环神经网络——三叠纪沉睡 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -910,7 +854,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积"><span class="nav-number">1.</span> <span class="nav-text">卷积</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卷积层的神经元数量"><span class="nav-number">1.1.</span> <span class="nav-text">卷积层的神经元数量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卷积神经网络"><span class="nav-number">2.</span> <span class="nav-text">卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卷积层"><span class="nav-number">2.1.</span> <span class="nav-text">卷积层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#典型的卷积网络结构"><span class="nav-number">2.2.</span> <span class="nav-text">典型的卷积网络结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种典型的卷积神经网络"><span class="nav-number">3.</span> <span class="nav-text">几种典型的卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#inception 网络"><span class="nav-number">3.1.</span> <span class="nav-text">Inception 网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resnet"><span class="nav-number">3.2.</span> <span class="nav-text">ResNet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他卷积方式"><span class="nav-number">4.</span> <span class="nav-text">其他卷积方式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#snde- 算法原理"><span class="nav-number">1.</span> <span class="nav-text">SNDE 算法原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相似度定义"><span class="nav-number">1.1.</span> <span class="nav-text">相似度定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二阶相似度优化目标"><span class="nav-number">1.2.</span> <span class="nav-text">二阶相似度优化目标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一阶相似度优化目标"><span class="nav-number">2.</span> <span class="nav-text">一阶相似度优化目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整体优化目标"><span class="nav-number">3.</span> <span class="nav-text">整体优化目标</span></a></li></ol></div>
             
 
           </div>
