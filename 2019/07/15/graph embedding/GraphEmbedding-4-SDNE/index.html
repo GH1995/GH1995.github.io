@@ -105,20 +105,18 @@
 
 
 
-  <meta name="description" content="LINE1 算法原理 LINE 也是一种基于邻域相似假设的方法，只不过与 DeepWalk 使用 DFS 构造邻域不同的是，LINE 可以看作是一种使用 BFS 构造邻域的算法。此外，LINE 还可以应用在  带权图  中（DeepWalk 仅能用于无权图）。 之前还提到不同的 graph embedding 方法的一个主要区别是对图中顶点之间的相似度的定义不同，所以先看一下 LINE 对于相似度">
+  <meta name="description" content="SNDE 算法原理 SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考 SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。 这个想法不错 相似度定义 SDNE 中的相似度定义和 LINE 是一样的。  一阶">
 <meta name="keywords" content="graph embedding">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GraphEmbedding(2): LINE">
-<meta property="og:url" content="http://guanhua.ml/2019/07/15/GraphEmbedding-2-LINE/index.html">
+<meta property="og:title" content="GraphEmbedding(4): SDNE">
+<meta property="og:url" content="http://guanhua.ml/2019/07/15/graph embedding/GraphEmbedding-4-SDNE/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="LINE1 算法原理 LINE 也是一种基于邻域相似假设的方法，只不过与 DeepWalk 使用 DFS 构造邻域不同的是，LINE 可以看作是一种使用 BFS 构造邻域的算法。此外，LINE 还可以应用在  带权图  中（DeepWalk 仅能用于无权图）。 之前还提到不同的 graph embedding 方法的一个主要区别是对图中顶点之间的相似度的定义不同，所以先看一下 LINE 对于相似度">
+<meta property="og:description" content="SNDE 算法原理 SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考 SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。 这个想法不错 相似度定义 SDNE 中的相似度定义和 LINE 是一样的。  一阶">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/15/ZTtOPA.png">
-<meta property="og:updated_time" content="2019-07-15T12:48:39.148Z">
+<meta property="og:updated_time" content="2019-07-16T03:15:28.909Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GraphEmbedding(2): LINE">
-<meta name="twitter:description" content="LINE1 算法原理 LINE 也是一种基于邻域相似假设的方法，只不过与 DeepWalk 使用 DFS 构造邻域不同的是，LINE 可以看作是一种使用 BFS 构造邻域的算法。此外，LINE 还可以应用在  带权图  中（DeepWalk 仅能用于无权图）。 之前还提到不同的 graph embedding 方法的一个主要区别是对图中顶点之间的相似度的定义不同，所以先看一下 LINE 对于相似度">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/15/ZTtOPA.png">
+<meta name="twitter:title" content="GraphEmbedding(4): SDNE">
+<meta name="twitter:description" content="SNDE 算法原理 SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考 SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。 这个想法不错 相似度定义 SDNE 中的相似度定义和 LINE 是一样的。  一阶">
 
 
 
@@ -126,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/2019/07/15/GraphEmbedding-2-LINE/">
+  <link rel="canonical" href="http://guanhua.ml/2019/07/15/graph embedding/GraphEmbedding-4-SDNE/">
 
 
 
@@ -136,7 +134,7 @@
   };
 </script>
 
-  <title>GraphEmbedding(2): LINE | gh's notes</title>
+  <title>GraphEmbedding(4): SDNE | gh's notes</title>
   
 
 
@@ -385,7 +383,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/15/GraphEmbedding-2-LINE/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/15/graph embedding/GraphEmbedding-4-SDNE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -402,7 +400,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">GraphEmbedding(2): LINE
+          <h1 class="post-title" itemprop="name headline">GraphEmbedding(4): SDNE
 
               
             
@@ -428,16 +426,46 @@
                 
               
 
-              <time title="Created: 2019-07-15 18:48:04 / Modified: 20:48:39" itemprop="dateCreated datePublished" datetime="2019-07-15T18:48:04+08:00">2019-07-15</time>
+              <time title="Created: 2019-07-15 21:15:50" itemprop="dateCreated datePublished" datetime="2019-07-15T21:15:50+08:00">2019-07-15</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-16 11:15:28" itemprop="dateModified" datetime="2019-07-16T11:15:28+08:00">2019-07-16</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/graph-embedding/" itemprop="url" rel="index"><span itemprop="name">graph embedding</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -451,8 +479,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/07/15/GraphEmbedding-2-LINE/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/GraphEmbedding-2-LINE/" itemprop="commentCount"></span>
+                <a href="/2019/07/15/graph embedding/GraphEmbedding-4-SDNE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/graph embedding/GraphEmbedding-4-SDNE/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -480,71 +508,31 @@
       
 
       
-        <h2 id="line1- 算法原理">LINE<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> 算法原理</h2>
-<p>LINE 也是一种基于邻域相似假设的方法，只不过与 DeepWalk 使用 DFS 构造邻域不同的是，LINE 可以看作是一种使用 BFS 构造邻域的算法。此外，LINE 还可以应用在 <strong> 带权图 </strong> 中（DeepWalk 仅能用于无权图）。</p>
-<p>之前还提到不同的 graph embedding 方法的一个主要区别是对图中顶点之间的相似度的定义不同，所以先看一下 LINE 对于相似度的定义。</p>
-<figure>
-<img src="https://s2.ax1x.com/2019/07/15/ZTtOPA.png" alt="ZTtOPA.png"><figcaption>ZTtOPA.png</figcaption>
-</figure>
-<h3 id="一阶相似度">一阶相似度</h3>
-<p>用于描述图中成对顶点之间的局部相似度，形式化描述为若 <span class="math inline">\(u, v\)</span> 之间存在直连边，则边权 <span class="math inline">\(w_{u v}\)</span> 即为两个顶点的相似度，若不存在直连边，则 1 阶相似度为 0。</p>
-<p>参考 6,7</p>
-<h3 id="二阶相似度">二阶相似度</h3>
-<p><span class="math display">\[p_{u}=\left(w_{u, 1}, \dots, w_{u,|V|}\right)
-\]</span> 表示顶点 <span class="math inline">\(u\)</span> 与所有其他顶点的一阶相似度 则 <span class="math inline">\(u\)</span> 与 <span class="math inline">\(v\)</span> 的二阶相似度可以通过 <span class="math inline">\(p_u\)</span> 和 <span class="math inline">\(p_v\)</span> 的相似度表示。</p>
-<h2 id="优化目标">优化目标</h2>
-<h3 id="一阶相似度 -1">一阶相似度</h3>
-<p>低于一条无向边 <span class="math inline">\((i, j)\)</span> ，顶点 <span class="math inline">\(v_i\)</span> 和 <span class="math inline">\(v_j\)</span>：</p>
-<p><span class="math inline">\(\overrightarrow{u_{i}}\)</span> 为顶点 <span class="math inline">\(v_i\)</span> 的低维向量表示</p>
-<p><span class="math inline">\(v_i\)</span> 和 <span class="math inline">\(v_j\)</span> 的联合概率为</p>
-<p><span class="math display">\[p_{1}\left(v_{i}, v_{j}\right)=\frac{1}{1+\exp \left(-\vec{u}_{i}^{T} \cdot \vec{u}_{j}\right)}
+        <h2 id="snde- 算法原理">SNDE 算法原理</h2>
+<p>SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考</p>
+<p>SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。<strong> 这个想法不错</strong></p>
+<h3 id="相似度定义">相似度定义</h3>
+<p>SDNE 中的相似度定义和 LINE 是一样的。</p>
+<ul>
+<li>一阶相似度衡量的是相邻的两个顶点对之间相似性</li>
+<li>二阶相似度衡量的是，两个顶点他们的邻居集合的相似程度。</li>
+</ul>
+<h3 id="二阶相似度优化目标">二阶相似度优化目标</h3>
+<p><span class="math display">\[L_{2 n d}=\sum_{i=1}^{n}\left\|\hat{x}_{i}-x_{i}\right\|_{2}^{2}
 \]</span></p>
-<p>定义经验分布，</p>
-<p><span class="math display">\[\hat{p_{1}}=\frac{w_{i j}}{W}, \quad W=\sum_{(i, j) \in E} w_{i j}
+<p>输入：邻接矩阵</p>
+<p>对于第 <span class="math inline">\(i\)</span> 个顶点，有 <span class="math inline">\(x_i = s_i\)</span>，每个 <span class="math inline">\(s_i\)</span> 都包含了顶点 <span class="math inline">\(i\)</span> 的邻居结构信息。</p>
+<p><span class="math display">\[L_{2 n d}=\sum_{i=1}^{n}\left\|\left(\hat{x}_{i}-x_{i}\right) \odot \mathbf{b}_{\mathbf{i}}\right\|_{2}^{2}=\|(\hat{X}-X) \odot B\|_{F}^{2}
 \]</span></p>
-<p><strong>优化目标 </strong> 为最小化两个分布之间的距离</p>
-<p><span class="math display">\[O_{1}=d\left(\hat{p}_{1}(\cdot, \cdot), p_{1}(\cdot, \cdot)\right)
+<p><span class="math inline">\(\mathbf{b}_{\mathbf{i}}=\left\{b_{i, j}\right\}_{j=1}^{n}\)</span>，若 <span class="math inline">\(s_{i,j} = 0\)</span>，则 <span class="math inline">\(b_{i,j} = 1\)</span> ，否则 <span class="math inline">\(b_{i, j}=\beta&gt;1\)</span></p>
+<h2 id="一阶相似度优化目标">一阶相似度优化目标</h2>
+<p><span class="math display">\[L_{1 s t}=\sum_{i, j=1}^{n} s_{i, j}\left\|\mathbf{y}_{\mathbf{i}}^{(K)}-\mathbf{y}_{\mathbf{j}}^{(K)}\right\|_{2}^{2}=\sum_{i, j=1}^{n} s_{i, j}\left\|\mathbf{y}_{\mathbf{i}}-\mathbf{y}_{\mathbf{j}}\right\|_{2}^{2}
 \]</span></p>
-<p><span class="math inline">\(d(\cdot, \cdot)\)</span> 是两个分布之间的距离，常用 KL 散度表示。忽略常数项后有</p>
-<p><span class="math display">\[O_{1}=-\sum_{(i, j) \in E} w_{i j} \log p_{1}\left(v_{i}, v_{j}\right)
+<p><span class="math display">\[L_{1 s t}=\sum_{i, j=1}^{n}\left\|\mathbf{y}_{i}-\mathbf{y}_{j}\right\|_{2}^{2}=2 \operatorname{tr}\left(Y^{T} L Y\right)
 \]</span></p>
-<p>这个公式很奇妙，先是两个节点联合概率 <strong> 直白一点说就是匹配程度 </strong> 取个 <span class="math inline">\(\log\)</span> ，然后在用连接强度作为权重。这里计算出来的只是一对节点，把所有的节点对都取完之后，也就算出来<span class="math inline">\(u, v\)</span> 的近似程度。</p>
-<blockquote>
-<p>一阶相似度只能用于无向图当中</p>
-</blockquote>
-<h3 id="二阶相似度 -1">二阶相似度</h3>
-<p>每个顶点维护两个 embedding 向量，一个是该顶点本身的表示向量，另一个是该点作为其他顶点的上下文顶点时的表示向量。</p>
-<p>对于有向边 <span class="math inline">\((i,j)\)</span> ，定义给定顶点 <span class="math inline">\(v_i\)</span> 条件下，产生上下文（邻居）顶点 <span class="math inline">\(v_j\)</span> 的概率为</p>
-<p><span class="math display">\[p_{2}\left(v_{j} | v_{i}\right)=\frac{\exp \left(\vec{c}_{j}^{T} \cdot \vec{u}_{i}\right)}{\sum_{k=1}^{|V|} \exp \left(\vec{c}_{k}^{T} \cdot \vec{u}_{i}\right)}
+<h2 id="整体优化目标">整体优化目标</h2>
+<p><span class="math display">\[L_{m i x}=L_{2 n d}+\alpha L_{1 s t}+\nu L_{r e g}
 \]</span></p>
-<p>优化目标为</p>
-<p><span class="math display">\[O_{2}=\sum_{i \in V} \lambda_{i} d\left(\hat{p}_{2}\left(\cdot | v_{i}\right), p_{2}\left(\cdot | v_{i}\right)\right)
-\]</span></p>
-<p>经验分布定义为</p>
-<p><span class="math display">\[\hat{p}_{2}\left(v_{j} | v_{i}\right)=\frac{w_{i j}}{d_{i}}
-\]</span></p>
-<p><span class="math display">\[O_{2}=-\sum_{(i, j) \in E} w_{i j} \log p_{2}\left(v_{j} | v_{i}\right)
-\]</span></p>
-<h2 id="优化技巧">优化技巧</h2>
-<h3 id="negative-sampling">Negative sampling</h3>
-<p>目标函数变为</p>
-<p><span class="math display">\[\log \sigma\left(\vec{c}_{j}^{T} \cdot \vec{u}_{i}\right)+\sum_{i=1}^{K} E_{v_{n} \sim P_{n}(v)}\left[-\log \sigma\left(\vec{c}_{n}^{T} \cdot \vec{u}_{i}\right)\right]
-\]</span></p>
-<h3 id="edge-sampling">Edge Sampling</h3>
-<p>Alias 算法</p>
-<h3 id="低度数顶点问题">低度数顶点问题</h3>
-<p>对于一些顶点由于其邻接点非常少会导致 embedding 向量的学习不充分，论文提到可以利用邻居的邻居构造样本进行学习，这里也暴露出 LINE 方法仅考虑一阶和二阶相似性，对高阶信息的利用不足。</p>
-<h3 id="新加入顶点">新加入顶点</h3>
-<p><span class="math display">\[-\sum_{j \in N(i)} w_{j i} \log p_{1}\left(v_{j}, v_{i}\right)_{\overrightarrow{\mathfrak{H}} \overrightarrow{\mathrm{k}}}-\sum_{j \in N(i)} w_{j i} \log p_{1}\left(v_{j} | v_{i}\right)
-\]</span></p>
-<h2 id="总结">总结</h2>
-<p>方法复杂，丑陋，可能只是一个启发式的模型</p>
-<section class="footnotes">
-<hr>
-<ol>
-<li id="fn1"><p>https://arxiv.org/pdf/1503.03578.pdf<a href="#fnref1" class="footnote-back">↩</a></p></li>
-</ol>
-</section>
 
       
     </div>
@@ -558,28 +546,28 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/07/15/GraphEmbedding-1-DeepWalk/" rel="bookmark">GraphEmbedding(1): DeepWalk</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/16/graph embedding/GraphEmbedding-1-DeepWalk/" rel="bookmark">GraphEmbedding(1): DeepWalk</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/07/15/GraphEmbedding-3-node2vec/" rel="bookmark">GraphEmbedding(3): node2vec</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/16/graph embedding/GraphEmbedding-2-LINE/" rel="bookmark">GraphEmbedding(2): LINE</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/07/15/GraphEmbedding-5-Struc2vec/" rel="bookmark">GraphEmbedding(5): Struc2vec</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/16/graph embedding/GraphEmbedding-3-node2vec/" rel="bookmark">GraphEmbedding(3): node2vec</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/07/15/GraphEmbedding-4-SDNE/" rel="bookmark">GraphEmbedding(4): SDNE</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/15/graph embedding/GraphEmbedding-5-Struc2vec/" rel="bookmark">GraphEmbedding(5): Struc2vec</a></div>
       
     </li>
   
@@ -631,8 +619,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/15/GraphEmbedding-1-DeepWalk/" rel="prev" title="GraphEmbedding(1): DeepWalk">
-                GraphEmbedding(1): DeepWalk <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/15/graph embedding/GraphEmbedding-5-Struc2vec/" rel="prev" title="GraphEmbedding(5): Struc2vec">
+                GraphEmbedding(5): Struc2vec <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -731,7 +719,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -907,7 +897,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#line1- 算法原理"><span class="nav-number">1.</span> <span class="nav-text">LINE1 算法原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一阶相似度"><span class="nav-number">1.1.</span> <span class="nav-text">一阶相似度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二阶相似度"><span class="nav-number">1.2.</span> <span class="nav-text">二阶相似度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化目标"><span class="nav-number">2.</span> <span class="nav-text">优化目标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一阶相似度 -1"><span class="nav-number">2.1.</span> <span class="nav-text">一阶相似度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二阶相似度 -1"><span class="nav-number">2.2.</span> <span class="nav-text">二阶相似度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化技巧"><span class="nav-number">3.</span> <span class="nav-text">优化技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#negative-sampling"><span class="nav-number">3.1.</span> <span class="nav-text">Negative sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#edge-sampling"><span class="nav-number">3.2.</span> <span class="nav-text">Edge Sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#低度数顶点问题"><span class="nav-number">3.3.</span> <span class="nav-text">低度数顶点问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新加入顶点"><span class="nav-number">3.4.</span> <span class="nav-text">新加入顶点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#snde- 算法原理"><span class="nav-number">1.</span> <span class="nav-text">SNDE 算法原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相似度定义"><span class="nav-number">1.1.</span> <span class="nav-text">相似度定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二阶相似度优化目标"><span class="nav-number">1.2.</span> <span class="nav-text">二阶相似度优化目标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一阶相似度优化目标"><span class="nav-number">2.</span> <span class="nav-text">一阶相似度优化目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整体优化目标"><span class="nav-number">3.</span> <span class="nav-text">整体优化目标</span></a></li></ol></div>
             
 
           </div>

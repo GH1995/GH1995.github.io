@@ -382,7 +382,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/15/GraphEmbedding-5-Struc2vec/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/16/graph embedding/GraphEmbedding-3-node2vec/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -402,7 +402,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/15/GraphEmbedding-5-Struc2vec/" class="post-title-link" itemprop="url">GraphEmbedding(5): Struc2vec</a>
+                <a href="/2019/07/16/graph embedding/GraphEmbedding-3-node2vec/" class="post-title-link" itemprop="url">GraphEmbedding(3): node2vec</a>
               
             
           </h1>
@@ -427,13 +427,9 @@
                 
               
 
-              <time title="Created: 2019-07-15 21:32:00 / Modified: 21:37:29" itemprop="dateCreated datePublished" datetime="2019-07-15T21:32:00+08:00">2019-07-15</time>
+              <time title="Created: 2019-07-16 11:17:16" itemprop="dateCreated datePublished" datetime="2019-07-16T11:17:16+08:00">2019-07-16</time>
             
 
-            
-              
-
-              
             
           </span>
 
@@ -450,343 +446,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/07/15/GraphEmbedding-5-Struc2vec/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/GraphEmbedding-5-Struc2vec/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-               在一些场景中，两个不是近邻的顶点也可能拥有很高的相似性，对于这类相似性，上述方法是无法捕捉到的。Struc2Vec 就是针对这类场景提出的。Struc2Vec 的论文发表在 2017 年的 KDD 会议中。
-
-              
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/15/GraphEmbedding-5-Struc2vec/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/15/GraphEmbedding-4-SDNE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Guan Hua">
-      <meta itemprop="description" content="喵喵喵">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gh's notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/15/GraphEmbedding-4-SDNE/" class="post-title-link" itemprop="url">GraphEmbedding(4): SDNE</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-07-15 21:15:50 / Modified: 21:29:40" itemprop="dateCreated datePublished" datetime="2019-07-15T21:15:50+08:00">2019-07-15</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/07/15/GraphEmbedding-4-SDNE/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/GraphEmbedding-4-SDNE/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              SNDE 算法原理
-SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考
-SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/15/GraphEmbedding-4-SDNE/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/15/GraphEmbedding-3-node2vec/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Guan Hua">
-      <meta itemprop="description" content="喵喵喵">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gh's notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/15/GraphEmbedding-3-node2vec/" class="post-title-link" itemprop="url">GraphEmbedding(3): node2vec</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-07-15 20:51:53 / Modified: 21:10:15" itemprop="dateCreated datePublished" datetime="2019-07-15T20:51:53+08:00">2019-07-15</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/07/15/GraphEmbedding-3-node2vec/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/GraphEmbedding-3-node2vec/" itemprop="commentCount"></span>
+                <a href="/2019/07/16/graph embedding/GraphEmbedding-3-node2vec/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/graph embedding/GraphEmbedding-3-node2vec/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -828,7 +489,7 @@ node2vec 算法原理
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/07/15/GraphEmbedding-3-node2vec/#more" rel="contents">
+              <a class="btn" href="/2019/07/16/graph embedding/GraphEmbedding-3-node2vec/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -888,7 +549,7 @@ node2vec 算法原理
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/15/GraphEmbedding-1-DeepWalk/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/16/graph embedding/GraphEmbedding-2-LINE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -908,7 +569,7 @@ node2vec 算法原理
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/15/GraphEmbedding-1-DeepWalk/" class="post-title-link" itemprop="url">GraphEmbedding(1): DeepWalk</a>
+                <a href="/2019/07/16/graph embedding/GraphEmbedding-2-LINE/" class="post-title-link" itemprop="url">GraphEmbedding(2): LINE</a>
               
             
           </h1>
@@ -933,7 +594,7 @@ node2vec 算法原理
                 
               
 
-              <time title="Created: 2019-07-15 18:50:30" itemprop="dateCreated datePublished" datetime="2019-07-15T18:50:30+08:00">2019-07-15</time>
+              <time title="Created: 2019-07-16 11:17:01" itemprop="dateCreated datePublished" datetime="2019-07-16T11:17:01+08:00">2019-07-16</time>
             
 
             
@@ -952,8 +613,172 @@ node2vec 算法原理
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/07/15/GraphEmbedding-1-DeepWalk/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/GraphEmbedding-1-DeepWalk/" itemprop="commentCount"></span>
+                <a href="/2019/07/16/graph embedding/GraphEmbedding-2-LINE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/graph embedding/GraphEmbedding-2-LINE/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              LINE1 算法原理
+LINE 也是一种基于邻域相似假设的方法，只不过与 DeepWalk 使用 DFS 构造邻域不同的是，LINE 可以看作是一种使用 BFS 构造邻域的算法。此外，LINE 还可以应用在  带权图  中（DeepWalk 仅能用于无权图）。
+之前还提到不同的 graph embe
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/16/graph embedding/GraphEmbedding-2-LINE/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/16/graph embedding/GraphEmbedding-1-DeepWalk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Hua">
+      <meta itemprop="description" content="喵喵喵">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gh's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/16/graph embedding/GraphEmbedding-1-DeepWalk/" class="post-title-link" itemprop="url">GraphEmbedding(1): DeepWalk</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-16 11:16:35" itemprop="dateCreated datePublished" datetime="2019-07-16T11:16:35+08:00">2019-07-16</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/07/16/graph embedding/GraphEmbedding-1-DeepWalk/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/graph embedding/GraphEmbedding-1-DeepWalk/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1010,7 +835,7 @@ Graph Embedd
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/07/15/GraphEmbedding-1-DeepWalk/#more" rel="contents">
+              <a class="btn" href="/2019/07/16/graph embedding/GraphEmbedding-1-DeepWalk/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1070,7 +895,7 @@ Graph Embedd
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/15/GraphEmbedding-2-LINE/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/15/graph embedding/GraphEmbedding-5-Struc2vec/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -1090,7 +915,7 @@ Graph Embedd
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/07/15/GraphEmbedding-2-LINE/" class="post-title-link" itemprop="url">GraphEmbedding(2): LINE</a>
+                <a href="/2019/07/15/graph embedding/GraphEmbedding-5-Struc2vec/" class="post-title-link" itemprop="url">GraphEmbedding(5): Struc2vec</a>
               
             
           </h1>
@@ -1115,16 +940,46 @@ Graph Embedd
                 
               
 
-              <time title="Created: 2019-07-15 18:48:04 / Modified: 20:48:39" itemprop="dateCreated datePublished" datetime="2019-07-15T18:48:04+08:00">2019-07-15</time>
+              <time title="Created: 2019-07-15 21:32:00" itemprop="dateCreated datePublished" datetime="2019-07-15T21:32:00+08:00">2019-07-15</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-16 11:15:28" itemprop="dateModified" datetime="2019-07-16T11:15:28+08:00">2019-07-16</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/graph-embedding/" itemprop="url" rel="index"><span itemprop="name">graph embedding</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1138,8 +993,8 @@ Graph Embedd
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/07/15/GraphEmbedding-2-LINE/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/GraphEmbedding-2-LINE/" itemprop="commentCount"></span>
+                <a href="/2019/07/15/graph embedding/GraphEmbedding-5-Struc2vec/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/graph embedding/GraphEmbedding-5-Struc2vec/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1170,15 +1025,212 @@ Graph Embedd
         
           
             <p>
-              LINE1 算法原理
-LINE 也是一种基于邻域相似假设的方法，只不过与 DeepWalk 使用 DFS 构造邻域不同的是，LINE 可以看作是一种使用 BFS 构造邻域的算法。此外，LINE 还可以应用在  带权图  中（DeepWalk 仅能用于无权图）。
-之前还提到不同的 graph embe
+               在一些场景中，两个不是近邻的顶点也可能拥有很高的相似性，对于这类相似性，上述方法是无法捕捉到的。Struc2Vec 就是针对这类场景提出的。Struc2Vec 的论文发表在 2017 年的 KDD 会议中。
+
+              
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/15/graph embedding/GraphEmbedding-5-Struc2vec/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/15/graph embedding/GraphEmbedding-4-SDNE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Hua">
+      <meta itemprop="description" content="喵喵喵">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gh's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/15/graph embedding/GraphEmbedding-4-SDNE/" class="post-title-link" itemprop="url">GraphEmbedding(4): SDNE</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-15 21:15:50" itemprop="dateCreated datePublished" datetime="2019-07-15T21:15:50+08:00">2019-07-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-16 11:15:28" itemprop="dateModified" datetime="2019-07-16T11:15:28+08:00">2019-07-16</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/graph-embedding/" itemprop="url" rel="index"><span itemprop="name">graph embedding</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/07/15/graph embedding/GraphEmbedding-4-SDNE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/graph embedding/GraphEmbedding-4-SDNE/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              SNDE 算法原理
+SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考
+SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/07/15/GraphEmbedding-2-LINE/#more" rel="contents">
+              <a class="btn" href="/2019/07/15/graph embedding/GraphEmbedding-4-SDNE/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -2179,7 +2231,9 @@ $2 是传递
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
