@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="SNDE 算法原理 SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考 SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。 这个想法不错 相似度定义 SDNE 中的相似度定义和 LINE 是一样的。  一阶">
+  <meta name="description" content="在一些场景中，两个不是近邻的顶点也可能拥有很高的相似性，对于这类相似性，上述方法是无法捕捉到的。Struc2Vec 就是针对这类场景提出的。Struc2Vec 的论文发表在 2017 年的 KDD 会议中。">
 <meta name="keywords" content="graph embedding">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GraphEmbedding(4): SDNE">
-<meta property="og:url" content="http://guanhua.ml/2019/07/15/graph embedding/GraphEmbedding-4-SDNE/index.html">
+<meta property="og:title" content="GraphEmbedding(5): Struc2vec">
+<meta property="og:url" content="http://guanhua.ml/2019/07/16/graph embedding/GraphEmbedding-5-Struc2vec/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="SNDE 算法原理 SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考 SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。 这个想法不错 相似度定义 SDNE 中的相似度定义和 LINE 是一样的。  一阶">
+<meta property="og:description" content="在一些场景中，两个不是近邻的顶点也可能拥有很高的相似性，对于这类相似性，上述方法是无法捕捉到的。Struc2Vec 就是针对这类场景提出的。Struc2Vec 的论文发表在 2017 年的 KDD 会议中。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-16T03:15:28.909Z">
+<meta property="og:updated_time" content="2019-07-16T03:20:16.867Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GraphEmbedding(4): SDNE">
-<meta name="twitter:description" content="SNDE 算法原理 SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考 SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。 这个想法不错 相似度定义 SDNE 中的相似度定义和 LINE 是一样的。  一阶">
+<meta name="twitter:title" content="GraphEmbedding(5): Struc2vec">
+<meta name="twitter:description" content="在一些场景中，两个不是近邻的顶点也可能拥有很高的相似性，对于这类相似性，上述方法是无法捕捉到的。Struc2Vec 就是针对这类场景提出的。Struc2Vec 的论文发表在 2017 年的 KDD 会议中。">
 
 
 
@@ -124,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/2019/07/15/graph embedding/GraphEmbedding-4-SDNE/">
+  <link rel="canonical" href="http://guanhua.ml/2019/07/16/graph embedding/GraphEmbedding-5-Struc2vec/">
 
 
 
@@ -134,7 +134,7 @@
   };
 </script>
 
-  <title>GraphEmbedding(4): SDNE | gh's notes</title>
+  <title>GraphEmbedding(5): Struc2vec | gh's notes</title>
   
 
 
@@ -383,7 +383,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/15/graph embedding/GraphEmbedding-4-SDNE/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/16/graph embedding/GraphEmbedding-5-Struc2vec/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -400,7 +400,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">GraphEmbedding(4): SDNE
+          <h1 class="post-title" itemprop="name headline">GraphEmbedding(5): Struc2vec
 
               
             
@@ -426,46 +426,12 @@
                 
               
 
-              <time title="Created: 2019-07-15 21:15:50" itemprop="dateCreated datePublished" datetime="2019-07-15T21:15:50+08:00">2019-07-15</time>
+              <time title="Created: 2019-07-16 11:20:16" itemprop="dateCreated datePublished" datetime="2019-07-16T11:20:16+08:00">2019-07-16</time>
             
 
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-16 11:15:28" itemprop="dateModified" datetime="2019-07-16T11:15:28+08:00">2019-07-16</time>
-              
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/graph-embedding/" itemprop="url" rel="index"><span itemprop="name">graph embedding</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -479,8 +445,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/07/15/graph embedding/GraphEmbedding-4-SDNE/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/15/graph embedding/GraphEmbedding-4-SDNE/" itemprop="commentCount"></span>
+                <a href="/2019/07/16/graph embedding/GraphEmbedding-5-Struc2vec/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/graph embedding/GraphEmbedding-5-Struc2vec/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -508,31 +474,7 @@
       
 
       
-        <h2 id="snde- 算法原理">SNDE 算法原理</h2>
-<p>SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考</p>
-<p>SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。<strong> 这个想法不错</strong></p>
-<h3 id="相似度定义">相似度定义</h3>
-<p>SDNE 中的相似度定义和 LINE 是一样的。</p>
-<ul>
-<li>一阶相似度衡量的是相邻的两个顶点对之间相似性</li>
-<li>二阶相似度衡量的是，两个顶点他们的邻居集合的相似程度。</li>
-</ul>
-<h3 id="二阶相似度优化目标">二阶相似度优化目标</h3>
-<p><span class="math display">\[L_{2 n d}=\sum_{i=1}^{n}\left\|\hat{x}_{i}-x_{i}\right\|_{2}^{2}
-\]</span></p>
-<p>输入：邻接矩阵</p>
-<p>对于第 <span class="math inline">\(i\)</span> 个顶点，有 <span class="math inline">\(x_i = s_i\)</span>，每个 <span class="math inline">\(s_i\)</span> 都包含了顶点 <span class="math inline">\(i\)</span> 的邻居结构信息。</p>
-<p><span class="math display">\[L_{2 n d}=\sum_{i=1}^{n}\left\|\left(\hat{x}_{i}-x_{i}\right) \odot \mathbf{b}_{\mathbf{i}}\right\|_{2}^{2}=\|(\hat{X}-X) \odot B\|_{F}^{2}
-\]</span></p>
-<p><span class="math inline">\(\mathbf{b}_{\mathbf{i}}=\left\{b_{i, j}\right\}_{j=1}^{n}\)</span>，若 <span class="math inline">\(s_{i,j} = 0\)</span>，则 <span class="math inline">\(b_{i,j} = 1\)</span> ，否则 <span class="math inline">\(b_{i, j}=\beta&gt;1\)</span></p>
-<h2 id="一阶相似度优化目标">一阶相似度优化目标</h2>
-<p><span class="math display">\[L_{1 s t}=\sum_{i, j=1}^{n} s_{i, j}\left\|\mathbf{y}_{\mathbf{i}}^{(K)}-\mathbf{y}_{\mathbf{j}}^{(K)}\right\|_{2}^{2}=\sum_{i, j=1}^{n} s_{i, j}\left\|\mathbf{y}_{\mathbf{i}}-\mathbf{y}_{\mathbf{j}}\right\|_{2}^{2}
-\]</span></p>
-<p><span class="math display">\[L_{1 s t}=\sum_{i, j=1}^{n}\left\|\mathbf{y}_{i}-\mathbf{y}_{j}\right\|_{2}^{2}=2 \operatorname{tr}\left(Y^{T} L Y\right)
-\]</span></p>
-<h2 id="整体优化目标">整体优化目标</h2>
-<p><span class="math display">\[L_{m i x}=L_{2 n d}+\alpha L_{1 s t}+\nu L_{r e g}
-\]</span></p>
+        <p> 在一些场景中，两个不是近邻的顶点也可能拥有很高的相似性，对于这类相似性，上述方法是无法捕捉到的。Struc2Vec 就是针对这类场景提出的。Struc2Vec 的论文发表在 2017 年的 KDD 会议中。</p>
 
       
     </div>
@@ -567,7 +509,7 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/07/15/graph embedding/GraphEmbedding-5-Struc2vec/" rel="bookmark">GraphEmbedding(5): Struc2vec</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/16/graph embedding/GraphEmbedding-4-SDNE/" rel="bookmark">GraphEmbedding(4): SDNE</a></div>
       
     </li>
   
@@ -619,8 +561,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/15/graph embedding/GraphEmbedding-5-Struc2vec/" rel="prev" title="GraphEmbedding(5): Struc2vec">
-                GraphEmbedding(5): Struc2vec <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/16/graph embedding/GraphEmbedding-4-SDNE/" rel="prev" title="GraphEmbedding(4): SDNE">
+                GraphEmbedding(4): SDNE <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -669,17 +611,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -719,9 +652,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -886,23 +817,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#snde- 算法原理"><span class="nav-number">1.</span> <span class="nav-text">SNDE 算法原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相似度定义"><span class="nav-number">1.1.</span> <span class="nav-text">相似度定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二阶相似度优化目标"><span class="nav-number">1.2.</span> <span class="nav-text">二阶相似度优化目标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一阶相似度优化目标"><span class="nav-number">2.</span> <span class="nav-text">一阶相似度优化目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整体优化目标"><span class="nav-number">3.</span> <span class="nav-text">整体优化目标</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       

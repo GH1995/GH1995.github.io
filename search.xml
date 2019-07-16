@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[GraphEmbedding(3): node2vec]]></title>
-    <url>%2F2019%2F07%2F16%2Fgraph%20embedding%2FGraphEmbedding-3-node2vec%2F</url>
-    <content type="text"><![CDATA[node2vec 和 deepwalk 非常类似，主要区别在于顶点序列的采样策略不同 node2vec 算法原理 优化目标 \(f(u)\) 是将顶点 \(u\) 映射为 embedding 向量的映射函数 \(N_S(u)\) 是通过采样策略 \(S\) 采样出的顶点 \(u\) 的近邻顶点集合 优化目标是给定每个顶点条件下，令其近邻顶点（如何定义近邻顶点很重要）出现的概率最大。 \[\max _{f} \sum_{u \in V} \log \operatorname{Pr}\left(N_{S}(U) | f(u)\right) \] 提出了两个假设 条件独立性假设 假设给定源顶点下，其近邻顶点出现的概率与近邻集合中其余顶点无关。 特征空间对策假设 这里是说一个顶点作为源顶点和作为近邻顶点的时候共享同一套 embedding 向量。 顶点序列采样策略 学习算法 Alias]]></content>
+    <title><![CDATA[GraphEmbedding(1): DeepWalk]]></title>
+    <url>%2F2019%2F07%2F16%2Fgraph%20embedding%2FGraphEmbedding-1-DeepWalk%2F</url>
+    <content type="text"><![CDATA[图表示学习 数据结构 最小生成树(Prim, Kruskal) 最短路径(Dijkstra, Floyed) 其他：拓扑排序，关键路径 概率图模型 表示 推断 学习 图神经网络 GraphEmbedding(基于随机游走) Graph CNN（基于邻居汇聚） Graph Embedding 技术将图中的节点以低维稠密向量的形式进行表达，要求在原始图中相似 (不同的方法对相似的定义不同) 的节点其在低维表达空间也接近。得到的表达向量可以用来进行下游任务，如节点分类，链接预测，可视化或重构原始图等。 DeepWalk 原理 KDD 20141 DeepWalk 的思想类似 word2vec，使用 图中节点与节点的共现关系 来学习节点的向量表示。那么关键的问题就是如何来描述节点与节点的共现关系，DeepWalk 给出的方法是使用随机游走 (RandomWalk) 的方式在图中进行节点采样。 RandomWalk 是一种 可重复访问已访问节点 的深度优先遍历算法。给定当前访问起始节点，从其邻居中随机采样节点作为下一个访问节点，重复此过程，直到访问序列长度满足预设条件。 获取足够数量的节点访问序列后，使用 skip-gram model 进行向量学习。 结语 In our view, language modeline is actually sampling from an unobservable language graph. We believe that insights obtained from modeling observable graphs may in turn yield improvements to modeling unobservable ones. http://www.perozzi.net/publications/14_kdd_deepwalk.pdf↩]]></content>
       <tags>
-        <tag>todo</tag>
         <tag>graph embedding</tag>
       </tags>
   </entry>
@@ -18,31 +17,26 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[GraphEmbedding(1): DeepWalk]]></title>
-    <url>%2F2019%2F07%2F16%2Fgraph%20embedding%2FGraphEmbedding-1-DeepWalk%2F</url>
-    <content type="text"><![CDATA[图表示学习 数据结构 最小生成树(Prim, Kruskal) 最短路径(Dijkstra, Floyed) 其他：拓扑排序，关键路径 概率图模型 表示 推断 学习 图神经网络 GraphEmbedding(基于随机游走) Graph CNN（基于邻居汇聚） Graph Embedding 技术将图中的节点以低维稠密向量的形式进行表达，要求在原始图中相似 (不同的方法对相似的定义不同) 的节点其在低维表达空间也接近。得到的表达向量可以用来进行下游任务，如节点分类，链接预测，可视化或重构原始图等。 DeepWalk 原理 KDD 20141 DeepWalk 的思想类似 word2vec，使用 图中节点与节点的共现关系 来学习节点的向量表示。那么关键的问题就是如何来描述节点与节点的共现关系，DeepWalk 给出的方法是使用随机游走 (RandomWalk) 的方式在图中进行节点采样。 RandomWalk 是一种 可重复访问已访问节点 的深度优先遍历算法。给定当前访问起始节点，从其邻居中随机采样节点作为下一个访问节点，重复此过程，直到访问序列长度满足预设条件。 获取足够数量的节点访问序列后，使用 skip-gram model 进行向量学习。 结语 In our view, language modeline is actually sampling from an unobservable language graph. We believe that insights obtained from modeling observable graphs may in turn yield improvements to modeling unobservable ones. http://www.perozzi.net/publications/14_kdd_deepwalk.pdf↩]]></content>
+    <title><![CDATA[GraphEmbedding(3): node2vec]]></title>
+    <url>%2F2019%2F07%2F16%2Fgraph%20embedding%2FGraphEmbedding-3-node2vec%2F</url>
+    <content type="text"><![CDATA[node2vec 和 deepwalk 非常类似，主要区别在于顶点序列的采样策略不同 node2vec 算法原理 优化目标 \(f(u)\) 是将顶点 \(u\) 映射为 embedding 向量的映射函数 \(N_S(u)\) 是通过采样策略 \(S\) 采样出的顶点 \(u\) 的近邻顶点集合 优化目标是给定每个顶点条件下，令其近邻顶点（如何定义近邻顶点很重要）出现的概率最大。 \[\max _{f} \sum_{u \in V} \log \operatorname{Pr}\left(N_{S}(U) | f(u)\right) \] 提出了两个假设 条件独立性假设 假设给定源顶点下，其近邻顶点出现的概率与近邻集合中其余顶点无关。 特征空间对策假设 这里是说一个顶点作为源顶点和作为近邻顶点的时候共享同一套 embedding 向量。 顶点序列采样策略 学习算法 Alias]]></content>
+      <tags>
+        <tag>todo</tag>
+        <tag>graph embedding</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GraphEmbedding(4): SDNE]]></title>
+    <url>%2F2019%2F07%2F16%2Fgraph%20embedding%2FGraphEmbedding-4-SDNE%2F</url>
+    <content type="text"><![CDATA[SNDE 算法原理 SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考 SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。 这个想法不错 相似度定义 SDNE 中的相似度定义和 LINE 是一样的。 一阶相似度衡量的是相邻的两个顶点对之间相似性 二阶相似度衡量的是，两个顶点他们的邻居集合的相似程度。 二阶相似度优化目标 \[L_{2 n d}=\sum_{i=1}^{n}\left\|\hat{x}_{i}-x_{i}\right\|_{2}^{2} \] 输入：邻接矩阵 对于第 \(i\) 个顶点，有 \(x_i = s_i\)，每个 \(s_i\) 都包含了顶点 \(i\) 的邻居结构信息。 \[L_{2 n d}=\sum_{i=1}^{n}\left\|\left(\hat{x}_{i}-x_{i}\right) \odot \mathbf{b}_{\mathbf{i}}\right\|_{2}^{2}=\|(\hat{X}-X) \odot B\|_{F}^{2} \] \(\mathbf{b}_{\mathbf{i}}=\left\{b_{i, j}\right\}_{j=1}^{n}\)，若 \(s_{i,j} = 0\)，则 \(b_{i,j} = 1\) ，否则 \(b_{i, j}=\beta&gt;1\) 一阶相似度优化目标 \[L_{1 s t}=\sum_{i, j=1}^{n} s_{i, j}\left\|\mathbf{y}_{\mathbf{i}}^{(K)}-\mathbf{y}_{\mathbf{j}}^{(K)}\right\|_{2}^{2}=\sum_{i, j=1}^{n} s_{i, j}\left\|\mathbf{y}_{\mathbf{i}}-\mathbf{y}_{\mathbf{j}}\right\|_{2}^{2} \] \[L_{1 s t}=\sum_{i, j=1}^{n}\left\|\mathbf{y}_{i}-\mathbf{y}_{j}\right\|_{2}^{2}=2 \operatorname{tr}\left(Y^{T} L Y\right) \] 整体优化目标 \[L_{m i x}=L_{2 n d}+\alpha L_{1 s t}+\nu L_{r e g} \]]]></content>
       <tags>
         <tag>graph embedding</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[GraphEmbedding(5): Struc2vec]]></title>
-    <url>%2F2019%2F07%2F15%2Fgraph%20embedding%2FGraphEmbedding-5-Struc2vec%2F</url>
+    <url>%2F2019%2F07%2F16%2Fgraph%20embedding%2FGraphEmbedding-5-Struc2vec%2F</url>
     <content type="text"><![CDATA[在一些场景中，两个不是近邻的顶点也可能拥有很高的相似性，对于这类相似性，上述方法是无法捕捉到的。Struc2Vec 就是针对这类场景提出的。Struc2Vec 的论文发表在 2017 年的 KDD 会议中。]]></content>
-      <categories>
-        <category>graph embedding</category>
-      </categories>
-      <tags>
-        <tag>graph embedding</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[GraphEmbedding(4): SDNE]]></title>
-    <url>%2F2019%2F07%2F15%2Fgraph%20embedding%2FGraphEmbedding-4-SDNE%2F</url>
-    <content type="text"><![CDATA[SNDE 算法原理 SNDE 可以看作是基于 LINE 的扩展，同时也是第一个将深度学习应用于网络表示学习中的方法。 不清楚 LINE 的同学可以参考 SDNE 使用一个自动编码器结构来同时优化 1 阶和 2 阶相似度 (LINE 是分别优化的)，学习得到的向量表示能够保留局部和全局结构，并且对稀疏网络具有鲁棒性。 这个想法不错 相似度定义 SDNE 中的相似度定义和 LINE 是一样的。 一阶相似度衡量的是相邻的两个顶点对之间相似性 二阶相似度衡量的是，两个顶点他们的邻居集合的相似程度。 二阶相似度优化目标 \[L_{2 n d}=\sum_{i=1}^{n}\left\|\hat{x}_{i}-x_{i}\right\|_{2}^{2} \] 输入：邻接矩阵 对于第 \(i\) 个顶点，有 \(x_i = s_i\)，每个 \(s_i\) 都包含了顶点 \(i\) 的邻居结构信息。 \[L_{2 n d}=\sum_{i=1}^{n}\left\|\left(\hat{x}_{i}-x_{i}\right) \odot \mathbf{b}_{\mathbf{i}}\right\|_{2}^{2}=\|(\hat{X}-X) \odot B\|_{F}^{2} \] \(\mathbf{b}_{\mathbf{i}}=\left\{b_{i, j}\right\}_{j=1}^{n}\)，若 \(s_{i,j} = 0\)，则 \(b_{i,j} = 1\) ，否则 \(b_{i, j}=\beta&gt;1\) 一阶相似度优化目标 \[L_{1 s t}=\sum_{i, j=1}^{n} s_{i, j}\left\|\mathbf{y}_{\mathbf{i}}^{(K)}-\mathbf{y}_{\mathbf{j}}^{(K)}\right\|_{2}^{2}=\sum_{i, j=1}^{n} s_{i, j}\left\|\mathbf{y}_{\mathbf{i}}-\mathbf{y}_{\mathbf{j}}\right\|_{2}^{2} \] \[L_{1 s t}=\sum_{i, j=1}^{n}\left\|\mathbf{y}_{i}-\mathbf{y}_{j}\right\|_{2}^{2}=2 \operatorname{tr}\left(Y^{T} L Y\right) \] 整体优化目标 \[L_{m i x}=L_{2 n d}+\alpha L_{1 s t}+\nu L_{r e g} \]]]></content>
-      <categories>
-        <category>graph embedding</category>
-      </categories>
       <tags>
         <tag>graph embedding</tag>
       </tags>
