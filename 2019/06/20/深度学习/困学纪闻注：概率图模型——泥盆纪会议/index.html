@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="图模型的基本问题 图模型有三个基本问题：  表示问题：对于一个概率模型，如何通过图结构来描述变量之间的依赖关系。 推断问题：在已知部分变量时，计算其它变量的后验概率分布。 学习问题：图模型的学习包括图结构的学习和参数的学习。在本章我们只关注在给定图结构时的参数学习，即参数估计问题。  模型表示 带阴影的节点表示可观测到的变量，不带阴影的节点表示隐变量，连边表示两变量间的条件依赖关系 有向图模型（贝">
+<meta name="keywords" content="todo,deep learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="困学纪闻注：概率图模型——泥盆纪会议">
+<meta property="og:url" content="http://guanhua.ml/2019/06/20/深度学习/困学纪闻注：概率图模型——泥盆纪会议/index.html">
+<meta property="og:site_name" content="gh&#39;s notes">
+<meta property="og:description" content="图模型的基本问题 图模型有三个基本问题：  表示问题：对于一个概率模型，如何通过图结构来描述变量之间的依赖关系。 推断问题：在已知部分变量时，计算其它变量的后验概率分布。 学习问题：图模型的学习包括图结构的学习和参数的学习。在本章我们只关注在给定图结构时的参数学习，即参数估计问题。  模型表示 带阴影的节点表示可观测到的变量，不带阴影的节点表示隐变量，连边表示两变量间的条件依赖关系 有向图模型（贝">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/20/VjmnDP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/20/VjnIoT.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/20/VjmnDP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/20/VjnIoT.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/20/VjuVmt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/20/Vjuy0x.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/20/VjuTBt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/20/VjljI0.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/20/Vjdsu6.png">
+<meta property="og:updated_time" content="2019-06-26T13:01:58.861Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="困学纪闻注：概率图模型——泥盆纪会议">
+<meta name="twitter:description" content="图模型的基本问题 图模型有三个基本问题：  表示问题：对于一个概率模型，如何通过图结构来描述变量之间的依赖关系。 推断问题：在已知部分变量时，计算其它变量的后验概率分布。 学习问题：图模型的学习包括图结构的学习和参数的学习。在本章我们只关注在给定图结构时的参数学习，即参数估计问题。  模型表示 带阴影的节点表示可观测到的变量，不带阴影的节点表示隐变量，连边表示两变量间的条件依赖关系 有向图模型（贝">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/06/20/VjmnDP.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://guanhua.ml/2019/06/20/深度学习/困学纪闻注：概率图模型——泥盆纪会议/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>困学纪闻注：概率图模型——泥盆纪会议 | gh's notes</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gh's notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Machine Learning</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/06/20/深度学习/困学纪闻注：概率图模型——泥盆纪会议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Hua">
+      <meta itemprop="description" content="喵喵喵">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gh's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">困学纪闻注：概率图模型——泥盆纪会议
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-20 09:45:56" itemprop="dateCreated datePublished" datetime="2019-06-20T09:45:56+08:00">2019-06-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-26 21:01:58" itemprop="dateModified" datetime="2019-06-26T21:01:58+08:00">2019-06-26</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/06/20/深度学习/困学纪闻注：概率图模型——泥盆纪会议/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/20/深度学习/困学纪闻注：概率图模型——泥盆纪会议/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>图模型的基本问题 图模型有三个基本问题：</p>
+<ol type="1">
+<li>表示问题：对于一个概率模型，如何通过图结构来描述变量之间的依赖关系。</li>
+<li>推断问题：在已知部分变量时，计算其它变量的后验概率分布。</li>
+<li>学习问题：图模型的学习包括图结构的学习和参数的学习。在本章我们只关注在给定图结构时的参数学习，即参数估计问题。</li>
+</ol>
+<h2 id="模型表示">模型表示</h2>
+<p><strong>带阴影的节点表示可观测到的变量，不带阴影的节点表示隐变量，连边表示两变量间的条件依赖关系</strong></p>
+<h3 id="有向图模型贝叶斯网络">有向图模型（贝叶斯网络）</h3>
+<p>联合概率可以分解为局部条件概率的连乘形式</p>
+<p><span class="math display">\[p(\mathbf{x})=\prod_{k=1}^{K} p\left(x_{k} | \mathbf{x}_{\pi_{k}}\right)
+\]</span></p>
+<h3 id="常见有向图模型">常见有向图模型</h3>
+<h4 id="朴素贝叶斯分类器">朴素贝叶斯分类器</h4>
+<p><span class="math display">\[P(H | E)=\frac{P(E | H)}{P(E)} P(H)
+\]</span></p>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/20/VjmnDP.png" alt="朴素贝叶斯模型的图模型表示"><figcaption>朴素贝叶斯模型的图模型表示</figcaption>
+</figure>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/20/VjnIoT.png" alt="Logistic 回归"><figcaption>Logistic 回归</figcaption>
+</figure>
+<p><span class="math display">\[P(H | E)=\frac{P(E | H)}{P(E)} P(H)
+\]</span></p>
+<p><span class="math display">\[p(y | \mathbf{x}, \theta) \propto p\left(y | \theta_{c}\right) \prod_{i=1}^{d} p\left(x_{i} | y, \theta_{i, y}\right) = P(H) \prod P(E|H)
+\]</span></p>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/20/VjmnDP.png" alt="朴素贝叶斯模型的图模型表示"><figcaption>朴素贝叶斯模型的图模型表示</figcaption>
+</figure>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/20/VjnIoT.png" alt="Logistic 回归"><figcaption>Logistic 回归</figcaption>
+</figure>
+<h4 id="隐马尔可夫模型">隐马尔可夫模型</h4>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/20/VjuVmt.png" alt="隐马尔可夫模型"><figcaption>隐马尔可夫模型</figcaption>
+</figure>
+<p><span class="math display">\[p(\mathbf{x}, \mathbf{y}, \theta)=\prod_{t=1}^{T} p\left(y_{t} | y_{t-1}, \theta_{s}\right) p\left(x_{t} | y_{t}, \theta_{t}\right)
+\]</span></p>
+<p>本质上就是</p>
+<p><span class="math display">\[P(H|H_{t-1}) P(E|H)
+\]</span></p>
+<h3 id="无向图模型">无向图模型</h3>
+<p><span class="math display">\[p(\mathbf{x})=\frac{1}{Z} \prod_{c \in \mathcal{C}} \phi_{c}\left(\mathbf{x}_{c}\right)
+\]</span></p>
+<h3 id="常见无向图模型">常见无向图模型</h3>
+<h4 id="对数线性模型">对数线性模型</h4>
+<p><span class="math display">\[p(y | \mathbf{x}, \theta)=\frac{1}{Z(\mathbf{x}, \theta)} \exp \left(\theta^{\mathrm{T}} f(\mathbf{x}, y)\right)
+\]</span></p>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/20/Vjuy0x.png" alt="最大熵模型"><figcaption>最大熵模型</figcaption>
+</figure>
+<h4 id="条件随机场">条件随机场</h4>
+<p>和最大熵模型不同，条件随机场建模的条件概率 <span class="math inline">\(p(\mathbf{y}|\mathbf{x})\)</span> 中，<span class="math inline">\(\mathbf{y}\)</span>一般为随机向量，因此需要对 <span class="math inline">\(p(\mathbf{y}|\mathbf{x})\)</span> 进行因子分解。</p>
+<p><span class="math display">\[p(\mathbf{y} | \mathbf{x}, \theta)=\frac{1}{Z(\mathbf{x}, \theta)} \exp \left(\sum_{c \in \mathcal{C}} \theta_{c}^{\mathrm{T}} f_{c}\left(\mathbf{x}, \mathbf{y}_{c}\right)\right)
+\]</span></p>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/20/VjuTBt.png" alt="线性链的条件随机场"><figcaption>线性链的条件随机场</figcaption>
+</figure>
+<h2 id="推断">推断</h2>
+<h2 id="近似推断">近似推断</h2>
+<h3 id="蒙特卡罗方法采样法">蒙特卡罗方法（采样法）</h3>
+<p>蒙特卡罗方法的基本思想可以归结为根据一个已知概率密度函数为 <span class="math inline">\(p(x)\)</span> 的分布来计算函数 <span class="math inline">\(f(x)\)</span> 的期望</p>
+<p><span class="math display">\[\mathbb{E}[f(x)]=\int_{x} f(x) p(x) d x
+\]</span></p>
+<p>当 <span class="math inline">\(p(x)\)</span> 比较复杂时，很难用解析的方法来计算这个期望。但是可以从 <span class="math inline">\(p(x)\)</span> 中抽取 <span class="math inline">\(N\)</span> 个样本，然后用均值来近似计算上述期望： <span class="math display">\[\hat{f}_{N}=\frac{1}{N}\left(f\left(x^{(1)}\right)+\cdots+f\left(x^{(N)}\right)\right)
+\]</span></p>
+<p>蒙特卡罗方法的难点是如何进行随机采样，即如何让计算机生成满足概率密度函数 <span class="math inline">\(p(x)\)</span> 的样本。</p>
+<p>一般是先根据一个比较容易采样的分布进行采样，然后通过一些策略来间接得到符合 <span class="math inline">\(p(x)\)</span> 分布的样本。</p>
+<h3 id="拒绝采样">拒绝采样</h3>
+<p>我们可以引入一个容易采样的分布 <span class="math inline">\(q(x)\)</span>， 一般称为<strong> 提议分布</strong>，然后以某个标准来拒绝一部分的样本使得最终采集的样本服从分布<span class="math inline">\(p(x)\)</span>。</p>
+<p>已知未归一化的分布 <span class="math inline">\(\hat{p}(x)\)</span>，我们需要构建一个提议分布<span class="math inline">\(q(x)\)</span> 和一个常数 <span class="math inline">\(k\)</span>，使得<span class="math inline">\(kq(x)\)</span> 可以覆盖函数 <span class="math inline">\(\hat{p}(x)\)</span>。</p>
+<blockquote>
+<p>我们用这个好算的 <span class="math inline">\(q(x)\)</span> 先操作一波，然后计算<span class="math inline">\(\frac{\hat{p}(x)}{q(x)}\)</span>，这就是里面的有效成分！</p>
+</blockquote>
+<p>对于每次抽取的样本<span class="math inline">\(\hat{x}\)</span>，计算接受概率</p>
+<p><span class="math display">\[\alpha(\hat{x})=\frac{\hat{p}(\hat{x})}{k q(\hat{x})}
+\]</span></p>
+<h3 id="重要性采样">重要性采样</h3>
+<p>略</p>
+<h3 id="马尔可夫链蒙特卡罗方法">马尔可夫链蒙特卡罗方法</h3>
+<p>略</p>
+<h4 id="mh 算法">MH 算法</h4>
+<p>略</p>
+<h4 id="metropolis- 算法">Metropolis 算法</h4>
+<p>略</p>
+<h4 id="吉布斯采样">吉布斯采样</h4>
+<p>一种有效地对高维空间中的分布进行采样的 MCMC 方法</p>
+<p>略</p>
+<h2 id="学习">学习</h2>
+<h3 id="不含隐变量的学习">不含隐变量的学习</h3>
+<p>极大似然估计</p>
+<ul>
+<li>采样法</li>
+<li>坐标上升法</li>
+</ul>
+<h3 id="含隐变量的参数估计">含隐变量的参数估计</h3>
+<h4 id="em 算法">EM 算法</h4>
+<p>一个样本 <span class="math inline">\(\mathbf{x}\)</span> 的边际似然函数</p>
+<p><span class="math display">\[p(\mathbf{x} | \theta)=\sum_{\mathbf{z}} p(\mathbf{x}, \mathbf{z} | \theta)
+\]</span></p>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/20/VjljI0.png" alt="带隐变量的贝叶斯网络: 盘子表示法"><figcaption>带隐变量的贝叶斯网络: 盘子表示法</figcaption>
+</figure>
+<p>训练集的对数边际似然为</p>
+<p><span class="math display">\[\begin{aligned} \mathcal{L}(\mathcal{D} | \theta) &amp;=\frac{1}{N} \sum_{i=1}^{N} \log p\left(\mathbf{x}^{(i)}, \theta\right) \\ &amp;=\frac{1}{N} \sum_{i=1}^{N} \log \sum_{\mathbf{z}} p\left(\mathbf{x}^{(i)}, \mathbf{z} | \theta\right) \end{aligned}
+\]</span></p>
+<p>为了计算 <span class="math inline">\(\log p(\mathbf{x}|\theta)\)</span>，我们引入<span class="math inline">\(q(\mathbf{z})\)</span> 为定义在隐变量 <span class="math inline">\(\mathbf{Z}\)</span> 上的分布。</p>
+<p>样本 <span class="math inline">\(\mathbf{x}\)</span> 的对数边际似然函数为 <span class="math display">\[\begin{aligned} \log p(\mathbf{x} | \theta) &amp;=\log \sum_{\mathbf{z}} q(\mathbf{z}) \frac{p(\mathbf{x}, \mathbf{z} | \theta)}{q(\mathbf{z})} \\ &amp; \geq \sum_{\mathbf{z}} q(\mathbf{z}) \log \frac{p(\mathbf{x}, \mathbf{z} | \theta)}{q(\mathbf{z})} \\ &amp; \triangleq E L B O(q, \mathbf{x} | \theta) \end{aligned}
+\]</span> 证据下界</p>
+<p>由 Jensen 不等式的性质可知，仅当<span class="math inline">\(q(\mathbf{z})=p(\mathbf{z} | \mathbf{x}, \theta)\)</span> 时，取等式。</p>
+<p>这样，最大化对数边际似然函数<span class="math inline">\(\log p(\mathbf{x} | \theta)\)</span> 的过程可以分解为两步：</p>
+<ol type="1">
+<li>先找到近似分布<span class="math inline">\(q(\mathbf{z})\)</span> 使得<span class="math inline">\(\log p(\mathbf{x} | \theta)=ELBO(q, \mathbf{x} | \theta)\)</span></li>
+<li>再寻找参数 <span class="math inline">\(\theta\)</span>最大化<span class="math inline">\(ELBO(q, \mathbf{x} | \theta)\)</span></li>
+</ol>
+<h4 id="高斯混合模型">高斯混合模型</h4>
+<figure>
+<img src="https://s2.ax1x.com/2019/06/20/Vjdsu6.png" alt="高斯混合模型"><figcaption>高斯混合模型</figcaption>
+</figure>
+<p>略</p>
+
+      
+    </div>
+
+    
+      
+
+  <div class="popular-posts-header">Related Posts</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2019/03/18/深度学习/PCA/" rel="bookmark">困学纪闻注：PCA</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2019/06/20/深度学习/困学纪闻注：GAN——志留纪叹息/" rel="bookmark">困学纪闻注：GAN——志留纪叹息</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2019/06/19/深度学习/困学纪闻注：前馈神经网络一览/" rel="bookmark">困学纪闻注：前馈神经网络一览——激活函数寒武纪</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2019/06/19/深度学习/困学纪闻注：前馈神经网络一览——反向传播算法/" rel="bookmark">困学纪闻注：前馈神经网络一览——反向传播算法白垩纪</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2019/06/19/深度学习/困学纪闻注：卷积神经网络——中生代噩梦/" rel="bookmark">困学纪闻注：卷积神经网络——中生代噩梦</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/todo/" rel="tag"># todo</a>
+          
+            <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/20/深度学习/困学纪闻注：网络优化与泛化——石炭纪/" rel="next" title="困学纪闻注：网络优化与泛化——石炭纪">
+                <i class="fa fa-chevron-left"></i> 困学纪闻注：网络优化与泛化——石炭纪
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/20/深度学习/困学纪闻注：GAN——志留纪叹息/" rel="prev" title="困学纪闻注：GAN——志留纪叹息">
+                困学纪闻注：GAN——志留纪叹息 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guan Hua</p>
+              <div class="site-description motion-element" itemprop="description">喵喵喵</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">113</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="chat motion-element">
+              
+              
+                <a onclick="tidioChatApi.open();">
+              
+              <i class="fa fa-comment"></i>
+                  Chat
+                </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/GH995" title="GitHub &rarr; https://github.com/GH995" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/guan__hua" title="https://blog.csdn.net/guan__hua" rel="noopener" target="_blank">本科的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://guanhua.ml/vimrc" title="https://guanhua.ml/vimrc">vimrc</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型表示"><span class="nav-number">1.</span> <span class="nav-text">模型表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#有向图模型贝叶斯网络"><span class="nav-number">1.1.</span> <span class="nav-text">有向图模型（贝叶斯网络）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见有向图模型"><span class="nav-number">1.2.</span> <span class="nav-text">常见有向图模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#朴素贝叶斯分类器"><span class="nav-number">1.2.1.</span> <span class="nav-text">朴素贝叶斯分类器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐马尔可夫模型"><span class="nav-number">1.2.2.</span> <span class="nav-text">隐马尔可夫模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无向图模型"><span class="nav-number">1.3.</span> <span class="nav-text">无向图模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见无向图模型"><span class="nav-number">1.4.</span> <span class="nav-text">常见无向图模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对数线性模型"><span class="nav-number">1.4.1.</span> <span class="nav-text">对数线性模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件随机场"><span class="nav-number">1.4.2.</span> <span class="nav-text">条件随机场</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推断"><span class="nav-number">2.</span> <span class="nav-text">推断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#近似推断"><span class="nav-number">3.</span> <span class="nav-text">近似推断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#蒙特卡罗方法采样法"><span class="nav-number">3.1.</span> <span class="nav-text">蒙特卡罗方法（采样法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拒绝采样"><span class="nav-number">3.2.</span> <span class="nav-text">拒绝采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重要性采样"><span class="nav-number">3.3.</span> <span class="nav-text">重要性采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#马尔可夫链蒙特卡罗方法"><span class="nav-number">3.4.</span> <span class="nav-text">马尔可夫链蒙特卡罗方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#mh 算法"><span class="nav-number">3.4.1.</span> <span class="nav-text">MH 算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#metropolis- 算法"><span class="nav-number">3.4.2.</span> <span class="nav-text">Metropolis 算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#吉布斯采样"><span class="nav-number">3.4.3.</span> <span class="nav-text">吉布斯采样</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习"><span class="nav-number">4.</span> <span class="nav-text">学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不含隐变量的学习"><span class="nav-number">4.1.</span> <span class="nav-text">不含隐变量的学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#含隐变量的参数估计"><span class="nav-number">4.2.</span> <span class="nav-text">含隐变量的参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#em 算法"><span class="nav-number">4.2.1.</span> <span class="nav-text">EM 算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯混合模型"><span class="nav-number">4.2.2.</span> <span class="nav-text">高斯混合模型</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guan Hua</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'MnD1JRjGHGxB0w796nisuz4c-gzGzoHsz',
+    appKey: 'fc8bkARGALAvjFnCYAMluDnY',
+    placeholder: '',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '800px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
+
+  
+
+  
+
+  
+
+  
+  <script src="//code.tidio.co/dr6c9vwjhin1g6vzbhrsv68dxmzg4oao.js"></script>
+
+
+</body>
+</html>

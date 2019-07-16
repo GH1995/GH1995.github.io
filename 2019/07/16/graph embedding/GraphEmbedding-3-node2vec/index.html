@@ -106,14 +106,14 @@
 
 
   <meta name="description" content="node2vec 和 deepwalk 非常类似，主要区别在于顶点序列的采样策略不同  node2vec 算法原理   优化目标   \(f(u)\) 是将顶点 \(u\) 映射为 embedding 向量的映射函数  \(N_S(u)\) 是通过采样策略 \(S\) 采样出的顶点 \(u\) 的近邻顶点集合    优化目标是给定每个顶点条件下，令其近邻顶点（如何定义近邻顶点很重要）出现的概率最大">
-<meta name="keywords" content="todo,graph embedding">
+<meta name="keywords" content="graph embedding,todo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GraphEmbedding(3): node2vec">
 <meta property="og:url" content="http://guanhua.ml/2019/07/16/graph embedding/GraphEmbedding-3-node2vec/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
 <meta property="og:description" content="node2vec 和 deepwalk 非常类似，主要区别在于顶点序列的采样策略不同  node2vec 算法原理   优化目标   \(f(u)\) 是将顶点 \(u\) 映射为 embedding 向量的映射函数  \(N_S(u)\) 是通过采样策略 \(S\) 采样出的顶点 \(u\) 的近邻顶点集合    优化目标是给定每个顶点条件下，令其近邻顶点（如何定义近邻顶点很重要）出现的概率最大">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-16T03:20:34.831Z">
+<meta property="og:updated_time" content="2019-07-16T03:21:18.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GraphEmbedding(3): node2vec">
 <meta name="twitter:description" content="node2vec 和 deepwalk 非常类似，主要区别在于顶点序列的采样策略不同  node2vec 算法原理   优化目标   \(f(u)\) 是将顶点 \(u\) 映射为 embedding 向量的映射函数  \(N_S(u)\) 是通过采样策略 \(S\) 采样出的顶点 \(u\) 的近邻顶点集合    优化目标是给定每个顶点条件下，令其近邻顶点（如何定义近邻顶点很重要）出现的概率最大">
@@ -426,12 +426,30 @@
                 
               
 
-              <time title="Created: 2019-07-16 11:20:34" itemprop="dateCreated datePublished" datetime="2019-07-16T11:20:34+08:00">2019-07-16</time>
+              <time title="Created: 2019-07-16 11:21:18" itemprop="dateCreated datePublished" datetime="2019-07-16T11:21:18+08:00">2019-07-16</time>
             
 
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/graph-embedding/" itemprop="url" rel="index"><span itemprop="name">graph embedding</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -505,35 +523,35 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/03/18/PCA/" rel="bookmark">困学纪闻注：PCA</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/16/graph embedding/GraphEmbedding-1-DeepWalk/" rel="bookmark">GraphEmbedding(1): DeepWalk</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/20/困学纪闻注：GAN——志留纪叹息/" rel="bookmark">困学纪闻注：GAN——志留纪叹息</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/16/graph embedding/GraphEmbedding-2-LINE/" rel="bookmark">GraphEmbedding(2): LINE</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/19/困学纪闻注：Logistic-回归/" rel="bookmark">困学纪闻注：Logistic 回归</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/16/graph embedding/GraphEmbedding-4-SDNE/" rel="bookmark">GraphEmbedding(4): SDNE</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/19/困学纪闻注：前馈神经网络一览/" rel="bookmark">困学纪闻注：前馈神经网络一览——激活函数寒武纪</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/16/graph embedding/GraphEmbedding-5-Struc2vec/" rel="bookmark">GraphEmbedding(5): Struc2vec</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/19/困学纪闻注：前馈神经网络一览——反向传播算法/" rel="bookmark">困学纪闻注：前馈神经网络一览——反向传播算法白垩纪</a></div>
+      <div class="popular-posts-title"><a href="/2019/06/19/machine learning trick/神奇动物在哪里？——归一化总结/" rel="bookmark">神奇动物在哪里？——归一化总结</a></div>
       
     </li>
   
@@ -562,9 +580,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/todo/" rel="tag"># todo</a>
-          
             <a href="/tags/graph-embedding/" rel="tag"># graph embedding</a>
+          
+            <a href="/tags/todo/" rel="tag"># todo</a>
           
         </div>
       
@@ -662,7 +680,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">120</span>
+                    <span class="site-state-item-count">113</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -687,7 +705,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -780,9 +800,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
