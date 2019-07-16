@@ -105,18 +105,21 @@
 
 
 
-  <meta name="description" content="最大熵模型 支持向量机  原始问题 \[\begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t.} c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad h_{j}(x)=0, \quad j=1,2, \cdots, l}\end{array} \] 此约">
-<meta name="keywords" content="todo,machine learning">
+  <meta name="description" content="Spark SQL 简介 从 Shark 说起 Shark 即 Hive on Spark Spark SQL 设计 从 HQL 被解析成抽象语法树（AST）起，就全部由 Spark SQL 接管了  Spark-SQL 架构  Spark SQL 增å 了 SchemaRDD（即带有 Schema 信息的 RDD），使用户可以在 Spark SQL 中执行 SQL 语句，数据既可以来自 RDD">
 <meta property="og:type" content="article">
-<meta property="og:title" content="建炎以来系年要录：拉格朗日对偶性">
-<meta property="og:url" content="http://guanhua.ml/2019/06/22/统计学习方法/建炎以来系年要录：拉格朗日对偶性/index.html">
+<meta property="og:title" content="明夷待访录（四）：Spark SQL">
+<meta property="og:url" content="http://guanhua.ml/2019/07/16/明夷待访录（四）：Spark-SQL/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="最大熵模型 支持向量机  原始问题 \[\begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t.} c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad h_{j}(x)=0, \quad j=1,2, \cdots, l}\end{array} \] 此约">
+<meta property="og:description" content="Spark SQL 简介 从 Shark 说起 Shark 即 Hive on Spark Spark SQL 设计 从 HQL 被解析成抽象语法树（AST）起，就全部由 Spark SQL 接管了  Spark-SQL 架构  Spark SQL 增å 了 SchemaRDD（即带有 Schema 信息的 RDD），使用户可以在 Spark SQL 中执行 SQL 语句，数据既可以来自 RDD">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-16T03:47:53.809Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/12/ZfYEss.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/12/ZfYMJU.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/12/ZfYXfU.jpg">
+<meta property="og:updated_time" content="2019-07-16T08:50:04.492Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="建炎以来系年要录：拉格朗日对偶性">
-<meta name="twitter:description" content="最大熵模型 支持向量机  原始问题 \[\begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t.} c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad h_{j}(x)=0, \quad j=1,2, \cdots, l}\end{array} \] 此约">
+<meta name="twitter:title" content="明夷待访录（四）：Spark SQL">
+<meta name="twitter:description" content="Spark SQL 简介 从 Shark 说起 Shark 即 Hive on Spark Spark SQL 设计 从 HQL 被解析成抽象语法树（AST）起，就全部由 Spark SQL 接管了  Spark-SQL 架构  Spark SQL 增å 了 SchemaRDD（即带有 Schema 信息的 RDD），使用户可以在 Spark SQL 中执行 SQL 语句，数据既可以来自 RDD">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/12/ZfYEss.jpg">
 
 
 
@@ -124,7 +127,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/2019/06/22/统计学习方法/建炎以来系年要录：拉格朗日对偶性/">
+  <link rel="canonical" href="http://guanhua.ml/2019/07/16/明夷待访录（四）：Spark-SQL/">
 
 
 
@@ -134,7 +137,7 @@
   };
 </script>
 
-  <title>建炎以来系年要录：拉格朗日对偶性 | gh's notes</title>
+  <title>明夷待访录（四）：Spark SQL | gh's notes</title>
   
 
 
@@ -383,7 +386,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/06/22/统计学习方法/建炎以来系年要录：拉格朗日对偶性/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/16/明夷待访录（四）：Spark-SQL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -400,7 +403,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">建炎以来系年要录：拉格朗日对偶性
+          <h1 class="post-title" itemprop="name headline">明夷待访录（四）：Spark SQL
 
               
             
@@ -426,46 +429,16 @@
                 
               
 
-              <time title="Created: 2019-06-22 12:57:14" itemprop="dateCreated datePublished" datetime="2019-06-22T12:57:14+08:00">2019-06-22</time>
+              <time title="Created: 2019-07-16 16:50:18 / Modified: 16:50:04" itemprop="dateCreated datePublished" datetime="2019-07-16T16:50:18+08:00">2019-07-16</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-16 11:47:53" itemprop="dateModified" datetime="2019-07-16T11:47:53+08:00">2019-07-16</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/统计学习方法/" itemprop="url" rel="index"><span itemprop="name">统计学习方法</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -479,8 +452,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/06/22/统计学习方法/建炎以来系年要录：拉格朗日对偶性/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/22/统计学习方法/建炎以来系年要录：拉格朗日对偶性/" itemprop="commentCount"></span>
+                <a href="/2019/07/16/明夷待访录（四）：Spark-SQL/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/明夷待访录（四）：Spark-SQL/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -508,67 +481,171 @@
       
 
       
-        <ul>
-<li>最大熵模型</li>
-<li>支持向量机</li>
+        <h2 id="spark-sql 简介">Spark SQL 简介</h2>
+<p><strong>从 Shark 说起</strong></p>
+<p>Shark 即 Hive on Spark</p>
+<p><strong>Spark SQL 设计</strong></p>
+<p>从 HQL 被解析成抽象语法树（AST）起，就全部由 Spark SQL 接管了</p>
+<figure>
+<img src="https://s2.ax1x.com/2019/07/12/ZfYEss.jpg" alt="Spark-SQL 架构"><figcaption>Spark-SQL 架构</figcaption>
+</figure>
+<p>Spark SQL 增å 了 SchemaRDD（即带有 Schema 信息的 RDD），使用户可以在 Spark SQL 中执行 SQL 语句，数据既可以来自 RDD，也可以来自 Hive、HDFS、Cassandra 等外部数据源，还可以是 JSON 格式的数据。</p>
+<figure>
+<img src="https://s2.ax1x.com/2019/07/12/ZfYMJU.jpg" alt="Spark-SQL 支持的数据格式和编程语言"><figcaption>Spark-SQL 支持的数据格式和编程语言</figcaption>
+</figure>
+<h2 id="dataframe 与 rdd 的区别">DataFrame 与 RDD 的区别</h2>
+<figure>
+<img src="https://s2.ax1x.com/2019/07/12/ZfYXfU.jpg" alt="DataFrame 与 RDD 的区别"><figcaption>DataFrame 与 RDD 的区别</figcaption>
+</figure>
+<p>DataFrame 的推出，让 Spark 具备了处理大规模结构化数据的能力</p>
+<p>RDD 是分布式的 Java 对象的集合，比如，RDD[Person]是以 Person 为类型参数，但是，Person 类的内部结构对于 RDD 而言却是不可知的。</p>
+<p>DataFrame 是一种以 RDD 为基础的分布式数据集，也就是分布式的 Row 对象的集合（每个 Row 对象代表一行记录），提供了详细的结构信息，也就是我们经常说的模式（schema），Spark SQL 可以清楚地知道该数据集中包含哪些列、每列的名称和类型。</p>
+<h2 id="dataframe 的创建">DataFrame 的创建</h2>
+<p>Spark 使用全新的 <code>SparkSession</code> 接口替代 Spark1.6 中的 <code>SQLContext</code> 及<code>HiveContext</code>接口来实现其对数据加载、转换、处理等功能。</p>
+<p><code>SparkSession</code>支持从不同的数据源加载数据，并把数据转换成 <code>DataFrame</code>，并且支持把<code>DataFrame</code> 转换成<code>SQLContext</code>èª身中的表，然后使用 SQL 语句来操作数据。<code>SparkSessio</code>n 亦提供了 HiveQL 以及其他依赖于 Hive 的功能的支持。</p>
+<blockquote>
+<p>如何从 people.json 文件中读取数据并生成 DataFrame 并显示数据？</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spark = SparkSession.builder.getOrCreate()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = spark.read.json(<span class="string">"file:///usr/local/spark/examples/src/main/resources/people.json"</span>)</span><br></pre></td></tr></table></figure>
+<p>看一下 Json 里面有什么</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.show()</span><br></pre></td></tr></table></figure>
+<pre><code>+----+-------+
+| age|   name|
++----+-------+
+|null|Michael|
+|  30|   Andy|
+|  19| Justin|
++----+-------+</code></pre>
+<p>打印模式信息</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.printSchema()</span><br></pre></td></tr></table></figure>
+<pre><code>root
+ |-- age: long (nullable = true)
+ |-- name: string (nullable = true)</code></pre>
+<p>选择多列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select(df.name, df.age + <span class="number">1</span>).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+-------+---------+
+|   name|(age + 1)|
++-------+---------+
+|Michael|     null|
+|   Andy|       31|
+| Justin|       20|
++-------+---------+</code></pre>
+<p>条件过滤</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.filter(df.age &gt; <span class="number">20</span>).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+---+----+
+|age|name|
++---+----+
+| 30|Andy|
++---+----+</code></pre>
+<p>分组聚合</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupBy(<span class="string">"age"</span>).count().show()</span><br></pre></td></tr></table></figure>
+<pre><code>+----+-----+
+| age|count|
++----+-----+
+|  19|    1|
+|null|    1|
+|  30|    1|
++----+-----+</code></pre>
+<p>排序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort(df.age.desc()).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+----+-------+
+| age|   name|
++----+-------+
+|  30|   Andy|
+|  19| Justin|
+|null|Michael|
++----+-------+</code></pre>
+<p>多列排序</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort(df.age.desc(), df.name.asc()).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+----+-------+
+| age|   name|
++----+-------+
+|  30|   Andy|
+|  19| Justin|
+|null|Michael|
++----+-------+</code></pre>
+<p>对列进行重命名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select(df.name.alias(<span class="string">"username"</span>), df.age).show()</span><br></pre></td></tr></table></figure>
+<pre><code>+--------+----+
+|username| age|
++--------+----+
+| Michael|null|
+|    Andy|  30|
+|  Justin|  19|
++--------+----+</code></pre>
+<h2 id="从 rdd 转换得到 dataframe">从 RDD 转换得到 DataFrame</h2>
+<blockquote>
+<p>第一种方法是，利用反射来推断包含特定类型对象的 RDD 的 schema，适用对已知数据结构的 RDD 转换；第二种方法是，使用编程接口，构造一个 schema 并将其应用在已知的 RDD 上。</p>
+</blockquote>
+<h3 id="利用反射机制推断 rdd 模式">利用反射机制推断 RDD 模式</h3>
+<p>在利用反射机制推断 RDD 模式时，我们会用到 <code>toDF()</code> 方法</p>
+<p>反射机制，在我这里的理解很简单暴力：</p>
+<ul>
+<li>通过字符串创建相应的对象</li>
+<li>利用字符串的动态性，动态地创建需要的对象</li>
 </ul>
-<h2 id="原始问题">原始问题</h2>
-<p><span class="math display">\[\begin{array}{l}{\min _{x \in \mathbf{R}^{n}} f(x)} \\ {\text { s.t.} c_{i}(x) \leqslant 0, \quad i=1,2, \cdots, k} \\ {\qquad h_{j}(x)=0, \quad j=1,2, \cdots, l}\end{array}
-\]</span> 此约束最优化问题称为 <strong> 最优化问题 </strong> 或原始问题。</p>
-<p><strong>广义拉格朗日函数</strong></p>
-<p><span class="math display">\[L(x, \alpha, \beta)=f(x)+\sum_{i=1}^{k} \alpha_{i} c_{i}(x)+\sum_{j=1}^{l} \beta_{j} h_{j}(x)
-\]</span></p>
-<p><span class="math inline">\(\alpha_i, \beta_j\)</span> 是拉格朗日乘子，$_i 0 $</p>
-<p><span class="math display">\[\theta_{P}(x)=\max _{\alpha, \beta : \alpha_{i} \geqslant 0} L(x, \alpha, \beta)
-\]</span></p>
-<p><span class="math display">\[\theta_{P}(x)=\max _{\alpha, \beta : \alpha_{i} \geqslant 0}\left[f(x)+\sum_{i=1}^{k} \alpha_{i} c_{i}(x)+\sum_{j=1}^{l} \beta_{j} h_{j}(x)\right]=+\infty
-\]</span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.types <span class="keyword">import</span> Row</span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc = SparkContext(<span class="string">"local"</span>, <span class="string">"test"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">    rel = &#123;&#125;</span><br><span class="line">    rel[<span class="string">'name'</span>] = x[<span class="number">0</span>]</span><br><span class="line">    rel[<span class="string">'age'</span>] = x[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> rel</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">peopleDF = sc.textFile(</span><br><span class="line">    <span class="string">"file:///usr/local/spark/examples/src/main/resources/people.txt"</span>).map(</span><br><span class="line">        <span class="keyword">lambda</span> line: line.split(<span class="string">','</span>)).map(<span class="keyword">lambda</span> x: Row(**f(x)).toDF())</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peopleDF.createOrReplaceTempView(<span class="string">"people"</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>---------------------------------------------------------------------------
+
+AttributeError                            Traceback (most recent call last)
+
+&lt;ipython-input-9-725c89f5f957&gt; in &lt;module&gt;
+----&gt; 1 peopleDF.createOrReplaceTempView(&quot;people&quot;)
+
+
+AttributeError: &#39;PipelinedRDD&#39; object has no attribute &#39;createOrReplaceTempView&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peopleDF = spark.sql(<span class="string">"select * from people"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peopleDF.rdd.map(<span class="keyword">lambda</span> t: <span class="string">"Name:"</span> + t[<span class="number">0</span>] + <span class="string">","</span> + <span class="string">"Age:"</span> + t[<span class="number">1</span>]).take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[&#39;Name:  29, Age: Michael&#39;, &#39;Name:  30, Age: Andy&#39;, &#39;Name:  19, Age: Justin&#39;]</code></pre>
+<p><strong>使用编程方式定义 RDD 模式</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.types <span class="keyword">import</span> StructType, StructField, StructType, StringType, Row</span><br></pre></td></tr></table></figure>
+<p>生成 RDD</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">peopleRDD = sc.textFile(</span><br><span class="line">    <span class="string">"file:///usr/local/spark/examples/src/main/resources/people.txt"</span>)</span><br></pre></td></tr></table></figure>
+<p>定义一个模式字符串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schemaString = <span class="string">"name age"</span></span><br></pre></td></tr></table></figure>
+<p>根据模式字符串生成模式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fields = list(</span><br><span class="line">    map(<span class="keyword">lambda</span> fieldName: StructField(fieldName, StringType(), nullable=<span class="literal">True</span>),</span><br><span class="line">        schemaString.split(<span class="string">" "</span>)))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schema = StructType(fields)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schema</span><br></pre></td></tr></table></figure>
+<pre><code>StructType(List(StructField(name,StringType,true),StructField(age,StringType,true)))</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rowRDD = peopleRDD.map(<span class="keyword">lambda</span> line: line.split(<span class="string">','</span>)).map(</span><br><span class="line">    <span class="keyword">lambda</span> attributes: Row(attributes[<span class="number">0</span>], attributes[<span class="number">1</span>]))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peopleDF = spark.createDataFrame(rowRDD, schema)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peopleDF.createOrReplaceTempView(<span class="string">"people"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">results.rdd.map(<span class="keyword">lambda</span> attributes: <span class="string">"name:"</span> + attributes[<span class="number">0</span>] + <span class="string">","</span> + <span class="string">"age:"</span> +</span><br><span class="line">                attributes[<span class="number">1</span>]).foreach(<span class="keyword">print</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">results.show()</span><br></pre></td></tr></table></figure>
+<pre><code>+-------+---+
+|   name|age|
++-------+---+
+|Michael| 29|
+|   Andy| 30|
+| Justin| 19|
++-------+---+</code></pre>
+<h2 id="把 rdd 保存成文件">把 RDD 保存成文件</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">peopleDF = spark.read.format(<span class="string">"json"</span>).load(</span><br><span class="line">    <span class="string">"file:///usr/local/spark/examples/src/main/resources/people.json"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">peopleDF.select(<span class="string">"name"</span>, <span class="string">"age"</span>).write.format(<span class="string">"csv"</span>).save(</span><br><span class="line">    <span class="string">"file:///home/hadoop/spark/data/newpeople.csv"</span>)</span><br></pre></td></tr></table></figure>
+<p>另一种保存办法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peopleDF.rdd.saveAsTextFile(<span class="string">"file:///home/hadoop/spark/data/newpeople.txt"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="读取和保存数据">读取和保存数据</h2>
+<h3 id="读写 -parquetdataframe">读写 Parquet(DataFrame)</h3>
+<p>如何从 parquet 文件中加载数据生成 DataFrame</p>
+<p>这里需要把 java 版本降到 1.8，然并卵</p>
+<p>如何将 DataFrame 保存成 parquet 文件？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">peopleDF = spark.read.json(</span><br><span class="line">    <span class="string">"file:///usr/local/spark/examples/src/main/resources/people.json"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peopleDF.write.parquet(<span class="string">"file:///home/hadoop/spark/data/newpeople.parquet"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="通过 -jdbc- 连接数据库 dateframe">通过 JDBC 连接数据库(DateFrame)</h3>
+<h3 id="连接 hive 读写数据">连接 Hive 读写数据</h3>
 
       
     </div>
 
     
       
-
-  <div class="popular-posts-header">Related Posts</div>
-  <ul class="popular-posts">
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/03/18/深度学习/PCA/" rel="bookmark">困学纪闻注：PCA</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/06/19/深度学习/困学纪闻注：Logistic-回归/" rel="bookmark">困学纪闻注：Logistic 回归</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/06/19/深度学习/困学纪闻注：线性回归/" rel="bookmark">困学纪闻注 ：线性回归</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/06/21/统计学习方法/建炎以来系年要录：EM-算法/" rel="bookmark">建炎以来系年要录：EM 算法</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/06/19/统计学习方法/建炎以来系年要录：优化算法小结/" rel="bookmark">建炎以来系年要录：优化算法小结</a></div>
-      
-    </li>
-  
-  </ul>
 
 
     
@@ -588,17 +665,6 @@
 
     <footer class="post-footer">
       
-        
-          
-        
-        <div class="post-tags">
-          
-            <a href="/tags/todo/" rel="tag"># todo</a>
-          
-            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
-          
-        </div>
-      
 
       
       
@@ -608,8 +674,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/22/奇思妙想/灰度时刻：RSA-篇/" rel="next" title="灰度时刻：RSA 篇">
-                <i class="fa fa-chevron-left"></i> 灰度时刻：RSA 篇
+              <a href="/2019/07/16/spark/明夷待访录（三）：Spark-编程基础/" rel="next" title="明夷待访录（三）：Spark 编程基础">
+                <i class="fa fa-chevron-left"></i> 明夷待访录（三）：Spark 编程基础
               </a>
             
           </div>
@@ -618,8 +684,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/22/深度学习/困学纪闻注：线性代数/" rel="prev" title="困学纪闻注：线性代数">
-                困学纪闻注：线性代数 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/16/明夷待访录（五）：Spark-Steaming/" rel="prev" title="明夷待访录（五）：Spark Steaming ">
+                明夷待访录（五）：Spark Steaming  <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -916,7 +982,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原始问题"><span class="nav-number">1.</span> <span class="nav-text">原始问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#spark-sql 简介"><span class="nav-number">1.</span> <span class="nav-text">Spark SQL 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dataframe 与 rdd 的区别"><span class="nav-number">2.</span> <span class="nav-text">DataFrame 与 RDD 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dataframe 的创建"><span class="nav-number">3.</span> <span class="nav-text">DataFrame 的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从 rdd 转换得到 dataframe"><span class="nav-number">4.</span> <span class="nav-text">从 RDD 转换得到 DataFrame</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#利用反射机制推断 rdd 模式"><span class="nav-number">4.1.</span> <span class="nav-text">利用反射机制推断 RDD 模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把 rdd 保存成文件"><span class="nav-number">5.</span> <span class="nav-text">把 RDD 保存成文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取和保存数据"><span class="nav-number">6.</span> <span class="nav-text">读取和保存数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读写 -parquetdataframe"><span class="nav-number">6.1.</span> <span class="nav-text">读写 Parquet(DataFrame)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过 -jdbc- 连接数据库 dateframe"><span class="nav-number">6.2.</span> <span class="nav-text">通过 JDBC 连接数据库(DateFrame)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接 hive 读写数据"><span class="nav-number">6.3.</span> <span class="nav-text">连接 Hive 读写数据</span></a></li></ol></li></ol></div>
             
 
           </div>
