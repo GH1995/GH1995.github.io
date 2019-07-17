@@ -105,20 +105,21 @@
 
 
 
-  <meta name="description" content="强化学习在机器学习中的位置  与监督学习相比，数据有时间关系，奖励值延迟 与非监督学习相比，数据有时间关系，输出奖励值  强化学习建模  ZuEATP.png  强化学习要素  环境状态 \(S\) 动作 \(A\) 环境的奖励 \(R\)，这是一次性的 个体的策略 \(\pi\)，通常表示为一个条件概率分布，状态\(s\) 时采取动作 \(a\) 的概率，即\(\pi(a|s) = P(A_t=">
+  <meta name="description" content="强化学习在机器学习中的位置  与监督学习相比，数据有时间关系，奖励值延迟 与非监督学习相比，数据有时间关系，输出奖励值  强化学习建模  Zq5uRJ.png  强化学习要素 三个基本要素  环境状态 \(S_t\) 动作 \(A_t\) 环境的奖励 \(R_t\)，这是一次性的  延迟的，在状态 \(S_{t-1}\) 采取的动作 \(A_{t-1}\) 对应奖励 \(R_t\)  五个附加要素">
 <meta name="keywords" content="Reinforcement Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="狸花猫记 (1)：模型基础">
 <meta property="og:url" content="http://guanhua.ml/2019/07/17/reinforcement learning/狸花猫记-1-：模型基础/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="强化学习在机器学习中的位置  与监督学习相比，数据有时间关系，奖励值延迟 与非监督学习相比，数据有时间关系，输出奖励值  强化学习建模  ZuEATP.png  强化学习要素  环境状态 \(S\) 动作 \(A\) 环境的奖励 \(R\)，这是一次性的 个体的策略 \(\pi\)，通常表示为一个条件概率分布，状态\(s\) 时采取动作 \(a\) 的概率，即\(\pi(a|s) = P(A_t=">
+<meta property="og:description" content="强化学习在机器学习中的位置  与监督学习相比，数据有时间关系，奖励值延迟 与非监督学习相比，数据有时间关系，输出奖励值  强化学习建模  Zq5uRJ.png  强化学习要素 三个基本要素  环境状态 \(S_t\) 动作 \(A_t\) 环境的奖励 \(R_t\)，这是一次性的  延迟的，在状态 \(S_{t-1}\) 采取的动作 \(A_{t-1}\) 对应奖励 \(R_t\)  五个附加要素">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://s2.ax1x.com/2019/06/27/ZuEATP.png">
-<meta property="og:updated_time" content="2019-07-17T00:16:27.680Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/17/Zq5uRJ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/17/ZqaIVx.png">
+<meta property="og:updated_time" content="2019-07-17T03:15:45.118Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="狸花猫记 (1)：模型基础">
-<meta name="twitter:description" content="强化学习在机器学习中的位置  与监督学习相比，数据有时间关系，奖励值延迟 与非监督学习相比，数据有时间关系，输出奖励值  强化学习建模  ZuEATP.png  强化学习要素  环境状态 \(S\) 动作 \(A\) 环境的奖励 \(R\)，这是一次性的 个体的策略 \(\pi\)，通常表示为一个条件概率分布，状态\(s\) 时采取动作 \(a\) 的概率，即\(\pi(a|s) = P(A_t=">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/06/27/ZuEATP.png">
+<meta name="twitter:description" content="强化学习在机器学习中的位置  与监督学习相比，数据有时间关系，奖励值延迟 与非监督学习相比，数据有时间关系，输出奖励值  强化学习建模  Zq5uRJ.png  强化学习要素 三个基本要素  环境状态 \(S_t\) 动作 \(A_t\) 环境的奖励 \(R_t\)，这是一次性的  延迟的，在状态 \(S_{t-1}\) 采取的动作 \(A_{t-1}\) 对应奖励 \(R_t\)  五个附加要素">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/17/Zq5uRJ.png">
 
 
 
@@ -428,12 +429,30 @@
                 
               
 
-              <time title="Created: 2019-07-17 08:16:27" itemprop="dateCreated datePublished" datetime="2019-07-17T08:16:27+08:00">2019-07-17</time>
+              <time title="Created: 2019-07-17 11:15:45" itemprop="dateCreated datePublished" datetime="2019-07-17T11:15:45+08:00">2019-07-17</time>
             
 
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/reinforcement-learning/" itemprop="url" rel="index"><span itemprop="name">reinforcement learning</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -483,20 +502,37 @@
 </ul>
 <h2 id="强化学习建模">强化学习建模</h2>
 <figure>
-<img src="https://s2.ax1x.com/2019/06/27/ZuEATP.png" alt="ZuEATP.png"><figcaption>ZuEATP.png</figcaption>
+<img src="https://s2.ax1x.com/2019/07/17/Zq5uRJ.png" alt="Zq5uRJ.png"><figcaption>Zq5uRJ.png</figcaption>
 </figure>
 <p>强化学习要素</p>
-<ul>
-<li>环境状态 <span class="math inline">\(S\)</span></li>
-<li>动作 <span class="math inline">\(A\)</span></li>
-<li>环境的奖励 <span class="math inline">\(R\)</span>，这是一次性的</li>
-<li>个体的策略 <span class="math inline">\(\pi\)</span>，通常表示为一个条件概率分布，状态<span class="math inline">\(s\)</span> 时采取动作 <span class="math inline">\(a\)</span> 的概率，即<span class="math inline">\(\pi(a|s) = P(A_t=a | S_t=s)\)</span></li>
-<li>采取行动后的价值 <span class="math inline">\(v_{\pi}(s)\)</span> 在给定策略<span class="math inline">\(\pi\)</span> 和状态 <span class="math inline">\(s\)</span> 后，采取一系列行动后奖励累加就是价值，一般是个期望函数。当前作用给出的掩饰奖励是<span class="math inline">\(R_{t+1}\)</span>。 <span class="math display">\[v_{\pi}(s) = \mathbb{E}_{\pi}(R_{t+1} + \gamma R_{t+2} + \gamma^2R_{t+3}+...|S_t=s)
+<h3 id="三个基本要素">三个基本要素</h3>
+<ol type="1">
+<li>环境状态 <span class="math inline">\(S_t\)</span></li>
+<li>动作 <span class="math inline">\(A_t\)</span></li>
+<li>环境的奖励 <span class="math inline">\(R_t\)</span>，这是一次性的 <strong> 延迟的</strong>，在状态 <span class="math inline">\(S_{t-1}\)</span> 采取的动作 <span class="math inline">\(A_{t-1}\)</span> 对应奖励 <span class="math inline">\(R_t\)</span></li>
+</ol>
+<h3 id="五个附加要素">五个附加要素</h3>
+<ol type="1">
+<li>个体的策略 <span class="math inline">\(\pi\)</span>，通常表示为一个<strong> 条件 <span class="math inline">\(s\)</span> 概率分布 </strong>，状态 <span class="math inline">\(s\)</span> 时采取动作<span class="math inline">\(a\)</span> 的概率，即 <span class="math inline">\(\pi(a|s) = P(A_t=a | S_t=s)\)</span><strong>动作只由状态决定，<span class="math inline">\(\pi\)</span>就像游戏攻略一样</strong></li>
+<li>采取行动后的价值 <span class="math inline">\(v_{\pi}(s)\)</span> 在给定策略 <span class="math inline">\(\pi\)</span> 和状态 <span class="math inline">\(s\)</span> 后，采取一系列行动后奖励累加就是价值，一般是个期望函数。当前作用给出的延时奖励是 <span class="math inline">\(R_{t+1}\)</span>。<strong> 所以把价值函数表示为 <span class="math inline">\(\sum \gamma R_i\)</span>，这里不关注<span class="math inline">\(s \to s&#39;\)</span> 是怎么变的，只是在改变给出的<span class="math inline">\(R_i\)</span> 上不断求和</strong> <span class="math display">\[v_{\pi}(s) = \mathbb{E}_{\pi}(R_{t+1} + \gamma R_{t+2} + \gamma^2R_{t+3}+...|S_t=s)
 \]</span></li>
-<li>奖励衰减因子 <span class="math inline">\(\gamma\)</span></li>
-<li>环境的状态转换模型 <span class="math inline">\(P_{ss&#39;}^a\)</span>，即在状态 <span class="math inline">\(s\)</span> 下采取动作 <span class="math inline">\(a\)</span>, 转到下一个状态<span class="math inline">\(s′\)</span> 的概率</li>
-<li>探索率 <span class="math inline">\(\epsilon\)</span></li>
-</ul>
+<li>奖励衰减因子 <span class="math inline">\(\gamma\)</span> <strong>越小越是短视，激进，大胆；越大越是周到，保守，谨慎</strong></li>
+<li>环境的状态转换模型 <span class="math inline">\(P_{ss&#39;}^a\)</span>，即在状态 <span class="math inline">\(s\)</span> 下采取动作 <span class="math inline">\(a\)</span>, 转到下一个状态<span class="math inline">\(s′\)</span> 的概率 <strong> 描述了 <span class="math inline">\(s \to s&#39;\)</span> 的过程</strong></li>
+<li>探索率 <span class="math inline">\(\epsilon\)</span> 有<span class="math inline">\(\epsilon\)</span> 不使用当前状态最优动作</li>
+</ol>
+<h2 id="强化学习的简单示例">强化学习的简单示例</h2>
+<figure>
+<img src="https://s2.ax1x.com/2019/07/17/ZqaIVx.png" alt="ZqaIVx.png"><figcaption>ZqaIVx.png</figcaption>
+</figure>
+<p><a href="https://www.google.com/search?q=Tic-Tac-Toe&amp;rlz=1C1GCEU_zh-CNHK857HK857&amp;oq=t&amp;aqs=chrome.2.69i57j0j69i59l2j69i60l2.5188j0j1&amp;sourceid=chrome&amp;ie=UTF-8" target="_blank" rel="noopener">玩一玩这个游戏</a></p>
+<p>环境状态 <span class="math inline">\(S\)</span> 九宫格，每个格子三种状态（1. 没棋子；2. 有 x；3. 有 o），所以模型状态一共有 <span class="math inline">\(3^9\)</span> 种</p>
+<p>动作 <span class="math inline">\(A\)</span>，9 个格子，相当于 9 个动作选项，有棋子的不能下</p>
+<p><span class="math inline">\(R\)</span> 赢棋奖励 1，其他时候奖励有但是少。先手要低一些？？<strong>感觉先手更有优势</strong></p>
+<p><span class="math inline">\(\pi\)</span> 学习得到，见代码</p>
+<p><span class="math inline">\(v_{\pi}(s)\)</span></p>
+<p><span class="math inline">\(\gamma\)</span> 设置为 0</p>
+<p><span class="math inline">\(P^a_{s s&#39;}\)</span> 选择之后状体确定，无需讨论</p>
+<p><span class="math inline">\(\epsilon\)</span> explore</p>
 
       
     </div>
@@ -670,7 +706,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -844,7 +882,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习在机器学习中的位置"><span class="nav-number">1.</span> <span class="nav-text">强化学习在机器学习中的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习建模"><span class="nav-number">2.</span> <span class="nav-text">强化学习建模</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习在机器学习中的位置"><span class="nav-number">1.</span> <span class="nav-text">强化学习在机器学习中的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习建模"><span class="nav-number">2.</span> <span class="nav-text">强化学习建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三个基本要素"><span class="nav-number">2.1.</span> <span class="nav-text">三个基本要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五个附加要素"><span class="nav-number">2.2.</span> <span class="nav-text">五个附加要素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习的简单示例"><span class="nav-number">3.</span> <span class="nav-text">强化学习的简单示例</span></a></li></ol></div>
             
 
           </div>
