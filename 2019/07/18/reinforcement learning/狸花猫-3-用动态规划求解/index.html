@@ -105,16 +105,17 @@
 
 
 
-  <meta name="description" content="喵喵喵">
-<meta property="og:type" content="website">
-<meta property="og:title" content="gh&#39;s notes">
-<meta property="og:url" content="http://guanhua.ml/tags/RUC/index.html">
+  <meta name="description" content="动态规划和强化学习问题的联系 动态规划的定义：  问题的最优解可以由若干小问题的最优解构成  问题是洋葱的 可以找到子问题状态之间的递推关系  洋葱是可剥的  参考状态值函数贝尔曼方程 \[v_{\pi}(s)=\sum_{a \in A} \pi(a | s)\left(R_{s}^{a}+\gamma \sum_{s^{\prime} \in S} P_{s s^{\prime}}^{a} v">
+<meta property="og:type" content="article">
+<meta property="og:title" content="狸花猫 (3): 用动态规划求解">
+<meta property="og:url" content="http://guanhua.ml/2019/07/18/reinforcement learning/狸花猫-3-用动态规划求解/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="喵喵喵">
+<meta property="og:description" content="动态规划和强化学习问题的联系 动态规划的定义：  问题的最优解可以由若干小问题的最优解构成  问题是洋葱的 可以找到子问题状态之间的递推关系  洋葱是可剥的  参考状态值函数贝尔曼方程 \[v_{\pi}(s)=\sum_{a \in A} \pi(a | s)\left(R_{s}^{a}+\gamma \sum_{s^{\prime} \in S} P_{s s^{\prime}}^{a} v">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-17T18:06:17.538Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gh&#39;s notes">
-<meta name="twitter:description" content="喵喵喵">
+<meta name="twitter:title" content="狸花猫 (3): 用动态规划求解">
+<meta name="twitter:description" content="动态规划和强化学习问题的联系 动态规划的定义：  问题的最优解可以由若干小问题的最优解构成  问题是洋葱的 可以找到子问题状态之间的递推关系  洋葱是可剥的  参考状态值函数贝尔曼方程 \[v_{\pi}(s)=\sum_{a \in A} \pi(a | s)\left(R_{s}^{a}+\gamma \sum_{s^{\prime} \in S} P_{s s^{\prime}}^{a} v">
 
 
 
@@ -122,7 +123,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/tags/RUC/">
+  <link rel="canonical" href="http://guanhua.ml/2019/07/18/reinforcement learning/狸花猫-3-用动态规划求解/">
 
 
 
@@ -132,7 +133,7 @@
   };
 </script>
 
-  <title>Tag: RUC | gh's notes</title>
+  <title>狸花猫 (3): 用动态规划求解 | gh's notes</title>
   
 
 
@@ -180,7 +181,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,7 +274,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -320,28 +321,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -387,57 +366,226 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>RUC<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/18/reinforcement learning/狸花猫-3-用动态规划求解/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Hua">
+      <meta itemprop="description" content="喵喵喵">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gh's notes">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2017/12/20/RUC-thesis-template/" itemprop="url">
-            
-              <span itemprop="name">RUC thesis template</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">狸花猫 (3): 用动态规划求解
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-12-20T16:12:00+08:00" content="2017-12-20">
-          12-20
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-18 01:40:57 / Modified: 02:06:17" itemprop="dateCreated datePublished" datetime="2019-07-18T01:40:57+08:00">2019-07-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/07/18/reinforcement learning/狸花猫-3-用动态规划求解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/18/reinforcement learning/狸花猫-3-用动态规划求解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="动态规划和强化学习问题的联系">动态规划和强化学习问题的联系</h2>
+<p>动态规划的定义：</p>
+<ul>
+<li>问题的最优解可以由若干小问题的最优解构成 <strong> 问题是洋葱的</strong></li>
+<li>可以找到子问题状态之间的递推关系 <strong> 洋葱是可剥的</strong></li>
+</ul>
+<p>参考状态值函数贝尔曼方程</p>
+<p><span class="math display">\[v_{\pi}(s)=\sum_{a \in A} \pi(a | s)\left(R_{s}^{a}+\gamma \sum_{s^{\prime} \in S} P_{s s^{\prime}}^{a} v_{\pi}\left(s^{\prime}\right)\right)
+\]</span></p>
+<blockquote>
+<p>这是一个递推的式子，然而并没有什么卵用，状态空间太大了。动态规划是一条死路，启发式搜索或能获胜。</p>
+</blockquote>
+<h2 id="策略评估求解预测问题">策略评估求解预测问题</h2>
+<p><strong>什么是策略评估？</strong></p>
+<p>求解给定策略的状态价值函数</p>
+<p>基本思路是，从任意一个状态价值函数开始，依据给定的策略，迭代更新状态价值函数，直至其收敛，得到该策略下最终的状态价值函数。</p>
+<h2 id="策略迭代求解控制问题">策略迭代求解控制问题</h2>
+<p><strong>什么是控制问题？</strong></p>
+<p>求解最优的价值函数和策略</p>
+<p><strong>什么是策略迭代？</strong></p>
+<p>根据我们之前基于任意一个给定策略评估得到的状态价值来及时调整我们的动作策略</p>
+<blockquote>
+<p>动态规划用贪婪法，这是一个愚蠢的策略。</p>
+</blockquote>
+<h2 id="价值迭代求解控制问题">价值迭代求解控制问题</h2>
+<p>可见由于策略调整，我们现在价值每次更新倾向于贪婪法选择的最优策略对应的后续状态价值，这样收敛更快。</p>
+<p>只是动态规划如此。</p>
+<h2 id="异步动态规划算法">异步动态规划算法</h2>
+<p><strong>定义</strong></p>
+<p>每一次迭代并不对所有状态的价值进行更新，而是依据一定的原则有选择性的更新部分状态的价值</p>
+<ul>
+<li>原位动态规划，不保留上一轮的计算状态</li>
+<li>优先级动态规划，状态有优先级</li>
+<li>实时动态规划，直接用个体与环境交互的实际经历来更新状态价值</li>
+</ul>
+<h2 id="动态规划求解强化学习问题小结">动态规划求解强化学习问题小结</h2>
+<p>算法思路比较简单，主要就是利用贝尔曼方程来迭代更新状态价值，用贪婪法之类的方法迭代更新最优策略。</p>
+<p>当问题规模很大的时候，动态规划算法将会因贝尔曼维度灾难而无法使用。因此我们还需要寻找其他的针对复杂问题的强化学习问题求解方法。</p>
 
       
     </div>
 
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/18/reinforcement learning/狸花猫-2-马尔可夫决策过程/" rel="next" title="狸花猫 (2): 马尔可夫决策过程">
+                <i class="fa fa-chevron-left"></i> 狸花猫 (2): 马尔可夫决策过程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -457,8 +605,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -690,6 +847,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态规划和强化学习问题的联系"><span class="nav-number">1.</span> <span class="nav-text">动态规划和强化学习问题的联系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#策略评估求解预测问题"><span class="nav-number">2.</span> <span class="nav-text">策略评估求解预测问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#策略迭代求解控制问题"><span class="nav-number">3.</span> <span class="nav-text">策略迭代求解控制问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#价值迭代求解控制问题"><span class="nav-number">4.</span> <span class="nav-text">价值迭代求解控制问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步动态规划算法"><span class="nav-number">5.</span> <span class="nav-text">异步动态规划算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态规划求解强化学习问题小结"><span class="nav-number">6.</span> <span class="nav-text">动态规划求解强化学习问题小结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -822,6 +996,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
 
   
 
@@ -863,6 +1041,8 @@
 
 
 
+
+  
 
 
   
