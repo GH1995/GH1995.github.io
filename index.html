@@ -382,6 +382,200 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/18/reinforcement learning/狸花猫记-1-：模型基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Hua">
+      <meta itemprop="description" content="喵喵喵">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gh's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/18/reinforcement learning/狸花猫记-1-：模型基础/" class="post-title-link" itemprop="url">狸花猫记 (1)：模型基础</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-18 13:56:58" itemprop="dateCreated datePublished" datetime="2019-07-18T13:56:58+08:00">2019-07-18</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/reinforcement-learning/" itemprop="url" rel="index"><span itemprop="name">reinforcement learning</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/07/18/reinforcement learning/狸花猫记-1-：模型基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/18/reinforcement learning/狸花猫记-1-：模型基础/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              强化学习在机器学习中的位置
+
+与监督学习相比，数据有时间关系，奖励值延迟
+与非监督学习相比，数据有时间关系，输出奖励值
+
+强化学习建模
+
+Zq5uRJ.png
+
+强化学习要素
+三个基本要素
+
+环境状态 \(S_t\)
+动作 \(A_t\)
+环境的奖励 \(R_t\)，这是  延迟的，在状态 \(S_
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/18/reinforcement learning/狸花猫记-1-：模型基础/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/18/reinforcement learning/狸花猫记-4-蒙特卡罗法求解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -427,7 +621,7 @@
                 
               
 
-              <time title="Created: 2019-07-18 10:42:26 / Modified: 10:55:43" itemprop="dateCreated datePublished" datetime="2019-07-18T10:42:26+08:00">2019-07-18</time>
+              <time title="Created: 2019-07-18 10:42:26 / Modified: 14:13:45" itemprop="dateCreated datePublished" datetime="2019-07-18T10:42:26+08:00">2019-07-18</time>
             
 
             
@@ -500,13 +694,12 @@
         
           
             <p>
-               不基于模型的强化学习问题定义 
- 蒙特卡罗法求解特点 
- 蒙特卡罗法求解强化学习预测问题 
- 蒙特卡罗法求解强化学习控制问题 
- 蒙特卡罗法控制问题算法流程 
- 蒙特卡罗法求解强化学习问题小结 
- 第一个不基于模型的强换学习问题求解方法，可以不知道环境状态转换模型 \(P_{s s&#39;}^a
+              更新某一个状态的价值时，回溯到该状态的所有可能的后续状态
+很多时候，我们并不知道环境状态转换模型 \(P_{s s&#39;}^a\)
+不基于模型的强化学习问题定义
+强化学习的 5 个因素：\(S, A, R\) ，衰减因子 \(\gamma\)，策略 \(\pi\)
+Model 方式的定义
+这里加
               ...
             </p>
           <!--noindex-->
@@ -893,200 +1086,6 @@
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/07/18/reinforcement learning/狸花猫记-2-马尔可夫决策过程/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/17/reinforcement learning/狸花猫记-1-：模型基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Guan Hua">
-      <meta itemprop="description" content="喵喵喵">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gh's notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/17/reinforcement learning/狸花猫记-1-：模型基础/" class="post-title-link" itemprop="url">狸花猫记 (1)：模型基础</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-07-17 11:15:45" itemprop="dateCreated datePublished" datetime="2019-07-17T11:15:45+08:00">2019-07-17</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/reinforcement-learning/" itemprop="url" rel="index"><span itemprop="name">reinforcement learning</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/07/17/reinforcement learning/狸花猫记-1-：模型基础/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/17/reinforcement learning/狸花猫记-1-：模型基础/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              强化学习在机器学习中的位置
-
-与监督学习相比，数据有时间关系，奖励值延迟
-与非监督学习相比，数据有时间关系，输出奖励值
-
-强化学习建模
-
-Zq5uRJ.png
-
-强化学习要素
-三个基本要素
-
-环境状态 \(S_t\)
-动作 \(A_t\)
-环境的奖励 \(R_t\)，这是一次性的  延迟的，在状态 
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/17/reinforcement learning/狸花猫记-1-：模型基础/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>

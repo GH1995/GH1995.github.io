@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="不基于模型的强化学习问题定义   蒙特卡罗法求解特点   蒙特卡罗法求解强化学习预测问题   蒙特卡罗法求解强化学习控制问题   蒙特卡罗法控制问题算法流程   蒙特卡罗法求解强化学习问题小结   第一个不基于模型的强换学习问题求解方法，可以不知道环境状态转换模型 \(P_{s s&amp;#39;}^a\)，求解时间复杂度低。  缺点是，每次采样都需要一个完整的状态序列。">
+  <meta name="description" content="更新某一个状态的价值时，回溯到该状态的所有可能的后续状态 很多时候，我们并不知道环境状态转换模型 \(P_{s s&amp;#39;}^a\) 不基于模型的强化学习问题定义 强化学习的 5 个因素：\(S, A, R\) ，衰减因子 \(\gamma\)，策略 \(\pi\) Model 方式的定义 这里加上一个  状态转换模型 \(P_{ss&amp;#39;}^a\) 预测问题 求解该策略的状态价值函数 \(">
 <meta name="keywords" content="reinforcement learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="狸花猫记 (4): 蒙特卡罗法求解">
 <meta property="og:url" content="http://guanhua.ml/2019/07/18/reinforcement learning/狸花猫记-4-蒙特卡罗法求解/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="不基于模型的强化学习问题定义   蒙特卡罗法求解特点   蒙特卡罗法求解强化学习预测问题   蒙特卡罗法求解强化学习控制问题   蒙特卡罗法控制问题算法流程   蒙特卡罗法求解强化学习问题小结   第一个不基于模型的强换学习问题求解方法，可以不知道环境状态转换模型 \(P_{s s&amp;#39;}^a\)，求解时间复杂度低。  缺点是，每次采样都需要一个完整的状态序列。">
+<meta property="og:description" content="更新某一个状态的价值时，回溯到该状态的所有可能的后续状态 很多时候，我们并不知道环境状态转换模型 \(P_{s s&amp;#39;}^a\) 不基于模型的强化学习问题定义 强化学习的 5 个因素：\(S, A, R\) ，衰减因子 \(\gamma\)，策略 \(\pi\) Model 方式的定义 这里加上一个  状态转换模型 \(P_{ss&amp;#39;}^a\) 预测问题 求解该策略的状态价值函数 \(">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-18T02:55:43.507Z">
+<meta property="og:updated_time" content="2019-07-18T06:13:45.522Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="狸花猫记 (4): 蒙特卡罗法求解">
-<meta name="twitter:description" content="不基于模型的强化学习问题定义   蒙特卡罗法求解特点   蒙特卡罗法求解强化学习预测问题   蒙特卡罗法求解强化学习控制问题   蒙特卡罗法控制问题算法流程   蒙特卡罗法求解强化学习问题小结   第一个不基于模型的强换学习问题求解方法，可以不知道环境状态转换模型 \(P_{s s&amp;#39;}^a\)，求解时间复杂度低。  缺点是，每次采样都需要一个完整的状态序列。">
+<meta name="twitter:description" content="更新某一个状态的价值时，回溯到该状态的所有可能的后续状态 很多时候，我们并不知道环境状态转换模型 \(P_{s s&amp;#39;}^a\) 不基于模型的强化学习问题定义 强化学习的 5 个因素：\(S, A, R\) ，衰减因子 \(\gamma\)，策略 \(\pi\) Model 方式的定义 这里加上一个  状态转换模型 \(P_{ss&amp;#39;}^a\) 预测问题 求解该策略的状态价值函数 \(">
 
 
 
@@ -426,7 +426,7 @@
                 
               
 
-              <time title="Created: 2019-07-18 10:42:26 / Modified: 10:55:43" itemprop="dateCreated datePublished" datetime="2019-07-18T10:42:26+08:00">2019-07-18</time>
+              <time title="Created: 2019-07-18 10:42:26 / Modified: 14:13:45" itemprop="dateCreated datePublished" datetime="2019-07-18T10:42:26+08:00">2019-07-18</time>
             
 
             
@@ -496,14 +496,43 @@
       
 
       
-        <h2 id="不基于模型的强化学习问题定义"> 不基于模型的强化学习问题定义 </h2>
-<h2 id="蒙特卡罗法求解特点"> 蒙特卡罗法求解特点 </h2>
-<h2 id="蒙特卡罗法求解强化学习预测问题"> 蒙特卡罗法求解强化学习预测问题 </h2>
-<h2 id="蒙特卡罗法求解强化学习控制问题"> 蒙特卡罗法求解强化学习控制问题 </h2>
-<h2 id="蒙特卡罗法控制问题算法流程"> 蒙特卡罗法控制问题算法流程 </h2>
-<h2 id="蒙特卡罗法求解强化学习问题小结"> 蒙特卡罗法求解强化学习问题小结 </h2>
-<p> 第一个不基于模型的强换学习问题求解方法，可以不知道环境状态转换模型 <span class="math inline">\(P_{s s&#39;}^a\)</span>，求解时间复杂度低。</p>
-<p> 缺点是，每次采样都需要一个完整的状态序列。</p>
+        <p>更新某一个状态的价值时，回溯到该状态的所有可能的后续状态</p>
+<p>很多时候，我们并不知道环境状态转换模型 <span class="math inline">\(P_{s s&#39;}^a\)</span></p>
+<h2 id="不基于模型的强化学习问题定义">不基于模型的强化学习问题定义</h2>
+<p>强化学习的 5 个因素：<span class="math inline">\(S, A, R\)</span> ，衰减因子 <span class="math inline">\(\gamma\)</span>，策略 <span class="math inline">\(\pi\)</span></p>
+<h3 id="model 方式的定义">Model 方式的定义</h3>
+<p>这里加上一个 <strong> 状态转换模型 <span class="math inline">\(P_{ss&#39;}^a\)</span></strong></p>
+<p><strong>预测问题</strong> 求解该策略的状态价值函数 <span class="math inline">\(v_{ \pi}(s)\)</span></p>
+<blockquote>
+<p>预测问题就是在该攻略的指导下，我们的电竞选手最高能拿到多少分</p>
+</blockquote>
+<blockquote>
+<p><span class="math inline">\(S, A, R + \gamma + \pi + P\)</span></p>
+</blockquote>
+<p><strong>控制问题 </strong> 求解最优的价值函数<span class="math inline">\(v_{*}\)</span> 和策略<span class="math inline">\(\pi_{*}\)</span></p>
+<blockquote>
+<p>让多名电竞选手打一遍，然后看最高的分数。让这名选手写个教程，也就是<span class="math inline">\(\pi_{*}\)</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math inline">\(S, A, R + \gamma + P\)</span></p>
+</blockquote>
+<h3 id="model-free 方式的定义">Model-free 方式的定义</h3>
+<p><strong>预测问题</strong> 不变</p>
+<blockquote>
+<p><span class="math inline">\(S, A, R + \gamma + \pi\)</span></p>
+</blockquote>
+<p><strong>控制问题</strong></p>
+<blockquote>
+<p><span class="math inline">\(S, A, R + \gamma + \epsilon\)</span> 这里把 <span class="math inline">\(P\)</span> 换成了 <span class="math inline">\(\epsilon\)</span></p>
+</blockquote>
+<p>求解最优的动作价值函数 <span class="math inline">\(q_{*}\)</span> 和策略<span class="math inline">\(\pi_{*}\)</span></p>
+<h2 id="蒙特卡罗法求解特点">蒙特卡罗法求解特点</h2>
+<h2 id="蒙特卡罗法求解强化学习预测问题">蒙特卡罗法求解强化学习预测问题</h2>
+<h2 id="蒙特卡罗法求解强化学习控制问题">蒙特卡罗法求解强化学习控制问题</h2>
+<h2 id="蒙特卡罗法控制问题算法流程">蒙特卡罗法控制问题算法流程</h2>
+<h2 id="蒙特卡罗法求解强化学习问题小结">蒙特卡罗法求解强化学习问题小结</h2>
+<p>第一个不基于模型的强换学习问题求解方法，可以不知道环境状态转换模型 <span class="math inline">\(P_{s s&#39;}^a\)</span>，求解时间复杂度低。</p>
+<p>缺点是，每次采样都需要一个完整的状态序列。</p>
 
       
     </div>
@@ -568,6 +597,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/18/reinforcement learning/狸花猫记-1-：模型基础/" rel="prev" title="狸花猫记 (1)：模型基础">
+                狸花猫记 (1)：模型基础 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -867,7 +900,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#不基于模型的强化学习问题定义"><span class="nav-number">1.</span> <span class="nav-text"> 不基于模型的强化学习问题定义 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解特点"><span class="nav-number">2.</span> <span class="nav-text"> 蒙特卡罗法求解特点 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解强化学习预测问题"><span class="nav-number">3.</span> <span class="nav-text"> 蒙特卡罗法求解强化学习预测问题 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解强化学习控制问题"><span class="nav-number">4.</span> <span class="nav-text"> 蒙特卡罗法求解强化学习控制问题 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法控制问题算法流程"><span class="nav-number">5.</span> <span class="nav-text"> 蒙特卡罗法控制问题算法流程 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解强化学习问题小结"><span class="nav-number">6.</span> <span class="nav-text"> 蒙特卡罗法求解强化学习问题小结 </span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#不基于模型的强化学习问题定义"><span class="nav-number">1.</span> <span class="nav-text">不基于模型的强化学习问题定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#model 方式的定义"><span class="nav-number">1.1.</span> <span class="nav-text">Model 方式的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#model-free 方式的定义"><span class="nav-number">1.2.</span> <span class="nav-text">Model-free 方式的定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解特点"><span class="nav-number">2.</span> <span class="nav-text">蒙特卡罗法求解特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解强化学习预测问题"><span class="nav-number">3.</span> <span class="nav-text">蒙特卡罗法求解强化学习预测问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解强化学习控制问题"><span class="nav-number">4.</span> <span class="nav-text">蒙特卡罗法求解强化学习控制问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法控制问题算法流程"><span class="nav-number">5.</span> <span class="nav-text">蒙特卡罗法控制问题算法流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解强化学习问题小结"><span class="nav-number">6.</span> <span class="nav-text">蒙特卡罗法求解强化学习问题小结</span></a></li></ol></div>
             
 
           </div>
