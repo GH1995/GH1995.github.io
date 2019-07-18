@@ -1770,7 +1770,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #148bb9;
+  background: #ff218e;
 }
 .feed-link,
 .chat {
@@ -2501,4 +2501,7 @@ embed {
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
+}
+.post-body p {
+  text-indent: 2em;
 }
