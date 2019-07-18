@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="gh&#39;s notes">
 <meta property="og:description" content="更新某一个状态的价值时，回溯到该状态的所有可能的后续状态 很多时候，我们并不知道环境状态转换模型 \(P_{s s&amp;#39;}^a\) 不基于模型的强化学习问题定义 强化学习的 5 个因素：\(S, A, R\) ，衰减因子 \(\gamma\)，策略 \(\pi\) Model 方式的定义 这里加上一个  状态转换模型 \(P_{ss&amp;#39;}^a\) 预测问题 求解该策略的状态价值函数 \(">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-18T08:37:34.572Z">
+<meta property="og:updated_time" content="2019-07-18T13:51:19.787Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="狸花猫记 (4): 蒙特卡罗法求解">
 <meta name="twitter:description" content="更新某一个状态的价值时，回溯到该状态的所有可能的后续状态 很多时候，我们并不知道环境状态转换模型 \(P_{s s&amp;#39;}^a\) 不基于模型的强化学习问题定义 强化学习的 5 个因素：\(S, A, R\) ，衰减因子 \(\gamma\)，策略 \(\pi\) Model 方式的定义 这里加上一个  状态转换模型 \(P_{ss&amp;#39;}^a\) 预测问题 求解该策略的状态价值函数 \(">
@@ -426,7 +426,7 @@
                 
               
 
-              <time title="Created: 2019-07-18 10:42:26 / Modified: 16:37:34" itemprop="dateCreated datePublished" datetime="2019-07-18T10:42:26+08:00">2019-07-18</time>
+              <time title="Created: 2019-07-18 10:42:26 / Modified: 21:51:19" itemprop="dateCreated datePublished" datetime="2019-07-18T10:42:26+08:00">2019-07-18</time>
             
 
             
@@ -544,8 +544,44 @@
 <h3 id="蒙特卡罗法的特点">蒙特卡罗法的特点</h3>
 <p>一是和动态规划比，它不需要依赖于模型状态转化概率。二是它从经历过的完整序列学习，完整的经历越多，学习效果越好。</p>
 <h2 id="蒙特卡罗法求解强化学习预测问题">蒙特卡罗法求解强化学习预测问题</h2>
+<p>预测问题就是策略评估</p>
+<p>对于蒙特卡罗法来说，如果要求某一个状态的状态价值，只需要求出所有的完整序列中该状态出现时候的收获再取平均值即可近似求解</p>
+<p><span class="math display">\[\begin{array}{c}{G_{t}=R_{t+1}+\gamma R_{t+2}+\gamma^{2} R_{t+3}+\ldots \gamma^{T-t-1} R_{T}} \\ {v_{\pi}(s) \approx \operatorname{average}\left(G_{t}\right), s . t . S_{t}=s}\end{array}
+\]</span></p>
+<blockquote>
+<p>注意这里<span class="math inline">\(G_t\)</span> 和 <span class="math inline">\(v_{\pi}(s)\)</span> 的关系。</p>
+</blockquote>
+<p>两个可以优化的点：</p>
+<p>第一个点是同样一个状态可能在一个完整的状态序列中重复出现，那么该状态的收获该如何计算？</p>
+<ul>
+<li>首次访问</li>
+<li>每次访问</li>
+</ul>
+<p>第二个点是累进更新平均值。这里是针对 average 优化，不必保存所有状态的 reward 再取平均。改进方法是，每次保存上一轮迭代的 reward 均值和次数，计算当前轮时，参考这个公式</p>
+<p><span class="math display">\[\mu_{k}=\frac{1}{k} \sum_{j=1}^{k} x_{j}=\frac{1}{k}\left(x_{k}+\sum_{j=1}^{k-1} x_{j}\right)=\frac{1}{k}\left(x_{k}+(k-1) \mu_{k-1}\right)=\mu_{k-1}+\frac{1}{k}\left(x_{k}-\mu_{k-1}\right)
+\]</span></p>
 <h2 id="蒙特卡罗法求解强化学习控制问题">蒙特卡罗法求解强化学习控制问题</h2>
+<ol type="1">
+<li>蒙特卡罗方法一般是优化动作价值函数 <span class="math inline">\(q_{*}\)</span>，而不是状态价值函数 <span class="math inline">\(v_{*}\)</span>;</li>
+<li>蒙特卡罗方法采用 <span class="math inline">\(\epsilon-greedy\)</span> 方法更新</li>
+</ol>
+<p><span class="math display">\[\pi(a|s)= \begin{cases} \epsilon/m + 1- \epsilon &amp; {if\; a^{*} = \arg\max_{a \in A}Q(s,a)}\\ \epsilon/m &amp; {else} \end{cases}
+\]</span></p>
+<p>在实际求解过程中，<span class="math inline">\(\epsilon\)</span> 一般会随着迭代逐渐减小。前期勇于探索，后期精益求精。</p>
 <h2 id="蒙特卡罗法控制问题算法流程">蒙特卡罗法控制问题算法流程</h2>
+<ul>
+<li>输入：<span class="math inline">\(S, A, R, \gamma, \epsilon\)</span></li>
+<li>输出：<span class="math inline">\(q_{*}, \pi_{*}\)</span></li>
+</ul>
+<ol type="1">
+<li>初始化动作价值 <span class="math inline">\(Q(s, a) = 0\)</span>，状态次数 <span class="math inline">\(N(s, a) = 0\)</span>，采样次数 <span class="math inline">\(k = 0\)</span>，随机初始化策略 <span class="math inline">\(\pi\)</span></li>
+<li>第 <span class="math inline">\(k\)</span> 次蒙特卡罗采样，得到一个完整的状态序列<span class="math inline">\(S_1,A_1,R_2,S_2,A_2,...S_t,A_t,R_{t+1},...R_T, S_T\)</span></li>
+<li>对于序列里出现的每一状态对 <span class="math inline">\((S_t, A_t)\)</span>，计算器收获 <span class="math inline">\(G_t\)</span>，更新其计数 <span class="math inline">\(N(s, a)\)</span> 和行为价值函数 <span class="math inline">\(Q(s, a)\)</span> <span class="math display">\[\begin{array}{c}{G_{t}=R_{t+1}+\gamma R_{t+2}+\gamma^{2} R_{t+3}+\ldots \gamma^{T-t-1} R_{T}} \\ {N\left(S_{t}, A_{t}\right)=N\left(S_{t}, A_{t}\right)+1} \\ {Q\left(S_{t}, A_{t}\right)=Q\left(S_{t}, A_{t}\right)+\frac{1}{N\left(S_{t}, A_{t}\right)}\left(G_{t}-Q\left(S_{t}, A_{t}\right)\right)}\end{array}
+\]</span></li>
+<li>基于计算出的动作价值函数，更新当前的 <span class="math inline">\(\epsilon-greedy\)</span> 策略 <span class="math display">\[\begin{array}{c}{\epsilon=\frac{1}{k}} \\ {\pi(a | s)=\left\{\begin{array}{ll}{\epsilon / m+1-\epsilon} &amp; {\text { if} a^{*}=\arg \max _{a \in A} Q(s, a)} \\ {\epsilon / m} &amp; {\text { else}}\end{array}\right.}\end{array}
+\]</span></li>
+<li>如果所有的 <span class="math inline">\(Q(s, a)\)</span> 收敛，则得到 <span class="math inline">\(q_{*}\)</span> 和 <span class="math inline">\(v_{*}\)</span>。</li>
+</ol>
 <h2 id="蒙特卡罗法求解强化学习问题小结">蒙特卡罗法求解强化学习问题小结</h2>
 <p>第一个不基于模型的强换学习问题求解方法，可以不知道环境状态转换模型 <span class="math inline">\(P_{s s&#39;}^a\)</span>，求解时间复杂度低。</p>
 <p>缺点是，每次采样都需要一个完整的状态序列。</p>

@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="gh&#39;s notes">
 <meta property="og:description" content="强化学习引入 MDP 的原因 第一、限定环境的状态转换模型 \(P^a_{s s&amp;#39;}\)  假设转化到下一个状态 \(s&amp;#39;\) 的概率仅与上一个的状态 \(s\) 有关  \[P_{ss&amp;#39;}^a = \mathbb{E}(S_{t+1}=s&amp;#39;|S_t=s, A_t=a) \] 第二、限定策略 \(\pi\)  状态 \(s\) 时采取动作 \(a\) 的概率仅与当前">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-18T09:28:13.080Z">
+<meta property="og:updated_time" content="2019-07-18T13:51:20.947Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="狸花猫记 (2): 马尔可夫决策过程">
 <meta name="twitter:description" content="强化学习引入 MDP 的原因 第一、限定环境的状态转换模型 \(P^a_{s s&amp;#39;}\)  假设转化到下一个状态 \(s&amp;#39;\) 的概率仅与上一个的状态 \(s\) 有关  \[P_{ss&amp;#39;}^a = \mathbb{E}(S_{t+1}=s&amp;#39;|S_t=s, A_t=a) \] 第二、限定策略 \(\pi\)  状态 \(s\) 时采取动作 \(a\) 的概率仅与当前">
@@ -426,7 +426,7 @@
                 
               
 
-              <time title="Created: 2019-07-18 00:08:51 / Modified: 17:28:13" itemprop="dateCreated datePublished" datetime="2019-07-18T00:08:51+08:00">2019-07-18</time>
+              <time title="Created: 2019-07-18 00:08:51 / Modified: 21:51:20" itemprop="dateCreated datePublished" datetime="2019-07-18T00:08:51+08:00">2019-07-18</time>
             
 
             
@@ -514,7 +514,10 @@
 <p><span class="math inline">\(v_{\pi}(s)\)</span> 仅依赖当前状态</p>
 </blockquote>
 <p>这里引入一个概念<strong>Gain</strong></p>
-<p><span class="math inline">\(G_t\)</span> 是从一个 MDP 从一个状态 <span class="math inline">\(S_t\)</span> 开始采样知道终止状态时所有衰减奖励之和。 &gt; 本质上衡量了一个状态的价值和历史价值。<span class="math inline">\(G_t\)</span> 是特化的状态价值函数，马尔可夫化的价值函数。</p>
+<p><span class="math inline">\(G_t\)</span> 是从一个 MDP 从一个状态 <span class="math inline">\(S_t\)</span> 开始采样直到终止状态时所有衰减奖励之和，这是 <strong> 总回报</strong>。</p>
+<blockquote>
+<p><span class="math inline">\(G_t\)</span> 是一条轨迹的总回报。这条轨迹也被称为回合 (Episode)。 我们的目标函数是最大化<strong> 期望回报</strong>，即希望智能体的每个动作的平均回报都是最大的，这个平均针对的不是回合数，而是动作数。</p>
+</blockquote>
 <p><strong>这里有点类似于从卷积中采样，不过是反向的。</strong></p>
 <p><span class="math display">\[v_{\pi}(s) = \mathbb{E}_{\pi}(G_t|S_t=s) = \mathbb{E}_{\pi}(R_{t+1} + \gamma R_{t+2} + \gamma^2R_{t+3}+...|S_t=s)
 \]</span></p>
