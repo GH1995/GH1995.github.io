@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="gh&#39;s notes">
 <meta property="og:description" content="强化学习引入 MDP 的原因 第一、限定环境的状态转换模型 \(P^a_{s s&amp;#39;}\)  假设转化到下一个状态 \(s&amp;#39;\) 的概率仅与上一个的状态 \(s\) 有关  \[P_{ss&amp;#39;}^a = \mathbb{E}(S_{t+1}=s&amp;#39;|S_t=s, A_t=a) \] 第二、限定策略 \(\pi\)  状态 \(s\) 时采取动作 \(a\) 的概率仅与当前">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-18T02:49:12.734Z">
+<meta property="og:updated_time" content="2019-07-18T09:28:13.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="狸花猫记 (2): 马尔可夫决策过程">
 <meta name="twitter:description" content="强化学习引入 MDP 的原因 第一、限定环境的状态转换模型 \(P^a_{s s&amp;#39;}\)  假设转化到下一个状态 \(s&amp;#39;\) 的概率仅与上一个的状态 \(s\) 有关  \[P_{ss&amp;#39;}^a = \mathbb{E}(S_{t+1}=s&amp;#39;|S_t=s, A_t=a) \] 第二、限定策略 \(\pi\)  状态 \(s\) 时采取动作 \(a\) 的概率仅与当前">
@@ -426,7 +426,7 @@
                 
               
 
-              <time title="Created: 2019-07-18 00:08:51 / Modified: 10:49:12" itemprop="dateCreated datePublished" datetime="2019-07-18T00:08:51+08:00">2019-07-18</time>
+              <time title="Created: 2019-07-18 00:08:51 / Modified: 17:28:13" itemprop="dateCreated datePublished" datetime="2019-07-18T00:08:51+08:00">2019-07-18</time>
             
 
             
@@ -514,13 +514,14 @@
 <p><span class="math inline">\(v_{\pi}(s)\)</span> 仅依赖当前状态</p>
 </blockquote>
 <p>这里引入一个概念<strong>Gain</strong></p>
-<p><span class="math inline">\(G_t\)</span> 是从一个 MDP 从一个状态 <span class="math inline">\(S_t\)</span> 开始采样知道终止状态时所有衰减奖励之和。 <strong>这里有点类似于从卷积中采样。</strong></p>
+<p><span class="math inline">\(G_t\)</span> 是从一个 MDP 从一个状态 <span class="math inline">\(S_t\)</span> 开始采样知道终止状态时所有衰减奖励之和。 &gt; 本质上衡量了一个状态的价值和历史价值。<span class="math inline">\(G_t\)</span> 是特化的状态价值函数，马尔可夫化的价值函数。</p>
+<p><strong>这里有点类似于从卷积中采样，不过是反向的。</strong></p>
 <p><span class="math display">\[v_{\pi}(s) = \mathbb{E}_{\pi}(G_t|S_t=s) = \mathbb{E}_{\pi}(R_{t+1} + \gamma R_{t+2} + \gamma^2R_{t+3}+...|S_t=s)
 \]</span></p>
 <h2 id="mdp- 的价值函数与贝尔曼方程">MDP 的价值函数与贝尔曼方程</h2>
-<p>缺点：没有考虑动作 <span class="math inline">\(a\)</span> 带来的价值影响。有可能做了不同的动作都导致了 <span class="math inline">\(s \to s&#39;\)</span></p>
+<p>缺点：没有考虑动作 <span class="math inline">\(a\)</span> 带来的价值影响，有可能做了不同的动作都导致了 <span class="math inline">\(s \to s&#39;\)</span></p>
 <ul>
-<li>状态价值函数 v_{}(s)</li>
+<li>状态价值函数 <span class="math inline">\(v_{\pi}(s)\)</span></li>
 <li>动作价值函数 <span class="math inline">\(q_{\pi}(s,a)\)</span></li>
 </ul>
 <p>注意，这里多引入了一个 <span class="math inline">\(a\)</span>，本质上 <span class="math inline">\(v\)</span> 和 <span class="math inline">\(q\)</span> 都是 <span class="math inline">\(R_{t}\)</span> 的采样</p>
@@ -532,7 +533,7 @@
 <p>这里我们发现随着状态转换 <span class="math inline">\(S_t \to S_{t+1}\)</span>，价值函数也满足某种递推关系<span class="math inline">\(v_{\pi}(S_t) \to v_{\pi}(S_{t+1})\)</span>，<strong> 这是符合直觉的</strong></p>
 <p><span class="math display">\[v_{\pi}(s) = \mathbb{E}_{\pi}(R_{t+1} + \gamma v_{\pi}(S_{t+1}) | S_t=s)
 \]</span></p>
-<p>这个式子是不符合直觉的，叫做 <strong> 贝尔曼方程 </strong>，它说一个状态的价值由该状态的奖励及后续状态价值<span class="math inline">\(\times\)</span> 衰减比例构成。评价一个时代的好坏不仅要看当代人的评价还有看后代人的评价，这是符合历史直觉的。</p>
+<p>这个式子是不符合直觉的，叫做 <strong> 贝尔曼方程 </strong>，它说一个状态的价值由 <strong> 该状态的奖励 </strong><span class="math inline">\(+\)</span> <strong> 后续状态价值 </strong><span class="math inline">\(\times\)</span><strong> 衰减比例</strong> 构成。评价一个时代的好坏不仅要看当代人的评价还有看后代人的评价，这是符合历史直觉的。</p>
 <blockquote>
 <p>为什么不参考前面的状态？我觉得这是一个缺点，比如评价历史，前代积贫积弱，当代横扫寰宇，反差越大，评价越高。由魏到晋易，由隋到唐难，天下民生凋敝，征战不休，秦王翦灭诸侯，开创贞观之治，这个 reward 应该非常大才对。而晋武帝承魏旧章，吞并吴蜀并不是什么难事，reward 应该小一点才对。<strong>把后人的功劳算给前人是不符合直觉的，把李世民的功劳算给隋炀帝是不对的。</strong></p>
 </blockquote>
