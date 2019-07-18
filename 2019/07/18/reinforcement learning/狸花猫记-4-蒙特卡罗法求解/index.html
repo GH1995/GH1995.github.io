@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="gh&#39;s notes">
 <meta property="og:description" content="更新某一个状态的价值时，回溯到该状态的所有可能的后续状态 很多时候，我们并不知道环境状态转换模型 \(P_{s s&amp;#39;}^a\) 不基于模型的强化学习问题定义 强化学习的 5 个因素：\(S, A, R\) ，衰减因子 \(\gamma\)，策略 \(\pi\) Model 方式的定义 这里加上一个  状态转换模型 \(P_{ss&amp;#39;}^a\) 预测问题 求解该策略的状态价值函数 \(">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-18T06:13:45.522Z">
+<meta property="og:updated_time" content="2019-07-18T08:37:34.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="狸花猫记 (4): 蒙特卡罗法求解">
 <meta name="twitter:description" content="更新某一个状态的价值时，回溯到该状态的所有可能的后续状态 很多时候，我们并不知道环境状态转换模型 \(P_{s s&amp;#39;}^a\) 不基于模型的强化学习问题定义 强化学习的 5 个因素：\(S, A, R\) ，衰减因子 \(\gamma\)，策略 \(\pi\) Model 方式的定义 这里加上一个  状态转换模型 \(P_{ss&amp;#39;}^a\) 预测问题 求解该策略的状态价值函数 \(">
@@ -426,7 +426,7 @@
                 
               
 
-              <time title="Created: 2019-07-18 10:42:26 / Modified: 14:13:45" itemprop="dateCreated datePublished" datetime="2019-07-18T10:42:26+08:00">2019-07-18</time>
+              <time title="Created: 2019-07-18 10:42:26 / Modified: 16:37:34" itemprop="dateCreated datePublished" datetime="2019-07-18T10:42:26+08:00">2019-07-18</time>
             
 
             
@@ -527,6 +527,22 @@
 </blockquote>
 <p>求解最优的动作价值函数 <span class="math inline">\(q_{*}\)</span> 和策略<span class="math inline">\(\pi_{*}\)</span></p>
 <h2 id="蒙特卡罗法求解特点">蒙特卡罗法求解特点</h2>
+<h3 id="蒙特卡罗方法">蒙特卡罗方法</h3>
+<p>采样法，基本思想是根据一个已知的概率密度函数 <span class="math inline">\(p(x)\)</span> 的分布来计算函数 <span class="math inline">\(f(x)\)</span> 的期望。</p>
+<p><span class="math display">\[\mathbb{E}[f(x)]=\int_{x} f(x) p(x) d x
+\]</span></p>
+<p>按概率分布 <span class="math inline">\(p\)</span> 抽取 <span class="math inline">\(N\)</span> 个样本 <span class="math inline">\(x^{(1)}, x^{(2)}, \cdots, x^{(N)}\)</span>， 则 <span class="math inline">\(f(x)\)</span> 的期望可以用这 <span class="math inline">\(N\)</span> 个 <span class="math inline">\(x^{(i)}\)</span> 的均值来近似。</p>
+<p><span class="math display">\[\hat{f}_{N}=\frac{1}{N}\left(f\left(x^{(1)}\right)+\cdots+f\left(x^{(N)}\right)\right)
+\]</span></p>
+<p>蒙特卡罗方法的难点在于 <span class="math inline">\(p(x)\)</span>难以采样，这里常常采用间接的采样策略，比如拒绝采样、重要性采样、马尔可夫链蒙特卡罗采样等。这些方法一般是先根据一个比较容易采样的分布进行采样，然后通过一些策略来间接得到符合 <span class="math inline">\(p(x)\)</span> 分布的样本。</p>
+<h3 id="马尔可夫链蒙特卡罗方法">马尔可夫链蒙特卡罗方法</h3>
+<p>适用于高维空间中采样</p>
+<p>核心思想是将样过程看作是一个马尔可夫链。</p>
+<p><span class="math display">\[\mathbf{x}_{1}, \mathbf{x}_{2}, \cdots, \mathbf{x}_{t-1}, \mathbf{x}_{t},, \mathbf{x}_{t+1}, \cdots
+\]</span></p>
+<p>第 <span class="math inline">\(t + 1\)</span>次采样依赖于第 <span class="math inline">\(t\)</span> 次抽取的样本<span class="math inline">\(\mathbf{x}_t\)</span> 以及状态转移分布（即提议分布）<span class="math inline">\(q\left(\mathbf{x} | \mathbf{x}_{t}\right)\)</span>。如果这个马尔可夫链的平稳分布为 <span class="math inline">\(p(\mathbf{x})\)</span> ，那么在状态平稳时抽取的样本就服从 <span class="math inline">\(p(\mathbf{x})\)</span> 的分布。</p>
+<h3 id="蒙特卡罗法的特点">蒙特卡罗法的特点</h3>
+<p>一是和动态规划比，它不需要依赖于模型状态转化概率。二是它从经历过的完整序列学习，完整的经历越多，学习效果越好。</p>
 <h2 id="蒙特卡罗法求解强化学习预测问题">蒙特卡罗法求解强化学习预测问题</h2>
 <h2 id="蒙特卡罗法求解强化学习控制问题">蒙特卡罗法求解强化学习控制问题</h2>
 <h2 id="蒙特卡罗法控制问题算法流程">蒙特卡罗法控制问题算法流程</h2>
@@ -900,7 +916,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#不基于模型的强化学习问题定义"><span class="nav-number">1.</span> <span class="nav-text">不基于模型的强化学习问题定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#model 方式的定义"><span class="nav-number">1.1.</span> <span class="nav-text">Model 方式的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#model-free 方式的定义"><span class="nav-number">1.2.</span> <span class="nav-text">Model-free 方式的定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解特点"><span class="nav-number">2.</span> <span class="nav-text">蒙特卡罗法求解特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解强化学习预测问题"><span class="nav-number">3.</span> <span class="nav-text">蒙特卡罗法求解强化学习预测问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解强化学习控制问题"><span class="nav-number">4.</span> <span class="nav-text">蒙特卡罗法求解强化学习控制问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法控制问题算法流程"><span class="nav-number">5.</span> <span class="nav-text">蒙特卡罗法控制问题算法流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解强化学习问题小结"><span class="nav-number">6.</span> <span class="nav-text">蒙特卡罗法求解强化学习问题小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#不基于模型的强化学习问题定义"><span class="nav-number">1.</span> <span class="nav-text">不基于模型的强化学习问题定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#model 方式的定义"><span class="nav-number">1.1.</span> <span class="nav-text">Model 方式的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#model-free 方式的定义"><span class="nav-number">1.2.</span> <span class="nav-text">Model-free 方式的定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解特点"><span class="nav-number">2.</span> <span class="nav-text">蒙特卡罗法求解特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#蒙特卡罗方法"><span class="nav-number">2.1.</span> <span class="nav-text">蒙特卡罗方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#马尔可夫链蒙特卡罗方法"><span class="nav-number">2.2.</span> <span class="nav-text">马尔可夫链蒙特卡罗方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#蒙特卡罗法的特点"><span class="nav-number">2.3.</span> <span class="nav-text">蒙特卡罗法的特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解强化学习预测问题"><span class="nav-number">3.</span> <span class="nav-text">蒙特卡罗法求解强化学习预测问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解强化学习控制问题"><span class="nav-number">4.</span> <span class="nav-text">蒙特卡罗法求解强化学习控制问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法控制问题算法流程"><span class="nav-number">5.</span> <span class="nav-text">蒙特卡罗法控制问题算法流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解强化学习问题小结"><span class="nav-number">6.</span> <span class="nav-text">蒙特卡罗法求解强化学习问题小结</span></a></li></ol></div>
             
 
           </div>
