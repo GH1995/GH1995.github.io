@@ -105,18 +105,21 @@
 
 
 
-  <meta name="description" content="更新某一个状态的价值时，回溯到该状态的所有可能的后续状态 很多时候，我们并不知道环境状态转换模型 \(P_{s s&amp;#39;}^a\) 不基于模型的强化学习问题定义 强化学习的 5 个因素：\(S, A, R\) ，衰减因子 \(\gamma\)，策略 \(\pi\) Model 方式的定义 这里加上一个  状态转换模型 \(P_{ss&amp;#39;}^a\) 预测问题 求解该策略的状态价值函数 \(">
-<meta name="keywords" content="reinforcement learning">
+  <meta name="description" content="强化学习在机器学习中的位置  与监督学习相比，数据有时间关系，奖励值延迟 与非监督学习相比，数据有时间关系，输出奖励值  强化学习建模  Zq5uRJ.png  强化学习要素 三个基本要素  环境状态 \(S_t\) 动作 \(A_t\) 环境的奖励 \(R_t\)，这是  延迟的，在状态 \(S_{t-1}\) 采取的动作 \(A_{t-1}\) 对应奖励 \(R_t\)  五个附加要素 个体的">
+<meta name="keywords" content="Reinforcement Learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="狸花猫记 (4): 蒙特卡罗法求解">
-<meta property="og:url" content="http://guanhua.ml/2019/07/18/reinforcement learning/狸花猫记-4-蒙特卡罗法求解/index.html">
+<meta property="og:title" content="狸花猫记 (1): 模型基础">
+<meta property="og:url" content="http://guanhua.ml/2019/07/19/reinforcement learning/狸花猫记-1-模型基础/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="更新某一个状态的价值时，回溯到该状态的所有可能的后续状态 很多时候，我们并不知道环境状态转换模型 \(P_{s s&amp;#39;}^a\) 不基于模型的强化学习问题定义 强化学习的 5 个因素：\(S, A, R\) ，衰减因子 \(\gamma\)，策略 \(\pi\) Model 方式的定义 这里加上一个  状态转换模型 \(P_{ss&amp;#39;}^a\) 预测问题 求解该策略的状态价值函数 \(">
+<meta property="og:description" content="强化学习在机器学习中的位置  与监督学习相比，数据有时间关系，奖励值延迟 与非监督学习相比，数据有时间关系，输出奖励值  强化学习建模  Zq5uRJ.png  强化学习要素 三个基本要素  环境状态 \(S_t\) 动作 \(A_t\) 环境的奖励 \(R_t\)，这是  延迟的，在状态 \(S_{t-1}\) 采取的动作 \(A_{t-1}\) 对应奖励 \(R_t\)  五个附加要素 个体的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-18T13:51:19.787Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/17/Zq5uRJ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/17/ZqaIVx.png">
+<meta property="og:updated_time" content="2019-07-19T02:43:49.577Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="狸花猫记 (4): 蒙特卡罗法求解">
-<meta name="twitter:description" content="更新某一个状态的价值时，回溯到该状态的所有可能的后续状态 很多时候，我们并不知道环境状态转换模型 \(P_{s s&amp;#39;}^a\) 不基于模型的强化学习问题定义 强化学习的 5 个因素：\(S, A, R\) ，衰减因子 \(\gamma\)，策略 \(\pi\) Model 方式的定义 这里加上一个  状态转换模型 \(P_{ss&amp;#39;}^a\) 预测问题 求解该策略的状态价值函数 \(">
+<meta name="twitter:title" content="狸花猫记 (1): 模型基础">
+<meta name="twitter:description" content="强化学习在机器学习中的位置  与监督学习相比，数据有时间关系，奖励值延迟 与非监督学习相比，数据有时间关系，输出奖励值  强化学习建模  Zq5uRJ.png  强化学习要素 三个基本要素  环境状态 \(S_t\) 动作 \(A_t\) 环境的奖励 \(R_t\)，这是  延迟的，在状态 \(S_{t-1}\) 采取的动作 \(A_{t-1}\) 对应奖励 \(R_t\)  五个附加要素 个体的">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/17/Zq5uRJ.png">
 
 
 
@@ -124,7 +127,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/2019/07/18/reinforcement learning/狸花猫记-4-蒙特卡罗法求解/">
+  <link rel="canonical" href="http://guanhua.ml/2019/07/19/reinforcement learning/狸花猫记-1-模型基础/">
 
 
 
@@ -134,7 +137,7 @@
   };
 </script>
 
-  <title>狸花猫记 (4): 蒙特卡罗法求解 | gh's notes</title>
+  <title>狸花猫记 (1): 模型基础 | gh's notes</title>
   
 
 
@@ -383,7 +386,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/18/reinforcement learning/狸花猫记-4-蒙特卡罗法求解/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/19/reinforcement learning/狸花猫记-1-模型基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -400,7 +403,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">狸花猫记 (4): 蒙特卡罗法求解
+          <h1 class="post-title" itemprop="name headline">狸花猫记 (1): 模型基础
 
               
             
@@ -426,13 +429,9 @@
                 
               
 
-              <time title="Created: 2019-07-18 10:42:26 / Modified: 21:51:19" itemprop="dateCreated datePublished" datetime="2019-07-18T10:42:26+08:00">2019-07-18</time>
+              <time title="Created: 2019-07-19 10:43:49" itemprop="dateCreated datePublished" datetime="2019-07-19T10:43:49+08:00">2019-07-19</time>
             
 
-            
-              
-
-              
             
           </span>
 
@@ -467,8 +466,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/07/18/reinforcement learning/狸花猫记-4-蒙特卡罗法求解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/18/reinforcement learning/狸花猫记-4-蒙特卡罗法求解/" itemprop="commentCount"></span>
+                <a href="/2019/07/19/reinforcement learning/狸花猫记-1-模型基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/19/reinforcement learning/狸花猫记-1-模型基础/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -496,120 +495,48 @@
       
 
       
-        <p>更新某一个状态的价值时，回溯到该状态的所有可能的后续状态</p>
-<p>很多时候，我们并不知道环境状态转换模型 <span class="math inline">\(P_{s s&#39;}^a\)</span></p>
-<h2 id="不基于模型的强化学习问题定义">不基于模型的强化学习问题定义</h2>
-<p>强化学习的 5 个因素：<span class="math inline">\(S, A, R\)</span> ，衰减因子 <span class="math inline">\(\gamma\)</span>，策略 <span class="math inline">\(\pi\)</span></p>
-<h3 id="model 方式的定义">Model 方式的定义</h3>
-<p>这里加上一个 <strong> 状态转换模型 <span class="math inline">\(P_{ss&#39;}^a\)</span></strong></p>
-<p><strong>预测问题</strong> 求解该策略的状态价值函数 <span class="math inline">\(v_{ \pi}(s)\)</span></p>
-<blockquote>
-<p>预测问题就是在该攻略的指导下，我们的电竞选手最高能拿到多少分</p>
-</blockquote>
-<blockquote>
-<p><span class="math inline">\(S, A, R + \gamma + \pi + P\)</span></p>
-</blockquote>
-<p><strong>控制问题 </strong> 求解最优的价值函数<span class="math inline">\(v_{*}\)</span> 和策略<span class="math inline">\(\pi_{*}\)</span></p>
-<blockquote>
-<p>让多名电竞选手打一遍，然后看最高的分数。让这名选手写个教程，也就是<span class="math inline">\(\pi_{*}\)</span></p>
-</blockquote>
-<blockquote>
-<p><span class="math inline">\(S, A, R + \gamma + P\)</span></p>
-</blockquote>
-<h3 id="model-free 方式的定义">Model-free 方式的定义</h3>
-<p><strong>预测问题</strong> 不变</p>
-<blockquote>
-<p><span class="math inline">\(S, A, R + \gamma + \pi\)</span></p>
-</blockquote>
-<p><strong>控制问题</strong></p>
-<blockquote>
-<p><span class="math inline">\(S, A, R + \gamma + \epsilon\)</span> 这里把 <span class="math inline">\(P\)</span> 换成了 <span class="math inline">\(\epsilon\)</span></p>
-</blockquote>
-<p>求解最优的动作价值函数 <span class="math inline">\(q_{*}\)</span> 和策略<span class="math inline">\(\pi_{*}\)</span></p>
-<h2 id="蒙特卡罗法求解特点">蒙特卡罗法求解特点</h2>
-<h3 id="蒙特卡罗方法">蒙特卡罗方法</h3>
-<p>采样法，基本思想是根据一个已知的概率密度函数 <span class="math inline">\(p(x)\)</span> 的分布来计算函数 <span class="math inline">\(f(x)\)</span> 的期望。</p>
-<p><span class="math display">\[\mathbb{E}[f(x)]=\int_{x} f(x) p(x) d x
-\]</span></p>
-<p>按概率分布 <span class="math inline">\(p\)</span> 抽取 <span class="math inline">\(N\)</span> 个样本 <span class="math inline">\(x^{(1)}, x^{(2)}, \cdots, x^{(N)}\)</span>， 则 <span class="math inline">\(f(x)\)</span> 的期望可以用这 <span class="math inline">\(N\)</span> 个 <span class="math inline">\(x^{(i)}\)</span> 的均值来近似。</p>
-<p><span class="math display">\[\hat{f}_{N}=\frac{1}{N}\left(f\left(x^{(1)}\right)+\cdots+f\left(x^{(N)}\right)\right)
-\]</span></p>
-<p>蒙特卡罗方法的难点在于 <span class="math inline">\(p(x)\)</span>难以采样，这里常常采用间接的采样策略，比如拒绝采样、重要性采样、马尔可夫链蒙特卡罗采样等。这些方法一般是先根据一个比较容易采样的分布进行采样，然后通过一些策略来间接得到符合 <span class="math inline">\(p(x)\)</span> 分布的样本。</p>
-<h3 id="马尔可夫链蒙特卡罗方法">马尔可夫链蒙特卡罗方法</h3>
-<p>适用于高维空间中采样</p>
-<p>核心思想是将样过程看作是一个马尔可夫链。</p>
-<p><span class="math display">\[\mathbf{x}_{1}, \mathbf{x}_{2}, \cdots, \mathbf{x}_{t-1}, \mathbf{x}_{t},, \mathbf{x}_{t+1}, \cdots
-\]</span></p>
-<p>第 <span class="math inline">\(t + 1\)</span>次采样依赖于第 <span class="math inline">\(t\)</span> 次抽取的样本<span class="math inline">\(\mathbf{x}_t\)</span> 以及状态转移分布（即提议分布）<span class="math inline">\(q\left(\mathbf{x} | \mathbf{x}_{t}\right)\)</span>。如果这个马尔可夫链的平稳分布为 <span class="math inline">\(p(\mathbf{x})\)</span> ，那么在状态平稳时抽取的样本就服从 <span class="math inline">\(p(\mathbf{x})\)</span> 的分布。</p>
-<h3 id="蒙特卡罗法的特点">蒙特卡罗法的特点</h3>
-<p>一是和动态规划比，它不需要依赖于模型状态转化概率。二是它从经历过的完整序列学习，完整的经历越多，学习效果越好。</p>
-<h2 id="蒙特卡罗法求解强化学习预测问题">蒙特卡罗法求解强化学习预测问题</h2>
-<p>预测问题就是策略评估</p>
-<p>对于蒙特卡罗法来说，如果要求某一个状态的状态价值，只需要求出所有的完整序列中该状态出现时候的收获再取平均值即可近似求解</p>
-<p><span class="math display">\[\begin{array}{c}{G_{t}=R_{t+1}+\gamma R_{t+2}+\gamma^{2} R_{t+3}+\ldots \gamma^{T-t-1} R_{T}} \\ {v_{\pi}(s) \approx \operatorname{average}\left(G_{t}\right), s . t . S_{t}=s}\end{array}
-\]</span></p>
-<blockquote>
-<p>注意这里<span class="math inline">\(G_t\)</span> 和 <span class="math inline">\(v_{\pi}(s)\)</span> 的关系。</p>
-</blockquote>
-<p>两个可以优化的点：</p>
-<p>第一个点是同样一个状态可能在一个完整的状态序列中重复出现，那么该状态的收获该如何计算？</p>
+        <h2 id="强化学习在机器学习中的位置">强化学习在机器学习中的位置</h2>
 <ul>
-<li>首次访问</li>
-<li>每次访问</li>
+<li>与监督学习相比，数据有时间关系，奖励值延迟</li>
+<li>与非监督学习相比，数据有时间关系，输出奖励值</li>
 </ul>
-<p>第二个点是累进更新平均值。这里是针对 average 优化，不必保存所有状态的 reward 再取平均。改进方法是，每次保存上一轮迭代的 reward 均值和次数，计算当前轮时，参考这个公式</p>
-<p><span class="math display">\[\mu_{k}=\frac{1}{k} \sum_{j=1}^{k} x_{j}=\frac{1}{k}\left(x_{k}+\sum_{j=1}^{k-1} x_{j}\right)=\frac{1}{k}\left(x_{k}+(k-1) \mu_{k-1}\right)=\mu_{k-1}+\frac{1}{k}\left(x_{k}-\mu_{k-1}\right)
-\]</span></p>
-<h2 id="蒙特卡罗法求解强化学习控制问题">蒙特卡罗法求解强化学习控制问题</h2>
+<h2 id="强化学习建模">强化学习建模</h2>
+<figure>
+<img src="https://s2.ax1x.com/2019/07/17/Zq5uRJ.png" alt="Zq5uRJ.png"><figcaption>Zq5uRJ.png</figcaption>
+</figure>
+<p>强化学习要素</p>
+<h3 id="三个基本要素">三个基本要素</h3>
 <ol type="1">
-<li>蒙特卡罗方法一般是优化动作价值函数 <span class="math inline">\(q_{*}\)</span>，而不是状态价值函数 <span class="math inline">\(v_{*}\)</span>;</li>
-<li>蒙特卡罗方法采用 <span class="math inline">\(\epsilon-greedy\)</span> 方法更新</li>
+<li>环境状态 <span class="math inline">\(S_t\)</span></li>
+<li>动作 <span class="math inline">\(A_t\)</span></li>
+<li>环境的奖励 <span class="math inline">\(R_t\)</span>，这是 <strong> 延迟的</strong>，在状态 <span class="math inline">\(S_{t-1}\)</span> 采取的动作 <span class="math inline">\(A_{t-1}\)</span> 对应奖励 <span class="math inline">\(R_t\)</span></li>
 </ol>
-<p><span class="math display">\[\pi(a|s)= \begin{cases} \epsilon/m + 1- \epsilon &amp; {if\; a^{*} = \arg\max_{a \in A}Q(s,a)}\\ \epsilon/m &amp; {else} \end{cases}
+<h3 id="五个附加要素">五个附加要素</h3>
+<p><strong>个体的策略 </strong> <span class="math inline">\(\pi(a|s)\)</span>，通常表示为一个<strong> 条件 <span class="math inline">\(s\)</span> 概率分布 </strong>，状态 <span class="math inline">\(s\)</span> 时采取动作<span class="math inline">\(a\)</span> 的概率，即 <span class="math inline">\(\pi(a|s) = P(A_t=a | S_t=s)\)</span><strong>动作 <span class="math inline">\(a\)</span> 只由状态决定，<span class="math inline">\(\pi\)</span>就像游戏攻略一样</strong></p>
+<p><strong>采取行动后的价值 </strong> <span class="math inline">\(v_{\pi}(s)\)</span> 在给定策略<span class="math inline">\(\pi\)</span> 和状态 <span class="math inline">\(s\)</span> 后，采取一系列行动后奖励累加就是价值，一般是个期望函数。当前作用给出的延时奖励是 <span class="math inline">\(R_{t+1}\)</span>。 &gt; 所以把价值函数表示为<span class="math inline">\(\sum \gamma^t R_i\)</span>，这里不关注<span class="math inline">\(s \to s&#39;\)</span> 是怎么变的，只是在改变给出的<span class="math inline">\(R_i\)</span> 上不断求和。我们把当前状态看作原因，它对于后续结果的影响是指数衰弱的。考虑时间因素，如果把 <span class="math inline">\(t\)</span>，取到无限大，对于 <span class="math inline">\(v\)</span> 来说，给了它策略<span class="math inline">\(\pi\)</span> 和初始状态 <span class="math inline">\(S_0\)</span>，它可以一直玩下去，导致 <span class="math inline">\(v_{\pi}(s) \to \infty\)</span>。所以我们对 <span class="math inline">\(t\)</span> 取个均值，这样就不怕时间展开了。 <span class="math display">\[v_{\pi}(s) = \mathbb{E}_{\pi}(R_{t+1} + \gamma R_{t+2} + \gamma^2R_{t+3}+...|S_t=s)
 \]</span></p>
-<p>在实际求解过程中，<span class="math inline">\(\epsilon\)</span> 一般会随着迭代逐渐减小。前期勇于探索，后期精益求精。</p>
-<h2 id="蒙特卡罗法控制问题算法流程">蒙特卡罗法控制问题算法流程</h2>
-<ul>
-<li>输入：<span class="math inline">\(S, A, R, \gamma, \epsilon\)</span></li>
-<li>输出：<span class="math inline">\(q_{*}, \pi_{*}\)</span></li>
-</ul>
-<ol type="1">
-<li>初始化动作价值 <span class="math inline">\(Q(s, a) = 0\)</span>，状态次数 <span class="math inline">\(N(s, a) = 0\)</span>，采样次数 <span class="math inline">\(k = 0\)</span>，随机初始化策略 <span class="math inline">\(\pi\)</span></li>
-<li>第 <span class="math inline">\(k\)</span> 次蒙特卡罗采样，得到一个完整的状态序列<span class="math inline">\(S_1,A_1,R_2,S_2,A_2,...S_t,A_t,R_{t+1},...R_T, S_T\)</span></li>
-<li>对于序列里出现的每一状态对 <span class="math inline">\((S_t, A_t)\)</span>，计算器收获 <span class="math inline">\(G_t\)</span>，更新其计数 <span class="math inline">\(N(s, a)\)</span> 和行为价值函数 <span class="math inline">\(Q(s, a)\)</span> <span class="math display">\[\begin{array}{c}{G_{t}=R_{t+1}+\gamma R_{t+2}+\gamma^{2} R_{t+3}+\ldots \gamma^{T-t-1} R_{T}} \\ {N\left(S_{t}, A_{t}\right)=N\left(S_{t}, A_{t}\right)+1} \\ {Q\left(S_{t}, A_{t}\right)=Q\left(S_{t}, A_{t}\right)+\frac{1}{N\left(S_{t}, A_{t}\right)}\left(G_{t}-Q\left(S_{t}, A_{t}\right)\right)}\end{array}
-\]</span></li>
-<li>基于计算出的动作价值函数，更新当前的 <span class="math inline">\(\epsilon-greedy\)</span> 策略 <span class="math display">\[\begin{array}{c}{\epsilon=\frac{1}{k}} \\ {\pi(a | s)=\left\{\begin{array}{ll}{\epsilon / m+1-\epsilon} &amp; {\text { if} a^{*}=\arg \max _{a \in A} Q(s, a)} \\ {\epsilon / m} &amp; {\text { else}}\end{array}\right.}\end{array}
-\]</span></li>
-<li>如果所有的 <span class="math inline">\(Q(s, a)\)</span> 收敛，则得到 <span class="math inline">\(q_{*}\)</span> 和 <span class="math inline">\(v_{*}\)</span>。</li>
-</ol>
-<h2 id="蒙特卡罗法求解强化学习问题小结">蒙特卡罗法求解强化学习问题小结</h2>
-<p>第一个不基于模型的强换学习问题求解方法，可以不知道环境状态转换模型 <span class="math inline">\(P_{s s&#39;}^a\)</span>，求解时间复杂度低。</p>
-<p>缺点是，每次采样都需要一个完整的状态序列。</p>
+<p><strong><em>奖励衰减因子 </em> <span class="math inline">\(\gamma\)</span> </strong> 越小越是短视，激进，大胆；越大越是周到，保守，谨慎 **</p>
+<p><strong>环境的状态转换模型 </strong> <span class="math inline">\(P_{ss&#39;}^a\)</span>，即在状态<span class="math inline">\(s\)</span> 下采取动作 <span class="math inline">\(a\)</span>, 转到下一个状态<span class="math inline">\(s′\)</span> 的概率 &gt; 描述了 <span class="math inline">\(s \to s&#39;\)</span> 的过程中 <span class="math inline">\(a\)</span> 所起的作用，本质上，这个东西就是 <strong> 模型</strong></p>
+<p><strong>探索率</strong> <span class="math inline">\(\epsilon\)</span> 有<span class="math inline">\(\epsilon\)</span> 不使用当前状态最优动作去 explore</p>
+<h2 id="强化学习的简单示例">强化学习的简单示例</h2>
+<figure>
+<img src="https://s2.ax1x.com/2019/07/17/ZqaIVx.png" alt="ZqaIVx.png"><figcaption>ZqaIVx.png</figcaption>
+</figure>
+<p><a href="https://www.google.com/search?q=Tic-Tac-Toe&amp;rlz=1C1GCEU_zh-CNHK857HK857&amp;oq=t&amp;aqs=chrome.2.69i57j0j69i59l2j69i60l2.5188j0j1&amp;sourceid=chrome&amp;ie=UTF-8" target="_blank" rel="noopener">玩一玩这个游戏</a></p>
+<p>环境状态 <span class="math inline">\(S\)</span> 九宫格，每个格子三种状态（1. 没棋子；2. 有 x；3. 有 o），所以模型状态一共有 <span class="math inline">\(3^9\)</span> 种</p>
+<p>动作 <span class="math inline">\(A\)</span>，9 个格子，相当于 9 个动作选项，有棋子的不能下</p>
+<p><span class="math inline">\(R\)</span> 赢棋奖励 1，其他时候奖励有但是少。先手要低一些？？<strong>感觉先手更有优势</strong></p>
+<p><span class="math inline">\(\pi\)</span> 学习得到，见代码</p>
+<p><span class="math inline">\(v_{\pi}(s)\)</span></p>
+<p><span class="math inline">\(\gamma\)</span> 设置为 0</p>
+<p><span class="math inline">\(P^a_{s s&#39;}\)</span> 选择之后状体确定，无需讨论</p>
+<p><span class="math inline">\(\epsilon\)</span> explore</p>
 
       
     </div>
 
     
       
-
-  <div class="popular-posts-header">Related Posts</div>
-  <ul class="popular-posts">
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/07/18/reinforcement learning/狸花猫记-2-马尔可夫决策过程/" rel="bookmark">狸花猫记 (2): 马尔可夫决策过程</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/07/18/reinforcement learning/狸花猫记-5-时序差分法/" rel="bookmark">狸花猫记 (5): 时序差分法</a></div>
-      
-    </li>
-  
-  </ul>
 
 
     
@@ -634,7 +561,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/reinforcement-learning/" rel="tag"># reinforcement learning</a>
+            <a href="/tags/Reinforcement-Learning/" rel="tag"># Reinforcement Learning</a>
           
         </div>
       
@@ -647,8 +574,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/18/reinforcement learning/狸花猫记-3-用动态规划求解/" rel="next" title="狸花猫记 (3): 用动态规划求解">
-                <i class="fa fa-chevron-left"></i> 狸花猫记 (3): 用动态规划求解
+              <a href="/2019/07/19/spark/明夷待访录（五）：Spark-Steaming/" rel="next" title="明夷待访录（五）：Spark Steaming ">
+                <i class="fa fa-chevron-left"></i> 明夷待访录（五）：Spark Steaming 
               </a>
             
           </div>
@@ -656,10 +583,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/18/reinforcement learning/狸花猫记-5-时序差分法/" rel="prev" title="狸花猫记 (5): 时序差分法">
-                狸花猫记 (5): 时序差分法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -957,7 +880,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#不基于模型的强化学习问题定义"><span class="nav-number">1.</span> <span class="nav-text">不基于模型的强化学习问题定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#model 方式的定义"><span class="nav-number">1.1.</span> <span class="nav-text">Model 方式的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#model-free 方式的定义"><span class="nav-number">1.2.</span> <span class="nav-text">Model-free 方式的定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解特点"><span class="nav-number">2.</span> <span class="nav-text">蒙特卡罗法求解特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#蒙特卡罗方法"><span class="nav-number">2.1.</span> <span class="nav-text">蒙特卡罗方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#马尔可夫链蒙特卡罗方法"><span class="nav-number">2.2.</span> <span class="nav-text">马尔可夫链蒙特卡罗方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#蒙特卡罗法的特点"><span class="nav-number">2.3.</span> <span class="nav-text">蒙特卡罗法的特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解强化学习预测问题"><span class="nav-number">3.</span> <span class="nav-text">蒙特卡罗法求解强化学习预测问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解强化学习控制问题"><span class="nav-number">4.</span> <span class="nav-text">蒙特卡罗法求解强化学习控制问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法控制问题算法流程"><span class="nav-number">5.</span> <span class="nav-text">蒙特卡罗法控制问题算法流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡罗法求解强化学习问题小结"><span class="nav-number">6.</span> <span class="nav-text">蒙特卡罗法求解强化学习问题小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习在机器学习中的位置"><span class="nav-number">1.</span> <span class="nav-text">强化学习在机器学习中的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习建模"><span class="nav-number">2.</span> <span class="nav-text">强化学习建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三个基本要素"><span class="nav-number">2.1.</span> <span class="nav-text">三个基本要素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五个附加要素"><span class="nav-number">2.2.</span> <span class="nav-text">五个附加要素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习的简单示例"><span class="nav-number">3.</span> <span class="nav-text">强化学习的简单示例</span></a></li></ol></div>
             
 
           </div>
