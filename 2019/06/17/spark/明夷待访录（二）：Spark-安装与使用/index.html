@@ -105,31 +105,18 @@
 
 
 
-  <meta name="description" content="简介  BDAS 架构  Spark 专注于数据的处理分析，而数据的存储还是要借助于 Hadoop 分布式文件系统 HDFS、Amazon S3 等来实现的 运行架构 基本概念  RDD：弹性分布式数据集（Resilient Distributed Dataset） DAG：有向无环图 Executor：运行在工作节点（Worker Node）上的一个进程，负责运行任务，并为应用程序存储数据  架">
+  <meta name="description" content="安装和使用   安装 Hadoop 和 Spark  在 pyspark 中运行代码  Spark 独立应用程序编程  1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext(&apos;local&apos;, &apos;test&apos;)logFile = &quot;file:/">
 <meta name="keywords" content="spark">
 <meta property="og:type" content="article">
-<meta property="og:title" content="明夷待访录（一）：Spark 设计和原理">
-<meta property="og:url" content="http://guanhua.ml/2019/06/17/spark/明夷待访录（一）：Spark 设计和原理/index.html">
+<meta property="og:title" content="明夷待访录（二）：Spark 安装与使用">
+<meta property="og:url" content="http://guanhua.ml/2019/06/17/spark/明夷待访录（二）：Spark-安装与使用/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="简介  BDAS 架构  Spark 专注于数据的处理分析，而数据的存储还是要借助于 Hadoop 分布式文件系统 HDFS、Amazon S3 等来实现的 运行架构 基本概念  RDD：弹性分布式数据集（Resilient Distributed Dataset） DAG：有向无环图 Executor：运行在工作节点（Worker Node）上的一个进程，负责运行任务，并为应用程序存储数据  架">
+<meta property="og:description" content="安装和使用   安装 Hadoop 和 Spark  在 pyspark 中运行代码  Spark 独立应用程序编程  1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext(&apos;local&apos;, &apos;test&apos;)logFile = &quot;file:/">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/10/%E5%9B%BE-BDAS%E6%9E%B6%E6%9E%84.jpg">
-<meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-5-Spark%E8%BF%90%E8%A1%8C%E6%9E%B6%E6%9E%84.jpg">
-<meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-6-Spark%E4%B8%AD%E5%90%84%E7%A7%8D%E6%A6%82%E5%BF%B5%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%B8%E4%BA%92%E5%85%B3%E7%B3%BB.jpg">
-<meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-7-Spark%E8%BF%90%E8%A1%8C%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%E5%9B%BE.jpg">
-<meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-8-Spark%E7%9A%84%E8%BD%AC%E6%8D%A2%E5%92%8C%E8%A1%8C%E5%8A%A8%E6%93%8D%E4%BD%9C.jpg">
-<meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-10-%E7%AA%84%E4%BE%9D%E8%B5%96%E4%B8%8E%E5%AE%BD%E4%BE%9D%E8%B5%96%E7%9A%84%E5%8C%BA%E5%88%AB.jpg">
-<meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-11-%E6%A0%B9%E6%8D%AERDD%E5%88%86%E5%8C%BA%E7%9A%84%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB%E5%88%92%E5%88%86%E9%98%B6%E6%AE%B5.jpg">
-<meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-12-RDD%E5%9C%A8Spark%E4%B8%AD%E7%9A%84%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.jpg">
-<meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-13-Spark-on-Yarn%E6%9E%B6%E6%9E%84.jpg">
-<meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-14-%E9%87%87%E7%94%A8HadoopStorm%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E4%B8%AA%E6%A1%88%E4%BE%8B.jpg">
-<meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-15-%E7%94%A8Spark%E6%9E%B6%E6%9E%84%E6%BB%A1%E8%B6%B3%E6%89%B9%E5%A4%84%E7%90%86%E5%92%8C%E6%B5%81%E5%A4%84%E7%90%86%E9%9C%80%E6%B1%82.jpg">
-<meta property="og:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-16-Hadoop%E5%92%8CSpark%E7%9A%84%E7%BB%9F%E4%B8%80%E9%83%A8%E7%BD%B2.jpg">
-<meta property="og:updated_time" content="2019-07-12T09:42:00.803Z">
+<meta property="og:updated_time" content="2019-07-12T06:50:06.765Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="明夷待访录（一）：Spark 设计和原理">
-<meta name="twitter:description" content="简介  BDAS 架构  Spark 专注于数据的处理分析，而数据的存储还是要借助于 Hadoop 分布式文件系统 HDFS、Amazon S3 等来实现的 运行架构 基本概念  RDD：弹性分布式数据集（Resilient Distributed Dataset） DAG：有向无环图 Executor：运行在工作节点（Worker Node）上的一个进程，负责运行任务，并为应用程序存储数据  架">
-<meta name="twitter:image" content="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/10/%E5%9B%BE-BDAS%E6%9E%B6%E6%9E%84.jpg">
+<meta name="twitter:title" content="明夷待访录（二）：Spark 安装与使用">
+<meta name="twitter:description" content="安装和使用   安装 Hadoop 和 Spark  在 pyspark 中运行代码  Spark 独立应用程序编程  1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext(&apos;local&apos;, &apos;test&apos;)logFile = &quot;file:/">
 
 
 
@@ -137,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/2019/06/17/spark/明夷待访录（一）：Spark 设计和原理/">
+  <link rel="canonical" href="http://guanhua.ml/2019/06/17/spark/明夷待访录（二）：Spark-安装与使用/">
 
 
 
@@ -147,7 +134,7 @@
   };
 </script>
 
-  <title>明夷待访录（一）：Spark 设计和原理 | gh's notes</title>
+  <title>明夷待访录（二）：Spark 安装与使用 | gh's notes</title>
   
 
 
@@ -396,7 +383,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/06/17/spark/明夷待访录（一）：Spark 设计和原理/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/06/17/spark/明夷待访录（二）：Spark-安装与使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -413,7 +400,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">明夷待访录（一）：Spark 设计和原理
+          <h1 class="post-title" itemprop="name headline">明夷待访录（二）：Spark 安装与使用
 
               
             
@@ -439,7 +426,7 @@
                 
               
 
-              <time title="Created: 2019-06-17 16:08:42" itemprop="dateCreated datePublished" datetime="2019-06-17T16:08:42+08:00">2019-06-17</time>
+              <time title="Created: 2019-06-17 19:39:39" itemprop="dateCreated datePublished" datetime="2019-06-17T19:39:39+08:00">2019-06-17</time>
             
 
             
@@ -456,7 +443,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 17:42:00" itemprop="dateModified" datetime="2019-07-12T17:42:00+08:00">2019-07-12</time>
+                <time title="Modified: 2019-07-12 14:50:06" itemprop="dateModified" datetime="2019-07-12T14:50:06+08:00">2019-07-12</time>
               
             
           </span>
@@ -492,8 +479,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/06/17/spark/明夷待访录（一）：Spark 设计和原理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/17/spark/明夷待访录（一）：Spark 设计和原理/" itemprop="commentCount"></span>
+                <a href="/2019/06/17/spark/明夷待访录（二）：Spark-安装与使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/17/spark/明夷待访录（二）：Spark-安装与使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -521,121 +508,17 @@
       
 
       
-        <h2 id="简介">简介</h2>
-<figure>
-<img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/10/%E5%9B%BE-BDAS%E6%9E%B6%E6%9E%84.jpg" alt="BDAS 架构"><figcaption>BDAS 架构</figcaption>
-</figure>
-<p>Spark 专注于数据的处理分析，而数据的存储还是要借助于 Hadoop 分布式文件系统 HDFS、Amazon S3 等来实现的</p>
-<h2 id="运行架构">运行架构</h2>
-<h3 id="基本概念">基本概念</h3>
-<ul>
-<li>RDD：弹性分布式数据集（Resilient Distributed Dataset）</li>
-<li>DAG：有向无环图</li>
-<li>Executor：运行在工作节点（Worker Node）上的一个进程，负责运行任务，并为应用程序存储数据</li>
-</ul>
-<h3 id="架构设计">架构设计</h3>
-<p>Spark 运行架构包括</p>
-<ul>
-<li>集群资源管理器（Cluster Manager）</li>
-<li>运行作业任务的工作节点（Worker Node）</li>
-<li>每个应用的任务控制节点（Driver）</li>
-<li>每个工作节点上负责具体任务的执行进程（Executor）</li>
-</ul>
-<figure>
-<img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-5-Spark%E8%BF%90%E8%A1%8C%E6%9E%B6%E6%9E%84.jpg" alt="运行架构"><figcaption>运行架构</figcaption>
-</figure>
-<p>一个应用（Application）</p>
-<ul>
-<li>一个任务控制节点（Driver）</li>
-<li>若干个作业（Job）
-<ul>
-<li>一个作业由多个阶段（Stage）构成
-<ul>
-<li>一个阶段由多个任务（Task）组成</li>
-</ul></li>
-</ul></li>
-</ul>
-<figure>
-<img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-6-Spark%E4%B8%AD%E5%90%84%E7%A7%8D%E6%A6%82%E5%BF%B5%E4%B9%8B%E9%97%B4%E7%9A%84%E7%9B%B8%E4%BA%92%E5%85%B3%E7%B3%BB.jpg" alt="Spark 中各种概念之间的相互关系"><figcaption>Spark 中各种概念之间的相互关系</figcaption>
-</figure>
-<h3 id="spark 运行基本流程">Spark 运行基本流程</h3>
-<figure>
-<img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-7-Spark%E8%BF%90%E8%A1%8C%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%E5%9B%BE.jpg" alt="Spark 运行基本流程图"><figcaption>Spark 运行基本流程图</figcaption>
-</figure>
-<p>特点：</p>
-<ol type="1">
-<li>每个应用都有自己专属的 Executor 进程</li>
-<li>只要能够获取 Executor 进程并保持通信</li>
-<li>Executor 上有一个 BlockManager 存储模块</li>
-<li>任务采用了数据本地性和推测执行等优化机制</li>
-</ol>
-<h2 id="rdd 的设计和运行原理">RDD 的设计和运行原理</h2>
-<h3 id="设计背景">设计背景</h3>
-<p>矛盾：目前的 MapReduce 框架都是把中间结果写入到 HDFS 中，带来了大量的数据复制、磁盘 IO 和序列化开销</p>
-<p>方法：提供了一个抽象的数据架构，我们不必担心底层数据的分布式特性，只需将具体的应用逻辑表达为一系列转换处理，不同 RDD 之间的转换操作形成依赖关系，可以实现管道化，从而避免了中间结果的存储，大大降低了数据复制、磁盘 IO 和序列化开销。</p>
-<h3 id="rdd- 概念">RDD 概念</h3>
-<p>一个 RDD 就是一个分布式对象集合，本质上是 <strong> 一个只读的分区记录集合 </strong>，每个 RDD 可以分成多个<strong> 分区 </strong>，每个分区就是一个<strong> 数据集片段</strong>。</p>
-<p>RDD 提供了一组丰富的操作以支持常见的数据运算，分为 <strong> 行动（Action）</strong>和 <strong> 转换（Transformation）</strong>两种类型，前者用于 <strong> 执行计算并指定输出的形式 </strong>，后者<strong> 指定 RDD 之间的相互依赖关系 </strong>。两类操作的主要区别是，<strong> 转换操作（比如 map、filter、groupBy、join 等）接受 RDD 并返回 RDD</strong>，而 <strong> 行动操作（比如 count、collect 等）接受 RDD 但是返回非 RDD</strong>（即输出一个值或结果）。</p>
-<p>RDD 典型的执行过程如下：</p>
-<ol type="1">
-<li>RDD 读入外部数据源（或者内存中的集合）进行创建；</li>
-<li>RDD 经过一系列的“转换”操作，每一次都会产生不同的 RDD，供给下一个“转换”使用；</li>
-<li>最后一个 RDD 经“行动”操作进行处理，并输出到外部数据源（或者变成 Scala 集合或标量）。</li>
-</ol>
-<figure>
-<img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-8-Spark%E7%9A%84%E8%BD%AC%E6%8D%A2%E5%92%8C%E8%A1%8C%E5%8A%A8%E6%93%8D%E4%BD%9C.jpg" alt="Spark 的转换和行动操作"><figcaption>Spark 的转换和行动操作</figcaption>
-</figure>
-<p><strong>血缘关系（Lineage）</strong></p>
-<h2 id="rdd- 特性">RDD 特性</h2>
-<ol type="1">
-<li>高效的容错性</li>
-<li>中间结果持久化到内存</li>
-<li>存放的数据可以是 Java 对象，避免了不必要的对象序列化和反序列化开销</li>
-</ol>
-<h3 id="rdd- 之间的依赖关系">RDD 之间的依赖关系</h3>
-<p><strong>独生子女</strong></p>
-<p>如果父 RDD 的一个分区 <strong> 只被一个子 RDD 的一个分区所使用 </strong> 就是窄依赖，否则就是宽依赖。</p>
-<p>窄依赖典型的操作包括 <code>map</code>、<code>filter</code>、<code>union</code> 等，宽依赖典型的操作包括 <code>groupByKey</code>、<code>sortByKey</code> 等。</p>
-<figure>
-<img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-10-%E7%AA%84%E4%BE%9D%E8%B5%96%E4%B8%8E%E5%AE%BD%E4%BE%9D%E8%B5%96%E7%9A%84%E5%8C%BA%E5%88%AB.jpg" alt="窄依赖和宽依赖"><figcaption>窄依赖和宽依赖</figcaption>
-</figure>
-<h3 id="阶段的划分">阶段的划分</h3>
-<p>具体划分方法是：在 DAG 中进行反向解析，<strong>遇到宽依赖就断开</strong>，遇到窄依赖就把当前的 RDD 加入到当前的阶段中；将窄依赖尽量划分在同一个阶段中，可以实现流水线计算</p>
-<figure>
-<img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-11-%E6%A0%B9%E6%8D%AERDD%E5%88%86%E5%8C%BA%E7%9A%84%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB%E5%88%92%E5%88%86%E9%98%B6%E6%AE%B5.jpg" alt="根据 RDD 分区的依赖关系划分阶段"><figcaption>根据 RDD 分区的依赖关系划分阶段</figcaption>
-</figure>
-<h3 id="rdd- 运行过程">RDD 运行过程</h3>
-<figure>
-<img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-12-RDD%E5%9C%A8Spark%E4%B8%AD%E7%9A%84%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.jpg" alt="RDD 在 Spark 中的运行过程"><figcaption>RDD 在 Spark 中的运行过程</figcaption>
-</figure>
-<ol type="1">
-<li>创建<strong>RDD 对象</strong>；</li>
-<li>SparkContext 负责计算 RDD 之间的依赖关系，<strong>构建 DAG</strong>；</li>
-<li>DAG Scheduler 负责把 DAG 图分解成多个 <strong> 阶段 </strong>，每个阶段中包含了多个任务，每个<strong> 任务 </strong> 会被任务调度器分发给各个 <strong> 工作节点 </strong>（Worker Node）上的<strong>Executor</strong> 去执行。</li>
-</ol>
-<h2 id="部署模式">部署模式</h2>
-<h3 id="spark 三种部署方式">Spark 三种部署方式</h3>
-<h4 id="standalone 模式">standalone 模式</h4>
-<p>Spark 与 MapReduce1.0 完全一致，都是由一个 Master 和若干个 Slave 构成，并且以槽（slot）作为资源分配单位</p>
-<h4 id="spark-on-mesos 模式">Spark on Mesos 模式</h4>
-<p>Spark 官方推荐采用这种模式，所以，许多公司在实际应用中也采用该模式。</p>
-<h4 id="spark-on-yarn 模式">Spark on YARN 模式</h4>
-<figure>
-<img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-13-Spark-on-Yarn%E6%9E%B6%E6%9E%84.jpg" alt="Spark on YARN 架构"><figcaption>Spark on YARN 架构</figcaption>
-</figure>
-<h3 id="从 hadoopstorm 架构转向 spark 架构">从“Hadoop+Storm”架构转向 Spark 架构</h3>
-<p>Hadoop+Storm 的架构（也称为 Lambda 架构）</p>
-<p>Hadoop 负责对批量历史数据的实时查询和离线分析，而 Storm 则负责对流数据的实时处理。</p>
-<figure>
-<img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-14-%E9%87%87%E7%94%A8HadoopStorm%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E4%B8%AA%E6%A1%88%E4%BE%8B.jpg" alt="采用“Hadoop+Storm”部署方式的一个案例"><figcaption>采用“Hadoop+Storm”部署方式的一个案例</figcaption>
-</figure>
-<figure>
-<img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-15-%E7%94%A8Spark%E6%9E%B6%E6%9E%84%E6%BB%A1%E8%B6%B3%E6%89%B9%E5%A4%84%E7%90%86%E5%92%8C%E6%B5%81%E5%A4%84%E7%90%86%E9%9C%80%E6%B1%82.jpg" alt="用 Spark 架构同时满足批处理和流处理需求"><figcaption>用 Spark 架构同时满足批处理和流处理需求</figcaption>
-</figure>
-<h3 id="hadoop 和 spark 的统一部署">Hadoop 和 Spark 的统一部署</h3>
-<figure>
-<img src="http://dblab.xmu.edu.cn/blog/wp-content/uploads/2016/11/%E5%9B%BE9-16-Hadoop%E5%92%8CSpark%E7%9A%84%E7%BB%9F%E4%B8%80%E9%83%A8%E7%BD%B2.jpg" alt="Hadoop 和 Spark 的统一部署"><figcaption>Hadoop 和 Spark 的统一部署</figcaption>
-</figure>
+        <h1 id="安装和使用"> 安装和使用 </h1>
+<h2 id="安装 -hadoop- 和 -spark"> 安装 Hadoop 和 Spark</h2>
+<h2 id="在 -pyspark- 中运行代码"> 在 pyspark 中运行代码 </h2>
+<h2 id="spark- 独立应用程序编程">Spark 独立应用程序编程 </h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line"></span><br><span class="line">sc = SparkContext(<span class="string">'local'</span>, <span class="string">'test'</span>)</span><br><span class="line"></span><br><span class="line">logFile = <span class="string">"file:///usr/local/spark/README.md"</span></span><br><span class="line">logData = sc.textFile(logFile, <span class="number">2</span>).cache()</span><br><span class="line"></span><br><span class="line">numAs = logData.filter(<span class="keyword">lambda</span> line: <span class="string">'a'</span> <span class="keyword">in</span> line).count()</span><br><span class="line">numBs = logData.filter(<span class="keyword">lambda</span> line: <span class="string">'b'</span> <span class="keyword">in</span> line).count()</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Lines with a: %s, Lines with b: %s'</span> % (numAs, numBs))</span><br></pre></td></tr></table></figure>
+<h1 id="第一个 spark 应用程序 wordcount"> 第一个 Spark 应用程序：WordCount</h1>
+<h2 id="在 -pyspark- 中执行词频统计"> 在 pyspark 中执行词频统计 </h2>
+<h3 id="加载本地文件"> 加载本地文件 </h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile = sc.Te</span><br></pre></td></tr></table></figure>
+<h1 id="spark 集群环境搭建">Spark 集群环境搭建 </h1>
+<h1 id="在集群上运行 spark 应用程序"> 在集群上运行 Spark 应用程序 </h1>
 
       
     </div>
@@ -649,14 +532,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/17/spark/明夷待访录（二）：Spark 安装与使用/" rel="bookmark">明夷待访录（二）：Spark 安装与使用</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/16/spark/明夷待访录（三）：Spark-编程基础/" rel="bookmark">明夷待访录（三）：Spark 编程基础</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/07/16/spark/明夷待访录（三）：Spark-编程基础/" rel="bookmark">明夷待访录（三）：Spark 编程基础</a></div>
+      <div class="popular-posts-title"><a href="/2019/06/17/spark/明夷待访录（一）：Spark-设计和原理/" rel="bookmark">明夷待访录（一）：Spark 设计和原理</a></div>
       
     </li>
   
@@ -698,8 +581,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/17/python/fire小结/" rel="next" title="fire 小结">
-                <i class="fa fa-chevron-left"></i> fire 小结
+              <a href="/2019/06/17/machine learning trick/如何计算-AUC-值/" rel="next" title="如何计算 AUC 值">
+                <i class="fa fa-chevron-left"></i> 如何计算 AUC 值
               </a>
             
           </div>
@@ -708,8 +591,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/17/machine learning trick/如何计算-AUC-值/" rel="prev" title="如何计算 AUC 值">
-                如何计算 AUC 值 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/18/python/Jupyter-远程访问配置/" rel="prev" title="Jupyter 远程访问配置">
+                Jupyter 远程访问配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1008,7 +891,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行架构"><span class="nav-number">2.</span> <span class="nav-text">运行架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#架构设计"><span class="nav-number">2.2.</span> <span class="nav-text">架构设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spark 运行基本流程"><span class="nav-number">2.3.</span> <span class="nav-text">Spark 运行基本流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rdd 的设计和运行原理"><span class="nav-number">3.</span> <span class="nav-text">RDD 的设计和运行原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设计背景"><span class="nav-number">3.1.</span> <span class="nav-text">设计背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rdd- 概念"><span class="nav-number">3.2.</span> <span class="nav-text">RDD 概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rdd- 特性"><span class="nav-number">4.</span> <span class="nav-text">RDD 特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rdd- 之间的依赖关系"><span class="nav-number">4.1.</span> <span class="nav-text">RDD 之间的依赖关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阶段的划分"><span class="nav-number">4.2.</span> <span class="nav-text">阶段的划分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rdd- 运行过程"><span class="nav-number">4.3.</span> <span class="nav-text">RDD 运行过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署模式"><span class="nav-number">5.</span> <span class="nav-text">部署模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#spark 三种部署方式"><span class="nav-number">5.1.</span> <span class="nav-text">Spark 三种部署方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#standalone 模式"><span class="nav-number">5.1.1.</span> <span class="nav-text">standalone 模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spark-on-mesos 模式"><span class="nav-number">5.1.2.</span> <span class="nav-text">Spark on Mesos 模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spark-on-yarn 模式"><span class="nav-number">5.1.3.</span> <span class="nav-text">Spark on YARN 模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从 hadoopstorm 架构转向 spark 架构"><span class="nav-number">5.2.</span> <span class="nav-text">从“Hadoop+Storm”架构转向 Spark 架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hadoop 和 spark 的统一部署"><span class="nav-number">5.3.</span> <span class="nav-text">Hadoop 和 Spark 的统一部署</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装和使用"><span class="nav-number">1.</span> <span class="nav-text"> 安装和使用 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装 -hadoop- 和 -spark"><span class="nav-number">1.1.</span> <span class="nav-text"> 安装 Hadoop 和 Spark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在 -pyspark- 中运行代码"><span class="nav-number">1.2.</span> <span class="nav-text"> 在 pyspark 中运行代码 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark- 独立应用程序编程"><span class="nav-number">1.3.</span> <span class="nav-text">Spark 独立应用程序编程 </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个 spark 应用程序 wordcount"><span class="nav-number">2.</span> <span class="nav-text"> 第一个 Spark 应用程序：WordCount</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在 -pyspark- 中执行词频统计"><span class="nav-number">2.1.</span> <span class="nav-text"> 在 pyspark 中执行词频统计 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载本地文件"><span class="nav-number">2.1.1.</span> <span class="nav-text"> 加载本地文件 </span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spark 集群环境搭建"><span class="nav-number">3.</span> <span class="nav-text">Spark 集群环境搭建 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在集群上运行 spark 应用程序"><span class="nav-number">4.</span> <span class="nav-text"> 在集群上运行 Spark 应用程序 </span></a></li></ol></div>
             
 
           </div>
