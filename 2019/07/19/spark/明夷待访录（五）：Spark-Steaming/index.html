@@ -105,18 +105,20 @@
 
 
 
-  <meta name="description" content="Binary Tree core 1234typedef struct BiTNode &amp;#123;    int data;    struct BiTNode *lchild, *rchild;&amp;#125; BiTNode, *BiTree; methods 1234void PreOrder(BiTree b);void InOrder(BiTree b);void PostOrder(Bi">
-<meta name="keywords" content="Algorithm">
+  <meta name="description" content="Spark Streaming 流计算简介  流计算处理过程   数据实时采集  Facebook 的 Scribe LinkedIn 的 Kafka 淘宝的 TimeTunnel 基于 Hadoop 的 Chukwa 和 Flume 等  数据实时计算 实时查询服务  Spark Streaming 简介 Spark Streaming 设计  Spark-Streaming 支持的输入、输出数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tree">
-<meta property="og:url" content="http://guanhua.ml/2017/12/21/Tree/index.html">
+<meta property="og:title" content="明夷待访录（五）：Spark Steaming ">
+<meta property="og:url" content="http://guanhua.ml/2019/07/19/spark/明夷待访录（五）：Spark-Steaming/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="Binary Tree core 1234typedef struct BiTNode &amp;#123;    int data;    struct BiTNode *lchild, *rchild;&amp;#125; BiTNode, *BiTree; methods 1234void PreOrder(BiTree b);void InOrder(BiTree b);void PostOrder(Bi">
+<meta property="og:description" content="Spark Streaming 流计算简介  流计算处理过程   数据实时采集  Facebook 的 Scribe LinkedIn 的 Kafka 淘宝的 TimeTunnel 基于 Hadoop 的 Chukwa 和 Flume 等  数据实时计算 实时查询服务  Spark Streaming 简介 Spark Streaming 设计  Spark-Streaming 支持的输入、输出数">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-26T13:01:58.865Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/12/Zf41pD.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/07/12/Zfoojg.jpg">
+<meta property="og:updated_time" content="2019-07-16T08:52:34.462Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tree">
-<meta name="twitter:description" content="Binary Tree core 1234typedef struct BiTNode &amp;#123;    int data;    struct BiTNode *lchild, *rchild;&amp;#125; BiTNode, *BiTree; methods 1234void PreOrder(BiTree b);void InOrder(BiTree b);void PostOrder(Bi">
+<meta name="twitter:title" content="明夷待访录（五）：Spark Steaming ">
+<meta name="twitter:description" content="Spark Streaming 流计算简介  流计算处理过程   数据实时采集  Facebook 的 Scribe LinkedIn 的 Kafka 淘宝的 TimeTunnel 基于 Hadoop 的 Chukwa 和 Flume 等  数据实时计算 实时查询服务  Spark Streaming 简介 Spark Streaming 设计  Spark-Streaming 支持的输入、输出数">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/12/Zf41pD.jpg">
 
 
 
@@ -124,7 +126,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/2017/12/21/Tree/">
+  <link rel="canonical" href="http://guanhua.ml/2019/07/19/spark/明夷待访录（五）：Spark-Steaming/">
 
 
 
@@ -134,7 +136,7 @@
   };
 </script>
 
-  <title>Tree | gh's notes</title>
+  <title>明夷待访录（五）：Spark Steaming  | gh's notes</title>
   
 
 
@@ -383,7 +385,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2017/12/21/Tree/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/19/spark/明夷待访录（五）：Spark-Steaming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -400,7 +402,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Tree
+          <h1 class="post-title" itemprop="name headline">明夷待访录（五）：Spark Steaming 
 
               
             
@@ -426,7 +428,7 @@
                 
               
 
-              <time title="Created: 2017-12-21 14:16:21" itemprop="dateCreated datePublished" datetime="2017-12-21T14:16:21+08:00">2017-12-21</time>
+              <time title="Created: 2019-07-19 10:29:46" itemprop="dateCreated datePublished" datetime="2019-07-19T10:29:46+08:00">2019-07-19</time>
             
 
             
@@ -443,7 +445,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-26 21:01:58" itemprop="dateModified" datetime="2019-06-26T21:01:58+08:00">2019-06-26</time>
+                <time title="Modified: 2019-07-16 16:52:34" itemprop="dateModified" datetime="2019-07-16T16:52:34+08:00">2019-07-16</time>
               
             
           </span>
@@ -461,8 +463,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2017/12/21/Tree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/21/Tree/" itemprop="commentCount"></span>
+                <a href="/2019/07/19/spark/明夷待访录（五）：Spark-Steaming/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/19/spark/明夷待访录（五）：Spark-Steaming/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -490,47 +492,90 @@
       
 
       
-        <h2 id="binary-tree">Binary Tree</h2>
-<h3 id="core">core</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>, *<span class="title">rchild</span>;</span></span><br><span class="line">&#125; BiTNode, *BiTree;</span><br></pre></td></tr></table></figure>
-<h3 id="methods">methods</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrder</span><span class="params">(BiTree b)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrder</span><span class="params">(BiTree b)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrder</span><span class="params">(BiTree b)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LevelOrder</span><span class="params">(BiTree b)</span></span>;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="thread-binary-tree">Thread Binary Tree</h2>
-<h3 id="core-1">core</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> PointerTag &#123;Link, Thread&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiThrNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BiThrNode</span> *<span class="title">lchild</span>, *<span class="title">rchild</span>;</span></span><br><span class="line">    PointerTag LTag, RTag;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h1 id="spark-streaming">Spark Streaming</h1>
+<h2 id="流计算简介">流计算简介</h2>
+<figure>
+<img src="https://s2.ax1x.com/2019/07/12/Zf41pD.jpg" alt="流计算处理过程"><figcaption>流计算处理过程</figcaption>
+</figure>
+<ul>
+<li>数据实时采集
+<ul>
+<li>Facebook 的 Scribe</li>
+<li>LinkedIn 的 Kafka</li>
+<li>淘宝的 TimeTunnel</li>
+<li>基于 Hadoop 的 Chukwa 和 Flume 等</li>
+</ul></li>
+<li>数据实时计算</li>
+<li>实时查询服务</li>
+</ul>
+<h2 id="spark-streaming 简介">Spark Streaming 简介</h2>
+<p><strong>Spark Streaming 设计</strong></p>
+<figure>
+<img src="https://s2.ax1x.com/2019/07/12/Zfoojg.jpg" alt="Spark-Streaming 支持的输入、输出数据源"><figcaption>Spark-Streaming 支持的输入、输出数据源</figcaption>
+</figure>
+<p>Spark Streaming 的基本原理是将实时输入数据流以时间片（秒级）为单位进行拆分，然后经 Spark 引擎以类似批处理的方式处理每个时间片数据。</p>
+<p>Spark Streaming 最主要的抽象是 DStream（Discretized Stream，离散化数据流），表示连续不断的数据流。</p>
+<p>在内部实现上，Spark Streaming 的输入数据按照时间片（如 1 秒）分成一段一段的 DStream，每一段数据转换为 Spark 中的 RDD，并且对 DStream 的操作都最终转变为对相应的 RDD 的操作。</p>
+<p><strong>Spark Streaming 与 Storm 的对比</strong></p>
+<p>Spark Streaming 无法实现毫秒级的流计算，而 Storm 可以实现毫秒级响应。</p>
+<h2 id="dstream 操作概述">DStream 操作概述</h2>
+<p>Spark Streaming 通过 input DStream 与外部数据源进行连接，读取相关数据。</p>
+<p><strong>Spark Streaming 程序基本步骤</strong></p>
+<ol type="1">
+<li>通过创建输入 <code>DStream</code> 来定义输入源</li>
+<li>通过对 <code>DStream</code> 应用转换操作和输出操作来定义流计算。</li>
+<li>用 <code>streamingContext.start()</code> 来开始接收数据和处理流程。</li>
+<li>通过 <code>streamingContext.awaitTermination()</code> 方法来等待处理结束（手动结束æ因为错误而结束）。</li>
+<li>可以通过 <code>streamingContext.stop()</code> 来手动结束流计算进程。</li>
+</ol>
+<p><strong>创建 StreamingContext 对象</strong></p>
+<p><code>StreamingContext</code>对象，它是 Spark Streaming 程序的主入口</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line"><span class="keyword">from</span> pyspark.streaming <span class="keyword">import</span> StreamingContext</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc = SparkContext(<span class="string">"local"</span>, <span class="string">"test"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssc = StreamingContext(sc, <span class="number">1</span>)  <span class="comment"># 1 表示每隔 1 秒钟就自动执行一次流计算</span></span><br></pre></td></tr></table></figure>
+<p>如果是编写一个独立的 Spark Streaming 程序，而不是在 pyspark 中运行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext, SparkConf</span><br><span class="line"><span class="keyword">from</span> pyspark.streaming <span class="keyword">import</span> StreamingContext</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conf = SparkConf()</span><br><span class="line">conf.setAppName(<span class="string">'TestDStream'</span>)</span><br><span class="line">conf.setMaster(<span class="string">'local[1]'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;pyspark.conf.SparkConf at 0x7fda18e5e860&gt;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sc = SparkContext(conf=conf)</span><br><span class="line">ssc = StreamingContext(sc, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="输入源">输入源</h3>
+<h4 id="基本输入源">基本输入源</h4>
+<h4 id="文件流">文件流</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> operator <span class="keyword">import</span> add</span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext, SparkConf</span><br><span class="line"><span class="keyword">from</span> pyspark.streaming <span class="keyword">import</span> StreamingContext</span><br><span class="line"></span><br><span class="line">conf = SparkConf()</span><br><span class="line">conf.setAppName(<span class="string">'TestDStream'</span>)</span><br><span class="line">conf.setMaster(<span class="string">'local[1]'</span>)</span><br><span class="line"></span><br><span class="line">sc = SparkContext(conf=conf)</span><br><span class="line">ssc = StreamingContext(sc, <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">lines = ssc.textFileStream(<span class="string">'file:///home/hadoop/spark/src/test/streaming/logfile'</span>)  <span class="comment"># 这里监听的是文件夹</span></span><br><span class="line"></span><br><span class="line">words = lines.flatMap(<span class="keyword">lambda</span> line: line.split(<span class="string">''</span>))</span><br><span class="line">wordCounts = words.map(<span class="keyword">lambda</span> x: (x, <span class="number">1</span>)).reduceByKey(add)</span><br><span class="line">wordCounts.pprint()</span><br><span class="line"></span><br><span class="line">ssc.start()</span><br><span class="line">ssc.awaitTermination()</span><br></pre></td></tr></table></figure>
+<p><strong>套接字流</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line"><span class="keyword">from</span> pyspark.streaming <span class="keyword">import</span> StreamingContext</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="keyword">if</span> len(sys.argv) != <span class="number">3</span>:</span><br><span class="line">        print(<span class="string">"Usage: netword_wordcount.py &lt;hostname&gt; &lt;port&gt;"</span>, file=sys.stderr)</span><br><span class="line">        exit(<span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">    sc = SparkContext(appName=<span class="string">"PythonStreamingNetworkWordCount"</span>)</span><br><span class="line">    ssc = StreamingContext(sc, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    lines = ssc.socketTextStream(sys.argv[<span class="number">1</span>], int(sys.argv[<span class="number">2</span>]))</span><br><span class="line">    counts = lines.flatMap(<span class="keyword">lambda</span> line: line.split(<span class="string">""</span>))\</span><br><span class="line">        .map(<span class="keyword">lambda</span> word: (word, <span class="number">1</span>))\</span><br><span class="line">        .reduceByKey(<span class="keyword">lambda</span> a, b: a+b)</span><br><span class="line">    counts.pprint()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    ssc.start()</span><br><span class="line">    ssc.awaitTermination()</span><br></pre></td></tr></table></figure>
+<p><strong>RDD 队列流</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line"><span class="keyword">from</span> pyspark.streaming <span class="keyword">import</span> StreamingContext</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    sc = SparkContext(appName=<span class="string">"PythonStreamingQueueStream"</span>)</span><br><span class="line">    ssc = StreamingContext(sc, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    rddQueue = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        rddQueue += [ssc.sparkContext.parallelize([j <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">1001</span>)], <span class="number">10</span>)]</span><br><span class="line"></span><br><span class="line">    inputStream = ssc.queueStream(rddQueue)</span><br><span class="line">    mappedStream = inputStream.map(<span class="keyword">lambda</span> x: (x % <span class="number">10</span>, <span class="number">1</span>))</span><br><span class="line">    reducedSrteam = mappedStream.reduceByKey(<span class="keyword">lambda</span> a, b: a+b)</span><br><span class="line"></span><br><span class="line">    reducedSrteam.pprint()</span><br><span class="line"></span><br><span class="line">    ssc.start()</span><br><span class="line">    time.sleep(<span class="number">6</span>)</span><br><span class="line">    ssc.stop(stopSparkContext=<span class="literal">True</span>, stopGraceFully=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="高级数据源">高级数据源</h4>
+<h5 id="kafka">Kafka</h5>
+<p>Kafka 是一种高吞吐量的分布式发布订阅消息系统，它可以处理消费者规模的网站中的所有动作流数据。Kafka 的目的是通过 Hadoop 的并行加载机制来统一线上和离线的消息处理，也是为了通过集群机来提供实时的消费。</p>
+<p><strong>核心概念</strong></p>
+<ul>
+<li>Broker Kafka 集群包含一个或多个服务器，这种服务器被称为 broker</li>
+<li>Topic 每条发布到 Kafka 集群的消息都有一个类别，这个类别被称为 Topic</li>
+<li>Partition 是物理上的概念，每个 Topic 包含一个或多个 Partition</li>
+<li>Producer 负责发布消息到 Kafka broker</li>
+<li>Consumer 消息消费者，向 Kafka broker 读取消息的客户端</li>
+<li>Consumer Group 每个 Consumer 属于一个特定的 Consumer Group</li>
+</ul>
+<h5 id="flume">Flume</h5>
+<h3 id="转换操作">转换操作</h3>
+<p>DStream 转换操作包括无状态转换和有状态转换。</p>
+<ul>
+<li><strong>无状态转换</strong>：每个批次的处理不依赖于之前批次的数据。</li>
+<li><strong>有状态转换</strong>：当前批次的处理需要使用之前批次的数据或者中间结果。有状态转换包括基于滑动窗口的转换和追踪状态变化的转换(updateStateByKey)。</li>
+</ul>
+<p><strong>DStream 无状态转换操作</strong></p>
+<p><strong>DStream 有状态转换操作</strong></p>
+<p>滑动窗口转换操作</p>
+<p>updateStateByKey 操作</p>
+<h3 id="输出操作">输出操作</h3>
 
       
     </div>
 
     
       
-
-  <div class="popular-posts-header">Related Posts</div>
-  <ul class="popular-posts">
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2017/12/21/Graph/" rel="bookmark">Graph</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2017/12/21/LNode/" rel="bookmark">LNode</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2017/12/21/Stack-Queue-and-Array/" rel="bookmark">Stack, Queue and Array</a></div>
-      
-    </li>
-  
-  </ul>
 
 
     
@@ -550,15 +595,6 @@
 
     <footer class="post-footer">
       
-        
-          
-        
-        <div class="post-tags">
-          
-            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
-          
-        </div>
-      
 
       
       
@@ -568,8 +604,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/21/Stack-Queue-and-Array/" rel="next" title="Stack, Queue and Array">
-                <i class="fa fa-chevron-left"></i> Stack, Queue and Array
+              <a href="/2019/07/19/spark/明夷待访录（四）：Spark-SQL/" rel="next" title="明夷待访录（四）：Spark SQL">
+                <i class="fa fa-chevron-left"></i> 明夷待访录（四）：Spark SQL
               </a>
             
           </div>
@@ -577,10 +613,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/21/Graph/" rel="prev" title="Graph">
-                Graph <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -653,7 +685,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">121</span>
+                    <span class="site-state-item-count">117</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -797,9 +829,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -880,7 +910,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#binary-tree"><span class="nav-number">1.</span> <span class="nav-text">Binary Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#core"><span class="nav-number">1.1.</span> <span class="nav-text">core</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#methods"><span class="nav-number">1.2.</span> <span class="nav-text">methods</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#thread-binary-tree"><span class="nav-number">2.</span> <span class="nav-text">Thread Binary Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#core-1"><span class="nav-number">2.1.</span> <span class="nav-text">core</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#spark-streaming"><span class="nav-number">1.</span> <span class="nav-text">Spark Streaming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#流计算简介"><span class="nav-number">1.1.</span> <span class="nav-text">流计算简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark-streaming 简介"><span class="nav-number">1.2.</span> <span class="nav-text">Spark Streaming 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dstream 操作概述"><span class="nav-number">1.3.</span> <span class="nav-text">DStream 操作概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入源"><span class="nav-number">1.3.1.</span> <span class="nav-text">输入源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本输入源"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">基本输入源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件流"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">文件流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高级数据源"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">高级数据源</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#kafka"><span class="nav-number">1.3.1.3.1.</span> <span class="nav-text">Kafka</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#flume"><span class="nav-number">1.3.1.3.2.</span> <span class="nav-text">Flume</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转换操作"><span class="nav-number">1.3.2.</span> <span class="nav-text">转换操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出操作"><span class="nav-number">1.3.3.</span> <span class="nav-text">输出操作</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
