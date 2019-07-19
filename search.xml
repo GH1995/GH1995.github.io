@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[狸花猫记: 终章]]></title>
+    <url>%2F2019%2F07%2F19%2Freinforcement%20learning%2F%E7%8B%B8%E8%8A%B1%E7%8C%AB%E8%AE%B0-%E7%BB%88%E7%AB%A0%2F</url>
+    <content type="text"><![CDATA[强化学习定义 强化学习是学习一个最优策略 (policy)，可以让智能体(agent) 在特定环境 (environment) 中，根据当前的状态(state)，做出行动(action)，从而获得最大回报(G or return)。 有限马尔卡夫决策过程 找到最优价值 \[\text{Reinforcement Learning} \doteq \pi_* \\ \quad \updownarrow \\ \pi_* \doteq \{\pi(s) \}, \ s \in \mathcal{S} \\ \quad \updownarrow \\ \begin{cases} \pi(s) = \underset{a}{argmax} \ v_{\pi}(s&#39; | s, a), \ s&#39; \in S(s), \quad \text{or} \\ \pi(s) = \underset{a}{argmax} \ q_{\pi}(s, a) \\ \end{cases} \\ \quad \updownarrow \\ \begin{cases} v_*(s), \quad \text{or} \\ q_*(s, a) \\ \end{cases} \\ \quad \updownarrow \\ \text{approximation cases:} \\ \begin{cases} \hat{v}(s, \theta) \doteq \theta^T \phi(s), \quad \text{state value function} \\ \hat{q}(s, a, \theta) \doteq \theta^T \phi(s, a), \quad \text{action value function} \\ \end{cases} \\ where \\ \theta \text{- value function&#39;s weight vector} \\ \] 有限马尔卡夫决策过程的基本概念 \(S, s\) state 状态 \(A, a\) action 行动 \(R, r\) reward 奖赏 \(G_t\) gain 回报 \(p(s&#39; | s, a)\) 表示在状态 \(s\) 下，执行行动 \(a\)，状态变成\(s&#39;\) 的可能性，也就是前文的 \(P_{ss&#39;}^a\) \(p(s&#39;, r | s, a)\) 表示在状态 \(s\) 下，执行行动 \(a\)，状态变成\(s&#39;\)，并获得奖赏\(r\) 的可能性 \(r(s, a)\) 在状态 \(s\) 下，执行行动 \(a\) 的期望奖赏 \[r(s,a) \doteq \mathbb{E}[R_{t+1} | S_t = s, A_t = a] = \sum_{r \in \mathcal{R}} r \sum_{s&#39; \in \mathcal{S}} p(s&#39;, r|s,a) \] \(r(s, a, s&#39;)\) 在状态 \(s\) 下，执行行动 \(a\)，状态变成\(s&#39;\) 的期望奖赏 \[r(s,a,s&#39;) \doteq \mathbb{E}[R_{t+1} | S_t = s, A_t = a, S_{t+1} = s&#39;] = \frac{\sum_{r \in \mathcal{R}} r p(s&#39;,r|s,a)}{p(s&#39;|s,a)} \] \(\pi\) 策略 \[\pi = [\pi(s_1), \cdots, \pi(s_n)] \] \(v_{\pi}(s)\) 策略 \(\pi\) 的状态价值函数 \[v_{\pi}(s) \doteq \mathbb{E}[G_t | S_t = s] = \mathbb{E}_{\pi} \left [\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s \right ] \\ \] \(q_{\pi}(s, a)\) 策略 \(\pi\) 的行动价值函数 \[q_{\pi}(s,a) \doteq \mathbb{E}[G_t | S_t = s, A_t = a] = \mathbb{E}_{\pi} \left [\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s, A_t = a \right ] \\ \] \(v_{*}(s)\) 最优状态价值函数 \[v_*(s) \doteq \underset{\pi}{max} \ v_{\pi}(s), \forall s \in \mathcal{S} \] \(q_{*}(s, a)\) 最优行动价值函数 \[q_*(s, a) \doteq \underset{\pi}{max} \ q_{\pi}(s, a), \ \forall s \in \mathcal{S} \ and \ a \in \mathcal{A}(s) \\ \]]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[狸花猫记 (5): 时序差分法]]></title>
     <url>%2F2019%2F07%2F18%2Freinforcement%20learning%2F%E7%8B%B8%E8%8A%B1%E7%8C%AB%E8%AE%B0-5-%E6%97%B6%E5%BA%8F%E5%B7%AE%E5%88%86%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[蒙特卡罗法需要所有的采样序列都是经历完整的状态序列。如果没有完整的状态序列，那么就无法使用蒙特卡罗法求解了。 时序差分 TD 简介 没有完整的状态序列，只有部分的状态序列，那么如何可以近似求出某个状态的收获呢？ 参考贝尔曼方程 \[v_{\pi}(s) = \mathbb{E}_{\pi}(R_{t+1} + \gamma v_{\pi}(S_{t+1}) | S_t=s) \] 时序差分 TD 的预测问题求解 \(n\) 步时序差分 \(TD(\lambda)\) 时序差分的控制问题求解 时序差分小结 主流的强化学习方法，是许多方法的基础]]></content>
+    <content type="text"><![CDATA[蒙特卡罗法需要所有的采样序列都是经历完整的状态序列。如果没有完整的状态序列，那么就无法使用蒙特卡罗法求解了。 时序差分 TD 简介 没有完整的状态序列，只有部分的状态序列，那么如何可以近似求出某个状态的收获呢？ 参考贝尔曼方程 \[v_{\pi}(s) = \mathbb{E}_{\pi}(R_{t+1} + \gamma v_{\pi}(S_{t+1}) | S_t=s) \] 用\(R_{t+1} + \gamma v(S_{t+1})\) 来近似代替 \(G_t\) TD 目标值——\(R_{t+1} + \gamma v(S_{t+1})\) TD 误差——\(R_{t+1} + \gamma V(S_{t+1}) -V(S_t)\) 用 TD 目标值近似代替收获 \(G_t\) 的过程叫做 引导，这样只需要两个连续的状态与对应的奖励，就可以尝试求解强化学习问题了。 时序差分 TD 的预测问题求解 \(n\)步时序差分 \(TD(\lambda)\) 时序差分的控制问题求解 时序差分小结 主流的强化学习方法，是许多方法的基础]]></content>
+      <categories>
+        <category>reinforcement learning</category>
+      </categories>
       <tags>
         <tag>reinforcement learning</tag>
       </tags>
