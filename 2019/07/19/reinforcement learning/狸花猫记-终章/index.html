@@ -112,7 +112,7 @@
 <meta property="og:site_name" content="gh&#39;s notes">
 <meta property="og:description" content="强化学习定义 强化学习是学习一个最优策略 (policy)，可以让智能体(agent) 在特定环境 (environment) 中，根据当前的状态(state)，做出行动(action)，从而获得最大回报(G or return)。 有限马尔卡夫决策过程 找到最优价值 \[\text{Reinforcement Learning} \doteq \pi_* \\ \quad \updownarro">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-19T03:07:54.855Z">
+<meta property="og:updated_time" content="2019-07-19T03:36:15.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="狸花猫记: 终章">
 <meta name="twitter:description" content="强化学习定义 强化学习是学习一个最优策略 (policy)，可以让智能体(agent) 在特定环境 (environment) 中，根据当前的状态(state)，做出行动(action)，从而获得最大回报(G or return)。 有限马尔卡夫决策过程 找到最优价值 \[\text{Reinforcement Learning} \doteq \pi_* \\ \quad \updownarro">
@@ -425,7 +425,7 @@
                 
               
 
-              <time title="Created: 2019-07-19 10:11:25 / Modified: 11:07:54" itemprop="dateCreated datePublished" datetime="2019-07-19T10:11:25+08:00">2019-07-19</time>
+              <time title="Created: 2019-07-19 10:11:25 / Modified: 11:36:15" itemprop="dateCreated datePublished" datetime="2019-07-19T10:11:25+08:00">2019-07-19</time>
             
 
             
@@ -547,18 +547,24 @@ where \\
 <h2 id="强化学习术语">强化学习术语</h2>
 <p><strong>学习任务</strong></p>
 <ul>
-<li>情节性任务(episodic tasks) \ 指（强化学习的问题）会在有限步骤下结束。比如：围棋。</li>
-<li>连续性任务(continuing tasks)\ 指（强化学习的问题）有无限步骤。一个特征是：没有结束。比如：让一个立在指尖上的长棍不倒。</li>
+<li>情节性任务(episodic tasks)<br>
+指（强化学习的问题）会在有限步骤下结束。比如：围棋。</li>
+<li>连续性任务(continuing tasks)<br>
+指（强化学习的问题）有无限步骤。一个特征是：没有结束。比如：让一个立在指尖上的长棍不倒。</li>
 </ul>
 <p><strong>学习方法</strong></p>
 <ul>
-<li>online-policy \ 评估的策略和优化的策略是同一个 <strong> 边学边干</strong></li>
-<li>offline-policy\ 优化策略使用来自外部的模拟数据 <strong> 先学再干</strong></li>
+<li>online-policy<br>
+评估的策略和优化的策略是同一个 <strong> 边学边干</strong></li>
+<li>offline-policy<br>
+优化策略使用来自外部的模拟数据 <strong> 先学再干</strong></li>
 </ul>
 <p><strong>学习的东西</strong></p>
 <ul>
-<li>预测算法 \ 计算每个状态的价值 <span class="math inline">\(v(s)\)</span>。然后预测(可以得到最大回报的) 最优行动。</li>
-<li>控制算法 \ 计算每个状态下每个行动的价值<span class="math inline">\(q(s,a)\)</span></li>
+<li>预测算法<br>
+计算每个状态的价值 <span class="math inline">\(v(s)\)</span>。然后预测(可以得到最大回报的) 最优行动。</li>
+<li>控制算法<br>
+计算每个状态下每个行动的价值<span class="math inline">\(q(s,a)\)</span></li>
 </ul>
 <p><strong>学习的算法</strong></p>
 <ul>
