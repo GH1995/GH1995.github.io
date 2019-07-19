@@ -112,7 +112,7 @@
 <meta property="og:site_name" content="gh&#39;s notes">
 <meta property="og:description" content="强化学习定义 强化学习是学习一个最优策略 (policy)，可以让智能体(agent) 在特定环境 (environment) 中，根据当前的状态(state)，做出行动(action)，从而获得最大回报(G or return)。 有限马尔卡夫决策过程 找到最优价值 \[\text{Reinforcement Learning} \doteq \pi_* \\ \quad \updownarro">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-19T03:36:15.436Z">
+<meta property="og:updated_time" content="2019-07-19T16:48:12.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="狸花猫记: 终章">
 <meta name="twitter:description" content="强化学习定义 强化学习是学习一个最优策略 (policy)，可以让智能体(agent) 在特定环境 (environment) 中，根据当前的状态(state)，做出行动(action)，从而获得最大回报(G or return)。 有限马尔卡夫决策过程 找到最优价值 \[\text{Reinforcement Learning} \doteq \pi_* \\ \quad \updownarro">
@@ -425,12 +425,24 @@
                 
               
 
-              <time title="Created: 2019-07-19 10:11:25 / Modified: 11:36:15" itemprop="dateCreated datePublished" datetime="2019-07-19T10:11:25+08:00">2019-07-19</time>
+              <time title="Created: 2019-07-19 10:11:25" itemprop="dateCreated datePublished" datetime="2019-07-19T10:11:25+08:00">2019-07-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-20 00:48:12" itemprop="dateModified" datetime="2019-07-20T00:48:12+08:00">2019-07-20</time>
               
             
           </span>
@@ -568,8 +580,63 @@ where \\
 </ul>
 <p><strong>学习的算法</strong></p>
 <ul>
-<li>列表方法</li>
+<li><strong>列表方法</strong><br>
+表格存储每个状态 / 状态 - 行动的价值</li>
+<li><strong>近似方法</strong><br>
+用一个函数计算状态 / 状态 - 行动的价值</li>
+<li><strong>模型</strong><br>
+环境的模型</li>
+<li><strong>基于模型的方法</strong><br>
+通过模型来模拟，获得状态或行动的价值</li>
+<li><strong>无模型的方法</strong><br>
+使用试错法来获得状态或行动的价值</li>
+<li><strong>引导性</strong><br>
+（状态或者行动）价值是根据其它的（状态或者行动）价值计算得到的</li>
+<li><strong>取样性</strong><br>
+（状态或者行动）价值，或者部分值（比如：奖赏）是取样得到的。</li>
 </ul>
+<h2 id="强化学习算法的分类">强化学习算法的分类</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">算法类别</th>
+<th style="text-align: center;">需要模型</th>
+<th style="text-align: center;">引导性</th>
+<th style="text-align: center;">情节性任务</th>
+<th style="text-align: center;">连续性任务</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">动态规划方法</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">蒙特卡罗方法</td>
+<td style="text-align: center;">N</td>
+<td style="text-align: center;">N</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">N</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">时序差分方法</td>
+<td style="text-align: center;">N</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">策略梯度方法</td>
+<td style="text-align: center;">N</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -914,7 +981,7 @@ where \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习定义"><span class="nav-number">1.</span> <span class="nav-text">强化学习定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有限马尔卡夫决策过程"><span class="nav-number">2.</span> <span class="nav-text">有限马尔卡夫决策过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#找到最优价值"><span class="nav-number">2.1.</span> <span class="nav-text">找到最优价值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有限马尔卡夫决策过程的基本概念"><span class="nav-number">2.2.</span> <span class="nav-text">有限马尔卡夫决策过程的基本概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习术语"><span class="nav-number">3.</span> <span class="nav-text">强化学习术语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习定义"><span class="nav-number">1.</span> <span class="nav-text">强化学习定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有限马尔卡夫决策过程"><span class="nav-number">2.</span> <span class="nav-text">有限马尔卡夫决策过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#找到最优价值"><span class="nav-number">2.1.</span> <span class="nav-text">找到最优价值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有限马尔卡夫决策过程的基本概念"><span class="nav-number">2.2.</span> <span class="nav-text">有限马尔卡夫决策过程的基本概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习术语"><span class="nav-number">3.</span> <span class="nav-text">强化学习术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习算法的分类"><span class="nav-number">4.</span> <span class="nav-text">强化学习算法的分类</span></a></li></ol></div>
             
 
           </div>
