@@ -105,17 +105,17 @@
 
 
 
-  <meta name="description" content="强化学习定义 强化学习是学习一个最优策略 (policy)，可以让智能体(agent) 在特定环境 (environment) 中，根据当前的状态(state)，做出行动(action)，从而获得最大回报(G or return)。 有限马尔卡夫决策过程 找到最优价值 \[\text{Reinforcement Learning} \doteq \pi_* \\ \quad \updownarro">
+  <meta name="description" content="强化学习定义 强化学习是学习一个最优策略 (policy)，可以让智能体(agent) 在特定环境 (environment) 中，根据当前的状态(state)，做出行动(action)，从而获得最大回报 Gain。 有限马尔卡夫决策过程 找到最优价值 \[\text{Reinforcement Learning} \doteq \pi_* \\ \quad \updownarrow \\ \pi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="狸花猫记: 终章">
 <meta property="og:url" content="http://guanhua.ml/2019/07/19/reinforcement learning/狸花猫记-终章/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="强化学习定义 强化学习是学习一个最优策略 (policy)，可以让智能体(agent) 在特定环境 (environment) 中，根据当前的状态(state)，做出行动(action)，从而获得最大回报(G or return)。 有限马尔卡夫决策过程 找到最优价值 \[\text{Reinforcement Learning} \doteq \pi_* \\ \quad \updownarro">
+<meta property="og:description" content="强化学习定义 强化学习是学习一个最优策略 (policy)，可以让智能体(agent) 在特定环境 (environment) 中，根据当前的状态(state)，做出行动(action)，从而获得最大回报 Gain。 有限马尔卡夫决策过程 找到最优价值 \[\text{Reinforcement Learning} \doteq \pi_* \\ \quad \updownarrow \\ \pi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-19T16:48:12.120Z">
+<meta property="og:updated_time" content="2019-07-22T04:09:34.703Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="狸花猫记: 终章">
-<meta name="twitter:description" content="强化学习定义 强化学习是学习一个最优策略 (policy)，可以让智能体(agent) 在特定环境 (environment) 中，根据当前的状态(state)，做出行动(action)，从而获得最大回报(G or return)。 有限马尔卡夫决策过程 找到最优价值 \[\text{Reinforcement Learning} \doteq \pi_* \\ \quad \updownarro">
+<meta name="twitter:description" content="强化学习定义 强化学习是学习一个最优策略 (policy)，可以让智能体(agent) 在特定环境 (environment) 中，根据当前的状态(state)，做出行动(action)，从而获得最大回报 Gain。 有限马尔卡夫决策过程 找到最优价值 \[\text{Reinforcement Learning} \doteq \pi_* \\ \quad \updownarrow \\ \pi">
 
 
 
@@ -442,7 +442,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-20 00:48:12" itemprop="dateModified" datetime="2019-07-20T00:48:12+08:00">2019-07-20</time>
+                <time title="Modified: 2019-07-22 12:09:34" itemprop="dateModified" datetime="2019-07-22T12:09:34+08:00">2019-07-22</time>
               
             
           </span>
@@ -508,7 +508,7 @@
 
       
         <h2 id="强化学习定义">强化学习定义</h2>
-<p>强化学习是学习一个最优策略 (policy)，可以让智能体(agent) 在特定环境 (environment) 中，根据当前的状态(state)，做出行动(action)，从而获得最大回报(G or return)。</p>
+<p>强化学习是学习一个最优策略 (policy)，可以让智能体(agent) 在特定环境 (environment) 中，根据当前的状态(state)，做出行动(action)，从而获得最大回报 Gain。</p>
 <h2 id="有限马尔卡夫决策过程">有限马尔卡夫决策过程</h2>
 <h3 id="找到最优价值">找到最优价值</h3>
 <p><span class="math display">\[\text{Reinforcement Learning} \doteq \pi_* \\
@@ -637,6 +637,57 @@ where \\
 </tr>
 </tbody>
 </table>
+<p><strong>如何选择算法</strong></p>
+<p>动态规划方法：如果有一个模型，可以获得价值函数 <span class="math inline">\(v(s)\)</span> 或者 <span class="math inline">\(q(s, a)\)</span> 的值</p>
+<p>蒙特卡罗方法：如果可以模拟一个完整的情节</p>
+<p>时序差分方法：如果需要在模拟一个情节中间就要学习策略</p>
+<p><span class="math inline">\(\lamdba \sum return\)</span> ——用来优化近似方法中的误差。 资格迹——用来优化近似方法中价值函数的微分。</p>
+<p>预测方法——求状态价值方法 <span class="math inline">\(v(s)\)</span> 或者<span class="math inline">\(\hat{v}(s, \theta)\)</span>。</p>
+<p>控制方法——求行动价值方法 <span class="math inline">\(q(s, a)\)</span> 或者<span class="math inline">\(\hat(q)(s, a, \theta)\)</span>。</p>
+<p>策略梯度——求策略方法 <span class="math inline">\(\pi(a|s, \theta)\)</span></p>
+<h2 id="算法列表">算法列表</h2>
+<h3 id="动态规划">动态规划</h3>
+<ul>
+<li>使用随机策略 <span class="math inline">\(\pi (a|s)\)</span> 来迭代计算<span class="math inline">\(v(s)\)</span></li>
+<li>通过使用迭代策略 <span class="math inline">\(\pi(s)\)</span> 来优化了计算 <span class="math inline">\(v(s)\)</span> 部分，但是还是使用了期望值</li>
+<li>优化了整个流程，直接用行动的最大回报作为 <span class="math inline">\(v(s)\)</span> 的值</li>
+</ul>
+<h3 id="蒙特卡罗方法">蒙特卡罗方法</h3>
+<ul>
+<li>在每个情节中，记录状态 <span class="math inline">\(s\)</span> 第一个<span class="math inline">\(G\)</span>。 <span class="math display">\[v(s) = avg(G(s))
+\]</span></li>
+<li>从一个特定起始点的蒙特卡洛方法，变成了计算 <span class="math inline">\(q(s, a)\)</span></li>
+<li>在探索中使用 <span class="math inline">\(\epsilon-soft\)</span> 策略</li>
+<li>支持 off-policy</li>
+<li>使用了贪婪策略来支持 off-policy</li>
+</ul>
+<h3 id="时序差分方法">时序差分方法</h3>
+<ol type="1">
+<li>在一个情节进行过程中学习。</li>
+<li>视为蒙特卡罗方法的通用化。蒙特卡罗方法是步数为完成情节的 TD 算法。</li>
+</ol>
+<h3 id="多步时序差分方法">多步时序差分方法</h3>
+<h3 id="基于模型的算法">基于模型的算法</h3>
+<h3 id="近似预测方法">近似预测方法</h3>
+<h3 id="近似控制方法">近似控制方法</h3>
+<h3 id="lamdba-return- 和资格迹"><span class="math inline">\(\lamdba-return\)</span> 和资格迹</h3>
+<h3 id="策略梯度方法">策略梯度方法</h3>
+<p>策略梯度方法就是求 <span class="math inline">\(\pi(a | s, \theta)\)</span></p>
+<p><span class="math display">\[\text{Reinforcement Learning} \doteq \pi_* \\
+\quad \updownarrow \\
+\pi_* \doteq \{\pi(s) \}, \ s \in \mathcal{S} \\
+\quad \updownarrow \\
+\pi(s) = \underset{a}{argmax} \ \pi(a|s, \theta) \\
+where \\
+\pi(a|s, \theta) \in [0, 1] \\
+s \in \mathcal{S}, \ a \in \mathcal{A} \\
+\quad \updownarrow \\
+\pi(a|s, \theta) \doteq \frac{exp(h(s,a,\theta))}{\sum_b exp(h(s,b,\theta))} \\
+\quad \updownarrow \\
+exp(h(s,a,\theta)) \doteq \theta^T \phi(s,a) \\
+where \\
+\theta \text{- policy weight vector} \\
+\]</span></p>
 
       
     </div>
@@ -981,7 +1032,7 @@ where \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习定义"><span class="nav-number">1.</span> <span class="nav-text">强化学习定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有限马尔卡夫决策过程"><span class="nav-number">2.</span> <span class="nav-text">有限马尔卡夫决策过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#找到最优价值"><span class="nav-number">2.1.</span> <span class="nav-text">找到最优价值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有限马尔卡夫决策过程的基本概念"><span class="nav-number">2.2.</span> <span class="nav-text">有限马尔卡夫决策过程的基本概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习术语"><span class="nav-number">3.</span> <span class="nav-text">强化学习术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习算法的分类"><span class="nav-number">4.</span> <span class="nav-text">强化学习算法的分类</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习定义"><span class="nav-number">1.</span> <span class="nav-text">强化学习定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有限马尔卡夫决策过程"><span class="nav-number">2.</span> <span class="nav-text">有限马尔卡夫决策过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#找到最优价值"><span class="nav-number">2.1.</span> <span class="nav-text">找到最优价值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有限马尔卡夫决策过程的基本概念"><span class="nav-number">2.2.</span> <span class="nav-text">有限马尔卡夫决策过程的基本概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习术语"><span class="nav-number">3.</span> <span class="nav-text">强化学习术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强化学习算法的分类"><span class="nav-number">4.</span> <span class="nav-text">强化学习算法的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法列表"><span class="nav-number">5.</span> <span class="nav-text">算法列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划"><span class="nav-number">5.1.</span> <span class="nav-text">动态规划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#蒙特卡罗方法"><span class="nav-number">5.2.</span> <span class="nav-text">蒙特卡罗方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时序差分方法"><span class="nav-number">5.3.</span> <span class="nav-text">时序差分方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多步时序差分方法"><span class="nav-number">5.4.</span> <span class="nav-text">多步时序差分方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于模型的算法"><span class="nav-number">5.5.</span> <span class="nav-text">基于模型的算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#近似预测方法"><span class="nav-number">5.6.</span> <span class="nav-text">近似预测方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#近似控制方法"><span class="nav-number">5.7.</span> <span class="nav-text">近似控制方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lamdba-return- 和资格迹"><span class="nav-number">5.8.</span> <span class="nav-text">\(\lamdba-return\) 和资格迹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#策略梯度方法"><span class="nav-number">5.9.</span> <span class="nav-text">策略梯度方法</span></a></li></ol></li></ol></div>
             
 
           </div>
