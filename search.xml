@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Numpy cheat]]></title>
+    <url>%2F2019%2F07%2F24%2Fnumpy%2FNumpy-cheat%2F</url>
+    <content type="text"><![CDATA[1import numpy as np axis = 0 是从左往右看 axis = 1 是从上往下看 创建 Arrays 三种办法 array 函数：接受一切序列型的对象(list/set/tuple/ndarray) zeros/ones/empty 函数，传入一个表示形状的元组(tuple) linspace 函数 /arange 函数 12a = np.array([1, 2, 3])a array([1, 2, 3]) 12b = np.array([(1.5, 2, 3), (4, 5, 6)], dtype=float)b array([[1.5, 2. , 3.], [4. , 5. , 6.]]) 12c = np.array([[(1.5, 2, 3), (4, 5, 6)], [(3, 2, 1), (4, 5, 6)]], dtype=float)c array([[[1.5, 2. , 3.], [4. , 5. , 6.]], [[3. , 2. , 1.], [4. , 5. , 6.]]]) 另外两种创建方式 1np.zeros((3, 4)) array([[0., 0., 0., 0.], [0., 0., 0., 0.], [0., 0., 0., 0.]]) 1np.ones((2, 3, 4), dtype=np.int16) array([[[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]], [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]], dtype=int16) 12d = np.arange(10, 25, 5)d array([10, 15, 20]) 1np.linspace(0, 2, 9) array([0. , 0.25, 0.5 , 0.75, 1. , 1.25, 1.5 , 1.75, 2.]) 12e = np.full((2, 2), 7)e array([[7, 7], [7, 7]]) 12f = np.eye(2)f array([[1., 0.], [0., 1.]]) 1np.random.random((2, 2)) array([[0.15483956, 0.38346647], [0.13780649, 0.21760297]]) 1np.empty((3, 2)) array([[1.5, 4.], [2. , 5.], [3. , 6.]]) IO 保存二进制文件 1234np.save('my_array', a)np.savez('my_array', a, b)np.load('my_array.npy') array([1, 2, 3]) 保存文本文件 1234np.savetxt("myarray.csv", a, delimiter=',')np.loadtxt('myarray.csv')np.genfromtxt('myarray.csv', delimiter=',') array([1., 2., 3.]) data types 1np.int64, np.float32, np.complex, np.bool, np.object, np.string_, np.unicode_ (numpy.int64, numpy.float32, complex, bool, object, numpy.bytes_, numpy.str_) 查看 arr 属性 1a.shape, len(a), b.ndim, e.size, b.dtype, b.dtype.name, b.astype(int) ((3,), 3, 2, 4, dtype(&#39;float64&#39;), &#39;float64&#39;, array([[1, 2, 3], [4, 5, 6]])) 数学操作 12print("a =", a)print("b =", b) a = [1 2 3] b = [[1.5 2. 3.] [4. 5. 6.]] 12g = a - bg array([[-0.5, 0. , 0.], [-3. , -3. , -3.]]) 1np.subtract(a, b) array([[-0.5, 0. , 0.], [-3. , -3. , -3.]]) 1b + a array([[2.5, 4. , 6.], [5. , 7. , 9.]]) 1np.add(b, a) array([[2.5, 4. , 6.], [5. , 7. , 9.]]) 1a / b array([[0.66666667, 1. , 1.], [0.25 , 0.4 , 0.5]]) 1np.divide(a, b) array([[0.66666667, 1. , 1.], [0.25 , 0.4 , 0.5]]) 1a * b array([[1.5, 4. , 9.], [4. , 10. , 18.]]) 1np.multiply(a, b) array([[1.5, 4. , 9.], [4. , 10. , 18.]]) 1np.exp(b) array([[4.48168907, 7.3890561 , 20.08553692], [54.59815003, 148.4131591 , 403.42879349]]) 1np.sqrt(b) array([[1.22474487, 1.41421356, 1.73205081], [2. , 2.23606798, 2.44948974]]) 1np.sin(a) array([0.84147098, 0.90929743, 0.14112001]) 1np.cos(b) array([[0.0707372 , -0.41614684, -0.9899925], [-0.65364362, 0.28366219, 0.96017029]]) 1np.log(a) array([0. , 0.69314718, 1.09861229]) 12print("e =", e)print("f =", f) e = [[7 7] [7 7]] f = [[1. 0.] [0. 1.]] 1e.dot(f) # 这是 Hadamard 积 array([[7., 7.], [7., 7.]]) 比较 1a == b # 元素级别的比较 array([[False, True, True], [False, False, False]]) 1a &lt; 2 array([True, False, False]) 1np.array_equal(a, b) # 数组级别的比较 False 聚集函数 1a array([1, 2, 3]) 1a.sum() 6 1a.min() 1 1b array([[1.5, 2. , 3.], [4. , 5. , 6.]]) 1b.max(axis=0) array([4., 5., 6.]) 1b.cumsum(axis=1) array([[1.5, 3.5, 6.5], [4. , 9. , 15.]]) 1a.mean() 2.0 1np.std(b) 1.5920810978785667 复制 arr 1h = a.view() 1np.copy(a) array([1, 2, 3]) 1h = a.copy() # 深拷贝 排序 arr 12a.sort()a array([1, 2, 3]) 1c array([[[1.5, 2. , 3.], [4. , 5. , 6.]], [[3. , 2. , 1.], [4. , 5. , 6.]]]) 12c.sort(axis=0)c array([[[1.5, 2. , 1.], [4. , 5. , 6.]], [[3. , 2. , 3.], [4. , 5. , 6.]]]) subsetting, slicing, indexing 一个 [] 就是子集 1a[2] 3 1b[1, 2] 6.0 一个 [:] 就是切片 1a[0:2] array([1, 2]) 1b[0:2, 1] array([2., 5.]) 1b[:1] array([[1.5, 2. , 3.]]) 1c[1, ...] array([[3., 2., 3.], [4., 5., 6.]]) 1a[::-1] array([3, 2, 1]) 其他乱七八糟的就是 index，包括 [[]] 和&lt; 1a[a &lt; 2] array([1]) 1b[[1, 0, 1, 0], [0, 1, 2, 0]] array([4. , 2. , 6. , 1.5]) 1b[[1, 0, 1, 0]][:, [0, 1, 2, 0]] array([[4. , 5. , 6. , 4.], [1.5, 2. , 3. , 1.5], [4. , 5. , 6. , 4.], [1.5, 2. , 3. , 1.5]]) Array 操作 转置 1b array([[1.5, 2. , 3.], [4. , 5. , 6.]]) 12i = np.transpose(b)i array([[1.5, 4.], [2. , 5.], [3. , 6.]]) 1i.T array([[1.5, 2. , 3.], [4. , 5. , 6.]]) 改变 shape 1b.ravel() array([1.5, 2. , 3. , 4. , 5. , 6.]) 12print("g =", g)g.reshape(3, -2) g = [[-0.5 0. 0.] [-3. -3. -3.]] array([[-0.5, 0.], [0. , -3.], [-3. , -3.]]) 增删元素 1np.append(h, g) array([None, -0.5, 0.0, 0.0, -3.0, -3.0, -3.0], dtype=object) 1np.insert(a, 1, 5) array([1, 5, 2, 3]) 1np.delete(a, [1]) array([1, 3]) 连接 1np.concatenate((a, d), axis=0) array([1, 2, 3, 10, 15, 20]) 123print('a =', a)print('b =', b)np.vstack((a, b)) a = [1 2 3] b = [[1.5 2. 3.] [4. 5. 6.]] array([[1. , 2. , 3.], [1.5, 2. , 3.], [4. , 5. , 6.]]) 和上面的功能一样 123print('e =', e)print('f =', f) np.r_[e, f] e = [[7 7] [7 7]] f = [[1. 0.] [0. 1.]] array([[7., 7.], [7., 7.], [1., 0.], [0., 1.]]) 1np.hstack((e, f)) array([[7., 7., 1., 0.], [7., 7., 0., 1.]]) 1np.column_stack((a, d)) array([[1, 10], [2, 15], [3, 20]]) 划分 arr 1np.hsplit(a, 3) [array([1]), array([2]), array([3])] 1np.vsplit(c, 2) [array([[[1.5, 2. , 1.], [4. , 5. , 6.]]]), array([[[3., 2., 3.], [4., 5., 6.]]])]]]></content>
+      <tags>
+        <tag>numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[tensorflow 小结]]></title>
+    <url>%2F2019%2F07%2F23%2Ftensorflow%2Ftensorflow-%E5%B0%8F%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <tags>
+        <tag>tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GraphEmbedding(6): Alias Method]]></title>
+    <url>%2F2019%2F07%2F23%2Fgraph%20embedding%2FGraphEmbedding-6-Alias-Method%2F</url>
+    <content type="text"><![CDATA[问题 给定一个离散型随机变量的概率分布 \(P(X=i)=p_{i}\)，希望设计一个方法能够从该分布中采样]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[GraphEmbedding(2): LINE]]></title>
+    <url>%2F2019%2F07%2F23%2Fgraph%20embedding%2FGraphEmbedding-2-LINE%2F</url>
+    <content type="text"><![CDATA[LINE1 算法原理 LINE 也是一种基于邻域相似假设的方法，只不过与 DeepWalk 使用 DFS 构造邻域不同的是，LINE 可以看作是一种使用 BFS 构造邻域的算法。此外，LINE 还可以应用在 带权图 中（DeepWalk 仅能用于无权图）。 之前还提到不同的 graph embedding 方法的一个主要区别是对图中顶点之间的相似度的定义不同，所以先看一下 LINE 对于相似度的定义。 ZTtOPA.png 一阶相似度 用于描述图中成对顶点之间的局部相似度，形式化描述为若 \(u, v\) 之间存在直连边，则边权 \(w_{u v}\) 即为两个顶点的相似度，若不存在直连边，则 1 阶相似度为 0。 参考 6,7 二阶相似度 \[p_{u}=\left(w_{u, 1}, \dots, w_{u,|V|}\right) \] 表示顶点 \(u\) 与所有其他顶点的一阶相似度 则 \(u\) 与 \(v\) 的二阶相似度可以通过 \(p_u\) 和 \(p_v\) 的相似度表示。 优化目标 一阶相似度 对于一条无向边 \((i, j)\) ，顶点 \(v_i\) 和 \(v_j\)： \(\overrightarrow{u_{i}}\) 为顶点 \(v_i\) 的低维向量表示 \(v_i\) 和 \(v_j\) 的联合概率为 \[p_{1}\left(v_{i}, v_{j}\right)=\frac{1}{1+\exp \left(-\vec{u}_{i}^{T} \cdot \vec{u}_{j}\right)} \] 定义经验分布， \[\hat{p_{1}}=\frac{w_{i j}}{W}, \quad W=\sum_{(i, j) \in E} w_{i j} \] 优化目标 为最小化两个分布之间的距离 \[O_{1}=d\left(\hat{p}_{1}(\cdot, \cdot), p_{1}(\cdot, \cdot)\right) \] \(d(\cdot, \cdot)\) 是两个分布之间的距离，常用 KL 散度表示。忽略常数项后有 \[O_{1}=-\sum_{(i, j) \in E} w_{i j} \log p_{1}\left(v_{i}, v_{j}\right) \] 这个公式很奇妙，先是两个节点联合概率 直白一点说就是匹配程度 取个 \(\log\) ，然后在用连接强度作为权重。这里计算出来的只是一对节点，把所有的节点对都取完之后，也就算出来\(u, v\) 的近似程度。 一阶相似度只能用于无向图当中 二阶相似度 每个顶点维护两个 embedding 向量，一个是该顶点本身的表示向量，另一个是该点作为其他顶点的上下文顶点时的表示向量。 对于有向边 \((i,j)\) ，定义给定顶点 \(v_i\) 条件下，产生上下文（邻居）顶点 \(v_j\) 的概率为 \[p_{2}\left(v_{j} | v_{i}\right)=\frac{\exp \left(\vec{c}_{j}^{T} \cdot \vec{u}_{i}\right)}{\sum_{k=1}^{|V|} \exp \left(\vec{c}_{k}^{T} \cdot \vec{u}_{i}\right)} \] 优化目标为 \[O_{2}=\sum_{i \in V} \lambda_{i} d\left(\hat{p}_{2}\left(\cdot | v_{i}\right), p_{2}\left(\cdot | v_{i}\right)\right) \] 经验分布定义为 \[\hat{p}_{2}\left(v_{j} | v_{i}\right)=\frac{w_{i j}}{d_{i}} \] \[O_{2}=-\sum_{(i, j) \in E} w_{i j} \log p_{2}\left(v_{j} | v_{i}\right) \] 优化技巧 Negative sampling 目标函数变为 \[\log \sigma\left(\vec{c}_{j}^{T} \cdot \vec{u}_{i}\right)+\sum_{i=1}^{K} E_{v_{n} \sim P_{n}(v)}\left[-\log \sigma\left(\vec{c}_{n}^{T} \cdot \vec{u}_{i}\right)\right] \] Edge Sampling Alias 算法 低度数顶点问题 对于一些顶点由于其邻接点非常少会导致 embedding 向量的学习不充分，论文提到可以利用邻居的邻居构造样本进行学习，这里也暴露出 LINE 方法仅考虑一阶和二阶相似性，对高阶信息的利用不足。 新加入顶点 \[-\sum_{j \in N(i)} w_{j i} \log p_{1}\left(v_{j}, v_{i}\right)_{\overrightarrow{\mathfrak{H}} \overrightarrow{\mathrm{k}}}-\sum_{j \in N(i)} w_{j i} \log p_{1}\left(v_{j} | v_{i}\right) \] 总结 方法复杂，丑陋，可能只是一个启发式的模型 https://arxiv.org/pdf/1503.03578.pdf↩]]></content>
+      <categories>
+        <category>graph embedding</category>
+      </categories>
+      <tags>
+        <tag>graph embedding</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GraphEmbedding(1): DeepWalk]]></title>
+    <url>%2F2019%2F07%2F23%2Fgraph%20embedding%2FGraphEmbedding-1-DeepWalk%2F</url>
+    <content type="text"><![CDATA[KDD 20141 图表示学习 数据结构 最小生成树(Prim, Kruskal) 最短路径(Dijkstra, Floyed) 其他：拓扑排序，关键路径 概率图模型 表示 推断 学习 图神经网络 GraphEmbedding(基于随机游走) Graph CNN（基于邻居汇聚） Graph Embedding 技术将图中的节点以低维稠密向量的形式进行表达，要求在原始图中相似 (不同的方法对相似的定义不同) 的节点其在低维表达空间也接近。得到的表达向量可以用来进行下游任务，如 节点分类 ， 链接预测 ， 可视化 或重构原始图 等。 DeepWalk 原理 DeepWalk 的思想类似 word2vec，使用 图中节点与节点的共现关系 来学习节点的向量表示。那么关键的问题就是如何来描述节点与节点的共现关系，DeepWalk 给出的方法是使用随机游走 (RandomWalk) 的方式在图中进行节点采样。 RandomWalk 是一种 可重复访问已访问节点 的深度优先遍历算法。给定当前访问起始节点，从其邻居中随机采样节点作为下一个访问节点，重复此过程，直到访问序列长度满足预设条件。 获取足够数量的节点访问序列后，使用 skip-gram model 进行向量学习。 核心代码 DeepWalk 两个步骤 随机游走采样节点序列 使用 skip-gram model 学习表达向量，最大化节点共现，使用 Hierarchical Softmax 来做超大规模分类的分类器 RandomWalk 结语 In our view, language modeline is actually sampling from an unobservable language graph. We believe that insights obtained from modeling observable graphs may in turn yield improvements to modeling unobservable ones. http://www.perozzi.net/publications/14_kdd_deepwalk.pdf↩]]></content>
+      <categories>
+        <category>graph embedding</category>
+      </categories>
+      <tags>
+        <tag>graph embedding</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[狸花猫记 (1): 模型基础]]></title>
     <url>%2F2019%2F07%2F19%2Freinforcement%20learning%2F%E7%8B%B8%E8%8A%B1%E7%8C%AB%E8%AE%B0-1-%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80%2F</url>
     <content type="text"><![CDATA[强化学习在机器学习中的位置 与监督学习相比，数据有时间关系，奖励值延迟 与非监督学习相比，数据有时间关系，输出奖励值 强化学习建模 Zq5uRJ.png 强化学习要素 三个基本要素 环境状态 \(S_t\) 动作 \(A_t\) 环境的奖励 \(R_t\)，这是 延迟的，在状态 \(S_{t-1}\) 采取的动作 \(A_{t-1}\) 对应奖励 \(R_t\) 五个附加要素 个体的策略 \(\pi(a|s)\)，通常表示为一个 条件 \(s\) 概率分布 ，状态 \(s\) 时采取动作\(a\) 的概率，即 \(\pi(a|s) = P(A_t=a | S_t=s)\)动作 \(a\) 只由状态决定，\(\pi\)就像游戏攻略一样 采取行动后的价值 \(v_{\pi}(s)\) 在给定策略\(\pi\) 和状态 \(s\) 后，采取一系列行动后奖励累加就是价值，一般是个期望函数。当前作用给出的延时奖励是 \(R_{t+1}\)。 &gt; 所以把价值函数表示为\(\sum \gamma^t R_i\)，这里不关注\(s \to s&#39;\) 是怎么变的，只是在改变给出的\(R_i\) 上不断求和。我们把当前状态看作原因，它对于后续结果的影响是指数衰弱的。考虑时间因素，如果把 \(t\)，取到无限大，对于 \(v\) 来说，给了它策略\(\pi\) 和初始状态 \(S_0\)，它可以一直玩下去，导致 \(v_{\pi}(s) \to \infty\)。所以我们对 \(t\) 取个均值，这样就不怕时间展开了。 \[v_{\pi}(s) = \mathbb{E}_{\pi}(R_{t+1} + \gamma R_{t+2} + \gamma^2R_{t+3}+...|S_t=s) \] 奖励衰减因子 \(\gamma\) 越小越是短视，激进，大胆；越大越是周到，保守，谨慎 ** 环境的状态转换模型 \(P_{ss&#39;}^a\)，即在状态\(s\) 下采取动作 \(a\), 转到下一个状态\(s′\) 的概率 &gt; 描述了 \(s \to s&#39;\) 的过程中 \(a\) 所起的作用，本质上，这个东西就是 模型 探索率 \(\epsilon\) 有\(\epsilon\) 不使用当前状态最优动作去 explore 强化学习的简单示例 ZqaIVx.png 玩一玩这个游戏 环境状态 \(S\) 九宫格，每个格子三种状态（1. 没棋子；2. 有 x；3. 有 o），所以模型状态一共有 \(3^9\) 种 动作 \(A\)，9 个格子，相当于 9 个动作选项，有棋子的不能下 \(R\) 赢棋奖励 1，其他时候奖励有但是少。先手要低一些？？感觉先手更有优势 \(\pi\) 学习得到，见代码 \(v_{\pi}(s)\) \(\gamma\) 设置为 0 \(P^a_{s s&#39;}\) 选择之后状体确定，无需讨论 \(\epsilon\) explore]]></content>
@@ -91,28 +134,6 @@
     <title><![CDATA[GraphEmbedding(5): Struc2vec]]></title>
     <url>%2F2019%2F07%2F16%2Fgraph%20embedding%2FGraphEmbedding-5-Struc2vec%2F</url>
     <content type="text"><![CDATA[在一些场景中，两个不是近邻的顶点也可能拥有很高的相似性，对于这类相似性，上述方法是无法捕捉到的。Struc2Vec 就是针对这类场景提出的。Struc2Vec 的论文发表在 2017 年的 KDD 会议中。]]></content>
-      <categories>
-        <category>graph embedding</category>
-      </categories>
-      <tags>
-        <tag>graph embedding</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[GraphEmbedding(1): DeepWalk]]></title>
-    <url>%2F2019%2F07%2F16%2Fgraph%20embedding%2FGraphEmbedding-1-DeepWalk%2F</url>
-    <content type="text"><![CDATA[图表示学习 数据结构 最小生成树(Prim, Kruskal) 最短路径(Dijkstra, Floyed) 其他：拓扑排序，关键路径 概率图模型 表示 推断 学习 图神经网络 GraphEmbedding(基于随机游走) Graph CNN（基于邻居汇聚） Graph Embedding 技术将图中的节点以低维稠密向量的形式进行表达，要求在原始图中相似 (不同的方法对相似的定义不同) 的节点其在低维表达空间也接近。得到的表达向量可以用来进行下游任务，如节点分类，链接预测，可视化或重构原始图等。 DeepWalk 原理 KDD 20141 DeepWalk 的思想类似 word2vec，使用 图中节点与节点的共现关系 来学习节点的向量表示。那么关键的问题就是如何来描述节点与节点的共现关系，DeepWalk 给出的方法是使用随机游走 (RandomWalk) 的方式在图中进行节点采样。 RandomWalk 是一种 可重复访问已访问节点 的深度优先遍历算法。给定当前访问起始节点，从其邻居中随机采样节点作为下一个访问节点，重复此过程，直到访问序列长度满足预设条件。 获取足够数量的节点访问序列后，使用 skip-gram model 进行向量学习。 结语 In our view, language modeline is actually sampling from an unobservable language graph. We believe that insights obtained from modeling observable graphs may in turn yield improvements to modeling unobservable ones. http://www.perozzi.net/publications/14_kdd_deepwalk.pdf↩]]></content>
-      <categories>
-        <category>graph embedding</category>
-      </categories>
-      <tags>
-        <tag>graph embedding</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[GraphEmbedding(2): LINE]]></title>
-    <url>%2F2019%2F07%2F16%2Fgraph%20embedding%2FGraphEmbedding-2-LINE%2F</url>
-    <content type="text"><![CDATA[LINE1 算法原理 LINE 也是一种基于邻域相似假设的方法，只不过与 DeepWalk 使用 DFS 构造邻域不同的是，LINE 可以看作是一种使用 BFS 构造邻域的算法。此外，LINE 还可以应用在 带权图 中（DeepWalk 仅能用于无权图）。 之前还提到不同的 graph embedding 方法的一个主要区别是对图中顶点之间的相似度的定义不同，所以先看一下 LINE 对于相似度的定义。 ZTtOPA.png 一阶相似度 用于描述图中成对顶点之间的局部相似度，形式化描述为若 \(u, v\) 之间存在直连边，则边权 \(w_{u v}\) 即为两个顶点的相似度，若不存在直连边，则 1 阶相似度为 0。 参考 6,7 二阶相似度 \[p_{u}=\left(w_{u, 1}, \dots, w_{u,|V|}\right) \] 表示顶点 \(u\) 与所有其他顶点的一阶相似度 则 \(u\) 与 \(v\) 的二阶相似度可以通过 \(p_u\) 和 \(p_v\) 的相似度表示。 优化目标 一阶相似度 低于一条无向边 \((i, j)\) ，顶点 \(v_i\) 和 \(v_j\)： \(\overrightarrow{u_{i}}\) 为顶点 \(v_i\) 的低维向量表示 \(v_i\) 和 \(v_j\) 的联合概率为 \[p_{1}\left(v_{i}, v_{j}\right)=\frac{1}{1+\exp \left(-\vec{u}_{i}^{T} \cdot \vec{u}_{j}\right)} \] 定义经验分布， \[\hat{p_{1}}=\frac{w_{i j}}{W}, \quad W=\sum_{(i, j) \in E} w_{i j} \] 优化目标 为最小化两个分布之间的距离 \[O_{1}=d\left(\hat{p}_{1}(\cdot, \cdot), p_{1}(\cdot, \cdot)\right) \] \(d(\cdot, \cdot)\) 是两个分布之间的距离，常用 KL 散度表示。忽略常数项后有 \[O_{1}=-\sum_{(i, j) \in E} w_{i j} \log p_{1}\left(v_{i}, v_{j}\right) \] 这个公式很奇妙，先是两个节点联合概率 直白一点说就是匹配程度 取个 \(\log\) ，然后在用连接强度作为权重。这里计算出来的只是一对节点，把所有的节点对都取完之后，也就算出来\(u, v\) 的近似程度。 一阶相似度只能用于无向图当中 二阶相似度 每个顶点维护两个 embedding 向量，一个是该顶点本身的表示向量，另一个是该点作为其他顶点的上下文顶点时的表示向量。 对于有向边 \((i,j)\) ，定义给定顶点 \(v_i\) 条件下，产生上下文（邻居）顶点 \(v_j\) 的概率为 \[p_{2}\left(v_{j} | v_{i}\right)=\frac{\exp \left(\vec{c}_{j}^{T} \cdot \vec{u}_{i}\right)}{\sum_{k=1}^{|V|} \exp \left(\vec{c}_{k}^{T} \cdot \vec{u}_{i}\right)} \] 优化目标为 \[O_{2}=\sum_{i \in V} \lambda_{i} d\left(\hat{p}_{2}\left(\cdot | v_{i}\right), p_{2}\left(\cdot | v_{i}\right)\right) \] 经验分布定义为 \[\hat{p}_{2}\left(v_{j} | v_{i}\right)=\frac{w_{i j}}{d_{i}} \] \[O_{2}=-\sum_{(i, j) \in E} w_{i j} \log p_{2}\left(v_{j} | v_{i}\right) \] 优化技巧 Negative sampling 目标函数变为 \[\log \sigma\left(\vec{c}_{j}^{T} \cdot \vec{u}_{i}\right)+\sum_{i=1}^{K} E_{v_{n} \sim P_{n}(v)}\left[-\log \sigma\left(\vec{c}_{n}^{T} \cdot \vec{u}_{i}\right)\right] \] Edge Sampling Alias 算法 低度数顶点问题 对于一些顶点由于其邻接点非常少会导致 embedding 向量的学习不充分，论文提到可以利用邻居的邻居构造样本进行学习，这里也暴露出 LINE 方法仅考虑一阶和二阶相似性，对高阶信息的利用不足。 新加入顶点 \[-\sum_{j \in N(i)} w_{j i} \log p_{1}\left(v_{j}, v_{i}\right)_{\overrightarrow{\mathfrak{H}} \overrightarrow{\mathrm{k}}}-\sum_{j \in N(i)} w_{j i} \log p_{1}\left(v_{j} | v_{i}\right) \] 总结 方法复杂，丑陋，可能只是一个启发式的模型 https://arxiv.org/pdf/1503.03578.pdf↩]]></content>
       <categories>
         <category>graph embedding</category>
       </categories>
@@ -604,8 +625,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>deep learning</tag>
         <tag>todo</tag>
+        <tag>deep learning</tag>
       </tags>
   </entry>
   <entry>
@@ -616,8 +637,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>deep learning</tag>
         <tag>todo</tag>
+        <tag>deep learning</tag>
       </tags>
   </entry>
   <entry>
@@ -628,8 +649,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>deep learning</tag>
         <tag>todo</tag>
+        <tag>deep learning</tag>
       </tags>
   </entry>
   <entry>
@@ -640,8 +661,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>deep learning</tag>
         <tag>todo</tag>
+        <tag>deep learning</tag>
       </tags>
   </entry>
   <entry>
@@ -652,8 +673,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>deep learning</tag>
         <tag>todo</tag>
+        <tag>deep learning</tag>
       </tags>
   </entry>
   <entry>
@@ -664,8 +685,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>deep learning</tag>
         <tag>todo</tag>
+        <tag>deep learning</tag>
       </tags>
   </entry>
   <entry>
@@ -676,8 +697,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>deep learning</tag>
         <tag>todo</tag>
+        <tag>deep learning</tag>
       </tags>
   </entry>
   <entry>
@@ -995,8 +1016,8 @@
         <category>深度学习</category>
       </categories>
       <tags>
-        <tag>deep learning</tag>
         <tag>todo</tag>
+        <tag>deep learning</tag>
         <tag>machine learning</tag>
       </tags>
   </entry>

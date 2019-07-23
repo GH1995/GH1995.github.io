@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1import numpy as np axis = 0 是从左往右看 axis = 1 是从上往下看 创建 Arrays 三种办法  array 函数：接受一切序列型的对象(list/set/tuple/ndarray) zeros/ones/empty 函数，传入一个表示形状的元组(tuple) linspace 函数 /arange 函数  12a = np.array([1, 2, 3])">
+<meta name="keywords" content="numpy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Numpy cheat">
+<meta property="og:url" content="http://guanhua.ml/2019/07/24/numpy/Numpy-cheat/index.html">
+<meta property="og:site_name" content="gh&#39;s notes">
+<meta property="og:description" content="1import numpy as np axis = 0 是从左往右看 axis = 1 是从上往下看 创建 Arrays 三种办法  array 函数：接受一切序列型的对象(list/set/tuple/ndarray) zeros/ones/empty 函数，传入一个表示形状的元组(tuple) linspace 函数 /arange 函数  12a = np.array([1, 2, 3])">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-23T17:31:29.599Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Numpy cheat">
+<meta name="twitter:description" content="1import numpy as np axis = 0 是从左往右看 axis = 1 是从上往下看 创建 Arrays 三种办法  array 函数：接受一切序列型的对象(list/set/tuple/ndarray) zeros/ones/empty 函数，传入一个表示形状的元组(tuple) linspace 函数 /arange 函数  12a = np.array([1, 2, 3])">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://guanhua.ml/2019/07/24/numpy/Numpy-cheat/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Numpy cheat | gh's notes</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gh's notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Machine Learning</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/24/numpy/Numpy-cheat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Hua">
+      <meta itemprop="description" content="喵喵喵">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gh's notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Numpy cheat
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-24 01:30:43 / Modified: 01:31:29" itemprop="dateCreated datePublished" datetime="2019-07-24T01:30:43+08:00">2019-07-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/07/24/numpy/Numpy-cheat/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/24/numpy/Numpy-cheat/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<p>axis = 0 是从左往右看</p>
+<p>axis = 1 是从上往下看</p>
+<h2 id="创建 -arrays">创建 Arrays</h2>
+<p>三种办法</p>
+<ol type="1">
+<li>array 函数：接受一切序列型的对象(<code>list</code>/<code>set</code>/<code>tuple</code>/<code>ndarray</code>)</li>
+<li>zeros/ones/empty 函数，传入一个表示形状的元组(tuple)</li>
+<li>linspace 函数 /arange 函数</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+<pre><code>array([1, 2, 3])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b = np.array([(<span class="number">1.5</span>, <span class="number">2</span>, <span class="number">3</span>), (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>)], dtype=float)</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1.5, 2. , 3.],
+       [4. , 5. , 6.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c = np.array([[(<span class="number">1.5</span>, <span class="number">2</span>, <span class="number">3</span>), (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>)], [(<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>), (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>)]], dtype=float)</span><br><span class="line">c</span><br></pre></td></tr></table></figure>
+<pre><code>array([[[1.5, 2. , 3.],
+        [4. , 5. , 6.]],
+
+       [[3. , 2. , 1.],
+        [4. , 5. , 6.]]])</code></pre>
+<p><strong>另外两种创建方式</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.zeros((<span class="number">3</span>, <span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>array([[0., 0., 0., 0.],
+       [0., 0., 0., 0.],
+       [0., 0., 0., 0.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.ones((<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>), dtype=np.int16)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[[1, 1, 1, 1],
+        [1, 1, 1, 1],
+        [1, 1, 1, 1]],
+
+       [[1, 1, 1, 1],
+        [1, 1, 1, 1],
+        [1, 1, 1, 1]]], dtype=int16)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d = np.arange(<span class="number">10</span>, <span class="number">25</span>, <span class="number">5</span>)</span><br><span class="line">d</span><br></pre></td></tr></table></figure>
+<pre><code>array([10, 15, 20])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.linspace(<span class="number">0</span>, <span class="number">2</span>, <span class="number">9</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([0.  , 0.25, 0.5 , 0.75, 1.  , 1.25, 1.5 , 1.75, 2.])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">e = np.full((<span class="number">2</span>, <span class="number">2</span>), <span class="number">7</span>)</span><br><span class="line">e</span><br></pre></td></tr></table></figure>
+<pre><code>array([[7, 7],
+       [7, 7]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f = np.eye(<span class="number">2</span>)</span><br><span class="line">f</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1., 0.],
+       [0., 1.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.random.random((<span class="number">2</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>array([[0.15483956, 0.38346647],
+       [0.13780649, 0.21760297]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.empty((<span class="number">3</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1.5, 4.],
+       [2. , 5.],
+       [3. , 6.]])</code></pre>
+<h2 id="io">IO</h2>
+<h3 id="保存二进制文件">保存二进制文件</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">np.save(<span class="string">'my_array'</span>, a)</span><br><span class="line">np.savez(<span class="string">'my_array'</span>, a, b)</span><br><span class="line"></span><br><span class="line">np.load(<span class="string">'my_array.npy'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([1, 2, 3])</code></pre>
+<h3 id="保存文本文件">保存文本文件</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">np.savetxt(<span class="string">"myarray.csv"</span>, a, delimiter=<span class="string">','</span>)</span><br><span class="line"></span><br><span class="line">np.loadtxt(<span class="string">'myarray.csv'</span>)</span><br><span class="line">np.genfromtxt(<span class="string">'myarray.csv'</span>, delimiter=<span class="string">','</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([1., 2., 3.])</code></pre>
+<h2 id="data-types">data types</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.int64, np.float32, np.complex, np.bool, np.object, np.string_, np.unicode_</span><br></pre></td></tr></table></figure>
+<pre><code>(numpy.int64, numpy.float32, complex, bool, object, numpy.bytes_, numpy.str_)</code></pre>
+<p><strong>查看 arr 属性</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.shape, len(a), b.ndim, e.size, b.dtype, b.dtype.name, b.astype(int)</span><br></pre></td></tr></table></figure>
+<pre><code>((3,), 3, 2, 4, dtype(&#39;float64&#39;), &#39;float64&#39;, array([[1, 2, 3],
+        [4, 5, 6]]))</code></pre>
+<h2 id="数学操作">数学操作</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"a ="</span>, a)</span><br><span class="line">print(<span class="string">"b ="</span>, b)</span><br></pre></td></tr></table></figure>
+<pre><code>a =  [1 2 3]
+b =  [[1.5 2.  3.]
+ [4.  5.  6.]]</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g = a - b</span><br><span class="line">g</span><br></pre></td></tr></table></figure>
+<pre><code>array([[-0.5,  0. ,  0.],
+       [-3. , -3. , -3.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.subtract(a, b)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[-0.5,  0. ,  0.],
+       [-3. , -3. , -3.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b + a</span><br></pre></td></tr></table></figure>
+<pre><code>array([[2.5, 4. , 6.],
+       [5. , 7. , 9.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.add(b, a)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[2.5, 4. , 6.],
+       [5. , 7. , 9.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a / b</span><br></pre></td></tr></table></figure>
+<pre><code>array([[0.66666667, 1.        , 1.],
+       [0.25      , 0.4       , 0.5]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.divide(a, b)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[0.66666667, 1.        , 1.],
+       [0.25      , 0.4       , 0.5]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a * b</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1.5,  4. ,  9.],
+       [4. , 10. , 18.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.multiply(a, b)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1.5,  4. ,  9.],
+       [4. , 10. , 18.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.exp(b)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[4.48168907,   7.3890561 ,  20.08553692],
+       [54.59815003, 148.4131591 , 403.42879349]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.sqrt(b)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1.22474487, 1.41421356, 1.73205081],
+       [2.        , 2.23606798, 2.44948974]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.sin(a)</span><br></pre></td></tr></table></figure>
+<pre><code>array([0.84147098, 0.90929743, 0.14112001])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.cos(b)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[0.0707372 , -0.41614684, -0.9899925],
+       [-0.65364362,  0.28366219,  0.96017029]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.log(a)</span><br></pre></td></tr></table></figure>
+<pre><code>array([0.        , 0.69314718, 1.09861229])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"e ="</span>, e)</span><br><span class="line">print(<span class="string">"f ="</span>, f)</span><br></pre></td></tr></table></figure>
+<pre><code>e =  [[7 7]
+ [7 7]]
+f =  [[1. 0.]
+ [0. 1.]]</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e.dot(f) <span class="comment"># 这是 Hadamard 积</span></span><br></pre></td></tr></table></figure>
+<pre><code>array([[7., 7.],
+       [7., 7.]])</code></pre>
+<h2 id="比较">比较</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a == b <span class="comment"># 元素级别的比较</span></span><br></pre></td></tr></table></figure>
+<pre><code>array([[False,  True,  True],
+       [False, False, False]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a &lt; <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<pre><code>array([True, False, False])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.array_equal(a, b) <span class="comment"># 数组级别的比较</span></span><br></pre></td></tr></table></figure>
+<pre><code>False</code></pre>
+<h2 id="聚集函数">聚集函数</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a</span><br></pre></td></tr></table></figure>
+<pre><code>array([1, 2, 3])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.sum()</span><br></pre></td></tr></table></figure>
+<pre><code>6</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.min()</span><br></pre></td></tr></table></figure>
+<pre><code>1</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1.5, 2. , 3.],
+       [4. , 5. , 6.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b.max(axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([4., 5., 6.])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b.cumsum(axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1.5,  3.5,  6.5],
+       [4. ,  9. , 15.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.mean()</span><br></pre></td></tr></table></figure>
+<pre><code>2.0</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.std(b)</span><br></pre></td></tr></table></figure>
+<pre><code>1.5920810978785667</code></pre>
+<h2 id="复制 arr">复制 arr</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h = a.view()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.copy(a)</span><br></pre></td></tr></table></figure>
+<pre><code>array([1, 2, 3])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h = a.copy() <span class="comment"># 深拷贝</span></span><br></pre></td></tr></table></figure>
+<h2 id="排序 -arr">排序 arr</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a.sort()</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+<pre><code>array([1, 2, 3])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c</span><br></pre></td></tr></table></figure>
+<pre><code>array([[[1.5, 2. , 3.],
+        [4. , 5. , 6.]],
+
+       [[3. , 2. , 1.],
+        [4. , 5. , 6.]]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c.sort(axis=<span class="number">0</span>)</span><br><span class="line">c</span><br></pre></td></tr></table></figure>
+<pre><code>array([[[1.5, 2. , 1.],
+        [4. , 5. , 6.]],
+
+       [[3. , 2. , 3.],
+        [4. , 5. , 6.]]])</code></pre>
+<h2 id="subsetting-slicing-indexing">subsetting, slicing, indexing</h2>
+<h3 id="一个就是子集">一个 <code>[]</code> 就是子集</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>3</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b[<span class="number">1</span>, <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>6.0</code></pre>
+<h3 id="一个就是切片">一个 <code>[:]</code> 就是切片</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">0</span>:<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>array([1, 2])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b[<span class="number">0</span>:<span class="number">2</span>, <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>array([2., 5.])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b[:<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1.5, 2. , 3.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c[<span class="number">1</span>, ...]</span><br></pre></td></tr></table></figure>
+<pre><code>array([[3., 2., 3.],
+       [4., 5., 6.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[::<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>array([3, 2, 1])</code></pre>
+<h3 id="其他乱七八糟的就是 index 包括和">其他乱七八糟的就是 index，包括 <code>[[]]</code> 和<code>&lt;</code></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[a &lt; <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>array([1])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b[[<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
+<pre><code>array([4. , 2. , 6. , 1.5])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b[[<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>]][:, [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
+<pre><code>array([[4. , 5. , 6. , 4.],
+       [1.5, 2. , 3. , 1.5],
+       [4. , 5. , 6. , 4.],
+       [1.5, 2. , 3. , 1.5]])</code></pre>
+<h2 id="array- 操作">Array 操作</h2>
+<h3 id="转置">转置</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1.5, 2. , 3.],
+       [4. , 5. , 6.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i = np.transpose(b)</span><br><span class="line">i</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1.5, 4.],
+       [2. , 5.],
+       [3. , 6.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i.T</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1.5, 2. , 3.],
+       [4. , 5. , 6.]])</code></pre>
+<h3 id="改变 -shape">改变 shape</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b.ravel()</span><br></pre></td></tr></table></figure>
+<pre><code>array([1.5, 2. , 3. , 4. , 5. , 6.])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"g ="</span>, g)</span><br><span class="line">g.reshape(<span class="number">3</span>, <span class="number">-2</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>g =  [[-0.5  0.   0.]
+ [-3.  -3.  -3.]]
+
+
+
+
+
+array([[-0.5,  0.],
+       [0. , -3.],
+       [-3. , -3.]])</code></pre>
+<h3 id="增删元素">增删元素</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.append(h, g)</span><br></pre></td></tr></table></figure>
+<pre><code>array([None, -0.5, 0.0, 0.0, -3.0, -3.0, -3.0], dtype=object)</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.insert(a, <span class="number">1</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([1, 5, 2, 3])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.delete(a, [<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>array([1, 3])</code></pre>
+<h3 id="连接">连接</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.concatenate((a, d), axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([1,  2,  3, 10, 15, 20])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'a ='</span>, a)</span><br><span class="line">print(<span class="string">'b ='</span>, b)</span><br><span class="line">np.vstack((a, b))</span><br></pre></td></tr></table></figure>
+<pre><code>a =  [1 2 3]
+b =  [[1.5 2.  3.]
+ [4.  5.  6.]]
+
+
+
+
+
+array([[1. , 2. , 3.],
+       [1.5, 2. , 3.],
+       [4. , 5. , 6.]])</code></pre>
+<p>和上面的功能一样</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'e ='</span>, e)</span><br><span class="line">print(<span class="string">'f ='</span>, f) </span><br><span class="line">np.r_[e, f]</span><br></pre></td></tr></table></figure>
+<pre><code>e =  [[7 7]
+ [7 7]]
+f =  [[1. 0.]
+ [0. 1.]]
+
+
+
+
+
+array([[7., 7.],
+       [7., 7.],
+       [1., 0.],
+       [0., 1.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.hstack((e, f))</span><br></pre></td></tr></table></figure>
+<pre><code>array([[7., 7., 1., 0.],
+       [7., 7., 0., 1.]])</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.column_stack((a, d))</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1, 10],
+       [2, 15],
+       [3, 20]])</code></pre>
+<h3 id="划分 arr">划分 arr</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.hsplit(a, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[array([1]), array([2]), array([3])]</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.vsplit(c, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[array([[[1.5, 2. , 1.],
+         [4. , 5. , 6.]]]), array([[[3., 2., 3.],
+         [4., 5., 6.]]])]</code></pre>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/numpy/" rel="tag"># numpy</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/23/tensorflow/tensorflow-小结/" rel="next" title="tensorflow 小结">
+                <i class="fa fa-chevron-left"></i> tensorflow 小结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guan Hua</p>
+              <div class="site-description motion-element" itemprop="description">喵喵喵</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">120</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="chat motion-element">
+              
+              
+                <a onclick="tidioChatApi.open();">
+              
+              <i class="fa fa-comment"></i>
+                  Chat
+                </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/GH995" title="GitHub &rarr; https://github.com/GH995" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/guan__hua" title="https://blog.csdn.net/guan__hua" rel="noopener" target="_blank">本科的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://guanhua.ml/vimrc" title="https://guanhua.ml/vimrc">vimrc</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建 -arrays"><span class="nav-number">1.</span> <span class="nav-text">创建 Arrays</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#io"><span class="nav-number">2.</span> <span class="nav-text">IO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#保存二进制文件"><span class="nav-number">2.1.</span> <span class="nav-text">保存二进制文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存文本文件"><span class="nav-number">2.2.</span> <span class="nav-text">保存文本文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#data-types"><span class="nav-number">3.</span> <span class="nav-text">data types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数学操作"><span class="nav-number">4.</span> <span class="nav-text">数学操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较"><span class="nav-number">5.</span> <span class="nav-text">比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚集函数"><span class="nav-number">6.</span> <span class="nav-text">聚集函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制 arr"><span class="nav-number">7.</span> <span class="nav-text">复制 arr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序 -arr"><span class="nav-number">8.</span> <span class="nav-text">排序 arr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#subsetting-slicing-indexing"><span class="nav-number">9.</span> <span class="nav-text">subsetting, slicing, indexing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一个就是子集"><span class="nav-number">9.1.</span> <span class="nav-text">一个 [] 就是子集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个就是切片"><span class="nav-number">9.2.</span> <span class="nav-text">一个 [:] 就是切片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他乱七八糟的就是 index 包括和"><span class="nav-number">9.3.</span> <span class="nav-text">其他乱七八糟的就是 index，包括 [[]] 和&lt;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#array- 操作"><span class="nav-number">10.</span> <span class="nav-text">Array 操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#转置"><span class="nav-number">10.1.</span> <span class="nav-text">转置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变 -shape"><span class="nav-number">10.2.</span> <span class="nav-text">改变 shape</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增删元素"><span class="nav-number">10.3.</span> <span class="nav-text">增删元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接"><span class="nav-number">10.4.</span> <span class="nav-text">连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#划分 arr"><span class="nav-number">10.5.</span> <span class="nav-text">划分 arr</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guan Hua</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.2"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'MnD1JRjGHGxB0w796nisuz4c-gzGzoHsz',
+    appKey: 'fc8bkARGALAvjFnCYAMluDnY',
+    placeholder: '',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '800px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
+
+  
+
+  
+
+  
+
+  
+  <script src="//code.tidio.co/dr6c9vwjhin1g6vzbhrsv68dxmzg4oao.js"></script>
+
+
+</body>
+</html>
