@@ -105,20 +105,17 @@
 
 
 
-  <meta name="description" content="图表示学习  数据结构  最小生成树(Prim, Kruskal) 最短路径(Dijkstra, Floyed) 其他：拓扑排序，关键路径  概率图模型  表示 推断 学习  图神经网络  GraphEmbedding(基于随机游走) Graph CNN（基于邻居汇聚）   Graph Embedding 技术将图中的节点以低维稠密向量的形式进行表达，要求在原始图中相似 (不同的方法对相似的定义不">
-<meta name="keywords" content="graph embedding">
+  <meta name="description" content="矩阵分解   矩阵分解的定义  \[ A x=\lambda x \] \[\boldsymbol{\Sigma}=\left(\begin{array}{ccccc}{\lambda_{1}} &amp;amp; {0} &amp;amp; {0} &amp;amp; {\cdots} &amp;amp; {0} \\ {0} &amp;amp; {\lambda_{2}} &amp;amp; {0} &amp;amp; {\cdots} &amp;amp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GraphEmbedding(1): DeepWalk">
-<meta property="og:url" content="http://guanhua.ml/2019/07/16/graph embedding/GraphEmbedding-1-DeepWalk/index.html">
+<meta property="og:title" content="矩阵分解">
+<meta property="og:url" content="http://guanhua.ml/2019/07/24/recommendation system/矩阵分解/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="图表示学习  数据结构  最小生成树(Prim, Kruskal) 最短路径(Dijkstra, Floyed) 其他：拓扑排序，关键路径  概率图模型  表示 推断 学习  图神经网络  GraphEmbedding(基于随机游走) Graph CNN（基于邻居汇聚）   Graph Embedding 技术将图中的节点以低维稠密向量的形式进行表达，要求在原始图中相似 (不同的方法对相似的定义不">
+<meta property="og:description" content="矩阵分解   矩阵分解的定义  \[ A x=\lambda x \] \[\boldsymbol{\Sigma}=\left(\begin{array}{ccccc}{\lambda_{1}} &amp;amp; {0} &amp;amp; {0} &amp;amp; {\cdots} &amp;amp; {0} \\ {0} &amp;amp; {\lambda_{2}} &amp;amp; {0} &amp;amp; {\cdots} &amp;amp">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/15/ZT83TA.png">
-<meta property="og:updated_time" content="2019-07-16T03:21:18.870Z">
+<meta property="og:updated_time" content="2019-07-24T09:07:57.013Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GraphEmbedding(1): DeepWalk">
-<meta name="twitter:description" content="图表示学习  数据结构  最小生成树(Prim, Kruskal) 最短路径(Dijkstra, Floyed) 其他：拓扑排序，关键路径  概率图模型  表示 推断 学习  图神经网络  GraphEmbedding(基于随机游走) Graph CNN（基于邻居汇聚）   Graph Embedding 技术将图中的节点以低维稠密向量的形式进行表达，要求在原始图中相似 (不同的方法对相似的定义不">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/07/15/ZT83TA.png">
+<meta name="twitter:title" content="矩阵分解">
+<meta name="twitter:description" content="矩阵分解   矩阵分解的定义  \[ A x=\lambda x \] \[\boldsymbol{\Sigma}=\left(\begin{array}{ccccc}{\lambda_{1}} &amp;amp; {0} &amp;amp; {0} &amp;amp; {\cdots} &amp;amp; {0} \\ {0} &amp;amp; {\lambda_{2}} &amp;amp; {0} &amp;amp; {\cdots} &amp;amp">
 
 
 
@@ -126,7 +123,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/2019/07/16/graph embedding/GraphEmbedding-1-DeepWalk/">
+  <link rel="canonical" href="http://guanhua.ml/2019/07/24/recommendation system/矩阵分解/">
 
 
 
@@ -136,7 +133,7 @@
   };
 </script>
 
-  <title>GraphEmbedding(1): DeepWalk | gh's notes</title>
+  <title>矩阵分解 | gh's notes</title>
   
 
 
@@ -385,7 +382,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/16/graph embedding/GraphEmbedding-1-DeepWalk/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/07/24/recommendation system/矩阵分解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -402,7 +399,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">GraphEmbedding(1): DeepWalk
+          <h1 class="post-title" itemprop="name headline">矩阵分解
 
               
             
@@ -428,9 +425,13 @@
                 
               
 
-              <time title="Created: 2019-07-16 11:21:18" itemprop="dateCreated datePublished" datetime="2019-07-16T11:21:18+08:00">2019-07-16</time>
+              <time title="Created: 2019-07-24 11:31:30 / Modified: 17:07:57" itemprop="dateCreated datePublished" datetime="2019-07-24T11:31:30+08:00">2019-07-24</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -446,7 +447,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/graph-embedding/" itemprop="url" rel="index"><span itemprop="name">graph embedding</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/recommendation-system/" itemprop="url" rel="index"><span itemprop="name">recommendation system</span></a></span>
 
                 
                 
@@ -465,8 +466,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/07/16/graph embedding/GraphEmbedding-1-DeepWalk/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/graph embedding/GraphEmbedding-1-DeepWalk/" itemprop="commentCount"></span>
+                <a href="/2019/07/24/recommendation system/矩阵分解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/24/recommendation system/矩阵分解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -494,80 +495,21 @@
       
 
       
-        <h2 id="图表示学习">图表示学习</h2>
-<ul>
-<li>数据结构
-<ul>
-<li>最小生成树(Prim, Kruskal)</li>
-<li>最短路径(Dijkstra, Floyed)</li>
-<li>其他：拓扑排序，关键路径</li>
-</ul></li>
-<li>概率图模型
-<ul>
-<li>表示</li>
-<li>推断</li>
-<li>学习</li>
-</ul></li>
-<li>图神经网络
-<ul>
-<li>GraphEmbedding(基于随机游走)</li>
-<li>Graph CNN（基于邻居汇聚）</li>
-</ul></li>
-</ul>
-<p>Graph Embedding 技术将图中的节点以低维稠密向量的形式进行表达，要求在原始图中相似 (不同的方法对相似的定义不同) 的节点其在低维表达空间也接近。得到的表达向量可以用来进行下游任务，如节点分类，链接预测，可视化或重构原始图等。</p>
-<h2 id="deepwalk- 原理">DeepWalk 原理</h2>
-<p>KDD 2014<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<p>DeepWalk 的思想类似 word2vec，使用 <strong> 图中节点与节点的共现关系 </strong> 来学习节点的向量表示。那么关键的问题就是如何来描述节点与节点的共现关系，DeepWalk 给出的方法是使用随机游走 (RandomWalk) 的方式在图中进行节点采样。</p>
-<p>RandomWalk 是一种 <strong> 可重复访问已访问节点 </strong> 的深度优先遍历算法。给定当前访问起始节点，从其邻居中随机采样节点作为下一个访问节点，重复此过程，直到访问序列长度满足预设条件。</p>
-<p>获取足够数量的节点访问序列后，使用 skip-gram model 进行向量学习。</p>
-<h2 id="结语">结语</h2>
-<p>In our view, language modeline is actually sampling from an unobservable language graph. We believe that insights obtained from modeling observable graphs may in turn yield improvements to modeling unobservable ones.</p>
-<p><img src="https://s2.ax1x.com/2019/07/15/ZT83TA.png"></p>
-<section class="footnotes">
-<hr>
-<ol>
-<li id="fn1"><p>http://www.perozzi.net/publications/14_kdd_deepwalk.pdf<a href="#fnref1" class="footnote-back">↩</a></p></li>
-</ol>
-</section>
+        <h2 id="矩阵分解"> 矩阵分解 </h2>
+<h3 id="矩阵分解的定义"> 矩阵分解的定义 </h3>
+<p><span class="math display">\[
+A x=\lambda x
+\]</span></p>
+<p><span class="math display">\[\boldsymbol{\Sigma}=\left(\begin{array}{ccccc}{\lambda_{1}} &amp; {0} &amp; {0} &amp; {\cdots} &amp; {0} \\ {0} &amp; {\lambda_{2}} &amp; {0} &amp; {\cdots} &amp; {\cdots} \\ {0} &amp; {0} &amp; {\cdots} &amp; {\cdots} &amp; {0} \\ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\lambda_{n-1}} &amp; {0} \\ {0} &amp; {\cdots} &amp; {0} &amp; {0} &amp; {\lambda_{n}}\end{array}\right)
+\]</span></p>
+<p><span class="math display">\[A=U \Sigma U^{-1}
+\]</span></p>
 
       
     </div>
 
     
       
-
-  <div class="popular-posts-header">Related Posts</div>
-  <ul class="popular-posts">
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/07/16/graph embedding/GraphEmbedding-2-LINE/" rel="bookmark">GraphEmbedding(2): LINE</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/07/16/graph embedding/GraphEmbedding-3-node2vec/" rel="bookmark">GraphEmbedding(3): node2vec</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/07/16/graph embedding/GraphEmbedding-4-SDNE/" rel="bookmark">GraphEmbedding(4): SDNE</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/2019/07/16/graph embedding/GraphEmbedding-5-Struc2vec/" rel="bookmark">GraphEmbedding(5): Struc2vec</a></div>
-      
-    </li>
-  
-  </ul>
 
 
     
@@ -587,15 +529,6 @@
 
     <footer class="post-footer">
       
-        
-          
-        
-        <div class="post-tags">
-          
-            <a href="/tags/graph-embedding/" rel="tag"># graph embedding</a>
-          
-        </div>
-      
 
       
       
@@ -605,8 +538,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/16/graph embedding/GraphEmbedding-2-LINE/" rel="next" title="GraphEmbedding(2): LINE">
-                <i class="fa fa-chevron-left"></i> GraphEmbedding(2): LINE
+              <a href="/2019/07/24/numpy/Numpy-cheat/" rel="next" title="Numpy cheat">
+                <i class="fa fa-chevron-left"></i> Numpy cheat
               </a>
             
           </div>
@@ -615,8 +548,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/16/graph embedding/GraphEmbedding-5-Struc2vec/" rel="prev" title="GraphEmbedding(5): Struc2vec">
-                GraphEmbedding(5): Struc2vec <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/24/FTRL/" rel="prev" title="FTRL">
+                FTRL <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -690,7 +623,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">117</span>
+                    <span class="site-state-item-count">122</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -834,7 +767,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">38</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -915,7 +852,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#图表示学习"><span class="nav-number">1.</span> <span class="nav-text">图表示学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deepwalk- 原理"><span class="nav-number">2.</span> <span class="nav-text">DeepWalk 原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵分解"><span class="nav-number">1.</span> <span class="nav-text"> 矩阵分解 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵分解的定义"><span class="nav-number">1.1.</span> <span class="nav-text"> 矩阵分解的定义 </span></a></li></ol></li></ol></div>
             
 
           </div>
