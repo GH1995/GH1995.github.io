@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="安装和使用   安装 Hadoop 和 Spark  在 pyspark 中运行代码  Spark 独立应用程序编程  1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext(&apos;local&apos;, &apos;test&apos;)logFile = &quot;file:/">
+  <meta name="description" content="安装和使用 安装 Hadoop 和 Spark  这里注意 openjdk 的版本必须是 8！   安装 java，配置JAVA_HOME 1export JAVA_HOME=JDK 安装路径 安装 Hadoop到 /usr/local/hadoop 修改配置文件 core-site.xml 和hdfs-site.xml 启动 HDFS 1/usr/local/hadoop/sbin/start-">
 <meta name="keywords" content="spark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="明夷待访录（二）：Spark 安装与使用">
 <meta property="og:url" content="http://guanhua.ml/2019/06/17/spark/明夷待访录（二）：Spark-安装与使用/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="安装和使用   安装 Hadoop 和 Spark  在 pyspark 中运行代码  Spark 独立应用程序编程  1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext(&apos;local&apos;, &apos;test&apos;)logFile = &quot;file:/">
+<meta property="og:description" content="安装和使用 安装 Hadoop 和 Spark  这里注意 openjdk 的版本必须是 8！   安装 java，配置JAVA_HOME 1export JAVA_HOME=JDK 安装路径 安装 Hadoop到 /usr/local/hadoop 修改配置文件 core-site.xml 和hdfs-site.xml 启动 HDFS 1/usr/local/hadoop/sbin/start-">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-12T06:50:06.765Z">
+<meta property="og:updated_time" content="2019-07-26T04:11:31.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="明夷待访录（二）：Spark 安装与使用">
-<meta name="twitter:description" content="安装和使用   安装 Hadoop 和 Spark  在 pyspark 中运行代码  Spark 独立应用程序编程  1234567891011121314#!/usr/bin/env python3# coding: utf-8from pyspark import SparkContextsc = SparkContext(&apos;local&apos;, &apos;test&apos;)logFile = &quot;file:/">
+<meta name="twitter:description" content="安装和使用 安装 Hadoop 和 Spark  这里注意 openjdk 的版本必须是 8！   安装 java，配置JAVA_HOME 1export JAVA_HOME=JDK 安装路径 安装 Hadoop到 /usr/local/hadoop 修改配置文件 core-site.xml 和hdfs-site.xml 启动 HDFS 1/usr/local/hadoop/sbin/start-">
 
 
 
@@ -443,7 +443,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-12 14:50:06" itemprop="dateModified" datetime="2019-07-12T14:50:06+08:00">2019-07-12</time>
+                <time title="Modified: 2019-07-26 12:11:31" itemprop="dateModified" datetime="2019-07-26T12:11:31+08:00">2019-07-26</time>
               
             
           </span>
@@ -508,17 +508,500 @@
       
 
       
-        <h1 id="安装和使用"> 安装和使用 </h1>
-<h2 id="安装 -hadoop- 和 -spark"> 安装 Hadoop 和 Spark</h2>
-<h2 id="在 -pyspark- 中运行代码"> 在 pyspark 中运行代码 </h2>
-<h2 id="spark- 独立应用程序编程">Spark 独立应用程序编程 </h2>
+        <h1 id="安装和使用">安装和使用</h1>
+<h2 id="安装 -hadoop- 和 -spark">安装 Hadoop 和 Spark</h2>
+<blockquote>
+<p>这里注意 openjdk 的版本必须是 8！</p>
+</blockquote>
+<ol type="1">
+<li><p>安装 java，配置<code>JAVA_HOME</code> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=JDK 安装路径</span><br></pre></td></tr></table></figure></p></li>
+<li>安装 <code>Hadoop</code>到 <code>/usr/local/hadoop</code></li>
+<li>修改配置文件 <code>core-site.xml</code> 和<code>hdfs-site.xml</code></li>
+<li><p>启动 HDFS <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/hadoop/sbin/start-dfs.sh</span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<p>停止是 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/hadoop/sbin/stop-all.sh</span><br></pre></td></tr></table></figure></p>
+<ol type="1">
+<li>Spark 安装到<code>/usr/local/spark</code></li>
+<li>修改配置文件<code>cp spark-env.sh.template spark-env.sh</code>，在行首添加<code>export SPARK_DIST_CLASSPATH=$(/usr/local/hadoop/bin/hadoop classpath)</code></li>
+<li>在 <code>.bashrc</code> 中写入<code>HADOOP_HOME</code> <code>SPARK_HOME</code></li>
+</ol>
+<h2 id="在 -pyspark- 中运行代码">在 pyspark 中运行代码</h2>
+<p>conda 安装，直接启动即可</p>
+<h2 id="spark- 独立应用程序编程">Spark 独立应用程序编程</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line"></span><br><span class="line">sc = SparkContext(<span class="string">'local'</span>, <span class="string">'test'</span>)</span><br><span class="line"></span><br><span class="line">logFile = <span class="string">"file:///usr/local/spark/README.md"</span></span><br><span class="line">logData = sc.textFile(logFile, <span class="number">2</span>).cache()</span><br><span class="line"></span><br><span class="line">numAs = logData.filter(<span class="keyword">lambda</span> line: <span class="string">'a'</span> <span class="keyword">in</span> line).count()</span><br><span class="line">numBs = logData.filter(<span class="keyword">lambda</span> line: <span class="string">'b'</span> <span class="keyword">in</span> line).count()</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Lines with a: %s, Lines with b: %s'</span> % (numAs, numBs))</span><br></pre></td></tr></table></figure>
-<h1 id="第一个 spark 应用程序 wordcount"> 第一个 Spark 应用程序：WordCount</h1>
-<h2 id="在 -pyspark- 中执行词频统计"> 在 pyspark 中执行词频统计 </h2>
-<h3 id="加载本地文件"> 加载本地文件 </h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile = sc.Te</span><br></pre></td></tr></table></figure>
-<h1 id="spark 集群环境搭建">Spark 集群环境搭建 </h1>
-<h1 id="在集群上运行 spark 应用程序"> 在集群上运行 Spark 应用程序 </h1>
+<h2 id="spark 的安装与使用">Spark 的安装与使用</h2>
+<h3 id="第一个 spark 应用程序 wordcount">第一个 Spark 应用程序：WordCount</h3>
+<h3 id="任务要求">任务要求</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">! mkdir wordcount</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">! cd wordcount</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pwd</span><br></pre></td></tr></table></figure>
+<pre><code>/home/hadoop/spark/src/test</code></pre>
+<h3 id="在 pyspark 中执行词频统计">在 pyspark 中执行词频统计</h3>
+<h4 id="启动 pyspark">启动 pyspark</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pyspark</span><br></pre></td></tr></table></figure>
+<pre><code>Python 3.7.3 (default, Mar 27 2019, 22:11:17) 
+[GCC 7.3.0] :: Anaconda, Inc. on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+2019-06-18 16:39:00,498 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Setting default log level to &quot;WARN&quot;.
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  &#39;_/
+   /__ / .__/\_,_/_/ /_/\_\   version 2.4.3
+      /_/
+
+Using Python version 3.7.3 (default, Mar 27 2019 22:11:17)
+SparkSession available as &#39;spark&#39;.
+&gt;&gt;&gt; 
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;/usr/local/spark/python/pyspark/context.py&quot;, line 270, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+&gt;&gt;&gt; </code></pre>
+<h4 id="加载本地文件">加载本地文件</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc = SparkContext(<span class="string">"local"</span>, <span class="string">"test"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile = sc.textFile(<span class="string">"file:///usr/local/spark/README.md"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile.first()</span><br></pre></td></tr></table></figure>
+<pre><code>&#39;# Apache Spark&#39;</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile.saveAsTextFile(<span class="string">"file:///home/hadoop/spark/data/wordcount/writeback"</span>)</span><br></pre></td></tr></table></figure>
+<p>加载 HDFS 文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls .</span><br></pre></td></tr></table></figure>
+<pre><code>Found 2 items
+drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:48 input
+drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:49 output</code></pre>
+<p>查看 Linux 当前登录用户 hadoop 在 HDFS 文件系统中与 hadoop 对应的目录下的文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls /</span><br></pre></td></tr></table></figure>
+<pre><code>Found 1 items
+drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:48 /user</code></pre>
+<p>上传到分布式文件系统 HDFS 中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -put /usr/local/spark/README.md .</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls .</span><br></pre></td></tr></table></figure>
+<pre><code>Found 3 items
+-rw-r--r--   1 hadoop supergroup       3952 2019-06-18 16:48 README.md
+drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:48 input
+drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:49 output</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -cat ./README.md</span><br></pre></td></tr></table></figure>
+<pre><code># Apache Spark
+
+Spark is a fast and general cluster computing system for Big Data. It provides
+high-level APIs in Scala, Java, Python, and R, and an optimized engine that
+supports general computation graphs for data analysis. It also supports a
+rich set of higher-level tools including Spark SQL for SQL and DataFrames,
+MLlib for machine learning, GraphX for graph processing,
+and Spark Streaming for stream processing.
+
+&lt;http://spark.apache.org/&gt;
+
+
+## Online Documentation
+
+You can find the latest Spark documentation, including a programming
+guide, on the [project web page](http://spark.apache.org/documentation.html).
+This README file only contains basic setup instructions.
+
+## Building Spark
+
+Spark is built using [Apache Maven](http://maven.apache.org/).
+To build Spark and its example programs, run:
+
+    build/mvn -DskipTests clean package
+
+(You do not need to do this if you downloaded a pre-built package.)
+
+You can build Spark using more than one thread by using the -T option with Maven, see [&quot;Parallel builds in Maven 3&quot;](https://cwiki.apache.org/confluence/display/MAVEN/Parallel+builds+in+Maven+3).
+More detailed documentation is available from the project site, at
+[&quot;Building Spark&quot;](http://spark.apache.org/docs/latest/building-spark.html).
+
+For general development tips, including info on developing Spark using an IDE, see [&quot;Useful Developer Tools&quot;](http://spark.apache.org/developer-tools.html).
+
+## Interactive Scala Shell
+
+The easiest way to start using Spark is through the Scala shell:
+
+    ./bin/spark-shell
+
+Try the following command, which should return 1000:
+
+    scala&gt; sc.parallelize(1 to 1000).count()
+
+## Interactive Python Shell
+
+Alternatively, if you prefer Python, you can use the Python shell:
+
+    ./bin/pyspark
+
+And run the following command, which should also return 1000:
+
+    &gt;&gt;&gt; sc.parallelize(range(1000)).count()
+
+## Example Programs
+
+Spark also comes with several sample programs in the `examples` directory.
+To run one of them, use `./bin/run-example &lt;class&gt; [params]`. For example:
+
+    ./bin/run-example SparkPi
+
+will run the Pi example locally.
+
+You can set the MASTER environment variable when running examples to submit
+examples to a cluster. This can be a mesos:// or spark:// URL,
+&quot;yarn&quot; to run on YARN, and &quot;local&quot; to run
+locally with one thread, or &quot;local[N]&quot; to run locally with N threads. You
+can also use an abbreviated class name if the class is in the `examples`
+package. For instance:
+
+    MASTER=spark://host:7077 ./bin/run-example SparkPi
+
+Many of the example programs print usage help if no params are given.
+
+## Running Tests
+
+Testing first requires [building Spark](#building-spark). Once Spark is built, tests
+can be run using:
+
+    ./dev/run-tests
+
+Please see the guidance on how to
+[run tests for a module, or individual tests](http://spark.apache.org/developer-tools.html#individual-tests).
+
+There is also a Kubernetes integration test, see resource-managers/kubernetes/integration-tests/README.md
+
+## A Note About Hadoop Versions
+
+Spark uses the Hadoop core library to talk to HDFS and other Hadoop-supported
+storage systems. Because the protocols have changed in different versions of
+Hadoop, you must build Spark against the same version that your cluster runs.
+
+Please refer to the build documentation at
+[&quot;Specifying the Hadoop Version and Enabling YARN&quot;](http://spark.apache.org/docs/latest/building-spark.html#specifying-the-hadoop-version-and-enabling-yarn)
+for detailed guidance on building for a particular distribution of Hadoop, including
+building for particular Hive and Hive Thriftserver distributions.
+
+## Configuration
+
+Please refer to the [Configuration Guide](http://spark.apache.org/docs/latest/configuration.html)
+in the online documentation for an overview on how to configure Spark.
+
+## Contributing
+
+Please review the [Contribution to Spark guide](http://spark.apache.org/contributing.html)
+for information on how to get started contributing to the project.</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile.saveAsTextFile(<span class="string">"writeback"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls .</span><br></pre></td></tr></table></figure>
+<pre><code>Found 4 items
+-rw-r--r--   1 hadoop supergroup       3952 2019-06-18 16:48 README.md
+drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:48 input
+drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:49 output
+drwxr-xr-x   - hadoop supergroup          0 2019-06-18 16:50 writeback</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls ./writeback</span><br></pre></td></tr></table></figure>
+<pre><code>Found 2 items
+-rw-r--r--   1 hadoop supergroup          0 2019-06-18 16:50 writeback/_SUCCESS
+-rw-r--r--   1 hadoop supergroup       3952 2019-06-18 16:50 writeback/part-00000</code></pre>
+<p>词频统计</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wordCount = textFile.flatMap(<span class="keyword">lambda</span> line: line.split(<span class="string">""</span>)).map(<span class="keyword">lambda</span> word: (word,<span class="number">1</span>)).reduceByKey(<span class="keyword">lambda</span> a, b : a + b)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wordCount.collect()</span><br></pre></td></tr></table></figure>
+<pre><code>[(&#39;#&#39;, 1),
+ (&#39;Apache&#39;, 1),
+ (&#39;Spark&#39;, 16),
+ (&#39;&#39;, 72),
+ (&#39;is&#39;, 7),
+ (&#39;a&#39;, 9),
+ (&#39;fast&#39;, 1),
+ (&#39;and&#39;, 10),
+ (&#39;general&#39;, 3),
+ (&#39;cluster&#39;, 2),
+ (&#39;computing&#39;, 1),
+ (&#39;system&#39;, 1),
+ (&#39;for&#39;, 12),
+ (&#39;Big&#39;, 1),
+ (&#39;Data.&#39;, 1),
+ (&#39;It&#39;, 2),
+ (&#39;provides&#39;, 1),
+ (&#39;high-level&#39;, 1),
+ (&#39;APIs&#39;, 1),
+ (&#39;in&#39;, 6),
+ (&#39;Scala,&#39;, 1),
+ (&#39;Java,&#39;, 1),
+ (&#39;Python,&#39;, 2),
+ (&#39;R,&#39;, 1),
+ (&#39;an&#39;, 4),
+ (&#39;optimized&#39;, 1),
+ (&#39;engine&#39;, 1),
+ (&#39;that&#39;, 2),
+ (&#39;supports&#39;, 2),
+ (&#39;computation&#39;, 1),
+ (&#39;graphs&#39;, 1),
+ (&#39;data&#39;, 1),
+ (&#39;analysis.&#39;, 1),
+ (&#39;also&#39;, 5),
+ (&#39;rich&#39;, 1),
+ (&#39;set&#39;, 2),
+ (&#39;of&#39;, 5),
+ (&#39;higher-level&#39;, 1),
+ (&#39;tools&#39;, 1),
+ (&#39;including&#39;, 4),
+ (&#39;SQL&#39;, 2),
+ (&#39;DataFrames,&#39;, 1),
+ (&#39;MLlib&#39;, 1),
+ (&#39;machine&#39;, 1),
+ (&#39;learning,&#39;, 1),
+ (&#39;GraphX&#39;, 1),
+ (&#39;graph&#39;, 1),
+ (&#39;processing,&#39;, 1),
+ (&#39;Streaming&#39;, 1),
+ (&#39;stream&#39;, 1),
+ (&#39;processing.&#39;, 1),
+ (&#39;&lt;http://spark.apache.org/&gt;&#39;, 1),
+ (&#39;##&#39;, 9),
+ (&#39;Online&#39;, 1),
+ (&#39;Documentation&#39;, 1),
+ (&#39;You&#39;, 4),
+ (&#39;can&#39;, 7),
+ (&#39;find&#39;, 1),
+ (&#39;the&#39;, 24),
+ (&#39;latest&#39;, 1),
+ (&#39;documentation,&#39;, 1),
+ (&#39;programming&#39;, 1),
+ (&#39;guide,&#39;, 1),
+ (&#39;on&#39;, 7),
+ (&#39;[project&#39;, 1),
+ (&#39;web&#39;, 1),
+ (&#39;page](http://spark.apache.org/documentation.html).&#39;, 1),
+ (&#39;This&#39;, 2),
+ (&#39;README&#39;, 1),
+ (&#39;file&#39;, 1),
+ (&#39;only&#39;, 1),
+ (&#39;contains&#39;, 1),
+ (&#39;basic&#39;, 1),
+ (&#39;setup&#39;, 1),
+ (&#39;instructions.&#39;, 1),
+ (&#39;Building&#39;, 1),
+ (&#39;built&#39;, 1),
+ (&#39;using&#39;, 5),
+ (&#39;[Apache&#39;, 1),
+ (&#39;Maven](http://maven.apache.org/).&#39;, 1),
+ (&#39;To&#39;, 2),
+ (&#39;build&#39;, 4),
+ (&#39;its&#39;, 1),
+ (&#39;example&#39;, 3),
+ (&#39;programs,&#39;, 1),
+ (&#39;run:&#39;, 1),
+ (&#39;build/mvn&#39;, 1),
+ (&#39;-DskipTests&#39;, 1),
+ (&#39;clean&#39;, 1),
+ (&#39;package&#39;, 1),
+ (&#39;(You&#39;, 1),
+ (&#39;do&#39;, 2),
+ (&#39;not&#39;, 1),
+ (&#39;need&#39;, 1),
+ (&#39;to&#39;, 17),
+ (&#39;this&#39;, 1),
+ (&#39;if&#39;, 4),
+ (&#39;you&#39;, 4),
+ (&#39;downloaded&#39;, 1),
+ (&#39;pre-built&#39;, 1),
+ (&#39;package.)&#39;, 1),
+ (&#39;more&#39;, 1),
+ (&#39;than&#39;, 1),
+ (&#39;one&#39;, 3),
+ (&#39;thread&#39;, 1),
+ (&#39;by&#39;, 1),
+ (&#39;-T&#39;, 1),
+ (&#39;option&#39;, 1),
+ (&#39;with&#39;, 4),
+ (&#39;Maven,&#39;, 1),
+ (&#39;see&#39;, 4),
+ (&#39;[&quot;Parallel&#39;, 1),
+ (&#39;builds&#39;, 1),
+ (&#39;Maven&#39;, 1),
+ (&#39;3&quot;](https://cwiki.apache.org/confluence/display/MAVEN/Parallel+builds+in+Maven+3).&#39;,
+  1),
+ (&#39;More&#39;, 1),
+ (&#39;detailed&#39;, 2),
+ (&#39;documentation&#39;, 3),
+ (&#39;available&#39;, 1),
+ (&#39;from&#39;, 1),
+ (&#39;project&#39;, 1),
+ (&#39;site,&#39;, 1),
+ (&#39;at&#39;, 2),
+ (&#39;[&quot;Building&#39;, 1),
+ (&#39;Spark&quot;](http://spark.apache.org/docs/latest/building-spark.html).&#39;, 1),
+ (&#39;For&#39;, 3),
+ (&#39;development&#39;, 1),
+ (&#39;tips,&#39;, 1),
+ (&#39;info&#39;, 1),
+ (&#39;developing&#39;, 1),
+ (&#39;IDE,&#39;, 1),
+ (&#39;[&quot;Useful&#39;, 1),
+ (&#39;Developer&#39;, 1),
+ (&#39;Tools&quot;](http://spark.apache.org/developer-tools.html).&#39;, 1),
+ (&#39;Interactive&#39;, 2),
+ (&#39;Scala&#39;, 2),
+ (&#39;Shell&#39;, 2),
+ (&#39;The&#39;, 1),
+ (&#39;easiest&#39;, 1),
+ (&#39;way&#39;, 1),
+ (&#39;start&#39;, 1),
+ (&#39;through&#39;, 1),
+ (&#39;shell:&#39;, 2),
+ (&#39;./bin/spark-shell&#39;, 1),
+ (&#39;Try&#39;, 1),
+ (&#39;following&#39;, 2),
+ (&#39;command,&#39;, 2),
+ (&#39;which&#39;, 2),
+ (&#39;should&#39;, 2),
+ (&#39;return&#39;, 2),
+ (&#39;1000:&#39;, 2),
+ (&#39;scala&gt;&#39;, 1),
+ (&#39;sc.parallelize(1&#39;, 1),
+ (&#39;1000).count()&#39;, 1),
+ (&#39;Python&#39;, 2),
+ (&#39;Alternatively,&#39;, 1),
+ (&#39;prefer&#39;, 1),
+ (&#39;use&#39;, 3),
+ (&#39;./bin/pyspark&#39;, 1),
+ (&#39;And&#39;, 1),
+ (&#39;run&#39;, 7),
+ (&#39;&gt;&gt;&gt;&#39;, 1),
+ (&#39;sc.parallelize(range(1000)).count()&#39;, 1),
+ (&#39;Example&#39;, 1),
+ (&#39;Programs&#39;, 1),
+ (&#39;comes&#39;, 1),
+ (&#39;several&#39;, 1),
+ (&#39;sample&#39;, 1),
+ (&#39;programs&#39;, 2),
+ (&#39;`examples`&#39;, 2),
+ (&#39;directory.&#39;, 1),
+ (&#39;them,&#39;, 1),
+ (&#39;`./bin/run-example&#39;, 1),
+ (&#39;&lt;class&gt;&#39;, 1),
+ (&#39;[params]`.&#39;, 1),
+ (&#39;example:&#39;, 1),
+ (&#39;./bin/run-example&#39;, 2),
+ (&#39;SparkPi&#39;, 2),
+ (&#39;will&#39;, 1),
+ (&#39;Pi&#39;, 1),
+ (&#39;locally.&#39;, 1),
+ (&#39;MASTER&#39;, 1),
+ (&#39;environment&#39;, 1),
+ (&#39;variable&#39;, 1),
+ (&#39;when&#39;, 1),
+ (&#39;running&#39;, 1),
+ (&#39;examples&#39;, 2),
+ (&#39;submit&#39;, 1),
+ (&#39;cluster.&#39;, 1),
+ (&#39;be&#39;, 2),
+ (&#39;mesos://&#39;, 1),
+ (&#39;or&#39;, 3),
+ (&#39;spark://&#39;, 1),
+ (&#39;URL,&#39;, 1),
+ (&#39;&quot;yarn&quot;&#39;, 1),
+ (&#39;YARN,&#39;, 1),
+ (&#39;&quot;local&quot;&#39;, 1),
+ (&#39;locally&#39;, 2),
+ (&#39;thread,&#39;, 1),
+ (&#39;&quot;local[N]&quot;&#39;, 1),
+ (&#39;N&#39;, 1),
+ (&#39;threads.&#39;, 1),
+ (&#39;abbreviated&#39;, 1),
+ (&#39;class&#39;, 2),
+ (&#39;name&#39;, 1),
+ (&#39;package.&#39;, 1),
+ (&#39;instance:&#39;, 1),
+ (&#39;MASTER=spark://host:7077&#39;, 1),
+ (&#39;Many&#39;, 1),
+ (&#39;print&#39;, 1),
+ (&#39;usage&#39;, 1),
+ (&#39;help&#39;, 1),
+ (&#39;no&#39;, 1),
+ (&#39;params&#39;, 1),
+ (&#39;are&#39;, 1),
+ (&#39;given.&#39;, 1),
+ (&#39;Running&#39;, 1),
+ (&#39;Tests&#39;, 1),
+ (&#39;Testing&#39;, 1),
+ (&#39;first&#39;, 1),
+ (&#39;requires&#39;, 1),
+ (&#39;[building&#39;, 1),
+ (&#39;Spark](#building-spark).&#39;, 1),
+ (&#39;Once&#39;, 1),
+ (&#39;built,&#39;, 1),
+ (&#39;tests&#39;, 2),
+ (&#39;using:&#39;, 1),
+ (&#39;./dev/run-tests&#39;, 1),
+ (&#39;Please&#39;, 4),
+ (&#39;guidance&#39;, 2),
+ (&#39;how&#39;, 3),
+ (&#39;[run&#39;, 1),
+ (&#39;module,&#39;, 1),
+ (&#39;individual&#39;, 1),
+ (&#39;tests](http://spark.apache.org/developer-tools.html#individual-tests).&#39;, 1),
+ (&#39;There&#39;, 1),
+ (&#39;Kubernetes&#39;, 1),
+ (&#39;integration&#39;, 1),
+ (&#39;test,&#39;, 1),
+ (&#39;resource-managers/kubernetes/integration-tests/README.md&#39;, 1),
+ (&#39;A&#39;, 1),
+ (&#39;Note&#39;, 1),
+ (&#39;About&#39;, 1),
+ (&#39;Hadoop&#39;, 3),
+ (&#39;Versions&#39;, 1),
+ (&#39;uses&#39;, 1),
+ (&#39;core&#39;, 1),
+ (&#39;library&#39;, 1),
+ (&#39;talk&#39;, 1),
+ (&#39;HDFS&#39;, 1),
+ (&#39;other&#39;, 1),
+ (&#39;Hadoop-supported&#39;, 1),
+ (&#39;storage&#39;, 1),
+ (&#39;systems.&#39;, 1),
+ (&#39;Because&#39;, 1),
+ (&#39;protocols&#39;, 1),
+ (&#39;have&#39;, 1),
+ (&#39;changed&#39;, 1),
+ (&#39;different&#39;, 1),
+ (&#39;versions&#39;, 1),
+ (&#39;Hadoop,&#39;, 2),
+ (&#39;must&#39;, 1),
+ (&#39;against&#39;, 1),
+ (&#39;same&#39;, 1),
+ (&#39;version&#39;, 1),
+ (&#39;your&#39;, 1),
+ (&#39;runs.&#39;, 1),
+ (&#39;refer&#39;, 2),
+ (&#39;[&quot;Specifying&#39;, 1),
+ (&#39;Version&#39;, 1),
+ (&#39;Enabling&#39;, 1),
+ (&#39;YARN&quot;](http://spark.apache.org/docs/latest/building-spark.html#specifying-the-hadoop-version-and-enabling-yarn)&#39;,
+  1),
+ (&#39;building&#39;, 2),
+ (&#39;particular&#39;, 2),
+ (&#39;distribution&#39;, 1),
+ (&#39;Hive&#39;, 2),
+ (&#39;Thriftserver&#39;, 1),
+ (&#39;distributions.&#39;, 1),
+ (&#39;Configuration&#39;, 1),
+ (&#39;[Configuration&#39;, 1),
+ (&#39;Guide](http://spark.apache.org/docs/latest/configuration.html)&#39;, 1),
+ (&#39;online&#39;, 1),
+ (&#39;overview&#39;, 1),
+ (&#39;configure&#39;, 1),
+ (&#39;Spark.&#39;, 1),
+ (&#39;Contributing&#39;, 1),
+ (&#39;review&#39;, 1),
+ (&#39;[Contribution&#39;, 1),
+ (&#39;guide](http://spark.apache.org/contributing.html)&#39;, 1),
+ (&#39;information&#39;, 1),
+ (&#39;get&#39;, 1),
+ (&#39;started&#39;, 1),
+ (&#39;contributing&#39;, 1),
+ (&#39;project.&#39;, 1)]</code></pre>
+<p>编写独立应用程序执行词频统计</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wordCount.foreach(<span class="keyword">print</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -539,7 +1022,7 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/07/16/spark/明夷待访录（三）：Spark-编程基础/" rel="bookmark">明夷待访录（三）：Spark 编程基础</a></div>
+      <div class="popular-posts-title"><a href="/2019/07/26/spark/明夷待访录（三）：Spark-编程基础/" rel="bookmark">明夷待访录（三）：Spark 编程基础</a></div>
       
     </li>
   
@@ -895,7 +1378,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装和使用"><span class="nav-number">1.</span> <span class="nav-text"> 安装和使用 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装 -hadoop- 和 -spark"><span class="nav-number">1.1.</span> <span class="nav-text"> 安装 Hadoop 和 Spark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在 -pyspark- 中运行代码"><span class="nav-number">1.2.</span> <span class="nav-text"> 在 pyspark 中运行代码 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark- 独立应用程序编程"><span class="nav-number">1.3.</span> <span class="nav-text">Spark 独立应用程序编程 </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个 spark 应用程序 wordcount"><span class="nav-number">2.</span> <span class="nav-text"> 第一个 Spark 应用程序：WordCount</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在 -pyspark- 中执行词频统计"><span class="nav-number">2.1.</span> <span class="nav-text"> 在 pyspark 中执行词频统计 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载本地文件"><span class="nav-number">2.1.1.</span> <span class="nav-text"> 加载本地文件 </span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spark 集群环境搭建"><span class="nav-number">3.</span> <span class="nav-text">Spark 集群环境搭建 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在集群上运行 spark 应用程序"><span class="nav-number">4.</span> <span class="nav-text"> 在集群上运行 Spark 应用程序 </span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装和使用"><span class="nav-number">1.</span> <span class="nav-text">安装和使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装 -hadoop- 和 -spark"><span class="nav-number">1.1.</span> <span class="nav-text">安装 Hadoop 和 Spark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在 -pyspark- 中运行代码"><span class="nav-number">1.2.</span> <span class="nav-text">在 pyspark 中运行代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark- 独立应用程序编程"><span class="nav-number">1.3.</span> <span class="nav-text">Spark 独立应用程序编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spark 的安装与使用"><span class="nav-number">1.4.</span> <span class="nav-text">Spark 的安装与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一个 spark 应用程序 wordcount"><span class="nav-number">1.4.1.</span> <span class="nav-text">第一个 Spark 应用程序：WordCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务要求"><span class="nav-number">1.4.2.</span> <span class="nav-text">任务要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在 pyspark 中执行词频统计"><span class="nav-number">1.4.3.</span> <span class="nav-text">在 pyspark 中执行词频统计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动 pyspark"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">启动 pyspark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加载本地文件"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">加载本地文件</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
