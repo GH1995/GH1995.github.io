@@ -112,7 +112,7 @@
 <meta property="og:site_name" content="gh&#39;s notes">
 <meta property="og:description" content="logical structure of PQ array representation of PQ PQ implementation maxPQ 12345void add(int n); // insert element to PQ --&amp;gt; stay tuned  int poll(); // get and remove top element --&amp;gt; stay tuned">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-01T16:03:34.566Z">
+<meta property="og:updated_time" content="2019-08-01T16:04:34.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="heap">
 <meta name="twitter:description" content="logical structure of PQ array representation of PQ PQ implementation maxPQ 12345void add(int n); // insert element to PQ --&amp;gt; stay tuned  int poll(); // get and remove top element --&amp;gt; stay tuned">
@@ -442,7 +442,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-02 00:03:34" itemprop="dateModified" datetime="2019-08-02T00:03:34+08:00">2019-08-02</time>
+                <time title="Modified: 2019-08-02 00:04:34" itemprop="dateModified" datetime="2019-08-02T00:04:34+08:00">2019-08-02</time>
               
             
           </span>
@@ -522,7 +522,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">poll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> top = pq[<span class="number">1</span>];</span><br><span class="line">  pq[<span class="number">1</span>] = pq[size--];</span><br><span class="line">  siftdown();</span><br><span class="line">  <span class="keyword">return</span> top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="pq-application">PQ application</h2>
 <h3 id="heapsort">heapsort</h3>
-<p>把数组的元素 <code>add`` 到一个</code>pq<code> 里, 然后依次</code>poll` 出来, 得到的序列就是排序好了的</p>
+<p>把数组的元素 <code>add</code> 到一个 <code>pq</code> 里, 然后依次 <code>poll</code> 出来, 得到的序列就是排序好了的</p>
 <h2 id="heapify">heapify</h2>
 <p>假设一共有 h(=lgN)层, 由于最后一层的节点不必调用 siftdown, 我们只要从倒数第二层开始调用 siftdown 即可</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">heapify</span><span class="params">(<span class="keyword">int</span> a[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = a.length;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n/<span class="number">2</span>; i &lt;= <span class="number">1</span>; --i)</span><br><span class="line">        siftdown(a, i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
