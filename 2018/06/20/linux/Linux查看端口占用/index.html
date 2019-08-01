@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="lsof list open files lsof -i:your_port netstat netstat -anp | grep your_port  -t: TCP -u: UDP -l: 仅显示 LISTEN 状态的套接字  -a: all -n: 不进行 DNS 解析  -p: 显示进程标识符和程序名">
+  <meta name="description" content="lsof list open files 1lsof -i:your_port netstat 1netstat -anp | grep your_port  -t: TCP -u: UDP -l: 仅显示 LISTEN 状态的套接字  -a: all -n: 不进行 DNS 解析  -p: 显示进程标识符和程序名">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux 查看端口占用">
 <meta property="og:url" content="http://guanhua.ml/2018/06/20/linux/Linux查看端口占用/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="lsof list open files lsof -i:your_port netstat netstat -anp | grep your_port  -t: TCP -u: UDP -l: 仅显示 LISTEN 状态的套接字  -a: all -n: 不进行 DNS 解析  -p: 显示进程标识符和程序名">
+<meta property="og:description" content="lsof list open files 1lsof -i:your_port netstat 1netstat -anp | grep your_port  -t: TCP -u: UDP -l: 仅显示 LISTEN 状态的套接字  -a: all -n: 不进行 DNS 解析  -p: 显示进程标识符和程序名">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-16T03:47:53.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 查看端口占用">
-<meta name="twitter:description" content="lsof list open files lsof -i:your_port netstat netstat -anp | grep your_port  -t: TCP -u: UDP -l: 仅显示 LISTEN 状态的套接字  -a: all -n: 不进行 DNS 解析  -p: 显示进程标识符和程序名">
+<meta name="twitter:description" content="lsof list open files 1lsof -i:your_port netstat 1netstat -anp | grep your_port  -t: TCP -u: UDP -l: 仅显示 LISTEN 状态的套接字  -a: all -n: 不进行 DNS 解析  -p: 显示进程标识符和程序名">
 
 
 
@@ -509,9 +509,9 @@
 
       
         <h2 id="lsof"><code>lsof</code></h2>
-<p>list open files <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">lsof -i:your_port</span><br></pre></td></tr></table></figure></p>
+<p>list open files <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:your_port</span><br></pre></td></tr></table></figure></p>
 <h2 id="netstat"><code>netstat</code></h2>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">netstat -anp | grep your_port</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp | grep your_port</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>-t</code>: TCP</li>
 <li><code>-u</code>: UDP</li>

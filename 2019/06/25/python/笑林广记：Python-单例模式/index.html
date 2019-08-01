@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="Python 的单例模式如何实现？  单例模式，应当是每个程序员都需要知道的一种设计模式，它简单、高效。而 Python 的单例模式实现使用都尤为简单。 class Singleton(object):     passsingleton = Singleton() 将上面的代码在 .py 文件中，在用的地方导入的 singleton 就是单例的。单例存在哪里呢？就在那个 .pyc 文件。第一次">
+  <meta name="description" content="Python 的单例模式如何实现？  单例模式，应当是每个程序员都需要知道的一种设计模式，它简单、高效。而 Python 的单例模式实现使用都尤为简单。 1234class Singleton(object):     passsingleton = Singleton() 将上面的代码在 .py 文件中，在用的地方导入的 singleton 就是单例的。单例存在哪里呢？就在那个 .pyc 文件">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="笑林广记：Python 单例模式 ">
 <meta property="og:url" content="http://guanhua.ml/2019/06/25/python/笑林广记：Python-单例模式/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="Python 的单例模式如何实现？  单例模式，应当是每个程序员都需要知道的一种设计模式，它简单、高效。而 Python 的单例模式实现使用都尤为简单。 class Singleton(object):     passsingleton = Singleton() 将上面的代码在 .py 文件中，在用的地方导入的 singleton 就是单例的。单例存在哪里呢？就在那个 .pyc 文件。第一次">
+<meta property="og:description" content="Python 的单例模式如何实现？  单例模式，应当是每个程序员都需要知道的一种设计模式，它简单、高效。而 Python 的单例模式实现使用都尤为简单。 1234class Singleton(object):     passsingleton = Singleton() 将上面的代码在 .py 文件中，在用的地方导入的 singleton 就是单例的。单例存在哪里呢？就在那个 .pyc 文件">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-16T03:47:53.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="笑林广记：Python 单例模式 ">
-<meta name="twitter:description" content="Python 的单例模式如何实现？  单例模式，应当是每个程序员都需要知道的一种设计模式，它简单、高效。而 Python 的单例模式实现使用都尤为简单。 class Singleton(object):     passsingleton = Singleton() 将上面的代码在 .py 文件中，在用的地方导入的 singleton 就是单例的。单例存在哪里呢？就在那个 .pyc 文件。第一次">
+<meta name="twitter:description" content="Python 的单例模式如何实现？  单例模式，应当是每个程序员都需要知道的一种设计模式，它简单、高效。而 Python 的单例模式实现使用都尤为简单。 1234class Singleton(object):     passsingleton = Singleton() 将上面的代码在 .py 文件中，在用的地方导入的 singleton 就是单例的。单例存在哪里呢？就在那个 .pyc 文件">
 
 
 
@@ -512,9 +512,9 @@
 <p>Python 的单例模式如何实现？</p>
 </blockquote>
 <p>单例模式，应当是每个程序员都需要知道的一种设计模式，它简单、高效。而 Python 的单例模式实现使用都尤为简单。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Singleton(object): </span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">singleton = Singleton()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Singleton(object): </span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">singleton = Singleton()</span><br></pre></td></tr></table></figure>
 <p>将上面的代码在 <code>.py</code> 文件中，在用的地方导入的 <code>singleton</code> 就是单例的。单例存在哪里呢？就在那个 <code>.pyc</code> 文件。第一次导入时，会生成 <code>.pyc</code> 文件，当第二次导入时，就会直接加载 <code>.pyc</code> 文件。</p>
-<p>使用方法 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from a import singleton</span><br></pre></td></tr></table></figure></p>
+<p>使用方法 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from a import singleton</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

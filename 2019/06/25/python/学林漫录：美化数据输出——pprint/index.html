@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="美化数据输出的一个包，对我来说最大的用处就是控制 depth data = [(1,&amp;#123;&amp;apos;a&amp;apos;:&amp;apos;A&amp;apos;,&amp;apos;b&amp;apos;:&amp;apos;B&amp;apos;,&amp;apos;c&amp;apos;:&amp;apos;C&amp;apos;,&amp;apos;d&amp;apos;:&amp;apos;D&amp;apos;&amp;#125;),    (2,&amp;#123;&amp;apos;e&amp;apos;:&amp;apos">
+  <meta name="description" content="美化数据输出的一个包，对我来说最大的用处就是控制 depth 12data = [(1,&amp;#123;&amp;apos;a&amp;apos;:&amp;apos;A&amp;apos;,&amp;apos;b&amp;apos;:&amp;apos;B&amp;apos;,&amp;apos;c&amp;apos;:&amp;apos;C&amp;apos;,&amp;apos;d&amp;apos;:&amp;apos;D&amp;apos;&amp;#125;),    (2,&amp;#123;&amp;apos;e&amp;apos;:&amp;ap">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学林漫录：美化数据输出——pprint">
 <meta property="og:url" content="http://guanhua.ml/2019/06/25/python/学林漫录：美化数据输出——pprint/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="美化数据输出的一个包，对我来说最大的用处就是控制 depth data = [(1,&amp;#123;&amp;apos;a&amp;apos;:&amp;apos;A&amp;apos;,&amp;apos;b&amp;apos;:&amp;apos;B&amp;apos;,&amp;apos;c&amp;apos;:&amp;apos;C&amp;apos;,&amp;apos;d&amp;apos;:&amp;apos;D&amp;apos;&amp;#125;),    (2,&amp;#123;&amp;apos;e&amp;apos;:&amp;apos">
+<meta property="og:description" content="美化数据输出的一个包，对我来说最大的用处就是控制 depth 12data = [(1,&amp;#123;&amp;apos;a&amp;apos;:&amp;apos;A&amp;apos;,&amp;apos;b&amp;apos;:&amp;apos;B&amp;apos;,&amp;apos;c&amp;apos;:&amp;apos;C&amp;apos;,&amp;apos;d&amp;apos;:&amp;apos;D&amp;apos;&amp;#125;),    (2,&amp;#123;&amp;apos;e&amp;apos;:&amp;ap">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-16T03:47:53.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学林漫录：美化数据输出——pprint">
-<meta name="twitter:description" content="美化数据输出的一个包，对我来说最大的用处就是控制 depth data = [(1,&amp;#123;&amp;apos;a&amp;apos;:&amp;apos;A&amp;apos;,&amp;apos;b&amp;apos;:&amp;apos;B&amp;apos;,&amp;apos;c&amp;apos;:&amp;apos;C&amp;apos;,&amp;apos;d&amp;apos;:&amp;apos;D&amp;apos;&amp;#125;),    (2,&amp;#123;&amp;apos;e&amp;apos;:&amp;apos">
+<meta name="twitter:description" content="美化数据输出的一个包，对我来说最大的用处就是控制 depth 12data = [(1,&amp;#123;&amp;apos;a&amp;apos;:&amp;apos;A&amp;apos;,&amp;apos;b&amp;apos;:&amp;apos;B&amp;apos;,&amp;apos;c&amp;apos;:&amp;apos;C&amp;apos;,&amp;apos;d&amp;apos;:&amp;apos;D&amp;apos;&amp;#125;),    (2,&amp;#123;&amp;apos;e&amp;apos;:&amp;ap">
 
 
 
@@ -509,8 +509,8 @@
 
       
         <p> 美化数据输出的一个包，对我来说最大的用处就是控制 <code>depth</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data = [(1,&#123;&apos;a&apos;:&apos;A&apos;,&apos;b&apos;:&apos;B&apos;,&apos;c&apos;:&apos;C&apos;,&apos;d&apos;:&apos;D&apos;&#125;),</span><br><span class="line">    (2,&#123;&apos;e&apos;:&apos;E&apos;,&apos;f&apos;:&apos;F&apos;,&apos;g&apos;:&apos;G&apos;,&apos;h&apos;:&apos;H&apos;,&apos;i&apos;:&apos;I&apos;,&apos;j&apos;:&apos;J&apos;,&apos;k&apos;:&apos;K&apos;,&apos;l&apos;:&apos;L&apos;&#125;)]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pprint</span><br><span class="line"></span><br><span class="line">pprint.pprint(data)</span><br><span class="line">pprint.pprint(data, depth = 2)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = [(1,&#123;&apos;a&apos;:&apos;A&apos;,&apos;b&apos;:&apos;B&apos;,&apos;c&apos;:&apos;C&apos;,&apos;d&apos;:&apos;D&apos;&#125;),</span><br><span class="line">    (2,&#123;&apos;e&apos;:&apos;E&apos;,&apos;f&apos;:&apos;F&apos;,&apos;g&apos;:&apos;G&apos;,&apos;h&apos;:&apos;H&apos;,&apos;i&apos;:&apos;I&apos;,&apos;j&apos;:&apos;J&apos;,&apos;k&apos;:&apos;K&apos;,&apos;l&apos;:&apos;L&apos;&#125;)]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import pprint</span><br><span class="line"></span><br><span class="line">pprint.pprint(data)</span><br><span class="line">pprint.pprint(data, depth = 2)</span><br></pre></td></tr></table></figure>
 
       
     </div>

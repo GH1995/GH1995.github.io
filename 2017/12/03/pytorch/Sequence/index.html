@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="Sequence  Sequence iterable objects visited through index    __len__() len()  Sequence&apos;s basic operation Sequence objects have a method named __getitem__(self, key), so it can be visited by s[i]. b =">
+  <meta name="description" content="Sequence  Sequence iterable objects visited through index    __len__() len()  Sequence&apos;s basic operation Sequence objects have a method named __getitem__(self, key), so it can be visited by s[i]. 12b">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sequence">
 <meta property="og:url" content="http://guanhua.ml/2017/12/03/pytorch/Sequence/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="Sequence  Sequence iterable objects visited through index    __len__() len()  Sequence&apos;s basic operation Sequence objects have a method named __getitem__(self, key), so it can be visited by s[i]. b =">
+<meta property="og:description" content="Sequence  Sequence iterable objects visited through index    __len__() len()  Sequence&apos;s basic operation Sequence objects have a method named __getitem__(self, key), so it can be visited by s[i]. 12b">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-16T03:47:53.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sequence">
-<meta name="twitter:description" content="Sequence  Sequence iterable objects visited through index    __len__() len()  Sequence&apos;s basic operation Sequence objects have a method named __getitem__(self, key), so it can be visited by s[i]. b =">
+<meta name="twitter:description" content="Sequence  Sequence iterable objects visited through index    __len__() len()  Sequence&apos;s basic operation Sequence objects have a method named __getitem__(self, key), so it can be visited by s[i]. 12b">
 
 
 
@@ -520,22 +520,22 @@
 </ul>
 <h1 id="sequences-basic-operation">Sequence's basic operation</h1>
 <p>Sequence objects have a method named <code>__getitem__(self, key)</code>, so it can be visited by <code>s[i]</code>.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">b = b&apos;ABCDEFG&apos;</span><br><span class="line">b[0] ==&gt; 65</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b = b&apos;ABCDEFG&apos;</span><br><span class="line">b[0] ==&gt; 65</span><br></pre></td></tr></table></figure>
 <p>slice</p>
 <p>The basic form of slice is <code>s[i:j]</code> and <code>s[i:j:k]</code>. <code>slice</code> object is used to save index information of slice, such as <code>slice(start, stop, step)</code>. <code>slice</code> object has attributes such as '.start', '.stop' and '.step', method such as 'indice(len)' which return a tuple.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s[::-1] 	==&gt; &apos;fedcba&apos;</span><br><span class="line"></span><br><span class="line">b[0:1] 		==&gt; b&apos;A&apos;</span><br><span class="line">b[0:len(b)] ==&gt; b&apos;ABCDEF&apos;</span><br><span class="line"></span><br><span class="line">slice_obj = slice(1, len(s), 2)</span><br><span class="line">s[slice_obj]==&gt; &apos;bdf&apos;</span><br><span class="line"></span><br><span class="line">slice_obj.indices(4)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s1 + s2</span><br><span class="line">s1 += s2</span><br><span class="line">s2 *= 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s[::-1] 	==&gt; &apos;fedcba&apos;</span><br><span class="line"></span><br><span class="line">b[0:1] 		==&gt; b&apos;A&apos;</span><br><span class="line">b[0:len(b)] ==&gt; b&apos;ABCDEF&apos;</span><br><span class="line"></span><br><span class="line">slice_obj = slice(1, len(s), 2)</span><br><span class="line">s[slice_obj]==&gt; &apos;bdf&apos;</span><br><span class="line"></span><br><span class="line">slice_obj.indices(4)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s1 + s2</span><br><span class="line">s1 += s2</span><br><span class="line">s2 *= 2</span><br></pre></td></tr></table></figure>
 <p>Judge a object wehther or not exist in sequence <code>s</code>.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x in s</span><br><span class="line">x not in s</span><br><span class="line">s.count(x)</span><br><span class="line">s.index(value[, start [, stop]])</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sorted(iterable, key = None, reverse = False)</span><br><span class="line">key = str.lower</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">len()</span><br><span class="line">max()</span><br><span class="line">min()</span><br><span class="line">sum()</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">all(iterable)</span><br><span class="line">any(iterable)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x in s</span><br><span class="line">x not in s</span><br><span class="line">s.count(x)</span><br><span class="line">s.index(value[, start [, stop]])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sorted(iterable, key = None, reverse = False)</span><br><span class="line">key = str.lower</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">len()</span><br><span class="line">max()</span><br><span class="line">min()</span><br><span class="line">sum()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">all(iterable)</span><br><span class="line">any(iterable)</span><br></pre></td></tr></table></figure>
 <p>sequence unpacking</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a, b = (1, 2)</span><br><span class="line">sid, name, (chinese, math, english) = data</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a, b = (1, 2)</span><br><span class="line">sid, name, (chinese, math, english) = data</span><br></pre></td></tr></table></figure>
 <p>tuple variable <code>*</code> assign a number of variable to a tuple variable</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">first, *middles, last = range(10)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">first, *middles, last = range(10)</span><br></pre></td></tr></table></figure>
 <p>temporary variable<code>_</code> obtain partial data</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_, b, _ = (1, 2, 3)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_, b, _ = (1, 2, 3)</span><br></pre></td></tr></table></figure>
 <h1 id="tuple">tuple</h1>
 <p>define a tuple</p>
 <ul>
@@ -572,24 +572,24 @@
 <li><code>s.sort()</code></li>
 </ul>
 <p>list comprehension</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[i**2 for i in range(10)]</span><br><span class="line">[i for i in range(10) if i%2 == 0]</span><br><span class="line">[(x, y, x*y) for x in range(1, 4) for y in range(1, 4) if x&gt;= y]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[i**2 for i in range(10)]</span><br><span class="line">[i for i in range(10) if i%2 == 0]</span><br><span class="line">[(x, y, x*y) for x in range(1, 4) for y in range(1, 4) if x&gt;= y]</span><br></pre></td></tr></table></figure>
 <h1 id="string">string</h1>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ord(&apos;A&apos;)	==&gt;	unicode</span><br><span class="line">chr(65)		==&gt; char</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">str.strip()</span><br><span class="line">str.lstrip()</span><br><span class="line">str.rstrip()</span><br><span class="line">str.zfill(width)</span><br><span class="line">str.center()</span><br><span class="line">str.ljust()</span><br><span class="line">str.rjust()</span><br><span class="line">str.expandtabs()</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">test, find and replace</span><br><span class="line"></span><br><span class="line">str.startwith()</span><br><span class="line">str.endwith()</span><br><span class="line">str.count()</span><br><span class="line">str.index()</span><br><span class="line">str.rindex()</span><br><span class="line">str.find()</span><br><span class="line">str.rfind()</span><br><span class="line">str.replace()</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">str.split()			==&gt;	list</span><br><span class="line">str.rsplit()</span><br><span class="line">str.partition(seq)	==&gt;	(left, seq, right)</span><br><span class="line">str.rpartition(seq)</span><br><span class="line">str.splitlines()	==&gt; list</span><br><span class="line">str.join()			==&gt; string</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">str.maketrans()</span><br><span class="line">str.translate()</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">b.decode(encoding, errors)</span><br><span class="line">s.encode(encoding = &apos;utf-8&apos;, errors = &apos;strict&apos;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ord(&apos;A&apos;)	==&gt;	unicode</span><br><span class="line">chr(65)		==&gt; char</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">str.strip()</span><br><span class="line">str.lstrip()</span><br><span class="line">str.rstrip()</span><br><span class="line">str.zfill(width)</span><br><span class="line">str.center()</span><br><span class="line">str.ljust()</span><br><span class="line">str.rjust()</span><br><span class="line">str.expandtabs()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">test, find and replace</span><br><span class="line"></span><br><span class="line">str.startwith()</span><br><span class="line">str.endwith()</span><br><span class="line">str.count()</span><br><span class="line">str.index()</span><br><span class="line">str.rindex()</span><br><span class="line">str.find()</span><br><span class="line">str.rfind()</span><br><span class="line">str.replace()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">str.split()			==&gt;	list</span><br><span class="line">str.rsplit()</span><br><span class="line">str.partition(seq)	==&gt;	(left, seq, right)</span><br><span class="line">str.rpartition(seq)</span><br><span class="line">str.splitlines()	==&gt; list</span><br><span class="line">str.join()			==&gt; string</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str.maketrans()</span><br><span class="line">str.translate()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b.decode(encoding, errors)</span><br><span class="line">s.encode(encoding = &apos;utf-8&apos;, errors = &apos;strict&apos;)</span><br></pre></td></tr></table></figure>
 <p>NOT SUGGESTING</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">string % (values)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&apos;%(lang)s has %(num)03d quote types.&apos; % &#123;&apos;lang&apos;:Python, &apos;num&apos;:2&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string % (values)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;%(lang)s has %(num)03d quote types.&apos; % &#123;&apos;lang&apos;:Python, &apos;num&apos;:2&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="bytes-and-bytearray">bytes and bytearray</h1>
 <ul>
 <li>bytes</li>
 <li>bytearray</li>
 <li>memoryview</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">b = s.encode()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b = s.encode()</span><br></pre></td></tr></table></figure>
 
       
     </div>

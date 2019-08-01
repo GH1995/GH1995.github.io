@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="安装和使用 安装 Hadoop 和 Spark  这里注意 openjdk 的版本必须是 8！   安装 java，配置JAVA_HOME export JAVA_HOME=JDK 安装路径 安装 Hadoop到 /usr/local/hadoop 修改配置文件 core-site.xml 和hdfs-site.xml 启动 HDFS /usr/local/hadoop/sbin/start-df">
+  <meta name="description" content="安装和使用 安装 Hadoop 和 Spark  这里注意 openjdk 的版本必须是 8！   安装 java，配置JAVA_HOME 1export JAVA_HOME=JDK 安装路径 安装 Hadoop到 /usr/local/hadoop 修改配置文件 core-site.xml 和hdfs-site.xml 启动 HDFS 1/usr/local/hadoop/sbin/start-">
 <meta name="keywords" content="spark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="明夷待访录（二）：Spark 安装与使用">
 <meta property="og:url" content="http://guanhua.ml/2019/06/17/spark/明夷待访录（二）：Spark-安装与使用/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="安装和使用 安装 Hadoop 和 Spark  这里注意 openjdk 的版本必须是 8！   安装 java，配置JAVA_HOME export JAVA_HOME=JDK 安装路径 安装 Hadoop到 /usr/local/hadoop 修改配置文件 core-site.xml 和hdfs-site.xml 启动 HDFS /usr/local/hadoop/sbin/start-df">
+<meta property="og:description" content="安装和使用 安装 Hadoop 和 Spark  这里注意 openjdk 的版本必须是 8！   安装 java，配置JAVA_HOME 1export JAVA_HOME=JDK 安装路径 安装 Hadoop到 /usr/local/hadoop 修改配置文件 core-site.xml 和hdfs-site.xml 启动 HDFS 1/usr/local/hadoop/sbin/start-">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-26T04:11:31.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="明夷待访录（二）：Spark 安装与使用">
-<meta name="twitter:description" content="安装和使用 安装 Hadoop 和 Spark  这里注意 openjdk 的版本必须是 8！   安装 java，配置JAVA_HOME export JAVA_HOME=JDK 安装路径 安装 Hadoop到 /usr/local/hadoop 修改配置文件 core-site.xml 和hdfs-site.xml 启动 HDFS /usr/local/hadoop/sbin/start-df">
+<meta name="twitter:description" content="安装和使用 安装 Hadoop 和 Spark  这里注意 openjdk 的版本必须是 8！   安装 java，配置JAVA_HOME 1export JAVA_HOME=JDK 安装路径 安装 Hadoop到 /usr/local/hadoop 修改配置文件 core-site.xml 和hdfs-site.xml 启动 HDFS 1/usr/local/hadoop/sbin/start-">
 
 
 
@@ -514,12 +514,12 @@
 <p>这里注意 openjdk 的版本必须是 8！</p>
 </blockquote>
 <ol type="1">
-<li><p>安装 java，配置<code>JAVA_HOME</code> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=JDK 安装路径</span><br></pre></td></tr></table></figure></p></li>
+<li><p>安装 java，配置<code>JAVA_HOME</code> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=JDK 安装路径</span><br></pre></td></tr></table></figure></p></li>
 <li>安装 <code>Hadoop</code>到 <code>/usr/local/hadoop</code></li>
 <li>修改配置文件 <code>core-site.xml</code> 和<code>hdfs-site.xml</code></li>
-<li><p>启动 HDFS <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/usr/local/hadoop/sbin/start-dfs.sh</span><br></pre></td></tr></table></figure></p></li>
+<li><p>启动 HDFS <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/hadoop/sbin/start-dfs.sh</span><br></pre></td></tr></table></figure></p></li>
 </ol>
-<p>停止是 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/usr/local/hadoop/sbin/stop-all.sh</span><br></pre></td></tr></table></figure></p>
+<p>停止是 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/hadoop/sbin/stop-all.sh</span><br></pre></td></tr></table></figure></p>
 <ol type="1">
 <li>Spark 安装到<code>/usr/local/spark</code></li>
 <li>修改配置文件<code>cp spark-env.sh.template spark-env.sh</code>，在行首添加<code>export SPARK_DIST_CLASSPATH=$(/usr/local/hadoop/bin/hadoop classpath)</code></li>
@@ -528,17 +528,17 @@
 <h2 id="在 -pyspark- 中运行代码">在 pyspark 中运行代码</h2>
 <p>conda 安装，直接启动即可</p>
 <h2 id="spark- 独立应用程序编程">Spark 独立应用程序编程</h2>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line"></span><br><span class="line">sc = SparkContext(<span class="string">'local'</span>, <span class="string">'test'</span>)</span><br><span class="line"></span><br><span class="line">logFile = <span class="string">"file:///usr/local/spark/README.md"</span></span><br><span class="line">logData = sc.textFile(logFile, <span class="number">2</span>).cache()</span><br><span class="line"></span><br><span class="line">numAs = logData.filter(<span class="keyword">lambda</span> line: <span class="string">'a'</span> <span class="keyword">in</span> line).count()</span><br><span class="line">numBs = logData.filter(<span class="keyword">lambda</span> line: <span class="string">'b'</span> <span class="keyword">in</span> line).count()</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Lines with a: %s, Lines with b: %s'</span> % (numAs, numBs))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line"></span><br><span class="line">sc = SparkContext(<span class="string">'local'</span>, <span class="string">'test'</span>)</span><br><span class="line"></span><br><span class="line">logFile = <span class="string">"file:///usr/local/spark/README.md"</span></span><br><span class="line">logData = sc.textFile(logFile, <span class="number">2</span>).cache()</span><br><span class="line"></span><br><span class="line">numAs = logData.filter(<span class="keyword">lambda</span> line: <span class="string">'a'</span> <span class="keyword">in</span> line).count()</span><br><span class="line">numBs = logData.filter(<span class="keyword">lambda</span> line: <span class="string">'b'</span> <span class="keyword">in</span> line).count()</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Lines with a: %s, Lines with b: %s'</span> % (numAs, numBs))</span><br></pre></td></tr></table></figure>
 <h2 id="spark 的安装与使用">Spark 的安装与使用</h2>
 <h3 id="第一个 spark 应用程序 wordcount">第一个 Spark 应用程序：WordCount</h3>
 <h3 id="任务要求">任务要求</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">! mkdir wordcount</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">! cd wordcount</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!pwd</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">! mkdir wordcount</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">! cd wordcount</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pwd</span><br></pre></td></tr></table></figure>
 <pre><code>/home/hadoop/spark/src/test</code></pre>
 <h3 id="在 pyspark 中执行词频统计">在 pyspark 中执行词频统计</h3>
 <h4 id="启动 pyspark">启动 pyspark</h4>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!pyspark</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pyspark</span><br></pre></td></tr></table></figure>
 <pre><code>Python 3.7.3 (default, Mar 27 2019, 22:11:17) 
 [GCC 7.3.0] :: Anaconda, Inc. on linux
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
@@ -562,29 +562,29 @@ Traceback (most recent call last):
 KeyboardInterrupt
 &gt;&gt;&gt; </code></pre>
 <h4 id="加载本地文件">加载本地文件</h4>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sc = SparkContext(<span class="string">"local"</span>, <span class="string">"test"</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">textFile = sc.textFile(<span class="string">"file:///usr/local/spark/README.md"</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">textFile.first()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc = SparkContext(<span class="string">"local"</span>, <span class="string">"test"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile = sc.textFile(<span class="string">"file:///usr/local/spark/README.md"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile.first()</span><br></pre></td></tr></table></figure>
 <pre><code>&#39;# Apache Spark&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">textFile.saveAsTextFile(<span class="string">"file:///home/hadoop/spark/data/wordcount/writeback"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile.saveAsTextFile(<span class="string">"file:///home/hadoop/spark/data/wordcount/writeback"</span>)</span><br></pre></td></tr></table></figure>
 <p>加载 HDFS 文件</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls .</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls .</span><br></pre></td></tr></table></figure>
 <pre><code>Found 2 items
 drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:48 input
 drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:49 output</code></pre>
 <p>查看 Linux 当前登录用户 hadoop 在 HDFS 文件系统中与 hadoop 对应的目录下的文件</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls /</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls /</span><br></pre></td></tr></table></figure>
 <pre><code>Found 1 items
 drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:48 /user</code></pre>
 <p>上传到分布式文件系统 HDFS 中</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -put /usr/local/spark/README.md .</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls .</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -put /usr/local/spark/README.md .</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls .</span><br></pre></td></tr></table></figure>
 <pre><code>Found 3 items
 -rw-r--r--   1 hadoop supergroup       3952 2019-06-18 16:48 README.md
 drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:48 input
 drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:49 output</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -cat ./README.md</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -cat ./README.md</span><br></pre></td></tr></table></figure>
 <pre><code># Apache Spark
 
 Spark is a fast and general cluster computing system for Big Data. It provides
@@ -690,20 +690,20 @@ in the online documentation for an overview on how to configure Spark.
 
 Please review the [Contribution to Spark guide](http://spark.apache.org/contributing.html)
 for information on how to get started contributing to the project.</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">textFile.saveAsTextFile(<span class="string">"writeback"</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls .</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile.saveAsTextFile(<span class="string">"writeback"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls .</span><br></pre></td></tr></table></figure>
 <pre><code>Found 4 items
 -rw-r--r--   1 hadoop supergroup       3952 2019-06-18 16:48 README.md
 drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:48 input
 drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:49 output
 drwxr-xr-x   - hadoop supergroup          0 2019-06-18 16:50 writeback</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls ./writeback</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls ./writeback</span><br></pre></td></tr></table></figure>
 <pre><code>Found 2 items
 -rw-r--r--   1 hadoop supergroup          0 2019-06-18 16:50 writeback/_SUCCESS
 -rw-r--r--   1 hadoop supergroup       3952 2019-06-18 16:50 writeback/part-00000</code></pre>
 <p>词频统计</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">wordCount = textFile.flatMap(<span class="keyword">lambda</span> line: line.split(<span class="string">""</span>)).map(<span class="keyword">lambda</span> word: (word,<span class="number">1</span>)).reduceByKey(<span class="keyword">lambda</span> a, b : a + b)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">wordCount.collect()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wordCount = textFile.flatMap(<span class="keyword">lambda</span> line: line.split(<span class="string">""</span>)).map(<span class="keyword">lambda</span> word: (word,<span class="number">1</span>)).reduceByKey(<span class="keyword">lambda</span> a, b : a + b)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wordCount.collect()</span><br></pre></td></tr></table></figure>
 <pre><code>[(&#39;#&#39;, 1),
  (&#39;Apache&#39;, 1),
  (&#39;Spark&#39;, 16),
@@ -1001,7 +1001,7 @@ drwxr-xr-x   - hadoop supergroup          0 2019-06-18 16:50 writeback</code></p
  (&#39;contributing&#39;, 1),
  (&#39;project.&#39;, 1)]</code></pre>
 <p>编写独立应用程序执行词频统计</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">wordCount.foreach(<span class="keyword">print</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wordCount.foreach(<span class="keyword">print</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>

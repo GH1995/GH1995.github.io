@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="字符型简介   固定长度字符串 char(n)  利用空格在右端补齐，限长 2000 varchar(n)  限长 4000 varchar2(n)  推荐   字符型分析  char(n) 不适用与声明变量。  字符型处理   向左补全字符串——lpad 函数  lpad(string, padded_length, [pad_string])lpad(&amp;apos;1&amp;apos;, 4, &amp;a">
+  <meta name="description" content="字符型简介   固定长度字符串 char(n)  利用空格在右端补齐，限长 2000 varchar(n)  限长 4000 varchar2(n)  推荐   字符型分析  char(n) 不适用与声明变量。  字符型处理   向左补全字符串——lpad 函数  123lpad(string, padded_length, [pad_string])lpad(&amp;apos;1&amp;apos;, 4,">
 <meta name="keywords" content="Oracle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Oracle 中的字符型及处理方法">
 <meta property="og:url" content="http://guanhua.ml/2017/12/27/oracle/Oracle-中的字符型及处理方法/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="字符型简介   固定长度字符串 char(n)  利用空格在右端补齐，限长 2000 varchar(n)  限长 4000 varchar2(n)  推荐   字符型分析  char(n) 不适用与声明变量。  字符型处理   向左补全字符串——lpad 函数  lpad(string, padded_length, [pad_string])lpad(&amp;apos;1&amp;apos;, 4, &amp;a">
+<meta property="og:description" content="字符型简介   固定长度字符串 char(n)  利用空格在右端补齐，限长 2000 varchar(n)  限长 4000 varchar2(n)  推荐   字符型分析  char(n) 不适用与声明变量。  字符型处理   向左补全字符串——lpad 函数  123lpad(string, padded_length, [pad_string])lpad(&amp;apos;1&amp;apos;, 4,">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-16T03:47:53.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle 中的字符型及处理方法">
-<meta name="twitter:description" content="字符型简介   固定长度字符串 char(n)  利用空格在右端补齐，限长 2000 varchar(n)  限长 4000 varchar2(n)  推荐   字符型分析  char(n) 不适用与声明变量。  字符型处理   向左补全字符串——lpad 函数  lpad(string, padded_length, [pad_string])lpad(&amp;apos;1&amp;apos;, 4, &amp;a">
+<meta name="twitter:description" content="字符型简介   固定长度字符串 char(n)  利用空格在右端补齐，限长 2000 varchar(n)  限长 4000 varchar2(n)  推荐   字符型分析  char(n) 不适用与声明变量。  字符型处理   向左补全字符串——lpad 函数  123lpad(string, padded_length, [pad_string])lpad(&amp;apos;1&amp;apos;, 4,">
 
 
 
@@ -519,12 +519,12 @@
 <p><code>char(n)</code> 不适用与声明变量。</p>
 <h1 id="字符型处理"> 字符型处理 </h1>
 <p> 向左补全字符串——<code>lpad</code> 函数 </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lpad(string, padded_length, [pad_string])</span><br><span class="line"></span><br><span class="line">lpad(&apos;1&apos;, 4, &apos;0&apos;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lpad(string, padded_length, [pad_string])</span><br><span class="line"></span><br><span class="line">lpad(&apos;1&apos;, 4, &apos;0&apos;)</span><br></pre></td></tr></table></figure>
 <p> 向右补全字符串——<code>lpad</code> 函数 </p>
 <p> 返回字符串的小写形式——<code>lower()</code> 函数 </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">where lower(username) = &apos;system&apos;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where lower(username) = &apos;system&apos;;</span><br></pre></td></tr></table></figure>
 <p> 返回字符串的大写形式——<code>upper()</code> 函数 </p>
-<p> 单词首字符大写——<code>initcap()</code> 函数 返回字符串长度——<code>length()</code> 函数 截取字符串——<code>substr()</code> 函数 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">substr(string, start_index, length)</span><br></pre></td></tr></table></figure></p>
+<p> 单词首字符大写——<code>initcap()</code> 函数 返回字符串长度——<code>length()</code> 函数 截取字符串——<code>substr()</code> 函数 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">substr(string, start_index, length)</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><code>instr</code></li>
 <li><code>ltrim</code></li>

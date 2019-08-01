@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="RDD 编程 RDD 创建 创建办法  读取外部数据  本地文件 HDFS HBase Cassandra 等  调用 SparkContext 的 parallelize 方法，在 Driver 中一个已经存在的集合（数组）上创建  创建 RDD 之前的准备工作 启动 HDFS 组件 /usr/local/hadoop/sbin/start-dfs.sh 创建 rdd 子目录存放代码和相关文件">
+  <meta name="description" content="RDD 编程 RDD 创建 创建办法  读取外部数据  本地文件 HDFS HBase Cassandra 等  调用 SparkContext 的 parallelize 方法，在 Driver 中一个已经存在的集合（数组）上创建  创建 RDD 之前的准备工作 启动 HDFS 组件 1/usr/local/hadoop/sbin/start-dfs.sh 创建 rdd 子目录存放代码和相关文件">
 <meta name="keywords" content="spark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="明夷待访录（三）：Spark 编程基础">
 <meta property="og:url" content="http://guanhua.ml/2019/07/26/spark/明夷待访录（三）：Spark-编程基础/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="RDD 编程 RDD 创建 创建办法  读取外部数据  本地文件 HDFS HBase Cassandra 等  调用 SparkContext 的 parallelize 方法，在 Driver 中一个已经存在的集合（数组）上创建  创建 RDD 之前的准备工作 启动 HDFS 组件 /usr/local/hadoop/sbin/start-dfs.sh 创建 rdd 子目录存放代码和相关文件">
+<meta property="og:description" content="RDD 编程 RDD 创建 创建办法  读取外部数据  本地文件 HDFS HBase Cassandra 等  调用 SparkContext 的 parallelize 方法，在 Driver 中一个已经存在的集合（数组）上创建  创建 RDD 之前的准备工作 启动 HDFS 组件 1/usr/local/hadoop/sbin/start-dfs.sh 创建 rdd 子目录存放代码和相关文件">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-26T04:13:26.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="明夷待访录（三）：Spark 编程基础">
-<meta name="twitter:description" content="RDD 编程 RDD 创建 创建办法  读取外部数据  本地文件 HDFS HBase Cassandra 等  调用 SparkContext 的 parallelize 方法，在 Driver 中一个已经存在的集合（数组）上创建  创建 RDD 之前的准备工作 启动 HDFS 组件 /usr/local/hadoop/sbin/start-dfs.sh 创建 rdd 子目录存放代码和相关文件">
+<meta name="twitter:description" content="RDD 编程 RDD 创建 创建办法  读取外部数据  本地文件 HDFS HBase Cassandra 等  调用 SparkContext 的 parallelize 方法，在 Driver 中一个已经存在的集合（数组）上创建  创建 RDD 之前的准备工作 启动 HDFS 组件 1/usr/local/hadoop/sbin/start-dfs.sh 创建 rdd 子目录存放代码和相关文件">
 
 
 
@@ -507,21 +507,21 @@
 </ul>
 <p><strong>创建 RDD 之前的准备工作</strong></p>
 <p>启动 HDFS 组件</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/hadoop/sbin/start-dfs.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/hadoop/sbin/start-dfs.sh</span><br></pre></td></tr></table></figure>
 <p>创建 rdd 子目录存放代码和相关文件</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!mkdir rdd &amp;&amp; cd rdd</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!mkdir rdd &amp;&amp; cd rdd</span><br></pre></td></tr></table></figure>
 <p>在 rdd 目录下新建一个 word.txt 文件，随便输入什么内容。这里我直接放的就是 man 手册</p>
 <p><strong>从文件系统中加载数据创建 RDD</strong></p>
 <p><code>SparkContext</code>创建上下文对象</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line"></span><br><span class="line">sc = SparkContext(<span class="string">"local"</span>, <span class="string">"test"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line"></span><br><span class="line">sc = SparkContext(<span class="string">"local"</span>, <span class="string">"test"</span>)</span><br></pre></td></tr></table></figure>
 <p>三条命令都等价</p>
 <p><code>textFile()</code> 从文件系统中加载数据创建<code>rdd</code>，参数是 URI - 本地文件系统地址 - 分布式文件系统 HDFS 地址</p>
 <p>这里我们不用上面创建的 word.txt，而是直接用 README.md，保证读者和文章输出一致。</p>
 <p><code>textFile()</code> 的第二个参数用来指定分区数目，默认是最小值 128MB。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">lines = sc.textFile(<span class="string">"hdfs://localhost:9000/user/hadoop/README.md"</span>)</span><br><span class="line">lines = sc.textFile(<span class="string">"/user/hadoop/README.md"</span>)</span><br><span class="line">lines = sc.textFile(<span class="string">"README.md"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lines = sc.textFile(<span class="string">"hdfs://localhost:9000/user/hadoop/README.md"</span>)</span><br><span class="line">lines = sc.textFile(<span class="string">"/user/hadoop/README.md"</span>)</span><br><span class="line">lines = sc.textFile(<span class="string">"README.md"</span>)</span><br></pre></td></tr></table></figure>
 <p><strong>通过并行集合（数组）创建 RDD</strong></p>
 <p>可以调用 SparkContext 的 parallelize 方法，在 Driver 中一个已经存在的集合（数组）上创建。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">rdd = sc.parallelize(nums)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">rdd = sc.parallelize(nums)</span><br></pre></td></tr></table></figure>
 <p><strong>RDD 操作</strong></p>
 <blockquote>
 <p>转换</p>
@@ -561,40 +561,40 @@
 <p><strong>惰性机制</strong></p>
 <p><code>lines</code> 读取</p>
 <p><code>textFile()</code> 只是一个转换操作，并不会真的去读文件</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">lineLength = lines.map(<span class="keyword">lambda</span> s: len(s))  <span class="comment"># 计算每行的长度（即每行包含多少个单词）</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">totalLength = lineLength.reduce(<span class="keyword">lambda</span> a, b: a + b)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">totalLength</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lineLength = lines.map(<span class="keyword">lambda</span> s: len(s))  <span class="comment"># 计算每行的长度（即每行包含多少个单词）</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">totalLength = lineLength.reduce(<span class="keyword">lambda</span> a, b: a + b)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">totalLength</span><br></pre></td></tr></table></figure>
 <pre><code>3847</code></pre>
 <p>Spark 会把计算分解成多个任务在不同的机器上执行，每台机器运行位于属于它自己的 map 和 reduce，最后把结果返回给 Driver Program。</p>
 <p><strong>实例</strong></p>
 <p>计算结果集中满足条件的元素个数</p>
 <p>将当前遍历到的行赋值给参数 <code>line</code>，然后对每行文本执行 lamda 表达式，满足条件的<code>line</code> 被放入结果集中。最后执行 <code>count</code>。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">lines.filter(<span class="keyword">lambda</span> line: <span class="string">"Spark"</span> <span class="keyword">in</span> line).count()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lines.filter(<span class="keyword">lambda</span> line: <span class="string">"Spark"</span> <span class="keyword">in</span> line).count()</span><br></pre></td></tr></table></figure>
 <pre><code>20</code></pre>
 <p>找出文本文件中 <strong> 单行文本所包含的单词数量 </strong> 的最大值</p>
 <ul>
 <li><code>lambda line: len(line.split(&quot; &quot;))</code> 将每行文本传递给 lambda，计算出每行文本的单词数，得到是一个 rdd，每个元素都是整数</li>
 <li><code>lambda a, b: (a &gt; b and a or b)</code> 每次接收两个参数，留下较大者。这里是个 trick</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">lines.map(<span class="keyword">lambda</span> line: len(line.split(<span class="string">""</span>))).reduce(<span class="keyword">lambda</span> a, b: (a &gt; b <span class="keyword">and</span> a</span><br><span class="line">                                                                  <span class="keyword">or</span> b))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lines.map(<span class="keyword">lambda</span> line: len(line.split(<span class="string">""</span>))).reduce(<span class="keyword">lambda</span> a, b: (a &gt; b <span class="keyword">and</span> a</span><br><span class="line">                                                                  <span class="keyword">or</span> b))</span><br></pre></td></tr></table></figure>
 <pre><code>22</code></pre>
 <p><strong>自己写的，看单词的最大长度</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">lines.flatMap(<span class="keyword">lambda</span> line: line.split(<span class="string">""</span>)).map(<span class="keyword">lambda</span> word: len(word)).reduce(</span><br><span class="line">    <span class="keyword">lambda</span> a, b: (a &gt; b <span class="keyword">and</span> a <span class="keyword">or</span> b))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lines.flatMap(<span class="keyword">lambda</span> line: line.split(<span class="string">""</span>)).map(<span class="keyword">lambda</span> word: len(word)).reduce(</span><br><span class="line">    <span class="keyword">lambda</span> a, b: (a &gt; b <span class="keyword">and</span> a <span class="keyword">or</span> b))</span><br></pre></td></tr></table></figure>
 <pre><code>111</code></pre>
 <p><strong>持久化</strong></p>
 <p>两次操作触发了两次从头到尾的计算</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list = [<span class="string">"Hadoop"</span>, <span class="string">"Spark"</span>, <span class="string">"Hive"</span>]</span><br><span class="line">rdd = sc.parallelize(list)</span><br><span class="line">print(rdd.count())</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="string">"Hadoop"</span>, <span class="string">"Spark"</span>, <span class="string">"Hive"</span>]</span><br><span class="line">rdd = sc.parallelize(list)</span><br><span class="line">print(rdd.count())</span><br></pre></td></tr></table></figure>
 <pre><code>3</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">print(<span class="string">','</span>.join(rdd.collect()))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">','</span>.join(rdd.collect()))</span><br></pre></td></tr></table></figure>
 <pre><code>Hadoop,Spark,Hive</code></pre>
 <p><code>persist()</code>方法对一个 RDD 标记为持久化，之所以说“标记为持久化”，是因为出现 <code>persist()</code> 语句的地方，并不会马上计算生成 RDD 并把它持久化，而是要等到遇到第一个行动操作触发真正计算以后，才会把计算结果进行持久化，持久化后的 RDD 将会被保留在计算节点的内存中被后面的行动操作重复使用。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list = [<span class="string">"Hadoop"</span>, <span class="string">"Spark"</span>, <span class="string">"Hive"</span>]</span><br><span class="line">rdd = sc.parallelize(list)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rdd.cache() <span class="comment"># 会调用 persist(MEMORY_ONLY)，但是，语句执行到这里，并不会缓存 rdd，这时 rdd 还没有被计算生成</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="string">"Hadoop"</span>, <span class="string">"Spark"</span>, <span class="string">"Hive"</span>]</span><br><span class="line">rdd = sc.parallelize(list)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdd.cache() <span class="comment"># 会调用 persist(MEMORY_ONLY)，但是，语句执行到这里，并不会缓存 rdd，这时 rdd 还没有被计算生成</span></span><br></pre></td></tr></table></figure>
 <pre><code>ParallelCollectionRDD[9] at parallelize at PythonRDD.scala:195</code></pre>
 <p>一般而言，使用 <code>cache()</code> 方法时，会调用<code>persist(MEMORY_ONLY)</code>。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">print(rdd.count()) <span class="comment"># 这时才会执行上面的 rdd.cache()，把这个 rdd 放到缓存中</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(rdd.count()) <span class="comment"># 这时才会执行上面的 rdd.cache()，把这个 rdd 放到缓存中</span></span><br></pre></td></tr></table></figure>
 <pre><code>3</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">print(<span class="string">','</span>.join(rdd.collect())) <span class="comment"># 不需要触发从头到尾的计算，只需要重复使用上面缓存中的 rdd</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">','</span>.join(rdd.collect())) <span class="comment"># 不需要触发从头到尾的计算，只需要重复使用上面缓存中的 rdd</span></span><br></pre></td></tr></table></figure>
 <pre><code>Hadoop, Spark, Hive</code></pre>
 <p>可以使用 <code>unpersist()</code> 方法手动地把持久化的 RDD 从缓存中移除。</p>
 <p><strong>分区</strong></p>
@@ -608,20 +608,20 @@
 <li>YARN 模式，集群中所有 CPU 核心数目总和，但不小于 2</li>
 <li>Mesos 模型，默认为 8</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rdd = sc.parallelize(array, <span class="number">2</span>)  <span class="comment"># 设置两个分区</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdd = sc.parallelize(array, <span class="number">2</span>)  <span class="comment"># 设置两个分区</span></span><br></pre></td></tr></table></figure>
 <p><strong>打印元素</strong></p>
 <p>本地 <code>rdd.foreach(print)</code> 或者<code>rdd.map(print)</code></p>
 <p>多机 <code>rdd.collect().foreach(print)</code> 或<code>rdd.take(100).foreach(print)</code></p>
 <p><strong>存在问题</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rdd.foreach(<span class="keyword">print</span>) <span class="comment"># 无法使用</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdd.foreach(<span class="keyword">print</span>) <span class="comment"># 无法使用</span></span><br></pre></td></tr></table></figure>
 <p><strong>键值对 RDD</strong></p>
 <p><strong>键值对 RDD 的创建 pairrdd</strong></p>
 <p>第一种创建方式：从文件中加载</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># lines = sc.textFile(path)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lines = sc.textFile(path)</span></span><br></pre></td></tr></table></figure>
 <pre><code>/user/hadoop/README.md MapPartitionsRDD[1] at textFile at NativeMethodAccessorImpl.java:0</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pairRDD = lines.flatMap(<span class="keyword">lambda</span> line: line.split(<span class="string">""</span>))\</span><br><span class="line">            .map(<span class="keyword">lambda</span> word: (word, <span class="number">1</span>))</span><br><span class="line"><span class="comment"># 单词集合</span></span><br><span class="line"><span class="comment"># lambda word: (word, 1) -&gt; 用 tuple 创建 pair</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pairRDD.take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pairRDD = lines.flatMap(<span class="keyword">lambda</span> line: line.split(<span class="string">""</span>))\</span><br><span class="line">            .map(<span class="keyword">lambda</span> word: (word, <span class="number">1</span>))</span><br><span class="line"><span class="comment"># 单词集合</span></span><br><span class="line"><span class="comment"># lambda word: (word, 1) -&gt; 用 tuple 创建 pair</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pairRDD.take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>[(&#39;#&#39;, 1),
  (&#39;Apache&#39;, 1),
  (&#39;Spark&#39;, 1),
@@ -633,17 +633,17 @@
  (&#39;and&#39;, 1),
  (&#39;general&#39;, 1)]</code></pre>
 <p>第二种创建方式：通过并行集合（列表）创建 RDD</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list = [<span class="string">"Hadoop"</span>, <span class="string">"Spark"</span>, <span class="string">"Hive"</span>, <span class="string">"Spark"</span>]</span><br><span class="line">rdd = sc.parallelize(list)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pairRDD = rdd.map(<span class="keyword">lambda</span> word: (word, <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pairRDD.take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="string">"Hadoop"</span>, <span class="string">"Spark"</span>, <span class="string">"Hive"</span>, <span class="string">"Spark"</span>]</span><br><span class="line">rdd = sc.parallelize(list)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pairRDD = rdd.map(<span class="keyword">lambda</span> word: (word, <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pairRDD.take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>[(&#39;Hadoop&#39;, 1), (&#39;Spark&#39;, 1), (&#39;Hive&#39;, 1), (&#39;Spark&#39;, 1)]</code></pre>
 <p><strong>常用的键值对转换操作</strong></p>
 <p><code>reduceByKey(func)</code> 使用 <code>func</code> 函数合并具有相同键的值</p>
 <p><code>(a,b) =&gt; a+b</code>这个 Lamda 表达式中，<strong>a 和 b 都是指 value</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pairRDD.reduceByKey(<span class="keyword">lambda</span> a, b: a + b).take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pairRDD.reduceByKey(<span class="keyword">lambda</span> a, b: a + b).take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>[(&#39;Hadoop&#39;, 1), (&#39;Spark&#39;, 2), (&#39;Hive&#39;, 1)]</code></pre>
 <p><strong>groupByKey()</strong>的功能是，对具有相同键的值进行 group</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pairRDD.groupByKey().take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pairRDD.groupByKey().take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>[(&#39;Hadoop&#39;, &lt;pyspark.resultiterable.ResultIterable at 0x7faaea1ba470&gt;),
  (&#39;Spark&#39;, &lt;pyspark.resultiterable.ResultIterable at 0x7faaea1ba400&gt;),
  (&#39;Hive&#39;, &lt;pyspark.resultiterable.ResultIterable at 0x7faaea1ba5c0&gt;)]</code></pre>
@@ -651,35 +651,35 @@
 <li><code>keys()</code>只会把键值对 RDD 中的 key 返回形成一个新的 RDD</li>
 </ul>
 <p>采用 <code>keys()</code> 后得到的结果是一个<code>RDD[Int]</code>，内容是{&quot;spark&quot;,&quot;spark&quot;,&quot;hadoop&quot;,&quot;hadoop&quot;}</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pairRDD.keys().take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pairRDD.keys().take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>[&#39;Hadoop&#39;, &#39;Spark&#39;, &#39;Hive&#39;, &#39;Spark&#39;]</code></pre>
 <ul>
 <li><code>values()</code> values()只会把键值对 RDD 中的 value 返回形成一个新的 RDD</li>
 </ul>
 <p>采用 <code>values()</code> 后得到的结果是一个<code>RDD[Int]</code>，内容是{1,2,3,5}</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pairRDD.values().take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pairRDD.values().take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>[1, 1, 1, 1]</code></pre>
 <p><strong><code>sortByKey()</code>的功能是返回一个根据键排序的 RDD</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pairRDD.sortByKey().take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pairRDD.sortByKey().take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>[(&#39;Hadoop&#39;, 1), (&#39;Hive&#39;, 1), (&#39;Spark&#39;, 1), (&#39;Spark&#39;, 1)]</code></pre>
 <p><strong><code>mapValues(func)</code></strong></p>
 <p>我们只想对键值对 RDD 的 value 部分进行处理，而不是同时对 key 和 value 进行处理</p>
 <p><strong>对键值对 RDD 中的每个 value 都应用一个函数</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pairRDD.mapValues(<span class="keyword">lambda</span> x: x + <span class="number">1</span>).take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pairRDD.mapValues(<span class="keyword">lambda</span> x: x + <span class="number">1</span>).take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>[(&#39;Hadoop&#39;, 2), (&#39;Spark&#39;, 2), (&#39;Hive&#39;, 2), (&#39;Spark&#39;, 2)]</code></pre>
 <p><strong><code>join</code>表示内连接</strong></p>
 <p>对于内连接，对于给定的两个输入数据集 <code>(K,V1)</code> 和<code>(K,V2)</code>，只有在两个数据集中都存在的 key 才会被输出，最终得到一个 <code>(K,(V1,V2))</code> 类型的数据集</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pairRDD1 = sc.parallelize([(<span class="string">'spark'</span>, <span class="number">1</span>), (<span class="string">'spark'</span>, <span class="number">2</span>), (<span class="string">'hadoop'</span>, <span class="number">3</span>),</span><br><span class="line">                           (<span class="string">'hadoop'</span>, <span class="number">5</span>)])</span><br><span class="line"></span><br><span class="line">pairRDD2 = sc.parallelize([(<span class="string">'spark'</span>, <span class="string">'fast'</span>)])</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pairRDD1.join(pairRDD2).take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pairRDD1 = sc.parallelize([(<span class="string">'spark'</span>, <span class="number">1</span>), (<span class="string">'spark'</span>, <span class="number">2</span>), (<span class="string">'hadoop'</span>, <span class="number">3</span>),</span><br><span class="line">                           (<span class="string">'hadoop'</span>, <span class="number">5</span>)])</span><br><span class="line"></span><br><span class="line">pairRDD2 = sc.parallelize([(<span class="string">'spark'</span>, <span class="string">'fast'</span>)])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pairRDD1.join(pairRDD2).take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>[(&#39;spark&#39;, (1, &#39;fast&#39;)), (&#39;spark&#39;, (2, &#39;fast&#39;))]</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pairRDD2.join(pairRDD1).take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pairRDD2.join(pairRDD1).take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>[(&#39;spark&#39;, (&#39;fast&#39;, 1)), (&#39;spark&#39;, (&#39;fast&#39;, 2))]</code></pre>
 <p><strong>一个综合实例</strong></p>
 <p>题目：给定一组键值对(&quot;spark&quot;,2),(&quot;hadoop&quot;,6),(&quot;hadoop&quot;,4),(&quot;spark&quot;,6)</p>
 <p>键值对的 key 表示图书名称，value 表示某天图书销量</p>
 <p>请计算每个键对应的平均值，也就是计算每种图书的每天平均销量。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rdd = sc.parallelize([(<span class="string">"spark"</span>, <span class="number">2</span>), (<span class="string">"hadoop"</span>, <span class="number">6</span>), (<span class="string">"hadoop"</span>, <span class="number">4</span>),</span><br><span class="line">                      (<span class="string">"spark"</span>, <span class="number">6</span>)])  <span class="comment"># rdd 类型是 RDD[(string, int)]</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rdd.mapValues(<span class="keyword">lambda</span> x: (x, <span class="number">1</span>)) \</span><br><span class="line">    .reduceByKey(<span class="keyword">lambda</span> x, y: (x[<span class="number">0</span>] + y[<span class="number">0</span>], x[<span class="number">1</span>] + y[<span class="number">1</span>]))\</span><br><span class="line">    .mapValues(<span class="keyword">lambda</span> x: (x[<span class="number">0</span>] / x[<span class="number">1</span>])) \</span><br><span class="line">    .collect()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rdd = sc.parallelize([(<span class="string">"spark"</span>, <span class="number">2</span>), (<span class="string">"hadoop"</span>, <span class="number">6</span>), (<span class="string">"hadoop"</span>, <span class="number">4</span>),</span><br><span class="line">                      (<span class="string">"spark"</span>, <span class="number">6</span>)])  <span class="comment"># rdd 类型是 RDD[(string, int)]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rdd.mapValues(<span class="keyword">lambda</span> x: (x, <span class="number">1</span>)) \</span><br><span class="line">    .reduceByKey(<span class="keyword">lambda</span> x, y: (x[<span class="number">0</span>] + y[<span class="number">0</span>], x[<span class="number">1</span>] + y[<span class="number">1</span>]))\</span><br><span class="line">    .mapValues(<span class="keyword">lambda</span> x: (x[<span class="number">0</span>] / x[<span class="number">1</span>])) \</span><br><span class="line">    .collect()</span><br></pre></td></tr></table></figure>
 <pre><code>[(&#39;spark&#39;, 4.0), (&#39;hadoop&#39;, 5.0)]</code></pre>
 <ol type="1">
 <li><code>mapVlaues(x, 1)</code> 打散数据（金额，数量）</li>
@@ -694,39 +694,39 @@
 <p><strong>广播变量</strong></p>
 <p>Spark 的 Action 操作会跨越多个阶段（stage），对于每个阶段内的所有任务所需要的公共数据，Spark 都会自动进行广播。通过广播方式进行传播的变量，会经过序列化，然后在被任务使用时再进行反序列化。这就意味着，显式地创建广播变量只有在下面的情形中是有用的：当跨越多个阶段的那些任务需要相同的数据，或者当以反序列化方式对数据进行缓存是非常重要的。</p>
 <p>通过调用 <code>SparkContext.broadcast(v)</code> 来从一个普通变量 <code>v</code> 中创建一个广播变量。这个广播变量就是对普通变量 <code>v</code> 的一个包装器，通过调用 <code>value</code> 方法就可以获得这个广播变量的值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">broadcastVar = sc.broadcast([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">broadcastVar.value</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">broadcastVar = sc.broadcast([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">broadcastVar.value</span><br></pre></td></tr></table></figure>
 <pre><code>[1, 2, 3]</code></pre>
 <p>一旦广播变量创建后，普通变量 v 的值就不能再发生修改，从而确保所有节点都获得这个广播变量的相同的值。</p>
 <p><strong>累加器</strong></p>
 <p>用来实现计数器（counter）和求和（sum）</p>
 <p>通过调用 <code>SparkContext.accumulator()</code> 来创建</p>
 <p>运行在集群中的任务，就可以使用 <code>add</code> 方法来把数值累加到累加器上，但是，这些任务只能做累加操作，不能读取累加器的值，只有任务控制节点（Driver Program）可以使用 value 方法来读取累加器的值。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">accum = sc.accumulator(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sc.parallelize([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]).foreach(<span class="keyword">lambda</span> x: accum.add(x))</span><br><span class="line">accum.value</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">accum = sc.accumulator(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sc.parallelize([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]).foreach(<span class="keyword">lambda</span> x: accum.add(x))</span><br><span class="line">accum.value</span><br></pre></td></tr></table></figure>
 <pre><code>10</code></pre>
 <h2 id="数据读写">数据读写</h2>
 <h3 id="文件系统的数据读写">文件系统的数据读写</h3>
 <p>介绍文件系统的读写和 HDFS 的读写</p>
 <p><strong>本地文件系统的数据读写</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">textFile = sc.textFile(<span class="string">"file:///usr/local/spark/README.md"</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">textFile.first()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile = sc.textFile(<span class="string">"file:///usr/local/spark/README.md"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile.first()</span><br></pre></td></tr></table></figure>
 <pre><code>&#39;# Apache Spark&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">textFile.saveAsTextFile(<span class="string">"file:///home/hadoop/spark/data/wordcount/writeback.txt"</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!ls /home/hadoop/spark/data/wordcount/writeback.txt/</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile.saveAsTextFile(<span class="string">"file:///home/hadoop/spark/data/wordcount/writeback.txt"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!ls /home/hadoop/spark/data/wordcount/writeback.txt/</span><br></pre></td></tr></table></figure>
 <pre><code>part-00000  _SUCCESS</code></pre>
 <p><strong>分布式文件系统 HDFS 的数据读写</strong></p>
 <p>查看 HDFS 文件系统根目录下的内容</p>
 <p><strong>这里的几条命令很重要</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls /</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!/usr/local/hadoop/bin/hdfs dfs -ls /</span><br></pre></td></tr></table></figure>
 <pre><code>Found 1 items
 drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:48 /user</code></pre>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">./bin/hdfs dfs -ls /user/hadoop</span><br><span class="line">./bin/hdfs dfs -put /usr/<span class="built_in">local</span>/spark/mycode/wordcount/word.txt .</span><br><span class="line">./bin/hdfs dfs -cat ./word.txt</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">textFile = sc.textFile(<span class="string">"hdfs://localhost:9000/user/hadoop/README.md"</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">textFile.first()</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./bin/hdfs dfs -ls /user/hadoop</span><br><span class="line">./bin/hdfs dfs -put /usr/<span class="built_in">local</span>/spark/mycode/wordcount/word.txt .</span><br><span class="line">./bin/hdfs dfs -cat ./word.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile = sc.textFile(<span class="string">"hdfs://localhost:9000/user/hadoop/README.md"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">textFile.first()</span><br></pre></td></tr></table></figure>
 <pre><code>&#39;# Apache Spark&#39;</code></pre>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; val textFile = sc.textFile(&quot;hdfs://localhost:9000/user/hadoop/word.txt&quot;)</span><br><span class="line">&gt;&gt;&gt; val textFile = sc.textFile(&quot;/user/hadoop/word.txt&quot;)</span><br><span class="line">&gt;&gt;&gt; val textFile = sc.textFile(&quot;word.txt&quot;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; val textFile = sc.textFile(&quot;word.txt&quot;)</span><br><span class="line">&gt;&gt;&gt; textFile.saveAsTextFile(&quot;writeback.txt&quot;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; val textFile = sc.textFile(&quot;hdfs://localhost:9000/user/hadoop/word.txt&quot;)</span><br><span class="line">&gt;&gt;&gt; val textFile = sc.textFile(&quot;/user/hadoop/word.txt&quot;)</span><br><span class="line">&gt;&gt;&gt; val textFile = sc.textFile(&quot;word.txt&quot;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; val textFile = sc.textFile(&quot;word.txt&quot;)</span><br><span class="line">&gt;&gt;&gt; textFile.saveAsTextFile(&quot;writeback.txt&quot;)</span><br></pre></td></tr></table></figure>
 <p><strong>不同文件格式的读写</strong></p>
 <ul>
 <li><p>文本文件</p></li>
@@ -734,14 +734,14 @@ drwxr-xr-x   - hadoop supergroup          0 2019-06-18 15:48 /user</code></pre>
 <li><p><code>rdd.saveAsTextFile</code></p></li>
 <li><p>JSON</p></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">jsonStr = sc.textFile(</span><br><span class="line">    <span class="string">"file:///usr/local/spark/examples/src/main/resources/people.json"</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">jsonStr.take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jsonStr = sc.textFile(</span><br><span class="line">    <span class="string">"file:///usr/local/spark/examples/src/main/resources/people.json"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jsonStr.take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>[&#39;{&quot;name&quot;:&quot;Michael&quot;}&#39;,
  &#39;{&quot;name&quot;:&quot;Andy&quot;, &quot;age&quot;:30}&#39;,
  &#39;{&quot;name&quot;:&quot;Justin&quot;, &quot;age&quot;:19}&#39;]</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">result = jsonStr.map(<span class="keyword">lambda</span> s: json.loads(s))</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">result.take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = jsonStr.map(<span class="keyword">lambda</span> s: json.loads(s))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result.take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>[{&#39;name&#39;: &#39;Michael&#39;},
  {&#39;name&#39;: &#39;Andy&#39;, &#39;age&#39;: 30},
  {&#39;name&#39;: &#39;Justin&#39;, &#39;age&#39;: 19}]</code></pre>

@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="护树罗锅 (Bowtruckle)是一种很难被发现、手掌大小的以昆虫为食的动物。护树罗锅的两只手上都有长而锋利的手指，眼睛为褐色，从外表看像是由树皮和小树枝构成的，很容易伪装起来。  基本配置 你是不是也在头疼每次提交的 commit 记录怎么写？这里推荐在 .gitconfig 里添加一条自定义命令。 yolo = !git commit -m \&amp;quot;$(curl -s whatthec">
+  <meta name="description" content="护树罗锅 (Bowtruckle)是一种很难被发现、手掌大小的以昆虫为食的动物。护树罗锅的两只手上都有长而锋利的手指，眼睛为褐色，从外表看像是由树皮和小树枝构成的，很容易伪装起来。  基本配置 你是不是也在头疼每次提交的 commit 记录怎么写？这里推荐在 .gitconfig 里添加一条自定义命令。 1yolo = !git commit -m \&amp;quot;$(curl -s whatthe">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="神奇动物在哪里？：护树罗锅——git">
 <meta property="og:url" content="http://guanhua.ml/2019/06/27/linux/神奇动物在哪里？——git/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="护树罗锅 (Bowtruckle)是一种很难被发现、手掌大小的以昆虫为食的动物。护树罗锅的两只手上都有长而锋利的手指，眼睛为褐色，从外表看像是由树皮和小树枝构成的，很容易伪装起来。  基本配置 你是不是也在头疼每次提交的 commit 记录怎么写？这里推荐在 .gitconfig 里添加一条自定义命令。 yolo = !git commit -m \&amp;quot;$(curl -s whatthec">
+<meta property="og:description" content="护树罗锅 (Bowtruckle)是一种很难被发现、手掌大小的以昆虫为食的动物。护树罗锅的两只手上都有长而锋利的手指，眼睛为褐色，从外表看像是由树皮和小树枝构成的，很容易伪装起来。  基本配置 你是不是也在头疼每次提交的 commit 记录怎么写？这里推荐在 .gitconfig 里添加一条自定义命令。 1yolo = !git commit -m \&amp;quot;$(curl -s whatthe">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-16T03:47:53.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="神奇动物在哪里？：护树罗锅——git">
-<meta name="twitter:description" content="护树罗锅 (Bowtruckle)是一种很难被发现、手掌大小的以昆虫为食的动物。护树罗锅的两只手上都有长而锋利的手指，眼睛为褐色，从外表看像是由树皮和小树枝构成的，很容易伪装起来。  基本配置 你是不是也在头疼每次提交的 commit 记录怎么写？这里推荐在 .gitconfig 里添加一条自定义命令。 yolo = !git commit -m \&amp;quot;$(curl -s whatthec">
+<meta name="twitter:description" content="护树罗锅 (Bowtruckle)是一种很难被发现、手掌大小的以昆虫为食的动物。护树罗锅的两只手上都有长而锋利的手指，眼睛为褐色，从外表看像是由树皮和小树枝构成的，很容易伪装起来。  基本配置 你是不是也在头疼每次提交的 commit 记录怎么写？这里推荐在 .gitconfig 里添加一条自定义命令。 1yolo = !git commit -m \&amp;quot;$(curl -s whatthe">
 
 
 
@@ -512,20 +512,20 @@
 </blockquote>
 <h2 id="基本配置">基本配置</h2>
 <p>你是不是也在头疼每次提交的 commit 记录怎么写？这里推荐在 <code>.gitconfig</code> 里添加一条自定义命令。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yolo = !git commit -m \&quot;$(curl -s whatthecommit.com/index.txt)\&quot;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store # 记录手动输入的账号和密码</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yolo = !git commit -m \&quot;$(curl -s whatthecommit.com/index.txt)\&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential.helper store # 记录手动输入的账号和密码</span><br></pre></td></tr></table></figure>
 <h2 id="提交修改">提交修改</h2>
 <p>有了 <code>git yolo</code> 还要什么自行车</p>
 <h2 id="单个文件的历史">单个文件的历史</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 显示某个文件的历史版本的所有改动</span><br><span class="line">git log --follow -p [file]</span><br><span class="line">git whatchanged -p [file]</span><br><span class="line"></span><br><span class="line"># 显示指定文件的每一行内容的作者和修改时间</span><br><span class="line">git blame [file]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 显示某个文件的历史版本的所有改动</span><br><span class="line">git log --follow -p [file]</span><br><span class="line">git whatchanged -p [file]</span><br><span class="line"></span><br><span class="line"># 显示指定文件的每一行内容的作者和修改时间</span><br><span class="line">git blame [file]</span><br></pre></td></tr></table></figure>
 <h2 id="统计每个作者的提交情况">统计每个作者的提交情况</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git shortlog -sn</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git shortlog -sn</span><br></pre></td></tr></table></figure>
 <h2 id="diff">diff</h2>
-<p>最重要的三个，其余的用到了再背 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 查看工作区域暂存区的差异</span><br><span class="line">git diff</span><br><span class="line"></span><br><span class="line"># 查看暂存区与版本库的差异</span><br><span class="line">git diff --cached</span><br><span class="line"></span><br><span class="line"># 查看 暂存区 与 HEAD 的差异</span><br><span class="line">git diff HEAD</span><br></pre></td></tr></table></figure></p>
+<p>最重要的三个，其余的用到了再背 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 查看工作区域暂存区的差异</span><br><span class="line">git diff</span><br><span class="line"></span><br><span class="line"># 查看暂存区与版本库的差异</span><br><span class="line">git diff --cached</span><br><span class="line"></span><br><span class="line"># 查看 暂存区 与 HEAD 的差异</span><br><span class="line">git diff HEAD</span><br></pre></td></tr></table></figure></p>
 <h2 id="找回丢失的提交">找回丢失的提交</h2>
 <p><code>git reflog</code> 可以列出 HEAD 曾经指向过的一系列 commit。 该命令可用于在错误操作时找回丢失的提交。</p>
 <p>如果引起 commit 丢失的原因并没有记录在 <code>reflog</code> 中，则使用 <code>git fsck</code> 工具，该工具会检查仓库的数据完整性。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reflog</span><br><span class="line"></span><br><span class="line">git fsck --full</span><br><span class="line"></span><br><span class="line">git fsck --lost-found</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br><span class="line"></span><br><span class="line">git fsck --full</span><br><span class="line"></span><br><span class="line">git fsck --lost-found</span><br></pre></td></tr></table></figure>
 <h2 id="cherry-pick">cherry-pick</h2>
 <p><code>git cherry-pick</code> 能够将其他分支上的某个或者多个提交应用到当前分支中，而不必将整个分支的内容都合并到当前分支。</p>
 <h2 id="revert">revert</h2>
@@ -550,11 +550,11 @@
 <p><code>git branch</code></p>
 <p>还有一个分支替换功能</p>
 <h2 id="何时保留分支历史">何时保留分支历史</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 将提交约线图平坦化</span><br><span class="line">git pull --rebase</span><br><span class="line"></span><br><span class="line"># 刻意制造分叉</span><br><span class="line">git merge --no-ff</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 将提交约线图平坦化</span><br><span class="line">git pull --rebase</span><br><span class="line"></span><br><span class="line"># 刻意制造分叉</span><br><span class="line">git merge --no-ff</span><br></pre></td></tr></table></figure>
 <h2 id="tags">Tags</h2>
 <p>Git 有两种类型的标签，即 轻量级的(lightweight) 和 含附注的(annotated)。轻量级类似一个指针，其指向一个特定的提交对象。含附注标签，是存储在仓库中一个独立的对象，其有自身的校验和信息，且包含标签的名字，邮件地址和日期，以及标签说明，创建含附注类型的标签需要指定 -a 参数（取 annotated 的首字母）。</p>
 <h2 id="远程仓库">远程仓库</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 修改远程仓库地址</span><br><span class="line">git remote set-url [remote] [url]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 修改远程仓库地址</span><br><span class="line">git remote set-url [remote] [url]</span><br></pre></td></tr></table></figure>
 <h2 id="清理工作区">清理工作区</h2>
 <p>使用 <code>git clean</code> 可以清除工作区未被添加到索引中的文件。</p>
 <p><a href="http://blog.konghy.cn/2018/05/06/git-notes/" target="_blank" rel="noopener">More</a></p>

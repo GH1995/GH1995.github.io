@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="sudo apt-get remove docker \               docker-engine \               docker.iosudo apt-get install \    apt-transport-https \    ca-certificates \    curl \    software-properties-commoncurl -fsSL">
+  <meta name="description" content="123456789101112131415161718sudo apt-get remove docker \               docker-engine \               docker.iosudo apt-get install \    apt-transport-https \    ca-certificates \    curl \    software-">
 <meta name="keywords" content="Linux,docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker 国内安装">
 <meta property="og:url" content="http://guanhua.ml/2018/06/22/linux/docker国内安装/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="sudo apt-get remove docker \               docker-engine \               docker.iosudo apt-get install \    apt-transport-https \    ca-certificates \    curl \    software-properties-commoncurl -fsSL">
+<meta property="og:description" content="123456789101112131415161718sudo apt-get remove docker \               docker-engine \               docker.iosudo apt-get install \    apt-transport-https \    ca-certificates \    curl \    software-">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-16T03:47:53.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker 国内安装">
-<meta name="twitter:description" content="sudo apt-get remove docker \               docker-engine \               docker.iosudo apt-get install \    apt-transport-https \    ca-certificates \    curl \    software-properties-commoncurl -fsSL">
+<meta name="twitter:description" content="123456789101112131415161718sudo apt-get remove docker \               docker-engine \               docker.iosudo apt-get install \    apt-transport-https \    ca-certificates \    curl \    software-">
 
 
 
@@ -508,8 +508,8 @@
       
 
       
-        <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo apt-get remove docker \</span><br><span class="line">               docker-engine \</span><br><span class="line">               docker.io</span><br><span class="line">sudo apt-get install \</span><br><span class="line">    apt-transport-https \</span><br><span class="line">    ca-certificates \</span><br><span class="line">    curl \</span><br><span class="line">    software-properties-common</span><br><span class="line">curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line">sudo add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">    stable"</span></span><br><span class="line">sudo apt-get update &amp;&amp; sudo apt-get install docker-ce</span><br><span class="line">sudo groupadd docker</span><br><span class="line">sudo gpasswd -a <span class="variable">$&#123;USER&#125;</span> docker</span><br><span class="line">sudo service docker restart</span><br><span class="line">newgrp - docker</span><br></pre></td></tr></table></figure>
-<p><code>/etc/docker/daemon.json</code> <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [</span><br><span class="line">    <span class="string">"https://registry.docker-cn.com"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove docker \</span><br><span class="line">               docker-engine \</span><br><span class="line">               docker.io</span><br><span class="line">sudo apt-get install \</span><br><span class="line">    apt-transport-https \</span><br><span class="line">    ca-certificates \</span><br><span class="line">    curl \</span><br><span class="line">    software-properties-common</span><br><span class="line">curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line">sudo add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">    stable"</span></span><br><span class="line">sudo apt-get update &amp;&amp; sudo apt-get install docker-ce</span><br><span class="line">sudo groupadd docker</span><br><span class="line">sudo gpasswd -a <span class="variable">$&#123;USER&#125;</span> docker</span><br><span class="line">sudo service docker restart</span><br><span class="line">newgrp - docker</span><br></pre></td></tr></table></figure>
+<p><code>/etc/docker/daemon.json</code> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [</span><br><span class="line">    <span class="string">"https://registry.docker-cn.com"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
