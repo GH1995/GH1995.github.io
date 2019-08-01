@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[binary search]]></title>
+    <url>%2F2019%2F08%2F02%2Fleetcode%2Fbinary-search%2F</url>
+    <content type="text"><![CDATA[123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051class Solution &#123; private: // 需查找和目标值完全相等的数 int find1(vector&lt;int&gt; &amp;nums, int target) &#123; int left = 0, right = nums.size(); while (left &lt; right) &#123; int mid = left + (right - left) / 2; if (nums[mid] == target) return mid; if (nums[mid] &lt; target) left = mid + 1; else right = mid; &#125; return -1; &#125; // low_bound int find2(vector&lt;int&gt; &amp;nums, int target) &#123; int left = 0, right = nums.size(); while (left &lt; right) &#123; int mid = left + (right - left) / 2; if (nums[mid] &lt; target) left = mid + 1; else right = mid; &#125; return right; &#125; // up_bound int find3(vector&lt;int&gt; &amp;nums, int target) &#123; int left = 0, right = nums.size(); while (left &lt; right) &#123; int mid = left + (right - left) / 2; if (nums[mid] &lt;= target) left = mid + 1; else right = mid; &#125; return right; &#125;&#125;;]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[dfs]]></title>
     <url>%2F2019%2F08%2F02%2Falgorithm%2Fdfs%2F</url>
     <content type="text"><![CDATA[123456struct GraphNode &#123; int val; vector&lt;GraphNode *&gt; neighbors;&#125;;unordered_set&lt;GraphNode *&gt; visited; Recursive DFS 123456789void dfs(GraphNode &amp;nd) &#123; printf("%d", nd.val); visited.insert(&amp;nd); for (auto next : nd.neighbors) if (!visited.count(next)) &#123; dfs(*next); &#125;&#125; Non-recursive DFS 1234567891011121314151617void no_recursive_dfs(GraphNode &amp;start) &#123; stack&lt;GraphNode *&gt; s; s.push(&amp;start); while (!s.empty()) &#123; auto cur = s.top(); s.pop(); printf("%d\n", cur-&gt;val); for (auto next : cur-&gt;neighbors) &#123; if (!visited.count(next)) &#123; s.push(next); visited.insert(next); &#125; &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>algorithm</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[heap]]></title>

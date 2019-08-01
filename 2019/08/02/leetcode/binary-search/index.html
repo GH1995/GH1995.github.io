@@ -105,17 +105,17 @@
 
 
 
-  <meta name="description" content="123456struct GraphNode &amp;#123;  int val;  vector&amp;lt;GraphNode *&amp;gt; neighbors;&amp;#125;;unordered_set&amp;lt;GraphNode *&amp;gt; visited; Recursive DFS 123456789void dfs(GraphNode &amp;amp;nd) &amp;#123;  printf(&quot;%d&quot;, nd">
+  <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051class Solution &amp;#123; private:  // 需查找和目标值完全相等的数   int find1(vector&amp;lt;int&amp;gt; &amp;amp;nums, int target) &amp;#123">
 <meta property="og:type" content="article">
-<meta property="og:title" content="dfs">
-<meta property="og:url" content="http://guanhua.ml/2019/08/02/algorithm/dfs/index.html">
+<meta property="og:title" content="binary search">
+<meta property="og:url" content="http://guanhua.ml/2019/08/02/leetcode/binary-search/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="123456struct GraphNode &amp;#123;  int val;  vector&amp;lt;GraphNode *&amp;gt; neighbors;&amp;#125;;unordered_set&amp;lt;GraphNode *&amp;gt; visited; Recursive DFS 123456789void dfs(GraphNode &amp;amp;nd) &amp;#123;  printf(&quot;%d&quot;, nd">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051class Solution &amp;#123; private:  // 需查找和目标值完全相等的数   int find1(vector&amp;lt;int&amp;gt; &amp;amp;nums, int target) &amp;#123">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-01T16:30:28.549Z">
+<meta property="og:updated_time" content="2019-08-01T16:44:53.284Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dfs">
-<meta name="twitter:description" content="123456struct GraphNode &amp;#123;  int val;  vector&amp;lt;GraphNode *&amp;gt; neighbors;&amp;#125;;unordered_set&amp;lt;GraphNode *&amp;gt; visited; Recursive DFS 123456789void dfs(GraphNode &amp;amp;nd) &amp;#123;  printf(&quot;%d&quot;, nd">
+<meta name="twitter:title" content="binary search">
+<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051class Solution &amp;#123; private:  // 需查找和目标值完全相等的数   int find1(vector&amp;lt;int&amp;gt; &amp;amp;nums, int target) &amp;#123">
 
 
 
@@ -123,7 +123,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/2019/08/02/algorithm/dfs/">
+  <link rel="canonical" href="http://guanhua.ml/2019/08/02/leetcode/binary-search/">
 
 
 
@@ -133,7 +133,7 @@
   };
 </script>
 
-  <title>dfs | gh's notes</title>
+  <title>binary search | gh's notes</title>
   
 
 
@@ -382,7 +382,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/08/02/algorithm/dfs/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/08/02/leetcode/binary-search/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -399,7 +399,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">dfs
+          <h1 class="post-title" itemprop="name headline">binary search
 
               
             
@@ -425,7 +425,7 @@
                 
               
 
-              <time title="Created: 2019-08-02 00:06:38 / Modified: 00:30:28" itemprop="dateCreated datePublished" datetime="2019-08-02T00:06:38+08:00">2019-08-02</time>
+              <time title="Created: 2019-08-02 00:40:32 / Modified: 00:44:53" itemprop="dateCreated datePublished" datetime="2019-08-02T00:40:32+08:00">2019-08-02</time>
             
 
             
@@ -435,24 +435,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -466,8 +448,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/08/02/algorithm/dfs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/02/algorithm/dfs/" itemprop="commentCount"></span>
+                <a href="/2019/08/02/leetcode/binary-search/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/02/leetcode/binary-search/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -495,11 +477,7 @@
       
 
       
-        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">GraphNode</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> val;</span><br><span class="line">  <span class="built_in">vector</span>&lt;GraphNode *&gt; neighbors;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">unordered_set</span>&lt;GraphNode *&gt; visited;</span><br></pre></td></tr></table></figure>
-<h3 id="recursive-dfs">Recursive DFS</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(GraphNode &amp;nd)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d"</span>, nd.val);</span><br><span class="line">  visited.insert(&amp;nd);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> next : nd.neighbors)</span><br><span class="line">    <span class="keyword">if</span> (!visited.count(next)) &#123;</span><br><span class="line">      dfs(*next);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="non-recursive-dfs">Non-recursive DFS</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">no_recursive_dfs</span><span class="params">(GraphNode &amp;start)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">stack</span>&lt;GraphNode *&gt; s;</span><br><span class="line">  s.push(&amp;start);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (!s.empty()) &#123;</span><br><span class="line">    <span class="keyword">auto</span> cur = s.top();</span><br><span class="line">    s.pop();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, cur-&gt;val);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> next : cur-&gt;neighbors) &#123;</span><br><span class="line">      <span class="keyword">if</span> (!visited.count(next)) &#123;</span><br><span class="line">        s.push(next);</span><br><span class="line">        visited.insert(next);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  <span class="comment">// 需查找和目标值完全相等的数 </span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">find1</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>, right = nums.size();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">      <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">if</span> (nums[mid] == target) <span class="keyword">return</span> mid;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (nums[mid] &lt; target)</span><br><span class="line">        left = mid + <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        right = mid;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// low_bound</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">find2</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>, right = nums.size();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">      <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (nums[mid] &lt; target)</span><br><span class="line">        left = mid + <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        right = mid;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> right;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// up_bound</span></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">find3</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>, right = nums.size();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">      <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (nums[mid] &lt;= target)</span><br><span class="line">        left = mid + <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        right = mid;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> right;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -534,8 +512,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/01/algorithm/heap/" rel="next" title="heap">
-                <i class="fa fa-chevron-left"></i> heap
+              <a href="/2019/08/02/algorithm/dfs/" rel="next" title="dfs">
+                <i class="fa fa-chevron-left"></i> dfs
               </a>
             
           </div>
@@ -543,10 +521,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/02/leetcode/binary-search/" rel="prev" title="binary search">
-                binary search <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -594,17 +568,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -841,23 +806,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#recursive-dfs"><span class="nav-number">1.</span> <span class="nav-text">Recursive DFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#non-recursive-dfs"><span class="nav-number">2.</span> <span class="nav-text">Non-recursive DFS</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
