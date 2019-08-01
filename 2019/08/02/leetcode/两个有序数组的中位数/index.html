@@ -105,17 +105,17 @@
 
 
 
-  <meta name="description" content="给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。  请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。  你可以假设 nums1 和 nums2 不会同时为空。  示例 1:  nums1 = [1, 3] nums2 = [2]   则中位数是 2.0  示例 2:  nums1 = [1, 2] nums2 = [3, 4]   则中">
+  <meta name="description" content="给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。  请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 \(O(log(m + n))\)。  你可以假设 nums1 和 nums2 不会同时为空。  示例 1: 12nums1 = [1, 3]nums2 = [2]  则中位数是 2.0  示例 2: 12nums1 = [1, 2]nums2 = [3, 4]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="两个有序数组的中位数">
 <meta property="og:url" content="http://guanhua.ml/2019/08/02/leetcode/两个有序数组的中位数/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。  请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。  你可以假设 nums1 和 nums2 不会同时为空。  示例 1:  nums1 = [1, 3] nums2 = [2]   则中位数是 2.0  示例 2:  nums1 = [1, 2] nums2 = [3, 4]   则中">
+<meta property="og:description" content="给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。  请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 \(O(log(m + n))\)。  你可以假设 nums1 和 nums2 不会同时为空。  示例 1: 12nums1 = [1, 3]nums2 = [2]  则中位数是 2.0  示例 2: 12nums1 = [1, 2]nums2 = [3, 4]">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-01T17:16:51.520Z">
+<meta property="og:updated_time" content="2019-08-01T17:23:47.204Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="两个有序数组的中位数">
-<meta name="twitter:description" content="给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。  请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。  你可以假设 nums1 和 nums2 不会同时为空。  示例 1:  nums1 = [1, 3] nums2 = [2]   则中位数是 2.0  示例 2:  nums1 = [1, 2] nums2 = [3, 4]   则中">
+<meta name="twitter:description" content="给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。  请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 \(O(log(m + n))\)。  你可以假设 nums1 和 nums2 不会同时为空。  示例 1: 12nums1 = [1, 3]nums2 = [2]  则中位数是 2.0  示例 2: 12nums1 = [1, 2]nums2 = [3, 4]">
 
 
 
@@ -425,7 +425,7 @@
                 
               
 
-              <time title="Created: 2019-08-02 01:08:10 / Modified: 01:16:51" itemprop="dateCreated datePublished" datetime="2019-08-02T01:08:10+08:00">2019-08-02</time>
+              <time title="Created: 2019-08-02 01:08:10 / Modified: 01:23:47" itemprop="dateCreated datePublished" datetime="2019-08-02T01:08:10+08:00">2019-08-02</time>
             
 
             
@@ -435,6 +435,24 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -477,19 +495,15 @@
       
 
       
-        <p> 给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。</p>
-<p> 请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。</p>
-<p> 你可以假设 nums1 和 nums2 不会同时为空。</p>
+        <p> 给定两个大小为 <code>m</code> 和 <code>n</code> 的有序数组 <code>nums1</code> 和 <code>nums2</code>。</p>
+<p> 请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 <span class="math inline">\(O(log(m + n))\)</span>。</p>
+<p> 你可以假设 <code>nums1</code> 和 <code>nums2</code> 不会同时为空。</p>
 <p><strong> 示例 1:</strong></p>
-<blockquote>
-<p>nums1 = [1, 3] nums2 = [2]</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nums1 = [1, 3]</span><br><span class="line">nums2 = [2]</span><br></pre></td></tr></table></figure>
 <p> 则中位数是 2.0</p>
 <p><strong> 示例 2:</strong></p>
-<blockquote>
-<p>nums1 = [1, 2] nums2 = [3, 4]</p>
-</blockquote>
-<p> 则中位数是 (2 + 3)/2 = 2.5</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nums1 = [1, 2]</span><br><span class="line">nums2 = [3, 4]</span><br></pre></td></tr></table></figure>
+<p> 则中位数是 <span class="math inline">\((2 + 3)/2 = 2.5\)</span></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m = nums1.size();</span><br><span class="line">    <span class="keyword">int</span> n = nums2.size();</span><br><span class="line">    <span class="keyword">int</span> left = (m + n + <span class="number">1</span>) / <span class="number">2</span>, right = (m + n + <span class="number">2</span>) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (findK(nums1.begin(), m, nums2.begin(), n, left) +</span><br><span class="line">            findK(nums1.begin(), m, nums2.begin(), n, right)) /</span><br><span class="line">           <span class="number">2.0</span>;</span><br><span class="line">    <span class="comment">// 这里分别处理奇数与偶数 </span></span><br><span class="line">    <span class="comment">// if (k &amp; 0x1)  // 小技巧 </span></span><br><span class="line">    <span class="comment">// return findK(nums1.begin(), m, nums2.begin(), n, k / 2 + 1);</span></span><br><span class="line">    <span class="comment">// else</span></span><br><span class="line">    <span class="comment">// return (findK(nums1.begin(), m, nums2.begin(), n, k / 2) +</span></span><br><span class="line">    <span class="comment">// findK(nums1.begin(), m, nums2.begin(), n, k / 2 + 1)) /</span></span><br><span class="line">    <span class="comment">// 2.0;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator It;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">findK</span><span class="params">(It A, <span class="keyword">int</span> m, It B, <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 三种递归终止情况 </span></span><br><span class="line"><span class="comment">     *   A 或 B 空的时候 </span></span><br><span class="line"><span class="comment">     *   k = 1 时 </span></span><br><span class="line"><span class="comment">     *   A[k/2 - 1] == B[k/2 - 1] 时 </span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * ps: m 较小 </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 假设 A 较短 </span></span><br><span class="line">    <span class="keyword">if</span> (m &gt; n) <span class="keyword">return</span> findK(B, n, A, m, k);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1</span></span><br><span class="line">    <span class="keyword">if</span> (m == <span class="number">0</span>) <span class="keyword">return</span> *(B + k - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2</span></span><br><span class="line">    <span class="keyword">if</span> (k == <span class="number">1</span>) <span class="keyword">return</span> min(*A, *B);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3</span></span><br><span class="line">    <span class="comment">// A 中剔去 ia 个 </span></span><br><span class="line">    <span class="comment">// B 中剔去 ib 个 </span></span><br><span class="line">    <span class="keyword">int</span> ia = min(k / <span class="number">2</span>, m), ib = k - ia;  <span class="comment">// trick</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (*(A + ia - <span class="number">1</span>) &lt; *(B + ib - <span class="number">1</span>))</span><br><span class="line">      <span class="keyword">return</span> findK(A + ia, m - ia, B, n, k - ia);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (*(A + ia - <span class="number">1</span>) &gt; *(B + ib - <span class="number">1</span>))</span><br><span class="line">      <span class="keyword">return</span> findK(A, m, B + ib, n - ib, k - ib);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="keyword">return</span> *(A + ia - <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
