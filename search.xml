@@ -4,6 +4,9 @@
     <title><![CDATA[binary search]]></title>
     <url>%2F2019%2F08%2F02%2Fleetcode%2Fbinary-search%2F</url>
     <content type="text"><![CDATA[123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051class Solution &#123; private: // 需查找和目标值完全相等的数 int find1(vector&lt;int&gt; &amp;nums, int target) &#123; int left = 0, right = nums.size(); while (left &lt; right) &#123; int mid = left + (right - left) / 2; if (nums[mid] == target) return mid; if (nums[mid] &lt; target) left = mid + 1; else right = mid; &#125; return -1; &#125; // low_bound int find2(vector&lt;int&gt; &amp;nums, int target) &#123; int left = 0, right = nums.size(); while (left &lt; right) &#123; int mid = left + (right - left) / 2; if (nums[mid] &lt; target) left = mid + 1; else right = mid; &#125; return right; &#125; // up_bound int find3(vector&lt;int&gt; &amp;nums, int target) &#123; int left = 0, right = nums.size(); while (left &lt; right) &#123; int mid = left + (right - left) / 2; if (nums[mid] &lt;= target) left = mid + 1; else right = mid; &#125; return right; &#125;&#125;;]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[dfs]]></title>
