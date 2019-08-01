@@ -112,7 +112,7 @@
 <meta property="og:site_name" content="gh&#39;s notes">
 <meta property="og:description" content="logical structure of PQ array representation of PQ PQ implementation maxPQ 12345void add(int n); // insert element to PQ --&amp;gt; stay tuned  int poll(); // get and remove top element --&amp;gt; stay tuned">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-01T15:52:15.744Z">
+<meta property="og:updated_time" content="2019-08-01T16:03:34.566Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="heap">
 <meta name="twitter:description" content="logical structure of PQ array representation of PQ PQ implementation maxPQ 12345void add(int n); // insert element to PQ --&amp;gt; stay tuned  int poll(); // get and remove top element --&amp;gt; stay tuned">
@@ -425,16 +425,46 @@
                 
               
 
-              <time title="Created: 2019-08-01 21:30:12 / Modified: 23:52:15" itemprop="dateCreated datePublished" datetime="2019-08-01T21:30:12+08:00">2019-08-01</time>
+              <time title="Created: 2019-08-01 21:30:12" itemprop="dateCreated datePublished" datetime="2019-08-01T21:30:12+08:00">2019-08-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-08-02 00:03:34" itemprop="dateModified" datetime="2019-08-02T00:03:34+08:00">2019-08-02</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -481,7 +511,7 @@
 <h2 id="array-representation-of-pq">array representation of PQ</h2>
 <h2 id="pq-implementation">PQ implementation</h2>
 <p>maxPQ</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void add(int n); // insert element to PQ --&gt; stay tuned  </span><br><span class="line">int poll(); // get and remove top element --&gt; stay tuned </span><br><span class="line"></span><br><span class="line">void siftup();</span><br><span class="line">void siftdown();</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> n)</span></span>; <span class="comment">// insert element to PQ --&gt; stay tuned  </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">poll</span><span class="params">()</span></span>; <span class="comment">// get and remove top element --&gt; stay tuned </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">siftup</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">siftdown</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
 <h3 id="siftup">siftup</h3>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">siftup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i = size; <span class="comment">// i is the index of the newly added element </span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (i &gt; <span class="number">1</span> &amp;&amp; pq[i / <span class="number">2</span>] &lt; pq[i]) &#123;</span><br><span class="line">    swap(pq[i / <span class="number">2</span>], pq[i]);</span><br><span class="line">    i /= <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="siftdown">siftdown</h3>
