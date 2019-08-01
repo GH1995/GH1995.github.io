@@ -512,12 +512,12 @@
 <p>Every Variable has two flags: <code>requires_grad</code> and <code>volatile</code>.</p>
 <h2 id="requires_grad"><code>requires_grad</code></h2>
 <p>If there's a single input to an operation that requires gradient, its output will also require gradient.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = Variable(torch.randn(<span class="number">5</span>, <span class="number">5</span>))</span><br><span class="line">y = Variable(torch.randn(<span class="number">5</span>, <span class="number">5</span>))</span><br><span class="line">y = Variable(torch.randn(<span class="number">5</span>, <span class="number">5</span>), requires_grad = <span class="literal">True</span>)</span><br><span class="line">a = x + y</span><br><span class="line">a.requires_grad    <span class="comment"># False</span></span><br><span class="line">b = a + z</span><br><span class="line">b.requires_grad     <span class="comment"># True</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">model = torchvision.models.resnet18(pretrain=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> param <span class="keyword">in</span> model.parameters():</span><br><span class="line">    param.requires_grad = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">model.fc = nn.Linear(<span class="number">512</span>, <span class="number">100</span>)</span><br><span class="line">optim.SGD(model.fc.parameters(), lr=<span class="number">1e-2</span>, momentum=<span class="number">0.9</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = Variable(torch.randn(<span class="number">5</span>, <span class="number">5</span>))</span><br><span class="line">y = Variable(torch.randn(<span class="number">5</span>, <span class="number">5</span>))</span><br><span class="line">y = Variable(torch.randn(<span class="number">5</span>, <span class="number">5</span>), requires_grad = <span class="literal">True</span>)</span><br><span class="line">a = x + y</span><br><span class="line">a.requires_grad    <span class="comment"># False</span></span><br><span class="line">b = a + z</span><br><span class="line">b.requires_grad     <span class="comment"># True</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">model = torchvision.models.resnet18(pretrain=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> param <span class="keyword">in</span> model.parameters():</span><br><span class="line">    param.requires_grad = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">model.fc = nn.Linear(<span class="number">512</span>, <span class="number">100</span>)</span><br><span class="line">optim.SGD(model.fc.parameters(), lr=<span class="number">1e-2</span>, momentum=<span class="number">0.9</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="volatile"><code>volatile</code></h2>
 <p>Volatile is recommended for purely inference mode, when you're sure you won't be even calling <code>.backward()</code>. <code>volatile</code> also determines that <code>requires_grad</code> is <code>False</code>.</p>
 <p>If there's even a single volatile input to an operation, its output is also going to be volatile.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">regular_input = Variable(torch.randn(<span class="number">1</span>, <span class="number">3</span>, <span class="number">277</span>, <span class="number">277</span>))</span><br><span class="line">volatile_input = Variable(torch.randn(<span class="number">1</span>, <span class="number">3</span>, <span class="number">277</span>, <span class="number">277</span>))</span><br><span class="line">model = torchvision.models.resnet18(pretrain=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">model(regular_input).requires_grad  <span class="comment"># True</span></span><br><span class="line">model(volatile).requires_grad       <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line">model(volatile_input).volatile      <span class="comment"># True</span></span><br><span class="line">model(volatile_input)grad_fn <span class="keyword">is</span> <span class="literal">None</span> <span class="comment"># True</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">regular_input = Variable(torch.randn(<span class="number">1</span>, <span class="number">3</span>, <span class="number">277</span>, <span class="number">277</span>))</span><br><span class="line">volatile_input = Variable(torch.randn(<span class="number">1</span>, <span class="number">3</span>, <span class="number">277</span>, <span class="number">277</span>))</span><br><span class="line">model = torchvision.models.resnet18(pretrain=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">model(regular_input).requires_grad  <span class="comment"># True</span></span><br><span class="line">model(volatile).requires_grad       <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line">model(volatile_input).volatile      <span class="comment"># True</span></span><br><span class="line">model(volatile_input)grad_fn <span class="keyword">is</span> <span class="literal">None</span> <span class="comment"># True</span></span><br></pre></td></tr></table></figure>
 <h1 id="how-autograd-encodes-the-history">How autograd encodes the history</h1>
 <h1 id="in-place-operations-on-variables">In-place operations on Variables</h1>
 <h1 id="in-place-correctness-checks">In-place correctness checks</h1>
@@ -541,14 +541,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2017/12/29/pytorch/CUDA-semantics/" rel="bookmark">CUDA semantics</a></div>
+      <div class="popular-posts-title"><a href="/2017/12/28/pytorch/Broadcasting-semantics/" rel="bookmark">Broadcasting semantics</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2017/12/28/pytorch/Broadcasting-semantics/" rel="bookmark">Broadcasting semantics</a></div>
+      <div class="popular-posts-title"><a href="/2017/12/29/pytorch/CUDA-semantics/" rel="bookmark">CUDA semantics</a></div>
       
     </li>
   
@@ -746,7 +746,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>

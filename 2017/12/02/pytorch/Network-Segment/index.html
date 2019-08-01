@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="A example of network 12345678class Network(object):	def __init__(self, *arg, **kwargs):		# .. yada yada, initialize weight and biases	def feedforward(self, a):		for b, w in zip(self.biases, self.weigh">
+  <meta name="description" content="A example of network class Network(object):	def __init__(self, *arg, **kwargs):		# .. yada yada, initialize weight and biases	def feedforward(self, a):		for b, w in zip(self.biases, self.weights):			a">
 <meta name="keywords" content="Python,Deep Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Network Segment">
 <meta property="og:url" content="http://guanhua.ml/2017/12/02/pytorch/Network-Segment/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="A example of network 12345678class Network(object):	def __init__(self, *arg, **kwargs):		# .. yada yada, initialize weight and biases	def feedforward(self, a):		for b, w in zip(self.biases, self.weigh">
+<meta property="og:description" content="A example of network class Network(object):	def __init__(self, *arg, **kwargs):		# .. yada yada, initialize weight and biases	def feedforward(self, a):		for b, w in zip(self.biases, self.weights):			a">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-16T03:47:53.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Network Segment">
-<meta name="twitter:description" content="A example of network 12345678class Network(object):	def __init__(self, *arg, **kwargs):		# .. yada yada, initialize weight and biases	def feedforward(self, a):		for b, w in zip(self.biases, self.weigh">
+<meta name="twitter:description" content="A example of network class Network(object):	def __init__(self, *arg, **kwargs):		# .. yada yada, initialize weight and biases	def feedforward(self, a):		for b, w in zip(self.biases, self.weights):			a">
 
 
 
@@ -509,7 +509,7 @@
 
       
         <p><strong>A example of network</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Network</span><span class="params">(object)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, *arg, **kwargs)</span>:</span></span><br><span class="line">		<span class="comment"># .. yada yada, initialize weight and biases</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">feedforward</span><span class="params">(self, a)</span>:</span></span><br><span class="line">		<span class="keyword">for</span> b, w <span class="keyword">in</span> zip(self.biases, self.weights):</span><br><span class="line">			a = sigmoid(np.dot(w, a) + b)</span><br><span class="line">	<span class="keyword">return</span> a</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Network</span><span class="params">(object)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, *arg, **kwargs)</span>:</span></span><br><span class="line">		<span class="comment"># .. yada yada, initialize weight and biases</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">feedforward</span><span class="params">(self, a)</span>:</span></span><br><span class="line">		<span class="keyword">for</span> b, w <span class="keyword">in</span> zip(self.biases, self.weights):</span><br><span class="line">			a = sigmoid(np.dot(w, a) + b)</span><br><span class="line">	<span class="keyword">return</span> a</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -537,14 +537,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2017/12/29/pytorch/CUDA-semantics/" rel="bookmark">CUDA semantics</a></div>
+      <div class="popular-posts-title"><a href="/2017/12/28/pytorch/Broadcasting-semantics/" rel="bookmark">Broadcasting semantics</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2017/12/28/pytorch/Broadcasting-semantics/" rel="bookmark">Broadcasting semantics</a></div>
+      <div class="popular-posts-title"><a href="/2017/12/29/pytorch/CUDA-semantics/" rel="bookmark">CUDA semantics</a></div>
       
     </li>
   
@@ -724,7 +724,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>

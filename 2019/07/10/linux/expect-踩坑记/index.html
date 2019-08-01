@@ -521,21 +521,21 @@
 <h2 id="send- 没什么好说的看例子即可"><code>send</code> 没什么好说的，看例子即可</h2>
 <p>send &quot;hello world&quot;</p>
 <h2 id="expect- 接收正则表达式参数这里用到了 -tcl- 相关的知识了"><code>expect</code> 接收正则表达式参数，这里用到了 tcl 相关的知识了</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">expect &quot;hi\n&quot;</span><br><span class="line">send &quot;you typed &lt;$expect_out(buffer)&gt;&quot;</span><br><span class="line">send &quot;but I only expected &lt;$expect_out(0,string)&gt;&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">expect &quot;hi\n&quot;</span><br><span class="line">send &quot;you typed &lt;$expect_out(buffer)&gt;&quot;</span><br><span class="line">send &quot;but I only expected &lt;$expect_out(0,string)&gt;&quot;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>&lt;$expect_out(buffer)&gt;</code> 存储了所有输入</li>
 <li><code>&lt;$expect_out(0,string)&gt;</code> 存储了输入中的匹配行</li>
 </ul>
 <p>接下来是模式动作部分 <strong>重点</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">expect &#123;</span><br><span class="line">    &quot;hi&quot; &#123; send &quot;You said hi\n&quot; &#125;</span><br><span class="line">    &quot;hello&quot; &#123; send &quot;Hello yourself\n&quot; &#125;</span><br><span class="line">    &quot;bye&quot; &#123; send &quot;That was unexpected\n&quot; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">expect &#123;</span><br><span class="line">    &quot;hi&quot; &#123; send &quot;You said hi\n&quot; &#125;</span><br><span class="line">    &quot;hello&quot; &#123; send &quot;Hello yourself\n&quot; &#125;</span><br><span class="line">    &quot;bye&quot; &#123; send &quot;That was unexpected\n&quot; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="spawn 启动新的进程把这个进程看成黑盒然后用 -send- 和 -expect- 同这个进程交互">spawn，启动新的进程，把这个进程看成黑盒，然后用 send 和 expect 同这个进程交互</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line"></span><br><span class="line"># filename: test.sh</span><br><span class="line"></span><br><span class="line">spawn ssh root@192.168.22.194</span><br><span class="line">expect &quot;*password:&quot;</span><br><span class="line">send &quot;123\r&quot;</span><br><span class="line">expect &quot;*#&quot;</span><br><span class="line">interact</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/expect</span><br><span class="line"></span><br><span class="line"># filename: test.sh</span><br><span class="line"></span><br><span class="line">spawn ssh root@192.168.22.194</span><br><span class="line">expect &quot;*password:&quot;</span><br><span class="line">send &quot;123\r&quot;</span><br><span class="line">expect &quot;*#&quot;</span><br><span class="line">interact</span><br></pre></td></tr></table></figure>
 <p><strong>注意这里有个坑！</strong></p>
 <p>不要用 bash 去运行这个脚本，要用 <code>expect</code> ！！</p>
 <h2 id="interact 干完活之后依然停在 -spawn- 启动的 -shell- 上">interact，干完活之后依然停在 spawn 启动的 shell 上</h2>
 <p>以便执行后续命令</p>
 <h2 id="如何从跳板机登录到开发机呢">如何从跳板机登录到开发机呢？</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">set timeout -1</span><br><span class="line">set ip $1</span><br><span class="line">set password $2</span><br><span class="line"></span><br><span class="line">spawn ssh -p xxx username@ip</span><br><span class="line"></span><br><span class="line">expect &#123;</span><br><span class="line">    &quot;*yes/no&quot;       &#123; send &quot;yes\r&quot;; exp_continue  &#125;</span><br><span class="line">    &quot;*password:&quot;    &#123; send &quot;$password\r&quot;  &#125;</span><br><span class="line">&#125;</span><br><span class="line">interact</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set timeout -1</span><br><span class="line">set ip $1</span><br><span class="line">set password $2</span><br><span class="line"></span><br><span class="line">spawn ssh -p xxx username@ip</span><br><span class="line"></span><br><span class="line">expect &#123;</span><br><span class="line">    &quot;*yes/no&quot;       &#123; send &quot;yes\r&quot;; exp_continue  &#125;</span><br><span class="line">    &quot;*password:&quot;    &#123; send &quot;$password\r&quot;  &#125;</span><br><span class="line">&#125;</span><br><span class="line">interact</span><br></pre></td></tr></table></figure>
 <p>参考文章：https://www.cnblogs.com/lzrabbit/p/4298794.html</p>
 
       
@@ -550,14 +550,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2018/01/02/linux/How-to-delete-default-bookmark-of-nautilus-in-ubuntu/" rel="bookmark">How to delete default bookmark of nautilus in ubuntu ?</a></div>
+      <div class="popular-posts-title"><a href="/2018/06/13/linux/GitHub-下载指定文件夹/" rel="bookmark">GitHub 下载指定文件夹</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2018/06/13/linux/GitHub-下载指定文件夹/" rel="bookmark">GitHub 下载指定文件夹</a></div>
+      <div class="popular-posts-title"><a href="/2018/01/02/linux/How-to-delete-default-bookmark-of-nautilus-in-ubuntu/" rel="bookmark">How to delete default bookmark of nautilus in ubuntu ?</a></div>
       
     </li>
   
@@ -758,7 +758,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>

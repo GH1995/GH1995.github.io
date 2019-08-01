@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="目标： 在 VPS 上跑 pyspark，spark 的配置略过，主要讲 jupyter 方面。 jupyter 配置的关键点在于找准错误，所有错误，看最上面一个就行，然后直接 Google。我遇到的错误是，不能运行，具体是： 1KeyError: &amp;apos;allow_remote_access&amp;apos; 于是修改配置 ~/.jupyter/jupyter_notebook_config.p">
+  <meta name="description" content="目标： 在 VPS 上跑 pyspark，spark 的配置略过，主要讲 jupyter 方面。 jupyter 配置的关键点在于找准错误，所有错误，看最上面一个就行，然后直接 Google。我遇到的错误是，不能运行，具体是： KeyError: &amp;apos;allow_remote_access&amp;apos; 于是修改配置 ~/.jupyter/jupyter_notebook_config.py">
 <meta name="keywords" content="bugs,jupyter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jupyter 远程访问配置">
 <meta property="og:url" content="http://guanhua.ml/2019/06/18/python/Jupyter-远程访问配置/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="目标： 在 VPS 上跑 pyspark，spark 的配置略过，主要讲 jupyter 方面。 jupyter 配置的关键点在于找准错误，所有错误，看最上面一个就行，然后直接 Google。我遇到的错误是，不能运行，具体是： 1KeyError: &amp;apos;allow_remote_access&amp;apos; 于是修改配置 ~/.jupyter/jupyter_notebook_config.p">
+<meta property="og:description" content="目标： 在 VPS 上跑 pyspark，spark 的配置略过，主要讲 jupyter 方面。 jupyter 配置的关键点在于找准错误，所有错误，看最上面一个就行，然后直接 Google。我遇到的错误是，不能运行，具体是： KeyError: &amp;apos;allow_remote_access&amp;apos; 于是修改配置 ~/.jupyter/jupyter_notebook_config.py">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-16T03:47:53.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jupyter 远程访问配置">
-<meta name="twitter:description" content="目标： 在 VPS 上跑 pyspark，spark 的配置略过，主要讲 jupyter 方面。 jupyter 配置的关键点在于找准错误，所有错误，看最上面一个就行，然后直接 Google。我遇到的错误是，不能运行，具体是： 1KeyError: &amp;apos;allow_remote_access&amp;apos; 于是修改配置 ~/.jupyter/jupyter_notebook_config.p">
+<meta name="twitter:description" content="目标： 在 VPS 上跑 pyspark，spark 的配置略过，主要讲 jupyter 方面。 jupyter 配置的关键点在于找准错误，所有错误，看最上面一个就行，然后直接 Google。我遇到的错误是，不能运行，具体是： KeyError: &amp;apos;allow_remote_access&amp;apos; 于是修改配置 ~/.jupyter/jupyter_notebook_config.py">
 
 
 
@@ -510,9 +510,9 @@
       
         <p>目标： 在 VPS 上跑 pyspark，spark 的配置略过，主要讲 jupyter 方面。</p>
 <p>jupyter 配置的关键点在于找准错误，所有错误，看最上面一个就行，然后直接 Google。我遇到的错误是，不能运行，具体是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KeyError: &apos;allow_remote_access&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">KeyError: &apos;allow_remote_access&apos;</span><br></pre></td></tr></table></figure>
 <p>于是修改配置 <code>~/.jupyter/jupyter_notebook_config.py</code> 中</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.NotebookApp.allow_remote_access = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c.NotebookApp.allow_remote_access = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
 <p>搞定！</p>
 
       
@@ -688,7 +688,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>

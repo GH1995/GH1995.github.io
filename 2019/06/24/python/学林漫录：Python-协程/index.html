@@ -545,8 +545,8 @@
 <li>对于计算密集的情况，多线程是最优解（把显卡计算视为多线程之一种），对于 io 密集任务，回调是最优解。</li>
 </ul>
 <h2 id="协程样例">协程样例</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@asyncio.coroutine</span><br><span class="line">def hello():</span><br><span class="line">    print(&quot;hello, world&quot;)</span><br><span class="line"></span><br><span class="line">    r = yield from asyncio.sleep(100)</span><br><span class="line"></span><br><span class="line">    print(&quot;hello, again!&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">loop = asyncio.get_event_loop()</span><br><span class="line">loop.run_until_complete(hello())</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import threading</span><br><span class="line">import asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@asyncio.coroutine</span><br><span class="line">def hello():</span><br><span class="line">    print(&apos;Hello world! (%s)&apos; % threading.current_thread())</span><br><span class="line">    yield from asyncio.sleep(5)</span><br><span class="line">    print(&apos;hello again! (%s)&apos; % threading.current_thread())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">loop = asyncio.get_event_loop()</span><br><span class="line">tasks = [hello(), hello()]</span><br><span class="line">loop.run_until_complete(asyncio.wait(tasks))</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@asyncio.coroutine</span><br><span class="line">def hello():</span><br><span class="line">    print(&quot;hello, world&quot;)</span><br><span class="line"></span><br><span class="line">    r = yield from asyncio.sleep(100)</span><br><span class="line"></span><br><span class="line">    print(&quot;hello, again!&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">loop = asyncio.get_event_loop()</span><br><span class="line">loop.run_until_complete(hello())</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import threading</span><br><span class="line">import asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@asyncio.coroutine</span><br><span class="line">def hello():</span><br><span class="line">    print(&apos;Hello world! (%s)&apos; % threading.current_thread())</span><br><span class="line">    yield from asyncio.sleep(5)</span><br><span class="line">    print(&apos;hello again! (%s)&apos; % threading.current_thread())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">loop = asyncio.get_event_loop()</span><br><span class="line">tasks = [hello(), hello()]</span><br><span class="line">loop.run_until_complete(asyncio.wait(tasks))</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure>
 <ol type="1">
 <li><code>asyncio</code> 提供了完善的异步 IO 支持；</li>
 <li>异步操作需要在 <code>coroutine</code> 中通过 <code>yield from</code> 完成；</li>
@@ -591,14 +591,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/19/python/Python-import-小结/" rel="bookmark">Python import 小结</a></div>
+      <div class="popular-posts-title"><a href="/2019/06/14/python/Python-decorators/" rel="bookmark">Python decorators </a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/06/14/python/Python-decorators/" rel="bookmark">Python decorators </a></div>
+      <div class="popular-posts-title"><a href="/2019/06/19/python/Python-import-小结/" rel="bookmark">Python import 小结</a></div>
       
     </li>
   
@@ -780,7 +780,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>

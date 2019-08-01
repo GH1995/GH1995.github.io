@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="创建用户 123CREATE USER &apos;usernaem&apos;@&apos;host&apos; IDENTIFIED BY &apos;passwd&apos;;% host：指定该用户在哪个主机上可以登陆，如果是本地用户可用 localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符 % 授权 123GRANT privileges ON databasename.tablename TO &apos;username&apos;@&apos;hos">
+  <meta name="description" content="创建用户 CREATE USER &apos;usernaem&apos;@&apos;host&apos; IDENTIFIED BY &apos;passwd&apos;;% host：指定该用户在哪个主机上可以登陆，如果是本地用户可用 localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符 % 授权 GRANT privileges ON databasename.tablename TO &apos;username&apos;@&apos;host&apos;;GRA">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL 创建用户与授权">
 <meta property="og:url" content="http://guanhua.ml/2018/06/18/linux/MySQL创建用户与授权/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="创建用户 123CREATE USER &apos;usernaem&apos;@&apos;host&apos; IDENTIFIED BY &apos;passwd&apos;;% host：指定该用户在哪个主机上可以登陆，如果是本地用户可用 localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符 % 授权 123GRANT privileges ON databasename.tablename TO &apos;username&apos;@&apos;hos">
+<meta property="og:description" content="创建用户 CREATE USER &apos;usernaem&apos;@&apos;host&apos; IDENTIFIED BY &apos;passwd&apos;;% host：指定该用户在哪个主机上可以登陆，如果是本地用户可用 localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符 % 授权 GRANT privileges ON databasename.tablename TO &apos;username&apos;@&apos;host&apos;;GRA">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-16T03:47:53.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 创建用户与授权">
-<meta name="twitter:description" content="创建用户 123CREATE USER &apos;usernaem&apos;@&apos;host&apos; IDENTIFIED BY &apos;passwd&apos;;% host：指定该用户在哪个主机上可以登陆，如果是本地用户可用 localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符 % 授权 123GRANT privileges ON databasename.tablename TO &apos;username&apos;@&apos;hos">
+<meta name="twitter:description" content="创建用户 CREATE USER &apos;usernaem&apos;@&apos;host&apos; IDENTIFIED BY &apos;passwd&apos;;% host：指定该用户在哪个主机上可以登陆，如果是本地用户可用 localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符 % 授权 GRANT privileges ON databasename.tablename TO &apos;username&apos;@&apos;host&apos;;GRA">
 
 
 
@@ -509,25 +509,25 @@
 
       
         <h2 id="创建用户">创建用户</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'usernaem'</span>@<span class="string">'host'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'passwd'</span>;</span><br><span class="line"></span><br><span class="line">% host：指定该用户在哪个主机上可以登陆，如果是本地用户可用 localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符 %</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'usernaem'</span>@<span class="string">'host'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'passwd'</span>;</span><br><span class="line"></span><br><span class="line">% host：指定该用户在哪个主机上可以登陆，如果是本地用户可用 localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符 %</span><br></pre></td></tr></table></figure>
 <h2 id="授权">授权</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">privileges</span> <span class="keyword">ON</span> databasename.tablename <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'host'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'pig'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">privileges</span> <span class="keyword">ON</span> databasename.tablename <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'host'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'pig'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>privileges</code>：用户的操作权限，如 <code>SELECT</code>，<code>INSERT</code>，<code>UPDATE</code> 等，如果要授予所的权限则使用<code>ALL</code></li>
 <li><code>tablename</code>：表名，如果要授予该用户对所有数据库和表的相应操作权限则可用 <code>*</code> 表示，如<code>*.*</code></li>
 </ul>
 <p>用以上命令授权的用户不能给其它用户授权，如果想让该用户可以授权，用以下命令:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">privileges</span> <span class="keyword">ON</span> databasename.tablename <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'host'</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">privileges</span> <span class="keyword">ON</span> databasename.tablename <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'host'</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="设置与更改用户密码">设置与更改用户密码</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">PASSWORD</span> <span class="keyword">FOR</span> <span class="string">'username'</span>@<span class="string">'host'</span> = <span class="keyword">PASSWORD</span>(<span class="string">'newpassword'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">PASSWORD</span> <span class="keyword">FOR</span> <span class="string">'username'</span>@<span class="string">'host'</span> = <span class="keyword">PASSWORD</span>(<span class="string">'newpassword'</span>);</span><br></pre></td></tr></table></figure>
 <h2 id="如果是当前登陆用户用">如果是当前登陆用户用:</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">PASSWORD</span> = <span class="keyword">PASSWORD</span>(<span class="string">"newpassword"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">PASSWORD</span> = <span class="keyword">PASSWORD</span>(<span class="string">"newpassword"</span>);</span><br></pre></td></tr></table></figure>
 <h2 id="撤销用户权限">撤销用户权限</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> privilege <span class="keyword">ON</span> databasename.tablename <span class="keyword">FROM</span> <span class="string">'username'</span>@<span class="string">'host'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> *.* <span class="keyword">FROM</span> <span class="string">'pig'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> privilege <span class="keyword">ON</span> databasename.tablename <span class="keyword">FROM</span> <span class="string">'username'</span>@<span class="string">'host'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> *.* <span class="keyword">FROM</span> <span class="string">'pig'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="删除用户">删除用户</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> <span class="string">'username'</span>@<span class="string">'host'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> <span class="string">'username'</span>@<span class="string">'host'</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="总结">总结</h2>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">GRANTS</span> <span class="keyword">FOR</span> <span class="string">'pig'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">GRANTS</span> <span class="keyword">FOR</span> <span class="string">'pig'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
 <p><strong>参考：</strong> 1. https://www.jianshu.com/p/d7b9c468f20d</p>
 
       
@@ -710,7 +710,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>

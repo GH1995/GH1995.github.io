@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="what&apos;s cmake  CMakeLists.txt cmake PATH or ccmake PATH generate Makefile make  example for one file In the fold Demo1 makeup CMakeLists.txt 12345678# Versioncmake_minimum_required (VERSION 2.8)# Proje">
+  <meta name="description" content="what&apos;s cmake  CMakeLists.txt cmake PATH or ccmake PATH generate Makefile make  example for one file In the fold Demo1 makeup CMakeLists.txt # Versioncmake_minimum_required (VERSION 2.8)# Project infor">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cmake">
 <meta property="og:url" content="http://guanhua.ml/2018/01/03/linux/cmake/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="what&apos;s cmake  CMakeLists.txt cmake PATH or ccmake PATH generate Makefile make  example for one file In the fold Demo1 makeup CMakeLists.txt 12345678# Versioncmake_minimum_required (VERSION 2.8)# Proje">
+<meta property="og:description" content="what&apos;s cmake  CMakeLists.txt cmake PATH or ccmake PATH generate Makefile make  example for one file In the fold Demo1 makeup CMakeLists.txt # Versioncmake_minimum_required (VERSION 2.8)# Project infor">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-07-16T03:47:53.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cmake">
-<meta name="twitter:description" content="what&apos;s cmake  CMakeLists.txt cmake PATH or ccmake PATH generate Makefile make  example for one file In the fold Demo1 makeup CMakeLists.txt 12345678# Versioncmake_minimum_required (VERSION 2.8)# Proje">
+<meta name="twitter:description" content="what&apos;s cmake  CMakeLists.txt cmake PATH or ccmake PATH generate Makefile make  example for one file In the fold Demo1 makeup CMakeLists.txt # Versioncmake_minimum_required (VERSION 2.8)# Project infor">
 
 
 
@@ -517,27 +517,27 @@
 <h2 id="example-for-one-file">example for one file</h2>
 <p>In the fold <code>Demo1</code></p>
 <p>makeup <code>CMakeLists.txt</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Version</span><br><span class="line">cmake_minimum_required (VERSION 2.8)</span><br><span class="line"></span><br><span class="line"># Project information</span><br><span class="line">project (Demo1)</span><br><span class="line"></span><br><span class="line"># generate object</span><br><span class="line">add_executable(Demo main.cc)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Version</span><br><span class="line">cmake_minimum_required (VERSION 2.8)</span><br><span class="line"></span><br><span class="line"># Project information</span><br><span class="line">project (Demo1)</span><br><span class="line"></span><br><span class="line"># generate object</span><br><span class="line">add_executable(Demo main.cc)</span><br></pre></td></tr></table></figure>
 <p>complie project</p>
 <p>cmake .</p>
 <h2 id="example-for-multi-files">example for multi-files</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./Demo2</span><br><span class="line">    |</span><br><span class="line">    +--- main.cc</span><br><span class="line">    |</span><br><span class="line">    +--- MathFunctions.cc</span><br><span class="line">    |</span><br><span class="line">    +--- MathFunctions.h</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># VERSION</span><br><span class="line">cmake_minimum_required (VERSION 2.8)</span><br><span class="line"></span><br><span class="line"># Project information</span><br><span class="line">project (Demo2)</span><br><span class="line"></span><br><span class="line"># find source file save to DIR_SRCS</span><br><span class="line">aux_source_directory(. DIR_SRCS)</span><br><span class="line"></span><br><span class="line"># generate object</span><br><span class="line">add_executable(Demo main.cc MathFunctions.cc) # add MathFunctions.cc</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aux_source_directory(&lt;dir&gt; &lt;variable&gt;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">./Demo3</span><br><span class="line">    |</span><br><span class="line">    +--- main.cc</span><br><span class="line">    |</span><br><span class="line">    +--- math/</span><br><span class="line">          |</span><br><span class="line">          +--- MathFunctions.cc</span><br><span class="line">          |</span><br><span class="line">          +--- MathFunctions.h</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required (VERSION 2.8)</span><br><span class="line"></span><br><span class="line">project (Demo3)</span><br><span class="line"></span><br><span class="line">aux_source_directory(. DIR_SRCS)</span><br><span class="line"></span><br><span class="line"># add subdirectory</span><br><span class="line">add_subdirectory(math)</span><br><span class="line"></span><br><span class="line">add_executable(Demo main.cc)</span><br><span class="line"></span><br><span class="line"># add link lib</span><br><span class="line">target_link_libraries(Demo MathFunctions)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">./Demo2</span><br><span class="line">    |</span><br><span class="line">    +--- main.cc</span><br><span class="line">    |</span><br><span class="line">    +--- MathFunctions.cc</span><br><span class="line">    |</span><br><span class="line">    +--- MathFunctions.h</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># VERSION</span><br><span class="line">cmake_minimum_required (VERSION 2.8)</span><br><span class="line"></span><br><span class="line"># Project information</span><br><span class="line">project (Demo2)</span><br><span class="line"></span><br><span class="line"># find source file save to DIR_SRCS</span><br><span class="line">aux_source_directory(. DIR_SRCS)</span><br><span class="line"></span><br><span class="line"># generate object</span><br><span class="line">add_executable(Demo main.cc MathFunctions.cc) # add MathFunctions.cc</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">aux_source_directory(&lt;dir&gt; &lt;variable&gt;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">./Demo3</span><br><span class="line">    |</span><br><span class="line">    +--- main.cc</span><br><span class="line">    |</span><br><span class="line">    +--- math/</span><br><span class="line">          |</span><br><span class="line">          +--- MathFunctions.cc</span><br><span class="line">          |</span><br><span class="line">          +--- MathFunctions.h</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required (VERSION 2.8)</span><br><span class="line"></span><br><span class="line">project (Demo3)</span><br><span class="line"></span><br><span class="line">aux_source_directory(. DIR_SRCS)</span><br><span class="line"></span><br><span class="line"># add subdirectory</span><br><span class="line">add_subdirectory(math)</span><br><span class="line"></span><br><span class="line">add_executable(Demo main.cc)</span><br><span class="line"></span><br><span class="line"># add link lib</span><br><span class="line">target_link_libraries(Demo MathFunctions)</span><br></pre></td></tr></table></figure>
 <h2 id="complile-options">complile options</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required (VERSION 2.8)</span><br><span class="line"></span><br><span class="line">project (Demo4)</span><br><span class="line"></span><br><span class="line">configure_file (</span><br><span class="line">	&quot;$&#123;PROJECT_SOURCE_DIR&#125;/config.h.in&quot;</span><br><span class="line">	&quot;$&#123;PROJECT_BINARY_DIR&#125;/config.h&quot;</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"># MathFunctions</span><br><span class="line">option (USE_MYMATH</span><br><span class="line">       &quot;Use provided math implementation&quot; ON)</span><br><span class="line"></span><br><span class="line">#  MathFunctions</span><br><span class="line">if (USE_MYMATH)</span><br><span class="line">	include_directories (&quot;$&#123;PROJECT_SOURCE_DIR&#125;/math&quot;)</span><br><span class="line">	add_subdirectory (math)</span><br><span class="line">	set (EXTRA_LIBS $&#123;EXTRA_LIBS&#125; MathFunctions)</span><br><span class="line">endif (USE_MYMATH)</span><br><span class="line"></span><br><span class="line">aux_source_directory(. DIR_SRCS)</span><br><span class="line"></span><br><span class="line">add_executable(Demo $&#123;DIR_SRCS&#125;)</span><br><span class="line">target_link_libraries (Demo  $&#123;EXTRA_LIBS&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required (VERSION 2.8)</span><br><span class="line"></span><br><span class="line">project (Demo4)</span><br><span class="line"></span><br><span class="line">configure_file (</span><br><span class="line">	&quot;$&#123;PROJECT_SOURCE_DIR&#125;/config.h.in&quot;</span><br><span class="line">	&quot;$&#123;PROJECT_BINARY_DIR&#125;/config.h&quot;</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"># MathFunctions</span><br><span class="line">option (USE_MYMATH</span><br><span class="line">       &quot;Use provided math implementation&quot; ON)</span><br><span class="line"></span><br><span class="line">#  MathFunctions</span><br><span class="line">if (USE_MYMATH)</span><br><span class="line">	include_directories (&quot;$&#123;PROJECT_SOURCE_DIR&#125;/math&quot;)</span><br><span class="line">	add_subdirectory (math)</span><br><span class="line">	set (EXTRA_LIBS $&#123;EXTRA_LIBS&#125; MathFunctions)</span><br><span class="line">endif (USE_MYMATH)</span><br><span class="line"></span><br><span class="line">aux_source_directory(. DIR_SRCS)</span><br><span class="line"></span><br><span class="line">add_executable(Demo $&#123;DIR_SRCS&#125;)</span><br><span class="line">target_link_libraries (Demo  $&#123;EXTRA_LIBS&#125;)</span><br></pre></td></tr></table></figure>
 <h2 id="install-and-test">install and test</h2>
 <p>add_test</p>
 <h2 id="support-gbd">support gbd</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set(CMAKE_BUILD_TYPE &quot;Debug&quot;)</span><br><span class="line">set(CMAKE_CXX_FLAGS_DEBUG &quot;$ENV&#123;CXXFLAGS&#125; -O0 -Wall -g -ggdb&quot;)</span><br><span class="line">set(CMAKE_CXX_FLAGS_RELEASE &quot;$ENV&#123;CXXFLAGS&#125; -O3 -Wall&quot;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set(CMAKE_BUILD_TYPE &quot;Debug&quot;)</span><br><span class="line">set(CMAKE_CXX_FLAGS_DEBUG &quot;$ENV&#123;CXXFLAGS&#125; -O0 -Wall -g -ggdb&quot;)</span><br><span class="line">set(CMAKE_CXX_FLAGS_RELEASE &quot;$ENV&#123;CXXFLAGS&#125; -O3 -Wall&quot;)</span><br></pre></td></tr></table></figure>
 <h2 id="evironment-check">evironment check</h2>
 <p>CheckFunctionExists</p>
 <h2 id="version">version</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set (Demo_VERSION_MAJOR 1)</span><br><span class="line">set (Demo_VERSION_MINOR 0)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set (Demo_VERSION_MAJOR 1)</span><br><span class="line">set (Demo_VERSION_MINOR 0)</span><br></pre></td></tr></table></figure>
 <h2 id="install-package">install package</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">include (InstallRequiredSystemLibraries)</span><br><span class="line">set (CPACK_RESOURCE_FILE_LICENSE</span><br><span class="line">	&quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/License.txt&quot;)</span><br><span class="line">set (CPACK_PACKAGE_VERSION_MAJOR &quot;$&#123;Demo_VERSION_MAJOR&#125;&quot;)</span><br><span class="line">set (CPACK_PACKAGE_VERSION_MINOR &quot;$&#123;Demo_VERSION_MINOR&#125;&quot;)</span><br><span class="line">include (CPack)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">include (InstallRequiredSystemLibraries)</span><br><span class="line">set (CPACK_RESOURCE_FILE_LICENSE</span><br><span class="line">	&quot;$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/License.txt&quot;)</span><br><span class="line">set (CPACK_PACKAGE_VERSION_MAJOR &quot;$&#123;Demo_VERSION_MAJOR&#125;&quot;)</span><br><span class="line">set (CPACK_PACKAGE_VERSION_MINOR &quot;$&#123;Demo_VERSION_MINOR&#125;&quot;)</span><br><span class="line">include (CPack)</span><br></pre></td></tr></table></figure>
 <h2 id="move-to-cmake">move to cmake</h2>
 <ul>
 <li>autotools
@@ -563,14 +563,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2018/01/02/linux/How-to-delete-default-bookmark-of-nautilus-in-ubuntu/" rel="bookmark">How to delete default bookmark of nautilus in ubuntu ?</a></div>
+      <div class="popular-posts-title"><a href="/2018/06/13/linux/GitHub-下载指定文件夹/" rel="bookmark">GitHub 下载指定文件夹</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2018/06/13/linux/GitHub-下载指定文件夹/" rel="bookmark">GitHub 下载指定文件夹</a></div>
+      <div class="popular-posts-title"><a href="/2018/01/02/linux/How-to-delete-default-bookmark-of-nautilus-in-ubuntu/" rel="bookmark">How to delete default bookmark of nautilus in ubuntu ?</a></div>
       
     </li>
   
@@ -591,7 +591,7 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/07/10/linux/expect-踩坑记/" rel="bookmark">expect 踩坑记</a></div>
+      <div class="popular-posts-title"><a href="/2018/06/22/linux/docker国内安装/" rel="bookmark">docker 国内安装</a></div>
       
     </li>
   
@@ -771,7 +771,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>

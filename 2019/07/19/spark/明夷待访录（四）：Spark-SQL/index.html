@@ -520,11 +520,11 @@
 <blockquote>
 <p>如何从 people.json 文件中读取数据并生成 DataFrame 并显示数据？</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spark = SparkSession.builder.getOrCreate()</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = spark.read.json(<span class="string">"file:///usr/local/spark/examples/src/main/resources/people.json"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">spark = SparkSession.builder.getOrCreate()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = spark.read.json(<span class="string">"file:///usr/local/spark/examples/src/main/resources/people.json"</span>)</span><br></pre></td></tr></table></figure>
 <p>看一下 Json 里面有什么</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.show()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.show()</span><br></pre></td></tr></table></figure>
 <pre><code>+----+-------+
 | age|   name|
 +----+-------+
@@ -533,12 +533,12 @@
 |  19| Justin|
 +----+-------+</code></pre>
 <p>打印模式信息</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.printSchema()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.printSchema()</span><br></pre></td></tr></table></figure>
 <pre><code>root
  |-- age: long (nullable = true)
  |-- name: string (nullable = true)</code></pre>
 <p>选择多列</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select(df.name, df.age + <span class="number">1</span>).show()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.select(df.name, df.age + <span class="number">1</span>).show()</span><br></pre></td></tr></table></figure>
 <pre><code>+-------+---------+
 |   name|(age + 1)|
 +-------+---------+
@@ -547,14 +547,14 @@
 | Justin|       20|
 +-------+---------+</code></pre>
 <p>条件过滤</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.filter(df.age &gt; <span class="number">20</span>).show()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.filter(df.age &gt; <span class="number">20</span>).show()</span><br></pre></td></tr></table></figure>
 <pre><code>+---+----+
 |age|name|
 +---+----+
 | 30|Andy|
 +---+----+</code></pre>
 <p>分组聚合</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupBy(<span class="string">"age"</span>).count().show()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.groupBy(<span class="string">"age"</span>).count().show()</span><br></pre></td></tr></table></figure>
 <pre><code>+----+-----+
 | age|count|
 +----+-----+
@@ -563,7 +563,7 @@
 |  30|    1|
 +----+-----+</code></pre>
 <p>排序</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort(df.age.desc()).show()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.sort(df.age.desc()).show()</span><br></pre></td></tr></table></figure>
 <pre><code>+----+-------+
 | age|   name|
 +----+-------+
@@ -572,7 +572,7 @@
 |null|Michael|
 +----+-------+</code></pre>
 <p>多列排序</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort(df.age.desc(), df.name.asc()).show()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.sort(df.age.desc(), df.name.asc()).show()</span><br></pre></td></tr></table></figure>
 <pre><code>+----+-------+
 | age|   name|
 +----+-------+
@@ -581,7 +581,7 @@
 |null|Michael|
 +----+-------+</code></pre>
 <p>对列进行重命名</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select(df.name.alias(<span class="string">"username"</span>), df.age).show()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.select(df.name.alias(<span class="string">"username"</span>), df.age).show()</span><br></pre></td></tr></table></figure>
 <pre><code>+--------+----+
 |username| age|
 +--------+----+
@@ -600,11 +600,11 @@
 <li>通过字符串创建相应的对象</li>
 <li>利用字符串的动态性，动态地创建需要的对象</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.types <span class="keyword">import</span> Row</span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc = SparkContext(<span class="string">"local"</span>, <span class="string">"test"</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">    rel = &#123;&#125;</span><br><span class="line">    rel[<span class="string">'name'</span>] = x[<span class="number">0</span>]</span><br><span class="line">    rel[<span class="string">'age'</span>] = x[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> rel</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">peopleDF = sc.textFile(</span><br><span class="line">    <span class="string">"file:///usr/local/spark/examples/src/main/resources/people.txt"</span>).map(</span><br><span class="line">        <span class="keyword">lambda</span> line: line.split(<span class="string">','</span>)).map(<span class="keyword">lambda</span> x: Row(**f(x)).toDF())</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peopleDF.createOrReplaceTempView(<span class="string">"people"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.types <span class="keyword">import</span> Row</span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sc = SparkContext(<span class="string">"local"</span>, <span class="string">"test"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">    rel = &#123;&#125;</span><br><span class="line">    rel[<span class="string">'name'</span>] = x[<span class="number">0</span>]</span><br><span class="line">    rel[<span class="string">'age'</span>] = x[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> rel</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">peopleDF = sc.textFile(</span><br><span class="line">    <span class="string">"file:///usr/local/spark/examples/src/main/resources/people.txt"</span>).map(</span><br><span class="line">        <span class="keyword">lambda</span> line: line.split(<span class="string">','</span>)).map(<span class="keyword">lambda</span> x: Row(**f(x)).toDF())</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">peopleDF.createOrReplaceTempView(<span class="string">"people"</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>---------------------------------------------------------------------------
 
 AttributeError                            Traceback (most recent call last)
@@ -614,25 +614,25 @@ AttributeError                            Traceback (most recent call last)
 
 
 AttributeError: &#39;PipelinedRDD&#39; object has no attribute &#39;createOrReplaceTempView&#39;</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peopleDF = spark.sql(<span class="string">"select * from people"</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peopleDF.rdd.map(<span class="keyword">lambda</span> t: <span class="string">"Name:"</span> + t[<span class="number">0</span>] + <span class="string">","</span> + <span class="string">"Age:"</span> + t[<span class="number">1</span>]).take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">peopleDF = spark.sql(<span class="string">"select * from people"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">peopleDF.rdd.map(<span class="keyword">lambda</span> t: <span class="string">"Name:"</span> + t[<span class="number">0</span>] + <span class="string">","</span> + <span class="string">"Age:"</span> + t[<span class="number">1</span>]).take(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>[&#39;Name:  29, Age: Michael&#39;, &#39;Name:  30, Age: Andy&#39;, &#39;Name:  19, Age: Justin&#39;]</code></pre>
 <p><strong>使用编程方式定义 RDD 模式</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.types <span class="keyword">import</span> StructType, StructField, StructType, StringType, Row</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql.types <span class="keyword">import</span> StructType, StructField, StructType, StringType, Row</span><br></pre></td></tr></table></figure>
 <p>生成 RDD</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">peopleRDD = sc.textFile(</span><br><span class="line">    <span class="string">"file:///usr/local/spark/examples/src/main/resources/people.txt"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">peopleRDD = sc.textFile(</span><br><span class="line">    <span class="string">"file:///usr/local/spark/examples/src/main/resources/people.txt"</span>)</span><br></pre></td></tr></table></figure>
 <p>定义一个模式字符串</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schemaString = <span class="string">"name age"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">schemaString = <span class="string">"name age"</span></span><br></pre></td></tr></table></figure>
 <p>根据模式字符串生成模式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fields = list(</span><br><span class="line">    map(<span class="keyword">lambda</span> fieldName: StructField(fieldName, StringType(), nullable=<span class="literal">True</span>),</span><br><span class="line">        schemaString.split(<span class="string">" "</span>)))</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schema = StructType(fields)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schema</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">fields = list(</span><br><span class="line">    map(<span class="keyword">lambda</span> fieldName: StructField(fieldName, StringType(), nullable=<span class="literal">True</span>),</span><br><span class="line">        schemaString.split(<span class="string">" "</span>)))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">schema = StructType(fields)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">schema</span><br></pre></td></tr></table></figure>
 <pre><code>StructType(List(StructField(name,StringType,true),StructField(age,StringType,true)))</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rowRDD = peopleRDD.map(<span class="keyword">lambda</span> line: line.split(<span class="string">','</span>)).map(</span><br><span class="line">    <span class="keyword">lambda</span> attributes: Row(attributes[<span class="number">0</span>], attributes[<span class="number">1</span>]))</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peopleDF = spark.createDataFrame(rowRDD, schema)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peopleDF.createOrReplaceTempView(<span class="string">"people"</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">results.rdd.map(<span class="keyword">lambda</span> attributes: <span class="string">"name:"</span> + attributes[<span class="number">0</span>] + <span class="string">","</span> + <span class="string">"age:"</span> +</span><br><span class="line">                attributes[<span class="number">1</span>]).foreach(<span class="keyword">print</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">results.show()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rowRDD = peopleRDD.map(<span class="keyword">lambda</span> line: line.split(<span class="string">','</span>)).map(</span><br><span class="line">    <span class="keyword">lambda</span> attributes: Row(attributes[<span class="number">0</span>], attributes[<span class="number">1</span>]))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">peopleDF = spark.createDataFrame(rowRDD, schema)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">peopleDF.createOrReplaceTempView(<span class="string">"people"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">results.rdd.map(<span class="keyword">lambda</span> attributes: <span class="string">"name:"</span> + attributes[<span class="number">0</span>] + <span class="string">","</span> + <span class="string">"age:"</span> +</span><br><span class="line">                attributes[<span class="number">1</span>]).foreach(<span class="keyword">print</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">results.show()</span><br></pre></td></tr></table></figure>
 <pre><code>+-------+---+
 |   name|age|
 +-------+---+
@@ -641,17 +641,17 @@ AttributeError: &#39;PipelinedRDD&#39; object has no attribute &#39;createOrRepl
 | Justin| 19|
 +-------+---+</code></pre>
 <h2 id="把 rdd 保存成文件">把 RDD 保存成文件</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">peopleDF = spark.read.format(<span class="string">"json"</span>).load(</span><br><span class="line">    <span class="string">"file:///usr/local/spark/examples/src/main/resources/people.json"</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">peopleDF.select(<span class="string">"name"</span>, <span class="string">"age"</span>).write.format(<span class="string">"csv"</span>).save(</span><br><span class="line">    <span class="string">"file:///home/hadoop/spark/data/newpeople.csv"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">peopleDF = spark.read.format(<span class="string">"json"</span>).load(</span><br><span class="line">    <span class="string">"file:///usr/local/spark/examples/src/main/resources/people.json"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">peopleDF.select(<span class="string">"name"</span>, <span class="string">"age"</span>).write.format(<span class="string">"csv"</span>).save(</span><br><span class="line">    <span class="string">"file:///home/hadoop/spark/data/newpeople.csv"</span>)</span><br></pre></td></tr></table></figure>
 <p>另一种保存办法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peopleDF.rdd.saveAsTextFile(<span class="string">"file:///home/hadoop/spark/data/newpeople.txt"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">peopleDF.rdd.saveAsTextFile(<span class="string">"file:///home/hadoop/spark/data/newpeople.txt"</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="读取和保存数据">读取和保存数据</h2>
 <h3 id="读写 -parquetdataframe">读写 Parquet(DataFrame)</h3>
 <p>如何从 parquet 文件中加载数据生成 DataFrame</p>
 <p>这里需要把 java 版本降到 1.8，然并卵</p>
 <p>如何将 DataFrame 保存成 parquet 文件？</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">peopleDF = spark.read.json(</span><br><span class="line">    <span class="string">"file:///usr/local/spark/examples/src/main/resources/people.json"</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">peopleDF.write.parquet(<span class="string">"file:///home/hadoop/spark/data/newpeople.parquet"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">peopleDF = spark.read.json(</span><br><span class="line">    <span class="string">"file:///usr/local/spark/examples/src/main/resources/people.json"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">peopleDF.write.parquet(<span class="string">"file:///home/hadoop/spark/data/newpeople.parquet"</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="通过 -jdbc- 连接数据库 dateframe">通过 JDBC 连接数据库(DateFrame)</h3>
 <h3 id="连接 hive 读写数据">连接 Hive 读写数据</h3>
 
@@ -688,8 +688,8 @@ AttributeError: &#39;PipelinedRDD&#39; object has no attribute &#39;createOrRepl
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/19/spark/明夷待访录（五）：Spark-Steaming/" rel="next" title="明夷待访录（五）：Spark Steaming ">
-                <i class="fa fa-chevron-left"></i> 明夷待访录（五）：Spark Steaming 
+              <a href="/2019/07/19/reinforcement learning/狸花猫记-终章/" rel="next" title="狸花猫记: 终章">
+                <i class="fa fa-chevron-left"></i> 狸花猫记: 终章
               </a>
             
           </div>
@@ -698,8 +698,8 @@ AttributeError: &#39;PipelinedRDD&#39; object has no attribute &#39;createOrRepl
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/19/reinforcement learning/狸花猫记-1-模型基础/" rel="prev" title="狸花猫记 (1): 模型基础">
-                狸花猫记 (1): 模型基础 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/19/spark/明夷待访录（五）：Spark-Steaming/" rel="prev" title="明夷待访录（五）：Spark Steaming ">
+                明夷待访录（五）：Spark Steaming  <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -826,7 +826,9 @@ AttributeError: &#39;PipelinedRDD&#39; object has no attribute &#39;createOrRepl
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
