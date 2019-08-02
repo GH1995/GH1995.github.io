@@ -4,6 +4,9 @@
     <title><![CDATA[最长回文子串]]></title>
     <url>%2F2019%2F08%2F02%2Fleetcode%2F%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2%2F</url>
     <content type="text"><![CDATA[给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。 示例 1： 输入: &quot;babad&quot; 输出: &quot;bab&quot; 注意: &quot;aba&quot; 也是一个有效答案。 示例 2： 输入: &quot;cbbd&quot; 输出: &quot;bb&quot; 12345678910111213141516171819202122class Solution &#123; public: string longestPalindrome(string s) &#123; int n = s.size(); vector&lt;vector&lt;bool&gt;&gt; dp(n, vector&lt;bool&gt;(n, false)); auto page = make_pair(0, 0); // string res; for (int i = n - 1; i &gt;= 0; --i) // i 倒着计算 for (int j = i; j &lt; n; ++j) &#123; // j 顺着计算 dp[i][j] = s[i] == s[j] &amp;&amp; (j - i &lt; 3 || dp[i + 1][j - 1]); // if (dp[i][j] &amp;&amp; j - i + 1 &gt; res.size()) res = s.substr(i, j - i + 1); if (dp[i][j] &amp;&amp; j - i &gt; page.second - page.first) &#123; page.first = i; page.second = j; &#125; &#125; return s.substr(page.first, page.second - page.first + 1); &#125;&#125;;]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[两个有序数组的中位数]]></title>

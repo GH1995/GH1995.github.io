@@ -105,17 +105,17 @@
 
 
 
-  <meta name="description" content="给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。  示例 1：  输入: &amp;quot;babad&amp;quot; 输出: &amp;quot;bab&amp;quot; 注意: &amp;quot;aba&amp;quot; 也是一个有效答案。  示例 2：  输入: &amp;quot;cbbd&amp;quot; 输出: &amp;quot;bb&amp;quot; 12345678910111213141516171">
+  <meta name="description" content="给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。  示例 1：  输入: &amp;quot;babad&amp;quot; 输出: &amp;quot;bab&amp;quot;  注意: &amp;quot;aba&amp;quot; 也是一个有效答案。  示例 2：  输入: &amp;quot;cbbd&amp;quot; 输出: &amp;quot;bb&amp;quot; 1234567891011121314151617">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最长回文子串">
 <meta property="og:url" content="http://guanhua.ml/2019/08/02/leetcode/最长回文子串/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。  示例 1：  输入: &amp;quot;babad&amp;quot; 输出: &amp;quot;bab&amp;quot; 注意: &amp;quot;aba&amp;quot; 也是一个有效答案。  示例 2：  输入: &amp;quot;cbbd&amp;quot; 输出: &amp;quot;bb&amp;quot; 12345678910111213141516171">
+<meta property="og:description" content="给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。  示例 1：  输入: &amp;quot;babad&amp;quot; 输出: &amp;quot;bab&amp;quot;  注意: &amp;quot;aba&amp;quot; 也是一个有效答案。  示例 2：  输入: &amp;quot;cbbd&amp;quot; 输出: &amp;quot;bb&amp;quot; 1234567891011121314151617">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-02T06:09:30.121Z">
+<meta property="og:updated_time" content="2019-08-02T06:13:10.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最长回文子串">
-<meta name="twitter:description" content="给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。  示例 1：  输入: &amp;quot;babad&amp;quot; 输出: &amp;quot;bab&amp;quot; 注意: &amp;quot;aba&amp;quot; 也是一个有效答案。  示例 2：  输入: &amp;quot;cbbd&amp;quot; 输出: &amp;quot;bb&amp;quot; 12345678910111213141516171">
+<meta name="twitter:description" content="给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。  示例 1：  输入: &amp;quot;babad&amp;quot; 输出: &amp;quot;bab&amp;quot;  注意: &amp;quot;aba&amp;quot; 也是一个有效答案。  示例 2：  输入: &amp;quot;cbbd&amp;quot; 输出: &amp;quot;bb&amp;quot; 1234567891011121314151617">
 
 
 
@@ -425,7 +425,7 @@
                 
               
 
-              <time title="Created: 2019-08-02 14:05:11 / Modified: 14:09:30" itemprop="dateCreated datePublished" datetime="2019-08-02T14:05:11+08:00">2019-08-02</time>
+              <time title="Created: 2019-08-02 14:05:11 / Modified: 14:13:10" itemprop="dateCreated datePublished" datetime="2019-08-02T14:05:11+08:00">2019-08-02</time>
             
 
             
@@ -435,6 +435,24 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -479,9 +497,12 @@
       
         <p> 给定一个字符串 <code>s</code>，找到 <code>s</code> 中最长的回文子串。你可以假设 <code>s</code> 的最大长度为 <code>1000</code>。</p>
 <p><strong> 示例 1：</strong></p>
-<p> 输入: <code>&quot;babad&quot;</code> 输出: <code>&quot;bab&quot;</code> 注意: <code>&quot;aba&quot;</code> 也是一个有效答案。</p>
+<p> 输入: <code>&quot;babad&quot;</code><br>
+输出: <code>&quot;bab&quot;</code></p>
+<p> 注意: <code>&quot;aba&quot;</code> 也是一个有效答案。</p>
 <p><strong> 示例 2：</strong></p>
-<p> 输入: <code>&quot;cbbd&quot;</code> 输出: <code>&quot;bb&quot;</code></p>
+<p> 输入: <code>&quot;cbbd&quot;</code><br>
+输出: <code>&quot;bb&quot;</code></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = s.size();</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&gt; dp(n, <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;(n, <span class="literal">false</span>));</span><br><span class="line">    <span class="keyword">auto</span> page = make_pair(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="comment">// string res;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)  <span class="comment">// i 倒着计算 </span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; n; ++j) &#123;   <span class="comment">// j 顺着计算 </span></span><br><span class="line">        dp[i][j] = s[i] == s[j] &amp;&amp; (j - i &lt; <span class="number">3</span> || dp[i + <span class="number">1</span>][j - <span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// if (dp[i][j] &amp;&amp; j - i + 1 &gt; res.size()) res = s.substr(i, j - i + 1);</span></span><br><span class="line">        <span class="keyword">if</span> (dp[i][j] &amp;&amp; j - i &gt; page.second - page.first) &#123;</span><br><span class="line">          page.first = i;</span><br><span class="line">          page.second = j;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> s.substr(page.first, page.second - page.first + <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
