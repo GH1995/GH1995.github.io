@@ -4,6 +4,9 @@
     <title><![CDATA[正则表达式匹配]]></title>
     <url>%2F2019%2F08%2F02%2Fleetcode%2F%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D%2F</url>
     <content type="text"><![CDATA[给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 . 和 * 的正则表达式匹配。 '.' 匹配任意单个字符 '*' 匹配零个或多个前面的那一个元素 所谓匹配，是要涵盖 整个 字符串 s 的，而不是部分字符串。 说明: s 可能为空，且只包含从 a-z 的小写字母。 p 可能为空，且只包含从 a-z 的小写字母，以及字符 . 和 *。 示例 1: 输入: s = &quot;aa&quot; p = &quot;a&quot; 输出: false 解释: &quot;a&quot; 无法匹配 &quot;aa&quot; 整个字符串。 示例 2: 输入: s = &quot;aa&quot; p = &quot;a&quot; 输出: true 解释: 因为 '' 代表可以匹配零个或多个前面的那一个元素, 在这里前面的元素就是 'a'。因此，字符串 &quot;aa&quot; 可被视为 'a' 重复了一次。 示例 3: 输入: s = &quot;ab&quot; p = &quot;.&quot; 输出: true 解释: &quot;.&quot; 表示可匹配零个或多个（'*'）任意字符（'.'）。 示例 4: 输入: s = &quot;aab&quot; p = &quot;cab&quot; 输出: true 解释: 因为 '*' 表示零个或多个，这里 'c' 为 0 个, 'a' 被重复一次。因此可以匹配字符串 &quot;aab&quot;。 示例 5: 输入: s = &quot;mississippi&quot; p = &quot;misisp*.&quot; 输出: false 1234567891011121314151617class Solution &#123;public: bool isMatch(string s, string p) &#123; if (p.empty()) return s.empty(); auto first_match = !s.empty() &amp;&amp; (p[0] == s[0] || p[0] == '.'); if (p.size() &gt;= 2 &amp;&amp; p[1] == '*') &#123; // å¤理 * 匹配 return isMatch(s, p.substr(2)) // 第一种情况，s 中没有匹配的，p[0] p[1] 空跑了 || (first_match &amp;&amp; isMatch(s.substr(1), p)); // 第二种情况， s[1] 是匹配的，接下来的继续递归 &#125; else &#123; // 处理非 * 匹配 return first_match &amp;&amp; isMatch(s.substr(1), p.substr(1)); &#125; &#125;&#125;;]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[最长回文子串]]></title>
