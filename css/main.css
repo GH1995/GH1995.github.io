@@ -1770,7 +1770,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff29;
+  background: #0ed5e0;
 }
 .feed-link,
 .chat {
@@ -2504,4 +2504,7 @@ embed {
 }
 .post-body p {
   text-indent: 2em;
+}
+code {
+  color: #f00;
 }
