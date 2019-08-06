@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[tensorflow(1): 图，张量和会话]]></title>
+    <url>%2F2019%2F08%2F06%2Ftensorflow1.4%2Ftensorflow-1-%E5%9B%BE%EF%BC%8C%E5%BC%A0%E9%87%8F%E5%92%8C%E4%BC%9A%E8%AF%9D%2F</url>
+    <content type="text"><![CDATA[定义两个不同的图 除了使用默认的计算图， TensorFlow 支持通过 tf.Graph 函数来生成新的计算图 1import tensorflow as tf 12345678g1 = tf.Graph()with g1.as_default(): v = tf.get_variable("v", [1], initializer=tf.zeros_initializer()) # 设置初始值为 0g2 = tf.Graph()with g2.as_default(): v = tf.get_variable("v", [1], initializer=tf.ones_initializer()) # 设置初始值为 1 123456789with tf.Session(graph=g1) as sess: tf.global_variables_initializer().run() with tf.variable_scope("", reuse=True): print(sess.run(tf.get_variable("v")))with tf.Session(graph=g2) as sess: tf.global_variables_initializer().run() with tf.variable_scope("", reuse=True): print(sess.run(tf.get_variable("v"))) [0.] [1.] 计算图可以通过 tf.Graph.device 函数来指定运行计算的设备。 在一个计算图中，可以通过集合 (collection ）来管理不同类别的资 源。 比如通过 tf.add_to_collection 函数可以将资源加入一个或多个集合中，然后通过 tf.get_collection 获取一个集合里面的所有资源。 这里的资源可以是张量、变量或者运行 TensorFlow 程序所需要的队列资源， 等等。 tf.GraphKeys.VARIABLES tf.GraphKeys.TRAINABLE_VARIABLES tf.GraphKeys.SUMMARIES tf.GraphKeys.QUEUE_RUNNERS tf.GraphKeys.MOVING_AVERAGE_VARIABLES 张量的概念 在张量中并没有 真正保存数字，它保存的是如何得到这些数字的计算过程。 123456789import tensorflow as tfa = tf.constant([1.0, 2.0], name="a")b = tf.constant([2.0, 3.0], name="b")result = a + bprint(result)sess = tf.InteractiveSession()print(result.eval())sess.close() Tensor(&quot;add:0&quot;, shape=(2,), dtype=float32) [3. 5.] 对中间计算结果的引用 result.get_shape() 会话的使用 会话拥有并管理 TensorFlow 程序运行时的所有资源。 创建和关闭会话 12345678# 创建一个会话。sess = tf.Session()# 使用会话得到之前计算的结果。print(sess.run(result))# 关闭会话使得本次运行中使用到的资源可以被释放。sess.close() [3. 5.] 张量的三个属性 name shape type 使用 with statement 来创建会话 12with tf.Session() as sess: print(sess.run(result)) [3. 5.] 指定默认会话 123sess = tf.Session()with sess.as_default(): print(result.eval()) [3. 5.] 123456sess = tf.Session()# 下面的两个命令有相同的功能。print(sess.run(result))print(result.eval(session=sess))sess.close() [3. 5.] [3. 5.] TensorFlow 不会自动生成默认的会话，而是需要手动指定。 当默认的会话被指定之后可以通过 tf.Tensor.eval 函数来计算 一个张量的取值。 使用 tf.InteractiveSession 构建会话 省去将产生的会话注册为默认会话的过程 123sess = tf.InteractiveSession ()print(result.eval())sess.close() [3. 5.] 通过 ConfigProto 配置会话 配置两个参数即可 123config = tf.ConfigProto(allow_soft_placement=True, # 允许 GPU 上的运算可以放到 CPU 上进行 log_device_placement=True # 为 True 时日志中将会记录每个节点被安排在哪个设备上以方便调试 ) 12sess1 = tf.InteractiveSession(config=config)sess2 = tf.Session(config=config)]]></content>
+      <categories>
+        <category>tensorflow1.4</category>
+      </categories>
+      <tags>
+        <tag>tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[matplot 入门]]></title>
     <url>%2F2019%2F08%2F05%2Fpython%2Fmatplot%E5%85%A5%E9%97%A8%2F</url>
     <content type="text"><![CDATA[12import matplotlib.pyplot as pltimport numpy as np 画一个简单图形 12x = np.linspace(0, 2 * np.pi, 50)y = np.sin(x) 12plt.plot(x, np.sin(x))plt.show() eRtRwF.png 在一张图上绘制两个数据集 12plt.plot(x, np.sin(x), x, np.sin(2 * x))plt.show() eRt2eU.png 自定义图形的外观 12plt.plot(x, np.sin(x), 'r-o', x, np.cos(x), 'g--')plt.show() eRt5WR.png 使用子图 使用子图只需要一个额外的步骤，就可以像前面的例子一样绘制数据集。即在调用 plot() 函数之前需要先调用 subplot() 函数。该函数的第一个参数代表子图的总行数，第二个参数代表子图的总列数，第三个参数代表活跃区域。 活跃区域代表当前子图所在绘图区域，绘图区域是按从左至右，从上至下的顺序编号。例如在 4×4 的方格上，活跃区域 6 在方格上的坐标为 (2, 2)。 12345plt.subplot(2, 1, 1) # 聚焦活跃区域 plt.plot(x, np.sin(x), 'r') # 绘制 plt.subplot(2, 1, 2)plt.plot(x, np.cos(x), 'g')plt.show() eRtoS1.png 简单的散点图 调用 scatter() 函数并传入两个分别代表 x 坐标和 y 坐标的数组。注意，我们通过 plot 命令并将线的样式设置为 'bo' 也可以实现同样的效果。 12plt.scatter(x, y)plt.show() eRtTQx.png 彩色映射散点图 1234x = np.random.rand(1000)y = np.random.rand(1000)size = np.random.rand(1000) * 50color = np.random.rand(1000) 123plt.scatter(x, y, size, color)plt.colorbar()plt.show() eRt4Y9.png 直方图 123x = np.random.randn(1000)plt.hist(x, 50)plt.show() eRthFJ.png 标题，标签和图例 1x = np.linspace(0, 2*np.pi, 50) 1234567plt.plot(x, np.sin(x), 'r-x', label='sin(x)')plt.plot(x, np.cos(x), 'g-^', label='cos(x)')plt.legend() # 展示图例 plt.xlabel('Rads')plt.ylabel('Amplitude')plt.title('sin and cos')plt.show() eRtWo4.png]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[正则表达式匹配]]></title>
@@ -68,17 +82,6 @@
       <categories>
         <category>algorithm</category>
       </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[tensorflow(1): 图，张量和会话]]></title>
-    <url>%2F2019%2F08%2F01%2Ftensorflow1.4%2Ftensorflow-1-%E5%9B%BE%EF%BC%8C%E5%BC%A0%E9%87%8F%E5%92%8C%E4%BC%9A%E8%AF%9D%2F</url>
-    <content type="text"><![CDATA[1. 定义两个不同的图 1234567891011121314151617181920import tensorflow as tfg1 = tf.Graph()with g1.as_default(): v = tf.get_variable("v", [1], initializer=tf.zeros_initializer()) # 设置初始值为 0g2 = tf.Graph()with g2.as_default(): v = tf.get_variable("v", [1], initializer=tf.ones_initializer()) # 设置初始值为 1with tf.Session(graph=g1) as sess: tf.global_variables_initializer().run() with tf.variable_scope("", reuse=True): print(sess.run(tf.get_variable("v")))with tf.Session(graph=g2) as sess: tf.global_variables_initializer().run() with tf.variable_scope("", reuse=True): print(sess.run(tf.get_variable("v"))) [0.] [1.] 2. 张量的概念 123456789import tensorflow as tfa = tf.constant([1.0, 2.0], name="a")b = tf.constant([2.0, 3.0], name="b")result = a + bprint(result)sess = tf.InteractiveSession()print(result.eval())sess.close() Tensor(&quot;add:0&quot;, shape=(2,), dtype=float32) [3. 5.] 会话的使用 创建和关闭会话 12345678# 创建一个会话。sess = tf.Session()# 使用会话得到之前计算的结果。print(sess.run(result))# 关闭会话使得本次运行中使用到的资源可以被释放。sess.close() [3. 5.] 使用 with statement 来创建会话 12with tf.Session() as sess: print(sess.run(result)) [3. 5.] 3.3 指定默认会话 123sess = tf.Session()with sess.as_default(): print(result.eval()) [3. 5.] 12345sess = tf.Session()# 下面的两个命令有相同的功能。print(sess.run(result))print(result.eval(session=sess)) [3. 5.] [3. 5.] 4. 使用 tf.InteractiveSession 构建会话 123sess = tf.InteractiveSession ()print(result.eval())sess.close() [3. 5.] 5. 通过 ConfigProto 配置会话 123config=tf.ConfigProto(allow_soft_placement=True, log_device_placement=True)sess1 = tf.InteractiveSession(config=config)sess2 = tf.Session(config=config)]]></content>
-      <categories>
-        <category>tensorflow1.4</category>
-      </categories>
-      <tags>
-        <tag>tensorflow</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[明夷待访录（三）：Spark 编程基础]]></title>

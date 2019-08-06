@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="1. 定义两个不同的图  1234567891011121314151617181920import tensorflow as tfg1 = tf.Graph()with g1.as_default():    v = tf.get_variable(&quot;v&quot;, [1],                        initializer=tf.zeros_initializer())  # 设">
+  <meta name="description" content="定义两个不同的图   除了使用默认的计算图， TensorFlow 支持通过 tf.Graph 函数来生成新的计算图  1import tensorflow as tf 12345678g1 = tf.Graph()with g1.as_default():    v = tf.get_variable(&quot;v&quot;, [1],                        initializer=t">
 <meta name="keywords" content="tensorflow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tensorflow(1): 图，张量和会话">
-<meta property="og:url" content="http://guanhua.ml/2019/08/01/tensorflow1.4/tensorflow-1-图，张量和会话/index.html">
+<meta property="og:url" content="http://guanhua.ml/2019/08/06/tensorflow1.4/tensorflow-1-图，张量和会话/index.html">
 <meta property="og:site_name" content="gh&#39;s notes">
-<meta property="og:description" content="1. 定义两个不同的图  1234567891011121314151617181920import tensorflow as tfg1 = tf.Graph()with g1.as_default():    v = tf.get_variable(&quot;v&quot;, [1],                        initializer=tf.zeros_initializer())  # 设">
+<meta property="og:description" content="定义两个不同的图   除了使用默认的计算图， TensorFlow 支持通过 tf.Graph 函数来生成新的计算图  1import tensorflow as tf 12345678g1 = tf.Graph()with g1.as_default():    v = tf.get_variable(&quot;v&quot;, [1],                        initializer=t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-01T07:19:30.689Z">
+<meta property="og:updated_time" content="2019-08-06T06:38:06.728Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tensorflow(1): 图，张量和会话">
-<meta name="twitter:description" content="1. 定义两个不同的图  1234567891011121314151617181920import tensorflow as tfg1 = tf.Graph()with g1.as_default():    v = tf.get_variable(&quot;v&quot;, [1],                        initializer=tf.zeros_initializer())  # 设">
+<meta name="twitter:description" content="定义两个不同的图   除了使用默认的计算图， TensorFlow 支持通过 tf.Graph 函数来生成新的计算图  1import tensorflow as tf 12345678g1 = tf.Graph()with g1.as_default():    v = tf.get_variable(&quot;v&quot;, [1],                        initializer=t">
 
 
 
@@ -124,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="http://guanhua.ml/2019/08/01/tensorflow1.4/tensorflow-1-图，张量和会话/">
+  <link rel="canonical" href="http://guanhua.ml/2019/08/06/tensorflow1.4/tensorflow-1-图，张量和会话/">
 
 
 
@@ -390,7 +390,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/08/01/tensorflow1.4/tensorflow-1-图，张量和会话/">
+    <link itemprop="mainEntityOfPage" href="http://guanhua.ml/2019/08/06/tensorflow1.4/tensorflow-1-图，张量和会话/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Hua">
@@ -433,7 +433,7 @@
                 
               
 
-              <time title="Created: 2019-08-01 15:19:30" itemprop="dateCreated datePublished" datetime="2019-08-01T15:19:30+08:00">2019-08-01</time>
+              <time title="Created: 2019-08-06 14:38:06" itemprop="dateCreated datePublished" datetime="2019-08-06T14:38:06+08:00">2019-08-06</time>
             
 
             
@@ -470,8 +470,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/08/01/tensorflow1.4/tensorflow-1-图，张量和会话/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/01/tensorflow1.4/tensorflow-1-图，张量和会话/" itemprop="commentCount"></span>
+                <a href="/2019/08/06/tensorflow1.4/tensorflow-1-图，张量和会话/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/06/tensorflow1.4/tensorflow-1-图，张量和会话/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -499,32 +499,62 @@
       
 
       
-        <h2 id="定义两个不同的图">1. 定义两个不同的图 </h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">g1 = tf.Graph()</span><br><span class="line"><span class="keyword">with</span> g1.as_default():</span><br><span class="line">    v = tf.get_variable(<span class="string">"v"</span>, [<span class="number">1</span>],</span><br><span class="line">                        initializer=tf.zeros_initializer())  <span class="comment"># 设置初始值为 0</span></span><br><span class="line"></span><br><span class="line">g2 = tf.Graph()</span><br><span class="line"><span class="keyword">with</span> g2.as_default():</span><br><span class="line">    v = tf.get_variable(<span class="string">"v"</span>, [<span class="number">1</span>], initializer=tf.ones_initializer())  <span class="comment"># 设置初始值为 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session(graph=g1) <span class="keyword">as</span> sess:</span><br><span class="line">    tf.global_variables_initializer().run()</span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">""</span>, reuse=<span class="literal">True</span>):</span><br><span class="line">        print(sess.run(tf.get_variable(<span class="string">"v"</span>)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session(graph=g2) <span class="keyword">as</span> sess:</span><br><span class="line">    tf.global_variables_initializer().run()</span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">""</span>, reuse=<span class="literal">True</span>):</span><br><span class="line">        print(sess.run(tf.get_variable(<span class="string">"v"</span>)))</span><br></pre></td></tr></table></figure>
+        <h2 id="定义两个不同的图"> 定义两个不同的图 </h2>
+<p> 除了使用默认的计算图， TensorFlow 支持通过 <code>tf.Graph</code> 函数来生成新的计算图 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">g1 = tf.Graph()</span><br><span class="line"><span class="keyword">with</span> g1.as_default():</span><br><span class="line">    v = tf.get_variable(<span class="string">"v"</span>, [<span class="number">1</span>],</span><br><span class="line">                        initializer=tf.zeros_initializer())  <span class="comment"># 设置初始值为 0</span></span><br><span class="line"></span><br><span class="line">g2 = tf.Graph()</span><br><span class="line"><span class="keyword">with</span> g2.as_default():</span><br><span class="line">    v = tf.get_variable(<span class="string">"v"</span>, [<span class="number">1</span>], initializer=tf.ones_initializer())  <span class="comment"># 设置初始值为 1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tf.Session(graph=g1) <span class="keyword">as</span> sess:</span><br><span class="line">    tf.global_variables_initializer().run()</span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">""</span>, reuse=<span class="literal">True</span>):</span><br><span class="line">        print(sess.run(tf.get_variable(<span class="string">"v"</span>)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session(graph=g2) <span class="keyword">as</span> sess:</span><br><span class="line">    tf.global_variables_initializer().run()</span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">""</span>, reuse=<span class="literal">True</span>):</span><br><span class="line">        print(sess.run(tf.get_variable(<span class="string">"v"</span>)))</span><br></pre></td></tr></table></figure>
 <pre><code>[0.]
 [1.]</code></pre>
-<h2 id="张量的概念">2. 张量的概念 </h2>
+<p> 计算图可以通过 <code>tf.Graph.device</code> 函数来指定运行计算的设备。</p>
+<p> 在一个计算图中，可以通过集合 (collection ）来管理不同类别的资 源。</p>
+<p> 比如通过 <code>tf.add_to_collection</code> 函数可以将资源加入一个或多个集合中，然后通过 <code>tf.get_collection</code> 获取一个集合里面的所有资源。</p>
+<p> 这里的资源可以是张量、变量或者运行 TensorFlow 程序所需要的队列资源， 等等。</p>
+<ul>
+<li><code>tf.GraphKeys.VARIABLES</code></li>
+<li><code>tf.GraphKeys.TRAINABLE_VARIABLES</code></li>
+<li><code>tf.GraphKeys.SUMMARIES</code></li>
+<li><code>tf.GraphKeys.QUEUE_RUNNERS</code></li>
+<li><code>tf.GraphKeys.MOVING_AVERAGE_VARIABLES</code></li>
+</ul>
+<h2 id="张量的概念"> 张量的概念 </h2>
+<p> 在张量中并没有 真正保存数字，它保存的是如何得到这些数字的计算过程。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">a = tf.constant([<span class="number">1.0</span>, <span class="number">2.0</span>], name=<span class="string">"a"</span>)</span><br><span class="line">b = tf.constant([<span class="number">2.0</span>, <span class="number">3.0</span>], name=<span class="string">"b"</span>)</span><br><span class="line">result = a + b</span><br><span class="line">print(result)</span><br><span class="line"></span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line">print(result.eval())</span><br><span class="line">sess.close()</span><br></pre></td></tr></table></figure>
 <pre><code>Tensor(&quot;add:0&quot;, shape=(2,), dtype=float32)
 [3. 5.]</code></pre>
+<ol type="1">
+<li> 对中间计算结果的引用 </li>
+<li><code>result.get_shape()</code></li>
+</ol>
 <h2 id="会话的使用"> 会话的使用 </h2>
-<p> 创建和关闭会话 </p>
+<p> 会话拥有并管理 TensorFlow 程序运行时的所有资源。</p>
+<h3 id="创建和关闭会话"> 创建和关闭会话 </h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个会话。</span></span><br><span class="line">sess = tf.Session()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用会话得到之前计算的结果。</span></span><br><span class="line">print(sess.run(result))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭会话使得本次运行中使用到的资源可以被释放。</span></span><br><span class="line">sess.close()</span><br></pre></td></tr></table></figure>
 <pre><code>[3. 5.]</code></pre>
-<p> 使用 with statement 来创建会话 </p>
+<p> 张量的三个属性 </p>
+<ul>
+<li>name</li>
+<li>shape</li>
+<li>type</li>
+</ul>
+<h3 id="使用 -with-statement- 来创建会话"> 使用 with statement 来创建会话 </h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    print(sess.run(result))</span><br></pre></td></tr></table></figure>
 <pre><code>[3. 5.]</code></pre>
-<p>3.3 指定默认会话 </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sess = tf.Session()</span><br><span class="line"><span class="keyword">with</span> sess.as_default():</span><br><span class="line">     print(result.eval())</span><br></pre></td></tr></table></figure>
+<h3 id="指定默认会话"> 指定默认会话 </h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sess = tf.Session()</span><br><span class="line"><span class="keyword">with</span> sess.as_default():</span><br><span class="line">    print(result.eval())</span><br></pre></td></tr></table></figure>
 <pre><code>[3. 5.]</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sess = tf.Session()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面的两个命令有相同的功能。</span></span><br><span class="line">print(sess.run(result))</span><br><span class="line">print(result.eval(session=sess))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sess = tf.Session()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面的两个命令有相同的功能。</span></span><br><span class="line">print(sess.run(result))</span><br><span class="line">print(result.eval(session=sess))</span><br><span class="line">sess.close()</span><br></pre></td></tr></table></figure>
 <pre><code>[3. 5.]
 [3. 5.]</code></pre>
-<h2 id="使用 tf.interactivesession 构建会话">4. 使用 tf.InteractiveSession 构建会话 </h2>
+<p>TensorFlow 不会自动生成默认的会话，而是需要手动指定。 当默认的会话被指定之后可以通过 <code>tf.Tensor.eval</code> 函数来计算 一个张量的取值。</p>
+<h2 id="使用 -tf.interactivesession- 构建会话"> 使用 tf.InteractiveSession 构建会话 </h2>
+<p> 省去将产生的会话注册为默认会话的过程 </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sess = tf.InteractiveSession ()</span><br><span class="line">print(result.eval())</span><br><span class="line">sess.close()</span><br></pre></td></tr></table></figure>
 <pre><code>[3. 5.]</code></pre>
-<h2 id="通过 configproto 配置会话">5. 通过 ConfigProto 配置会话 </h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">config=tf.ConfigProto(allow_soft_placement=<span class="literal">True</span>, log_device_placement=<span class="literal">True</span>)</span><br><span class="line">sess1 = tf.InteractiveSession(config=config)</span><br><span class="line">sess2 = tf.Session(config=config)</span><br></pre></td></tr></table></figure>
+<h2 id="通过 configproto 配置会话"> 通过 ConfigProto 配置会话 </h2>
+<p> 配置两个参数即可 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">config = tf.ConfigProto(allow_soft_placement=<span class="literal">True</span>, <span class="comment">#  允许 GPU 上的运算可以放到 CPU 上进行 </span></span><br><span class="line">                        log_device_placement=<span class="literal">True</span>  <span class="comment">#  为 True 时日志中将会记录每个节点被安排在哪个设备上以方便调试 </span></span><br><span class="line">                       )</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sess1 = tf.InteractiveSession(config=config)</span><br><span class="line">sess2 = tf.Session(config=config)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -580,8 +610,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/26/spark/明夷待访录（三）：Spark-编程基础/" rel="next" title="明夷待访录（三）：Spark 编程基础">
-                <i class="fa fa-chevron-left"></i> 明夷待访录（三）：Spark 编程基础
+              <a href="/2019/08/05/python/matplot入门/" rel="next" title="matplot 入门">
+                <i class="fa fa-chevron-left"></i> matplot 入门
               </a>
             
           </div>
@@ -589,10 +619,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/01/algorithm/quick-sort/" rel="prev" title="quick sort">
-                quick sort <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -900,7 +926,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义两个不同的图"><span class="nav-number">1.</span> <span class="nav-text">1. 定义两个不同的图 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#张量的概念"><span class="nav-number">2.</span> <span class="nav-text">2. 张量的概念 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#会话的使用"><span class="nav-number">3.</span> <span class="nav-text"> 会话的使用 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用 tf.interactivesession 构建会话"><span class="nav-number">4.</span> <span class="nav-text">4. 使用 tf.InteractiveSession 构建会话 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过 configproto 配置会话"><span class="nav-number">5.</span> <span class="nav-text">5. 通过 ConfigProto 配置会话 </span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义两个不同的图"><span class="nav-number">1.</span> <span class="nav-text"> 定义两个不同的图 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#张量的概念"><span class="nav-number">2.</span> <span class="nav-text"> 张量的概念 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#会话的使用"><span class="nav-number">3.</span> <span class="nav-text"> 会话的使用 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建和关闭会话"><span class="nav-number">3.1.</span> <span class="nav-text"> 创建和关闭会话 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用 -with-statement- 来创建会话"><span class="nav-number">3.2.</span> <span class="nav-text"> 使用 with statement 来创建会话 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指定默认会话"><span class="nav-number">3.3.</span> <span class="nav-text"> 指定默认会话 </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用 -tf.interactivesession- 构建会话"><span class="nav-number">4.</span> <span class="nav-text"> 使用 tf.InteractiveSession 构建会话 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过 configproto 配置会话"><span class="nav-number">5.</span> <span class="nav-text"> 通过 ConfigProto 配置会话 </span></a></li></ol></div>
             
 
           </div>
